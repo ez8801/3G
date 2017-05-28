@@ -1,0 +1,13 @@
+# Dependency directories
+Client/Library/
+
+# vs tmp, build files
+.vs/
+*/obj/
+*/bin/
+*.suo
+*.sdf
+*.njsproj
+
+# vim tmp file
+*.swp
