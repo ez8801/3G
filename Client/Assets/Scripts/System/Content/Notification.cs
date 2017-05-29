@@ -1,0 +1,71 @@
+﻿
+public class Notification
+{
+    public enum System
+    {
+        OnBackPressed,
+    }
+
+    public enum UI
+    {
+        OnProgress,
+        OnProgressDone,
+    }
+
+    public int id;
+    public bool boolExtra;
+    public short shortExtra;
+    public float floatExtra;
+    public int intExtra;
+    public string stringExtra;
+
+    public Notification(int msg)
+    {
+        id = msg;
+        boolExtra = false;
+        shortExtra = 0;
+        floatExtra = 0f;
+        intExtra = 0;
+        stringExtra = string.Empty;
+    }
+
+    public Notification(int msg, int data)
+    {
+        id = msg;
+        boolExtra = false;
+        shortExtra = 0;
+        floatExtra = 0f;
+        intExtra = data;
+        stringExtra = string.Empty;
+    }
+
+    public Notification(int msg, float data)
+    {
+        id = msg;
+        boolExtra = false;
+        shortExtra = 0;
+        floatExtra = data;
+        intExtra = 0;
+        stringExtra = string.Empty;
+    }
+
+    public Notification(int msg, string data)
+    {
+        id = msg;
+        boolExtra = false;
+        shortExtra = 0;
+        floatExtra = 0f;
+        intExtra = 0;
+        stringExtra = data;
+    }
+
+    public Notification(int msg, bool data)
+    {
+        id = msg;
+        boolExtra = data;
+        shortExtra = 0;
+        floatExtra = 0f;
+        intExtra = 0;
+        stringExtra = string.Empty;
+    }
+}
