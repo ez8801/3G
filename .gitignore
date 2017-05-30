@@ -11,3 +11,4 @@ Client/Library/
 
 # vim tmp file
 *.swp
+*.csproj
