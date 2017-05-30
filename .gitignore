@@ -1,5 +1,6 @@
 # Dependency directories
 Client/Library/
+Client/Temp/
 
 # vs tmp, build files
 .vs/
