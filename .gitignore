@@ -12,3 +12,5 @@ Client/Library/
 # vim tmp file
 *.swp
 *.csproj
+*.sln
+*.userprefs
