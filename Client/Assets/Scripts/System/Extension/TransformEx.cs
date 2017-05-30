@@ -52,4 +52,32 @@ public static class TransformEx
         if (go != null)
             go.SetActive(value);
     }
+    
+    public static string GetFullPath(this Transform t, Transform root)
+    {
+        if (t == root)
+            return string.Empty;
+
+        string fullPath = t.name;
+        Transform parent = t.parent;
+        while (parent != root)
+        {
+            if (parent == null)
+                break;
+
+            fullPath = string.Format("{0}/{1}", parent.name, fullPath);
+            parent = parent.parent;
+        }
+        return fullPath;
+    }
+
+    public static void Bind<T>(this MonoBehaviour mono, ref T target, string path) where T : Component
+    {
+        if (target == null)
+        {
+            Transform t = mono.transform.Find(path);
+            if (t != null)
+                target = t.GetComponent<T>();
+        }
+    }
 }
