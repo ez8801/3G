@@ -22,7 +22,7 @@ public sealed class ItemTable : ArrayTable<Item>
         {
             if (m_instance == null)
                 m_instance = new ItemTable();
-            return null;
+            return m_instance;
         }
     }
 }
