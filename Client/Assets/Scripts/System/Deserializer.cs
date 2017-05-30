@@ -96,9 +96,9 @@ public class Deserializer : MonoBehaviour
     private const string kTargetNameSpace = "Data";
     private const string kDestinationPath = "Scripts/Data/Data.Generated.cs";
     private const string kAutoGeneration = "Auto Generation";
-    private const string kAutoGenerationMode = "Tools/Scripts/Auto Generation Mode";
+    private const string kAutoGenerationMode = "Code/Auto Generation Mode";
 
-    [MenuItem(kAutoGenerationMode)]
+    [MenuItem(kAutoGenerationMode, false, 100)]
     private static void ToggleSimulationMode()
     {
         bool isAutoGeneration = EditorPrefs.GetBool(kAutoGeneration, false);
@@ -112,7 +112,7 @@ public class Deserializer : MonoBehaviour
         return true;
     }
 
-    [MenuItem("Tools/Scripts/Generate Source Code")]
+    [MenuItem("Code/Generate Deserialize Code")]
     private static void GenerateSourceCode()
     {
         Assembly executingAssembly = Assembly.GetExecutingAssembly();

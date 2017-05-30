@@ -15,10 +15,10 @@ public class ScriptPostProcessor : AssetPostprocessor
     }
     
     [UnityEditor.Callbacks.DidReloadScripts]
-    [MenuItem("Code/Types Build")]
+    [MenuItem("Code/Generate Enum")]
     private static void GenerateEnum()
     {
-        string scriptPath = Path.Combine(Application.dataPath, "Scripts/GameSystem/SceneManagement/SceneType.cs");
+        string scriptPath = Path.   Combine(Application.dataPath, "Scripts/GameSystem/SceneManagement/SceneType.cs");
         if (EnumGenerator.GenerateEnum(scriptPath, typeof(GameSystem.Scene), typeof(SceneType)))
         {
             AssetDatabase.Refresh();
@@ -27,7 +27,7 @@ public class ScriptPostProcessor : AssetPostprocessor
         }
     }
 
-    [MenuItem("Code/Genereate Activator")]
+    [MenuItem("Code/Generate Activator")]
     private static void GenerateActivetor()
     {
         string scriptPath = Path.Combine(Application.dataPath, "Scripts/GameSystem/SceneManagement/Activator.cs");
