@@ -1,0 +1,27 @@
+﻿/* 
+ * #SCRIPT_NAME#.cs
+ * 
+ * Writer : #WRITER_NAME#
+ * Date   : #CREATION_DATE#
+ * 
+ * Copyright ⓒ #PROJECT_NAME#. #SMART_DEVELOPERS#, All rights reserved
+ */
+
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+
+public class #SCRIPT_NAME# : MonoBehaviour 
+{
+	// Use this for initialization
+	void Start()
+	{
+		
+	}
+	
+	// Update is called once per frame	
+	void Update()
+	{
+		
+	}
+}
