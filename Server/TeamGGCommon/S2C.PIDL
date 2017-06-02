@@ -1,0 +1,10 @@
+rename cs(Proud::String, System.String);
+
+global S2C 4000 // server-to-client RMI, 최초 메시지 ID = 4000
+{
+    ShowChat([in] Proud::String a,[in]int b,[in]float c);
+    SystemChat([in] Proud::String txt);
+
+	sendUserInfo([in] Proud::String userName, [in] int att, [in] int def);
+	sendInventory([in] int item[100]);
+}
