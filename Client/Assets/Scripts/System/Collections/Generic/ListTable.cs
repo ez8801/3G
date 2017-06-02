@@ -22,6 +22,20 @@ public class ListTable<T> : Table<T> where T : IIndexer, IDeserializable, new()
         }
     }
 
+    public bool ContainsKey(int key)
+    {
+        if (m_container != null)
+        {
+            for (int i = 0; i < m_container.Count; i++)
+            {
+                if (m_container[i].GetIndex() == key)
+                    return true;
+            }
+        }
+
+        return false;
+    }
+
     public override void Clear()
     {
         if (m_container != null)
