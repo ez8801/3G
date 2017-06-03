@@ -16,6 +16,14 @@ public class Deserializer : MonoBehaviour
     private int m_offset;
     private int m_rowCount;
 
+    public void Load<T>(JSONObject data, Table<T> table) where T: IIndexer, IDeserializable, new()
+    {
+        Assert.IsNotNull(data, new ArgumentNullException("data").ToString());
+        Assert.IsNotNull(table, new ArgumentNullException("table").ToString());
+
+        table.Load(data);
+    }
+
     public void Load<T>(TextAsset textAsset, Table<T> table) where T : IIndexer, IDeserializable, new()
     {
         Assert.IsNotNull(textAsset, new ArgumentNullException("textAsset").ToString());
@@ -57,6 +65,12 @@ public class Deserializer : MonoBehaviour
         }
     }
 
+    public void Deserialize(ref bool boolean)
+    {
+        boolean = BitConverter.ToBoolean(m_bytes, m_offset);
+        m_offset += sizeof(bool);
+    }
+    
     public void Deserialize(ref byte i1)
     {
         i1 = m_bytes[m_offset];
@@ -111,7 +125,7 @@ public class Deserializer : MonoBehaviour
         Menu.SetChecked(kAutoGenerationMode, EditorPrefs.GetBool(kAutoGeneration, false));
         return true;
     }
-
+    
     [MenuItem("Code/Generate Deserialize Code")]
     private static void GenerateSourceCode()
     {
@@ -161,7 +175,49 @@ public class Deserializer : MonoBehaviour
             else
                 builder.AppendLine();
             builder.AppendLine("\t{");
-            
+
+            // Method: void Deserialize(JSONObject)
+            builder.AppendLine("\t\tpublic void Deserialize(JSONObject json)");
+            builder.AppendLine("\t\t{");
+
+            for (int j = 0; j < fieldInfos.Length; j++)
+            {
+                FieldInfo fi = fieldInfos[j];
+                var nonSerializedAttributes = fi.GetCustomAttributes(typeof(NonSerializedAttribute), true);
+                if (!(nonSerializedAttributes == null || nonSerializedAttributes.Length == 0))
+                    continue;
+                
+                string bindingCommand = string.Format("\t\t\t{0} = json[\"{0}\"].", fi.Name);
+                builder.Append(bindingCommand);
+
+                if (fi.FieldType == typeof(string))
+                {
+                    builder.AppendLine("STR;");
+                }
+                else if (fi.FieldType == typeof(long))
+                {
+                    builder.AppendLine("I8;");
+                }
+                else if (fi.FieldType == typeof(int))
+                {
+                    builder.AppendLine("I4;");
+                }
+                else if (fi.FieldType == typeof(short))
+                {
+                    builder.AppendLine("I2;");
+                }
+                else if (fi.FieldType == typeof(bool))
+                {
+                    builder.AppendLine("B;");
+                }
+                else
+                {
+                    Debug.LogWarning(fi.FieldType.ToString());
+                }
+            }
+            builder.AppendLine("\t\t}");
+            builder.AppendLine();
+
             // Method: void Deserialize(Deserializer)
             builder.AppendLine("\t\tpublic void Deserialize(Deserializer deserializer)");
             builder.AppendLine("\t\t{");
@@ -185,7 +241,7 @@ public class Deserializer : MonoBehaviour
             }
             builder.AppendLine("\t\t}");
             builder.AppendLine();
-            
+
             // Method: int GetIndex(void).PrimaryKey
             if (isAssignPrimaryKey)
             {

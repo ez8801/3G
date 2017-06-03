@@ -59,4 +59,16 @@ public class ListTable<T> : Table<T> where T : IIndexer, IDeserializable, new()
             m_container.Add(t);
         }
     }
+    
+    public override void Load(JSONObject jsonList)
+    {
+        m_container = new List<T>();
+        for (int i = 0; i < jsonList.list.Count; i++)
+        {
+            JSONObject json = jsonList.list[i];
+            T t = new T();
+            t.Deserialize(json);
+            m_container.Add(t);
+        }
+    }
 }

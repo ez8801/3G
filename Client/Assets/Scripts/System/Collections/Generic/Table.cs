@@ -12,4 +12,5 @@ public abstract class Table<T>
     }
 
     public abstract void Load(int totalItemCount, Deserializer deserializer);
+    public abstract void Load(JSONObject jsonList);
 }
