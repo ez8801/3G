@@ -8,7 +8,7 @@
 #include "../TeamGGCommon/S2C_proxy.cpp"
 
 #include "User.h"
-
+//changetest
 class C2SStub : public C2S::Stub
 {
 public:
