@@ -1,0 +1,7 @@
+
+rename cs(Proud::String, System.String);
+global C2C 2000  // client-to-client RMI, First message ID = 2000 + 1
+{
+    P2PChat( [in] Proud::String a, [in] int b, [in] float c);
+   
+}

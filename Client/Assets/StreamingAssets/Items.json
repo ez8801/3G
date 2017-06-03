@@ -1,0 +1,36 @@
+[
+    {
+        "id": 0,
+        "title": "test item1",
+        "value": 2,
+		"stackable": true,
+		"rarity": 4,
+		"type":0 //º¸¼®
+		
+    },
+    {
+        "id": 1,
+        "title": "test item2",
+        "value": 24,
+		"stackable": true,
+		"rarity": 2,
+		"type":1 //ÁÖ±«
+
+    },
+    { 
+        "id": 2,
+        "title": "test item3",
+        "value": 31,
+		"stackable": true,
+		"rarity": 0,
+		"type":2 //°¡Á×
+    },
+    { 
+        "id": 3,
+        "title": "test Blueprint",
+        "value": 1,
+		"stackable": false,
+		"rarity": 1,
+		"type":10 //Á¦ÀÛµµ¾È
+    }
+]
