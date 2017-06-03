@@ -42,11 +42,47 @@ public class ListTable<T> : Table<T> where T : IIndexer, IDeserializable, new()
             m_container.Clear();
     }
 
-    public override T Find(int index)
+    protected override int BinarySearch(int value)
     {
-        return m_container.Find((match) => {
-            return match.GetIndex() == index;
+        var start = 0;
+        var end = Count - 1;
+        while (start <= end)
+        {
+            var mid = (start + end) / 2;
+            if (this[mid].GetIndex() > value)
+                end = mid - 1;
+            else if (this[mid].GetIndex() < value)
+                start = mid + 1;
+            else
+            {
+                // found k
+                return mid;
+            }
+        }
+
+        // not found k
+        return -1;
+    }
+
+    private int LinearSearch(int key)
+    {
+        return m_container.FindIndex((match) => {
+            return match.GetIndex() == key;
         });
+    }
+
+    public override T Find(int key)
+    {
+        int index = -1;
+        if (m_isAscendingOrder)
+        {
+            index = BinarySearch(key);
+            if (index != -1)
+                return m_container[index];
+        }
+
+        index = LinearSearch(key);
+        return (index >= 0) ? m_container[index] : default(T);
     }
 
     public override void Load(int totalItemCount, Deserializer deserializer)
