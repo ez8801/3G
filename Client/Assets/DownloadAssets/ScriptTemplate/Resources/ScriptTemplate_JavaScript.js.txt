@@ -1,0 +1,19 @@
+﻿/* 
+ * #SCRIPT_NAME#.js
+ * 
+ * Writer : #WRITER_NAME#
+ * Date   : #CREATION_DATE#
+
+ * Copyright ⓒ #PROJECT_NAME#. #SMART_DEVELOPERS#, All rights reserved
+ */
+
+#pragma strict
+
+function Awake () 
+{
+
+}
+
+function Update () {
+
+}

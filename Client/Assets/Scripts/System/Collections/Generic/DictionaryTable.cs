@@ -50,4 +50,16 @@ public class DictionaryTable<T> : Table<T> where T : IIndexer, IDeserializable, 
             m_container.Add(t.GetIndex(), t);
         }
     }
+
+    public override void Load(JSONObject jsonList)
+    {
+        m_container = new Dictionary<int, T>();
+        for (int i = 0; i < jsonList.list.Count; i++)
+        {
+            JSONObject json = jsonList.list[i];
+            T t = new T();
+            t.Deserialize(json);
+            m_container.Add(t.GetIndex(), t);
+        }
+    }
 }

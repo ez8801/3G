@@ -13,5 +13,7 @@ public class Program : MonoBehaviour
         // @TODO: Initialize
         DataManager.Instance.Initialize();
         UIManager.Instance.Initialize();
+
+        DataManager.Instance.LoadAllData();
     }
 }

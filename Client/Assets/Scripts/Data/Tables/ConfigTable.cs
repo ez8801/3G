@@ -4,11 +4,11 @@ using System;
 namespace Data
 {
     [Serializable]
-    [PrimaryKey("index")]
+    [PrimaryKey("Id")]
     public partial struct Config
     {
-        public int index;
-        public string value;
+        public int Id;
+        public string Value;
     }
 }
 

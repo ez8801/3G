@@ -4,12 +4,15 @@ using Data;
 namespace Data
 {
     [Serializable]
-    [PrimaryKey("index")]
+    [PrimaryKey("Id")]
     public partial struct Item
     {
-        public int index;
-        public int type;
-        public string name;
+        public int Id;
+        public int Type;
+        public int Rarity;
+        public string Name;
+        public int Value;
+        public bool Stackable;
     }
 }
 

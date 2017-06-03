@@ -67,4 +67,15 @@ public class ArrayTable<T> : Table<T> where T : IIndexer, IDeserializable, new()
             m_container[i] = t;
         }
     }
+
+    public override void Load(JSONObject jsonList)
+    {
+        m_container = new T[jsonList.list.Count];
+        for (int i = 0; i < jsonList.list.Count; i++)
+        {
+            JSONObject json = jsonList.list[i];
+            m_container[i] = new T();
+            m_container[i].Deserialize(json);
+        }
+    }
 }

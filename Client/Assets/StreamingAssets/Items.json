@@ -1,0 +1,34 @@
+﻿[
+  {
+    "Id": 1,
+    "Type": 1,
+    "Rarity": 4,
+    "Name": "test item1",
+    "Value": 2,
+    "Stackable": true	
+  },
+  {
+    "Id": 2,
+    "Type": 2,
+    "Rarity": 2,
+    "Name": "test item2",
+    "Value": 24,
+    "Stackable": true
+  },
+  {
+    "Id": 3,
+    "Type": 3,
+    "Rarity": 0,
+    "Name": "test item3",
+    "Value": 31,
+    "Stackable": true
+  },
+  {
+    "Id": 4,
+    "Type": 10,
+    "Rarity": 1,
+    "Name": "test Blueprint",
+    "Value": 1,
+    "Stackable": true
+  }
+]
