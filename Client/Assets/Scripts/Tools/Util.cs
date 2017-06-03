@@ -32,16 +32,15 @@ public class Util
     }
 
     /// <summary>
-    /// GameObject로부터 지정된 컴포넌트를 얻어온다. 
-    /// 만약 createIfMissing 플래그가 참이고 컴포넌트가 없다면 생성, 반환
+    /// GameObject로부터 지정된 컴포넌트를 얻어온다.
     /// </summary>
-    public static T GetComponent<T>(GameObject go, bool createIfMissing = false) where T : Component
+    public static T RequireComponent<T>(GameObject go) where T : Component
     {
         if (go == null)
             return null;
-
+        
         T comp = go.GetComponent<T>();
-        if (createIfMissing && comp == null)
+        if (comp == null)
             comp = go.AddComponent<T>();
 
         return comp;
@@ -49,15 +48,14 @@ public class Util
 
     /// <summary>
     /// Transform으로부터 지정된 컴포넌트를 얻어온다. 
-    /// 만약 createIfMissing 플래그가 참이고 컴포넌트가 없다면 생성, 반환
     /// </summary>
-    public static T GetComponent<T>(Transform t, bool createIfMissing = false) where T : Component
+    public static T RequireComponent<T>(Transform t) where T : Component
     {
         if (t == null)
             return null;
         
         T comp = t.GetComponent<T>();
-        if (createIfMissing && comp == null)
+        if (comp == null)
             comp = t.gameObject.AddComponent<T>();
         
         return comp;
@@ -147,30 +145,6 @@ public class Util
 
         return null;
     }
-
-    /*
-    /// <summary>
-    /// 지정된 Transform으로부터 특정 타입과 이름의 컴포넌트를 찾아 반환합니다.
-    /// </summary>
-    public static T FindComponentByName<T>(Transform t, System.Type findType, string name, bool includeInActive = true) where T : MonoBehaviour
-    {
-        if (t == null || string.IsNullOrEmpty(name))
-            return null;
-        
-        Component[] children = t.GetComponentsInChildren(findType, includeInActive);
-        if (IsNullOrEmpty(children))
-            return null;
-
-        for (int i = 0; i < children.Length; i++)
-        {
-            Component each = children[i];
-            if (each != null && each.name == name)
-                return (T)each;
-        }
-
-        return null;
-    }
-    */
     
     /// <summary>
     /// 지정된 게임오브젝트에 하위에 해당 게임오브젝트를 첨부합니다.
