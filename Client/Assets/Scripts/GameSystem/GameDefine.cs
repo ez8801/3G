@@ -1,14 +1,17 @@
 ﻿using System;
 
-public class GameDefine
+public static class GameDefine
 {
-    // @TODO:
-    public Version version = new Version(1, 0, 0);
-    public string VersionString
+    public static Version version = new Version(1, 0, 0);
+    
+    public static string VersionString
     {
         get
         {
-            return version.ToString();
+            if (string.IsNullOrEmpty(m_versionString))
+                m_versionString = version.ToString();
+            return m_versionString;
         }
     }
+    private static string m_versionString = string.Empty;
 }
