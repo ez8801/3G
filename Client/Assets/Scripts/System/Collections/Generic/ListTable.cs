@@ -92,6 +92,12 @@ public class ListTable<T> : Table<T> where T : IIndexer, IDeserializable, new()
         {
             T t = new T();
             t.Deserialize(deserializer);
+
+            if (m_isAscendingOrder)
+            {
+                m_isAscendingOrder = IsAscendingOrder(ref lastIndex, t.GetIndex());
+            }
+
             m_container.Add(t);
         }
     }
@@ -104,6 +110,12 @@ public class ListTable<T> : Table<T> where T : IIndexer, IDeserializable, new()
             JSONObject json = jsonList.list[i];
             T t = new T();
             t.Deserialize(json);
+
+            if (m_isAscendingOrder)
+            {
+                m_isAscendingOrder = IsAscendingOrder(ref lastIndex, t.GetIndex());
+            }
+
             m_container.Add(t);
         }
     }
