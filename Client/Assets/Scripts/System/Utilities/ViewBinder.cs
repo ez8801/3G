@@ -4,7 +4,7 @@
  * Writer : P_BaekMinWoo
  * Date   : 2016-01-06
  * 
- * Copyright ⓒ HRF Studio, All rights reserved
+ * Copyright ⓒ Sweet Home Alabama. Team 3G, All rights reserved
  */
 using System;
 using System.Reflection;

@@ -4,9 +4,9 @@
  * Writer : EZ
  * Date   : 2017-06-06
  * 
- * Copyright ⓒ Util. DefaultCompany, All rights reserved
+ * Copyright ⓒ Sweet Home Alabama. Team 3G, All rights reserved
  */
- 
+
 using System.Text;
 
 public static class StringEx

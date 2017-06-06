@@ -4,7 +4,7 @@
  * Writer : BMW
  * Date   : 2017-06-03
  * 
- * Copyright ⓒ Util. DefaultCompany, All rights reserved
+ * Copyright ⓒ Sweet Home Alabama. Team 3G, All rights reserved
  */
 
 public enum AssetCategory
