@@ -88,6 +88,8 @@ public class ListTable<T> : Table<T> where T : IIndexer, IDeserializable, new()
     public override void Load(int totalItemCount, Deserializer deserializer)
     {
         m_container = new List<T>(totalItemCount);
+
+        int lastIndex = int.MinValue;
         for (int i = 0; i < totalItemCount; i++)
         {
             T t = new T();
@@ -105,6 +107,8 @@ public class ListTable<T> : Table<T> where T : IIndexer, IDeserializable, new()
     public override void Load(JSONObject jsonList)
     {
         m_container = new List<T>();
+
+        int lastIndex = int.MinValue;
         for (int i = 0; i < jsonList.list.Count; i++)
         {
             JSONObject json = jsonList.list[i];
