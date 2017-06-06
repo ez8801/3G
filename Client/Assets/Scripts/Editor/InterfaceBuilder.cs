@@ -87,10 +87,15 @@ public class InterfaceBuilder : EditorWindow
                         list[i] = each;
                     }
 
-                    if (GUILayout.Button(buttonName, GUILayout.MaxWidth(52f)))
+                    if (GUILayout.Button(buttonName, GUILayout.MaxWidth(48f)))
                     {
                         action(i);
                         break;
+                    }
+
+                    if (GUILayout.Button("Copy", GUILayout.MaxWidth(56f)))
+                    {
+                        EditorGUIUtility.systemCopyBuffer = each.fullPath;
                     }
                 }
                 GUILayout.EndHorizontal();
@@ -196,22 +201,29 @@ public class InterfaceBuilder : EditorWindow
             builder.AppendLine();
             builder.AppendLine("{");
             {
+                // View Definition
+                builder.AppendLine("\tpublic struct View");
+                builder.AppendLine("\t{");
                 for (int i = 0; i < m_includes.Count; i++)
                 {
                     Variable each = m_includes[i];
-                    builder.AppendFormat("\tpublic {0} {1};", each.components[each.selectedIndex], each.customName);
+                    builder.AppendFormat("\t\tpublic {0} {1};", each.components[each.selectedIndex], each.customName);
                     builder.AppendLine();
                 }
+                builder.AppendLine("\t}");
+                builder.AppendLine("\tprivate View m_view;");
 
                 builder.AppendLine();
+
                 builder.AppendLine("[ContextMenu(\"Bind\")]");
                 builder.AppendLine("\tpublic void Initialize()");
                 builder.AppendLine("\t{");
-
+                builder.AppendLine("\t\tm_view = new View();");
+                
                 for (int i = 0; i < m_includes.Count; i++)
                 {
                     Variable each = m_includes[i];
-                    builder.AppendFormat("\t\tthis.Bind(ref {0}, \"{1}\");", each.customName, each.fullPath);
+                    builder.AppendFormat("\t\tthis.Bind(ref m_view.{0}, \"{1}\");", each.customName, each.fullPath);
                     builder.AppendLine();
                 }
 

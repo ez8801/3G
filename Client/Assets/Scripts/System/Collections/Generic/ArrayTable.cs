@@ -122,10 +122,12 @@ public class ArrayTable<T> : Table<T> where T : IIndexer, IDeserializable, new()
             JSONObject json = jsonList.list[i];
             T t = new T();
             t.Deserialize(json);
+
             if (m_isAscendingOrder)
             {
                 m_isAscendingOrder = IsAscendingOrder(ref lastIndex, t.GetIndex());
             }
+
             m_container[i] = t;
         }
     }
