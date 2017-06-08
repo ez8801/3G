@@ -202,6 +202,7 @@ public class InterfaceBuilder : EditorWindow
             builder.AppendLine("{");
             {
                 // View Definition
+                builder.AppendLine("\t[System.Serializable]");
                 builder.AppendLine("\tpublic struct View");
                 builder.AppendLine("\t{");
                 for (int i = 0; i < m_includes.Count; i++)
@@ -211,8 +212,8 @@ public class InterfaceBuilder : EditorWindow
                     builder.AppendLine();
                 }
                 builder.AppendLine("\t}");
-                builder.AppendLine("\tprivate View m_view;");
-
+                
+                builder.AppendLine("\tpublic View m_view;");
                 builder.AppendLine();
 
                 builder.AppendLine("[ContextMenu(\"Bind\")]");
