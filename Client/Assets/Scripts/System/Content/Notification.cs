@@ -3,13 +3,18 @@ public class Notification
 {
     public enum System
     {
+        None,
         OnBackPressed,
+        OnSceneChanged,
+        Max
     }
 
     public enum UI
     {
+        None = System.Max + 1,
         OnProgress,
         OnProgressDone,
+        Max
     }
 
     public int id;

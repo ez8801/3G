@@ -29,6 +29,11 @@ namespace GameSystem
         public SceneType currentSceneType { private set; get; }
         private Scene m_currentScene;
 
+        public void Start()
+        {
+            NotificationCenter.Instance.AddObserver(this);
+        }
+
         public void Update()
         {
             if (m_currentScene != null)
@@ -46,15 +51,19 @@ namespace GameSystem
 
         public void ChangeScene(SceneType sceneType, Intent intent)
         {
+            Scene nextScene = null;
+            bool isAssigned = Activator.CreateInstance(out nextScene, sceneType);
+            Assert.IsTrue(isAssigned, string.Format("Couldn't Create Instance at: {0}", sceneType));
+            
+            nextScene.OnCrate(intent);
             if (m_currentScene != null)
                 m_currentScene.OnStop();
 
-            bool isCreatable = Activator.CreateInstance(ref m_currentScene, sceneType);
-            Assert.IsTrue(isCreatable, string.Format("Couldn't Create Instance at: {0}", sceneType));
-
             currentSceneType = sceneType;
-            m_currentScene.OnCrate(intent);
-            m_currentScene.OnStart();
+            m_currentScene = nextScene;
+
+            nextScene.OnStart();
+            NotificationCenter.Instance.Post((int)Notification.System.OnSceneChanged, (int)sceneType);
         }
 
         public Scene GetCurrentScene()
@@ -117,6 +126,11 @@ namespace GameSystem
             GarbageCollect();
             yield return new WaitForEndOfFrame();
             yield return Resources.UnloadUnusedAssets();
+        }
+
+        private void OnDestroy()
+        {
+            NotificationCenter.Instance.RemoveObserver(this);
         }
     }
 }
