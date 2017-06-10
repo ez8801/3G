@@ -8,11 +8,12 @@ namespace Data
     public partial struct Config
     {
         public int Id;
-        public string Value;
+        public string Key;
+        public int Value;
     }
 }
 
-public class ConfigTable : ArrayTable<Item>
+public class ConfigTable : ArrayTable<Config>
 {
     private static ConfigTable m_instance = null;
     public static ConfigTable Instance

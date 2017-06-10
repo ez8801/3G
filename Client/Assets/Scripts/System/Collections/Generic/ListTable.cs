@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Text;
 using System.Collections.Generic;
 
 /// <summary>
@@ -7,7 +9,10 @@ using System.Collections.Generic;
 /// <see cref="Table{T}"/>
 /// <seealso cref="ArrayTable{T}"/>
 /// <seealso cref="DictionaryTable{T}"/>
-public class ListTable<T> : Table<T> where T : IIndexer, IDeserializable, new()
+public class ListTable<T> : Table<T> where T : IIndexer
+    , ISerializable
+    , IDeserializable
+    , new()
 {
     protected List<T> m_container;
 
@@ -19,7 +24,7 @@ public class ListTable<T> : Table<T> where T : IIndexer, IDeserializable, new()
         }
     }
 
-    public int Count
+    public override int Count
     {
         get
         {
@@ -140,6 +145,15 @@ public class ListTable<T> : Table<T> where T : IIndexer, IDeserializable, new()
             }
 
             m_container.Add(t);
+        }
+    }
+
+    public override void Export(BinaryWriter binaryWriter)
+    {
+        for (int i = 0; i < Count; i++)
+        {
+            T each = m_container[i];
+            each.Serialize(binaryWriter);
         }
     }
 }

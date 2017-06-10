@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 /// <summary>
 /// Array 형태의 테이블
@@ -6,7 +7,10 @@
 /// <see cref="Table{T}"/>
 /// <seealso cref="ListTable{T}"/>
 /// <seealso cref="DictionaryTable{T}"/>
-public class ArrayTable<T> : Table<T> where T : IIndexer, IDeserializable, new()
+public class ArrayTable<T> : Table<T> where T : IIndexer
+    , IDeserializable
+    , ISerializable
+    , new()
 {
     protected T[] m_container;
 
@@ -27,8 +31,8 @@ public class ArrayTable<T> : Table<T> where T : IIndexer, IDeserializable, new()
             return m_container.Length;
         }
     }
-
-    public int Count
+    
+    public override int Count
     {
         get
         {
@@ -110,6 +114,16 @@ public class ArrayTable<T> : Table<T> where T : IIndexer, IDeserializable, new()
         return default(T);
     }
 
+    public byte[] Deserialize()
+    {
+        for (int i = 0; i < Count; i++)
+        {
+            T match = m_container[i];
+
+        }
+        return null;
+    }
+
     public override void Load(int totalItemCount, Deserializer deserializer)
     {
         m_container = new T[totalItemCount];
@@ -146,6 +160,15 @@ public class ArrayTable<T> : Table<T> where T : IIndexer, IDeserializable, new()
             }
 
             m_container[i] = t;
+        }
+    }
+
+    public override void Export(BinaryWriter binaryWriter)
+    {
+        for (int i = 0; i < Count; i++)
+        {
+            T each = m_container[i];
+            each.Serialize(binaryWriter);
         }
     }
 }
