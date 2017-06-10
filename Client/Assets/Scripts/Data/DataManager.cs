@@ -12,7 +12,8 @@ public class DataManager : MonoSingleton<DataManager>
 
     public void LoadAllData()
     {
-        LoadItems(ResourceLoad("Items.json"));
+        LoadTable(ResourceLoad("Items.json"), ItemTable.Instance);
+        LoadTable(ResourceLoad("Config.json"), ConfigTable.Instance);
     }
 
     private JSONObject ResourceLoad(string fileName)
@@ -22,8 +23,8 @@ public class DataManager : MonoSingleton<DataManager>
         return new JSONObject(text);
     }
 
-    private void LoadItems(JSONObject data)
+    private void LoadTable<T>(JSONObject data, Table<T> table) where T : IIndexer, IDeserializable, new()
     {
-        m_deserializer.Load(data, ItemTable.Instance);
+        m_deserializer.Load(data, table);
     }
 }
