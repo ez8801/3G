@@ -1,7 +1,13 @@
-﻿
+﻿using System;
+
 public abstract class Table<T>
 {
     public virtual T Find(int index)
+    {
+        return default(T);
+    }
+
+    public virtual T Find(Predicate<T> predicate)
     {
         return default(T);
     }

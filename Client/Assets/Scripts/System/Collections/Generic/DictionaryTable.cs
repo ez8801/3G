@@ -1,5 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
+/// <summary>
+/// Dictionary 형태의 테이블
+/// </summary>
+/// <see cref="Table{T}"/>
+/// <seealso cref="ArrayTable{T}"/>
+/// <seealso cref="ListTable{T}"/>
 public class DictionaryTable<T> : Table<T> where T : IIndexer, IDeserializable, new()
 {
     protected Dictionary<int, T> m_container;
@@ -38,6 +45,18 @@ public class DictionaryTable<T> : Table<T> where T : IIndexer, IDeserializable, 
         T data;
         m_container.TryGetValue(index, out data);
         return data;
+    }
+
+    public override T Find(Predicate<T> predicate)
+    {
+        var enumerator = m_container.GetEnumerator();
+        while (enumerator.MoveNext())
+        {
+            T match = enumerator.Current.Value;
+            if (predicate(match))
+                return match;       
+        }
+        return default(T);
     }
 
     public override void Load(int totalItemCount, Deserializer deserializer)

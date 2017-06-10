@@ -1,5 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
+/// <summary>
+/// List 형태의 테이블
+/// </summary>
+/// <see cref="Table{T}"/>
+/// <seealso cref="ArrayTable{T}"/>
+/// <seealso cref="DictionaryTable{T}"/>
 public class ListTable<T> : Table<T> where T : IIndexer, IDeserializable, new()
 {
     protected List<T> m_container;
@@ -83,6 +90,18 @@ public class ListTable<T> : Table<T> where T : IIndexer, IDeserializable, new()
 
         index = LinearSearch(key);
         return (index >= 0) ? m_container[index] : default(T);
+    }
+
+
+    public override T Find(Predicate<T> predicate)
+    {
+        for (int i = 0; i < Count; i++)
+        {
+            T match = m_container[i];
+            if (predicate(match))
+                return match;
+        }
+        return default(T);
     }
 
     public override void Load(int totalItemCount, Deserializer deserializer)
