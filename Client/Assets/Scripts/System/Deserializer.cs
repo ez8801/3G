@@ -8,7 +8,7 @@ using System.IO;
 using System.Reflection;
 #endif
 
-public class Deserializer : MonoBehaviour
+public class Deserializer
 {
     private static readonly UTF8Encoding encoding = new UTF8Encoding();
 
