@@ -144,6 +144,7 @@ public class EnumGenerator
         int depth = 0;
 
         StringBuilder builder = new StringBuilder();
+        builder.AppendLine("namespace GameSystem {");
         builder.AppendLine("public partial class Activator");
         builder.AppendLine("{");
         {
@@ -192,6 +193,7 @@ public class EnumGenerator
             CloseScope(ref builder, --depth);
         }
         CloseScope(ref builder, --depth);
+        builder.AppendLine("}");
 
         UnityEngine.Debug.Log(builder.ToString());
 
