@@ -6,19 +6,23 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+
     GameObject inventoryPanel;
     GameObject slotPanel;
+    ItemDatabase database;
     public GameObject inventorySlot;
     public GameObject inventoryItem;
 
     int slotAmount;
-    public List<Data.Item> items = new List<Data.Item>();
+    public List<ItemDatabase.Item> items = new List<ItemDatabase.Item>();
     public List<GameObject> slots = new List<GameObject>();
 
     private void Start()
     {
+
         slotAmount = 80;
-        // inventoryPanel = GameObject.Find(In)
+      //  inventoryPanel = GameObject.Find(In)
+        database = GetComponent<ItemDatabase>();
 
     }
 }
