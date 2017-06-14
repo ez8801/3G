@@ -1,6 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.IO;
+using System.Text;
+using System.Collections.Generic;
 
-public class ListTable<T> : Table<T> where T : IIndexer, IDeserializable, new()
+/// <summary>
+/// List 형태의 테이블
+/// </summary>
+/// <see cref="Table{T}"/>
+/// <seealso cref="ArrayTable{T}"/>
+/// <seealso cref="DictionaryTable{T}"/>
+public class ListTable<T> : Table<T> where T : IIndexer
+    , ISerializable
+    , IDeserializable
+    , new()
 {
     protected List<T> m_container;
 
@@ -12,7 +24,7 @@ public class ListTable<T> : Table<T> where T : IIndexer, IDeserializable, new()
         }
     }
 
-    public int Count
+    public override int Count
     {
         get
         {
@@ -85,13 +97,33 @@ public class ListTable<T> : Table<T> where T : IIndexer, IDeserializable, new()
         return (index >= 0) ? m_container[index] : default(T);
     }
 
+
+    public override T Find(Predicate<T> predicate)
+    {
+        for (int i = 0; i < Count; i++)
+        {
+            T match = m_container[i];
+            if (predicate(match))
+                return match;
+        }
+        return default(T);
+    }
+
     public override void Load(int totalItemCount, Deserializer deserializer)
     {
         m_container = new List<T>(totalItemCount);
+
+        int lastIndex = int.MinValue;
         for (int i = 0; i < totalItemCount; i++)
         {
             T t = new T();
             t.Deserialize(deserializer);
+
+            if (m_isAscendingOrder)
+            {
+                m_isAscendingOrder = IsAscendingOrder(ref lastIndex, t.GetIndex());
+            }
+
             m_container.Add(t);
         }
     }
@@ -99,12 +131,29 @@ public class ListTable<T> : Table<T> where T : IIndexer, IDeserializable, new()
     public override void Load(JSONObject jsonList)
     {
         m_container = new List<T>();
+
+        int lastIndex = int.MinValue;
         for (int i = 0; i < jsonList.list.Count; i++)
         {
             JSONObject json = jsonList.list[i];
             T t = new T();
             t.Deserialize(json);
+
+            if (m_isAscendingOrder)
+            {
+                m_isAscendingOrder = IsAscendingOrder(ref lastIndex, t.GetIndex());
+            }
+
             m_container.Add(t);
+        }
+    }
+
+    public override void Export(BinaryWriter binaryWriter)
+    {
+        for (int i = 0; i < Count; i++)
+        {
+            T each = m_container[i];
+            each.Serialize(binaryWriter);
         }
     }
 }

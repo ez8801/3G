@@ -1,7 +1,7 @@
 public partial class Activator
 {
-	public static bool CreateInstance(ref GameSystem.Scene scene, SceneType scenetype) {
-		GameSystem.Scene instance = null;
+	public static bool CreateInstance(out GameSystem.Scene instance, SceneType scenetype) {
+		instance = null;
 		switch (scenetype) {
 			case SceneType.LobbyScene:
 				instance = new LobbyScene();

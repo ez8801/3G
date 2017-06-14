@@ -8,19 +8,18 @@ using System.IO;
 using System.Reflection;
 #endif
 
-public class Deserializer : MonoBehaviour
+public class Deserializer
 {
     private static readonly UTF8Encoding encoding = new UTF8Encoding();
-
-    private byte[] m_bytes;
-    private int m_offset;
+    
+    private BinaryReader m_binaryReader;
     private int m_rowCount;
 
     public void Load<T>(JSONObject data, Table<T> table) where T: IIndexer, IDeserializable, new()
     {
         Assert.IsNotNull(data, new ArgumentNullException("data").ToString());
         Assert.IsNotNull(table, new ArgumentNullException("table").ToString());
-
+        
         table.Load(data);
     }
 
@@ -28,73 +27,58 @@ public class Deserializer : MonoBehaviour
     {
         Assert.IsNotNull(textAsset, new ArgumentNullException("textAsset").ToString());
         Assert.IsNotNull(table, new ArgumentNullException("table").ToString());
-
-        m_bytes = textAsset.bytes;
-        m_offset = 0;
+        
         m_rowCount = 0;
 
+        m_binaryReader = new BinaryReader(new MemoryStream(textAsset.bytes), encoding);
         Deserialize(ref m_rowCount);
         table.Load(m_rowCount, this);
-
-        if (m_bytes != null)
-        {
-            Array.Clear(m_bytes, 0, m_bytes.Length);
-            m_bytes = null;
-        }
+        
+        m_binaryReader.Close();
+        m_binaryReader = null;
     }
 
     public void Load(TextAsset textAsset, Action<Deserializer> onLoop)
     {
         Assert.IsNotNull(textAsset, new ArgumentNullException("textAsset").ToString());
         Assert.IsNotNull(onLoop, new ArgumentNullException("onLoop").ToString());
-
-        m_bytes = textAsset.bytes;
-        m_offset = 0;
+        
         m_rowCount = 0;
 
+        m_binaryReader = new BinaryReader(new MemoryStream(textAsset.bytes), encoding);
         Deserialize(ref m_rowCount);
         for (int i = 0; i < m_rowCount; i++)
         {
             onLoop(this);
         }
-
-        if (m_bytes != null)
-        {
-            Array.Clear(m_bytes, 0, m_bytes.Length);
-            m_bytes = null;
-        }
+        
+        m_binaryReader.Close();
+        m_binaryReader = null;
     }
 
     public void Deserialize(ref bool boolean)
     {
-        boolean = BitConverter.ToBoolean(m_bytes, m_offset);
-        m_offset += sizeof(bool);
+        boolean = m_binaryReader.ReadBoolean();
     }
     
     public void Deserialize(ref byte i1)
     {
-        i1 = m_bytes[m_offset];
-        m_offset += sizeof(byte);
+        i1 = m_binaryReader.ReadByte();
     }
 
     public void Deserialize(ref short i2)
     {
-        i2 = BitConverter.ToInt16(m_bytes, m_offset);
-        m_offset += sizeof(short);
+        i2 = m_binaryReader.ReadInt16();
     }
 
     public void Deserialize(ref int i4)
     {
-        i4 = BitConverter.ToInt32(m_bytes, m_offset);
-        m_offset += sizeof(int);
+        i4 = m_binaryReader.ReadInt32();
     }
-
+    
     public void Deserialize(ref string str)
     {
-        short sizeOfString = 0;
-        Deserialize(ref sizeOfString);
-        str = encoding.GetString(m_bytes, m_offset, sizeOfString);
-        m_offset += sizeOfString;
+        str = m_binaryReader.ReadString();
     }
 
 #if UNITY_EDITOR
@@ -133,6 +117,9 @@ public class Deserializer : MonoBehaviour
         Type[] types = executingAssembly.GetTypes();
 
         StringBuilder builder = new StringBuilder();
+        builder.AppendLine("using System.IO;");
+        builder.AppendLine();
+
         builder.AppendFormat("namespace {0}", kTargetNameSpace);
         builder.AppendLine();
         builder.AppendLine("{");
@@ -169,13 +156,13 @@ public class Deserializer : MonoBehaviour
             bool isAssignCompositeKey = (compositeKeyAttrbutes.Length > 0);
 
             string definitionType = (type.IsClass) ? "class" : "struct";              
-            builder.AppendFormat("\tpublic partial {0} {1} : IDeserializable", definitionType, type.Name);
+            builder.AppendFormat("\tpublic partial {0} {1} : IDeserializable, ISerializable", definitionType, type.Name);
             if (isAssignPrimaryKey || isAssignCompositeKey)
                 builder.AppendLine(", IIndexer");
             else
                 builder.AppendLine();
             builder.AppendLine("\t{");
-
+            
             // Method: void Deserialize(JSONObject)
             builder.AppendLine("\t\tpublic void Deserialize(JSONObject json)");
             builder.AppendLine("\t\t{");
@@ -242,6 +229,26 @@ public class Deserializer : MonoBehaviour
             builder.AppendLine("\t\t}");
             builder.AppendLine();
 
+            // Method: void Serialize(BinaryWriter)
+            builder.AppendLine("\t\tpublic void Serialize(BinaryWriter binaryWriter)");
+            builder.AppendLine("\t\t{");
+
+            for (int j = 0; j < fieldInfos.Length; j++)
+            {
+                FieldInfo fi = fieldInfos[j];
+                var nonSerializedAttributes = fi.GetCustomAttributes(typeof(NonSerializedAttribute), true);
+                if (!(nonSerializedAttributes == null || nonSerializedAttributes.Length == 0))
+                    continue;
+
+                //if (fi.FieldType == typeof(string))
+                //{
+                //    builder.AppendLine(string.Format("\t\t\tbinaryWriter.Write((short) {0}.Length);", fi.Name));
+                //}
+                builder.AppendLine(string.Format("\t\t\tbinaryWriter.Write({0});", fi.Name));
+            }
+            builder.AppendLine("\t\t}");
+            builder.AppendLine();
+
             // Method: int GetIndex(void).PrimaryKey
             if (isAssignPrimaryKey)
             {
@@ -283,10 +290,15 @@ public class Deserializer : MonoBehaviour
         string scriptPath = Path.Combine(Application.dataPath, kDestinationPath);
 
         FileStream fs = null;
-        if (File.Exists(scriptPath) == false)
-            fs = File.Create(scriptPath);
-        else
-            fs = File.Open(scriptPath, FileMode.OpenOrCreate);
+        if (File.Exists(scriptPath))
+            File.Delete(scriptPath);
+
+        fs = File.Create(scriptPath);
+
+        //if (File.Exists(scriptPath) == false)
+        //    fs = File.Create(scriptPath);
+        //else
+        //    fs = File.Open(scriptPath, FileMode.OpenOrCreate);
 
         using (StreamWriter sw = new StreamWriter(fs, Encoding.UTF8))
         {

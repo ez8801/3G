@@ -1,6 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.IO;
+using System.Collections;
+using System.Collections.Generic;
 
-public class DictionaryTable<T> : Table<T> where T : IIndexer, IDeserializable, new()
+/// <summary>
+/// Dictionary 형태의 테이블
+/// </summary>
+/// <see cref="Table{T}"/>
+/// <seealso cref="ArrayTable{T}"/>
+/// <seealso cref="ListTable{T}"/>
+public class DictionaryTable<T> : Table<T> where T : IIndexer
+    , IDeserializable
+    , ISerializable
+    , new()
 {
     protected Dictionary<int, T> m_container;
 
@@ -12,7 +24,7 @@ public class DictionaryTable<T> : Table<T> where T : IIndexer, IDeserializable, 
         }
     }
 
-    public int Count
+    public override int Count
     {
         get
         {
@@ -40,6 +52,18 @@ public class DictionaryTable<T> : Table<T> where T : IIndexer, IDeserializable, 
         return data;
     }
 
+    public override T Find(Predicate<T> predicate)
+    {
+        var enumerator = m_container.GetEnumerator();
+        while (enumerator.MoveNext())
+        {
+            T match = enumerator.Current.Value;
+            if (predicate(match))
+                return match;       
+        }
+        return default(T);
+    }
+    
     public override void Load(int totalItemCount, Deserializer deserializer)
     {
         m_container = new Dictionary<int, T>();
@@ -60,6 +84,16 @@ public class DictionaryTable<T> : Table<T> where T : IIndexer, IDeserializable, 
             T t = new T();
             t.Deserialize(json);
             m_container.Add(t.GetIndex(), t);
+        }
+    }
+
+    public override void Export(BinaryWriter binaryWriter)
+    {
+        var enumerator = m_container.GetEnumerator();
+        while (enumerator.MoveNext())
+        {
+            T each = enumerator.Current.Value;
+            each.Serialize(binaryWriter);
         }
     }
 }

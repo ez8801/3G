@@ -13,9 +13,11 @@ public class InterfaceBuilder : EditorWindow
     private List<Variable> m_includes = new List<Variable>();
     private List<Variable> m_excludes = new List<Variable>();
 
+    private float m_halfWidth = 0f;
+    private Vector2 m_scrollPosition = Vector2.zero;
+
     public struct Variable
     {
-        public string name;
         public string customName;
         public string fullPath;
         public Object @object;
@@ -40,16 +42,18 @@ public class InterfaceBuilder : EditorWindow
             for (int j = 0; j < components.Length; j++)
             {
                 Component component = components[j];
+                if (component == null)
+                    continue;
+
                 componentNames.Add(component.GetType().Name);
             }
             
             m_includes.Add(new Variable()
             {
-                name = each.name,
                 customName = each.name,
                 fullPath = each.GetFullPath(selection),
                 @object = each,
-                selectedIndex = (componentNames.Count > 0) ? 1 : 0,
+                selectedIndex = (componentNames.Count > 1) ? 1 : 0,
                 components = componentNames.ToArray()
             });
         }
@@ -63,7 +67,7 @@ public class InterfaceBuilder : EditorWindow
 
     private void DrawView(List<Variable> list, string buttonName, System.Action<int> action)
     {
-        EditorGUILayout.BeginVertical(GUILayout.Width(m_window.position.width * 0.5f));
+        EditorGUILayout.BeginVertical(GUILayout.Width(m_halfWidth), GUILayout.MaxWidth(m_halfWidth));
         if (list.Count > 0)
         {
             for (int i = 0; i < list.Count; i++)
@@ -71,26 +75,30 @@ public class InterfaceBuilder : EditorWindow
                 GUILayout.BeginHorizontal();
                 {
                     Variable each = list[i];
-                    GUILayout.Label(each.name, GUILayout.MaxWidth(108f));
-                    EditorGUILayout.ObjectField(each.@object, typeof(Object), true, GUILayout.MaxWidth(108f));
-                    int selectedIndex = EditorGUILayout.Popup(each.selectedIndex, each.components);
+                    EditorGUILayout.ObjectField(each.@object, typeof(Object), true, GUILayout.Width(96f));
+                    int selectedIndex = EditorGUILayout.Popup(each.selectedIndex, each.components, GUILayout.Width(96f));
                     if (selectedIndex != each.selectedIndex)
                     {
                         each.selectedIndex = selectedIndex;
                         list[i] = each;
                     }
 
-                    string customName = GUILayout.TextField(each.customName, GUILayout.MaxWidth(108f));
+                    string customName = GUILayout.TextField(each.customName, GUILayout.Width(96f));
                     if (!string.IsNullOrEmpty(customName) && customName != each.customName)
                     {
                         each.customName = customName;
                         list[i] = each;
                     }
 
-                    if (GUILayout.Button(buttonName, GUILayout.MaxWidth(52f)))
+                    if (GUILayout.Button(buttonName, GUILayout.MaxWidth(46f)))
                     {
                         action(i);
                         break;
+                    }
+
+                    if (GUILayout.Button("Copy", GUILayout.MaxWidth(52f)))
+                    {
+                        EditorGUIUtility.systemCopyBuffer = each.fullPath;
                     }
                 }
                 GUILayout.EndHorizontal();
@@ -117,14 +125,26 @@ public class InterfaceBuilder : EditorWindow
         {
             Initialize(Selection.activeTransform);
         }
+
+        //
+        EditorGUILayout.BeginHorizontal();
+        {
+            GUILayout.Label("Script Name", GUILayout.MaxWidth(108f));
+            className = GUILayout.TextField(className);
+        }
+        EditorGUILayout.EndHorizontal();
+
+        //
+        EditorGUILayout.BeginHorizontal();
+        {
+            GUILayout.Label("Save As", GUILayout.MaxWidth(108f));
+            destinationFolder = EditorGUILayout.ObjectField(destinationFolder, typeof(Object), true);
+        }
+        EditorGUILayout.EndHorizontal();
         
         //
-        className = GUILayout.TextField(className);
-
-        destinationFolder = EditorGUILayout.ObjectField(destinationFolder, typeof(Object), true);
-
         GUILayout.Label(string.Format("Includes: {0}, Excludes: {1}", m_includes.Count, m_excludes.Count));
-
+        
         //
         GUILayout.BeginHorizontal();
         if (GUILayout.Button("Exclude All", GUILayout.ExpandWidth(true)))
@@ -145,6 +165,10 @@ public class InterfaceBuilder : EditorWindow
             m_excludes.Clear();
         }
         GUILayout.EndHorizontal();
+
+        m_scrollPosition = EditorGUILayout.BeginScrollView(m_scrollPosition, false, true);
+
+        m_halfWidth = m_window.position.width * 0.5f;
 
         //
         EditorGUILayout.BeginHorizontal();
@@ -168,6 +192,8 @@ public class InterfaceBuilder : EditorWindow
             });
         }        
         EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.EndScrollView();
         
         //
         if (GUILayout.Button("Generate"))
@@ -196,22 +222,30 @@ public class InterfaceBuilder : EditorWindow
             builder.AppendLine();
             builder.AppendLine("{");
             {
+                // View Definition
+                builder.AppendLine("\t[System.Serializable]");
+                builder.AppendLine("\tpublic struct View");
+                builder.AppendLine("\t{");
                 for (int i = 0; i < m_includes.Count; i++)
                 {
                     Variable each = m_includes[i];
-                    builder.AppendFormat("\tpublic {0} {1};", each.components[each.selectedIndex], each.customName);
+                    builder.AppendFormat("\t\tpublic {0} {1};", each.components[each.selectedIndex], each.customName);
                     builder.AppendLine();
                 }
-
+                builder.AppendLine("\t}");
+                
+                builder.AppendLine("\tpublic View m_view;");
                 builder.AppendLine();
+
                 builder.AppendLine("[ContextMenu(\"Bind\")]");
                 builder.AppendLine("\tpublic void Initialize()");
                 builder.AppendLine("\t{");
-
+                builder.AppendLine("\t\tm_view = new View();");
+                
                 for (int i = 0; i < m_includes.Count; i++)
                 {
                     Variable each = m_includes[i];
-                    builder.AppendFormat("\t\tthis.Bind(ref {0}, \"{1}\");", each.customName, each.fullPath);
+                    builder.AppendFormat("\t\tthis.Bind(ref m_view.{0}, \"{1}\");", each.customName, each.fullPath);
                     builder.AppendLine();
                 }
 

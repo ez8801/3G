@@ -1,0 +1,12 @@
+﻿[
+  {
+    "Id": 1,
+    "Key": "MaxPlayerLevel",
+    "Value": 30
+  },
+  {
+    "Id": 2,
+    "Key": "InventoryBasicSlotAmount",
+    "Value": 80
+  }
+]

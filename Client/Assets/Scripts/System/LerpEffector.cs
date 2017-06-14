@@ -1,5 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
 using System.Collections;
+using UnityEngine;
 
 public class LerpEffector : MonoBehaviour
 {
@@ -7,8 +8,8 @@ public class LerpEffector : MonoBehaviour
 
     private float m_accumulatedTime;
 
-    private System.Action<float> m_onUpdateListener;
-    private System.Action m_onFinishListener;
+    private Action<float> m_onUpdateListener;
+    private Action m_onFinishListener;
     
     public void Initialize()
     {
@@ -16,12 +17,12 @@ public class LerpEffector : MonoBehaviour
         m_accumulatedTime = 0f;
     }
 
-    public void SetOnUpdateListener(System.Action<float> l)
+    public void SetOnUpdateListener(Action<float> l)
     {
         m_onUpdateListener = l;
     }
 
-    public void SetOnFinishListener(System.Action l)
+    public void SetOnFinishListener(Action l)
     {
         m_onFinishListener = l;
     }

@@ -1,6 +1,16 @@
 ﻿using System;
+using System.IO;
 
-public class ArrayTable<T> : Table<T> where T : IIndexer, IDeserializable, new()
+/// <summary>
+/// Array 형태의 테이블
+/// </summary>
+/// <see cref="Table{T}"/>
+/// <seealso cref="ListTable{T}"/>
+/// <seealso cref="DictionaryTable{T}"/>
+public class ArrayTable<T> : Table<T> where T : IIndexer
+    , IDeserializable
+    , ISerializable
+    , new()
 {
     protected T[] m_container;
 
@@ -21,8 +31,8 @@ public class ArrayTable<T> : Table<T> where T : IIndexer, IDeserializable, new()
             return m_container.Length;
         }
     }
-
-    public int Count
+    
+    public override int Count
     {
         get
         {
@@ -93,6 +103,27 @@ public class ArrayTable<T> : Table<T> where T : IIndexer, IDeserializable, new()
         return (index >= 0) ? m_container[index] : default(T);
     }
 
+    public override T Find(Predicate<T> predicate)
+    {
+        for (int i = 0; i < Count; i++)
+        {
+            T match = m_container[i];
+            if (predicate(match))
+                return match;
+        }
+        return default(T);
+    }
+
+    public byte[] Deserialize()
+    {
+        for (int i = 0; i < Count; i++)
+        {
+            T match = m_container[i];
+
+        }
+        return null;
+    }
+
     public override void Load(int totalItemCount, Deserializer deserializer)
     {
         m_container = new T[totalItemCount];
@@ -122,11 +153,22 @@ public class ArrayTable<T> : Table<T> where T : IIndexer, IDeserializable, new()
             JSONObject json = jsonList.list[i];
             T t = new T();
             t.Deserialize(json);
+
             if (m_isAscendingOrder)
             {
                 m_isAscendingOrder = IsAscendingOrder(ref lastIndex, t.GetIndex());
             }
+
             m_container[i] = t;
+        }
+    }
+
+    public override void Export(BinaryWriter binaryWriter)
+    {
+        for (int i = 0; i < Count; i++)
+        {
+            T each = m_container[i];
+            each.Serialize(binaryWriter);
         }
     }
 }

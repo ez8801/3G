@@ -149,11 +149,9 @@ public class EnumGenerator
         {
             AppendTabs(ref builder, ++depth);
 
-            string method = string.Concat("public static bool CreateInstance(ref "
+            string method = string.Concat("public static bool CreateInstance(out "
                 , classType.FullName
-                , " "
-                , classType.Name.ToLower()
-                , ", "
+                , " instance,"
                 , enumType.FullName
                 , " "
                 , enumType.Name.ToLower()
@@ -161,7 +159,7 @@ public class EnumGenerator
             builder.AppendLine(method);
             
             AppendTabs(ref builder, ++depth);
-            builder.AppendLine(string.Format("{0} instance = null;", classType.FullName));
+            builder.AppendLine(string.Format("instance = null;", classType.FullName));
 
             AppendTabs(ref builder, depth);
             builder.AppendLine(string.Concat("switch (", enumType.Name.ToLower(), ") {"));

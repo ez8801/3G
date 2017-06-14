@@ -114,12 +114,12 @@ public class Clock : IDisposable
         }
     }
 
-    public static void time(string key, string context = null)
+    public static void Time(string key, string context = null)
     {
         Acquire(key, context);
     }
 
-    public static void timeEnd(string key)
+    public static void TimeEnd(string key)
     {
         Clock clock = Acquire(key);
         if (clock == null)
@@ -197,6 +197,6 @@ public class Clock : IDisposable
 
     public void Dispose()
     {
-        timeEnd(m_key);
+        TimeEnd(m_key);
     }
 }
