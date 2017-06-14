@@ -1,34 +1,36 @@
-ï»¿[
-  {
-    "Id": 1,
-    "Type": 1,
-    "Rarity": 4,
-    "Name": "test item1",
-    "Value": 2,
-    "Stackable": true	
-  },
-  {
-    "Id": 2,
-    "Type": 2,
-    "Rarity": 2,
-    "Name": "test item2",
-    "Value": 24,
-    "Stackable": true
-  },
-  {
-    "Id": 3,
-    "Type": 3,
-    "Rarity": 0,
-    "Name": "test item3",
-    "Value": 31,
-    "Stackable": true
-  },
-  {
-    "Id": 4,
-    "Type": 10,
-    "Rarity": 1,
-    "Name": "test Blueprint",
-    "Value": 1,
-    "Stackable": true
-  }
+[
+    {
+        "id": 0,
+        "title": "test item1",
+        "value": 2,
+		"stackable": true,
+		"rarity": 4,
+		"type":0 //º¸¼®
+		
+    },
+    {
+        "id": 1,
+        "title": "test item2",
+        "value": 24,
+		"stackable": true,
+		"rarity": 2,
+		"type":1 //ÁÖ±«
+
+    },
+    { 
+        "id": 2,
+        "title": "test item3",
+        "value": 31,
+		"stackable": true,
+		"rarity": 0,
+		"type":2 //°¡Á×
+    },
+    { 
+        "id": 3,
+        "title": "test Blueprint",
+        "value": 1,
+		"stackable": false,
+		"rarity": 1,
+		"type":10 //Á¦ÀÛµµ¾È
+    }
 ]
