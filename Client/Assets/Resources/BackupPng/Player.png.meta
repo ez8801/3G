@@ -1,0 +1,290 @@
+fileFormatVersion: 2
+guid: f37a9200c6150a9469834005ac9dcfa1
+timeCreated: 1495208820
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Player_Top_Head
+    21300002: Player_Left_Arm_Dow
+    21300004: Player_Right_Arm_Down
+    21300006: Player_3
+    21300008: Player_Left_Leg_Down
+    21300010: Player_Right_Leg_Down
+    21300012: Player_Left_Foot
+    21300014: Player_Right_Foot
+    21300016: Player_Left_Arm
+    21300018: Player_Right_Hand
+    21300020: Player_Right_arm
+    21300022: Player_Left_Hand
+    21300024: Player_Body_Middle
+    21300026: Player_Left_Leg
+    21300028: Player_Right_Leg
+    21300030: Player_Left_Arm_Down
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 1
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 0
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Player_Top_Head
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 66
+        width: 33
+        height: 19
+      alignment: 9
+      pivot: {x: 0.27339923, y: 0.48539534}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Left_Arm_Down
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 21
+        width: 15
+        height: 20
+      alignment: 9
+      pivot: {x: 0.5000013, y: 0.7212389}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Right_Arm_Down
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 39
+        width: 15
+        height: 20.000004
+      alignment: 9
+      pivot: {x: 0.5031967, y: 0.7252812}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Left_Leg_Down
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 12
+        width: 14
+        height: 19
+      alignment: 9
+      pivot: {x: 0.5367906, y: 0.7136273}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Right_Leg_Down
+      rect:
+        serializedVersion: 2
+        x: 75.00001
+        y: 12
+        width: 13.999992
+        height: 19
+      alignment: 9
+      pivot: {x: 0.5367909, y: 0.7136273}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Left_Foot
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 10.000001
+        width: 17
+        height: 13.999999
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5628377}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Right_Foot
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 10.000001
+        width: 17
+        height: 13.999999
+      alignment: 9
+      pivot: {x: 0.5030441, y: 0.5702303}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Left_Arm
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 40
+        width: 13
+        height: 21
+      alignment: 9
+      pivot: {x: 0.49904254, y: 0.7378916}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Right_Hand
+      rect:
+        serializedVersion: 2
+        x: 75.00001
+        y: 41
+        width: 12.999992
+        height: 13
+      alignment: 9
+      pivot: {x: 0.49653655, y: 0.61281353}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Right_arm
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 40
+        width: 13
+        height: 21
+      alignment: 9
+      pivot: {x: 0.5018669, y: 0.7363071}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Left_Hand
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 5
+        width: 13
+        height: 13
+      alignment: 9
+      pivot: {x: 0.49999958, y: 0.621686}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Body_Middle
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 27.000004
+        width: 23.000004
+        height: 37.8
+      alignment: 9
+      pivot: {x: 0.5880015, y: 0.22344074}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Left_Leg
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 11
+        width: 13
+        height: 22
+      alignment: 9
+      pivot: {x: 0.5, y: 0.7562448}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Right_Leg
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 11
+        width: 13
+        height: 22
+      alignment: 9
+      pivot: {x: 0.5000003, y: 0.75158566}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 97990004572005
+  assetBundleName: 
+  assetBundleVariant: 

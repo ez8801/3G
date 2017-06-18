@@ -8,6 +8,10 @@
 
 #pragma once
 
+#ifndef __S2C_PROXY_H
+#define __S2C_PROXY_H
+
+
 
 #include "S2C_common.h"
 
@@ -39,5 +43,6 @@ static const PNTCHAR* RmiName_First;
 
 }
 
+#endif // !__S2C_PROXY_H
 
 

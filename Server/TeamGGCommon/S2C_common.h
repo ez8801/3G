@@ -1,5 +1,10 @@
 ﻿#pragma once
 
+#ifndef __S2C_COMMON_H_
+#define __S2C_COMMON_H_
+
+
+
 namespace S2C {
 
 
@@ -17,6 +22,6 @@ namespace S2C {
 	extern int g_RmiIDListCount;
 
 }
-
+#endif // !__S2C_COMMON_H_
 
  

@@ -145,14 +145,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AccessDB.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="ServerMain.cpp" />
+    <ClCompile Include="Packet.cpp" />
     <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AccessDB.h" />
     <ClInclude Include="Common.h" />
+    <ClInclude Include="ServerMain.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Packet.h" />
     <ClInclude Include="User.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

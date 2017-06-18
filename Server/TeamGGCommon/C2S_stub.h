@@ -10,6 +10,10 @@
    
 #pragma once
 
+#ifndef __C2S_STUB_H_
+#define __C2S_STUB_H_
+
+
 
 #include "C2S_common.h"
 
@@ -55,6 +59,7 @@ namespace C2S {
 	};
 #endif
 
+#endif // !__C2S_STUB_H_
 }
 
 

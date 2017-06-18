@@ -1,5 +1,11 @@
 ﻿#pragma once
 
+#ifndef __C2S_COMMON_H
+#define __C2S_COMMON_H
+
+
+
+
 namespace C2S {
 
 
@@ -14,5 +20,5 @@ namespace C2S {
 
 }
 
-
+#endif // !__C2S_COMMON_H
  
