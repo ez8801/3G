@@ -9,20 +9,19 @@ public class Inventory : MonoBehaviour
 
     GameObject inventoryPanel;
     GameObject slotPanel;
-    ItemDatabase database;
+    // ItemDatabase database;
     public GameObject inventorySlot;
     public GameObject inventoryItem;
 
     int slotAmount;
-    public List<ItemDatabase.Item> items = new List<ItemDatabase.Item>();
+    // public List<ItemDatabase.Item> items = new List<ItemDatabase.Item>();
     public List<GameObject> slots = new List<GameObject>();
 
     private void Start()
     {
-
         slotAmount = 80;
-      //  inventoryPanel = GameObject.Find(In)
-        database = GetComponent<ItemDatabase>();
+        // inventoryPanel = GameObject.Find(In)
+        // database = GetComponent<ItemDatabase>();
 
     }
 }
