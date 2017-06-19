@@ -42,7 +42,7 @@ void ServerMain::Team3GServerMain()
 
 	// RmiStub, RmiProxy 클래스 NetServer에 Attach하기
 	srv->AttachStub(&g_C2SStub);
-	srv->AttachProxy(&m_InMain->getS2CProxy());
+	srv->AttachProxy(&m_S2CProxy);
 
 	// 서버 시작에 필요한 Parameter 설정하기
 	CStartServerParameter p1;

@@ -10,10 +10,6 @@
    
 #pragma once
 
-#ifndef __C2S_STUB_H_
-#define __C2S_STUB_H_
-
-
 
 #include "C2S_common.h"
 
@@ -34,9 +30,20 @@ namespace C2S {
 #define DEFRMI_C2S_Chat(DerivedClass) bool DerivedClass::Chat ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & a,  const int & b,  const float & c)
 #define CALL_C2S_Chat Chat ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & a,  const int & b,  const float & c)
 #define PARAM_C2S_Chat ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & a,  const int & b,  const float & c)
+               
+		virtual bool Login ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & ,  const Proud::String & )		{ 
+			return false;
+		} 
+
+#define DECRMI_C2S_Login bool Login ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & id,  const Proud::String & password) PN_OVERRIDE
+
+#define DEFRMI_C2S_Login(DerivedClass) bool DerivedClass::Login ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & id,  const Proud::String & password)
+#define CALL_C2S_Login Login ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & id,  const Proud::String & password)
+#define PARAM_C2S_Login ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & id,  const Proud::String & password)
  
 		virtual bool ProcessReceivedMessage(::Proud::CReceivedMessage &pa, void* hostTag) PN_OVERRIDE;
 		static const PNTCHAR* RmiName_Chat;
+		static const PNTCHAR* RmiName_Login;
 		static const PNTCHAR* RmiName_First;
 		virtual ::Proud::RmiID* GetRmiIDList() PN_OVERRIDE { return g_RmiIDList; }
 		virtual int GetRmiIDListCount() PN_OVERRIDE { return g_RmiIDListCount; }
@@ -56,10 +63,18 @@ namespace C2S {
 			return Chat_Function(remote,rmiContext, a, b, c); 
 		}
 
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & ,  const Proud::String & ) > Login_Function;
+		virtual bool Login ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & id,  const Proud::String & password) 
+		{ 
+			if (Login_Function==nullptr) 
+				return true; 
+			return Login_Function(remote,rmiContext, id, password); 
+		}
+
 	};
 #endif
 
-#endif // !__C2S_STUB_H_
 }
 
 

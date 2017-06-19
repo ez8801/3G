@@ -53,6 +53,7 @@ public class loginToServer : MonoBehaviour {
 			{
 				m_client.ServerIP = m_serverIP; // m_client 에 서버아이피를 설정.
 				m_client.userName = m_userID; // m_client 에 닉네임을 설정.
+                m_client.userPassword = m_userPassword;
 				m_client.Connect(); // 서버에 접속 요청.
 				m_client.IsWait = true; // 서버 연결요청을 하였을음 체크하는 변수의 속성에 true 값을 넣어준다.
 				m_logonButtonString = "connecting...";

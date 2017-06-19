@@ -44,10 +44,45 @@ __msg << c;
 		return RmiSend(remotes,remoteCount,rmiContext,__msg,
 			RmiName_Chat, (::Proud::RmiID)Rmi_Chat);
 	}
+        
+	bool Proxy::Login ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext , const Proud::String & id, const Proud::String & password)	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_Login;
+__msg.Write(__msgid); 
+	
+__msg << id;
+__msg << password;
+		
+		return RmiSend(&remote,1,rmiContext,__msg,
+			RmiName_Login, (::Proud::RmiID)Rmi_Login);
+	}
+
+	bool Proxy::Login ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const Proud::String & id, const Proud::String & password)  	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_Login;
+__msg.Write(__msgid); 
+	
+__msg << id;
+__msg << password;
+		
+		return RmiSend(remotes,remoteCount,rmiContext,__msg,
+			RmiName_Login, (::Proud::RmiID)Rmi_Login);
+	}
 #ifdef USE_RMI_NAME_STRING
 const PNTCHAR* Proxy::RmiName_Chat =_PNT("Chat");
 #else
 const PNTCHAR* Proxy::RmiName_Chat =_PNT("");
+#endif
+#ifdef USE_RMI_NAME_STRING
+const PNTCHAR* Proxy::RmiName_Login =_PNT("Login");
+#else
+const PNTCHAR* Proxy::RmiName_Login =_PNT("");
 #endif
 const PNTCHAR* Proxy::RmiName_First = RmiName_Chat;
 

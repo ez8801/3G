@@ -6,6 +6,6 @@ global C2S 3000 // client-to-server RMI, First message ID = 3000
     Chat([in] Proud::String a, 
 		[in] int b, 
         [in] float c);
-	RequestInventory();
+	Login([in] Proud::String id,[in] Proud::String password);
 
 }

@@ -10,8 +10,6 @@
    
 #pragma once
 
-#ifndef __C2C_STUB_H_
-#define __C2C_STUB_H_
 
 #include "C2C_common.h"
 
@@ -57,7 +55,6 @@ namespace C2C {
 	};
 #endif
 
-#endif
 }
 
 

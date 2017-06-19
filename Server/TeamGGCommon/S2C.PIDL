@@ -6,5 +6,5 @@ global S2C 4000 // server-to-client RMI, 최초 메시지 ID = 4000
     SystemChat([in] Proud::String txt);
 
 	sendUserInfo([in] Proud::String userName, [in] int att, [in] int def);
-	sendInventory([in] int item[100]);
+	
 }

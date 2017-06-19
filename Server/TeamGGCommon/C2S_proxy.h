@@ -19,7 +19,10 @@ namespace C2S {
 	public:
 	virtual bool Chat ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext , const Proud::String & a, const int & b, const float & c) PN_SEALED; 
 	virtual bool Chat ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const Proud::String & a, const int & b, const float & c)   PN_SEALED;  
+	virtual bool Login ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext , const Proud::String & id, const Proud::String & password) PN_SEALED; 
+	virtual bool Login ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const Proud::String & id, const Proud::String & password)   PN_SEALED;  
 static const PNTCHAR* RmiName_Chat;
+static const PNTCHAR* RmiName_Login;
 static const PNTCHAR* RmiName_First;
 		Proxy()
 		{

@@ -21,6 +21,9 @@ using System.Collections.Generic;
 public class Client : MonoBehaviour {
 
 
+    /// <summary>
+    /// 지워도됨
+    /// </summary>
 	public class ChatRoomInfo
 	{
 
@@ -33,7 +36,9 @@ public class Client : MonoBehaviour {
 			ChatString = new System.Collections.Generic.List<string>();
 		}
 	}
-	
+	/// <summary>
+    /// 여기까지
+    /// </summary>
 
 	
 	// 싱글톤 패턴 사용을 위해 Client 객체 선언.
@@ -42,15 +47,21 @@ public class Client : MonoBehaviour {
 	// 프라우드넷 엔진 을 사용하기 위해 선언한 변수들.
 	// 프라우드넷 클라이언트 객체.
 	private Nettention.Proud.NetClient m_netClient;
-	
-	// 서버로 RMI 메시지 전송을 위해 C2S proxy 객체 선언.
-	private ChatC2S.Proxy m_c2sProxy;
-	// 클라이언트간 P2P 통신시 RMI 메시지를 보내기 위해 C2C Proxy 객체 선언.
+
+    // 서버로 RMI 메시지 전송을 위해 C2S proxy 객체 선언.
+    // 나중에 temp를 빼라
+    private C2S.Proxy m_c2sProxy_temp;
+    // 클라이언트간 P2P 통신시 RMI 메시지를 보내기 위해 C2C Proxy 객체 선언.
+    private C2C.Proxy m_c2cProxy_temp;
+    // 서버로 부터 RMI 메시지를 받기 위해 S2C Stub 객체 선언.
+    private S2C.Stub m_s2cStub_temp;
+    // 클라이언트간 P2P 통신시 RMI 메시지를 받기 위해 C2C Stub 객체 선언.
+    private C2C.Stub m_c2cStub_temp;
+
+    // 나중에 지울것
+    private ChatC2S.Proxy m_c2sProxy;
 	private ChatC2C.Proxy m_c2cProxy;
-	
-	// 서버로 부터 RMI 메시지를 받기 위해 S2C Stub 객체 선언.
 	private ChatS2C.Stub m_s2cStub;
-	// 클라이언트간 P2P 통신시 RMI 메시지를 받기 위해 C2C Stub 객체 선언.
 	private ChatC2C.Stub m_c2cStub;
 	
 	// 서버 접속 정보를 담기 위해.
@@ -60,6 +71,7 @@ public class Client : MonoBehaviour {
 	
 	// userName과 serverIP 주소 저장할 변수.
 	private string m_userName;
+    private string m_userPassword;
 	private string m_serverIP;
 	
 	// 서버 연결이 잘 되었는지 확인 하는 bool변수.
@@ -141,8 +153,20 @@ public class Client : MonoBehaviour {
 			m_userName = value; // 닉네임에 입력된 값을 넣는다.
 		}
 	}
-	// 서버 아이피에 대한 속성.
-	public string ServerIP
+    // 닉네임에 대한 속성.
+    public string userPassword
+    {
+        get
+        {
+            return m_userPassword; // 닉네임을 리턴한다.
+        }
+        set
+        {
+            m_userPassword = value; // 닉네임에 입력된 값을 넣는다.
+        }
+    }
+    // 서버 아이피에 대한 속성.
+    public string ServerIP
 	{
 		get
 		{
@@ -219,10 +243,18 @@ public class Client : MonoBehaviour {
 	void Start () {
 		// 클래스 생성.
 		m_netClient = new Nettention.Proud.NetClient(); // NetClient 클래스 생성.
-		m_c2sProxy = new ChatC2S.Proxy(); // Proxy 클래스 생성(클라에서 서버로 메시지 전송).
-		m_c2cProxy = new ChatC2C.Proxy(); // Proxy 클래스 생성(클라에서 클라로 메시지 전송).
-		m_s2cStub = new ChatS2C.Stub(); // Stub 클래스 생성(서버에서 클라로 메시지 수신).
-		m_c2cStub = new ChatC2C.Stub(); // Stub 클래스 생성(클라에서 클라로 메시지 수신).
+
+        //나중에temp제거해야함
+        m_c2cProxy_temp = new C2C.Proxy();  // Proxy 클래스 생성(클라에서 서버로 메시지 전송).
+        m_c2sProxy_temp = new C2S.Proxy();  // Proxy 클래스 생성(클라에서 클라로 메시지 전송).
+        m_c2cStub_temp = new C2C.Stub();    // Stub 클래스 생성(서버에서 클라로 메시지 수신).
+        m_s2cStub_temp = new S2C.Stub();    // Stub 클래스 생성(클라에서 클라로 메시지 수신).
+
+        //나중에 지워야함
+        m_c2sProxy = new ChatC2S.Proxy(); 
+		m_c2cProxy = new ChatC2C.Proxy(); 
+		m_s2cStub = new ChatS2C.Stub(); 
+		m_c2cStub = new ChatC2C.Stub(); 
 		
 		// NetClient 이벤트 딜리게이트에 함수 셋팅.
 		m_netClient.JoinServerCompleteHandler = OnJoinServerComplete; // 서버로 연결요청을 한 결과가 도창하면 콜백 되는 함수를 넣어준다.
@@ -233,21 +265,29 @@ public class Client : MonoBehaviour {
 		m_netClient.ExceptionHandler = OnException; // 내부 익셉션 발생 시 콜백 되는 함수를 넣어 준다.
 		m_netClient.P2PMemberJoinHandler = OnP2PMemberJoin; // 해당 클라이언트와 p2p 그룹을 맺게 되면 콜백 되는 함수를 넣어준다.
 		m_netClient.P2PMemberLeaveHandler = OnP2PMemberLeave; // 해당 클라이언트와 p2p 그룹이 해지되면 콜백 되는 함수를 넣어 준다.
-		
+
+
 		// s2cStub RMI 함수 딜리게이트에 각 함수 셋팅.
 		m_s2cStub.ShowChat = OnShowChat;
 		m_s2cStub.UserList_Add = UserList_Add;
 		m_s2cStub.UserList_Remove = UserList_Remove;
 		m_c2cStub.P2P_Chat = OnC2CChat;
 
-		// 클라이언트에 Proxy 와 Stub 들을 붙인다.
-		m_netClient.AttachStub(m_s2cStub);
-		m_netClient.AttachProxy(m_c2sProxy);
-		m_netClient.AttachProxy(m_c2cProxy);
-		m_netClient.AttachStub(m_c2cStub);
-		
-		// 접속 하기 위한 서버의 정보를 셋팅하기 위해 NetConnectionParam 클래스 생성.
-		m_param = new Nettention.Proud.NetConnectionParam();
+		// 나중에 삭제해줘야함
+	//	m_netClient.AttachStub(m_s2cStub);
+		//m_netClient.AttachProxy(m_c2sProxy);
+	//	m_netClient.AttachProxy(m_c2cProxy);
+		//m_netClient.AttachStub(m_c2cStub);
+
+        // 클라이언트에 Proxy 와 Stub 들을 붙인다.
+        // 나중에 temp 제거
+        m_netClient.AttachStub(m_s2cStub_temp);
+        m_netClient.AttachProxy(m_c2sProxy_temp);
+        m_netClient.AttachProxy(m_c2cProxy_temp);
+        m_netClient.AttachStub(m_c2cStub_temp);
+
+        // 접속 하기 위한 서버의 정보를 셋팅하기 위해 NetConnectionParam 클래스 생성.
+        m_param = new Nettention.Proud.NetConnectionParam();
 
 		// 프로토콜 버전 셋팅.
         m_param.protocolVersion = new Nettention.Proud.Guid();
@@ -307,6 +347,10 @@ public class Client : MonoBehaviour {
 	void OnDestroy() {
 		m_netClient.Disconnect(); // 서버와 연결을 해제 한다.
 	}
+    public void Login(Nettention.Proud.RmiContext rmiContext, string m_id, string m_password)
+    {
+        this.m_c2sProxy_temp.Login(Nettention.Proud.HostID.HostID_Server, rmiContext, m_id, m_password);
+    }
 
 	public void C2SChat (Nettention.Proud.RmiContext rmiContext, string m_inputString)
 	{
@@ -349,11 +393,11 @@ public class Client : MonoBehaviour {
 		// 성공적으로 연결 되면.
 		if (Nettention.Proud.ErrorType.ErrorType_Ok == info.errorType)
 		{
-
-            ChatRooms[Nettention.Proud.HostID.HostID_Server] = new ChatRoomInfo();
+            m_c2sProxy_temp.Login(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.UnreliableSend, m_userName, m_userPassword);
+           // ChatRooms[Nettention.Proud.HostID.HostID_Server] = new ChatRoomInfo();
 
 			// 사용자의 닉네임을 서버로 전송.
-            m_c2sProxy.RequestLogon(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.ReliableSend, m_userName);
+           // m_c2sProxy.RequestLogon(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.ReliableSend, m_userName);
 
 			m_isConnect = true; // bool 변수 값 true 로 변경.
 		}
