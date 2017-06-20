@@ -36,16 +36,15 @@ public class ListTable<T> : Table<T> where T : IIndexer
 
     public bool ContainsKey(int key)
     {
-        if (m_container != null)
+        int index = -1;
+        if (m_isAscendingOrder)
         {
-            for (int i = 0; i < m_container.Count; i++)
-            {
-                if (m_container[i].GetIndex() == key)
-                    return true;
-            }
+            index = BinarySearch(key);
+            return (index != -1);
         }
 
-        return false;
+        index = LinearSearch(key);
+        return (index != -1);
     }
 
     public override void Clear()
@@ -56,31 +55,40 @@ public class ListTable<T> : Table<T> where T : IIndexer
 
     protected override int BinarySearch(int value)
     {
-        var start = 0;
-        var end = Count - 1;
-        while (start <= end)
+        if (m_container != null)
         {
-            var mid = (start + end) / 2;
-            if (this[mid].GetIndex() > value)
-                end = mid - 1;
-            else if (this[mid].GetIndex() < value)
-                start = mid + 1;
-            else
+            var start = 0;
+            var end = Count - 1;
+            while (start <= end)
             {
-                // found k
-                return mid;
+                var mid = (start + end) / 2;
+                if (this[mid].GetIndex() > value)
+                    end = mid - 1;
+                else if (this[mid].GetIndex() < value)
+                    start = mid + 1;
+                else
+                {
+                    // found k
+                    return mid;
+                }
             }
         }
-
+        
         // not found k
         return -1;
     }
 
     private int LinearSearch(int key)
     {
-        return m_container.FindIndex((match) => {
-            return match.GetIndex() == key;
-        });
+        if (m_container != null)
+        {
+            for (int i = 0; i < m_container.Count; i++)
+            {
+                if (m_container[i].GetIndex() == key)
+                    return i;
+            }
+        }
+        return -1;
     }
 
     public override T Find(int key)
