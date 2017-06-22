@@ -10,12 +10,14 @@ public class IsActive : MonoBehaviour {
     public GameObject button2;
     public GameObject button3;
     public GameObject button4;
+    public GameObject button5;
     public void isclickOpen()
     {
         button1.GetComponent<UIButton>().isEnabled = false;
         button2.GetComponent<UIButton>().isEnabled = false;
         button3.GetComponent<UIButton>().isEnabled = false;
         button4.GetComponent<UIButton>().isEnabled = false;
+        button5.GetComponent<UIButton>().isEnabled = false;
     }
 
     public void isclickClose()
@@ -24,5 +26,6 @@ public class IsActive : MonoBehaviour {
         button2.GetComponent<UIButton>().isEnabled = true;
         button3.GetComponent<UIButton>().isEnabled = true;
         button4.GetComponent<UIButton>().isEnabled = true;
+        button5.GetComponent<UIButton>().isEnabled = true;
     }
 }

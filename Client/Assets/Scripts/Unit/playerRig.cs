@@ -10,7 +10,6 @@ public class playerRig : MonoBehaviour {
         {
             Instantiate(explosionPrefab, other.transform.position, Quaternion.identity);
             Destroy(other.gameObject);
-            gameEnd.killNumber++;
         }
     }
 
