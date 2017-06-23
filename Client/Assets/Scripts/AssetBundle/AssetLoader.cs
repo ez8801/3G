@@ -9,9 +9,14 @@
 
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public abstract class AssetLoader 
 {
+    private static List<AssetLoader> m_queue = new List<AssetLoader>();
+    public static int TotalItemCount { get; private set; }
+    public static int LoadedCount { get; private set; }
+
     public virtual bool IsValid()
     {
         return true;
@@ -19,31 +24,34 @@ public abstract class AssetLoader
 
     public virtual void OnPostLoad()
     {
-        //
+        LoadedCount++;
+
+        float progress = (float)LoadedCount / TotalItemCount;
+        NotificationCenter.Instance.Post((int)Notification.UI.OnProgress, progress);
+
+        if (LoadedCount == TotalItemCount)
+        {
+            NotificationCenter.Instance.Post((int)Notification.UI.OnProgressDone);
+        }
     }
 
     public abstract IEnumerator Load();
 
-    public static IEnumerator LoadAsset(AssetLoader loader)
+    public static void AddLoadingRequest(AssetType assetType
+        , AssetCategory categoryType
+        , string assetName)
     {
-        if (loader == null)
-        {
-            yield break;
-        }
-        else if (loader.IsValid())
-        {
-            yield return loader.Load();
-            loader.OnPostLoad();
-        }
-        yield return null;
+        AssetLoader loader = CreateAssetLoader(assetType, categoryType, assetName);
+        AddLoadingRequest(loader);
     }
 
-    public static IEnumerator LoadAsset(AssetType assetType, string assetName)
+    public static void AddLoadingRequest(AssetLoader loader)
     {
-        yield return LoadAsset(assetType, AssetCategory.None, assetName);
+        TotalItemCount++;
+        m_queue.Add(loader);
     }
 
-    public static IEnumerator LoadAsset(AssetType assetType
+    public static AssetLoader CreateAssetLoader(AssetType assetType
         , AssetCategory categoryType
         , string assetName)
     {
@@ -51,7 +59,7 @@ public abstract class AssetLoader
         switch (assetType)
         {
             case AssetType.Scene:
-                loader = new SceneLoader(assetName, false, true);
+                loader = new SceneLoader(assetName, false);
                 break;
 
             case AssetType.None:
@@ -84,7 +92,56 @@ public abstract class AssetLoader
                 }
                 break;
         }
+        return loader;
+    }
 
+    public static IEnumerator LoadAsset(AssetLoader loader)
+    {
+        if (loader == null)
+        {
+            yield break;
+        }
+        else if (loader.IsValid())
+        {
+            yield return loader.Load();
+            loader.OnPostLoad();
+        }
+        yield return null;
+    }
+
+    public static IEnumerator LoadAsset(AssetType assetType, string assetName)
+    {
+        yield return LoadAsset(assetType, AssetCategory.None, assetName);
+    }
+
+    public static IEnumerator LoadAsset(AssetType assetType
+        , AssetCategory categoryType
+        , string assetName)
+    {
+        AssetLoader loader = CreateAssetLoader(assetType, categoryType, assetName);
         yield return LoadAsset(loader);
+    }
+    
+    private static void Clear()
+    {
+        TotalItemCount = 0;
+        LoadedCount = 0;
+        m_queue.Clear();
+    }
+
+    public static IEnumerator StartLoading()
+    {
+        // UIManager.Instance.ShowLoadingBar(true);
+
+        for (int i = 0; i < m_queue.Count; i++)
+        {
+            AssetLoader loader = m_queue[i];
+            yield return LoadAsset(loader);
+
+            yield return null;
+        }
+
+        Clear();
+        yield return new WaitForEndOfFrame();
     }
 }

@@ -17,7 +17,7 @@ namespace GameSystem
                 m_loadedLevelName = value;
             }
         }
-
+        
         public string currentSceneName
         {
             get
@@ -25,7 +25,7 @@ namespace GameSystem
                 return currentSceneType.ToString();
             }
         }
-
+        
         public SceneType currentSceneType { private set; get; }
         private Scene m_currentScene;
 
@@ -44,6 +44,26 @@ namespace GameSystem
 #endif
         }
 
+        public void Initialize(SceneType initialSceneType)
+        {
+            ChangeScene(initialSceneType);
+            loadedLevelName = GetLevelName(initialSceneType);
+        }
+
+        public string GetLevelName(SceneType sceneType)
+        {
+            switch (sceneType)
+            {
+                case SceneType.GameScene:
+                    return GameScene.LevelName;
+                case SceneType.LobbyScene:
+                    return LobbyScene.LevelName;
+                case SceneType.TitleScene:
+                    return TitleScene.LevelName;
+            }
+            return string.Empty;
+        }
+
         public void ChangeScene(SceneType sceneType)
         {
             ChangeScene(sceneType, null);
@@ -51,17 +71,22 @@ namespace GameSystem
 
         public void ChangeScene(SceneType sceneType, Intent intent)
         {
+            StartCoroutine(PerformChangeScene(sceneType, intent));
+        }
+
+        internal IEnumerator PerformChangeScene(SceneType sceneType, Intent intent)
+        {
             Scene nextScene = null;
             bool isAssigned = Activator.CreateInstance(out nextScene, sceneType);
             Assert.IsTrue(isAssigned, string.Format("Couldn't Create Instance at: {0}", sceneType));
-            
-            nextScene.OnCrate(intent);
+
+            yield return nextScene.OnCrate(intent);
             if (m_currentScene != null)
                 m_currentScene.OnStop();
 
             currentSceneType = sceneType;
             m_currentScene = nextScene;
-
+            
             nextScene.OnStart();
             NotificationCenter.Instance.Post((int)Notification.System.OnSceneChanged, (int)sceneType);
         }
@@ -91,25 +116,23 @@ namespace GameSystem
             }
         }
 
-        public IEnumerator LoadLevelAsync(string levelName, bool isAdditive, bool isShowLoadingUI)
+        public IEnumerator LoadLevelAsync(string levelName, bool isAdditive)
         {
             Assert.IsFalse(string.IsNullOrEmpty(levelName), "SceneManager:LoadLevelAsync(string, bool, bool) ArgumentException: levelName is null or empty");
 
-            //if (isShowLoadingUI)
-            //    yield return UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Scene_Loading");
-
+            if (isAdditive == false)
+                yield return UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Empty");
+            
             m_loadedLevelName = levelName;
 
             //if (AssetBundleHandler.IsUseAssetBundle())
             //    yield return AssetBundleManager.LoadLevelAsync("scenes.assetbundle", levelName, isAdditive);
-            //else
-            //{
-            //    UnityEngine.SceneManagement.LoadSceneMode loadSceneMode = UnityEngine.SceneManagement.LoadSceneMode.Single;
-            //    if (isAdditive)
-            //        loadSceneMode = UnityEngine.SceneManagement.LoadSceneMode.Additive;
-            //    yield return UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(levelName, loadSceneMode);
-            //}
-
+            
+            UnityEngine.SceneManagement.LoadSceneMode loadSceneMode = UnityEngine.SceneManagement.LoadSceneMode.Single;
+            if (isAdditive)
+                loadSceneMode = UnityEngine.SceneManagement.LoadSceneMode.Additive;
+            yield return UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(levelName, loadSceneMode);
+            
             yield return null;
         }
 

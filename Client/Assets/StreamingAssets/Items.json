@@ -1,36 +1,33 @@
-[
-    {
-        "id": 0,
-        "title": "test item1",
-        "value": 2,
-		"stackable": true,
-		"rarity": 4,
-		"type":0 //º¸¼®
-		
-    },
-    {
-        "id": 1,
-        "title": "test item2",
-        "value": 24,
-		"stackable": true,
-		"rarity": 2,
-		"type":1 //ÁÖ±«
-
-    },
-    { 
-        "id": 2,
-        "title": "test item3",
-        "value": 31,
-		"stackable": true,
-		"rarity": 0,
-		"type":2 //°¡Á×
-    },
-    { 
-        "id": 3,
-        "title": "test Blueprint",
-        "value": 1,
-		"stackable": false,
-		"rarity": 1,
-		"type":10 //Á¦ÀÛµµ¾È
-    }
+ï»¿[{
+		"Id": 1001,
+		"Type": 1,
+		"Rarity": 4,
+		"Name": "Item.Jewel.Name.1",
+		"Value": 2,
+		"Stackable": true
+	},
+	{
+		"Id": 2001,
+		"Type": 2,
+		"Rarity": 2,
+		"Name": "Item.Ingot.Name.2001",
+		"Value": 24,
+		"Stackable": true
+	},
+	{
+		"Id": 3001,
+		"Name": "Item.Leather.Name.3001",
+		"Value": 31,
+		"Stackable": true,
+		"Rarity": 0,
+		"Type": 3
+	},
+	{
+		"Id": 10001,
+		"Type": 10,
+		"Rarity": 1,
+		"Name": "Item.BluePrint.Name.10001",
+		"Value": 1,
+		"Stackable": false
+	}
 ]

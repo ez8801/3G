@@ -86,6 +86,11 @@ public sealed class Assert
         }
     }
 
+    public static void IsFalse(bool condition)
+    {
+        IsFalse(condition, string.Empty);
+    }
+
     /// <summary>
     /// 지정된 개체가 Null인지 확인합니다. 오브젝트가 null이 아니면 어셜션이 실패합니다. 
     /// 어설션이 실패할 경우 메시지를 표시합니다.
@@ -99,6 +104,11 @@ public sealed class Assert
         }
     }
 
+    public static void IsNull(object value)
+    {
+        IsNull(value, string.Empty);
+    }
+
     /// <summary>
     /// 지정된 개체가 Null이 아닌지 확인합니다. 오브젝트가 null이면 어셜션이 실패합니다. 
     /// 어설션이 실패할 경우 메시지를 표시합니다.
@@ -110,5 +120,10 @@ public sealed class Assert
             Exception e = new AssertFailedException(message);
             throw e;
         }
+    }
+
+    public static void IsNotNull(object value)
+    {
+        IsNotNull(value, string.Empty);
     }
 }

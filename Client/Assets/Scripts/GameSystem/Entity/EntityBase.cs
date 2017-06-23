@@ -78,7 +78,7 @@ public abstract class EntityBase : MonoBehaviour
 
     protected virtual void OnDisable()
     {
-        entities.Remove(this);
+        
     }
 
     protected virtual void LateUpdate()
@@ -88,7 +88,7 @@ public abstract class EntityBase : MonoBehaviour
 
     protected virtual void OnDestroy()
     {
-
+        entities.Remove(this);
     }
 
     #endregion MonoBehaviour Life Cycle

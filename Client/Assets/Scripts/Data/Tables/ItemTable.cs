@@ -16,6 +16,16 @@ namespace Data
     }
 }
 
+public enum ItemType
+{
+    None,
+    Jewel,
+    Ingot,
+    Leather,
+    BluePrint = 10,
+    Max
+}
+
 public sealed class ItemTable : ArrayTable<Item>
 {
     private static ItemTable m_instance = null;

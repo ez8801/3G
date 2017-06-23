@@ -6,14 +6,16 @@ using UnityEngine;
 public class gameEnd : MonoBehaviour {
 
 
-    public static int killNumber = 1;
+    public static int killNumber = 0;
     public int roundKill = 8;
+    public int notice;
 
     // Update is called once per frame
     void Update () {
-		if(killNumber == roundKill)
+        notice = killNumber;
+		if(killNumber >= roundKill)
         {
-            killNumber = 1;
+            killNumber = 0;
             Invoke("EndGame", 1.0f);
         }
 	}

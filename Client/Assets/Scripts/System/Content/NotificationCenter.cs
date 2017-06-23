@@ -137,8 +137,8 @@ public class NotificationCenter : MonoSingleton<NotificationCenter>
                     }
                 }
 
-                if (observers.Count == 0)
-                    m_observers.Remove(message);
+                //if (observers.Count == 0)
+                //    m_observers.Remove(message);
             }
         }
     }
@@ -197,42 +197,51 @@ public class NotificationCenter : MonoSingleton<NotificationCenter>
     }
 
     //
-    public void AddDelayedNotification(int id, float time)
+    public void PostDelayed(int id, float delayTime)
     {
-        StartCoroutine(PerformDelayedNotification(new Notification(id), time));
+        StartCoroutine(PerformPostDelayed(new Notification(id), delayTime));
     }
     
-    public void AddDelayedNotification(int id, int data, float time)
+    public void PostDelayed(int id, int data, float delayTime)
     {
-        StartCoroutine(PerformDelayedNotification(new Notification(id, data), time));
+        StartCoroutine(PerformPostDelayed(new Notification(id, data), delayTime));
     }
 
-    public void AddDelayedNotification(int id, float data, float time)
+    public void PostDelayed(int id, float data, float delayTime)
     {
-        StartCoroutine(PerformDelayedNotification(new Notification(id, data), time));
+        StartCoroutine(PerformPostDelayed(new Notification(id, data), delayTime));
     }
 
-    public void AddDelayedNotification(int id, string data, float time)
+    public void PostDelayed(int id, string data, float delayTime)
     {
-        StartCoroutine(PerformDelayedNotification(new Notification(id, data), time));
+        StartCoroutine(PerformPostDelayed(new Notification(id, data), delayTime));
     }
 
-    public void AddDelayedNotification(int id, bool data, float time)
+    public void PostDelayed(int id, bool data, float delayTime)
     {
-        StartCoroutine(PerformDelayedNotification(new Notification(id, data), time));
+        StartCoroutine(PerformPostDelayed(new Notification(id, data), delayTime));
     }
 
-    public void AddDelayedNotification(Notification notification, float time)
+    public void PostDelayed(Notification notification, float delayTime)
     {
-        StartCoroutine(PerformDelayedNotification(notification, time));
+        StartCoroutine(PerformPostDelayed(notification, delayTime));
     }
 
-    public IEnumerator PerformDelayedNotification(Notification notification, float time)
+    public IEnumerator PerformPostDelayed(Notification notification, float delayTime)
     {
-        yield return YieldHelper.CreateInstance(time);
+        yield return YieldHelper.CreateInstance(delayTime);
         Post(notification);
     }
-    
+
+    public IEnumerator PerformPostDelayed(Notification notification, int skipFrameCount)
+    {
+        for (int i = 0; i < skipFrameCount; i++)
+        {
+            yield return null;
+        }
+        Post(notification);
+    }
+
     public void Post(Notification notification)
     {
         if (m_firstResponders.Count > 0)
