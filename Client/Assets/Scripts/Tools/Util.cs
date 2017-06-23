@@ -145,7 +145,32 @@ public class Util
 
         return null;
     }
-    
+
+    public static T FindInChildren<T>(GameObject go) where T : Component
+    {
+        if (go == null)
+            return null;
+
+        T comp = go.GetComponent<T>();
+        if (comp != null)
+            return comp;
+
+        T[] children = go.GetComponentsInChildren<T>(true);
+        if (children == null || children.Length == 0)
+            return null;
+
+        T obj = null;
+        for (int i = 0; i < children.Length; i++)
+        {
+            obj = children[i];
+            if (obj != null)
+            {
+                return obj;
+            }
+        }
+        return null;
+    }
+
     /// <summary>
     /// 지정된 게임오브젝트에 하위에 해당 게임오브젝트를 첨부합니다.
     /// </summary>
