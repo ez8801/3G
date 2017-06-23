@@ -5,7 +5,9 @@
 #define __COMMON_H_
 
 #include <iostream>
+#include <vector>
 #include "../include/ProudNetServer.h"
+
 
 using namespace std;
 using namespace Proud;

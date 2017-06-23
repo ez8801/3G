@@ -50,11 +50,22 @@ namespace S2C {
 #define DEFRMI_S2C_sendUserInfo(DerivedClass) bool DerivedClass::sendUserInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & userName,  const int & att,  const int & def)
 #define CALL_S2C_sendUserInfo sendUserInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & userName,  const int & att,  const int & def)
 #define PARAM_S2C_sendUserInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & userName,  const int & att,  const int & def)
+               
+		virtual bool sendInventoryData ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::CFastArray<items> & )		{ 
+			return false;
+		} 
+
+#define DECRMI_S2C_sendInventoryData bool sendInventoryData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::CFastArray<items> & ivData) PN_OVERRIDE
+
+#define DEFRMI_S2C_sendInventoryData(DerivedClass) bool DerivedClass::sendInventoryData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::CFastArray<items> & ivData)
+#define CALL_S2C_sendInventoryData sendInventoryData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::CFastArray<items> & ivData)
+#define PARAM_S2C_sendInventoryData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::CFastArray<items> & ivData)
  
 		virtual bool ProcessReceivedMessage(::Proud::CReceivedMessage &pa, void* hostTag) PN_OVERRIDE;
 		static const PNTCHAR* RmiName_ShowChat;
 		static const PNTCHAR* RmiName_SystemChat;
 		static const PNTCHAR* RmiName_sendUserInfo;
+		static const PNTCHAR* RmiName_sendInventoryData;
 		static const PNTCHAR* RmiName_First;
 		virtual ::Proud::RmiID* GetRmiIDList() PN_OVERRIDE { return g_RmiIDList; }
 		virtual int GetRmiIDListCount() PN_OVERRIDE { return g_RmiIDListCount; }
@@ -90,6 +101,15 @@ namespace S2C {
 			if (sendUserInfo_Function==nullptr) 
 				return true; 
 			return sendUserInfo_Function(remote,rmiContext, userName, att, def); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::CFastArray<items> & ) > sendInventoryData_Function;
+		virtual bool sendInventoryData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::CFastArray<items> & ivData) 
+		{ 
+			if (sendInventoryData_Function==nullptr) 
+				return true; 
+			return sendInventoryData_Function(remote,rmiContext, ivData); 
 		}
 
 	};

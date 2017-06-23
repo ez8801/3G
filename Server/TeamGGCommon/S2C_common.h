@@ -10,6 +10,8 @@ namespace S2C {
     static const ::Proud::RmiID Rmi_SystemChat = (::Proud::RmiID)(4000+2);
                
     static const ::Proud::RmiID Rmi_sendUserInfo = (::Proud::RmiID)(4000+3);
+               
+    static const ::Proud::RmiID Rmi_sendInventoryData = (::Proud::RmiID)(4000+4);
 
 	// List that has RMI ID.
 	extern ::Proud::RmiID g_RmiIDList[];

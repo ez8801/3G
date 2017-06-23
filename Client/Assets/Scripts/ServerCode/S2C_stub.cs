@@ -31,6 +31,11 @@ public BeforeRmiInvocationDelegate BeforeRmiInvocation = delegate(Nettention.Pro
 		{ 
 			return false;
 		};
+		public delegate bool sendInventoryDataDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.FastArray<items> ivData);  
+		public sendInventoryDataDelegate sendInventoryData = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.FastArray<items> ivData)
+		{ 
+			return false;
+		};
 	public override bool ProcessReceivedMessage(Nettention.Proud.ReceivedMessage pa, Object hostTag) 
 	{
 		Nettention.Proud.HostID remote=pa.RemoteHostID;
@@ -56,9 +61,9 @@ case Common.ShowChat:
 		ctx.encryptMode = pa.EncryptMode;
 		ctx.compressMode = pa.CompressMode;
 			
-		System.String a; Nettention.Proud.Marshaler.Read(__msg,out a);	
-int b; Nettention.Proud.Marshaler.Read(__msg,out b);	
-float c; Nettention.Proud.Marshaler.Read(__msg,out c);	
+		System.String a; Test.Read(__msg,out a);	
+int b; Test.Read(__msg,out b);	
+float c; Test.Read(__msg,out c);	
 core.PostCheckReadMessage(__msg, RmiName_ShowChat);
 		if(enableNotifyCallFromStub==true)
 		{
@@ -111,7 +116,7 @@ case Common.SystemChat:
 		ctx.encryptMode = pa.EncryptMode;
 		ctx.compressMode = pa.CompressMode;
 			
-		System.String txt; Nettention.Proud.Marshaler.Read(__msg,out txt);	
+		System.String txt; Test.Read(__msg,out txt);	
 core.PostCheckReadMessage(__msg, RmiName_SystemChat);
 		if(enableNotifyCallFromStub==true)
 		{
@@ -162,9 +167,9 @@ case Common.sendUserInfo:
 		ctx.encryptMode = pa.EncryptMode;
 		ctx.compressMode = pa.CompressMode;
 			
-		System.String userName; Nettention.Proud.Marshaler.Read(__msg,out userName);	
-int att; Nettention.Proud.Marshaler.Read(__msg,out att);	
-int def; Nettention.Proud.Marshaler.Read(__msg,out def);	
+		System.String userName; Test.Read(__msg,out userName);	
+int att; Test.Read(__msg,out att);	
+int def; Test.Read(__msg,out def);	
 core.PostCheckReadMessage(__msg, RmiName_sendUserInfo);
 		if(enableNotifyCallFromStub==true)
 		{
@@ -208,6 +213,57 @@ parameterString+=def.ToString()+",";
 		}
 	}
 	break;
+case Common.sendInventoryData:
+	{
+		Nettention.Proud.RmiContext ctx=new Nettention.Proud.RmiContext();
+		ctx.sentFrom=pa.RemoteHostID;
+		ctx.relayed=pa.IsRelayed;
+		ctx.hostTag=hostTag;
+		ctx.encryptMode = pa.EncryptMode;
+		ctx.compressMode = pa.CompressMode;
+			
+		Nettention.Proud.FastArray<items> ivData; Test.Read(__msg,out ivData);	
+core.PostCheckReadMessage(__msg, RmiName_sendInventoryData);
+		if(enableNotifyCallFromStub==true)
+		{
+			string parameterString="";
+			parameterString+=ivData.ToString()+",";
+			NotifyCallFromStub(Common.sendInventoryData, RmiName_sendInventoryData,parameterString);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.BeforeRmiSummary summary = new Nettention.Proud.BeforeRmiSummary();
+			summary.rmiID = Common.sendInventoryData;
+			summary.rmiName = RmiName_sendInventoryData;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			BeforeRmiInvocation(summary);
+		}
+			
+		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
+			
+		// Call this method.
+		bool __ret=sendInventoryData (remote,ctx , ivData );
+			
+		if(__ret==false)
+		{
+			// Error: RMI function that a user did not create has been called. 
+			core.ShowNotImplementedRmiWarning(RmiName_sendInventoryData);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
+			summary.rmiID = Common.sendInventoryData;
+			summary.rmiName = RmiName_sendInventoryData;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
+			AfterRmiInvocation(summary);
+		}
+	}
+	break;
 		default:
 			 goto __fail;
 		}
@@ -224,6 +280,7 @@ __fail:
 const string RmiName_ShowChat="ShowChat";
 const string RmiName_SystemChat="SystemChat";
 const string RmiName_sendUserInfo="sendUserInfo";
+const string RmiName_sendInventoryData="sendInventoryData";
        
 const string RmiName_First = RmiName_ShowChat;
 #else
@@ -232,6 +289,7 @@ const string RmiName_First = RmiName_ShowChat;
 const string RmiName_ShowChat="";
 const string RmiName_SystemChat="";
 const string RmiName_sendUserInfo="";
+const string RmiName_sendInventoryData="";
        
 const string RmiName_First = "";
 #endif

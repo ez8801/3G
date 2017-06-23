@@ -152,6 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h" />
+    <ClInclude Include="mymarshaler.h" />
     <ClInclude Include="ServerMain.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Packet.h" />

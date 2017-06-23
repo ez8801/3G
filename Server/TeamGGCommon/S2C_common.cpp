@@ -14,9 +14,11 @@ namespace S2C {
 		Rmi_SystemChat,
                
 		Rmi_sendUserInfo,
+               
+		Rmi_sendInventoryData,
 	};
 
-	int g_RmiIDListCount = 3;
+	int g_RmiIDListCount = 4;
 
 }
 

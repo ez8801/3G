@@ -23,9 +23,12 @@ namespace S2C {
 	virtual bool SystemChat ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const Proud::String & txt)   PN_SEALED;  
 	virtual bool sendUserInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext , const Proud::String & userName, const int & att, const int & def) PN_SEALED; 
 	virtual bool sendUserInfo ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const Proud::String & userName, const int & att, const int & def)   PN_SEALED;  
+	virtual bool sendInventoryData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext , const Proud::CFastArray<items> & ivData) PN_SEALED; 
+	virtual bool sendInventoryData ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const Proud::CFastArray<items> & ivData)   PN_SEALED;  
 static const PNTCHAR* RmiName_ShowChat;
 static const PNTCHAR* RmiName_SystemChat;
 static const PNTCHAR* RmiName_sendUserInfo;
+static const PNTCHAR* RmiName_sendInventoryData;
 static const PNTCHAR* RmiName_First;
 		Proxy()
 		{

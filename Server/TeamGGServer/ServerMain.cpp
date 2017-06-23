@@ -1,9 +1,9 @@
 #include "ServerMain.h"
 //changetest
+extern S2C::Proxy g_S2CProxy;
 ServerMain::ServerMain()
 {
 	m_InMain = ServerManager::getInstance();
-	m_S2CProxy = m_InMain->getS2CProxy();
 }
 void ServerMain::Team3GServerMain()
 {
@@ -42,7 +42,8 @@ void ServerMain::Team3GServerMain()
 
 	// RmiStub, RmiProxy 클래스 NetServer에 Attach하기
 	srv->AttachStub(&g_C2SStub);
-	srv->AttachProxy(&m_S2CProxy);
+	srv->AttachProxy(&g_S2CProxy);
+	
 
 	// 서버 시작에 필요한 Parameter 설정하기
 	CStartServerParameter p1;

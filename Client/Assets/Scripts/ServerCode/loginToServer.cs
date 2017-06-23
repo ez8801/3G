@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using Nettention.Proud;
 
 public class loginToServer : MonoBehaviour {
 	// Client 객체 생성.
@@ -27,7 +29,7 @@ public class loginToServer : MonoBehaviour {
 		// 서버 연결이 정상적으로 되었는지 확인 한다.
 		if (m_client.IsConnect == true) // 서버 연결이 되었다면.
 		{
-            SceneManager.LoadScene(4);
+            //SceneManager.LoadScene(4);
 			//Application.LoadLevel("globalChat"); // 다음씬으로 전환 한다.
 		}
 	}
@@ -66,3 +68,41 @@ public class loginToServer : MonoBehaviour {
 		}
 	}
 }
+
+public struct items
+{
+    public int itemInherentIdx;
+    public int itemIdx;
+    public int itemType;
+};
+
+
+    class Test : Nettention.Proud.Marshaler
+    {
+        public static void Write(Nettention.Proud.Message msg, Nettention.Proud.FastArray<items> strMsg)
+        {
+            int a;
+            a = 0;
+        }
+        public static bool Read(Nettention.Proud.Message msg, out Nettention.Proud.FastArray<items> strMsg)
+        {
+            strMsg = new Nettention.Proud.FastArray<items>();
+            int count = 0;
+            msg.ReadScalar(ref count);
+
+            items contain_items = new items();
+            for (int i = 0; i < count; i++)
+            {
+                msg.ReadScalar(ref contain_items.itemInherentIdx);
+                msg.ReadScalar(ref contain_items.itemIdx);
+                msg.ReadScalar(ref contain_items.itemType);
+                strMsg.Add(contain_items);
+            }
+            
+            return true;
+      } 
+            
+            
+            
+        
+    }

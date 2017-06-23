@@ -104,6 +104,34 @@ __msg << def;
 		return RmiSend(remotes,remoteCount,rmiContext,__msg,
 			RmiName_sendUserInfo, (::Proud::RmiID)Rmi_sendUserInfo);
 	}
+        
+	bool Proxy::sendInventoryData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext , const Proud::CFastArray<items> & ivData)	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_sendInventoryData;
+__msg.Write(__msgid); 
+	
+__msg << ivData;
+		
+		return RmiSend(&remote,1,rmiContext,__msg,
+			RmiName_sendInventoryData, (::Proud::RmiID)Rmi_sendInventoryData);
+	}
+
+	bool Proxy::sendInventoryData ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const Proud::CFastArray<items> & ivData)  	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_sendInventoryData;
+__msg.Write(__msgid); 
+	
+__msg << ivData;
+		
+		return RmiSend(remotes,remoteCount,rmiContext,__msg,
+			RmiName_sendInventoryData, (::Proud::RmiID)Rmi_sendInventoryData);
+	}
 #ifdef USE_RMI_NAME_STRING
 const PNTCHAR* Proxy::RmiName_ShowChat =_PNT("ShowChat");
 #else
@@ -118,6 +146,11 @@ const PNTCHAR* Proxy::RmiName_SystemChat =_PNT("");
 const PNTCHAR* Proxy::RmiName_sendUserInfo =_PNT("sendUserInfo");
 #else
 const PNTCHAR* Proxy::RmiName_sendUserInfo =_PNT("");
+#endif
+#ifdef USE_RMI_NAME_STRING
+const PNTCHAR* Proxy::RmiName_sendInventoryData =_PNT("sendInventoryData");
+#else
+const PNTCHAR* Proxy::RmiName_sendInventoryData =_PNT("");
 #endif
 const PNTCHAR* Proxy::RmiName_First = RmiName_ShowChat;
 

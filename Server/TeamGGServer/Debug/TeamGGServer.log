@@ -1,4 +1,9 @@
-﻿  Packet.cpp
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppClean.targets(76,5): warning : 'c:\users\soongsae\desktop\teamgg\3g\server\teamggserver\debug\teamggserver.pdb' 파일은 다른 프로세스에서 사용 중이므로 프로세스에서 액세스할 수 없습니다.
+  User.cpp
+  Packet.cpp
+  ServerMain.cpp
+  main.cpp
+  코드를 생성하고 있습니다...
 TeamGGCommon.lib(stdafx.obj) : warning LNK4099: 'TeamGGCommon.pdb' PDB를 'TeamGGCommon.lib(stdafx.obj)' 또는 'C:\Users\soongsae\Desktop\TeamGG\3G\Server\TeamGGServer\Debug\TeamGGCommon.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
 TeamGGCommon.lib(Vars.obj) : warning LNK4099: 'TeamGGCommon.pdb' PDB를 'TeamGGCommon.lib(Vars.obj)' 또는 'C:\Users\soongsae\Desktop\TeamGG\3G\Server\TeamGGServer\Debug\TeamGGCommon.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
 TeamGGCommon.lib(stdafxclient.obj) : warning LNK4099: 'ProudNetClient.pdb' PDB를 'TeamGGCommon.lib(stdafxclient.obj)' 또는 'C:\Users\soongsae\Desktop\TeamGG\3G\Server\TeamGGServer\Debug\ProudNetClient.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.

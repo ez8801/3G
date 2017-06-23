@@ -267,7 +267,8 @@ public class Client : MonoBehaviour {
 		m_netClient.P2PMemberLeaveHandler = OnP2PMemberLeave; // 해당 클라이언트와 p2p 그룹이 해지되면 콜백 되는 함수를 넣어 준다.
 
 
-		// s2cStub RMI 함수 딜리게이트에 각 함수 셋팅.
+        // s2cStub RMI 함수 딜리게이트에 각 함수 셋팅.
+        m_s2cStub_temp.sendInventoryData = OnSendInventoryData;
 		m_s2cStub.ShowChat = OnShowChat;
 		m_s2cStub.UserList_Add = UserList_Add;
 		m_s2cStub.UserList_Remove = UserList_Remove;
@@ -486,8 +487,19 @@ public class Client : MonoBehaviour {
 		Debug.Log("Exception : " + e.ToString());
 	}
 
-	// 글로벌 채팅 내용을 리시브 받앗을때 처리하는 함수.
-	bool OnShowChat(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, string userName, string text)
+    bool OnSendInventoryData(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, Nettention.Proud.FastArray<items> data)
+    {
+        string str = "";
+        for (int i = 0; i < 10; i++)
+        {
+            str = "[str]" + data.data.ToString();
+            ChatRooms[Nettention.Proud.HostID.HostID_Server].ChatString.Add(str);
+        }
+       
+        return true;
+    }
+    // 글로벌 채팅 내용을 리시브 받앗을때 처리하는 함수.
+    bool OnShowChat(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, string userName, string text)
 	{
 		string str = "";
 

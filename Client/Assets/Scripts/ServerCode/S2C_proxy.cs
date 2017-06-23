@@ -19,9 +19,9 @@ public bool ShowChat(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext 
 		__msg.SimplePacketMode = core.IsSimplePacketMode();
 		Nettention.Proud.RmiID __msgid= Common.ShowChat;
 		__msg.Write(__msgid);
-		Nettention.Proud.Marshaler.Write(__msg, a);
-		Nettention.Proud.Marshaler.Write(__msg, b);
-		Nettention.Proud.Marshaler.Write(__msg, c);
+		Test.Write(__msg, a);
+		Test.Write(__msg, b);
+		Test.Write(__msg, c);
 		
 	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
 	__list[0] = remote;
@@ -36,9 +36,9 @@ public bool ShowChat(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiConte
 __msg.SimplePacketMode = core.IsSimplePacketMode();
 Nettention.Proud.RmiID __msgid= Common.ShowChat;
 __msg.Write(__msgid);
-Nettention.Proud.Marshaler.Write(__msg, a);
-Nettention.Proud.Marshaler.Write(__msg, b);
-Nettention.Proud.Marshaler.Write(__msg, c);
+Test.Write(__msg, a);
+Test.Write(__msg, b);
+Test.Write(__msg, c);
 		
 	return RmiSend(remotes,rmiContext,__msg,
 		RmiName_ShowChat, Common.ShowChat);
@@ -49,7 +49,7 @@ public bool SystemChat(Nettention.Proud.HostID remote,Nettention.Proud.RmiContex
 		__msg.SimplePacketMode = core.IsSimplePacketMode();
 		Nettention.Proud.RmiID __msgid= Common.SystemChat;
 		__msg.Write(__msgid);
-		Nettention.Proud.Marshaler.Write(__msg, txt);
+		Test.Write(__msg, txt);
 		
 	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
 	__list[0] = remote;
@@ -64,7 +64,7 @@ public bool SystemChat(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiCon
 __msg.SimplePacketMode = core.IsSimplePacketMode();
 Nettention.Proud.RmiID __msgid= Common.SystemChat;
 __msg.Write(__msgid);
-Nettention.Proud.Marshaler.Write(__msg, txt);
+Test.Write(__msg, txt);
 		
 	return RmiSend(remotes,rmiContext,__msg,
 		RmiName_SystemChat, Common.SystemChat);
@@ -75,9 +75,9 @@ public bool sendUserInfo(Nettention.Proud.HostID remote,Nettention.Proud.RmiCont
 		__msg.SimplePacketMode = core.IsSimplePacketMode();
 		Nettention.Proud.RmiID __msgid= Common.sendUserInfo;
 		__msg.Write(__msgid);
-		Nettention.Proud.Marshaler.Write(__msg, userName);
-		Nettention.Proud.Marshaler.Write(__msg, att);
-		Nettention.Proud.Marshaler.Write(__msg, def);
+		Test.Write(__msg, userName);
+		Test.Write(__msg, att);
+		Test.Write(__msg, def);
 		
 	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
 	__list[0] = remote;
@@ -92,12 +92,38 @@ public bool sendUserInfo(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiC
 __msg.SimplePacketMode = core.IsSimplePacketMode();
 Nettention.Proud.RmiID __msgid= Common.sendUserInfo;
 __msg.Write(__msgid);
-Nettention.Proud.Marshaler.Write(__msg, userName);
-Nettention.Proud.Marshaler.Write(__msg, att);
-Nettention.Proud.Marshaler.Write(__msg, def);
+Test.Write(__msg, userName);
+Test.Write(__msg, att);
+Test.Write(__msg, def);
 		
 	return RmiSend(remotes,rmiContext,__msg,
 		RmiName_sendUserInfo, Common.sendUserInfo);
+}
+public bool sendInventoryData(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.FastArray<items> ivData)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+		__msg.SimplePacketMode = core.IsSimplePacketMode();
+		Nettention.Proud.RmiID __msgid= Common.sendInventoryData;
+		__msg.Write(__msgid);
+		Test.Write(__msg, ivData);
+		
+	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
+	__list[0] = remote;
+		
+	return RmiSend(__list,rmiContext,__msg,
+		RmiName_sendInventoryData, Common.sendInventoryData);
+}
+
+public bool sendInventoryData(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.FastArray<items> ivData)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+__msg.SimplePacketMode = core.IsSimplePacketMode();
+Nettention.Proud.RmiID __msgid= Common.sendInventoryData;
+__msg.Write(__msgid);
+Test.Write(__msg, ivData);
+		
+	return RmiSend(remotes,rmiContext,__msg,
+		RmiName_sendInventoryData, Common.sendInventoryData);
 }
 #if USE_RMI_NAME_STRING
 // RMI name declaration.
@@ -105,6 +131,7 @@ Nettention.Proud.Marshaler.Write(__msg, def);
 const string RmiName_ShowChat="ShowChat";
 const string RmiName_SystemChat="SystemChat";
 const string RmiName_sendUserInfo="sendUserInfo";
+const string RmiName_sendInventoryData="sendInventoryData";
        
 const string RmiName_First = RmiName_ShowChat;
 #else
@@ -113,6 +140,7 @@ const string RmiName_First = RmiName_ShowChat;
 const string RmiName_ShowChat="";
 const string RmiName_SystemChat="";
 const string RmiName_sendUserInfo="";
+const string RmiName_sendInventoryData="";
        
 const string RmiName_First = "";
 #endif

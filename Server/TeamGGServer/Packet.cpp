@@ -3,6 +3,7 @@
 #include "../TeamGGCommon/S2C_proxy.cpp"
 #include "../TeamGGCommon/C2S_common.cpp"
 #include "../TeamGGCommon/S2C_common.cpp"
+S2C::Proxy g_S2CProxy;
 DEFRMI_C2S_Chat(C2SStub)
 {
 	cout << "[Server] chat message received :";
@@ -12,16 +13,29 @@ DEFRMI_C2S_Chat(C2SStub)
 	cout << endl;
 
 	// Echo chatting message which received from server to client.
-	ServerManager *manager;
-	manager = ServerManager::getInstance();
-	manager->getS2CProxy().ShowChat(remote, RmiContext::ReliableSend, a, b + 1, c + 1);
+	//ServerManager *manager;
+	//manager = ServerManager::getInstance();
+	g_S2CProxy.ShowChat(remote, RmiContext::ReliableSend, a, b + 1, c + 1);
 	return true;
 }
 
 DEFRMI_C2S_Login(C2SStub)
 {
 	cout << "[Login Request] id : << " << string(id) << " password : " << string(password) << endl;
+	items test[10];
+	Proud::CFastArray<items> cfasttest;
 
+	for (int i = 0; i < 10; i++)
+	{
+		test[i].itemIdx = i;
+		test[i].itemInherentIdx = i;
+		test[i].itemType = i;
+		cfasttest.Add(test[i]);
+	}
+	//ServerManager *manager;
+	//manager = ServerManager::getInstance();
+	//manager->getS2CProxy()
+	g_S2CProxy.sendInventoryData(remote, RmiContext::ReliableSend, cfasttest);
 	return true;
 }
 ServerManager* ServerManager::S2CInstance = nullptr;
@@ -37,9 +51,9 @@ ServerManager* ServerManager::getInstance()
 	return S2CInstance;
 };
 
-S2C::Proxy ServerManager::getS2CProxy()
+S2C::Proxy& ServerManager::getS2CProxy()
 {
-	return this->m_S2CProxy;
+	return *m_S2CProxy;
 }
 C2SStub ServerManager::getC2SStub()
 {
@@ -62,4 +76,9 @@ void ServerManager::setGroupHostID(HostID setHostID)
 void ServerManager::setLastClientHostID(HostID setLastClientID)
 {
 	this->m_lastClientID = setLastClientID;
+}
+
+void ServerManager::setS2CProxyValue(S2C::Proxy m_proxy)
+{
+	m_S2CProxy = &m_proxy;
 }
