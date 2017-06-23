@@ -7,7 +7,7 @@
  * Copyright ⓒ Sweet Home Alabama. Team 3G, All rights reserved
  */
 
-public class Hp : Stats
+public class Hp : StatsBase
 {
     public override StatsType Type
     {

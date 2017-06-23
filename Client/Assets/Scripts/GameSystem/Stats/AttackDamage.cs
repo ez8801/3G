@@ -7,7 +7,7 @@
  * Copyright ⓒ Sweet Home Alabama. Team 3G, All rights reserved
  */
 
-public class AttackDamage : Stats
+public class AttackDamage : StatsBase
 {
     public override StatsType Type
     {
