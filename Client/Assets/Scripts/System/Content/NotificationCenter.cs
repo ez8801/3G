@@ -137,8 +137,8 @@ public class NotificationCenter : MonoSingleton<NotificationCenter>
                     }
                 }
 
-                if (observers.Count == 0)
-                    m_observers.Remove(message);
+                //if (observers.Count == 0)
+                //    m_observers.Remove(message);
             }
         }
     }
