@@ -14,6 +14,7 @@ public class DataManager : MonoSingleton<DataManager>
     {
         LoadTable(ResourceLoad("Items.json"), ItemTable.Instance);
         LoadTable(ResourceLoad("Config.json"), ConfigTable.Instance);
+        LoadTable(ResourceLoad("String.json"), StringTable.Instance);
     }
 
     public void GenerateBytes()
@@ -23,9 +24,11 @@ public class DataManager : MonoSingleton<DataManager>
 
         serializer.Serialize("Items", ItemTable.Instance);
         serializer.Serialize("Config", ConfigTable.Instance);
+        serializer.Serialize("String", StringTable.Instance);
 
         Validate("Items", new ItemTable());
         Validate("Config", new ConfigTable());
+        Validate("String", new StringTable());
     }
 
     private bool Validate<T>(string tableName, Table<T> table) where T : IIndexer, IDeserializable, new()

@@ -69,4 +69,30 @@ namespace Data
 		}
 	}
 
+	public partial struct String : IDeserializable, ISerializable, IIndexer
+	{
+		public void Deserialize(JSONObject json)
+		{
+			Key = json["Key"].STR;
+			Value = json["Value"].STR;
+		}
+
+		public void Deserialize(Deserializer deserializer)
+		{
+			deserializer.Deserialize(ref Key);
+			deserializer.Deserialize(ref Value);
+		}
+
+		public void Serialize(BinaryWriter binaryWriter)
+		{
+			binaryWriter.Write(Key);
+			binaryWriter.Write(Value);
+		}
+
+		public int GetIndex()
+		{
+			return Key.GetHashCode();
+		}
+	}
+
 }
