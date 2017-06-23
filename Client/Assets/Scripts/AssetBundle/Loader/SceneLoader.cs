@@ -14,13 +14,11 @@ public class SceneLoader : AssetLoader
 {
     private string m_sceneName;
     private bool m_isAdditive;
-    private bool m_isShowLoadingUI;
 
-    public SceneLoader(string sceneName, bool isAdditive, bool isShowLoadingUI)
+    public SceneLoader(string sceneName, bool isAdditive)
     {
         m_sceneName = sceneName;
         m_isAdditive = isAdditive;
-        m_isShowLoadingUI = isShowLoadingUI;
     }
 
     public override bool IsValid()
@@ -40,6 +38,6 @@ public class SceneLoader : AssetLoader
 
     public override IEnumerator Load()
     {
-        yield return SceneManager.Instance.LoadLevelAsync(m_sceneName, m_isAdditive, m_isShowLoadingUI);
+        yield return SceneManager.Instance.LoadLevelAsync(m_sceneName, m_isAdditive);
     }
 }

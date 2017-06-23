@@ -59,7 +59,7 @@ public abstract class AssetLoader
         switch (assetType)
         {
             case AssetType.Scene:
-                loader = new SceneLoader(assetName, false, true);
+                loader = new SceneLoader(assetName, false);
                 break;
 
             case AssetType.None:

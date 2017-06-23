@@ -1,19 +1,25 @@
 ﻿using UnityEngine;
+using GameSystem;
+using System.Collections;
 
 public class Program : MonoBehaviour
 {
     private void Awake()
     {
-        Main();
-        Destroy(gameObject);
+        StartCoroutine(Initialize());
     }
 
-    static void Main()
+    private IEnumerator Initialize()
     {   
-        // @TODO: Initialize
         DataManager.Instance.Initialize();
         UIManager.Instance.Initialize();
 
         DataManager.Instance.LoadAllData();
+
+        SceneManager.Instance.Initialize(SceneType.TitleScene);
+
+        yield return null;
+        
+        Destroy(gameObject);
     }
 }

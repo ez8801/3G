@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class GameScene : GameSystem.Scene
 {
-    
+    public const string LevelName = "Game";
 }
