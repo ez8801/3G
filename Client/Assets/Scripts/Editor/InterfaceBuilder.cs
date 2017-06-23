@@ -39,6 +39,7 @@ public class InterfaceBuilder : EditorWindow
             
             Component[] components = each.GetComponents(typeof(Component));
             List<string> componentNames = new List<string>();
+            componentNames.Add(typeof(GameObject).Name);
             for (int j = 0; j < components.Length; j++)
             {
                 Component component = components[j];
@@ -237,7 +238,7 @@ public class InterfaceBuilder : EditorWindow
                 builder.AppendLine("\tpublic View m_view;");
                 builder.AppendLine();
 
-                builder.AppendLine("[ContextMenu(\"Bind\")]");
+                builder.AppendLine("\t[ContextMenu(\"Bind\")]");
                 builder.AppendLine("\tpublic void Initialize()");
                 builder.AppendLine("\t{");
                 builder.AppendLine("\t\tm_view = new View();");
