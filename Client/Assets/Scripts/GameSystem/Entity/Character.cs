@@ -9,5 +9,13 @@
 
 public class Character : Actor 
 {
-	
+    private Stats m_stats;
+
+    public override Stats Stats
+    {
+        get
+        {
+            return m_stats;
+        }
+    }
 }

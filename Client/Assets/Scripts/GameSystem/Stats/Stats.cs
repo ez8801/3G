@@ -4,15 +4,29 @@
  * Writer : bmw122
  * Date   : 2017-06-22
  * 
- * Copyright ⓒ SHAprojectVer001. DefaultCompany, All rights reserved
+ * Copyright ⓒ Sweet Home Alabama. Team 3G, All rights reserved
  */
 
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
-public class Stats : MonoBehaviour 
+public enum StatsType
 {
+    None,
+    AttackDamage,
+    Armor,
+    Hp,
+}
+
+public abstract class Stats 
+{
+    public virtual StatsType Type
+    {
+        get
+        {
+            return StatsType.None;
+        }
+    }
+
     private float m_value;
     public float Value
     {
@@ -58,12 +72,12 @@ public class Stats : MonoBehaviour
     public float Ratio { get { return Final * 0.01f; } }
     public float Final { private set; get; }
 
-    public Stats(float value, float percent)
+    public void Intialize(float value, float percent)
     {
         Value = value;
         Percent = percent;
     }
-
+    
     public void Calculate()
     {
         Final = m_value * (m_percent * 0.01f + 1);

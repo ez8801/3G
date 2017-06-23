@@ -4,10 +4,10 @@
  * Writer : EZ
  * Date   : 2017-06-22
  * 
- * Copyright ⓒ SHAprojectVer001. DefaultCompany, All rights reserved
+ * Copyright ⓒ Sweet Home Alabama. Team 3G, All rights reserved
  */
 
- public class AccountInfo
+public class AccountInfo
 {
     public long Id;
     public string NickName;
