@@ -52,7 +52,24 @@ public static class TransformEx
         if (go != null)
             go.SetActive(value);
     }
+
+    public static void SetActiveSafely(this Component component, bool value)
+    {
+        if (component != null)
+            component.gameObject.SetActive(value);
+    }
     
+    public static void AttachIdentity(this Transform t, Transform child)
+    {
+        if (t != null)
+        {
+            child.parent = t;
+            child.localPosition = Vector3.zero;
+            child.localRotation = Quaternion.identity;
+            child.localScale = Vector3.one;
+        }
+    }
+
     public static string GetFullPath(this Transform t, Transform root)
     {
         if (t == root)
@@ -78,6 +95,16 @@ public static class TransformEx
             Transform t = mono.transform.Find(path);
             if (t != null)
                 target = t.GetComponent<T>();
+        }
+    }
+
+    public static void Bind(this MonoBehaviour mono, ref GameObject target, string path)
+    {
+        if (target == null)
+        {
+            Transform t = mono.transform.Find(path);
+            if (t != null)
+                target = t.gameObject;
         }
     }
 }
