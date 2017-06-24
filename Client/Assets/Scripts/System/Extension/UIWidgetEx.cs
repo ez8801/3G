@@ -4,13 +4,13 @@
 /// </summary>
 public static class UIWidgetEx
 {
-    public static void SetSafelyText(this UILabel label, string text)
+    public static void SetTextSafely(this UILabel label, string text)
     {
         if (label != null)
             label.text = text;
     }
 
-    public static void SetSafelySprite(this UISprite spr, string spriteName, bool isPixelPerfect)
+    public static void SetSpriteSafely(this UISprite spr, string spriteName, bool isPixelPerfect)
     {
         if (spr != null)
         {
@@ -20,13 +20,13 @@ public static class UIWidgetEx
         }
     }
 
-    public static void SetSafelyValue(this UIProgressBar progress, float value)
+    public static void SetValueSafely(this UIProgressBar progress, float value)
     {
         if (progress != null)
             progress.value = value;
     }
 
-    public static void SetSafelyValue(this UISlider slider, float value)
+    public static void SetValueSafely(this UISlider slider, float value)
     {
         if (slider != null)
             slider.value = value;

@@ -32,8 +32,20 @@ public class UIManager : MonoSingleton<UIManager>
         DontDestroyOnLoad(m_root);
     }
 
+    private T GetCachedUI<T>() where T : UIBase
+    {
+        GameObject root = Root;
+        return Util.FindInChildren<T>(root);
+    }
+
     public T LoadUI<T>(string resourceName) where T : UIBase 
     {
+        T cachedUI = GetCachedUI<T>();
+        if (cachedUI != null)
+        {
+            return cachedUI;
+        }
+
         GameObject prefab = Resources.Load(resourceName) as GameObject;
         GameObject newOne = Instantiate(prefab) as GameObject;
         AttachUI(newOne);
@@ -47,8 +59,12 @@ public class UIManager : MonoSingleton<UIManager>
     {
         if (m_uiPanel != null && go != null)
         {
-            go.transform.parent = m_uiPanel.transform;
-            go.transform.localScale = Vector3.one;
+            Transform child = go.transform;
+            Vector3 prevPosition = child.localPosition;
+            child.parent = m_uiPanel.transform;
+            child.localScale = Vector3.one;
+            child.localRotation = Quaternion.identity;
+            child.localPosition = prevPosition;
         }
     }
 }

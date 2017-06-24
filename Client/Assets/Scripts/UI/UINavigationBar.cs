@@ -42,7 +42,7 @@ public class UINavigationBar : UIBase, IObserver
     {
         base.ReloadData();
 
-        m_view.LblGold.SetSafelyText(MyInfo.Account.Gold.ToString());
+        m_view.LblGold.SetTextSafely(MyInfo.Account.Gold.ToString());
     }
 
     public void HandleNotification(Notification notification)
@@ -53,7 +53,7 @@ public class UINavigationBar : UIBase, IObserver
                 break;
 
             case (int)Notification.UI.OnGoldChanged:
-                m_view.LblGold.SetSafelyText(MyInfo.Account.Gold.ToString());
+                m_view.LblGold.SetTextSafely(MyInfo.Account.Gold.ToString());
                 break;
         }
     }

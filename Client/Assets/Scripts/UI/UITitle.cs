@@ -31,6 +31,6 @@ public class UITitle : UIBase
     {
         base.ReloadData();
         
-        m_view.lblGameVersion.SetSafelyText(GameDefine.VersionString);
+        m_view.lblGameVersion.SetTextSafely(GameDefine.VersionString);
     }
 }

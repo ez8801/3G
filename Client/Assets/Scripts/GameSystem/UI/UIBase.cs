@@ -28,6 +28,6 @@ public abstract class UIBase : MonoBehaviour
 
     public virtual void ReloadData()
     {
-
+        gameObject.SetActiveSafely(true);
     }
 }
