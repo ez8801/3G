@@ -14,17 +14,36 @@ public class UILobby : UIBase
     [System.Serializable]
     public struct View
     {
-        public GameObject BtnChat;
+        public UIEventListener BtnChat;
+        public UIEventListener BtnInventory;
+        public UIEventListener BtnForge;
+        public UIEventListener BtnDungeon;
+        public UIEventListener BtnPvp;
     }
     public View m_view;
 
-    [ContextMenu("Bind")]
     public override void Initialize()
     {
+        Debug.Log(Macros.__PRETTY_FUNCTION__);
+        BindComponents();
+
+        m_view.BtnChat.onClick = OnClickChat;
+        // m_view.BtnInventory.onClick = OnClickInventory;
+        m_view.BtnForge.onClick = OnClickForge;
+        m_view.BtnDungeon.onClick = OnClickDungeon;
+        m_view.BtnPvp.onClick = OnClickPvp;
+    }
+
+    [ContextMenu("Bind")]
+    private void BindComponents()
+    {
+        Debug.Log(Macros.__PRETTY_FUNCTION__);
         m_view = new View();
         this.Bind(ref m_view.BtnChat, "AnchorTopRight/BtnChat");
-
-        UIEventListener.Get(m_view.BtnChat).onClick = OnClickChat;
+        this.Bind(ref m_view.BtnInventory, "ToolBar/AnchorBottomRight/Grid/BtnInventory");
+        this.Bind(ref m_view.BtnForge, "ToolBar/AnchorBottomRight/Grid/BtnForge");
+        this.Bind(ref m_view.BtnDungeon, "ToolBar/AnchorBottomRight/Grid/BtnDungeon");
+        this.Bind(ref m_view.BtnPvp, "ToolBar/AnchorBottomRight/Grid/BtnPvp");
     }
 
     //-------------------------------------------------------------------------
@@ -32,8 +51,35 @@ public class UILobby : UIBase
     //-------------------------------------------------------------------------
     #region UIActions
 
-    private void OnClickChat(GameObject sender)
+    public void OnClickChat(GameObject sender)
     {
+        Debug.Log(Macros.__PRETTY_FUNCTION__);
+
+    }
+
+    public void OnClickInventory(GameObject sender)
+    {
+        Debug.Log(Macros.__PRETTY_FUNCTION__);
+        UIInventory inventoryUI = UIManager.Instance.LoadUI<UIInventory>("Prefabs/UI/InventoryUI");
+        inventoryUI.Initialize();
+        inventoryUI.ReloadData();
+    }
+
+    public void OnClickForge(GameObject sender)
+    {
+        Debug.Log(Macros.__PRETTY_FUNCTION__);
+
+    }
+
+    public void OnClickDungeon(GameObject sender)
+    {
+        Debug.Log(Macros.__PRETTY_FUNCTION__);
+
+    }
+
+    public void OnClickPvp(GameObject sender)
+    {
+        Debug.Log(Macros.__PRETTY_FUNCTION__);
 
     }
 
