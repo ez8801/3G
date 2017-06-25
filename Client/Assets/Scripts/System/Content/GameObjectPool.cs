@@ -10,7 +10,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class GameObjectPool : MonoBehaviour 
+public class GameObjectPool : MonoSingleton<GameObjectPool> 
 {
     // 캐싱된 오브젝트
     private Dictionary<int, List<GameObject>> m_cachedPool = null;
