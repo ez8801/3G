@@ -1,18 +1,30 @@
 ﻿[
   {
-    "Key": "Item.Jewel.Name.1",
+    "Key": "Item.Name.1001",
     "Value": "낡은 보석"
   },
   {
-    "Key": "Item.Ingot.Name.2001",
+    "Key": "Item.Name.2001",
     "Value": "구리 주괴"
   },
   {
-    "Key": "Item.Leather.Name.3001",
+    "Key": "Item.Name.3001",
     "Value": "낡은 가죽"
   },
   {
-    "Key": "Item.BluePrint.Name.10001",
+    "Key": "Item.Name.10001",
     "Value": "낡은 갑옷 레시피"
+  },
+  {
+    "Key": "Monster.Name.1",
+    "Value": "등불지기"
+  },
+  {
+    "Key": "Monster.Name.2",
+    "Value": "슬라임"
+  },
+  {
+    "Key": "Character.Name.1",
+    "Value": "플레이어"
   }
 ]

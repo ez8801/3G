@@ -2,7 +2,7 @@
 		"Id": 1001,
 		"Type": 1,
 		"Rarity": 4,
-		"Name": "Item.Jewel.Name.1",
+		"Name": "Item.Name.1001",
 		"Value": 2,
 		"Stackable": true
 	},
@@ -10,13 +10,13 @@
 		"Id": 2001,
 		"Type": 2,
 		"Rarity": 2,
-		"Name": "Item.Ingot.Name.2001",
+		"Name": "Item.Name.2001",
 		"Value": 24,
 		"Stackable": true
 	},
 	{
 		"Id": 3001,
-		"Name": "Item.Leather.Name.3001",
+		"Name": "Item.Name.3001",
 		"Value": 31,
 		"Stackable": true,
 		"Rarity": 0,
@@ -26,7 +26,7 @@
 		"Id": 10001,
 		"Type": 10,
 		"Rarity": 1,
-		"Name": "Item.BluePrint.Name.10001",
+		"Name": "Item.Name.10001",
 		"Value": 1,
 		"Stackable": false
 	}
