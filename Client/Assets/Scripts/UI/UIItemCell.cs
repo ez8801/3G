@@ -16,7 +16,10 @@ public class UIItemCell : MonoBehaviour
 	{
 		public GameObject Lock;
 		public UITexture TexIcon;
-	}
+        public UILabel LblLevel;
+        public UISprite SprSelect;
+        public UISprite SprNew;
+    }
 	public View m_view;
 
 	[ContextMenu("Bind")]
@@ -25,5 +28,8 @@ public class UIItemCell : MonoBehaviour
 		m_view = new View();
 		this.Bind(ref m_view.Lock, "Lock");
 		this.Bind(ref m_view.TexIcon, "TexIcon");
-	}
+		this.Bind(ref m_view.LblLevel, "LblLevel");
+		this.Bind(ref m_view.SprSelect, "SprSelect");
+		this.Bind(ref m_view.SprNew, "SprNew");
+    }
 }
