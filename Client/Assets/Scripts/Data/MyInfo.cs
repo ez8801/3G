@@ -35,4 +35,13 @@ public class MyInfo
             return Instance.m_accountInfo;
         }
     }
+
+    private Inventory m_inventory = new Inventory();
+    public static Inventory Inventory
+    {
+        get
+        {
+            return Instance.m_inventory;
+        }
+    }
 }
