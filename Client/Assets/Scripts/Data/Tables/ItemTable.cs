@@ -26,6 +26,10 @@ public enum ItemType
     Max
 }
 
+/// <summary>
+/// 아이템 테이블
+/// 이 클래스는 상속할 수 없습니다.
+/// </summary>
 public sealed class ItemTable : ArrayTable<Item>
 {
     private static ItemTable m_instance = null;

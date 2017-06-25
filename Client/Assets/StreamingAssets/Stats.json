@@ -1,0 +1,20 @@
+﻿[
+  {
+    "Id": 1,
+    "Hp": 10,
+    "AttackDamage": 1,
+    "Armor": 1
+  },
+  {
+    "Id": 1001,
+    "Hp": 1,
+    "AttackDamage": 2,
+    "Armor": 1
+  },
+  {
+    "Id": 1002,
+    "Hp": 2,
+    "AttackDamage": 3,
+    "Armor": 1
+  }
+]

@@ -95,4 +95,68 @@ namespace Data
 		}
 	}
 
+	public partial struct Monster : IDeserializable, ISerializable, IIndexer
+	{
+		public void Deserialize(JSONObject json)
+		{
+			Id = json["Id"].I4;
+			Grade = json["Grade"].I4;
+			Name = json["Name"].STR;
+			StatsId = json["StatsId"].I4;
+		}
+
+		public void Deserialize(Deserializer deserializer)
+		{
+			deserializer.Deserialize(ref Id);
+			deserializer.Deserialize(ref Grade);
+			deserializer.Deserialize(ref Name);
+			deserializer.Deserialize(ref StatsId);
+		}
+
+		public void Serialize(BinaryWriter binaryWriter)
+		{
+			binaryWriter.Write(Id);
+			binaryWriter.Write(Grade);
+			binaryWriter.Write(Name);
+			binaryWriter.Write(StatsId);
+		}
+
+		public int GetIndex()
+		{
+			return Id;
+		}
+	}
+
+	public partial struct Stats : IDeserializable, ISerializable, IIndexer
+	{
+		public void Deserialize(JSONObject json)
+		{
+			Id = json["Id"].I4;
+			Hp = json["Hp"].I4;
+			AttackDamage = json["AttackDamage"].I4;
+			Armor = json["Armor"].I4;
+		}
+
+		public void Deserialize(Deserializer deserializer)
+		{
+			deserializer.Deserialize(ref Id);
+			deserializer.Deserialize(ref Hp);
+			deserializer.Deserialize(ref AttackDamage);
+			deserializer.Deserialize(ref Armor);
+		}
+
+		public void Serialize(BinaryWriter binaryWriter)
+		{
+			binaryWriter.Write(Id);
+			binaryWriter.Write(Hp);
+			binaryWriter.Write(AttackDamage);
+			binaryWriter.Write(Armor);
+		}
+
+		public int GetIndex()
+		{
+			return Id;
+		}
+	}
+
 }

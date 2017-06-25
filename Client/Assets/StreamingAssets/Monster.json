@@ -1,0 +1,14 @@
+﻿[
+  {
+    "Id": 1,
+    "Grade": 1,
+    "Name": "Monster.Name.1",
+    "StatsId": 1001
+  },
+  {
+    "Id": 2,
+    "Grade": 2,
+    "Name": "Monster.Name.2",
+    "StatsId": 1002
+  }
+]

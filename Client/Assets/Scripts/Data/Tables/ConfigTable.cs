@@ -13,6 +13,10 @@ namespace Data
     }
 }
 
+/// <summary>
+/// Config테이블
+/// 이 클래스는 상속할 수 없습니다.
+/// </summary>
 public class ConfigTable : ArrayTable<Config>
 {
     private static ConfigTable m_instance = null;
