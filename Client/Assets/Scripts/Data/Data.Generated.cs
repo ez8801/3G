@@ -65,7 +65,7 @@ namespace Data
 
 		public int GetIndex()
 		{
-			return Id;
+			return Key.GetHashCode();
 		}
 	}
 

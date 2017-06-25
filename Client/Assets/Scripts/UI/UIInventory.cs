@@ -76,7 +76,7 @@ public class UIInventory : UIBase
 
     private int NumberOfRowsInGrid()
     {
-        return ConfigTable.Instance.Find(2).Value;
+        return ConfigTable.Instance.GetIntValue("InventoryBasicSlotAmount");
     }
 
     //-------------------------------------------------------------------------
