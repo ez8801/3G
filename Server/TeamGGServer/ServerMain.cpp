@@ -1,5 +1,6 @@
 #include "ServerMain.h"
 //changetest
+//글로벌로 선언된 g_S2CProxy
 extern S2C::Proxy g_S2CProxy;
 ServerMain::ServerMain()
 {
@@ -12,20 +13,24 @@ void ServerMain::Team3GServerMain()
 	// NetServer 클래스 선언하기    
 	shared_ptr<CNetServer> srv(CNetServer::Create());
 
+	//클라이언트가 서버에 접속했을때
 	srv->OnClientJoin = [](CNetClientInfo *clientInfo) 
 	{
 		ServerManager * m_SM = ServerManager::getInstance();
 		printf("Client %d connected.\n", clientInfo->m_HostID);
 		m_SM->setLastClientHostID(clientInfo->m_HostID);
 	};
+	//클라이언트가 서버에서 떠났을때
 	srv->OnClientLeave = [](CNetClientInfo *clientInfo, ErrorInfo *errorInfo, const ByteArray& comment) 
 	{
 		printf("Client %d disconnected.\n", clientInfo->m_HostID);
 	};
+	//에러가 발생했을때
 	srv->OnError = [](ErrorInfo *errorInfo) 
 	{
 		printf("OnError : %s\n", StringT2A(errorInfo->ToString()).GetString());
 	};
+
 	srv->OnWarning = [](ErrorInfo *errorInfo) 
 	{
 		printf("OnWarning : %s\n", StringT2A(errorInfo->ToString()).GetString());
@@ -63,7 +68,7 @@ void ServerMain::Team3GServerMain()
 	}
 
 
-	// 테스트 코드 작성
+	// 실제 서버 내용 시작
 	puts("Team GG's Base Server \n");
 	puts("Ver 0.001\n");
 
@@ -71,9 +76,11 @@ void ServerMain::Team3GServerMain()
 
 	string userInput;
 	HostID whileGroupHostID;
+	//서버 루프
 	while (1)
 	{
 		cin >> userInput;
+		//서버에서 인풋받아서 내용 처리하기
 
 		if (userInput == "1")
 		{
@@ -86,7 +93,7 @@ void ServerMain::Team3GServerMain()
 		else if (userInput == "2")
 		{
 			whileGroupHostID = m_InMain->getGroupHostID();
-			m_S2CProxy.SystemChat(whileGroupHostID, RmiContext::ReliableSend, _PNT("Hello~~~!"));
+			g_S2CProxy.SystemChat(whileGroupHostID, RmiContext::ReliableSend, _PNT("Hello~~~!"));
 		}
 		else if (userInput == "3")
 		{
@@ -101,7 +108,8 @@ void ServerMain::Team3GServerMain()
 			int listCount = srv->GetClientHostIDs(list, 100);
 			for (int i = 0; i < listCount; i++)
 			{
-				m_S2CProxy.sendUserInfo(list[i], RmiContext::UnreliableSend, _PNT("soong"), 10, 10);
+				
+				g_S2CProxy.sendUserInfo(list[i], RmiContext::UnreliableSend, _PNT("soong"), 10, 10);
 			}
 		}
 		if (userInput == "q")
@@ -110,7 +118,6 @@ void ServerMain::Team3GServerMain()
 		}
 
 		// CPU 점유를 100% 차지하지 않게 하기 위함
-		// To prevent 100% occupation rate of CPU
 		Sleep(10);
 	}
 

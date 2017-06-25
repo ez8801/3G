@@ -1,4 +1,10 @@
 #pragma once
+//마샬링을 위한 헤더
+//기존에 ProudNet에 선언된 오퍼레이션 말고
+//사용자 정의 데이터 타입에 대한
+//오퍼레이션 오버로딩을 할 때 사용
+//현재 items struct에 대한 정보만 마샬링중
+//작성자 -- 이승준
 #ifndef __MARSHALER_H_
 #define __MARSHALER_H_
 #include "Common.h"
