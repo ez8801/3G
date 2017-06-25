@@ -18,6 +18,13 @@ public class Notification
         Max
     }
 
+    public enum Entity
+    {
+        None = UI.Max + 1,
+        OnDead,
+        Max,
+    }
+    
     public int id;
     public bool boolExtra;
     public short shortExtra;

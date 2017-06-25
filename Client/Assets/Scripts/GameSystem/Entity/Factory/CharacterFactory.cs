@@ -22,7 +22,7 @@ public static class CharacterFactory
         Assert.IsNotNull(newOne, "CharacterFactory::CreateEntity(string)");
 
         Actor actor = Util.RequireComponent<Actor>(newOne);
-        actor.Initialize(EntityType.Character, guid++);
+        actor.Initialize(EntityType.Character, ++guid);
         return actor;
     }
 }

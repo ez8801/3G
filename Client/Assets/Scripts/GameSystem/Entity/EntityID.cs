@@ -7,15 +7,13 @@
  * Copyright ⓒ Sweet Home Alabama. Team 3G, All rights reserved
  */
 
-using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-
 public enum EntityType
 {
     None,
     Character,
     Monster,
+    Team,
+    Max,
 }
 
 public struct EntityID
