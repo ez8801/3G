@@ -3,6 +3,7 @@
 #include "../TeamGGCommon/S2C_proxy.cpp"
 #include "../TeamGGCommon/C2S_common.cpp"
 #include "../TeamGGCommon/S2C_common.cpp"
+//글로벌로 선언된 g_S2CProxy변수
 S2C::Proxy g_S2CProxy;
 DEFRMI_C2S_Chat(C2SStub)
 {
@@ -51,15 +52,6 @@ ServerManager* ServerManager::getInstance()
 	return S2CInstance;
 };
 
-S2C::Proxy& ServerManager::getS2CProxy()
-{
-	return *m_S2CProxy;
-}
-C2SStub ServerManager::getC2SStub()
-{
-	return this->m_C2SStub;
-}
-
 HostID ServerManager::getGroupHostID()
 {
 	return  this->m_groupHostID;
@@ -78,7 +70,3 @@ void ServerManager::setLastClientHostID(HostID setLastClientID)
 	this->m_lastClientID = setLastClientID;
 }
 
-void ServerManager::setS2CProxyValue(S2C::Proxy m_proxy)
-{
-	m_S2CProxy = &m_proxy;
-}
