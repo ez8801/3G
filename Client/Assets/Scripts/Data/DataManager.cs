@@ -12,8 +12,10 @@ public class DataManager : MonoSingleton<DataManager>
 
     public void LoadAllData()
     {
-        LoadTable(ResourceLoad("Items.json"), ItemTable.Instance);
         LoadTable(ResourceLoad("Config.json"), ConfigTable.Instance);
+        LoadTable(ResourceLoad("Items.json"), ItemTable.Instance);
+        LoadTable(ResourceLoad("Monster"), MonsterTable.Instance);
+        LoadTable(ResourceLoad("Stats"), StatsTable.Instance);
         LoadTable(ResourceLoad("String.json"), StringTable.Instance);
     }
 
@@ -22,12 +24,16 @@ public class DataManager : MonoSingleton<DataManager>
         string resourcesFolderPath = Path.Combine(Application.dataPath, "Resources/Data/");
         Serializer serializer = new Serializer(resourcesFolderPath);
 
-        serializer.Serialize("Items", ItemTable.Instance);
         serializer.Serialize("Config", ConfigTable.Instance);
+        serializer.Serialize("Items", ItemTable.Instance);
+        serializer.Serialize("Monster", MonsterTable.Instance);
+        serializer.Serialize("Stats", StatsTable.Instance);
         serializer.Serialize("String", StringTable.Instance);
 
-        Validate("Items", new ItemTable());
         Validate("Config", new ConfigTable());
+        Validate("Items", new ItemTable());
+        Validate("Monster", new MonsterTable());
+        Validate("Stats", new StatsTable());
         Validate("String", new StringTable());
     }
 
@@ -64,5 +70,10 @@ public class DataManager : MonoSingleton<DataManager>
     private void LoadTable<T>(JSONObject data, Table<T> table) where T : IIndexer, IDeserializable, new()
     {
         m_deserializer.Load(data, table);
+    }
+
+    private void OnDestroy()
+    {
+        m_deserializer = null;
     }
 }
