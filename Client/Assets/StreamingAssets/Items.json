@@ -1,33 +1,50 @@
-﻿[{
-		"Id": 1001,
-		"Type": 1,
-		"Rarity": 4,
-		"Name": "Item.Name.1001",
-		"Value": 2,
-		"Stackable": true
-	},
-	{
+﻿[
+  {
+    "Id": 1001,
+    "Type": 1,
+    "Rarity": 1,
+    "Name": "Item.Name.1001",
+    "Value": 0,
+    "Stackable": true
+  },
+  {
 		"Id": 2001,
 		"Type": 2,
-		"Rarity": 2,
+		"Rarity": 1,
 		"Name": "Item.Name.2001",
-		"Value": 24,
+		"Value": 0,
 		"Stackable": true
 	},
-	{
-		"Id": 3001,
-		"Name": "Item.Name.3001",
-		"Value": 31,
-		"Stackable": true,
-		"Rarity": 0,
-		"Type": 3
-	},
-	{
-		"Id": 10001,
-		"Type": 10,
-		"Rarity": 1,
-		"Name": "Item.Name.10001",
-		"Value": 1,
-		"Stackable": false
-	}
+  {
+    "Id": 10001,
+    "Type": 10,
+    "Rarity": 4,
+    "Name": "Item.Name.10001",
+    "Value": 2,
+    "Stackable": true
+  },
+  {
+    "Id": 20001,
+    "Type": 11,
+    "Rarity": 2,
+    "Name": "Item.Name.20001",
+    "Value": 24,
+    "Stackable": true
+  },
+  {
+    "Id": 30001,
+    "Type": 12,
+    "Rarity": 0,
+    "Name": "Item.Name.30001",
+    "Value": 31,
+    "Stackable": true
+  },
+  {
+    "Id": 100001,
+    "Type": 100,
+    "Rarity": 1,
+    "Name": "Item.Name.100001",
+    "Value": 1,
+    "Stackable": false
+  }
 ]

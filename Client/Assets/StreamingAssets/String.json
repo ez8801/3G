@@ -1,18 +1,22 @@
 ﻿[
   {
     "Key": "Item.Name.1001",
-    "Value": "낡은 보석"
+    "Value": "경험치"
   },
   {
     "Key": "Item.Name.2001",
+    "Value": "골드"
+  },
+  {
+    "Key": "Item.Name.20001",
     "Value": "구리 주괴"
   },
   {
-    "Key": "Item.Name.3001",
+    "Key": "Item.Name.30001",
     "Value": "낡은 가죽"
   },
   {
-    "Key": "Item.Name.10001",
+    "Key": "Item.Name.100001",
     "Value": "낡은 갑옷 레시피"
   },
   {

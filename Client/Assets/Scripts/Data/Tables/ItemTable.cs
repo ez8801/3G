@@ -19,10 +19,12 @@ namespace Data
 public enum ItemType
 {
     None,
-    Jewel,
-    Ingot,
-    Leather,
-    BluePrint = 10,
+    Exp,
+    Gold,
+    Jewel = 10,
+    Ingot = 11,
+    Leather = 12,
+    BluePrint = 100,
     Max
 }
 

@@ -4,7 +4,7 @@
  * Writer : EZ
  * Date   : 2017-06-25
  * 
- * Copyright ⓒ SHAprojectVer001. DefaultCompany, All rights reserved
+ * Copyright ⓒ Sweet Home Alabama. Team 3G, All rights reserved
  */
 
 using System;
