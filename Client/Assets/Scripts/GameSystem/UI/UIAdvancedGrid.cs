@@ -53,19 +53,19 @@ public class UIAdvancedGrid : MonoBehaviour
     private struct ClipInfo
     {
         public Vector3 localPosition;
-        public Vector4 clipRange;
+        public Vector2 clipOffset;
 
-        public ClipInfo(Vector3 v3, Vector4 v4)
+        public ClipInfo(Vector3 v3, Vector2 v4)
         {
             localPosition = v3;
-            clipRange = v4;
+            clipOffset = v4;
         }
     }
 
     //	
-    private ClipInfo originClipInfo = new ClipInfo(Vector3.zero, Vector4.zero);
-    private ClipInfo prevClipInfo = new ClipInfo(Vector3.zero, Vector4.zero);
-    private ClipInfo focusClipInfo = new ClipInfo(Vector3.zero, Vector4.zero);
+    private ClipInfo originClipInfo = new ClipInfo(Vector3.zero, Vector2.zero);
+    private ClipInfo prevClipInfo = new ClipInfo(Vector3.zero, Vector2.zero);
+    private ClipInfo focusClipInfo = new ClipInfo(Vector3.zero, Vector2.zero);
 
     private int firstVisibleItem = -1;
     private int lastVisibleItem = -1;
@@ -102,12 +102,12 @@ public class UIAdvancedGrid : MonoBehaviour
 	void Update()
 	{
 		if (prevClipInfo.localPosition != panel.transform.localPosition 
-            || prevClipInfo.clipRange != panel.finalClipRegion)
+            || prevClipInfo.clipOffset != panel.clipOffset)
 		{
 			Reposition();
 
-            prevClipInfo.localPosition = panel.transform.localPosition;
-            prevClipInfo.clipRange = panel.finalClipRegion;
+            prevClipInfo.localPosition = panel.transform.localPosition;            
+            prevClipInfo.clipOffset = panel.clipOffset;
 		}
 	}
 
@@ -138,10 +138,10 @@ public class UIAdvancedGrid : MonoBehaviour
             return;
         }
 
-        prevClipInfo.clipRange = panel.finalClipRegion;
+        prevClipInfo.clipOffset = panel.clipOffset;
         prevClipInfo.localPosition = panel.transform.localPosition;
 
-        originClipInfo.clipRange = panel.finalClipRegion;
+        originClipInfo.clipOffset = panel.clipOffset;
         originClipInfo.localPosition = panel.transform.localPosition;
 
         m_isDisableDragIfFits = scrollView.disableDragIfFits;
@@ -254,7 +254,7 @@ public class UIAdvancedGrid : MonoBehaviour
         if (p == null)
             return;
 
-        p.baseClipRegion = ci.clipRange;
+        p.clipOffset = ci.clipOffset;
         p.transform.localPosition = ci.localPosition;
     }
 
@@ -274,7 +274,7 @@ public class UIAdvancedGrid : MonoBehaviour
 		if (panel != null)
 		{
             focusClipInfo.localPosition = panel.transform.localPosition;
-            focusClipInfo.clipRange = panel.finalClipRegion;
+            focusClipInfo.clipOffset = panel.clipOffset;
 
             SetClip(panel, originClipInfo);
 		}
@@ -353,13 +353,14 @@ public class UIAdvancedGrid : MonoBehaviour
 		float fHalfCellWidth = cellWidth * 0.5f;
 		float fHalfCellHeight = cellHeight * 0.5f;
 
-        float fHalfClipWidth = panel.finalClipRegion.z * clipFactor;
-		float fMinClipX = panel.finalClipRegion.x - fHalfClipWidth - cachedTransform.localPosition.x;
-		float fMaxClipX = panel.finalClipRegion.x + fHalfClipWidth - cachedTransform.localPosition.x;
+        Vector2 size = panel.GetViewSize();
+        float fHalfClipWidth = size.x * clipFactor;
+		float fMinClipX = panel.clipOffset.x - fHalfClipWidth - cachedTransform.localPosition.x;
+		float fMaxClipX = panel.clipOffset.x + fHalfClipWidth - cachedTransform.localPosition.x;
 
-        float fHalfClipHeight = (panel.finalClipRegion.w + cellHeight) * clipFactor;
-		float fMinClipY = panel.finalClipRegion.y - fHalfClipHeight - cachedTransform.localPosition.y;
-		float fMaxClipY = panel.finalClipRegion.y + fHalfClipHeight - cachedTransform.localPosition.y;
+        float fHalfClipHeight = (size.y + cellHeight) * clipFactor;
+		float fMinClipY = panel.clipOffset.y - fHalfClipHeight - cachedTransform.localPosition.y;
+		float fMaxClipY = panel.clipOffset.y + fHalfClipHeight - cachedTransform.localPosition.y;
 		
 		int nItemCount = Delegate();
 
@@ -449,11 +450,9 @@ public class UIAdvancedGrid : MonoBehaviour
             scrollView.DisableSpring();
 
         Vector2 offset = GetOffset(position);
-        panel.baseClipRegion = new Vector4(
-            originClipInfo.clipRange.x
-            , originClipInfo.clipRange.y - (offset.y * cellHeight)
-            , panel.finalClipRegion.z
-            , panel.finalClipRegion.w);
+        panel.clipOffset = new Vector2(
+            originClipInfo.clipOffset.x
+            , originClipInfo.clipOffset.y - (offset.y * cellHeight));
         panel.transform.SetLocalPositionY(originClipInfo.localPosition.y + (offset.y * cellHeight));
 
         m_isFirstReposition = true;
