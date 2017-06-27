@@ -74,8 +74,24 @@ public class Inventory
     //  ListAdapter
     //-------------------------------------------------------------------------
     #region ListAdapter
-    
 
+    public UserData.Item this[int index]
+    {
+        get
+        {
+            if (index < 0 || index >= m_items.Count)
+                return null;
+            return m_items[index];
+        }
+    }
+    
+    public int Count
+    {
+        get
+        {
+            return m_items.Count;
+        }
+    }
 
     #endregion ListAdapter
 }

@@ -5,7 +5,8 @@
     "Rarity": 1,
     "Name": "Item.Name.1001",
     "Value": 0,
-    "Stackable": true
+    "Stackable": true,
+    "Texture": ""
   },
   {
 		"Id": 2001,
@@ -13,7 +14,8 @@
 		"Rarity": 1,
 		"Name": "Item.Name.2001",
 		"Value": 0,
-		"Stackable": true
+		"Stackable": true,
+    "Texture": ""
 	},
   {
     "Id": 10001,
@@ -21,7 +23,8 @@
     "Rarity": 4,
     "Name": "Item.Name.10001",
     "Value": 2,
-    "Stackable": true
+    "Stackable": true,
+    "Texture": "Textures/Items/Mithril_Ingot"
   },
   {
     "Id": 20001,
@@ -29,7 +32,8 @@
     "Rarity": 2,
     "Name": "Item.Name.20001",
     "Value": 24,
-    "Stackable": true
+    "Stackable": true,
+    "Texture": "Textures/Items/Copper_Ingot"
   },
   {
     "Id": 30001,
@@ -37,7 +41,8 @@
     "Rarity": 0,
     "Name": "Item.Name.30001",
     "Value": 31,
-    "Stackable": true
+    "Stackable": true,
+    "Texture": "Textures/Items/Leather"
   },
   {
     "Id": 100001,
@@ -45,6 +50,7 @@
     "Rarity": 1,
     "Name": "Item.Name.100001",
     "Value": 1,
-    "Stackable": false
+    "Stackable": false,
+    "Texture": ""
   }
 ]
