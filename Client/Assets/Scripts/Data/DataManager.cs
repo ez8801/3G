@@ -14,8 +14,8 @@ public class DataManager : MonoSingleton<DataManager>
     {
         LoadTable(ResourceLoad("Config.json"), ConfigTable.Instance);
         LoadTable(ResourceLoad("Items.json"), ItemTable.Instance);
-        LoadTable(ResourceLoad("Monster"), MonsterTable.Instance);
-        LoadTable(ResourceLoad("Stats"), StatsTable.Instance);
+        LoadTable(ResourceLoad("Monster.json"), MonsterTable.Instance);
+        LoadTable(ResourceLoad("Stats.json"), StatsTable.Instance);
         LoadTable(ResourceLoad("String.json"), StringTable.Instance);
     }
 
