@@ -1,5 +1,4 @@
-﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppClean.targets(76,5): warning : 'c:\users\soongsae\desktop\teamgg\3g\server\teamggserver\debug\teamggserver.pdb' 파일은 다른 프로세스에서 사용 중이므로 프로세스에서 액세스할 수 없습니다.
-  User.cpp
+﻿  User.cpp
   Packet.cpp
   ServerMain.cpp
   main.cpp
