@@ -12,9 +12,11 @@ public class DataManager : MonoSingleton<DataManager>
 
     public void LoadAllData()
     {
+        LoadTable(ResourceLoad("Character.json"), CharacterTable.Instance);
         LoadTable(ResourceLoad("Config.json"), ConfigTable.Instance);
-        LoadTable(ResourceLoad("Items.json"), ItemTable.Instance);
+        LoadTable(ResourceLoad("Item.json"), ItemTable.Instance);
         LoadTable(ResourceLoad("Monster.json"), MonsterTable.Instance);
+        LoadTable(ResourceLoad("Prefab.json"), PrefabTable.Instance);
         LoadTable(ResourceLoad("Stats.json"), StatsTable.Instance);
         LoadTable(ResourceLoad("String.json"), StringTable.Instance);
     }
@@ -24,15 +26,19 @@ public class DataManager : MonoSingleton<DataManager>
         string resourcesFolderPath = Path.Combine(Application.dataPath, "Resources/Data/");
         Serializer serializer = new Serializer(resourcesFolderPath);
 
+        serializer.Serialize("Character", CharacterTable.Instance);
         serializer.Serialize("Config", ConfigTable.Instance);
-        serializer.Serialize("Items", ItemTable.Instance);
+        serializer.Serialize("Item", ItemTable.Instance);
         serializer.Serialize("Monster", MonsterTable.Instance);
+        serializer.Serialize("Prefab", PrefabTable.Instance);
         serializer.Serialize("Stats", StatsTable.Instance);
         serializer.Serialize("String", StringTable.Instance);
 
+        Validate("Character", new CharacterTable());
         Validate("Config", new ConfigTable());
-        Validate("Items", new ItemTable());
+        Validate("Item", new ItemTable());
         Validate("Monster", new MonsterTable());
+        Validate("Prefab", new PrefabTable());
         Validate("Stats", new StatsTable());
         Validate("String", new StringTable());
     }

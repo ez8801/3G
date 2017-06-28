@@ -1,0 +1,14 @@
+﻿[
+  {
+    "Id": 1,
+    "PrefabName": "Prefabs/Character/Player"
+  },
+  {
+    "Id": 1001,
+    "PrefabName": "Prefabs/Monster/Monster1"
+  },
+  {
+    "Id": 1002,
+    "PrefabName": "Prefabs/Monster/Monster2"
+  }
+]

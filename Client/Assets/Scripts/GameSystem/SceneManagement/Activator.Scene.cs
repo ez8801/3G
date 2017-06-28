@@ -13,6 +13,9 @@ namespace GameSystem
                 case SceneType.TitleScene:
                     instance = new TitleScene();
                     break;
+                case SceneType.GameScene:
+                    instance = new GameScene();
+                    break;
             }
             return (instance != null);
         }

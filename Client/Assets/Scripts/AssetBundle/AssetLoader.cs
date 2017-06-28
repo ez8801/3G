@@ -45,12 +45,18 @@ public abstract class AssetLoader
         AddLoadingRequest(loader);
     }
 
+    public static void AddLevelLoadingRequest(string levelName, bool isAdditive)
+    {
+        AssetLoader loader = new SceneLoader(levelName, isAdditive);
+        AddLoadingRequest(loader);
+    }
+
     public static void AddLoadingRequest(AssetLoader loader)
     {
         TotalItemCount++;
         m_queue.Add(loader);
     }
-
+    
     public static AssetLoader CreateAssetLoader(AssetType assetType
         , AssetCategory categoryType
         , string assetName)

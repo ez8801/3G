@@ -24,6 +24,15 @@ public class Notification
         OnDead,
         Max,
     }
+
+    public enum GameSystem
+    {
+        None = Entity.Max + 1,
+        Win,
+        Lose,
+        Draw,
+        Max,
+    }
     
     public int id;
     public bool boolExtra;

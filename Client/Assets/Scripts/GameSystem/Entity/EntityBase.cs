@@ -25,21 +25,85 @@ public abstract class EntityBase : MonoBehaviour
     }
     Transform m_cachedTransform;
 
-    protected EntityID m_guid;
+    protected EntityID m_entityID;
+    protected EntityID m_groupId;
 
-    public long GUID
+    public long EntityID
     {
         get
         {
-            return m_guid.Id;
+            return m_entityID.UID;
         }
     }
 
-    public void Initialize(EntityType entityType, long guid)
+    public long GroupId
     {
-        m_guid = new EntityID(entityType, guid);
+        get
+        {
+            return m_groupId.UID;
+        }
     }
 
+    public virtual void Initialize(EntityType entityType, int entityId)
+    {
+        SetEntityId(entityType, entityId);
+    }
+
+    public void SetEntityId(EntityType entityType, int entityId)
+    {
+        m_entityID = new EntityID(entityType, entityId);
+    }
+    
+    public void SetGroupId(int groupId)
+    {
+        m_groupId = new EntityID(EntityType.Team, groupId);
+    }
+
+    public static EntityBase Find(long id)
+    {
+        for (int i = 0; i < entities.Count; i++)
+        {
+            EntityBase match = entities[i];
+            if (match.EntityID == id)
+                return match;
+        }
+        return null;
+    }
+
+    /// <summary>
+    /// 지정된 Entity와 가장 가까운 Entity를 반환합니다.
+    /// </summary>
+    public static EntityBase FindNearestTarget(EntityBase source)
+    {
+        float minDist = 9999;
+        int indexOfNearest = -1;
+
+        for (int i = 0; i < entities.Count; i++)
+        {
+            EntityBase match = entities[i];
+            if (match.EntityID == source.EntityID)
+                continue;
+
+            if (match.GroupId == source.GroupId)
+                continue;
+            
+            float distance = Vector3.Distance(match.CachedTransform.position, source.CachedTransform.position);
+            if (distance < minDist)
+            {
+                minDist = distance;
+                indexOfNearest = i;
+            }
+        }
+
+        if (indexOfNearest >= 0 && indexOfNearest < entities.Count)
+        {
+            return entities[indexOfNearest];
+        }
+
+        // Not found entity
+        return null;
+    }
+    
     //-------------------------------------------------------------------------
     //  MonoBehaviour Life Cycle
     //-------------------------------------------------------------------------
@@ -50,7 +114,7 @@ public abstract class EntityBase : MonoBehaviour
         bool isContains = false;
         for (int i = 0; i < entities.Count; i++)
         {
-            if (entities[i].GUID == GUID)
+            if (entities[i].EntityID == EntityID)
             {
                 isContains = true;
                 break;

@@ -12,6 +12,7 @@ namespace Data
 			Name = json["Name"].STR;
 			Value = json["Value"].I4;
 			Stackable = json["Stackable"].B;
+			Texture = json["Texture"].STR;
 		}
 
 		public void Deserialize(Deserializer deserializer)
@@ -22,6 +23,7 @@ namespace Data
 			deserializer.Deserialize(ref Name);
 			deserializer.Deserialize(ref Value);
 			deserializer.Deserialize(ref Stackable);
+			deserializer.Deserialize(ref Texture);
 		}
 
 		public void Serialize(BinaryWriter binaryWriter)
@@ -32,6 +34,7 @@ namespace Data
 			binaryWriter.Write(Name);
 			binaryWriter.Write(Value);
 			binaryWriter.Write(Stackable);
+			binaryWriter.Write(Texture);
 		}
 
 		public int GetIndex()
@@ -103,6 +106,7 @@ namespace Data
 			Grade = json["Grade"].I4;
 			Name = json["Name"].STR;
 			StatsId = json["StatsId"].I4;
+			PrefabId = json["PrefabId"].I4;
 		}
 
 		public void Deserialize(Deserializer deserializer)
@@ -111,6 +115,7 @@ namespace Data
 			deserializer.Deserialize(ref Grade);
 			deserializer.Deserialize(ref Name);
 			deserializer.Deserialize(ref StatsId);
+			deserializer.Deserialize(ref PrefabId);
 		}
 
 		public void Serialize(BinaryWriter binaryWriter)
@@ -119,6 +124,7 @@ namespace Data
 			binaryWriter.Write(Grade);
 			binaryWriter.Write(Name);
 			binaryWriter.Write(StatsId);
+			binaryWriter.Write(PrefabId);
 		}
 
 		public int GetIndex()
@@ -151,6 +157,64 @@ namespace Data
 			binaryWriter.Write(Hp);
 			binaryWriter.Write(AttackDamage);
 			binaryWriter.Write(Armor);
+		}
+
+		public int GetIndex()
+		{
+			return Id;
+		}
+	}
+
+	public partial struct Character : IDeserializable, ISerializable, IIndexer
+	{
+		public void Deserialize(JSONObject json)
+		{
+			Id = json["Id"].I4;
+			Name = json["Name"].STR;
+			StatsId = json["StatsId"].I4;
+			PrefabId = json["PrefabId"].I4;
+		}
+
+		public void Deserialize(Deserializer deserializer)
+		{
+			deserializer.Deserialize(ref Id);
+			deserializer.Deserialize(ref Name);
+			deserializer.Deserialize(ref StatsId);
+			deserializer.Deserialize(ref PrefabId);
+		}
+
+		public void Serialize(BinaryWriter binaryWriter)
+		{
+			binaryWriter.Write(Id);
+			binaryWriter.Write(Name);
+			binaryWriter.Write(StatsId);
+			binaryWriter.Write(PrefabId);
+		}
+
+		public int GetIndex()
+		{
+			return Id;
+		}
+	}
+
+	public partial struct Prefab : IDeserializable, ISerializable, IIndexer
+	{
+		public void Deserialize(JSONObject json)
+		{
+			Id = json["Id"].I4;
+			PrefabName = json["PrefabName"].STR;
+		}
+
+		public void Deserialize(Deserializer deserializer)
+		{
+			deserializer.Deserialize(ref Id);
+			deserializer.Deserialize(ref PrefabName);
+		}
+
+		public void Serialize(BinaryWriter binaryWriter)
+		{
+			binaryWriter.Write(Id);
+			binaryWriter.Write(PrefabName);
 		}
 
 		public int GetIndex()

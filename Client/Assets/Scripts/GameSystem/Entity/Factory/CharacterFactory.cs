@@ -11,7 +11,7 @@ using UnityEngine;
 
 public static class CharacterFactory 
 {
-    public static long guid = 0;
+    public static int uid = 0;
 
 	public static EntityBase CreateEntity(string name)
     {
@@ -22,7 +22,7 @@ public static class CharacterFactory
         Assert.IsNotNull(newOne, "CharacterFactory::CreateEntity(string)");
 
         Actor actor = Util.RequireComponent<Actor>(newOne);
-        actor.Initialize(EntityType.Character, ++guid);
+        ++uid;
         return actor;
     }
 }

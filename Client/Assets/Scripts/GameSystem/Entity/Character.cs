@@ -7,15 +7,42 @@
  * Copyright ⓒ Sweet Home Alabama. Team 3G, All rights reserved
  */
 
+using UnityEngine;
+
 public class Character : Actor 
 {
-    private Stats m_stats;
+    private Data.Character m_characterData;
+    private Data.Stats m_statsData;
 
+    private Stats m_stats;
     public override Stats Stats
     {
         get
         {
             return m_stats;
         }
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        Camera mainCamera = Camera.main;
+        CharacterFollow follower 
+            =  Util.RequireComponent<CharacterFollow>(mainCamera.gameObject);
+
+        follower.target = transform;
+    }
+    
+    public override void Initialize(EntityType entityType, int entityId)
+    {
+        base.Initialize(entityType, entityId);
+        m_characterData = CharacterTable.Instance.Find(entityId);
+        m_statsData = StatsTable.Instance.Find(m_characterData.StatsId);
+
+        m_stats = new Stats();
+        m_stats.Initialize(m_statsData);
+
+        CurrentHp = m_stats.Hp;
     }
 }

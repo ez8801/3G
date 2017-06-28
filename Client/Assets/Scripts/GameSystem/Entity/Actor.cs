@@ -1,19 +1,49 @@
-﻿
-public class Actor : MovingEntity
+﻿using UnityEngine;
+
+public class Actor : EntityBase
 {
     private StateMachine m_stateMachine;
 
     public virtual Stats Stats { get { return null; } }
 
+    protected int m_level;
+    public int Level
+    {
+        get
+        {
+            return m_level;
+        }
+    }
+
     protected float m_currentHp;
     public float CurrentHp
     {
+        set
+        {
+            int maxHp = (Stats != null) ? Stats.Hp : 0;
+            m_currentHp = (value > maxHp) ? maxHp : value;
+        }
         get
         {
             return m_currentHp;
         }
     }
 
+    public float HpRatio
+    {
+        get
+        {
+            if (CurrentHp > 0f && Stats != null && Stats.Hp > 0)
+            {
+                return CurrentHp / Stats.Hp;
+            }
+            return 0f;
+        }
+    }
+
+    /// <summary>
+    /// 생존 여부
+    /// </summary>
     public bool IsAlive
     {
         get
@@ -22,11 +52,145 @@ public class Actor : MovingEntity
         }
     }
 
-    private Team m_team = null;
+    /// <summary>
+    /// 무적 여부
+    /// </summary>
+    public bool IsInvincible { get; set; }
+    
+    public Actor Target { private set; get; }
 
-    public void JoinTo(Team team)
+    public Transform Head;
+    public Transform Pelvis;
+    public Vector3 Forward;
+    
+    public bool HasTarget()
     {
-        m_team = team;
-        m_team.AddMember(this);
+        return Target != null;
+    }
+
+    public void SetTarget(Actor target)
+    {
+        Target = target;
+    }
+
+    public void LookAt(Actor target)
+    {
+        if (CachedTransform.position.x < target.CachedTransform.position.x)
+        {
+            Forward = new Vector3(1f, 0f, 0f);
+        }
+        else if (CachedTransform.position.x > target.CachedTransform.position.x)
+        {
+            Forward = new Vector3(-1f, 0f, 0f);
+        }
+        else
+        {
+            Forward = new Vector3(1f, 0f, 0f);
+        }
+    }
+
+    public bool FindNearestTarget()
+    {
+        Actor target = (Actor) FindNearestTarget(this);
+        if (target != null && target.IsAlive)
+        {
+            SetTarget(target);
+            return true;
+        }
+
+        SetTarget(null);
+        return false;
+    }
+
+    public Team GetTeam()
+    {
+        return Team.GetTeam(m_groupId.Id);
+    }
+
+    public bool ApplyDamage(float damage)
+    {
+        m_currentHp -= damage;
+        return (m_currentHp < 0);
+    }
+
+    /// <summary>
+    /// 충돌 판정
+    /// </summary>
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        // Debug.Log(Log.__PRETTY_FUNCTION__);
+
+        Actor attacker = other.gameObject.GetComponent<Actor>();
+        //AttackObject attackObject = null;
+        //if (attacker == null)
+        //{
+        //    attackObject = other.gameObject.GetComponent<AttackObject>();
+        //    if (attackObject == null)
+        //        return;
+
+        //    attacker = attackObject.unit;
+        //    attackObject.OnHit(gameObject);
+        //}
+
+        // 출동된 객체와 다른 팀일 경우
+        if (attacker != null && GroupId != attacker.GroupId)
+        {
+            float prevRatio = this.HpRatio;
+
+            float damage = (attacker.Stats.AttackDamage - Stats.Armor) * Random.Range(0.9f, 1.1f);
+            int damageAmount = Mathf.FloorToInt(damage);
+            if (damageAmount < 0)
+                damageAmount = 0;
+
+            if (damageAmount > 0)
+            {
+                // VFXManager.Instance.PlayVFX("Prefab/VFX/Hit", head.position, Quaternion.identity);
+            }
+
+            bool isDead = ApplyDamage(damageAmount);
+            if (isDead)
+            {
+                // 최고 레벨이 아닐 경우에만 경험치 부여
+                if (!ConfigTable.Instance.IsMaxLevel(attacker.Level))
+                {
+                    //int neededXp = GetNeededXp(this.level);
+                    //if (neededXp > 0)
+                    //{
+                    //    int levelGap = this.level - attacker.level;
+                    //    float factor = Mathf.Clamp(levelGap * 0.07f, -0.2f, float.MaxValue);
+                    //    neededXp = Mathf.FloorToInt(neededXp * (1 + factor) * 0.5f);
+
+                    //    DamageFontManager.Instance.AddXpData(attacker, neededXp);
+                    //    attacker.GainXp(neededXp);
+                    //}
+                }
+            }
+            else
+            {
+                // this.Transition(damagedState);
+            }
+
+            // DamageFontManager.Instance.AddDamageData(attacker, this, damageAmount);
+
+            float gapRatio = Mathf.Clamp(HpRatio - prevRatio, 1f, 5f);
+            Vector3 opposite = attacker.Forward;
+            opposite.x *= -gapRatio;
+            opposite.y = 5f * 0.5f;
+
+            // if (attackObject == null)
+                attacker.GetComponent<Rigidbody2D>().AddForce(opposite, ForceMode2D.Impulse);
+
+            SoundManager.Instance.PlaySound(1);
+        }
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        if (Target != null)
+        {
+            CachedTransform.position += Forward * Time.deltaTime;
+        }
     }
 }
