@@ -41,19 +41,9 @@ public class GameScene : GameSystem.Scene, IObserver
             yield return each.AsyncSpwan();
 
             EntityBase spwanedEntity = each.GetLastSpawnedEntity();
+            spwanedEntity.Initialize();
 
             // @TODO: This code is temporary, It must be upgrade
-            switch (each.Group)
-            {
-                case Team.kRedTeamId:
-                    spwanedEntity.SetEntityId(EntityType.Character, CharacterFactory.uid);
-                    break;
-
-                case Team.kBlueTeamId:
-                    spwanedEntity.SetEntityId(EntityType.Monster, CharacterFactory.uid);
-                    break;
-            }
-            
             Team team = Team.GetTeam(each.Group);
             team.AddMember((Actor)spwanedEntity);
         }

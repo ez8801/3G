@@ -3,6 +3,13 @@
 public class Actor : EntityBase
 {
     private StateMachine m_stateMachine;
+    public StateMachine StateMachine
+    {
+        get
+        {
+            return m_stateMachine;
+        }
+    }
 
     public virtual Stats Stats { get { return null; } }
 
@@ -56,13 +63,25 @@ public class Actor : EntityBase
     /// 무적 여부
     /// </summary>
     public bool IsInvincible { get; set; }
-    
-    public Actor Target { private set; get; }
+
+    [SerializeField]
+    public Actor Target; // { private set; get; }
 
     public Transform Head;
     public Transform Pelvis;
+    public Rigidbody2D CachedRigidbody2D;
     public Vector3 Forward;
-    
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        m_stateMachine = new StateMachine(this);
+        m_stateMachine.Transition(StateType.Idle);
+
+        CachedRigidbody2D = GetComponent<Rigidbody2D>();
+    }
+
     public bool HasTarget()
     {
         return Target != null;
@@ -91,10 +110,11 @@ public class Actor : EntityBase
 
     public bool FindNearestTarget()
     {
-        Actor target = (Actor) FindNearestTarget(this);
-        if (target != null && target.IsAlive)
+        Actor target = FindNearestTarget(this) as Actor;
+        if (target != null)
         {
             SetTarget(target);
+            LookAt(target);
             return true;
         }
 
@@ -113,14 +133,22 @@ public class Actor : EntityBase
         return (m_currentHp < 0);
     }
 
+    protected override void Update()
+    {
+        base.Update();
+        if (m_stateMachine != null)
+            m_stateMachine.PerformUpdate();
+    }
+
     /// <summary>
     /// 충돌 판정
     /// </summary>
     private void OnCollisionEnter2D(Collision2D other)
     {
-        // Debug.Log(Log.__PRETTY_FUNCTION__);
-
         Actor attacker = other.gameObject.GetComponent<Actor>();
+        if (attacker != null)
+            Debug.Log(Macros.__PRETTY_FUNCTION__ + ": " + attacker.name);
+
         //AttackObject attackObject = null;
         //if (attacker == null)
         //{
@@ -135,16 +163,16 @@ public class Actor : EntityBase
         // 출동된 객체와 다른 팀일 경우
         if (attacker != null && GroupId != attacker.GroupId)
         {
-            float prevRatio = this.HpRatio;
+            float prevRatio = HpRatio;
 
             float damage = (attacker.Stats.AttackDamage - Stats.Armor) * Random.Range(0.9f, 1.1f);
             int damageAmount = Mathf.FloorToInt(damage);
             if (damageAmount < 0)
                 damageAmount = 0;
-
-            if (damageAmount > 0)
+            
+            // if (damageAmount > 0)
             {
-                // VFXManager.Instance.PlayVFX("Prefab/VFX/Hit", head.position, Quaternion.identity);
+                VFXManager.Instance.PlayVFX("Prefabs/VFX/Hit", Head.position, Quaternion.identity);
             }
 
             bool isDead = ApplyDamage(damageAmount);
@@ -167,30 +195,20 @@ public class Actor : EntityBase
             }
             else
             {
-                // this.Transition(damagedState);
+                m_stateMachine.Transition(StateType.Damaged);
             }
 
             // DamageFontManager.Instance.AddDamageData(attacker, this, damageAmount);
 
-            float gapRatio = Mathf.Clamp(HpRatio - prevRatio, 1f, 5f);
+            float gapRatio = Mathf.Clamp(HpRatio - prevRatio, 1f, 10f);
             Vector3 opposite = attacker.Forward;
             opposite.x *= -gapRatio;
-            opposite.y = 5f * 0.5f;
+            opposite.y = 10f * 0.5f;
 
             // if (attackObject == null)
                 attacker.GetComponent<Rigidbody2D>().AddForce(opposite, ForceMode2D.Impulse);
 
             SoundManager.Instance.PlaySound(1);
-        }
-    }
-
-    protected override void Update()
-    {
-        base.Update();
-
-        if (Target != null)
-        {
-            CachedTransform.position += Forward * Time.deltaTime;
         }
     }
 }

@@ -34,10 +34,10 @@ public class Character : Actor
         follower.target = transform;
     }
     
-    public override void Initialize(EntityType entityType, int entityId)
+    public override void Initialize()
     {
-        base.Initialize(entityType, entityId);
-        m_characterData = CharacterTable.Instance.Find(entityId);
+        base.Initialize();
+        m_characterData = CharacterTable.Instance.Find(m_entityID.Id);
         m_statsData = StatsTable.Instance.Find(m_characterData.StatsId);
 
         m_stats = new Stats();
@@ -45,4 +45,6 @@ public class Character : Actor
 
         CurrentHp = m_stats.Hp;
     }
+
+
 }

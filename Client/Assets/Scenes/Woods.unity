@@ -5193,7 +5193,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1195179167}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10, y: 2, z: 0}
+  m_LocalPosition: {x: 11, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 785718807}
@@ -5212,11 +5212,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 1002
   Group: 2
-  DelayTime: 1
+  DelayTime: 0.2
   RandomRangeMin: -0.1
   RandomRangeMax: 0.1
   IsLoop: 0
-  LoopCount: 1
   SpawnPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1210331425
 GameObject:
@@ -5355,11 +5354,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 1
   Group: 1
-  DelayTime: 0.2
+  DelayTime: 0
   RandomRangeMin: 0
   RandomRangeMax: 0
   IsLoop: 0
-  LoopCount: 1
   SpawnPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1210693657
 GameObject:
@@ -7553,11 +7551,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 1001
   Group: 2
-  DelayTime: 0.2
+  DelayTime: 0
   RandomRangeMin: 0
   RandomRangeMax: 0
   IsLoop: 0
-  LoopCount: 5
   SpawnPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1752683524
 GameObject:

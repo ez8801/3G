@@ -18,7 +18,7 @@ public class RespawnPoint : MonoBehaviour
     public float RandomRangeMin = -0.1f;
     public float RandomRangeMax = 0.1f;
     public bool IsLoop;
-    public int LoopCount;
+    // public int LoopCount;
     private int m_spwanCount;
     public Vector3 SpawnPosition;
 
@@ -32,7 +32,6 @@ public class RespawnPoint : MonoBehaviour
     public IEnumerator AsyncSpwan()
     {
         yield return Spawn(DelayTime);
-        OnSpwan();
     }
 
     private void InternalPerformSpawn(float delayTime)
@@ -42,7 +41,7 @@ public class RespawnPoint : MonoBehaviour
 
     private IEnumerator Spawn(float delayTime)
     {
-        for (int i = 0; i < LoopCount; i++)
+        // for (int i = 0; i < LoopCount; i++)
         {
             yield return new WaitForSecondsRealtime(delayTime);
             OnSpwan();
@@ -81,7 +80,7 @@ public class RespawnPoint : MonoBehaviour
     {
         if (IsLoop && Id == entityId)
         {
-            if (LoopCount > m_spwanCount)
+            // if (LoopCount > m_spwanCount)
             {
                 InternalPerformSpawn(DelayTime);
             }

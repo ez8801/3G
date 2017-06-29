@@ -59,6 +59,11 @@ public abstract class EntityBase : MonoBehaviour
         m_groupId = new EntityID(EntityType.Team, groupId);
     }
 
+    public virtual void Initialize()
+    {
+
+    }
+
     public static EntityBase Find(long id)
     {
         for (int i = 0; i < entities.Count; i++)
@@ -84,7 +89,7 @@ public abstract class EntityBase : MonoBehaviour
             if (match.EntityID == source.EntityID)
                 continue;
 
-            if (match.GroupId == source.GroupId)
+            if (match.GroupId == 0 || match.GroupId == source.GroupId)
                 continue;
             
             float distance = Vector3.Distance(match.CachedTransform.position, source.CachedTransform.position);

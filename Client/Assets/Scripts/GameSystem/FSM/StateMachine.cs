@@ -12,8 +12,14 @@ using System.Collections.Generic;
 public class StateMachine
 {
     public Stack<StateBase> m_stack = new Stack<StateBase>();
+    public Actor Owner { private set; get; }
 
     private StateBase m_currState = null;
+
+    public StateMachine(Actor owner)
+    {
+        Owner = owner;
+    }
 
     private StateBase GetCachedState(StateType stateType)
     {
@@ -51,6 +57,9 @@ public class StateMachine
                     state = new Dead();
                     break;
             }
+
+            if (state != null)
+                state.Initialize(Owner);
         }
 
         return state;
@@ -94,7 +103,7 @@ public class StateMachine
     /// </summary>
     public void Transition(StateType stateType)
     {
-        StateBase top = m_stack.Peek();
+        StateBase top = (m_stack.Count > 0) ? m_stack.Peek() : null;
         if (top == null || top.AllowTransitionTo(stateType))
         {
             StateBase stateBase = CreateState(stateType);

@@ -21,10 +21,10 @@ public class Monster : Actor
         }
     }
 
-    public override void Initialize(EntityType entityType, int entityId)
+    public override void Initialize()
     {
-        base.Initialize(entityType, entityId);
-        m_monsterData = MonsterTable.Instance.Find(entityId);
+        base.Initialize();
+        m_monsterData = MonsterTable.Instance.Find(m_entityID.Id);
         m_statsData = StatsTable.Instance.Find(m_monsterData.StatsId);
 
         m_stats = new Stats();

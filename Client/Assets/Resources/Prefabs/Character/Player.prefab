@@ -1560,7 +1560,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4019546aaa54f6e439d566f12f4a963e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Head: {fileID: 0}
+  Target: {fileID: 0}
+  Head: {fileID: 4260043708541888}
   Pelvis: {fileID: 0}
   Forward: {x: 0, y: 0, z: 0}
 --- !u!114 &114401651418868706
@@ -1664,7 +1665,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 0, g: 0.49264705, b: 0.06455381, a: 1}
-  m_Length: 0.13736932
+  m_Length: 0.13736929
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4100432349329768}
   m_AttachedIK: {fileID: 0}
@@ -1756,7 +1757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 0.20153469, g: 0.04573962, b: 0.6911765, a: 1}
-  m_Length: 0.09923699
+  m_Length: 0.09923698
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4367322417966142}
   m_AttachedIK: {fileID: 114109307238460070}
