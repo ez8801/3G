@@ -28,6 +28,8 @@ private:
 	HostID m_groupHostID;
 	HostID m_lastClientID ;
 	ServerManager();
+
+
 public:
 	////////GET FUNC/////////
 	S2C::Proxy& getS2CProxy();
@@ -35,6 +37,7 @@ public:
 	HostID getGroupHostID();
 	HostID getLastClientID();
 
+	
 
 	///////SET FUNC//////////
 	void setGroupHostID(Proud::HostID setHostID);
@@ -43,6 +46,7 @@ public:
 	void setS2CProxyValue(S2C::Proxy m_proxy);
 
 	static ServerManager *getInstance();
+
 
 };
 

@@ -36,6 +36,39 @@ DEFRMI_C2S_Login(C2SStub)
 	//ServerManager *manager;
 	//manager = ServerManager::getInstance();
 	//manager->getS2CProxy()
+	CAdoConnection conn;
+	CAdoRecordset rec;
+	try
+	{
+		conn.Open(L"Driver={MySQL ODBC 5.1 Driver};Server=127.0.0.1;UID=soongsae;PWD=soongsae9016!;DB=team3g-db;Port=3306", DbmsType::MySql);
+
+		//conn.Open(L"Driver={MySQL ODBC 5.1 Driver};server = 127.0.0.1; port = 3306; Database = friend;User ID = soongsae; Password = soongsae9016!; ");
+
+		wprintf(L"DB Connect Succeed!!\n");
+		if (!rec.IsOpened())
+		{
+			// 리턴받은  recordset 객체를 먼저 열어야 접근가능
+			// Has to open recordset object to access it
+			rec.Open(conn, OpenForRead, String::NewFormat(L"select * from UserAccount where id = '%s' and password= '%s'", id, password));
+			if (rec.IsEOF() == true)
+			{
+				//아이디 비번이 없다.
+				wprintf(L"don't have record set \n");
+			}
+			else
+			{
+				//로그인 성공 데이터를 불러온다.
+				wprintf(L"login success\n");
+			}
+		}
+
+
+	}
+	catch (AdoException &e)
+	{
+		wprintf(L"DB Exception : %s\n", StringA2W(e.what()).GetString());
+	}
+	
 	g_S2CProxy.sendInventoryData(remote, RmiContext::ReliableSend, cfasttest);
 	return true;
 }
@@ -70,3 +103,44 @@ void ServerManager::setLastClientHostID(HostID setLastClientID)
 	this->m_lastClientID = setLastClientID;
 }
 
+///////////////////////////
+// ADODB 사용 예      /////
+/*
+CAdoConnection conn;
+CAdoRecordset rec;
+try
+{
+	conn.Open(L"Driver={MySQL ODBC 5.1 Driver};Server=127.0.0.1;UID=soongsae;PWD=soongsae9016!;DB=ProudDB2-Test;Port=3306", DbmsType::MySql);
+
+	//conn.Open(L"Driver={MySQL ODBC 5.1 Driver};server = 127.0.0.1; port = 3306; Database = friend;User ID = soongsae; Password = soongsae9016!; ");
+
+	wprintf(L"DB Connect Succeed!!\n");
+
+}
+catch (AdoException &e)
+{
+	wprintf(L"DB Exception : %s\n", StringA2W(e.what()).GetString());
+}
+
+try
+{
+	
+}
+catch (AdoException &e)
+{
+	wprintf(L"DB Exception : %s\n", StringA2W(e.what()).GetString());
+}
+String strID, strPassword, strCountry;
+while (rec.IsEOF() == false)
+{
+	strID = rec.FieldValues[L"UserID"];
+	strPassword = rec.FieldValues[L"Password"];
+	strCountry = rec.FieldValues[L"Country"];
+
+	wprintf(L"UserID : %s, Password : %s, Country : %s\n", strID.GetString(), strPassword.GetString(), strCountry.GetString());
+
+	// 커서를 다음행으로 이동시킨다.
+	// Move a cursor to the next line.
+	rec.MoveNext();
+}
+*/

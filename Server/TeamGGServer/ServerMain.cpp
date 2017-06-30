@@ -54,7 +54,7 @@ void ServerMain::Team3GServerMain()
 	CStartServerParameter p1;
 	p1.m_protocolVersion = g_Version;
 	p1.m_tcpPorts.Add(g_ServerPort);
-
+	
 	try
 	{
 		// 서버 시작하기

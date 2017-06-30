@@ -7,7 +7,8 @@
 #include <iostream>
 #include <vector>
 #include "../include/ProudNetServer.h"
-
+#include "../include/CoInit.h"
+#include "../include/AdoWrap.h"
 
 using namespace std;
 using namespace Proud;
