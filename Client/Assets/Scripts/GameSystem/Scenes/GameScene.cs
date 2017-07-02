@@ -35,29 +35,34 @@ public class GameScene : GameSystem.Scene, IObserver
         // Spawn Characters
         GameObject respawn = GameObject.FindGameObjectWithTag("Respawn");
         m_respawnPoints = respawn.GetComponentsInChildren<RespawnPoint>();
+        
+        GameObject prefab = Resources.Load("Prefabs/UI/HpBar") as GameObject;
+        
         for (int i = 0; i < m_respawnPoints.Length; i++)
         {
             RespawnPoint each = m_respawnPoints[i];
             yield return each.AsyncSpwan();
 
-            EntityBase spwanedEntity = each.GetLastSpawnedEntity();
+            Actor spwanedEntity = (Actor)each.GetLastSpawnedEntity();
             spwanedEntity.Initialize();
+
+            UIHpBar.Initialize(prefab, spwanedEntity);
 
             // @TODO: This code is temporary, It must be upgrade
             Team team = Team.GetTeam(each.Group);
-            team.AddMember((Actor)spwanedEntity);
+            team.AddMember(spwanedEntity);
         }
         
         m_loseCondition.AddCondition(new HpCondition(m_player, CompareOperation.LessThanOrEqual, 0f));
         m_winCondition.AddCondition(new TotalDestruction(m_monsterTeam));
-
+        
         yield return null;
     }
 
     public override void OnStart()
     {
         base.OnStart();
-
+        
         SetTarget(m_playerTeam);
         SetTarget(m_monsterTeam);
     }
@@ -77,7 +82,7 @@ public class GameScene : GameSystem.Scene, IObserver
             }
         }
     }
-
+    
     public void HandleNotification(Notification notification)
     {
         switch (notification.id)
@@ -86,6 +91,7 @@ public class GameScene : GameSystem.Scene, IObserver
                 if (m_winCondition.IsDone())
                 {
                     NotificationCenter.Instance.Post((int)Notification.GameSystem.Win);
+                    GameSystem.SceneManager.Instance.ChangeScene(SceneType.LobbyScene);
                 }
                 break;
         }

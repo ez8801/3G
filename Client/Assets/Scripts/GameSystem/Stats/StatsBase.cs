@@ -53,7 +53,7 @@ public abstract class StatsBase
         }
     }
 
-    private float m_max;
+    private float m_max = float.MaxValue;
     public float Max
     {
         get

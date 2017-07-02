@@ -36,48 +36,73 @@ public class Notification
     
     public int id;
     public bool boolExtra;
-    public short shortExtra;
-    public float floatExtra;
-    public int intExtra;
+    public short shortExtra
+    {
+        get
+        {
+            return (short)longExtra;
+        }
+    }
+
+    public int intExtra
+    {
+        get
+        {
+            return (int)longExtra;
+        }
+    }
+
+    public float floatExtra;    
+    public long longExtra;
     public string stringExtra;
+    public object objectExtra;
 
     public Notification(int msg)
     {
         id = msg;
         boolExtra = false;
-        shortExtra = 0;
         floatExtra = 0f;
-        intExtra = 0;
+        longExtra = 0;
         stringExtra = string.Empty;
+        objectExtra = null;
+    }
+
+    public Notification(int msg, long data)
+    {
+        id = msg;
+        boolExtra = false;
+        floatExtra = 0f;
+        longExtra = data;
+        stringExtra = string.Empty;
+        objectExtra = null;
     }
 
     public Notification(int msg, int data)
     {
         id = msg;
         boolExtra = false;
-        shortExtra = 0;
         floatExtra = 0f;
-        intExtra = data;
+        longExtra = data;
         stringExtra = string.Empty;
+        objectExtra = null;
     }
 
     public Notification(int msg, float data)
     {
         id = msg;
         boolExtra = false;
-        shortExtra = 0;
         floatExtra = data;
-        intExtra = 0;
+        longExtra = 0;
         stringExtra = string.Empty;
+        objectExtra = null;
     }
 
     public Notification(int msg, string data)
     {
         id = msg;
         boolExtra = false;
-        shortExtra = 0;
         floatExtra = 0f;
-        intExtra = 0;
+        longExtra = 0;
         stringExtra = data;
     }
 
@@ -85,9 +110,19 @@ public class Notification
     {
         id = msg;
         boolExtra = data;
-        shortExtra = 0;
         floatExtra = 0f;
-        intExtra = 0;
+        longExtra = 0;
         stringExtra = string.Empty;
+        objectExtra = null;
+    }
+
+    public Notification(int msg, object data)
+    {
+        id = msg;
+        boolExtra = false;
+        floatExtra = 0f;
+        longExtra = 0;
+        stringExtra = string.Empty;
+        objectExtra = data;
     }
 }

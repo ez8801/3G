@@ -39,7 +39,7 @@ public class GameObjectPool : MonoSingleton<GameObjectPool>
     public void Initialize()
     {
         // 숨김용 레이어
-        m_layerOfIgnoreRendering = LayerMask.NameToLayer("Ignore Rendering");
+        m_layerOfIgnoreRendering = LayerMask.NameToLayer("Ignore Render");
 
         // Default 폴더를 생성한다.
         m_defaultFolder = new GameObject("Default");
