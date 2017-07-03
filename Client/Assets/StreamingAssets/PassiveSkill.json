@@ -1,0 +1,38 @@
+[
+  {
+    "Id": 1,
+    "Type": 1,
+    "Name": "Passive.Common.1",
+    "Texture": "",
+    "Level": 0
+  },
+  {
+    "Id": 101,
+    "Type": 10,
+    "Name": "Passive.Staff.1",
+    "Texture": "",
+    "Level": 0
+  },
+  {
+    "Id": 201,
+    "Type": 11,
+    "Name": "Passive.Gem.1",
+    "Texture": "",
+    "Level": 0
+  },
+  {
+    "Id": 301,
+    "Type": 12,
+    "Name": "Passive.Shield.1",
+    "Texture": "",
+    "Level": 0
+  },
+  {
+    "Id": 401,
+    "Type": 13,
+    "Name": "Passive.Sword.1",
+    "Texture": "",
+    "Level": 0
+  },
+  
+]
