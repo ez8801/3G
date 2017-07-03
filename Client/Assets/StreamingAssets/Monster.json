@@ -1,14 +1,16 @@
 ﻿[
   {
-    "Id": 1,
+    "Id": 1001,
     "Grade": 1,
     "Name": "Monster.Name.1",
-    "StatsId": 1001
+    "StatsId": 1001,
+    "PrefabId": 1001
   },
   {
-    "Id": 2,
+    "Id": 1002,
     "Grade": 2,
     "Name": "Monster.Name.2",
-    "StatsId": 1002
+    "StatsId": 1002,
+    "PrefabId": 1002
   }
 ]

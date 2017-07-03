@@ -8,6 +8,7 @@
  */
 
 using UnityEngine;
+using GameSystem;
 
 public class UILobby : UIBase
 {
@@ -74,7 +75,7 @@ public class UILobby : UIBase
     public void OnClickDungeon(GameObject sender)
     {
         Debug.Log(Macros.__PRETTY_FUNCTION__);
-
+        SceneManager.Instance.ChangeScene(SceneType.GameScene);   
     }
 
     public void OnClickPvp(GameObject sender)

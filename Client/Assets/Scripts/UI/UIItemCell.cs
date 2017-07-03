@@ -11,25 +11,21 @@ using UnityEngine;
 
 public class UIItemCell : MonoBehaviour
 {
-	[System.Serializable]
-	public struct View
-	{
-		public GameObject Lock;
-		public UITexture TexIcon;
-        public UILabel LblLevel;
-        public UISprite SprSelect;
-        public UISprite SprNew;
-    }
-	public View m_view;
+    public GameObject Lock;
+    public UITexture TexIcon;
+    public UILabel LblLevel;
+    public UISprite SprSelect;
+    public UISprite SprNew;
+    public UILabel LblCount;
 
-	[ContextMenu("Bind")]
+    [ContextMenu("Bind")]
 	public void Initialize()
 	{
-		m_view = new View();
-		this.Bind(ref m_view.Lock, "Lock");
-		this.Bind(ref m_view.TexIcon, "TexIcon");
-		this.Bind(ref m_view.LblLevel, "LblLevel");
-		this.Bind(ref m_view.SprSelect, "SprSelect");
-		this.Bind(ref m_view.SprNew, "SprNew");
+		this.Bind(ref Lock, "Lock");
+		this.Bind(ref TexIcon, "TexIcon");
+		this.Bind(ref LblLevel, "LblLevel");
+		this.Bind(ref SprSelect, "SprSelect");
+		this.Bind(ref SprNew, "SprNew");
+        this.Bind(ref LblCount, "LblCount");
     }
 }

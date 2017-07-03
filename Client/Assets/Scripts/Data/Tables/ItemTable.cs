@@ -13,6 +13,7 @@ namespace Data
         public string Name;
         public int Value;
         public bool Stackable;
+        public string Texture;
     }
 }
 

@@ -1,0 +1,562 @@
+fileFormatVersion: 2
+guid: 4f9d2dd6b99e3ca4590d16d38a538278
+timeCreated: 1453016677
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: OBJECTICONS_0
+    21300002: OBJECTICONS_1
+    21300004: OBJECTICONS_2
+    21300006: OBJECTICONS_3
+    21300008: OBJECTICONS_4
+    21300010: OBJECTICONS_5
+    21300012: OBJECTICONS_6
+    21300014: OBJECTICONS_7
+    21300016: OBJECTICONS_8
+    21300018: OBJECTICONS_9
+    21300020: OBJECTICONS_10
+    21300022: OBJECTICONS_11
+    21300024: OBJECTICONS_12
+    21300026: OBJECTICONS_13
+    21300028: OBJECTICONS_14
+    21300030: OBJECTICONS_15
+    21300032: OBJECTICONS_16
+    21300034: OBJECTICONS_17
+    21300036: OBJECTICONS_18
+    21300038: OBJECTICONS_19
+    21300040: OBJECTICONS_20
+    21300042: OBJECTICONS_21
+    21300044: OBJECTICONS_22
+    21300046: OBJECTICONS_23
+    21300048: OBJECTICONS_24
+    21300050: OBJECTICONS_25
+    21300052: OBJECTICONS_26
+    21300054: OBJECTICONS_27
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: OBJECTICONS_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 231
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: OBJECTICONS_1
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 231
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: OBJECTICONS_2
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 228
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: OBJECTICONS_3
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 231
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: OBJECTICONS_4
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 231
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: OBJECTICONS_5
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 231
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: OBJECTICONS_6
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 231
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: OBJECTICONS_7
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 231
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: OBJECTICONS_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 96
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 48, y: -2}
+        - {x: 25, y: 2}
+        - {x: 17, y: -6}
+        - {x: 13, y: 0}
+        - {x: -5, y: -1}
+        - {x: -15, y: -11}
+        - {x: -16, y: -27}
+        - {x: -15, y: -5}
+        - {x: -13, y: 1}
+        - {x: -1, y: -1}
+        - {x: 18, y: 0}
+        - {x: 20, y: 9}
+        - {x: 33, y: 1}
+        - {x: 39, y: 1}
+        - {x: 42, y: 2}
+        - {x: 47, y: 7}
+        - {x: 47, y: 36}
+        - {x: 45, y: 64}
+        - {x: 24, y: 64}
+        - {x: 20, y: 61}
+        - {x: 9, y: 64}
+        - {x: -6, y: 64}
+        - {x: -10, y: 60}
+        - {x: -48, y: 38}
+        - {x: -48, y: -61}
+        - {x: -42, y: -64}
+        - {x: 48, y: -64}
+      - - {x: -32, y: 62}
+        - {x: -38, y: 62}
+        - {x: -44, y: 56}
+        - {x: -44, y: 45}
+        - {x: -42, y: 37}
+        - {x: -23, y: 37}
+        - {x: -18, y: 41}
+        - {x: -18, y: 50}
+        - {x: -22, y: 59}
+    - name: OBJECTICONS_9
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 34
+        width: 160
+        height: 159
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12, y: 79.5}
+        - {x: -10, y: 76.5}
+        - {x: -6, y: 76.5}
+        - {x: -15, y: 76.5}
+        - {x: -15, y: 79.5}
+        - {x: -80, y: 79.5}
+        - {x: -80, y: -14.5}
+        - {x: -65, y: -23.5}
+        - {x: -51, y: -16.5}
+        - {x: -50, y: -13.5}
+        - {x: -46, y: -17.5}
+        - {x: -19, y: -16.5}
+        - {x: -18, y: -14.5}
+        - {x: -17, y: 7.5}
+        - {x: -14, y: -13.5}
+        - {x: -37, y: -39.5}
+        - {x: 23, y: -79.5}
+        - {x: 80, y: -79.5}
+        - {x: 80, y: 79.5}
+      - - {x: -73, y: -53.5}
+        - {x: -76, y: -54.5}
+        - {x: -76, y: -70.5}
+        - {x: -71, y: -77.5}
+        - {x: -55, y: -77.5}
+        - {x: -52, y: -69.5}
+        - {x: -52, y: -55.5}
+        - {x: -53, y: -53.5}
+      - - {x: -29, y: -56.5}
+        - {x: -37, y: -56.5}
+        - {x: -42, y: -63.5}
+        - {x: -42, y: -73.5}
+        - {x: -24, y: -73.5}
+        - {x: -22, y: -72.5}
+        - {x: -22, y: -61.5}
+      - - {x: -6, y: -56.5}
+        - {x: -9, y: -61.5}
+        - {x: -10, y: -64.5}
+        - {x: -10, y: -73.5}
+        - {x: 10, y: -73.5}
+        - {x: 10, y: -59.5}
+        - {x: 3, y: -56.5}
+      - - {x: 26, y: -56.5}
+        - {x: 23, y: -61.5}
+        - {x: 22, y: -64.5}
+        - {x: 22, y: -73.5}
+        - {x: 42, y: -73.5}
+        - {x: 42, y: -59.5}
+        - {x: 35, y: -56.5}
+      - - {x: -46, y: -19.5}
+        - {x: -46, y: -50.5}
+        - {x: -18, y: -50.5}
+        - {x: -18, y: -19.5}
+      - - {x: -71, y: -20.5}
+        - {x: -78, y: -32.5}
+        - {x: -78, y: -41.5}
+        - {x: -70, y: -48.5}
+        - {x: -56, y: -48.5}
+        - {x: -50, y: -44.5}
+        - {x: -50, y: -35.5}
+        - {x: -52, y: -30.5}
+        - {x: -57, y: -20.5}
+    - name: OBJECTICONS_10
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 194
+        width: 18
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: OBJECTICONS_11
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 192
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: OBJECTICONS_12
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 195
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: OBJECTICONS_13
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 199
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: OBJECTICONS_14
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 67
+        width: 17
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: OBJECTICONS_15
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 67
+        width: 20
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: OBJECTICONS_16
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 67
+        width: 21
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: OBJECTICONS_17
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 34
+        width: 160
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12, y: 79.5}
+        - {x: -10, y: 76.5}
+        - {x: -6, y: 76.5}
+        - {x: -15, y: 76.5}
+        - {x: -15, y: 79.5}
+        - {x: -80, y: 79.5}
+        - {x: -80, y: -14.5}
+        - {x: -65, y: -23.5}
+        - {x: -51, y: -16.5}
+        - {x: -50, y: -13.5}
+        - {x: -46, y: -17.5}
+        - {x: -19, y: -16.5}
+        - {x: -18, y: -14.5}
+        - {x: -17, y: 7.5}
+        - {x: -14, y: -13.5}
+        - {x: -37, y: -39.5}
+        - {x: 23, y: -79.5}
+        - {x: 80, y: -79.5}
+        - {x: 80, y: 79.5}
+      - - {x: -73, y: -53.5}
+        - {x: -76, y: -54.5}
+        - {x: -76, y: -70.5}
+        - {x: -71, y: -77.5}
+        - {x: -55, y: -77.5}
+        - {x: -52, y: -69.5}
+        - {x: -52, y: -55.5}
+        - {x: -53, y: -53.5}
+      - - {x: -29, y: -56.5}
+        - {x: -37, y: -56.5}
+        - {x: -42, y: -63.5}
+        - {x: -42, y: -73.5}
+        - {x: -24, y: -73.5}
+        - {x: -22, y: -72.5}
+        - {x: -22, y: -61.5}
+      - - {x: -6, y: -56.5}
+        - {x: -9, y: -61.5}
+        - {x: -10, y: -64.5}
+        - {x: -10, y: -73.5}
+        - {x: 10, y: -73.5}
+        - {x: 10, y: -59.5}
+        - {x: 3, y: -56.5}
+      - - {x: 26, y: -56.5}
+        - {x: 23, y: -61.5}
+        - {x: 22, y: -64.5}
+        - {x: 22, y: -73.5}
+        - {x: 42, y: -73.5}
+        - {x: 42, y: -59.5}
+        - {x: 35, y: -56.5}
+      - - {x: -46, y: -19.5}
+        - {x: -46, y: -50.5}
+        - {x: -18, y: -50.5}
+        - {x: -18, y: -19.5}
+      - - {x: -71, y: -20.5}
+        - {x: -78, y: -32.5}
+        - {x: -78, y: -41.5}
+        - {x: -70, y: -48.5}
+        - {x: -56, y: -48.5}
+        - {x: -50, y: -44.5}
+        - {x: -50, y: -35.5}
+        - {x: -52, y: -30.5}
+        - {x: -57, y: -20.5}
+    - name: OBJECTICONS_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: OBJECTICONS_19
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 32
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: OBJECTICONS_20
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 35
+        width: 14
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: OBJECTICONS_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: OBJECTICONS_22
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 0
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: OBJECTICONS_23
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 4
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: OBJECTICONS_24
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 4
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: OBJECTICONS_25
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 0
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: OBJECTICONS_26
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 0
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: OBJECTICONS_27
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 0
+        width: 66
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 17}
+        - {x: -33, y: 15}
+        - {x: -33, y: -15}
+        - {x: -32, y: -17}
+        - {x: 33, y: -17}
+        - {x: 33, y: 14}
+        - {x: 32, y: 17}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

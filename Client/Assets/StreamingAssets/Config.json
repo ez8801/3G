@@ -8,5 +8,10 @@
     "Id": 2,
     "Key": "InventoryBasicSlotAmount",
     "Value": 80
+  },
+  {
+    "Id": 3,
+    "Key": "InitialGoldAmount",
+    "Value": 1000
   }
 ]

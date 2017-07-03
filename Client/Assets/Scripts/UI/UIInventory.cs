@@ -36,6 +36,8 @@ public class UIInventory : UIBase
 	{
         BindComponents();
 
+        m_view.Grid.DataSource = CellForRowAtIndex;
+        m_view.Grid.Delegate = NumberOfRowsInGrid;
         m_view.BtnClose.onClick = OnClickClose;
     }
 
@@ -63,14 +65,49 @@ public class UIInventory : UIBase
     public override void ReloadData()
     {
         base.ReloadData();
-        m_view.Grid.DataSource = CellForRowAtIndex;
-        m_view.Grid.Delegate = NumberOfRowsInGrid;
+        m_view.Grid.ReloadData();
     }
     
     public Transform CellForRowAtIndex(int index, GameObject contentView)
     {
         UIItemCell itemCellUI = Util.RequireComponent<UIItemCell>(contentView);
 
+        if (index < MyInfo.Inventory.Count)
+        {
+            UserData.Item item = MyInfo.Inventory[index];
+            Data.Item itemData = ItemTable.Instance.Find(item.ItemId);
+
+            if (itemData.Stackable)
+            {
+                itemCellUI.LblCount.SetActiveSafely(true);
+                itemCellUI.LblCount.SetTextSafely(string.Concat("x", item.Count));
+            }
+            else
+            {
+                itemCellUI.LblCount.SetTextSafely(string.Empty);
+            }
+
+            // @TODO: Set Item Info
+            if (!string.IsNullOrEmpty(itemData.Texture))
+            {
+                itemCellUI.TexIcon.SetActiveSafely(true);
+                itemCellUI.TexIcon.mainTexture = Resources.Load<Texture2D>(itemData.Texture);
+            }
+            else
+            {
+                itemCellUI.TexIcon.SetActiveSafely(false);
+            }
+        }
+        else
+        {
+            itemCellUI.LblCount.SetActiveSafely(false);
+            itemCellUI.LblLevel.SetActiveSafely(false);
+            itemCellUI.SprNew.SetActiveSafely(false);
+            itemCellUI.SprSelect.SetActiveSafely(false);
+            itemCellUI.TexIcon.SetActiveSafely(false);
+            itemCellUI.Lock.SetActiveSafely(false);
+        }
+        
         return null;
     }
 

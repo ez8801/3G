@@ -41,4 +41,9 @@ public class ConfigTable : ArrayTable<Config>
         Config config = GetConfig(key);
         return config.Value;
     }
+
+    public bool IsMaxLevel(int lv)
+    {
+        return false;
+    }
 }

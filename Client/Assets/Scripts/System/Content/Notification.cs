@@ -18,6 +18,22 @@ public class Notification
         Max
     }
 
+    public enum Entity
+    {
+        None = UI.Max + 1,
+        OnDead,
+        Max,
+    }
+
+    public enum GameSystem
+    {
+        None = Entity.Max + 1,
+        Win,
+        Lose,
+        Draw,
+        Max,
+    }
+    
     public int id;
     public bool boolExtra;
     public short shortExtra;

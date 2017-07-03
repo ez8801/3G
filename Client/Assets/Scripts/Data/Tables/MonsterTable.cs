@@ -19,6 +19,7 @@ namespace Data
         public int Grade;
         public string Name;
         public int StatsId;
+        public int PrefabId;
     }
 }
 

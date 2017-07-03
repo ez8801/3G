@@ -21,6 +21,12 @@ public enum StateType
 public abstract class StateBase
 {
     private StateType m_stateType;
+    protected Actor m_owner;
+
+    public void Initialize(Actor owner)
+    {
+        m_owner = owner;
+    }
 
     internal virtual bool AllowTransitionTo(StateType stateType)
     {

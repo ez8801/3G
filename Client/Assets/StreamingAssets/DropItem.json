@@ -11,8 +11,8 @@
     "Id": 2,
     "Group": 1,
     "ItemId": 2001,
-    "MinCount": 2,
-    "MaxCount": 4,
+    "MinCount": 4,
+    "MaxCount": 8,
     "Prob": 100000
   },
   {
@@ -21,7 +21,7 @@
     "ItemId": 10001,
     "MinCount": 1,
     "MaxCount": 1,
-    "Prob": 100000
+    "Prob": 5000
   },
   {
     "Id": 4,
@@ -29,7 +29,7 @@
     "ItemId": 20001,
     "MinCount": 1,
     "MaxCount": 1,
-    "Prob": 100000
+    "Prob": 5000
   },
   {
     "Id": 5,
@@ -37,6 +37,46 @@
     "ItemId": 30001,
     "MinCount": 1,
     "MaxCount": 1,
+    "Prob": 5000
+  },
+  {
+    "Id": 6,
+    "Group": 2,    
+    "ItemId": 1001,
+    "MinCount": 2,
+    "MaxCount": 3,
     "Prob": 100000
+  },
+  {
+    "Id": 7,
+    "Group": 2,
+    "ItemId": 2001,
+    "MinCount": 5,
+    "MaxCount": 10,
+    "Prob": 100000
+  },
+  {
+    "Id": 8,
+    "Group": 2,
+    "ItemId": 10001,
+    "MinCount": 1,
+    "MaxCount": 1,
+    "Prob": 10000
+  },
+  {
+    "Id": 9,
+    "Group": 2,
+    "ItemId": 20001,
+    "MinCount": 1,
+    "MaxCount": 1,
+    "Prob": 10000
+  },
+  {
+    "Id": 10,
+    "Group": 2,
+    "ItemId": 30001,
+    "MinCount": 1,
+    "MaxCount": 1,
+    "Prob": 10000
   }
 ]

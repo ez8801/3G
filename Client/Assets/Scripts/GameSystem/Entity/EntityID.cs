@@ -7,17 +7,37 @@
  * Copyright ⓒ Sweet Home Alabama. Team 3G, All rights reserved
  */
 
+using System.Runtime.InteropServices;
+
 public enum EntityType
 {
     None,
     Character,
     Monster,
+    Team,
+    Max,
 }
 
+[StructLayout(LayoutKind.Explicit)]
 public struct EntityID
 {
-    private EntityType m_entityType;   
+    [FieldOffset(0)]
     private long m_guid;
+
+    [FieldOffset(0)]
+    private EntityType m_entityType;
+
+    [FieldOffset(4)]
+    private int m_index;
+
+    public long UID
+    {
+        get
+        {
+            return m_guid;
+        }
+
+    }
 
     public EntityType Type
     {
@@ -26,18 +46,19 @@ public struct EntityID
             return m_entityType;
         }
     }
-
-    public long Id
+    
+    public int Id
     {
         get
         {
-            return m_guid;
+            return m_index;
         }
     }
 
-	public EntityID(EntityType type, long guid)
+	public EntityID(EntityType type, int id)
     {
+        m_guid = 0;
         m_entityType = type;
-        m_guid = guid;
+        m_index = id;
     }
 }
