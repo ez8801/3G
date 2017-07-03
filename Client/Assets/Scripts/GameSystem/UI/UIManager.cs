@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// UI 매니저
+/// </summary>
 public class UIManager : MonoSingleton<UIManager>
 {
     public GameObject Root
