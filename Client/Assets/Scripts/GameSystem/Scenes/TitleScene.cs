@@ -41,6 +41,6 @@ public class TitleScene : Scene
 #endif
 
         if (isPressKey)
-            SceneManager.Instance.ChangeScene(SceneType.LobbyScene);        
+            SceneManager.Instance.ChangeScene(SceneType.LobbyScene);
     }
 }

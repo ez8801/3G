@@ -52,10 +52,10 @@ public class TweenValue : UITweener
 	/// Start the tweening operation.
 	/// </summary>
 
-	static public TweenValue Begin(GameObject go, float duration, float to)
+	static public TweenValue Begin(GameObject go, float duration, float from, float to)
 	{
         TweenValue comp = Begin<TweenValue>(go, duration);
-		comp.from = comp.value;
+		comp.from = from;
 		comp.to = to;
 		return comp;
 	}

@@ -8,7 +8,6 @@
  * Copyright ⓒ Sweet Home Alabama. Team 3G, All rights reserved
  */
 using UnityEngine;
-using System.Collections;
 
 public class CharacterFollow : MonoBehaviour
 {

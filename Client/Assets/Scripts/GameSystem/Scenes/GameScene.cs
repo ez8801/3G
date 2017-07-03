@@ -40,7 +40,6 @@ public class GameScene : GameSystem.Scene, IObserver
         m_respawnPoints = respawn.GetComponentsInChildren<RespawnPoint>();
         
         GameObject prefab = Resources.Load("Prefabs/UI/HpBar") as GameObject;
-        
         for (int i = 0; i < m_respawnPoints.Length; i++)
         {
             RespawnPoint each = m_respawnPoints[i];
@@ -94,8 +93,8 @@ public class GameScene : GameSystem.Scene, IObserver
                 break;
 
             case (int)Notification.GameSystem.Win:
+                m_battleUI.enabled = false;
                 GameSystem.SceneManager.Instance.ChangeScene(SceneType.LobbyScene);
-
                 break;
         }
     }

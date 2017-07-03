@@ -19,6 +19,7 @@ public class DataManager : MonoSingleton<DataManager>
         LoadTable(ResourceLoad("Prefab.json"), PrefabTable.Instance);
         LoadTable(ResourceLoad("Stats.json"), StatsTable.Instance);
         LoadTable(ResourceLoad("String.json"), StringTable.Instance);
+        LoadTable(ResourceLoad("Tip.json"), TipTable.Instance);
     }
 
     public void GenerateBytes()
@@ -33,6 +34,7 @@ public class DataManager : MonoSingleton<DataManager>
         serializer.Serialize("Prefab", PrefabTable.Instance);
         serializer.Serialize("Stats", StatsTable.Instance);
         serializer.Serialize("String", StringTable.Instance);
+        serializer.Serialize("Tip", TipTable.Instance);
 
         Validate("Character", new CharacterTable());
         Validate("Config", new ConfigTable());
@@ -41,6 +43,7 @@ public class DataManager : MonoSingleton<DataManager>
         Validate("Prefab", new PrefabTable());
         Validate("Stats", new StatsTable());
         Validate("String", new StringTable());
+        Validate("Tip", new TipTable());
     }
 
     private bool Validate<T>(string tableName, Table<T> table) where T : IIndexer, IDeserializable, new()

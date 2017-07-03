@@ -24,14 +24,12 @@ public abstract class AssetLoader
 
     public virtual void OnPostLoad()
     {
-        LoadedCount++;
+        LoadedCount = Mathf.Clamp(LoadedCount + 1, 0, TotalItemCount);
 
-        float progress = (float)LoadedCount / TotalItemCount;
-        NotificationCenter.Instance.Post((int)Notification.UI.OnProgress, progress);
-
-        if (LoadedCount == TotalItemCount)
+        if (TotalItemCount > 0)
         {
-            NotificationCenter.Instance.Post((int)Notification.UI.OnProgressDone);
+            float progress = (float)LoadedCount / TotalItemCount;
+            NotificationCenter.Instance.Post((int)Notification.UI.OnProgress, progress);
         }
     }
 
@@ -137,7 +135,7 @@ public abstract class AssetLoader
 
     public static IEnumerator StartLoading()
     {
-        // UIManager.Instance.ShowLoadingBar(true);
+        UIManager.Instance.ShowLoadingUI(true);
 
         for (int i = 0; i < m_queue.Count; i++)
         {

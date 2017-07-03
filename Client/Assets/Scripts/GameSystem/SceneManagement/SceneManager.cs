@@ -28,10 +28,16 @@ namespace GameSystem
         
         public SceneType currentSceneType { private set; get; }
         private Scene m_currentScene;
+        private int m_targetFrameRate;
 
         public void Start()
         {
             NotificationCenter.Instance.AddObserver(this);
+#if UNITY_EDITOR
+            m_targetFrameRate = Application.targetFrameRate;
+#else
+            m_targetFrameRate = Mathf.RoundToInt(Application.targetFrameRate * 0.5f);
+#endif
         }
 
         public void Update()
@@ -76,6 +82,8 @@ namespace GameSystem
 
         internal IEnumerator PerformChangeScene(SceneType sceneType, Intent intent)
         {
+            yield return StartCoroutine(OnPreChange());
+
             Scene nextScene = null;
             bool isAssigned = Activator.CreateInstance(out nextScene, sceneType);
             Assert.IsTrue(isAssigned, string.Format("Couldn't Create Instance at: {0}", sceneType));
@@ -88,7 +96,23 @@ namespace GameSystem
             m_currentScene = nextScene;
             
             nextScene.OnStart();
+            yield return StartCoroutine(OnPostChange());
             NotificationCenter.Instance.Post((int)Notification.System.OnSceneChanged, (int)sceneType);
+        }
+
+        IEnumerator OnPreChange()
+        {
+            yield return null;
+        }
+
+        IEnumerator OnPostChange()
+        {
+            for (int i = 0; i < m_targetFrameRate; i++)
+            {
+                yield return null;
+            }
+            NotificationCenter.Instance.Post((int)Notification.UI.OnProgressDone);
+            yield return null;
         }
 
         public Scene GetCurrentScene()

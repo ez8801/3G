@@ -10,7 +10,7 @@ public abstract class UIBase : MonoBehaviour
             if (m_navigationBar == null)
             {
                 m_navigationBar 
-                    = UIManager.Instance.LoadUI<UINavigationBar>("Prefabs/UI/NavigationBar");                
+                    = UIManager.Instance.LoadUI<UINavigationBar>("Prefabs/UI/NavigationBar");
             }
             return m_navigationBar;
         }
@@ -23,7 +23,8 @@ public abstract class UIBase : MonoBehaviour
         {
             if (m_loadingUI == null)
             {
-
+                m_loadingUI
+                    = UIManager.Instance.LoadUI<UILoading>("Prefabs/UI/LoadingUI");
             }
             return m_loadingUI;
         }

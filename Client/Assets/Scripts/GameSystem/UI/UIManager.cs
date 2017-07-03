@@ -72,6 +72,12 @@ public class UIManager : MonoSingleton<UIManager>
         }
     }
 
+    public void ShowLoadingUI(bool isShow)
+    {
+        if (isShow)
+            UIBase.LoadingUI.SetProgress(0f);
+    }
+
     /// <summary>
     /// 월드 좌표를 UI카메라 상의 좌표로 변환합니다.
     /// </summary>

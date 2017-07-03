@@ -107,8 +107,8 @@ namespace Data
 			Name = json["Name"].STR;
 			StatsId = json["StatsId"].I4;
 			PrefabId = json["PrefabId"].I4;
-            DropGroupId = json["DropGroupId"].I4;
-        }
+			DropGroupId = json["DropGroupId"].I4;
+		}
 
 		public void Deserialize(Deserializer deserializer)
 		{
@@ -117,8 +117,8 @@ namespace Data
 			deserializer.Deserialize(ref Name);
 			deserializer.Deserialize(ref StatsId);
 			deserializer.Deserialize(ref PrefabId);
-            deserializer.Deserialize(ref DropGroupId);
-        }
+			deserializer.Deserialize(ref DropGroupId);
+		}
 
 		public void Serialize(BinaryWriter binaryWriter)
 		{
@@ -127,7 +127,7 @@ namespace Data
 			binaryWriter.Write(Name);
 			binaryWriter.Write(StatsId);
 			binaryWriter.Write(PrefabId);
-            binaryWriter.Write(DropGroupId);
+			binaryWriter.Write(DropGroupId);
 		}
 
 		public int GetIndex()
@@ -218,6 +218,32 @@ namespace Data
 		{
 			binaryWriter.Write(Id);
 			binaryWriter.Write(PrefabName);
+		}
+
+		public int GetIndex()
+		{
+			return Id;
+		}
+	}
+
+	public partial struct Tip : IDeserializable, ISerializable, IIndexer
+	{
+		public void Deserialize(JSONObject json)
+		{
+			Id = json["Id"].I4;
+			Message = json["Message"].STR;
+		}
+
+		public void Deserialize(Deserializer deserializer)
+		{
+			deserializer.Deserialize(ref Id);
+			deserializer.Deserialize(ref Message);
+		}
+
+		public void Serialize(BinaryWriter binaryWriter)
+		{
+			binaryWriter.Write(Id);
+			binaryWriter.Write(Message);
 		}
 
 		public int GetIndex()

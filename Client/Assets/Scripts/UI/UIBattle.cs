@@ -7,10 +7,6 @@
  * Copyright ⓒ SHAprojectVer001. DefaultCompany, All rights reserved
  */
 
-using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-
 public class UIBattle : UIBase
 {
     public UISprite SprMyTeamHp;
@@ -54,6 +50,7 @@ public class UIBattle : UIBase
     {
         base.ViewDidAppear();
         NavigationBar.SetActiveSafely(false);
+        enabled = true;
     }
 
     public void Update()
@@ -61,7 +58,8 @@ public class UIBattle : UIBase
         //
         if (MyTeam.HpRatio != m_myTeamHpRatio)
         {
-            TweenValue tween = TweenValue.Begin(MyTeam.gameObject, 0.4f, MyTeam.HpRatio);            
+            TweenValue tween = TweenValue.Begin(MyTeam.gameObject
+                , 0.4f, m_myTeamHpRatio, MyTeam.HpRatio);            
             tween.method = UITweener.Method.EaseOut;
             tween.SetOnUpdateListener((value, isFinished) =>
             {
@@ -73,7 +71,8 @@ public class UIBattle : UIBase
         //
         if (EnemyTeam.HpRatio != m_enemyTeamHpRatio)
         {
-            TweenValue tween = TweenValue.Begin(EnemyTeam.gameObject, 0.4f, EnemyTeam.HpRatio);
+            TweenValue tween = TweenValue.Begin(EnemyTeam.gameObject
+                , 0.4f, m_enemyTeamHpRatio, EnemyTeam.HpRatio);
             tween.method = UITweener.Method.EaseOut;
             tween.SetOnUpdateListener((value, isFinished) =>
             {
@@ -87,5 +86,14 @@ public class UIBattle : UIBase
     {
         base.ViewDidDisAppear();
         NavigationBar.SetActiveSafely(true);
+
+        m_myTeam = null;
+        m_enemyTeam = null;
+
+        SprMyTeamHp.SetFillAmountSafely(1f, m_sprMyTeamHpWidth);
+        SprEnemyTeamHp.SetFillAmountSafely(1f, m_sprEnemyTeamHpWidth);
+
+        m_myTeamHpRatio = 1f;
+        m_enemyTeamHpRatio = 1f;
     }
 }
