@@ -17,6 +17,8 @@ public class GameScene : GameSystem.Scene, IObserver
     private Team m_monsterTeam;
 
     private RespawnPoint[] m_respawnPoints;
+
+    private UIBattle m_battleUI;
     
     public override IEnumerator OnCrate(Intent savedInstanceState)
     {
@@ -24,7 +26,9 @@ public class GameScene : GameSystem.Scene, IObserver
         AssetLoader.AddLevelLoadingRequest(LevelName, false);
         AssetLoader.AddLevelLoadingRequest("Woods", true);
         yield return AssetLoader.StartLoading();
-
+        
+        m_battleUI = SetContentView<UIBattle>("Prefabs/UI/BattelUI");
+        
         // Add First Responder
         NotificationCenter.Instance.AddObserver(this);
 
