@@ -139,7 +139,10 @@ public abstract class EntityBase : MonoBehaviour
     {
 
     }
-    
+
+    /// <summary>
+    /// MonoBehaviour가 enabled일 때, Update가 매 프레임 호출됩니다.
+    /// </summary>
     protected virtual void Update()
     {
 
@@ -155,6 +158,18 @@ public abstract class EntityBase : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// 이 함수는 MonoBehaviour가 enabled일 때 Framerate와 상관없이 주기적으로 호출됩니다. 
+    /// </summary>
+    protected virtual void FixedUpdate()
+    {
+
+    }
+
+    /// <summary>
+    /// 이 함수는 MonoBehaviour가 삭제될 때, 호출됩니다. 
+    /// OnDestroy co-routine이 될 수 없습니다.
+    /// </summary>
     protected virtual void OnDestroy()
     {
         entities.Remove(this);

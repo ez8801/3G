@@ -148,9 +148,9 @@ public class ScriptTemplateProcessor : UnityEditor.AssetModificationProcessor
 		string creationDate = System.DateTime.Now.ToString("yyyy-MM-dd");
 		templateScript = templateScript.Replace("#WRITER_NAME#", System.Environment.UserName);
 		templateScript = templateScript.Replace("#CREATION_DATE#", creationDate);        
-		templateScript = templateScript.Replace("#PROJECT_NAME#", PlayerSettings.productName);
-		templateScript = templateScript.Replace("#SMART_DEVELOPERS#", PlayerSettings.companyName);
-		templateScript = templateScript.Replace("#SCRIPT_NAME#", fileName);
+		templateScript = templateScript.Replace("#PROJECT_NAME#", GameDefine.ProductName); // PlayerSettings.productName
+        templateScript = templateScript.Replace("#SMART_DEVELOPERS#", GameDefine.CompanyName); // PlayerSettings.companyName
+        templateScript = templateScript.Replace("#SCRIPT_NAME#", fileName);
 
 		byte[] bytes = System.Text.Encoding.UTF8.GetBytes(templateScript);
         

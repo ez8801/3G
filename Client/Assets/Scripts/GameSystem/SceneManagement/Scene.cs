@@ -76,6 +76,10 @@ namespace GameSystem
 
         public virtual void OnStart()
         {
+            if (m_contentView != null)
+            {
+                m_contentView.ViewDidAppear();
+            }
             m_contentView.SetActiveSafely(true);
         }
 
@@ -111,6 +115,10 @@ namespace GameSystem
 
         public virtual void OnStop()
         {
+            if (m_contentView != null)
+            {
+                m_contentView.ViewDidDisAppear();
+            }
             m_contentView.SetActiveSafely(false);
         }
 

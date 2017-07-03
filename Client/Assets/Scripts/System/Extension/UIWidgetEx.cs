@@ -1,4 +1,6 @@
 ﻿
+using UnityEngine;
+
 /// <summary>
 /// UIWidget의 확장함수를 정의하는 클래스
 /// </summary>
@@ -10,13 +12,37 @@ public static class UIWidgetEx
             label.text = text;
     }
 
-    public static void SetSpriteSafely(this UISprite spr, string spriteName, bool isPixelPerfect)
+    public static void SetSpriteSafely(this UISprite sprite
+        , string spriteName, bool isPixelPerfect)
     {
-        if (spr != null)
+        if (sprite != null)
         {
-            spr.spriteName = spriteName;
+            sprite.spriteName = spriteName;
             if (isPixelPerfect)
-                spr.MakePixelPerfect();
+                sprite.MakePixelPerfect();
+        }
+    }
+
+    public static void SetFillAmountSafely(this UISprite sprite, float fillAmount, int width)
+    {
+        if (sprite != null)
+        {
+            if (sprite.type == UIBasicSprite.Type.Filled)
+            {
+                sprite.fillAmount = fillAmount;
+            }
+            else
+            {
+                sprite.SetDimensions(Mathf.RoundToInt(width * fillAmount), sprite.height);
+            }
+        }        
+    }
+
+    public static void SetFillAmountSafely(this UISprite sprite, float fillAmount)
+    {
+        if (sprite != null)
+        {
+            sprite.fillAmount = fillAmount;
         }
     }
 

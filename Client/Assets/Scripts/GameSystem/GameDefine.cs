@@ -14,4 +14,7 @@ public static class GameDefine
         }
     }
     private static string m_versionString = string.Empty;
+
+    public const string ProductName = "Sweet Home Alabama";
+    public const string CompanyName = "Team 3G";
 }

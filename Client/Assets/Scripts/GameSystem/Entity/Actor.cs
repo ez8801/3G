@@ -59,6 +59,14 @@ public class Actor : EntityBase
         }
     }
 
+    public bool IsDead
+    {
+        get
+        {
+            return (m_currentHp <= 0f);
+        }
+    }
+
     /// <summary>
     /// 무적 여부
     /// </summary>
@@ -129,8 +137,16 @@ public class Actor : EntityBase
 
     public bool ApplyDamage(float damage)
     {
+        Debug.Log(Macros.__PRETTY_FUNCTION__ + " : " + damage);
+        bool wasDead = IsDead;
         m_currentHp -= damage;
-        return (m_currentHp < 0);
+        bool isDead = IsDead;
+        if (wasDead == false && isDead == true)
+        {
+            m_stateMachine.Transition(StateType.Dead);
+        }
+
+        return (isDead);
     }
 
     protected override void Update()
@@ -149,16 +165,16 @@ public class Actor : EntityBase
         if (attacker != null)
             Debug.Log(Macros.__PRETTY_FUNCTION__ + ": " + attacker.name);
 
-        //AttackObject attackObject = null;
-        //if (attacker == null)
-        //{
-        //    attackObject = other.gameObject.GetComponent<AttackObject>();
-        //    if (attackObject == null)
-        //        return;
+        AttackObject attackObject = null;
+        if (attacker == null)
+        {
+            attackObject = other.gameObject.GetComponent<AttackObject>();
+            if (attackObject == null)
+                return;
 
-        //    attacker = attackObject.unit;
-        //    attackObject.OnHit(gameObject);
-        //}
+            attacker = attackObject.Actor;
+            attackObject.OnHit(gameObject);
+        }
 
         // 출동된 객체와 다른 팀일 경우
         if (attacker != null && GroupId != attacker.GroupId)
@@ -167,10 +183,10 @@ public class Actor : EntityBase
 
             float damage = (attacker.Stats.AttackDamage - Stats.Armor) * Random.Range(0.9f, 1.1f);
             int damageAmount = Mathf.FloorToInt(damage);
-            if (damageAmount < 0)
-                damageAmount = 0;
+            if (damageAmount <= 0)
+                damageAmount = 1;
             
-            // if (damageAmount > 0)
+            if (damageAmount > 0)
             {
                 VFXManager.Instance.PlayVFX("Prefabs/VFX/Hit", Head.position, Quaternion.identity);
             }
@@ -205,7 +221,7 @@ public class Actor : EntityBase
             opposite.x *= -gapRatio;
             opposite.y = 10f * 0.5f;
 
-            // if (attackObject == null)
+            if (attackObject == null)
                 attacker.GetComponent<Rigidbody2D>().AddForce(opposite, ForceMode2D.Impulse);
 
             SoundManager.Instance.PlaySound(1);

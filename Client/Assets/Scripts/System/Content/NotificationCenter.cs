@@ -176,6 +176,11 @@ public class NotificationCenter : MonoSingleton<NotificationCenter>
         Post(new Notification(id));
     }
 
+    public void Post(int id, long data)
+    {
+        Post(new Notification(id, data));
+    }
+
     public void Post(int id, int data)
     {
         Post(new Notification(id, data));
@@ -192,6 +197,11 @@ public class NotificationCenter : MonoSingleton<NotificationCenter>
     }
 
     public void Post(int id, bool data)
+    {
+        Post(new Notification(id, data));
+    }
+
+    public void Post(int id, object data)
     {
         Post(new Notification(id, data));
     }

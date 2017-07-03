@@ -101,4 +101,26 @@ public class Team : EntityBase
 
         base.OnDestroy();
     }
+
+    public float HpRatio
+    {
+        get
+        {
+            float hpRatio = 0f;
+            int memberCount = 0;
+            for (int i = 0; i < m_members.Count; i++)
+            {
+                Member each = m_members[i];
+                if (each.Actor == null)
+                    continue;
+
+                hpRatio += each.Actor.HpRatio;
+                memberCount++;                
+            }
+
+            if (hpRatio <= 0f)
+                return 0f;
+            return hpRatio / memberCount;
+        }
+    }
 }
