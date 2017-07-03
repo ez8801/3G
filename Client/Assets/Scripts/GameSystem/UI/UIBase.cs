@@ -16,6 +16,19 @@ public abstract class UIBase : MonoBehaviour
         }
     }
 
+    private static UILoading m_loadingUI;
+    public static UILoading LoadingUI
+    {
+        get
+        {
+            if (m_loadingUI == null)
+            {
+
+            }
+            return m_loadingUI;
+        }
+    }
+
     public virtual void Initialize()
     {
 

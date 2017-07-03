@@ -17,6 +17,17 @@ namespace Data
     }
 }
 
+public enum ItemCategory
+{
+    None,
+    Goods,
+    Material,
+    Misc,
+    Weapon = 10,
+    Armor = 11,
+    Max
+}
+
 public enum ItemType
 {
     None,

@@ -7,6 +7,14 @@
  * Copyright ⓒ Sweet Home Alabama. Team 3G, All rights reserved
  */
 
+public enum MatchResult
+{
+    None,
+    Win,
+    Draw,
+    Lose,
+}
+
 public class MatchJudge
 {
     private ConditionCompositer m_loseCondition = new ConditionCompositer();
@@ -22,11 +30,14 @@ public class MatchJudge
         m_loseCondition.AddCondition(condition);
     }
 
-    public void OnEntityDead(long entityId)
+    public MatchResult OnEntityDead(long entityId)
     {
         if (m_winCondition.IsDone())
         {
             NotificationCenter.Instance.Post((int)Notification.GameSystem.Win);
+            return MatchResult.Win;
         }
+
+        return MatchResult.None;
     }
 }
