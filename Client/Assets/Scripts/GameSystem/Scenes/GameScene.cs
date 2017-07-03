@@ -7,8 +7,7 @@ public class GameScene : GameSystem.Scene, IObserver
 {
     public const string LevelName = "Game";
 
-    private ConditionCompositer m_loseCondition = new ConditionCompositer();
-    private ConditionCompositer m_winCondition = new ConditionCompositer();
+    private MatchJudge m_matchJudge = new MatchJudge();
 
     private Actor m_player;
     private List<Actor> m_monsters;
@@ -56,10 +55,9 @@ public class GameScene : GameSystem.Scene, IObserver
             Team team = Team.GetTeam(each.Group);
             team.AddMember(spwanedEntity);
         }
-        
-        m_loseCondition.AddCondition(new HpCondition(m_player, CompareOperation.LessThanOrEqual, 0f));
-        m_winCondition.AddCondition(new TotalDestruction(m_monsterTeam));
-        
+
+        m_matchJudge.AddWinCondition(new TotalDestruction(m_monsterTeam));
+        m_matchJudge.AddLoseCondition(new HpCondition(m_player, CompareOperation.LessThanOrEqual, 0f));
         yield return null;
     }
 
@@ -92,11 +90,12 @@ public class GameScene : GameSystem.Scene, IObserver
         switch (notification.id)
         {
             case (int)Notification.Entity.OnDead:
-                if (m_winCondition.IsDone())
-                {
-                    NotificationCenter.Instance.Post((int)Notification.GameSystem.Win);
-                    GameSystem.SceneManager.Instance.ChangeScene(SceneType.LobbyScene);
-                }
+                m_matchJudge.OnEntityDead(notification.longExtra);
+                break;
+
+            case (int)Notification.GameSystem.Win:
+                GameSystem.SceneManager.Instance.ChangeScene(SceneType.LobbyScene);
+
                 break;
         }
     }
