@@ -20,6 +20,7 @@ namespace Data
         public string Name;
         public int StatsId;
         public int PrefabId;
+        public int DropGroupId;
     }
 }
 

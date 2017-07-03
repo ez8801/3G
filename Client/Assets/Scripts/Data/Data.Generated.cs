@@ -107,7 +107,8 @@ namespace Data
 			Name = json["Name"].STR;
 			StatsId = json["StatsId"].I4;
 			PrefabId = json["PrefabId"].I4;
-		}
+            DropGroupId = json["DropGroupId"].I4;
+        }
 
 		public void Deserialize(Deserializer deserializer)
 		{
@@ -116,7 +117,8 @@ namespace Data
 			deserializer.Deserialize(ref Name);
 			deserializer.Deserialize(ref StatsId);
 			deserializer.Deserialize(ref PrefabId);
-		}
+            deserializer.Deserialize(ref DropGroupId);
+        }
 
 		public void Serialize(BinaryWriter binaryWriter)
 		{
@@ -125,6 +127,7 @@ namespace Data
 			binaryWriter.Write(Name);
 			binaryWriter.Write(StatsId);
 			binaryWriter.Write(PrefabId);
+            binaryWriter.Write(DropGroupId);
 		}
 
 		public int GetIndex()
