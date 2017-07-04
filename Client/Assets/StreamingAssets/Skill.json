@@ -1,0 +1,57 @@
+[
+  {
+    "Id": 1,
+    "Type": 1,
+    "Name": "Skill.Common.1",
+    "Cooltime": 3,
+    "Effect": "",
+    "Texture": "",
+    "Chargeable": false,
+    "Charging": 0,
+    "Level": 0
+  },
+    {
+    "Id": 2,
+    "Type": 1,
+    "Name": "Skill.Common.2",
+    "Cooltime": 10,
+    "Effect": "",
+    "Texture": "",
+    "Chargeable": false,
+    "Charging": 0,
+    "Level": 0
+  },
+    {
+    "Id": 101,
+    "Type": 10,
+    "Name": "Skill.Staff.1",
+    "Cooltime": 5,
+    "Effect": "",
+    "Texture": "",
+    "Chargeable": false,
+    "Charging": 0,
+    "Level": 1
+  },
+    {
+    "Id": 201,
+    "Type": 11,
+    "Name": "Skill.Gem.1",
+    "Cooltime": 3,
+    "Effect": "",
+    "Texture": "",
+    "Chargeable": false,
+    "Charging": 0,
+    "Level": 1
+  },
+    {
+    "Id": 301,
+    "Type": 12,
+    "Name": "Skill.shield.1",
+    "Cooltime": 25,
+    "Effect": "",
+    "Texture": "",
+    "Chargeable": true,
+    "Charging": 2,
+    "Level": 1
+  }  
+]
