@@ -60,6 +60,7 @@ namespace GameSystem
             Assert.IsNotNull(prefab);
 
             GameObject newOne = Object.Instantiate(prefab) as GameObject;
+            newOne.name = newOne.name.Replace(" (Clone)", string.Empty);
             UIManager.Instance.AttachUI(newOne);
 
             T contentView = Util.RequireComponent<T>(newOne);

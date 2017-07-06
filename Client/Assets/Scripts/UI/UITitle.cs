@@ -23,10 +23,11 @@ public class UITitle : UIBase
     {
         base.Initialize();
 
-        m_view = new View();
+        if (IsAssigned(m_view) == false)
+            m_view = new View();
         this.Bind(ref m_view.lblGameVersion, "LblGameVersion");
     }
-
+    
     public override void ReloadData()
     {
         base.ReloadData();

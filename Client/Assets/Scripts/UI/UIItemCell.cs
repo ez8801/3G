@@ -18,8 +18,13 @@ public class UIItemCell : MonoBehaviour
     public UISprite SprNew;
     public UILabel LblCount;
 
+    public void Initialize()
+    {
+        BindComponents();
+    }
+
     [ContextMenu("Bind")]
-	public void Initialize()
+	public void BindComponents()
 	{
 		this.Bind(ref Lock, "Lock");
 		this.Bind(ref TexIcon, "TexIcon");
@@ -27,5 +32,40 @@ public class UIItemCell : MonoBehaviour
 		this.Bind(ref SprSelect, "SprSelect");
 		this.Bind(ref SprNew, "SprNew");
         this.Bind(ref LblCount, "LblCount");
+    }
+
+    public void InitWithData(UserData.Item item)
+    {
+        Data.Item itemData = ItemTable.Instance.Find(item.ItemId);
+        if (itemData.Stackable)
+        {
+            LblCount.SetActiveSafely(true);
+            LblCount.SetTextSafely(string.Concat("x", item.Count));
+        }
+        else
+        {
+            LblCount.SetTextSafely(string.Empty);
+        }
+
+        // @TODO: Set Item Info
+        if (!string.IsNullOrEmpty(itemData.Texture))
+        {
+            TexIcon.SetActiveSafely(true);
+            TexIcon.mainTexture = Resources.Load<Texture2D>(itemData.Texture);
+        }
+        else
+        {
+            TexIcon.SetActiveSafely(false);
+        }
+    }
+
+    public void Disable()
+    {
+        LblCount.SetActiveSafely(false);
+        LblLevel.SetActiveSafely(false);
+        SprNew.SetActiveSafely(false);
+        SprSelect.SetActiveSafely(false);
+        TexIcon.SetActiveSafely(false);
+        Lock.SetActiveSafely(false);
     }
 }

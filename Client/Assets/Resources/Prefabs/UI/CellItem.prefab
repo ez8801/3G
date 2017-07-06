@@ -481,12 +481,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecbb3689f8bd7cf4ab1bbb87f78b0256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Lock: {fileID: 0}
-  TexIcon: {fileID: 0}
-  LblLevel: {fileID: 0}
-  SprSelect: {fileID: 0}
-  SprNew: {fileID: 0}
-  LblCount: {fileID: 0}
+  Lock: {fileID: 1410859818853988}
+  TexIcon: {fileID: 114704587318179932}
+  LblLevel: {fileID: 114104556935774754}
+  SprSelect: {fileID: 114862791195585082}
+  SprNew: {fileID: 114900720848120066}
+  LblCount: {fileID: 114487300921364510}
 --- !u!114 &114228120709486682
 MonoBehaviour:
   m_ObjectHideFlags: 1

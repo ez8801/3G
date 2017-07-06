@@ -24,7 +24,8 @@ public class UINavigationBar : UIBase, IObserver
     [ContextMenu("Bind")]
     public override void Initialize()
     {
-        m_view = new View();
+        if (IsAssigned(m_view) == false)
+            m_view = new View();
         this.Bind(ref m_view.BtnBack, "BtnBack");
         this.Bind(ref m_view.SprBack, "BtnBack/SprBack");
         this.Bind(ref m_view.SprHome, "BtnBack/SprHome");

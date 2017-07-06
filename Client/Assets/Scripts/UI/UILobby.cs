@@ -39,7 +39,8 @@ public class UILobby : UIBase
     private void BindComponents()
     {
         Debug.Log(Macros.__PRETTY_FUNCTION__);
-        m_view = new View();
+        if (IsAssigned(m_view) == false)
+            m_view = new View();
         this.Bind(ref m_view.BtnChat, "AnchorTopRight/BtnChat");
         this.Bind(ref m_view.BtnInventory, "ToolBar/AnchorBottomRight/Grid/BtnInventory");
         this.Bind(ref m_view.BtnForge, "ToolBar/AnchorBottomRight/Grid/BtnForge");

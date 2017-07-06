@@ -37,12 +37,12 @@ public class UILoading : UIBase, IObserver
     public void SetProgress(float ratio)
     {
         m_SprProgressBar.SetFillAmountSafely(ratio, m_originWidth);
-        m_LblProgress.SetTextSafely(string.Format("{0}%", (ratio * 100f).ToString("0.0")));
+        m_LblProgress.SetTextSafely(StringEx.Format("{0}%", (ratio * 100f).ToString("0.0")));
     }
 
     public void SetTip(string tip)
     {
-        m_LblTip.SetTextSafely(string.Format("Tip. {0}", tip));
+        m_LblTip.SetTextSafely(StringEx.Format("Tip. {0}", tip));
     }
 
     public void HandleNotification(Notification notification)

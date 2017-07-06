@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public abstract class UIBase : MonoBehaviour
 {
@@ -59,5 +60,14 @@ public abstract class UIBase : MonoBehaviour
     public virtual void ReloadData()
     {
         gameObject.SetActiveSafely(true);
+    }
+
+    /// <summary>
+    /// 해당 구조체가 할당되었는지 여부를 반환합니다.
+    /// </summary>
+    public static bool IsAssigned<T>(T t) where T : struct
+    {
+        EqualityComparer<T> Comparer = EqualityComparer<T>.Default;
+        return (Comparer.Equals(t, default(T)) == false);
     }
 }

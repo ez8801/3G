@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -29,6 +30,15 @@ public class Util
     public static bool IsNullOrEmpty(System.Array i_array)
     {
         return (i_array == null || i_array.Length == 0);
+    }
+
+    /// <summary>
+    /// 해당 구조체가 할당되었는지 여부를 반환합니다.
+    /// </summary>
+    public static bool IsAssigned<T>(T t) where T : struct
+    {
+        EqualityComparer<T> Comparer = EqualityComparer<T>.Default;
+        return (Comparer.Equals(t, default(T)) == false);
     }
 
     /// <summary>
@@ -150,12 +160,19 @@ public class Util
     {
         if (go == null)
             return null;
+        return FindInChildren<T>(go.transform);
+    }
 
-        T comp = go.GetComponent<T>();
+    public static T FindInChildren<T>(Transform t) where T : Component
+    {
+        if (t == null)
+            return null;
+
+        T comp = t.GetComponent<T>();
         if (comp != null)
             return comp;
 
-        T[] children = go.GetComponentsInChildren<T>(true);
+        T[] children = t.GetComponentsInChildren<T>(true);
         if (children == null || children.Length == 0)
             return null;
 

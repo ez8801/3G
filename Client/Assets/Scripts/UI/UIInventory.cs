@@ -15,7 +15,7 @@ public class UIInventory : UIBase
 	public struct View
 	{
 		public UIEventListener BtnDetail;
-		public Transform LblName;
+		public UILabel LblName;
 		public Transform GridEquip;
 		public UIEventListener BtnClose;
 		public UILabel LblItemCount;
@@ -44,7 +44,8 @@ public class UIInventory : UIBase
     [ContextMenu("Bind")]
     private void BindComponents()
     {
-        m_view = new View();
+        if (IsAssigned(m_view) == false)
+            m_view = new View();
         this.Bind(ref m_view.BtnDetail, "HeaderView/BtnDetail");
         this.Bind(ref m_view.LblName, "HeaderView/LblName");
         this.Bind(ref m_view.GridEquip, "GridEquip");
@@ -65,47 +66,45 @@ public class UIInventory : UIBase
     public override void ReloadData()
     {
         base.ReloadData();
+
+        m_view.LblName.SetTextSafely(StringEx.Format("Lv.{0} {1}"
+            , MyInfo.Account.Level
+            , MyInfo.Account.NickName));
+
+        SetEquipSlots();
+        SetItemCount(MyInfo.Inventory.Count, NumberOfRowsInGrid());
         m_view.Grid.ReloadData();
+    }
+
+    public void SetItemCount(int itemCount, int capacity)
+    {
+        m_view.LblItemCount.SetTextSafely(StringEx.Format("{0}/{1}", itemCount, capacity));
+    }
+
+    public void SetEquipSlots()
+    {
+        for (int i = 0; i < m_view.GridEquip.childCount; i++)
+        {
+            Transform child = m_view.GridEquip.GetChild(i);
+            UIItemCell itemCellUI = Util.FindInChildren<UIItemCell>(child);
+            itemCellUI.Initialize();
+            itemCellUI.Disable();
+        }
     }
     
     public Transform CellForRowAtIndex(int index, GameObject contentView)
     {
         UIItemCell itemCellUI = Util.RequireComponent<UIItemCell>(contentView);
+        itemCellUI.Initialize();
 
         if (index < MyInfo.Inventory.Count)
         {
             UserData.Item item = MyInfo.Inventory[index];
-            Data.Item itemData = ItemTable.Instance.Find(item.ItemId);
-
-            if (itemData.Stackable)
-            {
-                itemCellUI.LblCount.SetActiveSafely(true);
-                itemCellUI.LblCount.SetTextSafely(string.Concat("x", item.Count));
-            }
-            else
-            {
-                itemCellUI.LblCount.SetTextSafely(string.Empty);
-            }
-
-            // @TODO: Set Item Info
-            if (!string.IsNullOrEmpty(itemData.Texture))
-            {
-                itemCellUI.TexIcon.SetActiveSafely(true);
-                itemCellUI.TexIcon.mainTexture = Resources.Load<Texture2D>(itemData.Texture);
-            }
-            else
-            {
-                itemCellUI.TexIcon.SetActiveSafely(false);
-            }
+            itemCellUI.InitWithData(item);
         }
         else
         {
-            itemCellUI.LblCount.SetActiveSafely(false);
-            itemCellUI.LblLevel.SetActiveSafely(false);
-            itemCellUI.SprNew.SetActiveSafely(false);
-            itemCellUI.SprSelect.SetActiveSafely(false);
-            itemCellUI.TexIcon.SetActiveSafely(false);
-            itemCellUI.Lock.SetActiveSafely(false);
+            itemCellUI.Disable();
         }
         
         return null;

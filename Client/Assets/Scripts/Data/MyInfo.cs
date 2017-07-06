@@ -10,6 +10,7 @@
 public class AccountInfo
 {
     public long Id;
+    public int Level;
     public string NickName;
     public int Gold;
 }
