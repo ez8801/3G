@@ -29,7 +29,7 @@ public enum SkillType
     Shield = 12,
     Sword = 13,
     Spear = 14,
-    Bow = 15,
+    Bow = 15
 }
 
 public sealed class SkillTable : ArrayTable<Skill>
