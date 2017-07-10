@@ -357,8 +357,13 @@ public class Client : MonoBehaviour {
 	{
 		this.m_c2sProxy.Chat(Nettention.Proud.HostID.HostID_Server, rmiContext, m_inputString);
 	}
-	
-	public void RequestP2PGroup (Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostIDArray m_hostIDs)
+
+    public void RequestMakeRaidRoom(Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID HostId)
+    {
+        this.m_c2sProxy_temp.RequestMakeRaidRoom(Nettention.Proud.HostID.HostID_Server, rmiContext, HostId);
+    }
+
+    public void RequestP2PGroup (Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostIDArray m_hostIDs)
 	{
         this.m_c2sProxy.RequestP2PGroup(Nettention.Proud.HostID.HostID_Server, rmiContext, m_hostIDs);
 	}

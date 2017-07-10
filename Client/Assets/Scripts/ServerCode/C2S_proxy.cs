@@ -71,11 +71,38 @@ Nettention.Proud.Marshaler.Write(__msg, password);
 	return RmiSend(remotes,rmiContext,__msg,
 		RmiName_Login, Common.Login);
 }
+public bool RequestMakeRaidRoom(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID HostId)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+		__msg.SimplePacketMode = core.IsSimplePacketMode();
+		Nettention.Proud.RmiID __msgid= Common.RequestMakeRaidRoom;
+		__msg.Write(__msgid);
+		Nettention.Proud.Marshaler.Write(__msg, HostId);
+		
+	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
+	__list[0] = remote;
+		
+	return RmiSend(__list,rmiContext,__msg,
+		RmiName_RequestMakeRaidRoom, Common.RequestMakeRaidRoom);
+}
+
+public bool RequestMakeRaidRoom(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID HostId)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+__msg.SimplePacketMode = core.IsSimplePacketMode();
+Nettention.Proud.RmiID __msgid= Common.RequestMakeRaidRoom;
+__msg.Write(__msgid);
+Nettention.Proud.Marshaler.Write(__msg, HostId);
+		
+	return RmiSend(remotes,rmiContext,__msg,
+		RmiName_RequestMakeRaidRoom, Common.RequestMakeRaidRoom);
+}
 #if USE_RMI_NAME_STRING
 // RMI name declaration.
 // It is the unique pointer that indicates RMI name such as RMI profiler.
 const string RmiName_Chat="Chat";
 const string RmiName_Login="Login";
+const string RmiName_RequestMakeRaidRoom="RequestMakeRaidRoom";
        
 const string RmiName_First = RmiName_Chat;
 #else
@@ -83,6 +110,7 @@ const string RmiName_First = RmiName_Chat;
 // It is the unique pointer that indicates RMI name such as RMI profiler.
 const string RmiName_Chat="";
 const string RmiName_Login="";
+const string RmiName_RequestMakeRaidRoom="";
        
 const string RmiName_First = "";
 #endif
