@@ -61,24 +61,24 @@ public class UIBattle : UIBase
         //
         if (MyTeam.HpRatio != m_myTeamHpRatio)
         {
-            TweenValue tween = TweenValue.Begin(MyTeam.gameObject, 0.4f, MyTeam.HpRatio);            
-            tween.method = UITweener.Method.EaseOut;
-            tween.SetOnUpdateListener((value, isFinished) =>
-            {
-                SprMyTeamHp.SetFillAmountSafely(value, m_sprMyTeamHpWidth);
-            });
+            //TweenValue tween = TweenValue.Begin(MyTeam.gameObject, 0.4f, MyTeam.HpRatio);            
+            //tween.method = UITweener.Method.EaseOut;
+            //tween.SetOnUpdateListener((value, isFinished) =>
+            //{
+            //    SprMyTeamHp.SetFillAmountSafely(value, m_sprMyTeamHpWidth);
+            //});
         }
         m_myTeamHpRatio = MyTeam.HpRatio;
 
         //
         if (EnemyTeam.HpRatio != m_enemyTeamHpRatio)
         {
-            TweenValue tween = TweenValue.Begin(EnemyTeam.gameObject, 0.4f, EnemyTeam.HpRatio);
-            tween.method = UITweener.Method.EaseOut;
-            tween.SetOnUpdateListener((value, isFinished) =>
-            {
-                SprEnemyTeamHp.SetFillAmountSafely(value, m_sprEnemyTeamHpWidth);
-            });
+            //TweenValue tween = TweenValue.Begin(EnemyTeam.gameObject, 0.4f, EnemyTeam.HpRatio);
+            //tween.method = UITweener.Method.EaseOut;
+            //tween.SetOnUpdateListener((value, isFinished) =>
+            //{
+            //    SprEnemyTeamHp.SetFillAmountSafely(value, m_sprEnemyTeamHpWidth);
+            //});
         }
         m_enemyTeamHpRatio = EnemyTeam.HpRatio;
     }
