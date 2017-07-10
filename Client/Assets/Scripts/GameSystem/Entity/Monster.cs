@@ -27,6 +27,7 @@ public class Monster : Actor
         base.Initialize();
         m_monsterData = MonsterTable.Instance.Find(m_entityID.Id);
         m_statsData = StatsTable.Instance.Find(m_monsterData.StatsId);
+        
 
         m_stats = new Stats();
         m_stats.Initialize(m_statsData);
