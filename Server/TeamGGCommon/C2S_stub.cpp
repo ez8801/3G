@@ -203,6 +203,80 @@ namespace C2S {
 					}
 				}
 				break;
+			case Rmi_RequestMakeRaidRoom:
+				{
+					::Proud::RmiContext ctx;
+					ctx.m_sentFrom=pa.GetRemoteHostID();
+					ctx.m_relayed=pa.IsRelayed();
+					ctx.m_hostTag = hostTag;
+					ctx.m_encryptMode = pa.GetEncryptMode();
+					ctx.m_compressMode = pa.GetCompressMode();
+					
+					
+					Proud::HostID HostId; __msg >> HostId;
+					m_core->PostCheckReadMessage(__msg,RmiName_RequestMakeRaidRoom);
+					
+			
+					if(m_enableNotifyCallFromStub && !m_internalUse)
+					{
+						::Proud::String parameterString;
+						
+						::Proud::AppendTextOut(parameterString,HostId);	
+						
+						NotifyCallFromStub(remote, (::Proud::RmiID)Rmi_RequestMakeRaidRoom, 
+							RmiName_RequestMakeRaidRoom,parameterString);
+			
+			#ifdef VIZAGENT
+						m_core->Viz_NotifyRecvToStub(remote, (::Proud::RmiID)Rmi_RequestMakeRaidRoom, 
+							RmiName_RequestMakeRaidRoom, parameterString);
+			#endif
+					}
+					else if(!m_internalUse)
+					{
+			#ifdef VIZAGENT
+						m_core->Viz_NotifyRecvToStub(remote, (::Proud::RmiID)Rmi_RequestMakeRaidRoom, 
+							RmiName_RequestMakeRaidRoom, _PNT(""));
+			#endif
+					}
+						
+					int64_t __t0 = 0;
+					if(!m_internalUse && m_enableStubProfiling)
+					{
+						::Proud::BeforeRmiSummary summary;
+						summary.m_rmiID = (::Proud::RmiID)Rmi_RequestMakeRaidRoom;
+						summary.m_rmiName = RmiName_RequestMakeRaidRoom;
+						summary.m_hostID = remote;
+						summary.m_hostTag = hostTag;
+						BeforeRmiInvocation(summary);
+			
+						__t0 = ::Proud::GetPreciseCurrentTimeMs();
+					}
+						
+					// Call this method.
+					bool __ret = RequestMakeRaidRoom (remote,ctx , HostId );
+						
+					if(__ret==false)
+					{
+						// Error: RMI function that a user did not create has been called. 
+						m_core->ShowNotImplementedRmiWarning(RmiName_RequestMakeRaidRoom);
+					}
+						
+					if(!m_internalUse && m_enableStubProfiling)
+					{
+						::Proud::AfterRmiSummary summary;
+						summary.m_rmiID = (::Proud::RmiID)Rmi_RequestMakeRaidRoom;
+						summary.m_rmiName = RmiName_RequestMakeRaidRoom;
+						summary.m_hostID = remote;
+						summary.m_hostTag = hostTag;
+						int64_t __t1;
+			
+						__t1 = ::Proud::GetPreciseCurrentTimeMs();
+			
+						summary.m_elapsedTime = (uint32_t)(__t1 - __t0);
+						AfterRmiInvocation(summary);
+					}
+				}
+				break;
 		default:
 			goto __fail;
 		}		
@@ -222,6 +296,11 @@ __fail:
 	const PNTCHAR* Stub::RmiName_Login =_PNT("Login");
 	#else
 	const PNTCHAR* Stub::RmiName_Login =_PNT("");
+	#endif
+	#ifdef USE_RMI_NAME_STRING
+	const PNTCHAR* Stub::RmiName_RequestMakeRaidRoom =_PNT("RequestMakeRaidRoom");
+	#else
+	const PNTCHAR* Stub::RmiName_RequestMakeRaidRoom =_PNT("");
 	#endif
 	const PNTCHAR* Stub::RmiName_First = RmiName_Chat;
 

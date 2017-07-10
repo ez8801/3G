@@ -40,10 +40,21 @@ namespace C2S {
 #define DEFRMI_C2S_Login(DerivedClass) bool DerivedClass::Login ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & id,  const Proud::String & password)
 #define CALL_C2S_Login Login ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & id,  const Proud::String & password)
 #define PARAM_C2S_Login ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & id,  const Proud::String & password)
+               
+		virtual bool RequestMakeRaidRoom ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::HostID & )		{ 
+			return false;
+		} 
+
+#define DECRMI_C2S_RequestMakeRaidRoom bool RequestMakeRaidRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::HostID & HostId) PN_OVERRIDE
+
+#define DEFRMI_C2S_RequestMakeRaidRoom(DerivedClass) bool DerivedClass::RequestMakeRaidRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::HostID & HostId)
+#define CALL_C2S_RequestMakeRaidRoom RequestMakeRaidRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::HostID & HostId)
+#define PARAM_C2S_RequestMakeRaidRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::HostID & HostId)
  
 		virtual bool ProcessReceivedMessage(::Proud::CReceivedMessage &pa, void* hostTag) PN_OVERRIDE;
 		static const PNTCHAR* RmiName_Chat;
 		static const PNTCHAR* RmiName_Login;
+		static const PNTCHAR* RmiName_RequestMakeRaidRoom;
 		static const PNTCHAR* RmiName_First;
 		virtual ::Proud::RmiID* GetRmiIDList() PN_OVERRIDE { return g_RmiIDList; }
 		virtual int GetRmiIDListCount() PN_OVERRIDE { return g_RmiIDListCount; }
@@ -70,6 +81,15 @@ namespace C2S {
 			if (Login_Function==nullptr) 
 				return true; 
 			return Login_Function(remote,rmiContext, id, password); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::HostID & ) > RequestMakeRaidRoom_Function;
+		virtual bool RequestMakeRaidRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::HostID & HostId) 
+		{ 
+			if (RequestMakeRaidRoom_Function==nullptr) 
+				return true; 
+			return RequestMakeRaidRoom_Function(remote,rmiContext, HostId); 
 		}
 
 	};

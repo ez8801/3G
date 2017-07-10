@@ -1,2 +1,3 @@
 ﻿  Packet.cpp
+cl : 명령줄 warning D9028: 최소 다시 빌드에 실패했습니다. 정상 빌드로 되돌립니다.
   TeamGGServer.vcxproj -> C:\Users\soongsae\Desktop\TeamGG\3G\Server\TeamGGServer\x64\Debug\TeamGGServer.exe

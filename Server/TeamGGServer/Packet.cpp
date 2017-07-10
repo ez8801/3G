@@ -19,6 +19,18 @@ DEFRMI_C2S_Chat(C2SStub)
 	g_S2CProxy.ShowChat(remote, RmiContext::ReliableSend, a, b + 1, c + 1);
 	return true;
 }
+DEFRMI_C2S_RequestMakeRaidRoom(C2SStub)
+{
+	cout << HostId << endl;
+	ServerManager *manager;
+	manager = ServerManager::getInstance();
+
+	HostIDArray arr;
+	arr.Add(HostId);
+
+	manager->srv->CreateP2PGroup(arr.GetData(), arr.Count, ByteArray());
+	return true;
+}
 
 DEFRMI_C2S_Login(C2SStub)
 {
@@ -77,6 +89,7 @@ ServerManager::ServerManager()
 {
 	m_groupHostID = HostID_None;
 	m_lastClientID = HostID_None;
+	srv = CNetServer::Create();
 };
 ServerManager* ServerManager::getInstance()
 {

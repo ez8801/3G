@@ -17,6 +17,7 @@ class C2SStub : public C2S::Stub
 public:
 	DECRMI_C2S_Chat;
 	DECRMI_C2S_Login;
+	DECRMI_C2S_RequestMakeRaidRoom;
 };
 
 
@@ -36,7 +37,7 @@ public:
 	C2SStub getC2SStub();
 	HostID getGroupHostID();
 	HostID getLastClientID();
-
+	CNetServer*  srv;
 	
 
 	///////SET FUNC//////////

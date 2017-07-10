@@ -74,6 +74,34 @@ __msg << password;
 		return RmiSend(remotes,remoteCount,rmiContext,__msg,
 			RmiName_Login, (::Proud::RmiID)Rmi_Login);
 	}
+        
+	bool Proxy::RequestMakeRaidRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext , const Proud::HostID & HostId)	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_RequestMakeRaidRoom;
+__msg.Write(__msgid); 
+	
+__msg << HostId;
+		
+		return RmiSend(&remote,1,rmiContext,__msg,
+			RmiName_RequestMakeRaidRoom, (::Proud::RmiID)Rmi_RequestMakeRaidRoom);
+	}
+
+	bool Proxy::RequestMakeRaidRoom ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const Proud::HostID & HostId)  	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_RequestMakeRaidRoom;
+__msg.Write(__msgid); 
+	
+__msg << HostId;
+		
+		return RmiSend(remotes,remoteCount,rmiContext,__msg,
+			RmiName_RequestMakeRaidRoom, (::Proud::RmiID)Rmi_RequestMakeRaidRoom);
+	}
 #ifdef USE_RMI_NAME_STRING
 const PNTCHAR* Proxy::RmiName_Chat =_PNT("Chat");
 #else
@@ -83,6 +111,11 @@ const PNTCHAR* Proxy::RmiName_Chat =_PNT("");
 const PNTCHAR* Proxy::RmiName_Login =_PNT("Login");
 #else
 const PNTCHAR* Proxy::RmiName_Login =_PNT("");
+#endif
+#ifdef USE_RMI_NAME_STRING
+const PNTCHAR* Proxy::RmiName_RequestMakeRaidRoom =_PNT("RequestMakeRaidRoom");
+#else
+const PNTCHAR* Proxy::RmiName_RequestMakeRaidRoom =_PNT("");
 #endif
 const PNTCHAR* Proxy::RmiName_First = RmiName_Chat;
 

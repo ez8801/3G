@@ -1,4 +1,4 @@
-
+rename cs(Proud::HostID, Nettention.Proud.HostID);
 rename cs(Proud::String, System.String);
 global C2S 3000 // client-to-server RMI, First message ID = 3000
 {
@@ -7,5 +7,6 @@ global C2S 3000 // client-to-server RMI, First message ID = 3000
 		[in] int b, 
         [in] float c);
 	Login([in] Proud::String id,[in] Proud::String password);
+	RequestMakeRaidRoom([in] Proud::HostID HostId);
 
 }

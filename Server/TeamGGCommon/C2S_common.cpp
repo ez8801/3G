@@ -12,9 +12,11 @@ namespace C2S {
 		Rmi_Chat,
                
 		Rmi_Login,
+               
+		Rmi_RequestMakeRaidRoom,
 	};
 
-	int g_RmiIDListCount = 2;
+	int g_RmiIDListCount = 3;
 
 }
 

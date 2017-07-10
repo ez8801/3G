@@ -11,43 +11,43 @@ void ServerMain::Team3GServerMain()
 	C2SStub g_C2SStub;
 
 	// NetServer 클래스 선언하기    
-	shared_ptr<CNetServer> srv(CNetServer::Create());
+	
 
 	//클라이언트가 서버에 접속했을때
-	srv->OnClientJoin = [](CNetClientInfo *clientInfo) 
+	m_InMain->srv->OnClientJoin = [](CNetClientInfo *clientInfo)
 	{
 		ServerManager * m_SM = ServerManager::getInstance();
 		printf("Client %d connected.\n", clientInfo->m_HostID);
 		m_SM->setLastClientHostID(clientInfo->m_HostID);
 	};
 	//클라이언트가 서버에서 떠났을때
-	srv->OnClientLeave = [](CNetClientInfo *clientInfo, ErrorInfo *errorInfo, const ByteArray& comment) 
+	m_InMain->srv->OnClientLeave = [](CNetClientInfo *clientInfo, ErrorInfo *errorInfo, const ByteArray& comment)
 	{
 		printf("Client %d disconnected.\n", clientInfo->m_HostID);
 	};
 	//에러가 발생했을때
-	srv->OnError = [](ErrorInfo *errorInfo) 
+	m_InMain->srv->OnError = [](ErrorInfo *errorInfo)
 	{
 		printf("OnError : %s\n", StringT2A(errorInfo->ToString()).GetString());
 	};
 
-	srv->OnWarning = [](ErrorInfo *errorInfo) 
+	m_InMain->srv->OnWarning = [](ErrorInfo *errorInfo)
 	{
 		printf("OnWarning : %s\n", StringT2A(errorInfo->ToString()).GetString());
 	};
-	srv->OnInformation = [](ErrorInfo *errorInfo) 
+	m_InMain->srv->OnInformation = [](ErrorInfo *errorInfo)
 	{
 		printf("OnInformation : %s\n", StringT2A(errorInfo->ToString()).GetString());
 	};
 
-	srv->OnException = [](const Exception &e) 
+	m_InMain->srv->OnException = [](const Exception &e)
 	{
 		printf("OnInformation : %s\n", e.what());
 	};
 
 	// RmiStub, RmiProxy 클래스 NetServer에 Attach하기
-	srv->AttachStub(&g_C2SStub);
-	srv->AttachProxy(&g_S2CProxy);
+	m_InMain->srv->AttachStub(&g_C2SStub);
+	m_InMain->srv->AttachProxy(&g_S2CProxy);
 	
 
 	// 서버 시작에 필요한 Parameter 설정하기
@@ -59,7 +59,7 @@ void ServerMain::Team3GServerMain()
 	{
 		// 서버 시작하기
 		// 서버 시작시 문제가 발생할 경우 Exception을 throw 합니다.
-		srv->Start(p1);
+		m_InMain->srv->Start(p1);
 	}
 	catch (Exception &e)
 	{
@@ -86,8 +86,8 @@ void ServerMain::Team3GServerMain()
 		{
 			HostID list[100];
 			
-			int listCount = srv->GetClientHostIDs(list, 100);
-			whileGroupHostID = srv->CreateP2PGroup(list, listCount, ByteArray());
+			int listCount = m_InMain->srv->GetClientHostIDs(list, 100);
+			whileGroupHostID = m_InMain->srv->CreateP2PGroup(list, listCount, ByteArray());
 			m_InMain->setGroupHostID(whileGroupHostID);
 		}
 		else if (userInput == "2")
@@ -98,14 +98,14 @@ void ServerMain::Team3GServerMain()
 		else if (userInput == "3")
 		{
 			whileGroupHostID = m_InMain->getGroupHostID();
-			srv->DestroyP2PGroup(whileGroupHostID);
+			m_InMain->srv->DestroyP2PGroup(whileGroupHostID);
 			m_InMain->setGroupHostID(HostID_None);
 		}
 		else if (userInput == "4")
 		{
 
 			HostID list[100];
-			int listCount = srv->GetClientHostIDs(list, 100);
+			int listCount = m_InMain->srv->GetClientHostIDs(list, 100);
 			for (int i = 0; i < listCount; i++)
 			{
 				
