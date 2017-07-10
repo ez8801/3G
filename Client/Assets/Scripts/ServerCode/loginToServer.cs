@@ -12,6 +12,7 @@ public class loginToServer : MonoBehaviour {
 	private string m_serverIP; // 서버아이피를 저장할 스트링 변수.
     private string m_userID; // 유저의 ID값
 	private string m_logonButtonString;
+
 	
 	// Use this for initialization
 	void Start () {
@@ -49,6 +50,7 @@ public class loginToServer : MonoBehaviour {
 		 * 정상적으로 연결 되었다면 다음 씬으로 전환된다.
 		 * */
 		// LogOn 버튼을 그린다. 
+
 		if (GUI.Button(new Rect(m_client.ScreenWidth / 2, m_client.ScreenOneH * 7, m_client.ScreenOneW, m_client.ScreenOneH), m_logonButtonString))
 		{
 			if (!m_userID.Equals("") && !m_serverIP.Equals("")) // 닉네임과 서버 아이피가 모두 입력 되어 있다면.
@@ -61,8 +63,28 @@ public class loginToServer : MonoBehaviour {
 				m_logonButtonString = "connecting...";
 			}
 		}
+        if (GUI.Button(new Rect(m_client.ScreenWidth / 3 - 50, m_client.ScreenOneH * 7, m_client.ScreenOneW, m_client.ScreenOneH), "Make"))
+        {
+            int i = 0;
+            m_client.RequestMakeRaidRoom(Nettention.Proud.RmiContext.UnreliableSend, m_client.GetLocalHostID());
 
-		if(GUI.Button(new Rect(m_client.ScreenWidth / 2 + m_client.ScreenOneW, m_client.ScreenOneH * 7, m_client.ScreenOneW, m_client.ScreenOneH), "QUIT"))
+            foreach (KeyValuePair<Nettention.Proud.HostID, Client.ChatRoomInfo> pair in m_client.ChatRooms) // dictionary 에 있는 아이템을 하나씩 빼온다.
+            {
+                if (pair.Key != Nettention.Proud.HostID.HostID_Server) // 키가 Server 가 아니면. ChatRooms 에는 server hostID, P2P그룹들의 hostID 가 있다. serverID 는 glovalChat에서 쓰고 있으니 필요가 없다..
+                {
+                    // 버튼을 그린다. 
+                    if (GUI.Button(new Rect(m_client.ScreenWidth / 2 - m_client.ScreenOneW * 2, m_client.ScreenOneH * (i + 1), m_client.ScreenOneW * 4, m_client.ScreenOneH), "GroupHostID:" + pair.Key.ToString()))
+                    {// 버튼 클릭시.
+                     // P2PChat 에서 채팅창에 뿌려줄 그룹 의 아이디를 셋팅.
+                        m_client.P2PChatGroupID = pair.Key;
+                        
+                    }
+                }
+                i++;
+            }
+        }
+
+            if (GUI.Button(new Rect(m_client.ScreenWidth / 2 + m_client.ScreenOneW, m_client.ScreenOneH * 7, m_client.ScreenOneW, m_client.ScreenOneH), "QUIT"))
 		{
             SceneManager.LoadScene(1); // 어플리케이션 종료. -> 메인화면으로 씬 전환
 		}
@@ -75,10 +97,21 @@ public struct items
     public int itemIdx;
     public int itemType;
 };
+public struct gameResults
+{
+    public int GameScore;
+    public int TotalKillCount;
+    public int GetMoney;
+};
 
 
     class Test : Nettention.Proud.Marshaler
     {
+        public static void Write(Nettention.Proud.Message msg, Nettention.Proud.FastArray<gameResults> strMsg)
+        {
+
+        }
+
         public static void Write(Nettention.Proud.Message msg, Nettention.Proud.FastArray<items> strMsg)
         {
             int a;

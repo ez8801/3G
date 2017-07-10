@@ -15,7 +15,7 @@ public class P2PChatRoom : MonoBehaviour {
 		m_client = Client.Instance; // 생성된 CClient 를 가져온다.
 		
 		m_toolbarState = ChatUnity.ToolBarState.P2PChatRoom; // m_toolbarState 를 P2PChatRoom 으로 초기화 한다.
-		m_toolbarStrings = new string[] {"G_Chat", "UserList", "Room" }; // 툴바의 버튼에 나타낼 문자열을 각각 넣어서 string 배열을 생성한다.
+		m_toolbarStrings = new string[] {"G_Chat", "UserList", "Room", "CreateRoom" }; // 툴바의 버튼에 나타낼 문자열을 각각 넣어서 string 배열을 생성한다.
 		m_height = m_client.ScreenOneH * 6; // 채팅창의 높이를 해당 크기로 초기화.
 	}
 	
