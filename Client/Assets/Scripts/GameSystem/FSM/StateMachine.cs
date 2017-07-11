@@ -9,7 +9,7 @@
 
 using System.Collections.Generic;
 
-public class StateMachine
+public class StateMachine : IStateMachine
 {
     public Stack<StateBase> m_stack = new Stack<StateBase>();
     public Actor Owner { private set; get; }
@@ -59,7 +59,7 @@ public class StateMachine
             }
 
             if (state != null)
-                state.Initialize(Owner);
+                state.Initialize(Owner, Owner.StateMachine);
         }
 
         return state;
@@ -76,6 +76,11 @@ public class StateMachine
         {
             m_currState.PerformUpdate();
         }
+    }
+
+    public StateBase GetCurrentState()
+    {
+        return (m_stack.Count > 1) ? m_stack.Peek() : null;
     }
 
     /// <summary>

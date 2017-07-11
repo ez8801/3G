@@ -20,11 +20,11 @@ public class Idle : StateBase
 
             if (distance > 0.1f)
             {
-                m_owner.StateMachine.Transition(StateType.Walk);
+                m_stateMachine.Transition(StateType.Walk);
             }
             else
             {
-                // m_owner.StateMachine.Transition(StateType.Attack);
+                // m_stateMachine.Transition(StateType.Attack);
             }
         }
         return base.OnUpdate();

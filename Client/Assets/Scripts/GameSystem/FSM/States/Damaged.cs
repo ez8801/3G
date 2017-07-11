@@ -24,10 +24,9 @@ public class Damaged : StateBase
     protected override bool OnUpdate()
     {
         m_elapsedTime += Time.deltaTime;
-        if (m_elapsedTime >= DamagedTime
-            && m_owner.CachedRigidbody2D.velocity == Vector2.zero)
+        if (m_elapsedTime >= DamagedTime && m_actor.IsGrounded())
         {
-            m_owner.StateMachine.Revert();
+            m_stateMachine.Revert();
         }
         return base.OnUpdate();
     }

@@ -46,5 +46,16 @@ public class Character : Actor
         CurrentHp = m_stats.Hp;
     }
 
-
+    protected override void Update()
+    {
+        base.Update();
+        if (HasTarget())
+        {
+            if (Target.IsDead)
+            {
+                Actor newTarget = FindNearestTarget(this) as Actor;
+                SetTarget(newTarget);
+            }
+        }
+    }
 }

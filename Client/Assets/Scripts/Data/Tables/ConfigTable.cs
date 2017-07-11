@@ -46,4 +46,9 @@ public class ConfigTable : ArrayTable<Config>
     {
         return false;
     }
+
+    public int MaxProb()
+    {
+        return GetConfig("MaxProb").Value;
+    }
 }

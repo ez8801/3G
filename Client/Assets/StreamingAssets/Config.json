@@ -13,5 +13,10 @@
     "Id": 3,
     "Key": "InitialGoldAmount",
     "Value": 1000
+  },
+  {
+    "Id": 4,
+    "Key": "MaxProb",
+    "Value": 100000
   }
 ]

@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 
-public class Actor : EntityBase
+public interface IActor
+{
+    void OnDead();
+    bool IsGrounded();
+}
+
+public class Actor : EntityBase, IActor
 {
     private StateMachine m_stateMachine;
     public StateMachine StateMachine
@@ -88,6 +94,11 @@ public class Actor : EntityBase
         m_stateMachine.Transition(StateType.Idle);
 
         CachedRigidbody2D = GetComponent<Rigidbody2D>();
+    }
+
+    public bool IsGrounded()
+    {
+        return CachedRigidbody2D.velocity == Vector2.zero;
     }
 
     public bool HasTarget()
@@ -226,5 +237,10 @@ public class Actor : EntityBase
 
             SoundManager.Instance.PlaySound(1);
         }
+    }
+
+    public virtual void OnDead()
+    {
+        GameObjectPool.Instance.Release(gameObject);
     }
 }

@@ -58,7 +58,13 @@ public static class TransformEx
         if (component != null)
             component.gameObject.SetActive(value);
     }
-    
+
+    public static void SetEnableSafely(this Behaviour behaviour, bool value)
+    {
+        if (behaviour != null)
+            behaviour.enabled = value;
+    }
+
     public static void AttachIdentity(this Transform t, Transform child)
     {
         if (t != null)
@@ -86,6 +92,13 @@ public static class TransformEx
             parent = parent.parent;
         }
         return fullPath;
+    }
+
+    public static Vector3 Direction(this Transform t, Vector3 to)
+    {
+        if (t != null)
+            return (to - t.position).normalized;
+        return Vector3.zero;
     }
 
     public static void Bind<T>(this MonoBehaviour mono, ref T target, string path) where T : Component

@@ -57,6 +57,12 @@ public class UIItemCell : MonoBehaviour
         {
             TexIcon.SetActiveSafely(false);
         }
+
+        SprNew.SetActiveSafely(MyInfo.Inventory.GetDirty(item.Id));
+        
+        LblLevel.SetActiveSafely(false);
+        SprSelect.SetActiveSafely(false);
+        Lock.SetActiveSafely(false);
     }
 
     public void Disable()

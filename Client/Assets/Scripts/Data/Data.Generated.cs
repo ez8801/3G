@@ -225,7 +225,7 @@ namespace Data
 			return Id;
 		}
 	}
-    
+
 	public partial struct Tip : IDeserializable, ISerializable, IIndexer
 	{
 		public void Deserialize(JSONObject json)
@@ -252,86 +252,124 @@ namespace Data
 		}
 	}
 
-    public partial struct Skill : IDeserializable, ISerializable, IIndexer
-    {
-        public void Deserialize(JSONObject json)
-        {
-            Id = json["Id"].I4;
-            Type = json["Type"].I4;
-            Name = json["Name"].STR;
-            Cooltime = json["Cooltime"].I4;
-            Effect = json["Effect"].I4;
-            Texture = json["Texture"].I4;
-            Chargeable = json["Chargeable"].B;
-            Charging = json["Charging"].I4;
-            Level = json["Level"].I4;
-        }
+	public partial struct Skill : IDeserializable, ISerializable, IIndexer
+	{
+		public void Deserialize(JSONObject json)
+		{
+			Id = json["Id"].I4;
+			Type = json["Type"].I4;
+			Name = json["Name"].STR;
+			Cooltime = json["Cooltime"].I4;
+			Effect = json["Effect"].I4;
+			Texture = json["Texture"].I4;
+			Chargeable = json["Chargeable"].B;
+			Charging = json["Charging"].I4;
+			Level = json["Level"].I4;
+		}
 
-        public void Deserialize(Deserializer deserializer)
-        {
-            deserializer.Deserialize(ref Id);
-            deserializer.Deserialize(ref Type);
-            deserializer.Deserialize(ref Name);
-            deserializer.Deserialize(ref Cooltime);
-            deserializer.Deserialize(ref Effect);
-            deserializer.Deserialize(ref Texture);
-            deserializer.Deserialize(ref Chargeable);
-            deserializer.Deserialize(ref Charging);
-            deserializer.Deserialize(ref Level);
-        }
+		public void Deserialize(Deserializer deserializer)
+		{
+			deserializer.Deserialize(ref Id);
+			deserializer.Deserialize(ref Type);
+			deserializer.Deserialize(ref Name);
+			deserializer.Deserialize(ref Cooltime);
+			deserializer.Deserialize(ref Effect);
+			deserializer.Deserialize(ref Texture);
+			deserializer.Deserialize(ref Chargeable);
+			deserializer.Deserialize(ref Charging);
+			deserializer.Deserialize(ref Level);
+		}
 
-        public void Serialize(BinaryWriter binaryWriter)
-        {
-            binaryWriter.Write(Id);
-            binaryWriter.Write(Type);
-            binaryWriter.Write(Name);
-            binaryWriter.Write(Cooltime);
-            binaryWriter.Write(Effect);
-            binaryWriter.Write(Texture);
-            binaryWriter.Write(Chargeable);
-            binaryWriter.Write(Charging);
-            binaryWriter.Write(Level);
-        }
+		public void Serialize(BinaryWriter binaryWriter)
+		{
+			binaryWriter.Write(Id);
+			binaryWriter.Write(Type);
+			binaryWriter.Write(Name);
+			binaryWriter.Write(Cooltime);
+			binaryWriter.Write(Effect);
+			binaryWriter.Write(Texture);
+			binaryWriter.Write(Chargeable);
+			binaryWriter.Write(Charging);
+			binaryWriter.Write(Level);
+		}
 
-        public int GetIndex()
-        {
-            return Id;
-        }
-    }
+		public int GetIndex()
+		{
+			return Id;
+		}
+	}
 
-    public partial struct PassiveSkill : IDeserializable, ISerializable, IIndexer
-    {
-        public void Deserialize(JSONObject json)
-        {
-            Id = json["Id"].I4;
-            Type = json["Type"].I4;
-            Name = json["Name"].STR;
-            Texture = json["Texture"].I4;
-            Level = json["Level"].I4;
-        }
+	public partial struct PassiveSkill : IDeserializable, ISerializable, IIndexer
+	{
+		public void Deserialize(JSONObject json)
+		{
+			Id = json["Id"].I4;
+			Type = json["Type"].I4;
+			Name = json["Name"].STR;
+			Texture = json["Texture"].I4;
+			Level = json["Level"].I4;
+		}
 
-        public void Deserialize(Deserializer deserializer)
-        {
-            deserializer.Deserialize(ref Id);
-            deserializer.Deserialize(ref Type);
-            deserializer.Deserialize(ref Name);
-            deserializer.Deserialize(ref Texture);
-            deserializer.Deserialize(ref Level);
-        }
+		public void Deserialize(Deserializer deserializer)
+		{
+			deserializer.Deserialize(ref Id);
+			deserializer.Deserialize(ref Type);
+			deserializer.Deserialize(ref Name);
+			deserializer.Deserialize(ref Texture);
+			deserializer.Deserialize(ref Level);
+		}
 
-        public void Serialize(BinaryWriter binaryWriter)
-        {
-            binaryWriter.Write(Id);
-            binaryWriter.Write(Type);
-            binaryWriter.Write(Name);
-            binaryWriter.Write(Texture);
-            binaryWriter.Write(Level);
-        }
+		public void Serialize(BinaryWriter binaryWriter)
+		{
+			binaryWriter.Write(Id);
+			binaryWriter.Write(Type);
+			binaryWriter.Write(Name);
+			binaryWriter.Write(Texture);
+			binaryWriter.Write(Level);
+		}
 
-        public int GetIndex()
-        {
-            return Id;
-        }
-    }
+		public int GetIndex()
+		{
+			return Id;
+		}
+	}
+
+	public partial struct DropItem : IDeserializable, ISerializable, IIndexer
+	{
+		public void Deserialize(JSONObject json)
+		{
+			Id = json["Id"].I4;
+			Group = json["Group"].I4;
+			ItemId = json["ItemId"].I4;
+			MinCount = json["MinCount"].I4;
+			MaxCount = json["MaxCount"].I4;
+			Prob = json["Prob"].I4;
+		}
+
+		public void Deserialize(Deserializer deserializer)
+		{
+			deserializer.Deserialize(ref Id);
+			deserializer.Deserialize(ref Group);
+			deserializer.Deserialize(ref ItemId);
+			deserializer.Deserialize(ref MinCount);
+			deserializer.Deserialize(ref MaxCount);
+			deserializer.Deserialize(ref Prob);
+		}
+
+		public void Serialize(BinaryWriter binaryWriter)
+		{
+			binaryWriter.Write(Id);
+			binaryWriter.Write(Group);
+			binaryWriter.Write(ItemId);
+			binaryWriter.Write(MinCount);
+			binaryWriter.Write(MaxCount);
+			binaryWriter.Write(Prob);
+		}
+
+		public int GetIndex()
+		{
+			return Id;
+		}
+	}
 
 }
