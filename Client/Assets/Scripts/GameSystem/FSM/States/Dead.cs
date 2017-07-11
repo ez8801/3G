@@ -22,18 +22,13 @@ public class Dead : StateBase
 
         // @TODO : Animation
     }
-
-    private void OnDead()
-    {        
-        GameObjectPool.Instance.Release(m_owner.gameObject);
-    }
     
     protected override bool OnUpdate()
     {
         m_elapsedTime += Time.deltaTime;
         if (m_elapsedTime >= kTime)
         {
-            OnDead();
+            m_actor.OnDead();
         }
         return base.OnUpdate();
     }

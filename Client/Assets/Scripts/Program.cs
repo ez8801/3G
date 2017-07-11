@@ -13,6 +13,7 @@ public class Program : MonoBehaviour
     {   
         DataManager.Instance.Initialize();
         UIManager.Instance.Initialize();
+        GameObjectPool.Instance.Initialize();
 
         DataManager.Instance.LoadAllData();
 

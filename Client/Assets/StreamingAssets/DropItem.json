@@ -21,7 +21,7 @@
     "ItemId": 10001,
     "MinCount": 1,
     "MaxCount": 1,
-    "Prob": 5000
+    "Prob": 100000
   },
   {
     "Id": 4,
@@ -29,7 +29,7 @@
     "ItemId": 20001,
     "MinCount": 1,
     "MaxCount": 1,
-    "Prob": 5000
+    "Prob": 100000
   },
   {
     "Id": 5,
@@ -37,7 +37,7 @@
     "ItemId": 30001,
     "MinCount": 1,
     "MaxCount": 1,
-    "Prob": 5000
+    "Prob": 100000
   },
   {
     "Id": 6,

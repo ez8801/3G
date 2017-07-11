@@ -14,6 +14,7 @@ public class DataManager : MonoSingleton<DataManager>
     {
         LoadTable(ResourceLoad("Character.json"), CharacterTable.Instance);
         LoadTable(ResourceLoad("Config.json"), ConfigTable.Instance);
+        LoadTable(ResourceLoad("DropItem.json"), DropItemTable.Instance);    
         LoadTable(ResourceLoad("Item.json"), ItemTable.Instance);
         LoadTable(ResourceLoad("Monster.json"), MonsterTable.Instance);
         LoadTable(ResourceLoad("Prefab.json"), PrefabTable.Instance);
@@ -31,6 +32,7 @@ public class DataManager : MonoSingleton<DataManager>
 
         serializer.Serialize("Character", CharacterTable.Instance);
         serializer.Serialize("Config", ConfigTable.Instance);
+        serializer.Serialize("DropItem", DropItemTable.Instance);
         serializer.Serialize("Item", ItemTable.Instance);
         serializer.Serialize("Monster", MonsterTable.Instance);
         serializer.Serialize("Prefab", PrefabTable.Instance);
@@ -42,6 +44,7 @@ public class DataManager : MonoSingleton<DataManager>
 
         Validate("Character", new CharacterTable());
         Validate("Config", new ConfigTable());
+        Validate("DropItem", new DropItemTable());
         Validate("Item", new ItemTable());
         Validate("Monster", new MonsterTable());
         Validate("Prefab", new PrefabTable());

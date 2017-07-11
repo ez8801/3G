@@ -122,6 +122,7 @@ public class UIInventory : UIBase
 
     private void OnClickClose(GameObject sender)
     {
+        MyInfo.Inventory.ClearDirtyFlag();
         NGUITools.SetActive(gameObject, false);
     }
 

@@ -74,7 +74,7 @@ public abstract class EntityBase : MonoBehaviour
         }
         return null;
     }
-
+    
     /// <summary>
     /// 지정된 Entity와 가장 가까운 Entity를 반환합니다.
     /// </summary>
@@ -90,6 +90,10 @@ public abstract class EntityBase : MonoBehaviour
                 continue;
 
             if (match.GroupId == 0 || match.GroupId == source.GroupId)
+                continue;
+
+            Actor actorable = match as Actor;
+            if (actorable != null && actorable.IsDead)
                 continue;
             
             float distance = Vector3.Distance(match.CachedTransform.position, source.CachedTransform.position);

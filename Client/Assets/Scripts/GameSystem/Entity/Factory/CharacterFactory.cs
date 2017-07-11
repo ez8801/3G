@@ -21,8 +21,8 @@ public static class CharacterFactory
         GameObject newOne = Object.Instantiate(prefab) as GameObject;
         Assert.IsNotNull(newOne, "CharacterFactory::CreateEntity(string)");
 
-        Actor actor = Util.RequireComponent<Actor>(newOne);
+        EntityBase entity = Util.RequireComponent<EntityBase>(newOne);
         ++uid;
-        return actor;
+        return entity;
     }
 }
