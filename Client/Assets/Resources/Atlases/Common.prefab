@@ -682,8 +682,8 @@ MonoBehaviour:
     y: 848
     width: 68
     height: 6
-    borderLeft: 0
-    borderRight: 0
+    borderLeft: 4
+    borderRight: 4
     borderTop: 0
     borderBottom: 0
     paddingLeft: 0
