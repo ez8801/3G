@@ -15,6 +15,7 @@ public enum EntityType
     Character,
     Monster,
     Team,
+    Item,
     Max,
 }
 

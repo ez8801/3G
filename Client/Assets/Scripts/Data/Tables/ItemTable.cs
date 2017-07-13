@@ -8,6 +8,7 @@ namespace Data
     public partial struct Item
     {
         public int Id;
+        public int Category;
         public int Type;
         public int Rarity;
         public string Name;
@@ -38,6 +39,13 @@ public enum ItemType
     Leather = 12,
     BluePrint = 100,
     Max
+}
+
+public struct SimpleItem
+{
+    public long Id;
+    public int ItemId;
+    public int Count;
 }
 
 /// <summary>

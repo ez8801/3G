@@ -6,6 +6,7 @@ public class Notification
         None,
         OnBackPressed,
         OnSceneChanged,
+        ExitScene,
         Max
     }
 

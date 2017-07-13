@@ -36,11 +36,21 @@ public class UIItemCell : MonoBehaviour
 
     public void InitWithData(UserData.Item item)
     {
-        Data.Item itemData = ItemTable.Instance.Find(item.ItemId);
+        InitWith(item.Id, item.ItemId, item.Count);
+    }
+
+    public void InitWithData(SimpleItem item)
+    {
+        InitWith(item.Id, item.ItemId, item.Count);
+    }
+
+    public void InitWith(long id, int itemId, int itemCount)
+    {
+        Data.Item itemData = ItemTable.Instance.Find(itemId);
         if (itemData.Stackable)
         {
             LblCount.SetActiveSafely(true);
-            LblCount.SetTextSafely(string.Concat("x", item.Count));
+            LblCount.SetTextSafely(string.Concat("x", itemCount));
         }
         else
         {
@@ -58,8 +68,8 @@ public class UIItemCell : MonoBehaviour
             TexIcon.SetActiveSafely(false);
         }
 
-        SprNew.SetActiveSafely(MyInfo.Inventory.GetDirty(item.Id));
-        
+        SprNew.SetActiveSafely(MyInfo.Inventory.GetDirty(id));
+
         LblLevel.SetActiveSafely(false);
         SprSelect.SetActiveSafely(false);
         Lock.SetActiveSafely(false);

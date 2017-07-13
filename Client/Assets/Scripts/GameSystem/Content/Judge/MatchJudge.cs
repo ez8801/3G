@@ -30,14 +30,11 @@ public class MatchJudge
         m_loseCondition.AddCondition(condition);
     }
 
-    public MatchResult OnEntityDead(long entityId)
+    public void OnEntityDead(long entityId)
     {
         if (m_winCondition.IsDone())
         {
             NotificationCenter.Instance.Post((int)Notification.GameSystem.Win);
-            return MatchResult.Win;
         }
-
-        return MatchResult.None;
     }
 }
