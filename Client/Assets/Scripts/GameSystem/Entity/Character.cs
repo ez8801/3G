@@ -8,11 +8,17 @@
  */
 
 using UnityEngine;
+using System.Collections;
 
 public class Character : Actor 
 {
     private Data.Character m_characterData;
     private Data.Stats m_statsData;
+    IEnumerator attackCorutine;
+    IEnumerator armorCorutine;
+
+    private bool AttackBuffOn = false;
+    private bool ArmorBuffOn = false;
 
     private Stats m_stats;
     public override Stats Stats
@@ -57,5 +63,57 @@ public class Character : Actor
                 SetTarget(newTarget);
             }
         }
+    }
+    public long GetGroupId()
+    {
+        return GroupId;
+    }
+
+    public void StartIncreaseAttackBuff(float buffValue)
+    {
+        attackCorutine = IncreaseAttackDamage(buffValue);
+        if (AttackBuffOn == false)
+        {
+            AttackBuffOn = true;
+            StartCoroutine(attackCorutine);
+        }
+        else
+        {
+            StopCoroutine(attackCorutine);
+            this.Stats.AttackDamageValue(-buffValue);
+            StartCoroutine(attackCorutine);
+        }
+    }
+
+    IEnumerator IncreaseAttackDamage(float increaseValue)
+    {
+        this.Stats.AttackDamageValue(increaseValue);
+        yield return new WaitForSeconds(10.0f);
+        this.Stats.AttackDamageValue(-increaseValue);
+        AttackBuffOn = false;
+    }
+
+    public void StartIncreaseArmorBuff(float buffValue)
+    {
+        armorCorutine = IncreaseArmor(buffValue);
+        if (ArmorBuffOn == false)
+        {
+            ArmorBuffOn = true;
+            StartCoroutine(armorCorutine);
+        }
+        else
+        {
+            StopCoroutine(armorCorutine);
+            this.Stats.ArmorValue(-buffValue);
+            StartCoroutine(armorCorutine);
+        }
+    }
+
+    IEnumerator IncreaseArmor(float increaseValue)
+    {
+        this.Stats.ArmorValue(increaseValue);
+        yield return new WaitForSeconds(5.0f);
+        this.Stats.ArmorValue(-increaseValue);
+        ArmorBuffOn = false;
     }
 }

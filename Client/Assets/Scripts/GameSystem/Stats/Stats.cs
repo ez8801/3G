@@ -23,12 +23,31 @@ public class Stats
         }
     }
 
+    public void AttackDamagePercent(float increasePercent)
+    {
+        m_attackDamage.Percent += increasePercent;
+    }
+
+    public void AttackDamageValue(float increaseValue)
+    {
+        m_attackDamage.Value += increaseValue;
+    }
+
     public int Armor
     {
         get
         {
             return Mathf.FloorToInt(m_armor.Final);
         }
+    }
+    public void ArmorPercent(float increasePercent)
+    {
+        m_armor.Percent += increasePercent;
+    }
+
+    public void ArmorValue(float increaseValue)
+    {
+        m_armor.Value += increaseValue;
     }
 
     public int Hp
@@ -38,7 +57,16 @@ public class Stats
             return Mathf.FloorToInt(m_hp.Final);
         }
     }
-    
+    public void HpPercent(float increasePercent)
+    {
+        m_hp.Percent += increasePercent;
+    }
+
+    public void HpValue(float increaseValue)
+    {
+        m_hp.Value += increaseValue;
+    }
+
     public void Initialize(Data.Stats statsData)
     {
         m_hp = new Hp();
