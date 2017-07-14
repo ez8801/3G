@@ -32,7 +32,7 @@ public class ItemEntity : EntityBase
     public override void Initialize()
     {
         base.Initialize();
-        SetEntityId(EntityType.Character, CharacterFactory.uid);
+        SetEntityId(EntityType.Item, CharacterFactory.uid);
 
         m_wasGrounded = false;
         m_wasTrigger = false;

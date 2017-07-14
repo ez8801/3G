@@ -13,6 +13,7 @@ public class AccountInfo
     public int Level;
     public string NickName;
     public int Gold;
+    public int Exp;
 }
 
 public class MyInfo

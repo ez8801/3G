@@ -1,56 +1,68 @@
 ﻿[
   {
     "Id": 1001,
+    "Category":  1,
     "Type": 1,
     "Rarity": 1,
     "Name": "Item.Name.1001",
     "Value": 0,
     "Stackable": true,
-    "Texture": ""
+    "Texture": "",
+    "Price": 0
   },
   {
-		"Id": 2001,
+    "Id": 2001,
+    "Category":  1,
 		"Type": 2,
 		"Rarity": 1,
 		"Name": "Item.Name.2001",
 		"Value": 0,
 		"Stackable": true,
-    "Texture": ""
+    "Texture": "Textures/Items/ic_gold",
+    "Price": 0
 	},
   {
     "Id": 10001,
+    "Category":  2,
     "Type": 10,
     "Rarity": 4,
     "Name": "Item.Name.10001",
     "Value": 2,
     "Stackable": true,
-    "Texture": "Textures/Items/Mithril_Ingot"
+    "Texture": "Textures/Items/Mithril_Ingot",
+    "Price": 700
   },
   {
     "Id": 20001,
+    "Category":  2,
     "Type": 11,
     "Rarity": 2,
     "Name": "Item.Name.20001",
     "Value": 24,
     "Stackable": true,
-    "Texture": "Textures/Items/Copper_Ingot"
+    "Texture": "Textures/Items/Copper_Ingot",
+    "Price": 1400
   },
   {
     "Id": 30001,
+    "Category":  2,
     "Type": 12,
     "Rarity": 0,
     "Name": "Item.Name.30001",
     "Value": 31,
     "Stackable": true,
-    "Texture": "Textures/Items/Leather"
+    "Texture": "Textures/Items/Leather",
+    "Price": 2800
   },
   {
     "Id": 100001,
+    "Category":  3,
     "Type": 100,
     "Rarity": 1,
     "Name": "Item.Name.100001",
     "Value": 1,
     "Stackable": false,
-    "Texture": ""
+    "Texture": "",
+    "Price": 0
   }
 ]

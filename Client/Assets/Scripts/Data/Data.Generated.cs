@@ -7,6 +7,7 @@ namespace Data
 		public void Deserialize(JSONObject json)
 		{
 			Id = json["Id"].I4;
+			Category = json["Category"].I4;
 			Type = json["Type"].I4;
 			Rarity = json["Rarity"].I4;
 			Name = json["Name"].STR;
@@ -18,6 +19,7 @@ namespace Data
 		public void Deserialize(Deserializer deserializer)
 		{
 			deserializer.Deserialize(ref Id);
+			deserializer.Deserialize(ref Category);
 			deserializer.Deserialize(ref Type);
 			deserializer.Deserialize(ref Rarity);
 			deserializer.Deserialize(ref Name);
@@ -29,6 +31,7 @@ namespace Data
 		public void Serialize(BinaryWriter binaryWriter)
 		{
 			binaryWriter.Write(Id);
+			binaryWriter.Write(Category);
 			binaryWriter.Write(Type);
 			binaryWriter.Write(Rarity);
 			binaryWriter.Write(Name);

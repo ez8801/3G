@@ -17,7 +17,7 @@ public class NotificationCenter : MonoSingleton<NotificationCenter>
 
     EqualityComparer<IObserver> m_comparer
         = EqualityComparer<IObserver>.Default;
-
+    
     /// <summary>
     /// 리스트에서 지정된 개체가 포함되어있는지 여부를 반환합니다.
     /// </summary>
@@ -285,4 +285,23 @@ public class NotificationCenter : MonoSingleton<NotificationCenter>
             }
         }
     }
+    
+    //-------------------------------------------------------------------------
+    //  Instances
+    //-------------------------------------------------------------------------
+
+    #region Instances
+
+    public static ItemLedger ItemLedger
+    {
+        get
+        {
+            if (m_itemLedger == null)
+                m_itemLedger = new ItemLedger();
+            return m_itemLedger;
+        }
+    }
+    private static ItemLedger m_itemLedger;
+
+    #endregion Instances
 }

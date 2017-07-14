@@ -49,13 +49,17 @@ public class Monster : Actor
                 if (seed <= each.Prob)
                 {
                     Data.Item itemData = ItemTable.Instance.Find(each.ItemId);
+                    int gainedCount = Random.Range(each.MinCount, each.MaxCount);
                     if (!string.IsNullOrEmpty(itemData.Texture))
                     {
                         ItemEntity itemEntity = (ItemEntity)CharacterFactory.CreateEntity("Prefabs/Entity/DropItem");
-                        itemEntity.InitWithData(each.ItemId, Random.Range(each.MinCount, each.MaxCount));
+                        itemEntity.InitWithData(each.ItemId, gainedCount);
                         itemEntity.SetTarget(Target.CachedTransform);
                     }
-                    
+                    else
+                    {
+                        MyInfo.Inventory.AddItem(each.ItemId, gainedCount);
+                    }
                 }
             }
         }

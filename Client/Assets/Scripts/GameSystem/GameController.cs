@@ -6,11 +6,12 @@
  * 
  * Copyright ⓒ Sweet Home Alabama. Team 3G, All rights reserved
  */
-
+ 
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class GameController
+public class GameController : SubscriberBase<SimpleItem>
 {
     private MatchJudge m_matchJudge = null;
     private Actor m_player;
@@ -18,8 +19,8 @@ public class GameController
     {
         get
         {
-            //if (m_player == null)
-            //    m_player = (Actor)EntityBase.Find(EntityType.Character, 1);
+            if (m_player == null)
+                m_player = (Actor)EntityBase.Find(EntityType.Character, 1);
             return m_player;
         }
     }
@@ -28,6 +29,8 @@ public class GameController
 
     private Team m_myTeam;
     private Team m_enemyTeam;
+
+    private List<SimpleItem> m_gainedItems;
         
     public void Initialize()
     {
@@ -100,9 +103,9 @@ public class GameController
         m_matchJudge.AddLoseCondition(condition);
     }
 
-    public MatchResult OnEntityDead(long entityId)
+    public void OnEntityDead(long entityId)
     {
-        return m_matchJudge.OnEntityDead(entityId);
+        m_matchJudge.OnEntityDead(entityId);
     }
 
     public void StartGame()
@@ -113,5 +116,41 @@ public class GameController
     public void EndGame()
     {
 
+    }
+
+    public override void OnNext(SimpleItem value)
+    {
+        base.OnNext(value);
+
+        if (m_gainedItems == null)
+            m_gainedItems = new List<SimpleItem>();
+
+        bool isContains = false;
+        Data.Item itemData = ItemTable.Instance.Find(value.ItemId);
+        if (itemData.Stackable)
+        {
+            for (int i = 0; i < m_gainedItems.Count; i++)
+            {
+                SimpleItem match = m_gainedItems[i];
+                if (match.ItemId == value.ItemId)
+                {
+                    match.Count += value.Count;
+                    m_gainedItems[i] = match;
+
+                    isContains = true;
+                    break;
+                }
+            }
+        }
+
+        if (!isContains)
+            m_gainedItems.Add(value);
+    }
+
+    public List<SimpleItem> GetGainedItems()
+    {
+        if (m_gainedItems == null)
+            m_gainedItems = new List<SimpleItem>();
+        return m_gainedItems;
     }
 }

@@ -49,13 +49,33 @@ public class Inventory
 
     public void AddItem(int itemId, int itemCount)
     {
-        if (IsStackAble(itemId))
+        if (IsGoods(itemId))
+        {
+            AddGoodsItem(itemId, itemCount);
+            OnGainedItem(0, itemId, itemCount);
+        }
+        else if (IsStackAble(itemId))
         {
             AddStackAbleItem(itemId, itemCount);
         }
         else
         {
             InternalAddItem(itemId, itemCount);
+        }
+    }
+
+    public void AddGoodsItem(int itemId, int itemCount)
+    {
+        Data.Item itemData = ItemTable.Instance.Find(itemId);
+        switch ((ItemType) itemData.Type)
+        {
+            case ItemType.Gold:
+                MyInfo.Account.Gold += itemCount;
+                break;
+
+            case ItemType.Exp:
+                MyInfo.Account.Exp += itemCount;
+                break;
         }
     }
 
@@ -68,6 +88,7 @@ public class Inventory
             {
                 match.Count += itemCount;
                 SetDirty(match.Id, true);
+                OnGainedItem(match.Id, itemId, itemCount);
                 return;
             }
         }
@@ -84,6 +105,16 @@ public class Inventory
         m_items.Add(newItem);
 
         SetDirty(newItem.Id, true);
+        OnGainedItem(newItem.Id, itemId, itemCount);
+    }
+
+    private void OnGainedItem(long id, int itemId, int itemCount)
+    {
+        SimpleItem gainedItem = new SimpleItem();
+        gainedItem.Id = id;
+        gainedItem.ItemId = itemId;
+        gainedItem.Count = itemCount;
+        NotificationCenter.ItemLedger.Post(gainedItem);
     }
 
     /// <summary>
@@ -93,6 +124,15 @@ public class Inventory
     {
         Data.Item itemData = ItemTable.Instance.Find(itemId);
         return itemData.Stackable;
+    }
+    
+    /// <summary>
+    /// 지정된 아이템 인덱스에 해당하는 아이템이 재화류인지 여부를 반환합니다.
+    /// </summary>
+    public bool IsGoods(int itemId)
+    {
+        Data.Item itemData = ItemTable.Instance.Find(itemId);
+        return (ItemCategory)itemData.Category == ItemCategory.Goods;
     }
 
     //-------------------------------------------------------------------------

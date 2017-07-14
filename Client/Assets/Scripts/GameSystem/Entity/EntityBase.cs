@@ -36,6 +36,14 @@ public abstract class EntityBase : MonoBehaviour
         }
     }
 
+    public EntityType EntityType
+    {
+        get
+        {
+            return m_entityID.Type;
+        }
+    }
+    
     public long GroupId
     {
         get
@@ -73,6 +81,28 @@ public abstract class EntityBase : MonoBehaviour
                 return match;
         }
         return null;
+    }
+
+    public static EntityBase Find(EntityType entityType, int id)
+    {
+        EntityID entityId = new EntityID(entityType, id);
+        return Find(entityId.UID);
+    }
+
+    public static int Count(EntityType entityType)
+    {
+        int count = 0;
+        for (int i = 0; i < entities.Count; i++)
+        {
+            EntityBase match = entities[i];
+            if (match == null || !match.gameObject.activeInHierarchy)
+                continue;
+
+            if (match.EntityType == entityType)
+                count++;
+        }
+
+        return count;
     }
     
     /// <summary>
