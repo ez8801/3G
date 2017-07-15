@@ -16,8 +16,20 @@ namespace Data
     public partial struct Stats
     {
         public int Id;
+
+        /// <summary>
+        /// 체력
+        /// </summary>
         public int Hp;
+
+        /// <summary>
+        /// 공격력
+        /// </summary>
         public int AttackDamage;
+
+        /// <summary>
+        /// 방어력
+        /// </summary>
         public int Armor;
     }
 }

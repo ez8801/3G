@@ -17,9 +17,28 @@ namespace Data
     {
         public int Id;
         public int Grade;
+
+        /// <summary>
+        /// 몬스터 이름
+        /// </summary>
         public string Name;
+        
+        /// <summary>
+        /// 능력치 Id
+        /// </summary>
+        /// <seealso cref="Stats.Id"/>
         public int StatsId;
+
+        /// <summary>
+        /// 프리팹 Id
+        /// </summary>
+        /// <seealso cref="Prefab.Id"/>
         public int PrefabId;
+
+        /// <summary>
+        /// 드랍 아이템 그룹 ID
+        /// </summary>
+        /// <seealso cref="DropItem.Group"/>
         public int DropGroupId;
     }
 }

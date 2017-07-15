@@ -8,12 +8,40 @@ namespace Data
     public partial struct Item
     {
         public int Id;
+
+        /// <summary>
+        /// 아이템 카테고리
+        /// </summary>
+        /// <see cref="ItemCategory"/>
         public int Category;
+
+        /// <summary>
+        /// 아이템 타입
+        /// </summary>
+        /// <see cref="ItemType"/>
         public int Type;
+
+        /// <summary>
+        /// 아이템 레어도
+        /// </summary>
+        /// <see cref="ItemRarity"/>
         public int Rarity;
+
+        /// <summary>
+        /// 아이템 이름
+        /// </summary>
         public string Name;
+        
         public int Value;
+
+        /// <summary>
+        /// 중첩 가능 여부
+        /// </summary>
         public bool Stackable;
+
+        /// <summary>
+        /// 아이템 텍스쳐
+        /// </summary>
         public string Texture;
     }
 }
@@ -38,6 +66,16 @@ public enum ItemType
     Ingot = 11,
     Leather = 12,
     BluePrint = 100,
+    Max
+}
+
+public enum ItemRarity
+{
+    None,
+    Normal,
+    Magic,
+    Rare,
+    Unique,
     Max
 }
 
