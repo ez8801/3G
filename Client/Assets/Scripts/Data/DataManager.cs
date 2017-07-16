@@ -24,8 +24,10 @@ public class DataManager : MonoSingleton<DataManager>
         LoadTable("Config.json", ConfigTable.Instance);
         LoadTable("DropItem.json", DropItemTable.Instance);    
         LoadTable("Item.json", ItemTable.Instance);
+        LoadTable("Material.json", MaterialTable.Instance);
         LoadTable("Monster.json", MonsterTable.Instance);
         LoadTable("Prefab.json", PrefabTable.Instance);
+        LoadTable("Recipe.json", RecipeTable.Instance);
         LoadTable("Stats.json", StatsTable.Instance);
         LoadTable("String.json", StringTable.Instance);
         LoadTable("Skill.json", SkillTable.Instance);
@@ -42,8 +44,10 @@ public class DataManager : MonoSingleton<DataManager>
         serializer.Serialize("Config", ConfigTable.Instance);
         serializer.Serialize("DropItem", DropItemTable.Instance);
         serializer.Serialize("Item", ItemTable.Instance);
+        serializer.Serialize("Material", MaterialTable.Instance);
         serializer.Serialize("Monster", MonsterTable.Instance);
         serializer.Serialize("Prefab", PrefabTable.Instance);
+        serializer.Serialize("Recipe", RecipeTable.Instance);
         serializer.Serialize("Stats", StatsTable.Instance);
         serializer.Serialize("String", StringTable.Instance);
         serializer.Serialize("Tip", TipTable.Instance);
@@ -54,8 +58,10 @@ public class DataManager : MonoSingleton<DataManager>
         Validate("Config", new ConfigTable());
         Validate("DropItem", new DropItemTable());
         Validate("Item", new ItemTable());
+        Validate("Material", new MaterialTable());
         Validate("Monster", new MonsterTable());
         Validate("Prefab", new PrefabTable());
+        Validate("Recipe", new RecipeTable());
         Validate("Stats", new StatsTable());
         Validate("String", new StringTable());
         Validate("Tip", new TipTable());

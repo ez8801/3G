@@ -1,0 +1,100 @@
+﻿/* 
+ * UIItemDetailView.cs
+ * 
+ * Writer : EZ
+ * Date   : 2017-07-16
+ * 
+ * Copyright ⓒ Sweet Home Alabama. Team 3G, All rights reserved
+ */
+
+using UnityEngine;
+
+public class UIItemDetailView : UIBase
+{
+    [System.Serializable]
+    public struct View
+    {
+        public UIItemCell CellItem;
+        public UILabel LblBtnEquip;
+        public GameObject EquipmentView;
+        public GameObject MiscView;
+        public Transform Options;
+        public UILabel LblBasicOption;
+        public UILabel LblItemName;
+        public UILabel LblSummary;
+    }
+    public View m_view;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+        BindComponents();
+        m_view.CellItem.Initialize();
+    }
+
+    public void InitWithData(UserData.Item item)
+    {
+        NGUITools.SetActive(gameObject, true);
+        m_view.CellItem.InitWithData(item);
+
+        Data.Item itemData = ItemTable.Instance.Find(item.ItemId);
+        SetCategory((ItemCategory)itemData.Category);
+
+        m_view.LblItemName.SetTextSafely(R.String.GetText(itemData.Name));
+        m_view.LblSummary.SetTextSafely(R.String.GetText(itemData.Desc));
+    }
+
+    [ContextMenu("Bind")]
+    private void BindComponents()
+    {
+        if (!IsAssigned(m_view))
+            m_view = new View();
+        this.Bind(ref m_view.CellItem, "CellItem/CellItem");
+        this.Bind(ref m_view.LblBtnEquip, "ButtonGroup/BtnEquip/LblBtnEquip");
+        this.Bind(ref m_view.EquipmentView, "EquipmentView");
+        this.Bind(ref m_view.MiscView, "MiscView");
+        this.Bind(ref m_view.Options, "EquipmentView/Options");
+        this.Bind(ref m_view.LblBasicOption, "EquipmentView/LblBasicOption");
+        this.Bind(ref m_view.LblItemName, "MiscView/LblItemName");
+        this.Bind(ref m_view.LblSummary, "MiscView/LblSummary");
+    }
+
+    public void SetCategory(ItemCategory itemCategory)
+    {
+        switch (itemCategory)
+        {
+            case ItemCategory.Armor:
+            case ItemCategory.Weapon:
+                m_view.EquipmentView.SetActiveSafely(true);
+                m_view.MiscView.SetActiveSafely(false);
+                break;
+
+            default:
+                m_view.EquipmentView.SetActiveSafely(false);
+                m_view.MiscView.SetActiveSafely(true);
+                break;
+        }
+    }
+
+    //-------------------------------------------------------------------------
+    //  UIActions
+    //-------------------------------------------------------------------------
+    #region UIActions
+
+    public void OnClickClose()
+    {
+        NGUITools.SetActive(gameObject, false);
+    }
+
+    public void OnClickSell()
+    {
+        
+    }
+
+    public void OnClickEquip()
+    {
+
+    }
+
+    #endregion UIActions
+}

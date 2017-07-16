@@ -69,7 +69,7 @@ public class ItemEntity : EntityBase
     public void AddForce()
     {
         Vector2 force = (Random.Range(0, 2) == 0) ? Vector2.left : Vector2.right;
-        force.x *= Random.Range(1f, 5f);
+        force.x *= Random.Range(1f, 4f);
         force.y = Random.Range(3f, 6f);
 
         m_rigidbody2D.AddForce(force, ForceMode2D.Impulse);

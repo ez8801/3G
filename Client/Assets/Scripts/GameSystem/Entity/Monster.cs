@@ -55,6 +55,7 @@ public class Monster : Actor
                         ItemEntity itemEntity = (ItemEntity)CharacterFactory.CreateEntity("Prefabs/Entity/DropItem");
                         itemEntity.InitWithData(each.ItemId, gainedCount);
                         itemEntity.SetTarget(Target.CachedTransform);
+                        itemEntity.CachedTransform.position = CachedTransform.position;
                     }
                     else
                     {

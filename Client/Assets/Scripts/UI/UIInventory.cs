@@ -29,12 +29,18 @@ public class UIInventory : UIBase
 		public Transform TabHost;
 		public Transform ScrollView;
 		public UIAdvancedGrid Grid;
+        public UIItemDetailView LeftItemDetailView;
+        public UIItemDetailView RightItemDetailView;
 	}
 	public View m_view;
+
+    private int m_currentTabIndex;
 
 	public override void Initialize()
 	{
         BindComponents();
+
+        m_currentTabIndex = 0;
 
         m_view.Grid.DataSource = CellForRowAtIndex;
         m_view.Grid.Delegate = NumberOfRowsInGrid;
@@ -61,6 +67,8 @@ public class UIInventory : UIBase
         this.Bind(ref m_view.TabHost, "TabHost");
         this.Bind(ref m_view.ScrollView, "ScrollView");
         this.Bind(ref m_view.Grid, "ScrollView/Grid");
+        this.Bind(ref m_view.LeftItemDetailView, "LeftView/ItemDetailView");
+        this.Bind(ref m_view.RightItemDetailView, "RightView/ItemDetailView");
     }
 
     public override void ReloadData()
@@ -74,6 +82,7 @@ public class UIInventory : UIBase
         SetEquipSlots();
         SetItemCount(MyInfo.Inventory.Count, NumberOfRowsInGrid());
         m_view.Grid.ReloadData();
+        SetTabHost();
     }
 
     public void SetItemCount(int itemCount, int capacity)
@@ -91,6 +100,38 @@ public class UIInventory : UIBase
             itemCellUI.Disable();
         }
     }
+
+    public void SetTabHost()
+    {
+        int tabCount = GetTabCount();
+        for (int i = 0; i < m_view.TabHost.childCount; i++)
+        {
+            Transform child = m_view.TabHost.GetChild(i);
+            child.SetActiveSafely(i < tabCount);
+
+            if (i < tabCount)
+            {
+                bool isSelected = (m_currentTabIndex == i);
+
+                UILabel lblTab = Util.FindComponentByName<UILabel>(child, "LblTab", true);
+                string tabName = StringTable.Instance.Find(GetTabName(i));                
+                lblTab.SetTextSafely(tabName);
+
+                UISprite sprTab = Util.FindComponentByName<UISprite>(child, "SprTab", true);
+                sprTab.SetSpriteSafely(Drawable.GetTabSprite(isSelected), false);
+            }
+        }
+    }
+
+    public string GetTabName(int tabIndex)
+    {
+        return StringEx.Format("UI.Inventory.Tab.Name.{0}", tabIndex);
+    }
+
+    public int GetTabCount()
+    {
+        return 3;
+    }
     
     public Transform CellForRowAtIndex(int index, GameObject contentView)
     {
@@ -101,6 +142,7 @@ public class UIInventory : UIBase
         {
             UserData.Item item = MyInfo.Inventory[index];
             itemCellUI.InitWithData(item);
+            itemCellUI.SetOnClickListener(OnClickItem);
         }
         else
         {
@@ -124,6 +166,30 @@ public class UIInventory : UIBase
     {
         MyInfo.Inventory.ClearDirtyFlag();
         NGUITools.SetActive(gameObject, false);
+    }
+
+    public void OnClickTab(GameObject sender)
+    {
+        int index = -1;
+        if (int.TryParse(sender.name, out index))
+        {
+            if (index != m_currentTabIndex)
+            {
+                m_currentTabIndex = index;
+                SetTabHost();
+            }
+        }
+    }
+
+    private void OnClickItem(GameObject sender)
+    {
+        int index = -1;
+        if (int.TryParse(sender.name, out index))
+        {
+            UserData.Item clickedItem = MyInfo.Inventory[index];
+            m_view.RightItemDetailView.Initialize();
+            m_view.RightItemDetailView.InitWithData(clickedItem);
+        }
     }
 
     #endregion UIActions

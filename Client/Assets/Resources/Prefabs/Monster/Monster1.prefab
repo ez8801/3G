@@ -83,7 +83,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1.1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -131,6 +131,7 @@ MonoBehaviour:
   Target: {fileID: 0}
   Head: {fileID: 4816843437792224}
   Pelvis: {fileID: 0}
+  CachedRigidbody2D: {fileID: 0}
   Forward: {x: 0, y: 0, z: 0}
 --- !u!212 &212723338479108160
 SpriteRenderer:

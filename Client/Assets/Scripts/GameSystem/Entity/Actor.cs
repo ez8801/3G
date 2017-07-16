@@ -232,9 +232,15 @@ public class Actor : EntityBase, IActor
             opposite.x *= -gapRatio;
             opposite.y = 10f * 0.5f;
 
+            if (!IsGrounded())
+            {
+                opposite.x *= 0.5f;
+                opposite.y *= 0.5f;
+            }
+
             if (attackObject == null)
                 attacker.GetComponent<Rigidbody2D>().AddForce(opposite, ForceMode2D.Impulse);
-
+            
             SoundManager.Instance.PlaySound(1);
         }
     }

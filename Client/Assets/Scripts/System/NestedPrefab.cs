@@ -15,7 +15,7 @@ public class NestedPrefab : MonoBehaviour
     
     private void Awake()
     {
-        if (m_generateTime == GenerateTime.Immediate)
+        if (m_generateTime == GenerateTime.Immediate && m_instance == null)
             InstantiateObject();
     }
 
@@ -49,6 +49,7 @@ public class NestedPrefab : MonoBehaviour
 
         m_instance = Instantiate(m_prefabObject) as GameObject;
         Assert.IsNotNull(m_instance, "PrefabObject Couldn't Instantiate Object");
+        m_instance.name = m_instance.name.Replace("(Clone)", string.Empty);
 
         m_instance.transform.parent = transform;
         m_instance.transform.localPosition = localPosition;

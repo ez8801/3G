@@ -32,6 +32,12 @@ namespace Data
         /// </summary>
         [DeclaringType("string", "int")]
         public int Name;
+
+        /// <summary>
+        /// 아이템 설명
+        /// </summary>
+        [DeclaringType("string", "int")]
+        public int Desc;
         
         public int Value;
 
@@ -41,43 +47,16 @@ namespace Data
         public bool Stackable;
 
         /// <summary>
+        /// 아이템 재료 그룹
+        /// </summary>
+        /// <seealso cref="Material.ItemMaterialGroup"/>
+        public int ItemMaterialGroup;
+
+        /// <summary>
         /// 아이템 텍스쳐
         /// </summary>
         public string Texture;
     }
-}
-
-public enum ItemCategory
-{
-    None,
-    Goods,
-    Material,
-    Misc,
-    Weapon = 10,
-    Armor = 11,
-    Max
-}
-
-public enum ItemType
-{
-    None,
-    Exp,
-    Gold,
-    Jewel = 10,
-    Ingot = 11,
-    Leather = 12,
-    BluePrint = 100,
-    Max
-}
-
-public enum ItemRarity
-{
-    None,
-    Normal,
-    Magic,
-    Rare,
-    Unique,
-    Max
 }
 
 public struct SimpleItem

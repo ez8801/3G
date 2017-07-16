@@ -8,12 +8,28 @@
     "Value": "골드"
   },
   {
-    "Key": "Item.Name.20001",
+    "Key": "Item.Name.10001",
     "Value": "구리 주괴"
+  },
+  {
+    "Key": "Item.Desc.10001",
+    "Value": "장비 아이템을 제작하는데 사용되는 재료 아이템"
+  },
+  {
+    "Key": "Item.Name.20001",
+    "Value": "미스릴 주괴"
+  },
+  {
+    "Key": "Item.Desc.20001",
+    "Value": "장비 아이템을 제작하는데 사용되는 재료 아이템"
   },
   {
     "Key": "Item.Name.30001",
     "Value": "낡은 가죽"
+  },
+  {
+    "Key": "Item.Desc.30001",
+    "Value": "장비 아이템을 제작하는데 사용되는 재료 아이템"
   },
   {
     "Key": "Item.Name.100001",
@@ -32,15 +48,31 @@
     "Value": "플레이어"
   },
   {
-    "Key": "UI.Inventory.Tab.Name.1",
+    "Key": "UI.Inventory.Tab.Name.0",
     "Value": "무기구"
   },
   {
-    "Key": "UI.Inventory.Tab.Name.2",
+    "Key": "UI.Inventory.Tab.Name.1",
     "Value": "방어구"
   },
   {
-    "Key": "UI.Inventory.Tab.Name.3",
+    "Key": "UI.Inventory.Tab.Name.2",
     "Value": "소모품"
+  },
+  {
+    "Key": "Item.Name.1000001",
+    "Value": "낡은 검"
+  },
+  {
+    "Key": "Item.Name.2000001",
+    "Value": "낡은 갑옷"
+  },
+  {
+    "Key": "Recipe.Name.1",
+    "Value": "낡은 검"
+  },
+  {
+    "Key": "Recipe.Name.2",
+    "Value": "낡은 갑옷"
   }
 ]

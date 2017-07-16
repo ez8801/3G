@@ -158,5 +158,18 @@ public class Inventory
         }
     }
 
+    public List<UserData.Item> FindAll(int itemType)
+    {
+        List<UserData.Item> ret = new List<UserData.Item>();
+        for (int i = 0; i < Count; i++)
+        {
+            UserData.Item match = m_items[i];
+            Data.Item itemData = ItemTable.Instance.Find(match.ItemId);
+            if (itemData.Type == itemType)
+                ret.Add(match);
+        }
+        return ret;
+    }
+
     #endregion ListAdapter
 }
