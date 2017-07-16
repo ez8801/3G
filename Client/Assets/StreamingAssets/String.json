@@ -30,5 +30,17 @@
   {
     "Key": "Character.Name.1",
     "Value": "플레이어"
+  },
+  {
+    "Key": "UI.Inventory.Tab.Name.1",
+    "Value": "무기구"
+  },
+  {
+    "Key": "UI.Inventory.Tab.Name.2",
+    "Value": "방어구"
+  },
+  {
+    "Key": "UI.Inventory.Tab.Name.3",
+    "Value": "소모품"
   }
 ]

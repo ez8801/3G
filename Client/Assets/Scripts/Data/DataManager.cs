@@ -1,10 +1,18 @@
 ﻿using UnityEngine;
 using System.IO;
+using System.Collections.Generic;
 
 public class DataManager : MonoSingleton<DataManager>
 {
     private Deserializer m_deserializer = null;
-    
+
+#if UNITY_EDITOR
+
+    [SerializeField]
+    private List<string> m_loadedTables = new List<string>();
+
+#endif
+
     public void Initialize()
     {
         m_deserializer = new Deserializer();
@@ -12,17 +20,17 @@ public class DataManager : MonoSingleton<DataManager>
 
     public void LoadAllData()
     {
-        LoadTable(ResourceLoad("Character.json"), CharacterTable.Instance);
-        LoadTable(ResourceLoad("Config.json"), ConfigTable.Instance);
-        LoadTable(ResourceLoad("DropItem.json"), DropItemTable.Instance);    
-        LoadTable(ResourceLoad("Item.json"), ItemTable.Instance);
-        LoadTable(ResourceLoad("Monster.json"), MonsterTable.Instance);
-        LoadTable(ResourceLoad("Prefab.json"), PrefabTable.Instance);
-        LoadTable(ResourceLoad("Stats.json"), StatsTable.Instance);
-        LoadTable(ResourceLoad("String.json"), StringTable.Instance);
-        LoadTable(ResourceLoad("Skill.json"), SkillTable.Instance);
-        LoadTable(ResourceLoad("Tip.json"), TipTable.Instance);
-        LoadTable(ResourceLoad("PassiveSkill.json"), PassiveSkillTable.Instance);
+        LoadTable("Character.json", CharacterTable.Instance);
+        LoadTable("Config.json", ConfigTable.Instance);
+        LoadTable("DropItem.json", DropItemTable.Instance);    
+        LoadTable("Item.json", ItemTable.Instance);
+        LoadTable("Monster.json", MonsterTable.Instance);
+        LoadTable("Prefab.json", PrefabTable.Instance);
+        LoadTable("Stats.json", StatsTable.Instance);
+        LoadTable("String.json", StringTable.Instance);
+        LoadTable("Skill.json", SkillTable.Instance);
+        LoadTable("Tip.json", TipTable.Instance);
+        LoadTable("PassiveSkill.json", PassiveSkillTable.Instance);
     }
 
     public void GenerateBytes()
@@ -85,9 +93,14 @@ public class DataManager : MonoSingleton<DataManager>
         return new JSONObject(text);
     }
 
-    private void LoadTable<T>(JSONObject data, Table<T> table) where T : IIndexer, IDeserializable, new()
+    private void LoadTable<T>(string name, Table<T> table) where T : IIndexer, IDeserializable, new()
     {
+        JSONObject data = ResourceLoad(name);
         m_deserializer.Load(data, table);
+
+#if UNITY_EDITOR
+        m_loadedTables.Add(name);
+#endif
     }
 
     private void OnDestroy()

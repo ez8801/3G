@@ -10,7 +10,7 @@ namespace Data
 			Category = json["Category"].I4;
 			Type = json["Type"].I4;
 			Rarity = json["Rarity"].I4;
-			Name = json["Name"].STR;
+			Name = json["Name"].STR.GetHashCode();
 			Value = json["Value"].I4;
 			Stackable = json["Stackable"].B;
 			Texture = json["Texture"].STR;
@@ -51,7 +51,7 @@ namespace Data
 		public void Deserialize(JSONObject json)
 		{
 			Id = json["Id"].I4;
-			Key = json["Key"].STR;
+			Key = json["Key"].STR.GetHashCode();
 			Value = json["Value"].I4;
 		}
 
@@ -71,7 +71,7 @@ namespace Data
 
 		public int GetIndex()
 		{
-			return Key.GetHashCode();
+			return Key;
 		}
 	}
 
@@ -79,7 +79,7 @@ namespace Data
 	{
 		public void Deserialize(JSONObject json)
 		{
-			Key = json["Key"].STR;
+			Key = json["Key"].STR.GetHashCode();
 			Value = json["Value"].STR;
 		}
 
@@ -97,7 +97,7 @@ namespace Data
 
 		public int GetIndex()
 		{
-			return Key.GetHashCode();
+			return Key;
 		}
 	}
 
@@ -107,7 +107,7 @@ namespace Data
 		{
 			Id = json["Id"].I4;
 			Grade = json["Grade"].I4;
-			Name = json["Name"].STR;
+			Name = json["Name"].STR.GetHashCode();
 			StatsId = json["StatsId"].I4;
 			PrefabId = json["PrefabId"].I4;
 			DropGroupId = json["DropGroupId"].I4;
@@ -176,7 +176,7 @@ namespace Data
 		public void Deserialize(JSONObject json)
 		{
 			Id = json["Id"].I4;
-			Name = json["Name"].STR;
+			Name = json["Name"].STR.GetHashCode();
 			StatsId = json["StatsId"].I4;
 			PrefabId = json["PrefabId"].I4;
 		}

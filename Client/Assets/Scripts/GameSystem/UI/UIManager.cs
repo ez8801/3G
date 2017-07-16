@@ -52,6 +52,8 @@ public class UIManager : MonoSingleton<UIManager>
 
         GameObject prefab = Resources.Load(resourceName) as GameObject;
         GameObject newOne = Instantiate(prefab) as GameObject;
+        if (newOne != null)
+            newOne.name = newOne.name.Replace("(Clone)", string.Empty);
         AttachUI(newOne);
 
         T view = Util.RequireComponent<T>(newOne);

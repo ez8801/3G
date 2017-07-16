@@ -8,7 +8,8 @@ namespace Data
     public partial struct Config
     {
         public int Id;
-        public string Key;
+        [DeclaringType("string", "int")]
+        public int Key;
         public int Value;
     }
 }
@@ -32,6 +33,9 @@ public class ConfigTable : ArrayTable<Config>
 
     public Config GetConfig(string key)
     {
+        if (string.IsNullOrEmpty(key))
+            return default(Config);
+
         int hashCode = key.GetHashCode();
         return Find(hashCode);
     }

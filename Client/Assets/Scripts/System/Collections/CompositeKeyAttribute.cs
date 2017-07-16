@@ -1,7 +1,7 @@
 ﻿using System;
 
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct, AllowMultiple = false, Inherited = false)]
-public class CompositeKeyAttribute : Attribute
+public sealed class CompositeKeyAttribute : Attribute
 {
     public string m_key1;
     public string m_key2;

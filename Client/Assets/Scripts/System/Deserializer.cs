@@ -14,6 +14,7 @@ public class Deserializer
     
     private BinaryReader m_binaryReader;
     private int m_rowCount;
+    // private short m_rowCount;
 
     public void Load<T>(JSONObject data, Table<T> table) where T: IIndexer, IDeserializable, new()
     {
@@ -78,7 +79,16 @@ public class Deserializer
     
     public void Deserialize(ref string str)
     {
+        //short bytesCount = m_binaryReader.ReadInt16();
+        //byte[] bytes = m_binaryReader.ReadBytes(bytesCount);
+        //str = encoding.GetString(bytes);
+
         str = m_binaryReader.ReadString();
+    }
+
+    public string ReadString()
+    {
+        return m_binaryReader.ReadString();
     }
 
 #if UNITY_EDITOR
@@ -109,7 +119,42 @@ public class Deserializer
         Menu.SetChecked(kAutoGenerationMode, EditorPrefs.GetBool(kAutoGeneration, false));
         return true;
     }
-    
+
+    private static string GetTypeName(Type type)
+    {
+        if (type == typeof(string))
+            return "string";
+        else if (type == typeof(long))
+            return "long";
+        else if (type == typeof(int))
+            return "int";
+        else if (type == typeof(short))
+            return "short";
+        else if (type == typeof(float))
+            return "float";
+        else if (type == typeof(bool))
+            return "bool";
+
+        return type.ToString();
+    }
+
+    private static string GetPropertyName(string fieldType)
+    {
+        if (fieldType == "string")
+            return "STR";
+        else if (fieldType == "long")
+            return "I8";
+        else if (fieldType == "float")
+            return "f";
+        else if (fieldType == "int")
+            return "I4";
+        else if (fieldType == "short")
+            return "I2";
+        else if (fieldType == "bool")
+            return "B";
+        return string.Empty;
+    }
+
     [MenuItem("Code/Generate Deserialize Code")]
     private static void GenerateSourceCode()
     {
@@ -173,34 +218,44 @@ public class Deserializer
                 var nonSerializedAttributes = fi.GetCustomAttributes(typeof(NonSerializedAttribute), true);
                 if (!(nonSerializedAttributes == null || nonSerializedAttributes.Length == 0))
                     continue;
-                
-                string bindingCommand = string.Format("\t\t\t{0} = json[\"{0}\"].", fi.Name);
-                builder.Append(bindingCommand);
 
-                if (fi.FieldType == typeof(string))
+                string declaringTypeName = string.Empty;
+                string dataTypeName = string.Empty;
+                var declaringTypeAttributes = fi.GetCustomAttributes(typeof(DeclaringTypeAttribute), true);
+                if (!(declaringTypeAttributes == null || declaringTypeAttributes.Length == 0))
                 {
-                    builder.AppendLine("STR;");
+                    DeclaringTypeAttribute declaringType = (DeclaringTypeAttribute) declaringTypeAttributes[0];
+                    declaringTypeName = declaringType.DeclaringTypeName;
+                    dataTypeName = declaringType.DataTypeName;
                 }
-                else if (fi.FieldType == typeof(long))
+
+                string bindingCommand = string.Empty;
+                string fieldType = string.Empty;
+                string propertyName = string.Empty;
+                if (string.IsNullOrEmpty(declaringTypeName))
                 {
-                    builder.AppendLine("I8;");
-                }
-                else if (fi.FieldType == typeof(int))
-                {
-                    builder.AppendLine("I4;");
-                }
-                else if (fi.FieldType == typeof(short))
-                {
-                    builder.AppendLine("I2;");
-                }
-                else if (fi.FieldType == typeof(bool))
-                {
-                    builder.AppendLine("B;");
+                    fieldType = GetTypeName(fi.FieldType);
+                    propertyName = GetPropertyName(fieldType);
+                    bindingCommand = string.Format("\t\t\t{0} = json[\"{0}\"].{1};"
+                        , fi.Name, propertyName);
                 }
                 else
                 {
-                    Debug.LogWarning(fi.FieldType.ToString());
+                    fieldType = dataTypeName;
+                    propertyName = GetPropertyName(fieldType);
+                    if (dataTypeName == "string" && declaringTypeName == "int")
+                    {
+                        bindingCommand = string.Format("\t\t\t{0} = json[\"{0}\"].{1}.GetHashCode();"
+                            , fi.Name, propertyName);
+                    }
+                    else
+                    {
+                        // Simple Cast
+                        bindingCommand = string.Format("\t\t\t{0} = ({1})json[\"{0}\"].{2};"
+                            , fi.Name, declaringTypeName, propertyName);
+                    }
                 }
+                builder.AppendLine(bindingCommand);
             }
             builder.AppendLine("\t\t}");
             builder.AppendLine();
@@ -239,11 +294,7 @@ public class Deserializer
                 var nonSerializedAttributes = fi.GetCustomAttributes(typeof(NonSerializedAttribute), true);
                 if (!(nonSerializedAttributes == null || nonSerializedAttributes.Length == 0))
                     continue;
-
-                //if (fi.FieldType == typeof(string))
-                //{
-                //    builder.AppendLine(string.Format("\t\t\tbinaryWriter.Write((short) {0}.Length);", fi.Name));
-                //}
+                
                 builder.AppendLine(string.Format("\t\t\tbinaryWriter.Write({0});", fi.Name));
             }
             builder.AppendLine("\t\t}");
@@ -312,6 +363,8 @@ public class Deserializer
                 sw.Flush();
             }
         }
+
+        AssetDatabase.Refresh();
     }
 
 #endif

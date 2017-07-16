@@ -20,7 +20,8 @@ namespace Data
         /// <summary>
         /// 캐릭터 이름
         /// </summary>
-        public string Name;
+        [DeclaringType("string", "int")]
+        public int Name;
 
         /// <summary>
         /// 능력치 Id

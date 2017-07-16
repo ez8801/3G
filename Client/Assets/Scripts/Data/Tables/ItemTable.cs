@@ -30,7 +30,8 @@ namespace Data
         /// <summary>
         /// 아이템 이름
         /// </summary>
-        public string Name;
+        [DeclaringType("string", "int")]
+        public int Name;
         
         public int Value;
 
