@@ -7,10 +7,23 @@
  * Copyright ⓒ Sweet Home Alabama. Team 3G, All rights reserved
  */
 
+using UnityEngine;
+
 public class AccountInfo
 {
     public long Id;
-    public int Level;
+    private int m_level;
+    public int Level
+    {
+        get
+        {
+            return m_level;
+        }
+        set
+        {
+            m_level = Mathf.Clamp(value, 0, R.Integer.GetInteger("MaxPlayerLevel"));
+        }
+    }
     public string NickName;
 
     private int m_gold;
@@ -22,7 +35,7 @@ public class AccountInfo
         }
         set
         {
-            m_gold = value;
+            m_gold = Mathf.Clamp(value, 0, R.Integer.GetInteger("MaxGold"));
             NotificationCenter.GoodsMonitor.OnGoldChanged(m_gold);
         }
     }
