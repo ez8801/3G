@@ -100,6 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4341693970518186}
   - component: {fileID: 65321000738039206}
+  - component: {fileID: 114654509953437720}
   m_Layer: 5
   m_Name: BtnNegative
   m_TagString: Untagged
@@ -116,6 +117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4260812742590114}
   - component: {fileID: 114966348699274394}
+  - component: {fileID: 114442750313746780}
   m_Layer: 5
   m_Name: AlertView
   m_TagString: Untagged
@@ -165,6 +167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4455008455240870}
   - component: {fileID: 65886267345930000}
+  - component: {fileID: 114407356865923022}
   m_Layer: 5
   m_Name: BtnPositive
   m_TagString: Untagged
@@ -228,7 +231,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1906763795446906}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22, y: 13, z: -405}
+  m_LocalPosition: {x: 0, y: 13, z: -405}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4260812742590114}
@@ -588,18 +591,18 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 0, g: 0, b: 0, a: 1}
   mPivot: 4
-  mWidth: 100
-  mHeight: 100
+  mWidth: 480
+  mHeight: 120
   mDepth: 5
   mMat: {fileID: 2100000, guid: b8ea7425858b7b04d982239c9c50c31b, type: 3}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 1
+  aspectRatio: 4
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 0}
   mFont: {fileID: 114294189169078796, guid: 6ec2efbd652b02d4283b8694864d36e9, type: 2}
-  mText: text
+  mText: 
   mFontSize: 24
   mFontStyle: 0
   mAlignment: 0
@@ -710,18 +713,18 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 0.9019608, g: 0.9019608, b: 0.9019608, a: 1}
   mPivot: 4
-  mWidth: 100
-  mHeight: 100
+  mWidth: 480
+  mHeight: 48
   mDepth: 1
   mMat: {fileID: 2100000, guid: b8ea7425858b7b04d982239c9c50c31b, type: 3}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 1
+  aspectRatio: 10
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 0}
   mFont: {fileID: 114294189169078796, guid: 6ec2efbd652b02d4283b8694864d36e9, type: 2}
-  mText: "\uC54C\uB9BC"
+  mText: 
   mFontSize: 24
   mFontStyle: 0
   mAlignment: 0
@@ -748,6 +751,52 @@ MonoBehaviour:
   mMaxLineHeight: 0
   mLineWidth: 0
   mMultiline: 1
+--- !u!114 &114407356865923022
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1716881259083048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e862f287df53bb64db191162f851a296, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHoverOver: []
+  onHoverOut: []
+  onPress: []
+  onRelease: []
+  onSelect: []
+  onDeselect: []
+  onClick:
+  - mTarget: {fileID: 114442750313746780}
+    mMethodName: OnClickPositiveButton
+    mParameters: []
+    oneShot: 0
+  onDoubleClick: []
+  onDragStart: []
+  onDragEnd: []
+  onDragOver: []
+  onDragOut: []
+  onDrag: []
+--- !u!114 &114442750313746780
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1627634361946486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf1a8d80accb77b4ea36f61b7eea7a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_view:
+    LblTitle: {fileID: 114308786449039768}
+    LblSummary: {fileID: 114181332477188486}
+    BtnNegative: {fileID: 1540565862210890}
+    LblNegative: {fileID: 114522553013070112}
+    BtnPositive: {fileID: 1716881259083048}
+    LblPositive: {fileID: 114925317275912092}
 --- !u!114 &114522553013070112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -816,6 +865,34 @@ MonoBehaviour:
   mMaxLineHeight: 0
   mLineWidth: 0
   mMultiline: 1
+--- !u!114 &114654509953437720
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1540565862210890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e862f287df53bb64db191162f851a296, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHoverOver: []
+  onHoverOut: []
+  onPress: []
+  onRelease: []
+  onSelect: []
+  onDeselect: []
+  onClick:
+  - mTarget: {fileID: 114442750313746780}
+    mMethodName: OnClickNegativeButton
+    mParameters: []
+    oneShot: 0
+  onDoubleClick: []
+  onDragStart: []
+  onDragEnd: []
+  onDragOver: []
+  onDragOut: []
+  onDrag: []
 --- !u!114 &114760910135455194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1084,13 +1161,13 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3000
+  startingRenderQueue: 3002
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 0, w: 0}
   mClipSoftness: {x: 40, y: 40}
-  mDepth: 0
+  mDepth: 888
   mSortingOrder: 0
   mSortingLayerName: 
   mClipOffset: {x: 0, y: 0}

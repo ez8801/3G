@@ -16,6 +16,7 @@ namespace Data
 			Stackable = json["Stackable"].B;
 			ItemMaterialGroup = json["ItemMaterialGroup"].I4;
 			Texture = json["Texture"].STR;
+			Price = json["Price"].I4;
 		}
 
 		public void Deserialize(Deserializer deserializer)
@@ -30,6 +31,7 @@ namespace Data
 			deserializer.Deserialize(ref Stackable);
 			deserializer.Deserialize(ref ItemMaterialGroup);
 			deserializer.Deserialize(ref Texture);
+			deserializer.Deserialize(ref Price);
 		}
 
 		public void Serialize(BinaryWriter binaryWriter)
@@ -44,6 +46,7 @@ namespace Data
 			binaryWriter.Write(Stackable);
 			binaryWriter.Write(ItemMaterialGroup);
 			binaryWriter.Write(Texture);
+			binaryWriter.Write(Price);
 		}
 
 		public int GetIndex()

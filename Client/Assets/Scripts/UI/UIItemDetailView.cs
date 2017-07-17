@@ -25,6 +25,8 @@ public class UIItemDetailView : UIBase
     }
     public View m_view;
 
+    private SimpleItem m_focusItem = new SimpleItem();
+    
     public override void Initialize()
     {
         base.Initialize();
@@ -42,6 +44,10 @@ public class UIItemDetailView : UIBase
 
         m_view.LblItemName.SetTextSafely(R.String.GetText(itemData.Name));
         m_view.LblSummary.SetTextSafely(R.String.GetText(itemData.Desc));
+
+        m_focusItem.Id = item.Id;
+        m_focusItem.ItemId = item.ItemId;
+        m_focusItem.Count = item.Count;
     }
 
     [ContextMenu("Bind")]
@@ -88,7 +94,26 @@ public class UIItemDetailView : UIBase
 
     public void OnClickSell()
     {
-        
+        UIAlertView alertView = UIAlertView.Show(R.String.GetText("UI.Item.Sell.Message"));
+        alertView.SetStyle(UIAlertView.Style.OKCancel);
+        alertView.SetPositiveButton(R.String.GetText("UI.Item.Sell.Ok"), () =>
+        {
+            Data.Item itemData = ItemTable.Instance.Find(m_focusItem.ItemId);
+            int gold = itemData.Price * m_focusItem.Count;
+            MyInfo.Account.Gold += gold;
+            MyInfo.Inventory.Remove(m_focusItem.Id);
+
+            UIAlertView.Show(StringEx.Format(R.String.GetText("UI.Get.Gold"), gold))
+                .SetStyle(UIAlertView.Style.OK)
+                .SetPositiveButton(() =>
+                {
+                    NGUITools.SetActive(gameObject, false);
+                    UIInventory inventoryUI = UIManager.Instance.GetCachedUI<UIInventory>();
+                    if (inventoryUI != null)
+                        inventoryUI.ReloadData();
+                });
+        });
+        alertView.SetNegativeButton(R.String.GetText("UI.Item.Sell.Cancel"), null);
     }
 
     public void OnClickEquip()

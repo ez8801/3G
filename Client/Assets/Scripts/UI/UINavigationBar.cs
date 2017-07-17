@@ -7,9 +7,10 @@
  * Copyright ⓒ Sweet Home Alabama. Team 3G, All rights reserved
  */
 
+using System;
 using UnityEngine;
 
-public class UINavigationBar : UIBase, IObserver
+public class UINavigationBar : UIBase, IObserver, IObserver<GoodsInfo>
 {
     [System.Serializable]
     public struct View
@@ -37,6 +38,7 @@ public class UINavigationBar : UIBase, IObserver
     private void Awake()
     {
         NotificationCenter.Instance.AddObserver((int)Notification.System.OnSceneChanged, this);
+        NotificationCenter.GoodsMonitor.Subscribe(this);
     }
 
     public override void ReloadData()
@@ -52,11 +54,22 @@ public class UINavigationBar : UIBase, IObserver
         {
             case (int)Notification.System.OnSceneChanged:
                 break;
-
-            case (int)Notification.UI.OnGoldChanged:
-                m_view.LblGold.SetTextSafely(MyInfo.Account.Gold.ToString());
-                break;
         }
+    }
+
+    public void OnCompleted()
+    {
+
+    }
+
+    public void OnError(Exception error)
+    {
+
+    }
+
+    public void OnNext(GoodsInfo goodsInfo)
+    {
+        m_view.LblGold.SetTextSafely(goodsInfo.Gold.ToString());
     }
 
     //-------------------------------------------------------------------------

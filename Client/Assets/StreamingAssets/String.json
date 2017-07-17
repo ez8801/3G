@@ -60,6 +60,30 @@
     "Value": "소모품"
   },
   {
+    "Key": "UI.AlertView.Ok",
+    "Value": "확인"
+  },
+  {
+    "Key": "UI.AlertView.Cancel",
+    "Value": "취소"
+  },
+  {
+    "Key": "UI.Item.Sell.Message",
+    "Value": "장비를 판매하면 복구 할 수 없습니다.\n[F44336]정말[-] 장비를 판매 하시겠습니까?"
+  },
+  {
+    "Key": "UI.Item.Sell.Ok",
+    "Value": "판매하기"
+  },
+  {
+    "Key": "UI.Item.Sell.Cancel",
+    "Value": "아니요"
+  },
+  {
+    "Key": "UI.Get.Gold",
+    "Value": "{0} 골드를 획득하였습니다."
+  },
+  {
     "Key": "Item.Name.1000001",
     "Value": "낡은 검"
   },

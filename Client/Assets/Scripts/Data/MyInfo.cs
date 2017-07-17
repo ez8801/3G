@@ -12,14 +12,27 @@ public class AccountInfo
     public long Id;
     public int Level;
     public string NickName;
-    public int Gold;
+
+    private int m_gold;
+    public int Gold
+    {
+        get
+        {
+            return m_gold;
+        }
+        set
+        {
+            m_gold = value;
+            NotificationCenter.GoodsMonitor.OnGoldChanged(m_gold);
+        }
+    }
     public int Exp;
 }
 
 public class MyInfo
 {
     private static MyInfo m_instance;
-    public static MyInfo Instance
+    private static MyInfo Instance
     {
         get
         {

@@ -371,10 +371,10 @@ MonoBehaviour:
   keepAspectRatio: 1
   aspectRatio: 1
   keepCrispWhenShrunk: 1
-  mTrueTypeFont: {fileID: 12800000, guid: 9ac43f22693ad0b4bb7b31b2516a1203, type: 3}
-  mFont: {fileID: 0}
+  mTrueTypeFont: {fileID: 0}
+  mFont: {fileID: 114294189169078796, guid: 6ec2efbd652b02d4283b8694864d36e9, type: 2}
   mText: 123
-  mFontSize: 16
+  mFontSize: 24
   mFontStyle: 0
   mAlignment: 0
   mEncoding: 1

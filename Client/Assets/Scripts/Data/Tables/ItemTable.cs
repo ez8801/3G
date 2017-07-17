@@ -56,6 +56,11 @@ namespace Data
         /// 아이템 텍스쳐
         /// </summary>
         public string Texture;
+
+        /// <summary>
+        /// 아이템 가격
+        /// </summary>
+        public int Price;
     }
 }
 

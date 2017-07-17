@@ -36,7 +36,7 @@ public class UIManager : MonoSingleton<UIManager>
         DontDestroyOnLoad(m_root);
     }
 
-    private T GetCachedUI<T>() where T : UIBase
+    public T GetCachedUI<T>() where T : UIBase
     {
         GameObject root = Root;
         return Util.FindInChildren<T>(root);

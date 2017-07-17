@@ -11,6 +11,13 @@ namespace R
 {
     public static class String
     {
+        public static string GetText(string resId)
+        {
+            if (!string.IsNullOrEmpty(resId))
+                return GetText(resId.GetHashCode());
+            return string.Empty;
+        }
+
         public static string GetText(int resId)
         {
             if (!StringTable.Instance.ContainsKey(resId))
