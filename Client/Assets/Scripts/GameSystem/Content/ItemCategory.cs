@@ -41,3 +41,12 @@ public enum ItemRarity
     Unique,
     Max
 }
+
+public enum ItemSlot
+{
+    None,
+    MainEquipment,
+    SubEquipment,
+    Armor,
+    Max
+}

@@ -7,10 +7,13 @@
  * Copyright ⓒ Sweet Home Alabama. Team 3G, All rights reserved
  */
 
-public static class Drawable
+namespace R
 {
-    public static string GetTabSprite(bool isSelected)
+    public static class Drawable
     {
-        return (isSelected) ? "SkillNumBack" : "SkillSelect";
+        public static string GetTabSprite(bool isSelected)
+        {
+            return (isSelected) ? "SkillNumBack" : "SkillSelect";
+        }
     }
 }

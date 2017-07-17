@@ -30,29 +30,4 @@ public class ConfigTable : ArrayTable<Config>
             return m_instance;
         }
     }
-
-    public Config GetConfig(string key)
-    {
-        if (string.IsNullOrEmpty(key))
-            return default(Config);
-
-        int hashCode = key.GetHashCode();
-        return Find(hashCode);
-    }
-
-    public int GetIntValue(string key)
-    {
-        Config config = GetConfig(key);
-        return config.Value;
-    }
-
-    public bool IsMaxLevel(int lv)
-    {
-        return false;
-    }
-
-    public int MaxProb()
-    {
-        return GetConfig("MaxProb").Value;
-    }
 }

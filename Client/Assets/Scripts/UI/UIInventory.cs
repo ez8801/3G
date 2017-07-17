@@ -7,6 +7,7 @@
  * Copyright ⓒ Sweet Home Alabama. Team 3G, All rights reserved
  */
 
+using R;
 using UnityEngine;
 
 public class UIInventory : UIBase
@@ -74,7 +75,7 @@ public class UIInventory : UIBase
     public override void ReloadData()
     {
         base.ReloadData();
-
+        
         m_view.LblName.SetTextSafely(StringEx.Format("Lv.{0} {1}"
             , MyInfo.Account.Level
             , MyInfo.Account.NickName));
@@ -114,7 +115,7 @@ public class UIInventory : UIBase
                 bool isSelected = (m_currentTabIndex == i);
 
                 UILabel lblTab = Util.FindComponentByName<UILabel>(child, "LblTab", true);
-                string tabName = StringTable.Instance.Find(GetTabName(i));                
+                string tabName = GetTabName(i);
                 lblTab.SetTextSafely(tabName);
 
                 UISprite sprTab = Util.FindComponentByName<UISprite>(child, "SprTab", true);
@@ -125,14 +126,20 @@ public class UIInventory : UIBase
 
     public string GetTabName(int tabIndex)
     {
-        return StringEx.Format("UI.Inventory.Tab.Name.{0}", tabIndex);
+        string key = StringEx.Format("UI.Inventory.Tab.Name.{0}", tabIndex);
+        return String.GetText(key);
     }
 
     public int GetTabCount()
     {
         return 3;
     }
-    
+
+    //-------------------------------------------------------------------------
+    //  DataSource & Delegate
+    //-------------------------------------------------------------------------
+    #region DataSource & Delegate
+
     public Transform CellForRowAtIndex(int index, GameObject contentView)
     {
         UIItemCell itemCellUI = Util.RequireComponent<UIItemCell>(contentView);
@@ -154,9 +161,11 @@ public class UIInventory : UIBase
 
     private int NumberOfRowsInGrid()
     {
-        return ConfigTable.Instance.GetIntValue("InventoryBasicSlotAmount");
+        return Integer.GetInteger("InventoryBasicSlotAmount");
     }
 
+    #endregion DataSource & Delegate
+    
     //-------------------------------------------------------------------------
     //  UIActions
     //-------------------------------------------------------------------------

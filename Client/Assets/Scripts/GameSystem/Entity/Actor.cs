@@ -206,7 +206,8 @@ public class Actor : EntityBase, IActor
             if (isDead)
             {
                 // 최고 레벨이 아닐 경우에만 경험치 부여
-                if (!ConfigTable.Instance.IsMaxLevel(attacker.Level))
+                int maxLevel = R.Integer.GetInteger("MaxPlayerLevel");
+                if (attacker.Level < maxLevel)
                 {
                     //int neededXp = GetNeededXp(this.level);
                     //if (neededXp > 0)

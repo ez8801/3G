@@ -87,7 +87,7 @@ public class UIForge : UIBase
 
     private int NumberOfRowsInGrid()
     {
-        return ConfigTable.Instance.GetIntValue("InventoryBasicSlotAmount");
+        return R.Integer.GetInteger("InventoryBasicSlotAmount");
     }
 
     #endregion DataSource & Delegate
