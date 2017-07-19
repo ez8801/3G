@@ -18,7 +18,17 @@ namespace Data
     public partial struct DropItem
     {
         public int Id;
+
+        /// <summary>
+        /// 드랍 아이템 그룹 Id
+        /// </summary>
+        /// <seealso cref="Monster.DropGroupId"/>
         public int Group;
+
+        /// <summary>
+        /// 아이템 Id
+        /// </summary>
+        /// <seealso cref="Item.Id"/>
         public int ItemId;
         public int MinCount;
         public int MaxCount;

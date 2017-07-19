@@ -20,24 +20,24 @@
     "Group": 1,
     "ItemId": 10001,
     "MinCount": 1,
-    "MaxCount": 1,
-    "Prob": 100000
+    "MaxCount": 3,
+    "Prob": 75000
   },
   {
     "Id": 4,
     "Group": 1,
     "ItemId": 20001,
     "MinCount": 1,
-    "MaxCount": 1,
-    "Prob": 100000
+    "MaxCount": 3,
+    "Prob": 75000
   },
   {
     "Id": 5,
     "Group": 1,
     "ItemId": 30001,
-    "MinCount": 1,
-    "MaxCount": 1,
-    "Prob": 100000
+    "MinCount": 3,
+    "MaxCount": 5,
+    "Prob": 75000
   },
   {
     "Id": 6,
@@ -59,24 +59,24 @@
     "Id": 8,
     "Group": 2,
     "ItemId": 10001,
-    "MinCount": 1,
-    "MaxCount": 1,
+    "MinCount": 3,
+    "MaxCount": 5,
     "Prob": 10000
   },
   {
     "Id": 9,
     "Group": 2,
     "ItemId": 20001,
-    "MinCount": 1,
-    "MaxCount": 1,
+    "MinCount": 3,
+    "MaxCount": 5,
     "Prob": 10000
   },
   {
     "Id": 10,
     "Group": 2,
     "ItemId": 30001,
-    "MinCount": 1,
-    "MaxCount": 1,
+    "MinCount": 8,
+    "MaxCount": 10,
     "Prob": 10000
   }
 ]

@@ -44,7 +44,7 @@ public class Monster : Actor
             for (int i = 0; i < dropItems.Count; i++)
             {
                 Data.DropItem each = dropItems[i];
-                int seed = Random.Range(0, ConfigTable.Instance.MaxProb());
+                int seed = Random.Range(0, R.Integer.GetInteger("MaxProb"));
                 
                 if (seed <= each.Prob)
                 {
@@ -55,6 +55,7 @@ public class Monster : Actor
                         ItemEntity itemEntity = (ItemEntity)CharacterFactory.CreateEntity("Prefabs/Entity/DropItem");
                         itemEntity.InitWithData(each.ItemId, gainedCount);
                         itemEntity.SetTarget(Target.CachedTransform);
+                        itemEntity.CachedTransform.position = CachedTransform.position;
                     }
                     else
                     {

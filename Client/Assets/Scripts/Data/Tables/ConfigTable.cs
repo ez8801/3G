@@ -8,7 +8,8 @@ namespace Data
     public partial struct Config
     {
         public int Id;
-        public string Key;
+        [DeclaringType("string", "int")]
+        public int Key;
         public int Value;
     }
 }
@@ -28,27 +29,5 @@ public class ConfigTable : ArrayTable<Config>
                 m_instance = new ConfigTable();
             return m_instance;
         }
-    }
-
-    public Config GetConfig(string key)
-    {
-        int hashCode = key.GetHashCode();
-        return Find(hashCode);
-    }
-
-    public int GetIntValue(string key)
-    {
-        Config config = GetConfig(key);
-        return config.Value;
-    }
-
-    public bool IsMaxLevel(int lv)
-    {
-        return false;
-    }
-
-    public int MaxProb()
-    {
-        return GetConfig("MaxProb").Value;
     }
 }

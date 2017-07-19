@@ -16,6 +16,11 @@
   },
   {
     "Id": 4,
+    "Key": "MaxGold",
+    "Value": 9999999
+  },
+  {
+    "Id": 5,
     "Key": "MaxProb",
     "Value": 100000
   }

@@ -303,5 +303,16 @@ public class NotificationCenter : MonoSingleton<NotificationCenter>
     }
     private static ItemLedger m_itemLedger;
 
+    public static GoodsMonitor GoodsMonitor
+    {
+        get
+        {
+            if (m_goodsMonitor == null)
+                m_goodsMonitor = new GoodsMonitor();
+            return m_goodsMonitor;
+        }
+    }
+    private static GoodsMonitor m_goodsMonitor;
+
     #endregion Instances
 }

@@ -1,0 +1,26 @@
+﻿[
+  {
+    "Id": 1,
+    "Group": 1000,
+    "ItemMaterialGroup": 1,
+    "RequestCount": 2
+  },
+  {
+    "Id": 2,
+    "Group": 1000,
+    "ItemMaterialGroup": 2,
+    "RequestCount": 1
+  },
+  {
+    "Id": 3,
+    "Group": 2000,
+    "ItemMaterialGroup": 1,
+    "RequestCount": 2
+  },
+  {
+    "Id": 4,
+    "Group": 2000,
+    "ItemMaterialGroup": 2,
+    "RequestCount": 1
+  }
+]

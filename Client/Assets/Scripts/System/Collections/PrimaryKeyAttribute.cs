@@ -1,7 +1,7 @@
 ﻿using System;
 
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct)]
-public class PrimaryKeyAttribute : Attribute
+public sealed class PrimaryKeyAttribute : Attribute
 {
     public string m_primaryKey;
 

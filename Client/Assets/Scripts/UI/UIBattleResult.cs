@@ -50,6 +50,9 @@ public class UIBattleResult : UIBase
                 itemCellUI.Disable();
             }
         }
+
+        TweenScale ts = Util.FindInChildren<TweenScale>(gameObject);
+        ts.method = UITweener.Method.EaseOut;
     }
 
     [ContextMenu("Bind")]

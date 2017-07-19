@@ -206,7 +206,8 @@ public class Actor : EntityBase, IActor
             if (isDead)
             {
                 // 최고 레벨이 아닐 경우에만 경험치 부여
-                if (!ConfigTable.Instance.IsMaxLevel(attacker.Level))
+                int maxLevel = R.Integer.GetInteger("MaxPlayerLevel");
+                if (attacker.Level < maxLevel)
                 {
                     //int neededXp = GetNeededXp(this.level);
                     //if (neededXp > 0)
@@ -232,9 +233,15 @@ public class Actor : EntityBase, IActor
             opposite.x *= -gapRatio;
             opposite.y = 10f * 0.5f;
 
+            if (!IsGrounded())
+            {
+                opposite.x *= 0.5f;
+                opposite.y *= 0.5f;
+            }
+
             if (attackObject == null)
                 attacker.GetComponent<Rigidbody2D>().AddForce(opposite, ForceMode2D.Impulse);
-
+            
             SoundManager.Instance.PlaySound(1);
         }
     }

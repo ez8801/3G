@@ -15,7 +15,6 @@ public class Notification
         None = System.Max + 1,
         OnProgress,
         OnProgressDone,
-        OnGoldChanged,
         Max
     }
 

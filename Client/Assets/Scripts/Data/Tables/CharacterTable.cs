@@ -16,8 +16,23 @@ namespace Data
     public partial struct Character
     {
         public int Id;
-        public string Name;
+
+        /// <summary>
+        /// 캐릭터 이름
+        /// </summary>
+        [DeclaringType("string", "int")]
+        public int Name;
+
+        /// <summary>
+        /// 능력치 Id
+        /// </summary>
+        /// <seealso cref="Stats.Id"/>
         public int StatsId;
+        
+        /// <summary>
+        /// 프리팹 Id
+        /// </summary>
+        /// <seealso cref="Prefab.Id"/>
         public int PrefabId;
     }
 }

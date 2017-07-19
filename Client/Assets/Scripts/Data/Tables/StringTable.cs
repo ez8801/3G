@@ -16,7 +16,8 @@ namespace Data
     [PrimaryKey("Key")]
     public partial struct String
     {
-        public string Key;
+        [DeclaringType("string", "int")]
+        public int Key;
         public string Value;
     }
 }
@@ -36,5 +37,15 @@ public sealed class StringTable : DictionaryTable<Data.String>
                 m_instance = new StringTable();
             return m_instance;
         }
+    }
+
+    public string Find(string key)
+    {
+        if (!string.IsNullOrEmpty(key))
+        {
+            Data.String data = Find(key.GetHashCode());
+            return data.Value;
+        }
+        return string.Empty;
     }
 }

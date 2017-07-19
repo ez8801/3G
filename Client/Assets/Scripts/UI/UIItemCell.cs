@@ -18,6 +18,8 @@ public class UIItemCell : MonoBehaviour
     public UISprite SprNew;
     public UILabel LblCount;
 
+    private UIEventListener.VoidDelegate m_onClickListener;
+
     public void Initialize()
     {
         BindComponents();
@@ -74,7 +76,7 @@ public class UIItemCell : MonoBehaviour
         SprSelect.SetActiveSafely(false);
         Lock.SetActiveSafely(false);
     }
-
+    
     public void Disable()
     {
         LblCount.SetActiveSafely(false);
@@ -84,4 +86,22 @@ public class UIItemCell : MonoBehaviour
         TexIcon.SetActiveSafely(false);
         Lock.SetActiveSafely(false);
     }
+
+    public void SetOnClickListener(UIEventListener.VoidDelegate l)
+    {
+        m_onClickListener = l;
+    }
+
+    //-------------------------------------------------------------------------
+    //  UIActions
+    //-------------------------------------------------------------------------
+    #region UIActions
+
+    private void OnClick()
+    {
+        if (m_onClickListener != null)
+            m_onClickListener(gameObject);
+    }
+
+    #endregion UIActions
 }

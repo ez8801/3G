@@ -1,0 +1,18 @@
+﻿[
+  {
+    "Id": 1,
+    "Name": "Recipe.Name.1",
+    "RecipeKind": 1,
+    "MaterialGroupId": 1000,
+    "ResultItemId": 1000001,
+    "CostGold": 1000
+  },
+  {
+    "Id": 2,
+    "Name": "Recipe.Name.2",
+    "RecipeKind": 1,
+    "MaterialGroupId": 2000,
+    "ResultItemId": 2000001,
+    "CostGold": 1000
+  }
+]

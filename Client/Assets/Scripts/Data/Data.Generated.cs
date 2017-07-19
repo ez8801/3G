@@ -10,10 +10,13 @@ namespace Data
 			Category = json["Category"].I4;
 			Type = json["Type"].I4;
 			Rarity = json["Rarity"].I4;
-			Name = json["Name"].STR;
+			Name = json["Name"].STR.GetHashCode();
+			Desc = json["Desc"].STR.GetHashCode();
 			Value = json["Value"].I4;
 			Stackable = json["Stackable"].B;
+			ItemMaterialGroup = json["ItemMaterialGroup"].I4;
 			Texture = json["Texture"].STR;
+			Price = json["Price"].I4;
 		}
 
 		public void Deserialize(Deserializer deserializer)
@@ -23,9 +26,12 @@ namespace Data
 			deserializer.Deserialize(ref Type);
 			deserializer.Deserialize(ref Rarity);
 			deserializer.Deserialize(ref Name);
+			deserializer.Deserialize(ref Desc);
 			deserializer.Deserialize(ref Value);
 			deserializer.Deserialize(ref Stackable);
+			deserializer.Deserialize(ref ItemMaterialGroup);
 			deserializer.Deserialize(ref Texture);
+			deserializer.Deserialize(ref Price);
 		}
 
 		public void Serialize(BinaryWriter binaryWriter)
@@ -35,9 +41,12 @@ namespace Data
 			binaryWriter.Write(Type);
 			binaryWriter.Write(Rarity);
 			binaryWriter.Write(Name);
+			binaryWriter.Write(Desc);
 			binaryWriter.Write(Value);
 			binaryWriter.Write(Stackable);
+			binaryWriter.Write(ItemMaterialGroup);
 			binaryWriter.Write(Texture);
+			binaryWriter.Write(Price);
 		}
 
 		public int GetIndex()
@@ -51,7 +60,7 @@ namespace Data
 		public void Deserialize(JSONObject json)
 		{
 			Id = json["Id"].I4;
-			Key = json["Key"].STR;
+			Key = json["Key"].STR.GetHashCode();
 			Value = json["Value"].I4;
 		}
 
@@ -71,7 +80,7 @@ namespace Data
 
 		public int GetIndex()
 		{
-			return Key.GetHashCode();
+			return Key;
 		}
 	}
 
@@ -79,7 +88,7 @@ namespace Data
 	{
 		public void Deserialize(JSONObject json)
 		{
-			Key = json["Key"].STR;
+			Key = json["Key"].STR.GetHashCode();
 			Value = json["Value"].STR;
 		}
 
@@ -97,7 +106,7 @@ namespace Data
 
 		public int GetIndex()
 		{
-			return Key.GetHashCode();
+			return Key;
 		}
 	}
 
@@ -107,7 +116,7 @@ namespace Data
 		{
 			Id = json["Id"].I4;
 			Grade = json["Grade"].I4;
-			Name = json["Name"].STR;
+			Name = json["Name"].STR.GetHashCode();
 			StatsId = json["StatsId"].I4;
 			PrefabId = json["PrefabId"].I4;
 			DropGroupId = json["DropGroupId"].I4;
@@ -176,7 +185,7 @@ namespace Data
 		public void Deserialize(JSONObject json)
 		{
 			Id = json["Id"].I4;
-			Name = json["Name"].STR;
+			Name = json["Name"].STR.GetHashCode();
 			StatsId = json["StatsId"].I4;
 			PrefabId = json["PrefabId"].I4;
 		}
@@ -367,6 +376,76 @@ namespace Data
 			binaryWriter.Write(MinCount);
 			binaryWriter.Write(MaxCount);
 			binaryWriter.Write(Prob);
+		}
+
+		public int GetIndex()
+		{
+			return Id;
+		}
+	}
+
+	public partial struct Material : IDeserializable, ISerializable, IIndexer
+	{
+		public void Deserialize(JSONObject json)
+		{
+			Id = json["Id"].I4;
+			Group = json["Group"].I4;
+			ItemMaterialGroup = json["ItemMaterialGroup"].I4;
+			RequestCount = json["RequestCount"].I4;
+		}
+
+		public void Deserialize(Deserializer deserializer)
+		{
+			deserializer.Deserialize(ref Id);
+			deserializer.Deserialize(ref Group);
+			deserializer.Deserialize(ref ItemMaterialGroup);
+			deserializer.Deserialize(ref RequestCount);
+		}
+
+		public void Serialize(BinaryWriter binaryWriter)
+		{
+			binaryWriter.Write(Id);
+			binaryWriter.Write(Group);
+			binaryWriter.Write(ItemMaterialGroup);
+			binaryWriter.Write(RequestCount);
+		}
+
+		public int GetIndex()
+		{
+			return Id;
+		}
+	}
+
+	public partial struct Recipe : IDeserializable, ISerializable, IIndexer
+	{
+		public void Deserialize(JSONObject json)
+		{
+			Id = json["Id"].I4;
+			Name = json["Name"].STR.GetHashCode();
+			RecipeKind = json["RecipeKind"].I2;
+			MaterialGroupId = json["MaterialGroupId"].I4;
+			ResultItemId = json["ResultItemId"].I4;
+			CostGold = json["CostGold"].I4;
+		}
+
+		public void Deserialize(Deserializer deserializer)
+		{
+			deserializer.Deserialize(ref Id);
+			deserializer.Deserialize(ref Name);
+			deserializer.Deserialize(ref RecipeKind);
+			deserializer.Deserialize(ref MaterialGroupId);
+			deserializer.Deserialize(ref ResultItemId);
+			deserializer.Deserialize(ref CostGold);
+		}
+
+		public void Serialize(BinaryWriter binaryWriter)
+		{
+			binaryWriter.Write(Id);
+			binaryWriter.Write(Name);
+			binaryWriter.Write(RecipeKind);
+			binaryWriter.Write(MaterialGroupId);
+			binaryWriter.Write(ResultItemId);
+			binaryWriter.Write(CostGold);
 		}
 
 		public int GetIndex()

@@ -7,6 +7,7 @@
  * Copyright ⓒ Sweet Home Alabama. Team 3G, All rights reserved
  */
 
+using R;
 using UnityEngine;
 
 public class UIInventory : UIBase
@@ -29,12 +30,18 @@ public class UIInventory : UIBase
 		public Transform TabHost;
 		public Transform ScrollView;
 		public UIAdvancedGrid Grid;
+        public UIItemDetailView LeftItemDetailView;
+        public UIItemDetailView RightItemDetailView;
 	}
 	public View m_view;
+
+    private int m_currentTabIndex;
 
 	public override void Initialize()
 	{
         BindComponents();
+
+        m_currentTabIndex = 0;
 
         m_view.Grid.DataSource = CellForRowAtIndex;
         m_view.Grid.Delegate = NumberOfRowsInGrid;
@@ -61,12 +68,14 @@ public class UIInventory : UIBase
         this.Bind(ref m_view.TabHost, "TabHost");
         this.Bind(ref m_view.ScrollView, "ScrollView");
         this.Bind(ref m_view.Grid, "ScrollView/Grid");
+        this.Bind(ref m_view.LeftItemDetailView, "LeftView/ItemDetailView");
+        this.Bind(ref m_view.RightItemDetailView, "RightView/ItemDetailView");
     }
 
     public override void ReloadData()
     {
         base.ReloadData();
-
+        
         m_view.LblName.SetTextSafely(StringEx.Format("Lv.{0} {1}"
             , MyInfo.Account.Level
             , MyInfo.Account.NickName));
@@ -74,6 +83,7 @@ public class UIInventory : UIBase
         SetEquipSlots();
         SetItemCount(MyInfo.Inventory.Count, NumberOfRowsInGrid());
         m_view.Grid.ReloadData();
+        SetTabHost();
     }
 
     public void SetItemCount(int itemCount, int capacity)
@@ -91,7 +101,45 @@ public class UIInventory : UIBase
             itemCellUI.Disable();
         }
     }
-    
+
+    public void SetTabHost()
+    {
+        int tabCount = GetTabCount();
+        for (int i = 0; i < m_view.TabHost.childCount; i++)
+        {
+            Transform child = m_view.TabHost.GetChild(i);
+            child.SetActiveSafely(i < tabCount);
+
+            if (i < tabCount)
+            {
+                bool isSelected = (m_currentTabIndex == i);
+
+                UILabel lblTab = Util.FindComponentByName<UILabel>(child, "LblTab", true);
+                string tabName = GetTabName(i);
+                lblTab.SetTextSafely(tabName);
+
+                UISprite sprTab = Util.FindComponentByName<UISprite>(child, "SprTab", true);
+                sprTab.SetSpriteSafely(Drawable.GetTabSprite(isSelected), false);
+            }
+        }
+    }
+
+    public string GetTabName(int tabIndex)
+    {
+        string key = StringEx.Format("UI.Inventory.Tab.Name.{0}", tabIndex);
+        return String.GetText(key);
+    }
+
+    public int GetTabCount()
+    {
+        return 3;
+    }
+
+    //-------------------------------------------------------------------------
+    //  DataSource & Delegate
+    //-------------------------------------------------------------------------
+    #region DataSource & Delegate
+
     public Transform CellForRowAtIndex(int index, GameObject contentView)
     {
         UIItemCell itemCellUI = Util.RequireComponent<UIItemCell>(contentView);
@@ -101,6 +149,7 @@ public class UIInventory : UIBase
         {
             UserData.Item item = MyInfo.Inventory[index];
             itemCellUI.InitWithData(item);
+            itemCellUI.SetOnClickListener(OnClickItem);
         }
         else
         {
@@ -112,9 +161,11 @@ public class UIInventory : UIBase
 
     private int NumberOfRowsInGrid()
     {
-        return ConfigTable.Instance.GetIntValue("InventoryBasicSlotAmount");
+        return Integer.GetInteger("InventoryBasicSlotAmount");
     }
 
+    #endregion DataSource & Delegate
+    
     //-------------------------------------------------------------------------
     //  UIActions
     //-------------------------------------------------------------------------
@@ -124,6 +175,30 @@ public class UIInventory : UIBase
     {
         MyInfo.Inventory.ClearDirtyFlag();
         NGUITools.SetActive(gameObject, false);
+    }
+
+    public void OnClickTab(GameObject sender)
+    {
+        int index = -1;
+        if (int.TryParse(sender.name, out index))
+        {
+            if (index != m_currentTabIndex)
+            {
+                m_currentTabIndex = index;
+                SetTabHost();
+            }
+        }
+    }
+
+    private void OnClickItem(GameObject sender)
+    {
+        int index = -1;
+        if (int.TryParse(sender.name, out index))
+        {
+            UserData.Item clickedItem = MyInfo.Inventory[index];
+            m_view.RightItemDetailView.Initialize();
+            m_view.RightItemDetailView.InitWithData(clickedItem);
+        }
     }
 
     #endregion UIActions
