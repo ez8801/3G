@@ -66,6 +66,11 @@ public class Monster : Actor
         }
     }
 
+    public long GetGroupId()
+    {
+        return GroupId;
+    }
+
     public override void OnDead()
     {
         DropItem();
