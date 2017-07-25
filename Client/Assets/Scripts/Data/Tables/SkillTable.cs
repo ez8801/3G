@@ -20,7 +20,7 @@ namespace Data
 }
 
 //공통스킬(common), 무기특화 스킬로 구분
-public enum SkillType
+public enum ActiveType
 {
     None,
     Common = 1,
