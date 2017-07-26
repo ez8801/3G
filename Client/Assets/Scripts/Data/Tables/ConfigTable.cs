@@ -30,4 +30,19 @@ public class ConfigTable : ArrayTable<Config>
             return m_instance;
         }
     }
+
+    public bool GetBooleanValue(string key)
+    {
+        if (!string.IsNullOrEmpty(key))
+        {
+            int hashCode = key.GetHashCode();
+            if (ContainsKey(hashCode))
+            {
+                Config data = Find(hashCode);
+                return (data.Value == 1);
+            }
+        }
+
+        return false;
+    }
 }

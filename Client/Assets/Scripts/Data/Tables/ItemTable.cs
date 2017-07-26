@@ -40,12 +40,7 @@ namespace Data
         public int Desc;
         
         public int Value;
-
-        /// <summary>
-        /// 중첩 가능 여부
-        /// </summary>
-        public bool Stackable;
-
+        
         /// <summary>
         /// 아이템 재료 그룹
         /// </summary>
@@ -86,5 +81,21 @@ public sealed class ItemTable : ArrayTable<Item>
                 m_instance = new ItemTable();
             return m_instance;
         }
+    }
+
+    public bool IsStackable(Item data)
+    {
+        string key = StringEx.Format("Stackable.{0}", data.Type);
+        bool isStackable = ConfigTable.Instance.GetBooleanValue(key);
+        return isStackable;
+    }
+
+    public bool IsStackable(int itemId)
+    {
+        if (ContainsKey(itemId))
+        {
+            return IsStackable(Find(itemId));
+        }
+        return false;
     }
 }

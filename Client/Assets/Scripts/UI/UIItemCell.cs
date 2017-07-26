@@ -49,7 +49,7 @@ public class UIItemCell : MonoBehaviour
     public void InitWith(long id, int itemId, int itemCount)
     {
         Data.Item itemData = ItemTable.Instance.Find(itemId);
-        if (itemData.Stackable)
+        if (ItemTable.Instance.IsStackable(itemData))
         {
             LblCount.SetActiveSafely(true);
             LblCount.SetTextSafely(string.Concat("x", itemCount));

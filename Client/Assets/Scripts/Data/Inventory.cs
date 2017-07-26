@@ -122,8 +122,7 @@ public class Inventory
     /// </summary>
     public bool IsStackAble(int itemId)
     {
-        Data.Item itemData = ItemTable.Instance.Find(itemId);
-        return itemData.Stackable;
+        return ItemTable.Instance.IsStackable(itemId);
     }
     
     /// <summary>
