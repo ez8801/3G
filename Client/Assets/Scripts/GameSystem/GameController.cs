@@ -13,6 +13,8 @@ using System.Collections.Generic;
 
 public class GameController : SubscriberBase<SimpleItem>
 {
+    private EntityID playerId;
+    
     private MatchJudge m_matchJudge = null;
     private Actor m_player;
     public Actor Player
@@ -20,7 +22,7 @@ public class GameController : SubscriberBase<SimpleItem>
         get
         {
             if (m_player == null)
-                m_player = (Actor)EntityBase.Find(EntityType.Character, 1);
+                m_player = (Actor)EntityBase.Find(playerId.UID);
             return m_player;
         }
     }
@@ -31,7 +33,10 @@ public class GameController : SubscriberBase<SimpleItem>
     private Team m_enemyTeam;
 
     private List<SimpleItem> m_gainedItems;
-        
+
+    private SimpleCameraShaker m_cameraShaker;
+
+
     public void Initialize()
     {
         m_matchJudge = new MatchJudge();
@@ -47,6 +52,13 @@ public class GameController : SubscriberBase<SimpleItem>
 
         SetTarget(m_myTeam);
         SetTarget(m_enemyTeam);
+
+        playerId = new EntityID(EntityType.Character, 1);
+    }
+    
+    public void SetCameraShaker(SimpleCameraShaker cameraShaker)
+    {
+        m_cameraShaker = cameraShaker;
     }
 
     private void SetTeam()
@@ -106,6 +118,15 @@ public class GameController : SubscriberBase<SimpleItem>
     public void OnEntityDead(long entityId)
     {
         m_matchJudge.OnEntityDead(entityId);
+    }
+
+    public void OnEntityAttacked(long entityId)
+    {
+        if (playerId.UID == entityId)
+        {
+            if (m_cameraShaker != null)
+                m_cameraShaker.Shake();
+        }
     }
 
     public void StartGame()

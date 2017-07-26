@@ -22,6 +22,7 @@ public class Notification
     {
         None = UI.Max + 1,
         OnDead,
+        OnAttacked,
         Max,
     }
 

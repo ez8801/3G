@@ -224,6 +224,7 @@ public class Actor : EntityBase, IActor
             else
             {
                 m_stateMachine.Transition(StateType.Damaged);
+                NotificationCenter.Instance.Post((int)Notification.Entity.OnAttacked, EntityID);
             }
 
             // DamageFontManager.Instance.AddDamageData(attacker, this, damageAmount);
