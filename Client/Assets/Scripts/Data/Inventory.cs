@@ -138,8 +138,16 @@ public class Inventory
         return false;
     }
 
+    public bool EquipItem(long id)
+    {
+        UserData.Item item = Find(id);
+        if (item != null)
+            return EquipItem(item);
+        return false;
+    }
+
     /// <summary>
-    /// 지정된 아이템을 장착해제합니다.
+    /// 지정된 아이템을 해제합니다.
     /// </summary>
     public void UnEquipItem(UserData.Item item)
     {
@@ -149,16 +157,40 @@ public class Inventory
             m_equippedItems[itemSlot] = 0;
         }
     }
+    
+    /// <summary>
+    /// 지정된 아이템 Id에 해당하는 아이템을 해제합니다.
+    /// </summary>
+    public void UnEquipItem(long id)
+    {
+        var enumerator = m_equippedItems.GetEnumerator();
+        while (enumerator.MoveNext())
+        {
+            if (enumerator.Current.Value == id)
+            {
+                m_equippedItems[enumerator.Current.Key] = 0;
+                break;
+            }
+        }
+    }
 
     /// <summary>
     /// 지정된 아이템의 장착여부를 반환합니다.
     /// </summary>
     public bool IsEquip(UserData.Item item)
     {
+        return IsEquip(item.Id);
+    }
+
+    /// <summary>
+    /// 지정된 아이템 Id에 해당하는 아이템의 장착여부를 반환합니다.
+    /// </summary>
+    public bool IsEquip(long id)
+    {
         var enumerator = m_equippedItems.GetEnumerator();
         while (enumerator.MoveNext())
         {
-            if (enumerator.Current.Value == item.Id)
+            if (enumerator.Current.Value == id)
                 return true;
         }
 
@@ -224,6 +256,17 @@ public class Inventory
         {
             return m_items.Count;
         }
+    }
+
+    public UserData.Item Find(long id)
+    {
+        for (int i = 0; i < m_items.Count; i++)
+        {
+            UserData.Item match = m_items[i];
+            if (match.Id == id)
+                return match;            
+        }
+        return null;
     }
 
     public void Remove(long id)

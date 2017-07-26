@@ -98,5 +98,13 @@
   {
     "Key": "Recipe.Name.2",
     "Value": "낡은 갑옷"
+  },
+  {
+    "Key": "UI.Equip",
+    "Value": "장착"
+  },
+  {
+    "Key": "UI.UnEquip",
+    "Value": "해제"
   }
 ]

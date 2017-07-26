@@ -45,6 +45,9 @@ public class UIItemDetailView : UIBase
         m_view.LblItemName.SetTextSafely(R.String.GetText(itemData.Name));
         m_view.LblSummary.SetTextSafely(R.String.GetText(itemData.Desc));
 
+        bool isEquip = MyInfo.Inventory.IsEquip(item);
+        m_view.LblBtnEquip.SetTextSafely(isEquip ? R.String.GetText("UI.UnEquip") : R.String.GetText("UI.Equip"));
+
         m_focusItem.Id = item.Id;
         m_focusItem.ItemId = item.ItemId;
         m_focusItem.Count = item.Count;
@@ -118,7 +121,17 @@ public class UIItemDetailView : UIBase
 
     public void OnClickEquip()
     {
+        bool isEquip = MyInfo.Inventory.IsEquip(m_focusItem.Id);
+        if (isEquip)
+        {
+            MyInfo.Inventory.UnEquipItem(m_focusItem.Id);
+        }
+        else
+        {
+            MyInfo.Inventory.EquipItem(m_focusItem.Id);
+        }
 
+        m_view.LblBtnEquip.SetTextSafely(!isEquip ? R.String.GetText("UI.UnEquip") : R.String.GetText("UI.Equip"));
     }
 
     #endregion UIActions
