@@ -42,7 +42,7 @@ public class Util
     }
 
     /// <summary>
-    /// GameObject로부터 지정된 컴포넌트를 얻어온다.
+    /// GameObject로부터 지정된 컴포넌트를 얻어옵니다.
     /// </summary>
     public static T RequireComponent<T>(GameObject go) where T : Component
     {
@@ -55,22 +55,29 @@ public class Util
 
         return comp;
     }
-
+    
     /// <summary>
-    /// Transform으로부터 지정된 컴포넌트를 얻어온다. 
+    /// Transform으로부터 지정된 컴포넌트를 얻어옵니다. 
     /// </summary>
     public static T RequireComponent<T>(Transform t) where T : Component
     {
         if (t == null)
             return null;
-        
-        T comp = t.GetComponent<T>();
-        if (comp == null)
-            comp = t.gameObject.AddComponent<T>();
-        
-        return comp;
+
+        return RequireComponent<T>(t.gameObject);
     }
-    
+
+    /// <summary>
+    /// Behaviour으로부터 지정된 컴포넌트를 얻어옵니다.
+    /// </summary>
+    public static T RequireComponent<T>(Component component) where T : Component
+    {
+        if (component == null)
+            return null;
+
+        return RequireComponent<T>(component.gameObject);
+    }
+
     /// <summary>
     /// 지정된 GameObject와 자식 오브젝트로부터 특정 이름의 컴포넌트를 찾아 반환합니다.
     /// </summary>

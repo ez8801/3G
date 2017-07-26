@@ -1,4 +1,5 @@
 ﻿
+using UnityEngine;
 using System.Collections;
 
 public class GameScene : GameSystem.Scene, IObserver
@@ -21,6 +22,7 @@ public class GameScene : GameSystem.Scene, IObserver
         yield return m_gameController.BuildGame();
 
         m_gameController.Subscribe(NotificationCenter.ItemLedger);
+        m_gameController.SetCameraShaker(Util.RequireComponent<SimpleCameraShaker>(Camera.main));
         
         m_battleUI = SetContentView<UIBattle>("Prefabs/UI/BattelUI");
         
@@ -36,6 +38,10 @@ public class GameScene : GameSystem.Scene, IObserver
         {
             case (int)Notification.Entity.OnDead:
                 m_gameController.OnEntityDead(notification.longExtra);
+                break;
+
+            case (int)Notification.Entity.OnAttacked:
+                m_gameController.OnEntityAttacked(notification.longExtra);
                 break;
 
             case (int)Notification.GameSystem.Win:
