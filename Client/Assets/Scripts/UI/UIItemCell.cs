@@ -17,6 +17,7 @@ public class UIItemCell : MonoBehaviour
     public UISprite SprSelect;
     public UISprite SprNew;
     public UILabel LblCount;
+    public UISprite SprEquip;
 
     private UIEventListener.VoidDelegate m_onClickListener;
 
@@ -34,6 +35,7 @@ public class UIItemCell : MonoBehaviour
 		this.Bind(ref SprSelect, "SprSelect");
 		this.Bind(ref SprNew, "SprNew");
         this.Bind(ref LblCount, "LblCount");
+        this.Bind(ref SprEquip, "SprEquip");
     }
 
     public void InitWithData(UserData.Item item)
@@ -49,7 +51,7 @@ public class UIItemCell : MonoBehaviour
     public void InitWith(long id, int itemId, int itemCount)
     {
         Data.Item itemData = ItemTable.Instance.Find(itemId);
-        if (itemData.Stackable)
+        if (ItemTable.Instance.IsStackable(itemData))
         {
             LblCount.SetActiveSafely(true);
             LblCount.SetTextSafely(string.Concat("x", itemCount));
@@ -71,6 +73,7 @@ public class UIItemCell : MonoBehaviour
         }
 
         SprNew.SetActiveSafely(MyInfo.Inventory.GetDirty(id));
+        SprEquip.SetActiveSafely(MyInfo.Inventory.IsEquip(id));
 
         LblLevel.SetActiveSafely(false);
         SprSelect.SetActiveSafely(false);
@@ -85,6 +88,7 @@ public class UIItemCell : MonoBehaviour
         SprSelect.SetActiveSafely(false);
         TexIcon.SetActiveSafely(false);
         Lock.SetActiveSafely(false);
+        SprEquip.SetActiveSafely(false);
     }
 
     public void SetOnClickListener(UIEventListener.VoidDelegate l)

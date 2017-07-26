@@ -67,7 +67,7 @@ public class ViewBinder
             
             Debug.Log("FieldType: " + fi.FieldType);
 
-            Component component = Util.FindComponentByName(fi.FieldType, obj.transform, attribute.id, true);
+            Component component = Util.FindComponent(fi.FieldType, obj.transform, attribute.id, true);
 
             //Transform t = Util.FindComponentByName<Transform>(obj.transform, attribute.id, true);
             //if (t == null)

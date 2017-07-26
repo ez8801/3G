@@ -40,12 +40,7 @@ namespace Data
         public int Desc;
         
         public int Value;
-
-        /// <summary>
-        /// 중첩 가능 여부
-        /// </summary>
-        public bool Stackable;
-
+        
         /// <summary>
         /// 아이템 재료 그룹
         /// </summary>
@@ -86,5 +81,65 @@ public sealed class ItemTable : ArrayTable<Item>
                 m_instance = new ItemTable();
             return m_instance;
         }
+    }
+
+    /// <summary>
+    /// 지정된 아이템이 중첩가능한지 여부를 반환합니다.
+    /// </summary>
+    public bool IsStackable(Item data)
+    {
+        string key = StringEx.Format("Stackable.{0}", data.Type);
+        bool isStackable = ConfigTable.Instance.GetBooleanValue(key);
+        return isStackable;
+    }
+
+    /// <summary>
+    /// 지정된 아이템 인덱스에 해당하는 아이템이 중첩가능한지 여부를 반환합니다.
+    /// </summary>
+    public bool IsStackable(int itemId)
+    {
+        if (ContainsKey(itemId))
+        {
+            return IsStackable(Find(itemId));
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// 지정된 아이템이 장착가능한지 여부를 반환합니다.
+    /// </summary>
+    public bool IsEquipable(Item data)
+    {
+        return (GetItemSlot(data) != ItemSlot.None);
+    }
+
+    /// <summary>
+    /// 지정된 아이템 인덱스에 해당하는 아이템이 장착가능한지 여부를 반환합니다.
+    /// </summary>
+    public bool IsEquipable(int itemId)
+    {
+        return (GetItemSlot(itemId) != ItemSlot.None);
+    }
+
+    /// <summary>
+    /// 지정된 아이템의 아이템 슬롯을 반환합니다.
+    /// </summary>
+    public int GetItemSlot(Item data)
+    {
+        string key = StringEx.Format("Item.Slot.{0}", data.Type);
+        int itemSlot = R.Integer.GetInteger(key);
+        return itemSlot;
+    }
+
+    /// <summary>
+    /// 지정된 아이템 인덱스의 해당하는 아이템의 슬롯을 반환합니다.
+    /// </summary>
+    public int GetItemSlot(int itemId)
+    {
+        if (ContainsKey(itemId))
+        {
+            return GetItemSlot(Find(itemId));
+        }
+        return ItemSlot.None;
     }
 }

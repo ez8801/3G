@@ -13,7 +13,6 @@ namespace Data
 			Name = json["Name"].STR.GetHashCode();
 			Desc = json["Desc"].STR.GetHashCode();
 			Value = json["Value"].I4;
-			Stackable = json["Stackable"].B;
 			ItemMaterialGroup = json["ItemMaterialGroup"].I4;
 			Texture = json["Texture"].STR;
 			Price = json["Price"].I4;
@@ -28,7 +27,6 @@ namespace Data
 			deserializer.Deserialize(ref Name);
 			deserializer.Deserialize(ref Desc);
 			deserializer.Deserialize(ref Value);
-			deserializer.Deserialize(ref Stackable);
 			deserializer.Deserialize(ref ItemMaterialGroup);
 			deserializer.Deserialize(ref Texture);
 			deserializer.Deserialize(ref Price);
@@ -43,7 +41,6 @@ namespace Data
 			binaryWriter.Write(Name);
 			binaryWriter.Write(Desc);
 			binaryWriter.Write(Value);
-			binaryWriter.Write(Stackable);
 			binaryWriter.Write(ItemMaterialGroup);
 			binaryWriter.Write(Texture);
 			binaryWriter.Write(Price);

@@ -86,7 +86,7 @@ public class Util
     /// <param name="name">검색할 오브젝트 이름</param>
     /// <param name="includeInActive">비활성화된 오브젝트 포함 여부</param>
     /// <returns></returns>
-    public static T FindComponentByName<T>(GameObject go, string name, bool includeInActive = true) where T : Component
+    public static T FindComponent<T>(GameObject go, string name, bool includeInActive = true) where T : Component
     {
         if (go == null || string.IsNullOrEmpty(name))
             return null;
@@ -108,7 +108,7 @@ public class Util
     /// <summary>
     /// 지정된 Transform으로부터 특정 이름의 컴포넌트를 찾아 반환합니다.
     /// </summary>
-    public static T FindComponentByName<T>(Transform t, string name, bool includeInActive = true) where T : Component
+    public static T FindComponent<T>(Transform t, string name, bool includeInActive = true) where T : Component
     {
         if (t == null || string.IsNullOrEmpty(name))
             return null;
@@ -137,7 +137,7 @@ public class Util
     /// <summary>
     /// 지정된 Transform으로부터 특정 이름의 컴포넌트를 찾아 반환합니다.
     /// </summary>
-    public static Component FindComponentByName(System.Type type, Transform t, string name, bool includeInActive = true)
+    public static Component FindComponent(System.Type type, Transform t, string name, bool includeInActive = true)
     {
         if (t == null || string.IsNullOrEmpty(name))
             return null;

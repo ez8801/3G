@@ -5,8 +5,9 @@ public class SimpleCameraShaker : MonoBehaviour
     private Transform m_cachedTransform;
 
     public float m_duration = 0.3f;
-    public float m_shakeAmount = 0.5f;
+    public float m_shakeAmount = 0.05f;
 
+    private float m_lastPlayTime;
     private float m_elapsedTime;
     private bool m_isPlaying;
 
@@ -27,7 +28,6 @@ public class SimpleCameraShaker : MonoBehaviour
     public void SetTarget(Transform target)
     {
         m_cachedTransform = transform;
-        m_originalPosition = m_cachedTransform.localPosition;
     }
 
     public void SetOnShakeEndListener(System.Action l)
@@ -37,10 +37,12 @@ public class SimpleCameraShaker : MonoBehaviour
 
     public void Shake()
     {
-        if (m_isPlaying == false)
+        if (m_isPlaying == false 
+            && (Time.realtimeSinceStartup - m_lastPlayTime) > 0.15f)
         {
             m_elapsedTime = 0f;
             m_isPlaying = true;
+            m_originalPosition = m_cachedTransform.localPosition;
         }
     }
     
@@ -48,8 +50,8 @@ public class SimpleCameraShaker : MonoBehaviour
     {
         if (m_isPlaying)
         {
-            m_cachedTransform.localPosition
-                = m_originalPosition + Random.insideUnitSphere * m_shakeAmount;
+            transform.localPosition
+                = transform.localPosition + new Vector3(Random.insideUnitSphere.x, 0f, 0f) * m_shakeAmount;
 
             m_elapsedTime += Time.deltaTime;
             if (m_elapsedTime >= m_duration)
@@ -63,6 +65,7 @@ public class SimpleCameraShaker : MonoBehaviour
     {
         m_elapsedTime = 0f;
         m_isPlaying = false;
+        m_lastPlayTime = Time.realtimeSinceStartup;
 
         m_cachedTransform.localPosition = m_originalPosition;
         if (m_onShakeEndListener != null)

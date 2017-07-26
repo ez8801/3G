@@ -68,9 +68,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4004122497613364}
-  - component: {fileID: 65170763407503242}
-  - component: {fileID: 114749999844538084}
-  - component: {fileID: 114319059076525934}
   - component: {fileID: 114878157251990088}
   m_Layer: 5
   m_Name: 0
@@ -800,9 +797,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4175421651202714}
-  - component: {fileID: 65234053947155978}
-  - component: {fileID: 114185761135476018}
-  - component: {fileID: 114230227604184000}
   - component: {fileID: 114622732181806402}
   m_Layer: 5
   m_Name: 6
@@ -961,9 +955,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4989162642599560}
-  - component: {fileID: 65087358979512506}
-  - component: {fileID: 114455502407438022}
-  - component: {fileID: 114394715142003428}
   - component: {fileID: 114690255833005860}
   m_Layer: 5
   m_Name: 7
@@ -1414,9 +1405,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4494730298850758}
-  - component: {fileID: 65837925816934670}
-  - component: {fileID: 114779645148810802}
-  - component: {fileID: 114793694439932716}
   - component: {fileID: 114335813790141988}
   m_Layer: 5
   m_Name: 2
@@ -1483,9 +1471,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4960463735435830}
-  - component: {fileID: 65214132362070352}
-  - component: {fileID: 114837859595241802}
-  - component: {fileID: 114826444276616784}
   - component: {fileID: 114707209286375436}
   m_Layer: 5
   m_Name: 1
@@ -1693,9 +1678,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4110551651280300}
-  - component: {fileID: 65011297794006108}
-  - component: {fileID: 114160271199329232}
-  - component: {fileID: 114551016813771792}
   - component: {fileID: 114006827433485494}
   m_Layer: 5
   m_Name: 5
@@ -2080,9 +2062,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4802394915954910}
-  - component: {fileID: 65467161914671678}
-  - component: {fileID: 114034112456241152}
-  - component: {fileID: 114973729554465098}
   - component: {fileID: 114457789120676896}
   m_Layer: 5
   m_Name: 4
@@ -2420,9 +2399,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4754183461765824}
-  - component: {fileID: 65641959696082996}
-  - component: {fileID: 114557068958473754}
-  - component: {fileID: 114235359473943018}
   - component: {fileID: 114176659524564102}
   m_Layer: 5
   m_Name: 3
@@ -3197,9 +3173,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4946228874089464}
-  - component: {fileID: 65395204553834664}
-  - component: {fileID: 114597823273695842}
-  - component: {fileID: 114389238734272132}
   - component: {fileID: 114557637967804510}
   m_Layer: 5
   m_Name: 9
@@ -3364,9 +3337,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4079705488269922}
-  - component: {fileID: 65405411151119362}
-  - component: {fileID: 114116006916874796}
-  - component: {fileID: 114149703808773114}
   - component: {fileID: 114495353980150816}
   m_Layer: 5
   m_Name: 8
@@ -7661,18 +7631,6 @@ Transform:
   m_Father: {fileID: 4302979185637088}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &65011297794006108
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1386285792327312}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 90, y: 90, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.5}
 --- !u!65 &65014471907726862
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -7733,18 +7691,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 100, y: 40, z: 0}
   m_Center: {x: 0, y: 0, z: -6}
---- !u!65 &65087358979512506
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1242762400861954}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 90, y: 90, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.5}
 --- !u!65 &65096082378372898
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -7793,18 +7739,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 106, y: 106, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65170763407503242
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1012844560152754}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 90, y: 90, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.5}
 --- !u!65 &65174915389326808
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -7817,18 +7751,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 100, y: 40, z: 0}
   m_Center: {x: 0, y: 0, z: -7.5}
---- !u!65 &65214132362070352
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1335925046445110}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 90, y: 90, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.5}
 --- !u!65 &65219473930394216
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -7841,18 +7763,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 138, y: 50, z: 0}
   m_Center: {x: 0, y: 0.9999962, z: -1}
---- !u!65 &65234053947155978
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1200501733818830}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 90, y: 90, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.5}
 --- !u!65 &65244315500729496
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -7913,30 +7823,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 92, y: 51, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65395204553834664
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1783728708472510}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 90, y: 90, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.5}
---- !u!65 &65405411151119362
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1815362271042424}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 90, y: 90, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.5}
 --- !u!65 &65434737297117766
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -7949,18 +7835,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1280, y: 720, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65467161914671678
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1465964725046178}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 90, y: 90, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.5}
 --- !u!65 &65553720836302224
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -8021,18 +7895,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 136.00002, y: 48, z: 0}
   m_Center: {x: 0, y: 0, z: -1}
---- !u!65 &65641959696082996
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1559507445721884}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 90, y: 90, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.5}
 --- !u!65 &65658705404028916
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -8141,18 +8003,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 42, y: 42, z: 1}
   m_Center: {x: 0, y: 0, z: -1}
---- !u!65 &65837925816934670
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1322088583718508}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 90, y: 90, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.5}
 --- !u!65 &65866768898069276
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -8604,19 +8454,6 @@ MonoBehaviour:
   mAtlas: {fileID: 0}
   mSpriteName: box_set_item
   mFillCenter: 1
---- !u!114 &114034112456241152
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1465964725046178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f02842fa4878db54f9587ff4de7d9f2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scrollView: {fileID: 0}
-  draggablePanel: {fileID: 0}
 --- !u!114 &114042975233776116
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9604,19 +9441,6 @@ MonoBehaviour:
   mMaxLineHeight: 0
   mLineWidth: 0
   mMultiline: 1
---- !u!114 &114116006916874796
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1815362271042424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f02842fa4878db54f9587ff4de7d9f2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scrollView: {fileID: 0}
-  draggablePanel: {fileID: 0}
 --- !u!114 &114116594234631572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9783,68 +9607,7 @@ MonoBehaviour:
   SprSelect: {fileID: 114403579807900698}
   SprNew: {fileID: 114382037442079876}
   LblCount: {fileID: 114333304073620660}
---- !u!114 &114149703808773114
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1815362271042424}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75e7459110b9666449485c40f25362a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  method: 0
-  style: 0
-  animationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 1.7970555
-      outSlope: 1.7970555
-      tangentMode: 34
-    - serializedVersion: 2
-      time: 0.21623799
-      value: 0.38859168
-      inSlope: -1.6778852
-      outSlope: -1.6778852
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1.0000794
-      value: 0.00011675106
-      inSlope: -0.15135598
-      outSlope: -0.15135598
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  ignoreTimeScale: 1
-  delay: 0
-  duration: 1
-  steeperCurves: 0
-  tweenGroup: 0
-  useFixedUpdate: 0
-  onFinished: []
-  eventReceiver: {fileID: 0}
-  callWhenFinished: 
-  from: {x: 1, y: 1, z: 1}
-  to: {x: 1.2, y: 1.2, z: 1.2}
-  updateTable: 0
---- !u!114 &114160271199329232
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1386285792327312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f02842fa4878db54f9587ff4de7d9f2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scrollView: {fileID: 0}
-  draggablePanel: {fileID: 0}
+  SprEquip: {fileID: 0}
 --- !u!114 &114164025028046478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10151,19 +9914,6 @@ MonoBehaviour:
     type: 2}
   m_clearWhenInactive: 0
   m_instance: {fileID: 0}
---- !u!114 &114185761135476018
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1200501733818830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f02842fa4878db54f9587ff4de7d9f2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scrollView: {fileID: 0}
-  draggablePanel: {fileID: 0}
 --- !u!114 &114189006045536224
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10424,55 +10174,6 @@ MonoBehaviour:
   mMaxLineHeight: 0
   mLineWidth: 0
   mMultiline: 1
---- !u!114 &114230227604184000
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1200501733818830}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75e7459110b9666449485c40f25362a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  method: 0
-  style: 0
-  animationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 1.7970555
-      outSlope: 1.7970555
-      tangentMode: 34
-    - serializedVersion: 2
-      time: 0.21623799
-      value: 0.38859168
-      inSlope: -1.6778852
-      outSlope: -1.6778852
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1.0000794
-      value: 0.00011675106
-      inSlope: -0.15135598
-      outSlope: -0.15135598
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  ignoreTimeScale: 1
-  delay: 0
-  duration: 1
-  steeperCurves: 0
-  tweenGroup: 0
-  useFixedUpdate: 0
-  onFinished: []
-  eventReceiver: {fileID: 0}
-  callWhenFinished: 
-  from: {x: 1, y: 1, z: 1}
-  to: {x: 1.2, y: 1.2, z: 1.2}
-  updateTable: 0
 --- !u!114 &114231933144075056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10663,55 +10364,6 @@ MonoBehaviour:
   mMaxLineHeight: 0
   mLineWidth: 0
   mMultiline: 1
---- !u!114 &114235359473943018
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1559507445721884}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75e7459110b9666449485c40f25362a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  method: 0
-  style: 0
-  animationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 1.7970555
-      outSlope: 1.7970555
-      tangentMode: 34
-    - serializedVersion: 2
-      time: 0.21623799
-      value: 0.38859168
-      inSlope: -1.6778852
-      outSlope: -1.6778852
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1.0000794
-      value: 0.00011675106
-      inSlope: -0.15135598
-      outSlope: -0.15135598
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  ignoreTimeScale: 1
-  delay: 0
-  duration: 1
-  steeperCurves: 0
-  tweenGroup: 0
-  useFixedUpdate: 0
-  onFinished: []
-  eventReceiver: {fileID: 0}
-  callWhenFinished: 
-  from: {x: 1, y: 1, z: 1}
-  to: {x: 1.2, y: 1.2, z: 1.2}
-  updateTable: 0
 --- !u!114 &114235630415969156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11952,55 +11604,6 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114319059076525934
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1012844560152754}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75e7459110b9666449485c40f25362a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  method: 0
-  style: 0
-  animationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 1.7970555
-      outSlope: 1.7970555
-      tangentMode: 34
-    - serializedVersion: 2
-      time: 0.21623799
-      value: 0.38859168
-      inSlope: -1.6778852
-      outSlope: -1.6778852
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1.0000794
-      value: 0.00011675106
-      inSlope: -0.15135598
-      outSlope: -0.15135598
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  ignoreTimeScale: 1
-  delay: 0
-  duration: 1
-  steeperCurves: 0
-  tweenGroup: 0
-  useFixedUpdate: 0
-  onFinished: []
-  eventReceiver: {fileID: 0}
-  callWhenFinished: 
-  from: {x: 1, y: 1, z: 1}
-  to: {x: 1.2, y: 1.2, z: 1.2}
-  updateTable: 0
 --- !u!114 &114320737874888438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12025,6 +11628,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_view:
     CellItem: {fileID: 114979195541553524}
+    BtnEquip: {fileID: 0}
     LblBtnEquip: {fileID: 114026730261945134}
     EquipmentView: {fileID: 1939839416591318}
     MiscView: {fileID: 1444312109683018}
@@ -12473,104 +12077,6 @@ MonoBehaviour:
   mAtlas: {fileID: 114000010584776072, guid: d9101f81a304347409683d88faa88a6b, type: 2}
   mSpriteName: New
   mFillCenter: 1
---- !u!114 &114389238734272132
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1783728708472510}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75e7459110b9666449485c40f25362a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  method: 0
-  style: 0
-  animationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 1.7970555
-      outSlope: 1.7970555
-      tangentMode: 34
-    - serializedVersion: 2
-      time: 0.21623799
-      value: 0.38859168
-      inSlope: -1.6778852
-      outSlope: -1.6778852
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1.0000794
-      value: 0.00011675106
-      inSlope: -0.15135598
-      outSlope: -0.15135598
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  ignoreTimeScale: 1
-  delay: 0
-  duration: 1
-  steeperCurves: 0
-  tweenGroup: 0
-  useFixedUpdate: 0
-  onFinished: []
-  eventReceiver: {fileID: 0}
-  callWhenFinished: 
-  from: {x: 1, y: 1, z: 1}
-  to: {x: 1.2, y: 1.2, z: 1.2}
-  updateTable: 0
---- !u!114 &114394715142003428
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1242762400861954}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75e7459110b9666449485c40f25362a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  method: 0
-  style: 0
-  animationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 1.7970555
-      outSlope: 1.7970555
-      tangentMode: 34
-    - serializedVersion: 2
-      time: 0.21623799
-      value: 0.38859168
-      inSlope: -1.6778852
-      outSlope: -1.6778852
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1.0000794
-      value: 0.00011675106
-      inSlope: -0.15135598
-      outSlope: -0.15135598
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  ignoreTimeScale: 1
-  delay: 0
-  duration: 1
-  steeperCurves: 0
-  tweenGroup: 0
-  useFixedUpdate: 0
-  onFinished: []
-  eventReceiver: {fileID: 0}
-  callWhenFinished: 
-  from: {x: 1, y: 1, z: 1}
-  to: {x: 1.2, y: 1.2, z: 1.2}
-  updateTable: 0
 --- !u!114 &114398455419165242
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13270,19 +12776,6 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114455502407438022
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1242762400861954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f02842fa4878db54f9587ff4de7d9f2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scrollView: {fileID: 0}
-  draggablePanel: {fileID: 0}
 --- !u!114 &114456730944146682
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13762,6 +13255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_view:
     CellItem: {fileID: 114147617581079042}
+    BtnEquip: {fileID: 0}
     LblBtnEquip: {fileID: 114807007783496970}
     EquipmentView: {fileID: 1742617647976072}
     MiscView: {fileID: 1218602418313888}
@@ -14253,68 +13747,6 @@ MonoBehaviour:
   mAtlas: {fileID: 114000010584776072, guid: d9101f81a304347409683d88faa88a6b, type: 2}
   mSpriteName: 0_Rounded
   mFillCenter: 1
---- !u!114 &114551016813771792
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1386285792327312}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75e7459110b9666449485c40f25362a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  method: 0
-  style: 0
-  animationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 1.7970555
-      outSlope: 1.7970555
-      tangentMode: 34
-    - serializedVersion: 2
-      time: 0.21623799
-      value: 0.38859168
-      inSlope: -1.6778852
-      outSlope: -1.6778852
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1.0000794
-      value: 0.00011675106
-      inSlope: -0.15135598
-      outSlope: -0.15135598
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  ignoreTimeScale: 1
-  delay: 0
-  duration: 1
-  steeperCurves: 0
-  tweenGroup: 0
-  useFixedUpdate: 0
-  onFinished: []
-  eventReceiver: {fileID: 0}
-  callWhenFinished: 
-  from: {x: 1, y: 1, z: 1}
-  to: {x: 1.2, y: 1.2, z: 1.2}
-  updateTable: 0
---- !u!114 &114557068958473754
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1559507445721884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f02842fa4878db54f9587ff4de7d9f2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scrollView: {fileID: 0}
-  draggablePanel: {fileID: 0}
 --- !u!114 &114557637967804510
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14602,19 +14034,6 @@ MonoBehaviour:
   mAtlas: {fileID: 114000010584776072, guid: d9101f81a304347409683d88faa88a6b, type: 2}
   mSpriteName: 0_Rounded
   mFillCenter: 1
---- !u!114 &114597823273695842
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1783728708472510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f02842fa4878db54f9587ff4de7d9f2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scrollView: {fileID: 0}
-  draggablePanel: {fileID: 0}
 --- !u!114 &114599054036705110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15907,19 +15326,6 @@ MonoBehaviour:
   mAtlas: {fileID: 114000010584776072, guid: d9101f81a304347409683d88faa88a6b, type: 2}
   mSpriteName: 0_Rounded
   mFillCenter: 1
---- !u!114 &114749999844538084
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1012844560152754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f02842fa4878db54f9587ff4de7d9f2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scrollView: {fileID: 0}
-  draggablePanel: {fileID: 0}
 --- !u!114 &114754770848499598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16267,19 +15673,6 @@ MonoBehaviour:
   mMaxLineHeight: 0
   mLineWidth: 0
   mMultiline: 1
---- !u!114 &114779645148810802
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1322088583718508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f02842fa4878db54f9587ff4de7d9f2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scrollView: {fileID: 0}
-  draggablePanel: {fileID: 0}
 --- !u!114 &114784279161021148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16442,55 +15835,6 @@ MonoBehaviour:
   mAtlas: {fileID: 114000010584776072, guid: d9101f81a304347409683d88faa88a6b, type: 2}
   mSpriteName: 0_Rounded
   mFillCenter: 1
---- !u!114 &114793694439932716
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1322088583718508}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75e7459110b9666449485c40f25362a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  method: 0
-  style: 0
-  animationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 1.7970555
-      outSlope: 1.7970555
-      tangentMode: 34
-    - serializedVersion: 2
-      time: 0.21623799
-      value: 0.38859168
-      inSlope: -1.6778852
-      outSlope: -1.6778852
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1.0000794
-      value: 0.00011675106
-      inSlope: -0.15135598
-      outSlope: -0.15135598
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  ignoreTimeScale: 1
-  delay: 0
-  duration: 1
-  steeperCurves: 0
-  tweenGroup: 0
-  useFixedUpdate: 0
-  onFinished: []
-  eventReceiver: {fileID: 0}
-  callWhenFinished: 
-  from: {x: 1, y: 1, z: 1}
-  to: {x: 1.2, y: 1.2, z: 1.2}
-  updateTable: 0
 --- !u!114 &114794366757827172
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17132,55 +16476,6 @@ MonoBehaviour:
   mAtlas: {fileID: 114000010584776072, guid: d9101f81a304347409683d88faa88a6b, type: 2}
   mSpriteName: QuestRewardBox
   mFillCenter: 1
---- !u!114 &114826444276616784
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1335925046445110}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75e7459110b9666449485c40f25362a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  method: 0
-  style: 0
-  animationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 1.7970555
-      outSlope: 1.7970555
-      tangentMode: 34
-    - serializedVersion: 2
-      time: 0.21623799
-      value: 0.38859168
-      inSlope: -1.6778852
-      outSlope: -1.6778852
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1.0000794
-      value: 0.00011675106
-      inSlope: -0.15135598
-      outSlope: -0.15135598
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  ignoreTimeScale: 1
-  delay: 0
-  duration: 1
-  steeperCurves: 0
-  tweenGroup: 0
-  useFixedUpdate: 0
-  onFinished: []
-  eventReceiver: {fileID: 0}
-  callWhenFinished: 
-  from: {x: 1, y: 1, z: 1}
-  to: {x: 1.2, y: 1.2, z: 1.2}
-  updateTable: 0
 --- !u!114 &114827596538473704
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17289,19 +16584,6 @@ MonoBehaviour:
   mAtlas: {fileID: 114000010584776072, guid: d9101f81a304347409683d88faa88a6b, type: 2}
   mSpriteName: SkillSelect
   mFillCenter: 1
---- !u!114 &114837859595241802
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1335925046445110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f02842fa4878db54f9587ff4de7d9f2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scrollView: {fileID: 0}
-  draggablePanel: {fileID: 0}
 --- !u!114 &114840999161775042
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -18950,55 +18232,6 @@ MonoBehaviour:
   mMaxLineHeight: 0
   mLineWidth: 0
   mMultiline: 1
---- !u!114 &114973729554465098
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1465964725046178}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75e7459110b9666449485c40f25362a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  method: 0
-  style: 0
-  animationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 1.7970555
-      outSlope: 1.7970555
-      tangentMode: 34
-    - serializedVersion: 2
-      time: 0.21623799
-      value: 0.38859168
-      inSlope: -1.6778852
-      outSlope: -1.6778852
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1.0000794
-      value: 0.00011675106
-      inSlope: -0.15135598
-      outSlope: -0.15135598
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  ignoreTimeScale: 1
-  delay: 0
-  duration: 1
-  steeperCurves: 0
-  tweenGroup: 0
-  useFixedUpdate: 0
-  onFinished: []
-  eventReceiver: {fileID: 0}
-  callWhenFinished: 
-  from: {x: 1, y: 1, z: 1}
-  to: {x: 1.2, y: 1.2, z: 1.2}
-  updateTable: 0
 --- !u!114 &114977990077670286
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -19113,6 +18346,7 @@ MonoBehaviour:
   SprSelect: {fileID: 114240899248449924}
   SprNew: {fileID: 114796306254575448}
   LblCount: {fileID: 114497230691832526}
+  SprEquip: {fileID: 0}
 --- !u!114 &114993853931472450
 MonoBehaviour:
   m_ObjectHideFlags: 1

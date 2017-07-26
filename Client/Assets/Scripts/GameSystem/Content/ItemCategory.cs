@@ -42,11 +42,11 @@ public enum ItemRarity
     Max
 }
 
-public enum ItemSlot
+public struct ItemSlot
 {
-    None,
-    MainEquipment,
-    SubEquipment,
-    Armor,
-    Max
+    public const int None = 0;
+    public const int MainEquipment = 1;
+    public const int SubEquipment = 2;
+    public const int Armor = 3;
+    public const int Max = 4;
 }

@@ -122,11 +122,11 @@ public class GameController : SubscriberBase<SimpleItem>
 
     public void OnEntityAttacked(long entityId)
     {
-        if (playerId.UID == entityId)
-        {
-            if (m_cameraShaker != null)
-                m_cameraShaker.Shake();
-        }
+        //if (playerId.UID == entityId)
+        //{
+        //    if (m_cameraShaker != null)
+        //        m_cameraShaker.Shake();
+        //}
     }
 
     public void StartGame()
@@ -148,7 +148,7 @@ public class GameController : SubscriberBase<SimpleItem>
 
         bool isContains = false;
         Data.Item itemData = ItemTable.Instance.Find(value.ItemId);
-        if (itemData.Stackable)
+        if (ItemTable.Instance.IsStackable(itemData))
         {
             for (int i = 0; i < m_gainedItems.Count; i++)
             {

@@ -23,5 +23,55 @@
     "Id": 5,
     "Key": "MaxProb",
     "Value": 100000
+  },
+  {
+    "Id": 6,
+    "Key": "Stackable.1",
+    "Value": 1
+  },
+  {
+    "Id": 7,
+    "Key": "Stackable.2",
+    "Value": 1
+  },
+  {
+    "Id": 8,
+    "Key": "Stackable.10",
+    "Value": 1
+  },
+  {
+    "Id": 9,
+    "Key": "Stackable.11",
+    "Value": 1
+  },
+  {
+    "Id": 10,
+    "Key": "Stackable.12",
+    "Value": 1
+  },
+  {
+    "Id": 11,
+    "Key": "Stackable.100",
+    "Value": 0
+  },
+  {
+    "Id": 12,
+    "Key": "Stackable.1000",
+    "Value": 0
+  },
+  {
+    "Id": 13,
+    "Key": "Stackable.2000",
+    "Value": 0
+  },
+  {
+    "Id": 14,
+    "Key": "Item.Slot.1000",
+    "Value": 1
+  },
+  {
+    "Id": 15,
+    "Key": "Item.Slot.2000",
+    "Value": 3
   }
 ]

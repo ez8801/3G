@@ -7,7 +7,6 @@
     "Name": "Item.Name.1001",
     "Desc": "",
     "Value": 0,
-    "Stackable": true,
     "ItemMaterialGroup": 0,
     "Texture": "",
     "Price": 0
@@ -20,7 +19,6 @@
 		"Name": "Item.Name.2001",
     "Desc": "",
 		"Value": 0,
-		"Stackable": true,
     "ItemMaterialGroup": 0,
     "Texture": "Textures/Items/ic_gold",
     "Price": 0
@@ -33,7 +31,6 @@
     "Name": "Item.Name.10001",
     "Desc": "Item.Desc.10001",
     "Value": 2,
-    "Stackable": true,
     "ItemMaterialGroup": 2,
     "Texture": "Textures/Items/Copper_Ingot",
     "Price": 700
@@ -46,7 +43,6 @@
     "Name": "Item.Name.20001",
     "Desc": "Item.Desc.20001",
     "Value": 24,
-    "Stackable": true,
     "ItemMaterialGroup": 2,
     "Texture": "Textures/Items/Mithril_Ingot",
     "Price": 1400
@@ -59,7 +55,6 @@
     "Name": "Item.Name.30001",
     "Desc": "Item.Desc.30001",
     "Value": 31,
-    "Stackable": true,
     "ItemMaterialGroup": 1,
     "Texture": "Textures/Items/Leather",
     "Price": 2800
@@ -72,7 +67,6 @@
     "Name": "Item.Name.100001",
     "Desc": "",
     "Value": 1,
-    "Stackable": false,
     "ItemMaterialGroup": 0,
     "Texture": "",
     "Price": 0
@@ -85,7 +79,6 @@
     "Name": "Item.Name.1000001",
     "Desc": "",
     "Value": 2,
-    "Stackable": false,
     "ItemMaterialGroup": 0,
     "Texture": "Textures/Items/I_Mineshaft_Sword",
     "Price": 0
@@ -99,7 +92,6 @@
     "Name": "Item.Name.2000001",
     "Desc": "",
     "Value": 1,
-    "Stackable": false,
     "ItemMaterialGroup": 0,
     "Texture": "Textures/Items/I_Mineshaft_Chest",
     "Price": 0

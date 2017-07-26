@@ -9,6 +9,7 @@
 
 using R;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class UIInventory : UIBase
 {
@@ -36,6 +37,8 @@ public class UIInventory : UIBase
 	public View m_view;
 
     private int m_currentTabIndex;
+    private bool[] m_isDirtyFlags = new bool[0];
+    private List<UserData.Item> m_selectedItems = new List<UserData.Item>();
 
 	public override void Initialize()
 	{
@@ -80,10 +83,25 @@ public class UIInventory : UIBase
             , MyInfo.Account.Level
             , MyInfo.Account.NickName));
 
+        if (CollectionEx.IsNullOrEmpty(m_isDirtyFlags))
+            m_isDirtyFlags = new bool[m_view.TabHost.childCount];
+
+        List<UserData.Item> totalItems = MyInfo.Inventory.GetItemList();
+        for (int i = 0; i < totalItems.Count; i++)
+        {
+            UserData.Item match = totalItems[i];
+            if (MyInfo.Inventory.GetDirty(match.Id))
+            {
+                Data.Item itemData = ItemTable.Instance.Find(match.ItemId);
+                int tabId = GetTabId((ItemCategory)itemData.Category);
+                m_isDirtyFlags[tabId] = true;
+            }
+        }
+        
         SetEquipSlots();
         SetItemCount(MyInfo.Inventory.Count, NumberOfRowsInGrid());
-        m_view.Grid.ReloadData();
         SetTabHost();
+        m_view.Grid.ReloadData();
     }
 
     public void SetItemCount(int itemCount, int capacity)
@@ -97,8 +115,26 @@ public class UIInventory : UIBase
         {
             Transform child = m_view.GridEquip.GetChild(i);
             UIItemCell itemCellUI = Util.FindInChildren<UIItemCell>(child);
+            int itemSlot = i + 1;
             itemCellUI.Initialize();
-            itemCellUI.Disable();
+            
+            if (itemSlot < ItemSlot.Max)
+            {
+                UserData.Item equippedItem = MyInfo.Inventory.GetEquipItem(itemSlot);
+                if (equippedItem != null)
+                {
+                    itemCellUI.InitWithData(equippedItem);
+                    itemCellUI.SetOnClickListener(OnClickEquipItem);
+                }
+                else
+                {
+                    itemCellUI.Disable();
+                }
+            }
+            else
+            {
+                child.SetActiveSafely(false);
+            }
         }
     }
 
@@ -110,16 +146,22 @@ public class UIInventory : UIBase
             Transform child = m_view.TabHost.GetChild(i);
             child.SetActiveSafely(i < tabCount);
 
+            Transform badge = Util.FindComponent<Transform>(child, "WidgetBadge");
+            badge.SetActiveSafely(m_isDirtyFlags[i]);
+
             if (i < tabCount)
             {
                 bool isSelected = (m_currentTabIndex == i);
 
-                UILabel lblTab = Util.FindComponentByName<UILabel>(child, "LblTab", true);
+                UILabel lblTab = Util.FindComponent<UILabel>(child, "LblTab", true);
                 string tabName = GetTabName(i);
                 lblTab.SetTextSafely(tabName);
 
-                UISprite sprTab = Util.FindComponentByName<UISprite>(child, "SprTab", true);
+                UISprite sprTab = Util.FindComponent<UISprite>(child, "SprTab", true);
                 sprTab.SetSpriteSafely(Drawable.GetTabSprite(isSelected), false);
+
+                if (isSelected)
+                    m_selectedItems = MyInfo.Inventory.FindAll(IsMatchItem);
             }
         }
     }
@@ -135,6 +177,28 @@ public class UIInventory : UIBase
         return 3;
     }
 
+    public int GetTabId(ItemCategory itemCategory)
+    {
+        switch (itemCategory)
+        {
+            case ItemCategory.Weapon:
+                return 0;
+            case ItemCategory.Armor:
+                return 1;
+            case ItemCategory.Material:
+            case ItemCategory.Misc:
+                return 2;
+        }
+        return 0;
+    }
+
+    public bool IsMatchItem(UserData.Item match)
+    {
+        Data.Item itemData = ItemTable.Instance.Find(match.ItemId);
+        int tabId = GetTabId((ItemCategory)itemData.Category);        
+        return (m_currentTabIndex == tabId);
+    }
+
     //-------------------------------------------------------------------------
     //  DataSource & Delegate
     //-------------------------------------------------------------------------
@@ -145,9 +209,9 @@ public class UIInventory : UIBase
         UIItemCell itemCellUI = Util.RequireComponent<UIItemCell>(contentView);
         itemCellUI.Initialize();
 
-        if (index < MyInfo.Inventory.Count)
+        if (index < m_selectedItems.Count)
         {
-            UserData.Item item = MyInfo.Inventory[index];
+            UserData.Item item = m_selectedItems[index];
             itemCellUI.InitWithData(item);
             itemCellUI.SetOnClickListener(OnClickItem);
         }
@@ -173,6 +237,10 @@ public class UIInventory : UIBase
 
     private void OnClickClose(GameObject sender)
     {
+        for (int i = 0; i < m_isDirtyFlags.Length; i++)
+        {
+            m_isDirtyFlags[i] = false;
+        }
         MyInfo.Inventory.ClearDirtyFlag();
         NGUITools.SetActive(gameObject, false);
     }
@@ -186,6 +254,7 @@ public class UIInventory : UIBase
             {
                 m_currentTabIndex = index;
                 SetTabHost();
+                m_view.Grid.ReloadData();
             }
         }
     }
@@ -195,9 +264,20 @@ public class UIInventory : UIBase
         int index = -1;
         if (int.TryParse(sender.name, out index))
         {
-            UserData.Item clickedItem = MyInfo.Inventory[index];
+            UserData.Item clickedItem = m_selectedItems[index];
             m_view.RightItemDetailView.Initialize();
             m_view.RightItemDetailView.InitWithData(clickedItem);
+        }
+    }
+
+    private void OnClickEquipItem(GameObject sender)
+    {
+        int index = -1;        
+        if (int.TryParse(sender.transform.parent.name, out index))
+        {
+            UserData.Item equippedItem = MyInfo.Inventory.GetEquipItem(index + 1);
+            m_view.LeftItemDetailView.Initialize();
+            m_view.LeftItemDetailView.InitWithData(equippedItem);
         }
     }
 

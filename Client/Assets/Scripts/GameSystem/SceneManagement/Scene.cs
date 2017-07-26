@@ -28,7 +28,7 @@ namespace GameSystem
         public UIBase SetContentView(string resourceName)
         {
             string uiName = GetFileName(resourceName);
-            UIBase cachedUI = Util.FindComponentByName<UIBase>(UIManager.Instance.Root, uiName);
+            UIBase cachedUI = Util.FindComponent<UIBase>(UIManager.Instance.Root, uiName);
             if (cachedUI != null)
             {
                 m_contentView = cachedUI;

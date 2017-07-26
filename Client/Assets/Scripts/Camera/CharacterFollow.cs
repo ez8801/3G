@@ -21,7 +21,7 @@ public class CharacterFollow : MonoBehaviour
 
     public Vector2 scale = Vector2.one;
 
-    public float strength = 10f;
+    public float strength = 2.5f;
 
     Transform cachedTransform;
     float mThreshold = 0f;
