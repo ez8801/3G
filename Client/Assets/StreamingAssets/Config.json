@@ -63,5 +63,15 @@
     "Id": 13,
     "Key": "Stackable.2000",
     "Value": 0
+  },
+  {
+    "Id": 14,
+    "Key": "Item.Slot.1000",
+    "Value": 1
+  },
+  {
+    "Id": 15,
+    "Key": "Item.Slot.2000",
+    "Value": 3
   }
 ]
