@@ -141,7 +141,7 @@ public class SoundManager : MonoSingleton<SoundManager>
         //
         si.index = index;
         si.type = SoundType.BGM;
-        si.audioSource = Util.FindComponentByName<AudioSource>(goSound, goSound.name, true);
+        si.audioSource = Util.FindComponent<AudioSource>(goSound, goSound.name, true);
         
         // 등록
         Activities.Add(si);

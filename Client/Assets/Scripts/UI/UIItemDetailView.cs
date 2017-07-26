@@ -15,6 +15,7 @@ public class UIItemDetailView : UIBase
     public struct View
     {
         public UIItemCell CellItem;
+        public GameObject BtnEquip;
         public UILabel LblBtnEquip;
         public GameObject EquipmentView;
         public GameObject MiscView;
@@ -40,13 +41,20 @@ public class UIItemDetailView : UIBase
         m_view.CellItem.InitWithData(item);
 
         Data.Item itemData = ItemTable.Instance.Find(item.ItemId);
+        
         SetCategory((ItemCategory)itemData.Category);
 
         m_view.LblItemName.SetTextSafely(R.String.GetText(itemData.Name));
         m_view.LblSummary.SetTextSafely(R.String.GetText(itemData.Desc));
 
-        bool isEquip = MyInfo.Inventory.IsEquip(item);
-        m_view.LblBtnEquip.SetTextSafely(isEquip ? R.String.GetText("UI.UnEquip") : R.String.GetText("UI.Equip"));
+        bool isEquipable = ItemTable.Instance.IsEquipable(itemData);
+        m_view.BtnEquip.SetActiveSafely(isEquipable);
+
+        if (isEquipable)
+        {
+            bool isEquip = MyInfo.Inventory.IsEquip(item);
+            m_view.LblBtnEquip.SetTextSafely(isEquip ? R.String.GetText("UI.UnEquip") : R.String.GetText("UI.Equip"));
+        }
 
         m_focusItem.Id = item.Id;
         m_focusItem.ItemId = item.ItemId;
@@ -59,6 +67,7 @@ public class UIItemDetailView : UIBase
         if (!IsAssigned(m_view))
             m_view = new View();
         this.Bind(ref m_view.CellItem, "CellItem/CellItem");
+        this.Bind(ref m_view.BtnEquip, "BottomButtonGroup/BtnEquip");
         this.Bind(ref m_view.LblBtnEquip, "ButtonGroup/BtnEquip/LblBtnEquip");
         this.Bind(ref m_view.EquipmentView, "EquipmentView");
         this.Bind(ref m_view.MiscView, "MiscView");
@@ -132,6 +141,12 @@ public class UIItemDetailView : UIBase
         }
 
         m_view.LblBtnEquip.SetTextSafely(!isEquip ? R.String.GetText("UI.UnEquip") : R.String.GetText("UI.Equip"));
+
+        UIInventory inventoryUI = NGUITools.FindInParents<UIInventory>(gameObject);
+        if (inventoryUI != null)
+            inventoryUI.ReloadData();
+
+        gameObject.SetActiveSafely(false);
     }
 
     #endregion UIActions

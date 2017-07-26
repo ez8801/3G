@@ -138,7 +138,7 @@ public sealed class ItemTable : ArrayTable<Item>
     {
         if (ContainsKey(itemId))
         {
-            Find(itemId);
+            return GetItemSlot(Find(itemId));
         }
         return ItemSlot.None;
     }

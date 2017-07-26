@@ -122,11 +122,11 @@ public class GameController : SubscriberBase<SimpleItem>
 
     public void OnEntityAttacked(long entityId)
     {
-        if (playerId.UID == entityId)
-        {
-            if (m_cameraShaker != null)
-                m_cameraShaker.Shake();
-        }
+        //if (playerId.UID == entityId)
+        //{
+        //    if (m_cameraShaker != null)
+        //        m_cameraShaker.Shake();
+        //}
     }
 
     public void StartGame()

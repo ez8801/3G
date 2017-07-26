@@ -23,8 +23,7 @@ public class UIAlertView : UIBase
     public static UIAlertView Build()
     {
         UIAlertView alertView = UIManager.Instance.LoadUI<UIAlertView>("Prefabs/UI/AlertView");
-        alertView.m_view.LblPositive.SetTextSafely(R.String.GetText("UI.AlertView.Ok"));
-        alertView.m_view.LblNegative.SetTextSafely(R.String.GetText("UI.AlertView.Cancel"));
+        alertView.Initialize();
         return alertView;
     }
 
@@ -68,6 +67,8 @@ public class UIAlertView : UIBase
 
     private const float Offset = 75f;
 
+    private TweenScale m_tweenScale;
+
     private Action m_positiveAction;
     private Action m_negativeAction;
 
@@ -75,6 +76,10 @@ public class UIAlertView : UIBase
     {
         base.Initialize();
         BindComponents();
+
+        m_view.LblPositive.SetTextSafely(R.String.GetText("UI.AlertView.Ok"));
+        m_view.LblNegative.SetTextSafely(R.String.GetText("UI.AlertView.Cancel"));
+        m_tweenScale.ResetToBeginning();
     }
 
     [ContextMenu("Bind")]
@@ -82,6 +87,9 @@ public class UIAlertView : UIBase
     {
         if (!IsAssigned(m_view))
             m_view = new View();
+
+        m_tweenScale = Util.RequireComponent<TweenScale>(gameObject);
+
         this.Bind(ref m_view.LblTitle, "LblTitle");
         this.Bind(ref m_view.LblSummary, "LblSummary");
         this.Bind(ref m_view.BtnNegative, "BtnNegative");

@@ -1085,7 +1085,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4504228554779126}
   m_Layer: 5
-  m_Name: ButtonGroup
+  m_Name: BottomButtonGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4269,6 +4269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_view:
     CellItem: {fileID: 114505136353811236}
+    BtnEquip: {fileID: 0}
     LblBtnEquip: {fileID: 114558920629157478}
     EquipmentView: {fileID: 1815998658694890}
     MiscView: {fileID: 1382793581840732}

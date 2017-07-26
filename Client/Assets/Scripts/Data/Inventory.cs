@@ -56,6 +56,15 @@ public class Inventory
             return m_dirtyFlags[itemId];
         return false; 
     }
+
+    public UserData.Item GetEquipItem(int itemSlot)
+    {
+        if (m_equippedItems.ContainsKey(itemSlot))
+        {
+            return Find(m_equippedItems[itemSlot]);
+        }
+        return null;
+    }
     
     public void AddItem(int itemId, int itemCount)
     {
@@ -282,6 +291,11 @@ public class Inventory
         }
     }
 
+    public List<UserData.Item> GetItemList()
+    {
+        return m_items;
+    }
+
     public List<UserData.Item> FindAll(int itemType)
     {
         List<UserData.Item> ret = new List<UserData.Item>();
@@ -291,6 +305,18 @@ public class Inventory
             Data.Item itemData = ItemTable.Instance.Find(match.ItemId);
             if (itemData.Type == itemType)
                 ret.Add(match);
+        }
+        return ret;
+    }
+
+    public List<UserData.Item> FindAll(System.Predicate<UserData.Item> predicate)
+    {
+        List<UserData.Item> ret = new List<UserData.Item>();
+        for (int i = 0; i < Count; i++)
+        {
+            UserData.Item match = m_items[i];
+            if (predicate(match))
+                ret.Add(match);            
         }
         return ret;
     }

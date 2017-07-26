@@ -26,7 +26,7 @@ public class UIManager : MonoSingleton<UIManager>
     {
         EnsureRoot();
         m_uiCamera = Util.FindInChildren<Camera>(m_root);
-        m_uiPanel = Util.FindComponentByName<UIPanel>(m_root, "Panel");
+        m_uiPanel = Util.FindComponent<UIPanel>(m_root, "Panel");
     }
 
     private void EnsureRoot()

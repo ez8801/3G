@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 4260812742590114}
   - component: {fileID: 114966348699274394}
   - component: {fileID: 114442750313746780}
+  - component: {fileID: 114509066668741478}
   m_Layer: 5
   m_Name: AlertView
   m_TagString: Untagged
@@ -185,6 +186,7 @@ GameObject:
   - component: {fileID: 4824275038016188}
   - component: {fileID: 65508818120457598}
   - component: {fileID: 114760910135455194}
+  - component: {fileID: 114776090876676616}
   m_Layer: 5
   m_Name: BtnClose
   m_TagString: Untagged
@@ -797,6 +799,49 @@ MonoBehaviour:
     LblNegative: {fileID: 114522553013070112}
     BtnPositive: {fileID: 1716881259083048}
     LblPositive: {fileID: 114925317275912092}
+--- !u!114 &114509066668741478
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1627634361946486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75e7459110b9666449485c40f25362a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  method: 0
+  style: 0
+  animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  ignoreTimeScale: 1
+  delay: 0
+  duration: 0.15
+  steeperCurves: 0
+  tweenGroup: 0
+  useFixedUpdate: 0
+  onFinished: []
+  eventReceiver: {fileID: 0}
+  callWhenFinished: 
+  from: {x: 0.89, y: 0.89, z: 1}
+  to: {x: 1, y: 1, z: 1}
+  updateTable: 0
 --- !u!114 &114522553013070112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -947,6 +992,34 @@ MonoBehaviour:
   mAtlas: {fileID: 114000010584776072, guid: d9101f81a304347409683d88faa88a6b, type: 2}
   mSpriteName: CloseBtn
   mFillCenter: 1
+--- !u!114 &114776090876676616
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1758219111781072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e862f287df53bb64db191162f851a296, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHoverOver: []
+  onHoverOut: []
+  onPress: []
+  onRelease: []
+  onSelect: []
+  onDeselect: []
+  onClick:
+  - mTarget: {fileID: 114442750313746780}
+    mMethodName: OnClickClose
+    mParameters: []
+    oneShot: 0
+  onDoubleClick: []
+  onDragStart: []
+  onDragEnd: []
+  onDragOver: []
+  onDragOut: []
+  onDrag: []
 --- !u!114 &114781980150951950
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -40,6 +40,22 @@
     "Prob": 75000
   },
   {
+    "Id": 11,
+    "Group": 1,
+    "ItemId": 1000001,
+    "MinCount": 1,
+    "MaxCount": 1,
+    "Prob": 10000
+  },
+  {
+    "Id": 12,
+    "Group": 1,
+    "ItemId": 2000001,
+    "MinCount": 1,
+    "MaxCount": 1,
+    "Prob": 10000
+  },
+  {
     "Id": 6,
     "Group": 2,    
     "ItemId": 1001,
@@ -78,5 +94,21 @@
     "MinCount": 8,
     "MaxCount": 10,
     "Prob": 10000
+  },
+  {
+    "Id": 13,
+    "Group": 2,
+    "ItemId": 1000001,
+    "MinCount": 1,
+    "MaxCount": 1,
+    "Prob": 15000
+  },
+  {
+    "Id": 14,
+    "Group": 2,
+    "ItemId": 2000001,
+    "MinCount": 1,
+    "MaxCount": 1,
+    "Prob": 15000
   }
 ]
