@@ -272,8 +272,8 @@ public class UIInventory : UIBase
 
     private void OnClickEquipItem(GameObject sender)
     {
-        int index = -1;
-        if (int.TryParse(sender.name, out index))
+        int index = -1;        
+        if (int.TryParse(sender.transform.parent.name, out index))
         {
             UserData.Item equippedItem = MyInfo.Inventory.GetEquipItem(index + 1);
             m_view.LeftItemDetailView.Initialize();
