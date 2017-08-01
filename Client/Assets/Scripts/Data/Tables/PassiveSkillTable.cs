@@ -28,6 +28,13 @@ public enum PassiveType
     Bow = 15,
 }
 
+public struct SimplePassive
+{
+    public long Id;
+    public int PassiveId;
+    public int Level;
+}
+
 public sealed class PassiveSkillTable : ArrayTable<PassiveSkill>
 {
     private static PassiveSkillTable m_instance = null;
@@ -40,4 +47,21 @@ public sealed class PassiveSkillTable : ArrayTable<PassiveSkill>
             return m_instance;
         }
     }
+
+
+    public int GetPassiveSlot(PassiveSkill data)
+    {
+        string key = StringEx.Format("PassiveSkill.Slot.{0}", data.Type);
+        int passiveSlot = R.Integer.GetInteger(key);
+        return passiveSlot;
+    }
+
+    public int GetPassiveSlot(int passiveId)
+    {
+        if (ContainsKey(passiveId))
+        {
+            return GetPassiveSlot(Find(passiveId));
+        }
+        return SkillSlot.None;
+}
 }
