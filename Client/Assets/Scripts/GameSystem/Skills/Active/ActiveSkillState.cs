@@ -2,7 +2,7 @@
 using System;
 using System.Collections;
 
-
+//ActiveSkill과 연계하여 슬롯에서 쿨타임 연계하는것으로 수정 요함.
 
 public enum ActiveSkillStateType
 {
