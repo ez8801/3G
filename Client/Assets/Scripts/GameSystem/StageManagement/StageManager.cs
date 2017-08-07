@@ -97,7 +97,7 @@ namespace GameSystem
             
             nextStage.OnStart();
             yield return StartCoroutine(OnPostChange());
-            NotificationCenter.Instance.Post((int)Notification.System.OnStageChanged, (int)stageType);
+            NotificationCenter.Post(R.Id.OnStageChanged, (int)stageType);
         }
 
         IEnumerator OnPreChange()
@@ -111,7 +111,7 @@ namespace GameSystem
             {
                 yield return null;
             }
-            NotificationCenter.Instance.Post((int)Notification.UI.OnProgressDone);
+            NotificationCenter.Post(R.Id.OnProgressDone);
             yield return null;
         }
 
@@ -133,7 +133,7 @@ namespace GameSystem
         {
             switch (message.id)
             {
-                case (int)Notification.System.OnBackPressed:
+                case R.Id.OnBackPressed:
                     // @TODO: Change Prev Stage
 
                     break;

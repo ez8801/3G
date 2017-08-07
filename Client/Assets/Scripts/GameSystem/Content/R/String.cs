@@ -7,7 +7,7 @@
  * Copyright ⓒ Sweet Home Alabama. Team 3G, All rights reserved
  */
 
-namespace R
+public static partial class R
 {
     public static class String
     {

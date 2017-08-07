@@ -1,41 +1,7 @@
 ﻿
 public class Notification
 {
-    public enum System
-    {
-        None,
-        OnBackPressed,
-        OnStageChanged,
-        ExitStage,
-        Max
-    }
-
-    public enum UI
-    {
-        None = System.Max + 1,
-        OnProgress,
-        OnProgressDone,
-        Max
-    }
-
-    public enum Entity
-    {
-        None = UI.Max + 1,
-        OnDead,
-        OnAttacked,
-        Max,
-    }
-
-    public enum GameSystem
-    {
-        None = Entity.Max + 1,
-        Win,
-        Lose,
-        Draw,
-        Max,
-    }
-    
-    public int id;
+    public R.Id id;
     public bool boolExtra;
     public short shortExtra
     {
@@ -58,9 +24,9 @@ public class Notification
     public string stringExtra;
     public object objectExtra;
 
-    public Notification(int msg)
+    public Notification(R.Id id)
     {
-        id = msg;
+        this.id = id;
         boolExtra = false;
         floatExtra = 0f;
         longExtra = 0;
@@ -68,9 +34,9 @@ public class Notification
         objectExtra = null;
     }
 
-    public Notification(int msg, long data)
+    public Notification(R.Id id, long data)
     {
-        id = msg;
+        this.id = id;
         boolExtra = false;
         floatExtra = 0f;
         longExtra = data;
@@ -78,9 +44,9 @@ public class Notification
         objectExtra = null;
     }
 
-    public Notification(int msg, int data)
+    public Notification(R.Id id, int data)
     {
-        id = msg;
+        this.id = id;
         boolExtra = false;
         floatExtra = 0f;
         longExtra = data;
@@ -88,9 +54,9 @@ public class Notification
         objectExtra = null;
     }
 
-    public Notification(int msg, float data)
+    public Notification(R.Id id, float data)
     {
-        id = msg;
+        this.id = id;
         boolExtra = false;
         floatExtra = data;
         longExtra = 0;
@@ -98,18 +64,18 @@ public class Notification
         objectExtra = null;
     }
 
-    public Notification(int msg, string data)
+    public Notification(R.Id id, string data)
     {
-        id = msg;
+        this.id = id;
         boolExtra = false;
         floatExtra = 0f;
         longExtra = 0;
         stringExtra = data;
     }
 
-    public Notification(int msg, bool data)
+    public Notification(R.Id id, bool data)
     {
-        id = msg;
+        this.id = id;
         boolExtra = data;
         floatExtra = 0f;
         longExtra = 0;
@@ -117,9 +83,9 @@ public class Notification
         objectExtra = null;
     }
 
-    public Notification(int msg, object data)
+    public Notification(R.Id id, object data)
     {
-        id = msg;
+        this.id = id;
         boolExtra = false;
         floatExtra = 0f;
         longExtra = 0;

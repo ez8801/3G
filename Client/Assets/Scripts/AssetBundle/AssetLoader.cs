@@ -29,7 +29,7 @@ public abstract class AssetLoader
         if (TotalItemCount > 0)
         {
             float progress = (float)LoadedCount / TotalItemCount;
-            NotificationCenter.Instance.Post((int)Notification.UI.OnProgress, progress);
+            NotificationCenter.Post(R.Id.OnProgress, progress);
         }
     }
 

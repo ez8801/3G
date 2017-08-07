@@ -18,8 +18,8 @@ public class UILoading : UIBase, IObserver
 
     public void Awake()
     {
-        NotificationCenter.Instance.AddObserver((int)Notification.UI.OnProgress, this);
-        NotificationCenter.Instance.AddObserver((int)Notification.UI.OnProgressDone, this);
+        NotificationCenter.Instance.AddObserver(R.Id.OnProgress, this);
+        NotificationCenter.Instance.AddObserver(R.Id.OnProgressDone, this);
 
         m_originWidth = m_SprProgressBar.width;
     }
@@ -49,12 +49,12 @@ public class UILoading : UIBase, IObserver
     {
         switch (notification.id)
         {
-            case (int)Notification.UI.OnProgress:
+            case R.Id.OnProgress:
                 ShowLoadingUI(true);
                 SetProgress(notification.floatExtra);
                 break;
 
-            case (int)Notification.UI.OnProgressDone:
+            case R.Id.OnProgressDone:
                 ShowLoadingUI(false);
                 break;
         }
@@ -62,7 +62,7 @@ public class UILoading : UIBase, IObserver
 
     public void OnDestroy()
     {
-        NotificationCenter.Instance.RemoveObserver((int)Notification.UI.OnProgress, this);
-        NotificationCenter.Instance.RemoveObserver((int)Notification.UI.OnProgressDone, this);
+        NotificationCenter.Instance.RemoveObserver(R.Id.OnProgress, this);
+        NotificationCenter.Instance.RemoveObserver(R.Id.OnProgressDone, this);
     }
 }

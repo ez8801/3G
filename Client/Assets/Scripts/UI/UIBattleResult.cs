@@ -69,7 +69,7 @@ public class UIBattleResult : UIBase
 
     public void OnClickOK()
     {
-        NotificationCenter.Instance.Post(Notification.System.ExitStage);
+        NotificationCenter.Post(R.Id.ExitStage);
         Destroy(gameObject);
     }
 }

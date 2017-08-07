@@ -36,20 +36,20 @@ public class GameStage : GameSystem.Stage, IObserver
     {
         switch (notification.id)
         {
-            case (int)Notification.Entity.OnDead:
+            case R.Id.OnEntityDead:
                 m_gameController.OnEntityDead(notification.longExtra);
                 break;
 
-            case (int)Notification.Entity.OnAttacked:
+            case R.Id.OnEntityAttacked:
                 m_gameController.OnEntityAttacked(notification.longExtra);
                 break;
 
-            case (int)Notification.GameSystem.Win:
+            case R.Id.Win:
                 m_battleUI.enabled = false;
                 StartCoroutine(OnGameEnd(MatchResult.Win));
                 break;
 
-            case (int)Notification.System.ExitStage:
+            case R.Id.ExitStage:
                 GameSystem.StageManager.Instance.ChangeStage(StageType.LobbyStage);
                 break;
         }

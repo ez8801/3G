@@ -110,7 +110,7 @@ namespace GameSystem
 
         public virtual void OnBackPressed()
         {
-            NotificationCenter.Instance.Post(Notification.System.OnBackPressed);
+            NotificationCenter.Post(R.Id.OnBackPressed);
         }
 
         public virtual void OnStop()

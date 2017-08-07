@@ -57,7 +57,7 @@ public class UIHpBar : MonoBehaviour, IObserver
 
     private void OnEnable()
     {
-        NotificationCenter.Instance.AddObserver((int)Notification.Entity.OnDead, this);
+        NotificationCenter.Instance.AddObserver(R.Id.OnEntityDead, this);
     }
 
     private void Update()
@@ -77,7 +77,7 @@ public class UIHpBar : MonoBehaviour, IObserver
 
     private void OnDisable()
     {
-        NotificationCenter.Instance.RemoveObserver((int)Notification.Entity.OnDead, this);
+        NotificationCenter.Instance.RemoveObserver(R.Id.OnEntityDead, this);
     }
 
     #endregion MonoBehaviour Life Cycle
@@ -92,7 +92,7 @@ public class UIHpBar : MonoBehaviour, IObserver
     {
         switch (notification.id)
         {
-            case (int)Notification.Entity.OnDead:
+            case R.Id.OnEntityDead:
                 Debug.Log("Notification.Entity.OnDead: " + notification.longExtra);
                 if (notification.longExtra == m_targetActor.EntityID)
                     GameObjectPool.Instance.Release(gameObject);

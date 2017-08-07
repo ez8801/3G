@@ -37,7 +37,7 @@ public class UINavigationBar : UIBase, IObserver, IObserver<GoodsInfo>
 
     private void Awake()
     {
-        NotificationCenter.Instance.AddObserver((int)Notification.System.OnStageChanged, this);
+        NotificationCenter.Instance.AddObserver(R.Id.OnStageChanged, this);
         NotificationCenter.GoodsMonitor.Subscribe(this);
     }
 
@@ -52,7 +52,7 @@ public class UINavigationBar : UIBase, IObserver, IObserver<GoodsInfo>
     {
         switch (notification.id)
         {
-            case (int)Notification.System.OnStageChanged:
+            case R.Id.OnStageChanged:
                 break;
         }
     }
@@ -86,6 +86,6 @@ public class UINavigationBar : UIBase, IObserver, IObserver<GoodsInfo>
 
     private void OnDestroy()
     {
-        NotificationCenter.Instance.RemoveObserver((int)Notification.System.OnStageChanged, this);    
+        NotificationCenter.Instance.RemoveObserver(R.Id.OnStageChanged, this);    
     }
 }
