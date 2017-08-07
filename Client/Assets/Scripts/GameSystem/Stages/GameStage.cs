@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class GameScene : GameSystem.Scene, IObserver
+public class GameStage : GameSystem.Stage, IObserver
 {
     public const string LevelName = "Game";
     
@@ -49,8 +49,8 @@ public class GameScene : GameSystem.Scene, IObserver
                 StartCoroutine(OnGameEnd(MatchResult.Win));
                 break;
 
-            case (int)Notification.System.ExitScene:
-                GameSystem.SceneManager.Instance.ChangeScene(SceneType.LobbyScene);
+            case (int)Notification.System.ExitStage:
+                GameSystem.StageManager.Instance.ChangeStage(StageType.LobbyStage);
                 break;
         }
     }

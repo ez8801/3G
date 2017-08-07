@@ -5,8 +5,8 @@ public class Notification
     {
         None,
         OnBackPressed,
-        OnSceneChanged,
-        ExitScene,
+        OnStageChanged,
+        ExitStage,
         Max
     }
 

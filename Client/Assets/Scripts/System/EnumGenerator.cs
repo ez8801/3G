@@ -61,8 +61,8 @@ public class EnumGenerator
         {
             for (int i = 0; i < typeNames.Count; i++)
             {
-                string sceneName = typeNames[i];
-                if (Contains(ref enumNames, sceneName) == false)
+                string typeName = typeNames[i];
+                if (Contains(ref enumNames, typeName) == false)
                 {
                     isChanged = true;
                     break;

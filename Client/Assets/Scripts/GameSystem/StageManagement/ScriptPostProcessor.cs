@@ -16,8 +16,8 @@ public class ScriptPostProcessor : AssetPostprocessor
     [MenuItem("Code/Generate Enum")]
     private static void GenerateEnum()
     {
-        string scriptPath = Path.Combine(Application.dataPath, "Scripts/GameSystem/SceneManagement/SceneType.cs");
-        if (EnumGenerator.GenerateEnum(scriptPath, typeof(GameSystem.Scene), typeof(SceneType)))
+        string scriptPath = Path.Combine(Application.dataPath, "Scripts/GameSystem/StageManagement/StageType.cs");
+        if (EnumGenerator.GenerateEnum(scriptPath, typeof(GameSystem.Stage), typeof(StageType)))
         {
             AssetDatabase.Refresh();
 
@@ -28,7 +28,7 @@ public class ScriptPostProcessor : AssetPostprocessor
     [MenuItem("Code/Generate Activator")]
     private static void GenerateActivetor()
     {
-        string scriptPath = Path.Combine(Application.dataPath, "Scripts/GameSystem/SceneManagement/Activator.cs");
-        EnumGenerator.GenerateActivator(scriptPath, typeof(GameSystem.Scene), typeof(SceneType));
+        string scriptPath = Path.Combine(Application.dataPath, "Scripts/GameSystem/StageManagement/Activator.cs");
+        EnumGenerator.GenerateActivator(scriptPath, typeof(GameSystem.Stage), typeof(StageType));
     }
 }

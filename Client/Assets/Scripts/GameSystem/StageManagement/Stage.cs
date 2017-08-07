@@ -5,10 +5,9 @@ namespace GameSystem
 {
     /// <summary>
     /// Flow를 제어하는 클래스
-    /// (유니티에서 지칭하는 Scene이 아닌 GameSystem에서 정의)
     /// </summary>
-    /// <see cref="SceneManager"/>
-    public abstract class Scene
+    /// <see cref="StageManager"/>
+    public abstract class Stage
     {
         protected UIBase m_contentView;
 
@@ -96,7 +95,7 @@ namespace GameSystem
         
         public virtual MonoBehaviour GetInvoker()
         {
-            return SceneManager.Instance;
+            return StageManager.Instance;
         }
 
         public Coroutine StartCoroutine(IEnumerator routine)
