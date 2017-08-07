@@ -78,7 +78,7 @@ public class UILobby : UIBase
     public void OnClickDungeon(GameObject sender)
     {
         Debug.Log(Macros.__PRETTY_FUNCTION__);
-        SceneManager.Instance.ChangeScene(SceneType.GameScene);   
+        StageManager.Instance.ChangeStage(StageType.GameStage);   
     }
 
     public void OnClickPvp(GameObject sender)

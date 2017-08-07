@@ -34,7 +34,7 @@ public class MatchJudge
     {
         if (m_winCondition.IsDone())
         {
-            NotificationCenter.Instance.Post((int)Notification.GameSystem.Win);
+            NotificationCenter.Post(R.Id.Win);
         }
     }
 }

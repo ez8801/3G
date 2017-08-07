@@ -46,7 +46,7 @@ public class SimpleCameraShaker : MonoBehaviour
         }
     }
     
-    public void Update()
+    public void LateUpdate()
     {
         if (m_isPlaying)
         {

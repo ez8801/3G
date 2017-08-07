@@ -24,7 +24,7 @@ public class SceneLoader : AssetLoader
     public override bool IsValid()
     {
         var activeScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
-        string loadedLevel = SceneManager.Instance.loadedLevelName;
+        string loadedLevel = StageManager.Instance.loadedLevelName;
 
 #if UNITY_EDITOR
         UnityEngine.Debug.Log(string.Format("Active Scene: {0}\nLoaded Level: {1}\nNew Scene: {2}"
@@ -38,6 +38,6 @@ public class SceneLoader : AssetLoader
 
     public override IEnumerator Load()
     {
-        yield return SceneManager.Instance.LoadLevelAsync(m_sceneName, m_isAdditive);
+        yield return StageManager.Instance.LoadLevelAsync(m_sceneName, m_isAdditive);
     }
 }

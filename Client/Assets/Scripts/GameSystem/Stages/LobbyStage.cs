@@ -4,8 +4,8 @@ using System.Collections;
 /// <summary>
 /// 로비 씬
 /// </summary>
-/// <see cref="SceneType.LobbyScene"/>
-public class LobbyScene : Scene
+/// <see cref="StageType.LobbyStage"/>
+public class LobbyStage : Stage
 {
     public const string LevelName = "Lobby";
 
