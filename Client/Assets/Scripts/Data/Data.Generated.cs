@@ -270,7 +270,7 @@ namespace Data
 			Name = json["Name"].STR;
 			Cooltime = json["Cooltime"].I4;
 			Effect = json["Effect"].I4;
-			Texture = json["Texture"].I4;
+			Texture = json["Texture"].STR;
 			Chargeable = json["Chargeable"].B;
 			Charging = json["Charging"].I4;
 			Level = json["Level"].I4;
@@ -315,7 +315,7 @@ namespace Data
 			Id = json["Id"].I4;
 			Type = json["Type"].I4;
 			Name = json["Name"].STR;
-			Texture = json["Texture"].I4;
+			Texture = json["Texture"].STR;
 			Level = json["Level"].I4;
 		}
 

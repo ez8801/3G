@@ -10,7 +10,7 @@ namespace Data
         public int Id;
         public int Type;
         public string Name;
-        public int Texture;
+        public string Texture;
         public int Level;
     }
 }
@@ -47,21 +47,4 @@ public sealed class PassiveSkillTable : ArrayTable<PassiveSkill>
             return m_instance;
         }
     }
-
-
-    public int GetPassiveSlot(PassiveSkill data)
-    {
-        string key = StringEx.Format("PassiveSkill.Slot.{0}", data.Type);
-        int passiveSlot = R.Integer.GetInteger(key);
-        return passiveSlot;
-    }
-
-    public int GetPassiveSlot(int passiveId)
-    {
-        if (ContainsKey(passiveId))
-        {
-            return GetPassiveSlot(Find(passiveId));
-        }
-        return SkillSlot.None;
-}
 }

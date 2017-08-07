@@ -28,7 +28,7 @@ public class PassiveInventory
 
     private Dictionary<int, long> m_equippedSkills = new Dictionary<int, long>();
 
-    private Dictionary<int, long> m_selectSkills = new Dictionary<int, long>();
+    private int m_selectSlot = 0;
 
     private static int GUID = 0;
 
@@ -73,22 +73,73 @@ public class PassiveInventory
         }
         return null;
     }
-    /*
-    public 
 
-    public bool EquipPassive(UserData.PassiveSkill nowPassive, UserData.PassiveSkill nextPassive)
+    //바꾸어넣을 최신의 패시브 스킬과, 선택된 스킬 슬롯의 번호를 입력받아 수정합니다.
+    public bool EquipPassive(UserData.PassiveSkill nowPassive)
     {
-        int skillSlot = PassiveSkillTable.Instance.GetPassiveSlot(nowPassive.PassiveId);
-        if(m_equippedSkills.ContainsKey(skillSlot) == false)
+        if(m_equippedSkills.ContainsKey(m_selectSlot) == false)
+        {
+            return false;
+        }
+        m_equippedSkills[m_selectSlot] = nowPassive.Id;
+        m_selectSlot = 0;
+        return true;
     }
 
-    public bool EquipPassive(long id)
+    public bool EquipPassive(long id, int selectSlot)
     {
         UserData.PassiveSkill passive = Find(id);
         if (passive != null)
             return EquipPassive(passive);
+        return false;
     }
-    */
+    
+    public bool SelectSlot(int select)
+    {
+        m_selectSlot = select;
+        return true;
+    }
+
+    public bool IsSelect(int select)
+    {
+        if(m_selectSlot != 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void UnEquipSkill(int skillSlot)
+    {
+        if (m_equippedSkills.ContainsKey(skillSlot))
+        {
+            m_equippedSkills[skillSlot] = 0;
+        }
+    }
+
+    public bool IsEquip(long id)
+    {
+        var enumerator = m_equippedSkills.GetEnumerator();
+        while(enumerator.MoveNext())
+        {
+            if (enumerator.Current.Value == id)
+                return true;
+        }
+        return false;
+    }
+
+    //지정 슬롯의 아이템 착용 여부
+    public bool IsEquipWith(int skillSlot)
+    {
+        if (m_equippedSkills.ContainsKey(skillSlot))
+        {
+            return (m_equippedSkills[skillSlot] != 0);
+        }
+        return false;
+    }
 
     #region ListAdapter
 
