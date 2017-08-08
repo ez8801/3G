@@ -9,8 +9,8 @@ public interface IObserver
 
 public class NotificationCenter : MonoSingleton<NotificationCenter>
 {
-    private Dictionary<int, List<WeakReference>> m_observers
-        = new Dictionary<int, List<WeakReference>>();
+    private Dictionary<R.Id, List<WeakReference>> m_observers
+        = new Dictionary<R.Id, List<WeakReference>>();
 
     private List<WeakReference> m_firstResponders
         = new List<WeakReference>();
@@ -59,7 +59,7 @@ public class NotificationCenter : MonoSingleton<NotificationCenter>
     /// <summary>
 	/// 지정된 메시지를 기다리는 옵저버를 추가합니다.
 	/// </summary>
-    public void AddObserver(int id, IObserver observer)
+    public void AddObserver(R.Id id, IObserver observer)
     {
         if (!m_observers.ContainsKey(id))
             m_observers[id] = new List<WeakReference>();
@@ -73,7 +73,7 @@ public class NotificationCenter : MonoSingleton<NotificationCenter>
     /// <summary>
     /// 지정된 옵저버, 메시지에 해당하는 항목을 제거합니다.
     /// </summary>
-    public void RemoveObserver(int id, IObserver observer)
+    public void RemoveObserver(R.Id id, IObserver observer)
     {
         if (observer == null || !m_observers.ContainsKey(id))
             return;
@@ -123,8 +123,8 @@ public class NotificationCenter : MonoSingleton<NotificationCenter>
         var enumerator = m_observers.GetEnumerator();
         while (enumerator.MoveNext())
         {
-            int message = enumerator.Current.Key;
-            List<WeakReference> observers = m_observers[message];
+            R.Id id = enumerator.Current.Key;
+            List<WeakReference> observers = m_observers[id];
             if ((observers == null || observers.Count == 0) == false)
             {
                 for (int i = 0; i < observers.Count; i++)
@@ -160,74 +160,64 @@ public class NotificationCenter : MonoSingleton<NotificationCenter>
     {
         return (match == null || match.IsAlive == false || match.Target == null);
     }
-    
-    public void Post(Notification.System systemMessage)
+
+    public static void Post(R.Id id)
     {
-        Post((int)systemMessage);
+        Instance.InternalPost(new Notification(id));
     }
 
-    public void Post(Notification.UI uiMessage)
+    public static void Post(R.Id id, long data)
     {
-        Post((int)uiMessage);
+        Instance.InternalPost(new Notification(id, data));
     }
 
-    public void Post(int id)
+    public static void Post(R.Id id, int data)
     {
-        Post(new Notification(id));
+        Instance.InternalPost(new Notification(id, data));
     }
 
-    public void Post(int id, long data)
+    public static void Post(R.Id id, float data)
     {
-        Post(new Notification(id, data));
+        Instance.InternalPost(new Notification(id, data));
     }
 
-    public void Post(int id, int data)
+    public static void Post(R.Id id, string data)
     {
-        Post(new Notification(id, data));
+        Instance.InternalPost(new Notification(id, data));
     }
 
-    public void Post(int id, float data)
+    public static void Post(R.Id id, bool data)
     {
-        Post(new Notification(id, data));
+        Instance.InternalPost(new Notification(id, data));
     }
 
-    public void Post(int id, string data)
+    public static void Post(R.Id id, object data)
     {
-        Post(new Notification(id, data));
-    }
-
-    public void Post(int id, bool data)
-    {
-        Post(new Notification(id, data));
-    }
-
-    public void Post(int id, object data)
-    {
-        Post(new Notification(id, data));
+        Instance.InternalPost(new Notification(id, data));
     }
 
     //
-    public void PostDelayed(int id, float delayTime)
+    public void PostDelayed(R.Id id, float delayTime)
     {
         StartCoroutine(PerformPostDelayed(new Notification(id), delayTime));
     }
     
-    public void PostDelayed(int id, int data, float delayTime)
+    public void PostDelayed(R.Id id, int data, float delayTime)
     {
         StartCoroutine(PerformPostDelayed(new Notification(id, data), delayTime));
     }
 
-    public void PostDelayed(int id, float data, float delayTime)
+    public void PostDelayed(R.Id id, float data, float delayTime)
     {
         StartCoroutine(PerformPostDelayed(new Notification(id, data), delayTime));
     }
 
-    public void PostDelayed(int id, string data, float delayTime)
+    public void PostDelayed(R.Id id, string data, float delayTime)
     {
         StartCoroutine(PerformPostDelayed(new Notification(id, data), delayTime));
     }
 
-    public void PostDelayed(int id, bool data, float delayTime)
+    public void PostDelayed(R.Id id, bool data, float delayTime)
     {
         StartCoroutine(PerformPostDelayed(new Notification(id, data), delayTime));
     }
@@ -240,7 +230,7 @@ public class NotificationCenter : MonoSingleton<NotificationCenter>
     public IEnumerator PerformPostDelayed(Notification notification, float delayTime)
     {
         yield return YieldHelper.CreateInstance(delayTime);
-        Post(notification);
+        InternalPost(notification);
     }
 
     public IEnumerator PerformPostDelayed(Notification notification, int skipFrameCount)
@@ -249,10 +239,10 @@ public class NotificationCenter : MonoSingleton<NotificationCenter>
         {
             yield return null;
         }
-        Post(notification);
+        InternalPost(notification);
     }
 
-    public void Post(Notification notification)
+    public void InternalPost(Notification notification)
     {
         if (m_firstResponders.Count > 0)
         {

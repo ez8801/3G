@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace GameSystem
 {
-    public class SceneManager : MonoSingleton<SceneManager>, IObserver
+    public class StageManager : MonoSingleton<StageManager>, IObserver
     {
         private string m_loadedLevelName = string.Empty;
         public string loadedLevelName
@@ -18,16 +18,16 @@ namespace GameSystem
             }
         }
         
-        public string currentSceneName
+        public string currentStageName
         {
             get
             {
-                return currentSceneType.ToString();
+                return currentStageType.ToString();
             }
         }
         
-        public SceneType currentSceneType { private set; get; }
-        private Scene m_currentScene;
+        public StageType currentStageType { private set; get; }
+        private Stage m_currentStage;
         private int m_targetFrameRate;
 
         public void Start()
@@ -42,62 +42,62 @@ namespace GameSystem
 
         public void Update()
         {
-            if (m_currentScene != null)
-                m_currentScene.OnUpdate();
+            if (m_currentStage != null)
+                m_currentStage.OnUpdate();
 
 #if UNITY_EDITOR || UNITY_ANDROID
             HandleKeyInput();
 #endif
         }
 
-        public void Initialize(SceneType initialSceneType)
+        public void Initialize(StageType initialStageType)
         {
-            ChangeScene(initialSceneType);
-            loadedLevelName = GetLevelName(initialSceneType);
+            ChangeStage(initialStageType);
+            loadedLevelName = GetLevelName(initialStageType);
         }
 
-        public string GetLevelName(SceneType sceneType)
+        public string GetLevelName(StageType stageType)
         {
-            switch (sceneType)
+            switch (stageType)
             {
-                case SceneType.GameScene:
-                    return GameScene.LevelName;
-                case SceneType.LobbyScene:
-                    return LobbyScene.LevelName;
-                case SceneType.TitleScene:
-                    return TitleScene.LevelName;
+                case StageType.GameStage:
+                    return GameStage.LevelName;
+                case StageType.LobbyStage:
+                    return LobbyStage.LevelName;
+                case StageType.TitleStage:
+                    return TitleStage.LevelName;
             }
             return string.Empty;
         }
 
-        public void ChangeScene(SceneType sceneType)
+        public void ChangeStage(StageType stageType)
         {
-            ChangeScene(sceneType, null);
+            ChangeStage(stageType, null);
         }
 
-        public void ChangeScene(SceneType sceneType, Intent intent)
+        public void ChangeStage(StageType stageType, Intent intent)
         {
-            StartCoroutine(PerformChangeScene(sceneType, intent));
+            StartCoroutine(PerformChangeStage(stageType, intent));
         }
 
-        internal IEnumerator PerformChangeScene(SceneType sceneType, Intent intent)
+        internal IEnumerator PerformChangeStage(StageType stageType, Intent intent)
         {
             yield return StartCoroutine(OnPreChange());
 
-            Scene nextScene = null;
-            bool isAssigned = Activator.CreateInstance(out nextScene, sceneType);
-            Assert.IsTrue(isAssigned, string.Format("Couldn't Create Instance at: {0}", sceneType));
+            Stage nextStage = null;
+            bool isAssigned = Activator.CreateInstance(out nextStage, stageType);
+            Assert.IsTrue(isAssigned, string.Format("Couldn't Create Instance at: {0}", stageType));
 
-            yield return nextScene.OnCrate(intent);
-            if (m_currentScene != null)
-                m_currentScene.OnStop();
+            yield return nextStage.OnCrate(intent);
+            if (m_currentStage != null)
+                m_currentStage.OnStop();
 
-            currentSceneType = sceneType;
-            m_currentScene = nextScene;
+            currentStageType = stageType;
+            m_currentStage = nextStage;
             
-            nextScene.OnStart();
+            nextStage.OnStart();
             yield return StartCoroutine(OnPostChange());
-            NotificationCenter.Instance.Post((int)Notification.System.OnSceneChanged, (int)sceneType);
+            NotificationCenter.Post(R.Id.OnStageChanged, (int)stageType);
         }
 
         IEnumerator OnPreChange()
@@ -111,21 +111,21 @@ namespace GameSystem
             {
                 yield return null;
             }
-            NotificationCenter.Instance.Post((int)Notification.UI.OnProgressDone);
+            NotificationCenter.Post(R.Id.OnProgressDone);
             yield return null;
         }
 
-        public Scene GetCurrentScene()
+        public Stage GetCurrentStage()
         {
-            return m_currentScene;
+            return m_currentStage;
         }
 
         public void HandleKeyInput()
         {
             if (Input.GetKeyUp(KeyCode.Escape))
             {
-                if (m_currentScene != null)
-                    m_currentScene.OnBackPressed();
+                if (m_currentStage != null)
+                    m_currentStage.OnBackPressed();
             }
         }
 
@@ -133,8 +133,8 @@ namespace GameSystem
         {
             switch (message.id)
             {
-                case (int)Notification.System.OnBackPressed:
-                    // @TODO: Change Prev Scene
+                case R.Id.OnBackPressed:
+                    // @TODO: Change Prev Stage
 
                     break;
             }
@@ -142,7 +142,7 @@ namespace GameSystem
 
         public IEnumerator LoadLevelAsync(string levelName, bool isAdditive)
         {
-            Assert.IsFalse(string.IsNullOrEmpty(levelName), "SceneManager:LoadLevelAsync(string, bool, bool) ArgumentException: levelName is null or empty");
+            Assert.IsFalse(string.IsNullOrEmpty(levelName), "StageManager:LoadLevelAsync(string, bool, bool) ArgumentException: levelName is null or empty");
 
             if (isAdditive == false)
                 yield return UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Empty");

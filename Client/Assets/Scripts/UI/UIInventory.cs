@@ -6,8 +6,7 @@
  * 
  * Copyright ⓒ Sweet Home Alabama. Team 3G, All rights reserved
  */
-
-using R;
+ 
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -158,7 +157,7 @@ public class UIInventory : UIBase
                 lblTab.SetTextSafely(tabName);
 
                 UISprite sprTab = Util.FindComponent<UISprite>(child, "SprTab", true);
-                sprTab.SetSpriteSafely(Drawable.GetTabSprite(isSelected), false);
+                sprTab.SetSpriteSafely(R.Drawable.GetTabSprite(isSelected), false);
 
                 if (isSelected)
                     m_selectedItems = MyInfo.Inventory.FindAll(IsMatchItem);
@@ -169,7 +168,7 @@ public class UIInventory : UIBase
     public string GetTabName(int tabIndex)
     {
         string key = StringEx.Format("UI.Inventory.Tab.Name.{0}", tabIndex);
-        return String.GetText(key);
+        return R.String.GetText(key);
     }
 
     public int GetTabCount()
@@ -225,7 +224,7 @@ public class UIInventory : UIBase
 
     private int NumberOfRowsInGrid()
     {
-        return Integer.GetInteger("InventoryBasicSlotAmount");
+        return R.Integer.GetInteger("InventoryBasicSlotAmount");
     }
 
     #endregion DataSource & Delegate

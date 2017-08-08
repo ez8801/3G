@@ -6,14 +6,14 @@ using UnityEngine;
 /// 타이틀 씬
 /// </summary>
 /// <see cref="UITitle"/>
-/// <see cref="SceneType.TitleScene"/>
-public class TitleScene : Scene
+/// <see cref="StageType.TitleStage"/>
+public class TitleStage : Stage
 {
     public const string LevelName = "Title";
     
     public override string GetTitle()
     {
-        return "TitleScene";
+        return "TitleStage";
     }
 
     public override IEnumerator OnCrate(Intent savedInstanceState)
@@ -41,6 +41,6 @@ public class TitleScene : Scene
 #endif
 
         if (isPressKey)
-            SceneManager.Instance.ChangeScene(SceneType.LobbyScene);
+            StageManager.Instance.ChangeStage(StageType.LobbyStage);
     }
 }

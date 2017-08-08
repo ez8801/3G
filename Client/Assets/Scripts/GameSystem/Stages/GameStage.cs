@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class GameScene : GameSystem.Scene, IObserver
+public class GameStage : GameSystem.Stage, IObserver
 {
     public const string LevelName = "Game";
     
@@ -36,21 +36,21 @@ public class GameScene : GameSystem.Scene, IObserver
     {
         switch (notification.id)
         {
-            case (int)Notification.Entity.OnDead:
+            case R.Id.OnEntityDead:
                 m_gameController.OnEntityDead(notification.longExtra);
                 break;
 
-            case (int)Notification.Entity.OnAttacked:
+            case R.Id.OnEntityAttacked:
                 m_gameController.OnEntityAttacked(notification.longExtra);
                 break;
 
-            case (int)Notification.GameSystem.Win:
+            case R.Id.Win:
                 m_battleUI.enabled = false;
                 StartCoroutine(OnGameEnd(MatchResult.Win));
                 break;
 
-            case (int)Notification.System.ExitScene:
-                GameSystem.SceneManager.Instance.ChangeScene(SceneType.LobbyScene);
+            case R.Id.ExitStage:
+                GameSystem.StageManager.Instance.ChangeStage(StageType.LobbyStage);
                 break;
         }
     }

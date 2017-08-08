@@ -18,7 +18,7 @@ public class Dead : StateBase
     {
         base.OnEnter();
 
-        NotificationCenter.Instance.Post((int)Notification.Entity.OnDead, m_owner.EntityID);
+        NotificationCenter.Post(R.Id.OnEntityDead, m_owner.EntityID);
 
         // @TODO : Animation
     }

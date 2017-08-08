@@ -17,7 +17,7 @@ public class Program : MonoBehaviour
 
         DataManager.Instance.LoadAllData();
 
-        SceneManager.Instance.Initialize(SceneType.TitleScene);
+        StageManager.Instance.Initialize(StageType.TitleStage);
 
         yield return null;
         
