@@ -12,6 +12,7 @@ namespace Data
         public string Name;
         public string Texture;
         public int Level;
+        public string Summary;
     }
 }
 

@@ -16,6 +16,7 @@ namespace Data
         public bool Chargeable;
         public int Charging;
         public int Level;
+        public string Summary;
     }
 }
 
