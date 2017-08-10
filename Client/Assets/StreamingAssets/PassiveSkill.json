@@ -2,38 +2,41 @@
   {
     "Id": 1,
     "Type": 1,
-    "Name": "시작의 마음가짐",
+    "Name": "Passive.Name.1",
     "Texture": "",
     "Level": 0,
-    "Summary": "처음 모험을 떠날때 가지고 있던 불타는 열정. 기초 공격력을 (+10/15/20/25/30)추가한다."
+    "Summary": "Passive.Summary.1"
   },
   {
     "Id": 101,
     "Type": 10,
-    "Name": "Passive.Staff.1",
+    "Name": "Passive.Name.101",
     "Texture": "",
-    "Level": 0
+    "Level": 0,
+    "Summary": "Passive.Summary.101"
   },
   {
     "Id": 201,
     "Type": 11,
-    "Name": "Passive.Gem.1",
+    "Name": "Passive.Name.201",
     "Texture": "",
-    "Level": 0
+    "Level": 0,
+    "Summary": "Passive.Summary.201"
   },
   {
     "Id": 301,
     "Type": 12,
-    "Name": "Passive.Shield.1",
+    "Name": "Passive.Name.301",
     "Texture": "",
-    "Level": 0
+    "Level": 0,
+    "Summary": "Passive.Summary.301"
   },
   {
     "Id": 401,
     "Type": 13,
-    "Name": "Passive.Sword.1",
+    "Name": "Passive.Name.401",
     "Texture": "",
-    "Level": 0
-  },
-  
+    "Level": 0,
+    "Summary": "Passive.Summary.401"
+  }
 ]
