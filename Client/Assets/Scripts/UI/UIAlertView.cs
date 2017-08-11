@@ -77,8 +77,8 @@ public class UIAlertView : UIBase
         base.Initialize();
         BindComponents();
 
-        m_view.LblPositive.SetTextSafely(R.String.GetText("UI.AlertView.Ok"));
-        m_view.LblNegative.SetTextSafely(R.String.GetText("UI.AlertView.Cancel"));
+        m_view.LblPositive.SetTextSafely(R.GetText("UI.AlertView.Ok"));
+        m_view.LblNegative.SetTextSafely(R.GetText("UI.AlertView.Cancel"));
         m_tweenScale.ResetToBeginning();
     }
 

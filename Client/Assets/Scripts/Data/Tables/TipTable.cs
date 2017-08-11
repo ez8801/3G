@@ -17,7 +17,8 @@ namespace Data
     public partial struct Tip
     {
         public int Id;
-        public string Message;
+        [DeclaringType("string", "int")]
+        public int Message;
     }
 }
 
@@ -44,6 +45,6 @@ public sealed class TipTable : ArrayTable<Tip>
     public string GetTipMessage()
     {
         int randomIndex = UnityEngine.Random.Range(0, Count);
-        return this[randomIndex].Message;
+        return R.GetText(this[randomIndex].Message);
     }
 }

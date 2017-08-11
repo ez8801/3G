@@ -168,7 +168,7 @@ public class UIInventory : UIBase
     public string GetTabName(int tabIndex)
     {
         string key = StringEx.Format("UI.Inventory.Tab.Name.{0}", tabIndex);
-        return R.String.GetText(key);
+        return R.GetText(key);
     }
 
     public int GetTabCount()

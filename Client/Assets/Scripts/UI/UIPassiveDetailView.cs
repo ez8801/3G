@@ -55,12 +55,12 @@ public class UIPassiveDetailView : UIBase
 
         m_view.AboutView.SetActiveSafely(true);
 
-        m_view.LblPassiveName.SetTextSafely(R.String.GetText(passiveData.Name));
-        m_view.LblPassiveSummary.SetTextSafely(R.String.GetText(passiveData.Summary));
+        m_view.LblPassiveName.SetTextSafely(R.GetText(passiveData.Name));
+        m_view.LblPassiveSummary.SetTextSafely(R.GetText(passiveData.Summary));
 
         m_view.BtnEquip.SetActiveSafely(true);
         bool i = MyInfo.PassiveInventory.IsEquip(passive.Id);
-        m_view.LblBtnEquip.SetTextSafely(i ? R.String.GetText("UI.UnEquip") : R.String.GetText("UI.Equip"));
+        m_view.LblBtnEquip.SetTextSafely(i ? R.GetText("UI.UnEquip") : R.GetText("UI.Equip"));
 
         m_focusPassive.Id = passive.Id;
         m_focusPassive.PassiveId = passive.PassiveId;
