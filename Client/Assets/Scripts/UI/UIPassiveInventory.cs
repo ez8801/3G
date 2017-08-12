@@ -11,7 +11,15 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class UIPassiveInventory : MonoBehaviour 
+public class UIPassiveInventory : UIBase
 {
+    [System.Serializable]
+    public struct View
+    {
+        public UILabel LblName;
+        public Transform GridEquip;
+        public UIEventListener BtnClose;
+    }
+
 
 }

@@ -77,16 +77,21 @@ public class PassiveInventory
     //바꾸어넣을 최신의 패시브 스킬과, 선택된 스킬 슬롯의 번호를 입력받아 수정합니다.
     public bool EquipPassive(UserData.PassiveSkill nowPassive)
     {
-        if(m_equippedSkills.ContainsKey(m_selectSlot) == false)
+        m_selectSlot = FindEmptySlot();
+        if (m_selectSlot != 0)
         {
-            return false;
+            if (m_equippedSkills.ContainsKey(m_selectSlot) == false)
+            {
+                return false;
+            }
+            m_equippedSkills[m_selectSlot] = nowPassive.Id;
+            m_selectSlot = 0;
+            return true;
         }
-        m_equippedSkills[m_selectSlot] = nowPassive.Id;
-        m_selectSlot = 0;
-        return true;
+        return false;
     }
 
-    public bool EquipPassive(long id, int selectSlot)
+    public bool EquipPassive(long id)
     {
         UserData.PassiveSkill passive = Find(id);
         if (passive != null)
@@ -94,24 +99,68 @@ public class PassiveInventory
         return false;
     }
     
-    public bool SelectSlot(int select)
+    //빈 슬롯을 반환합니다.
+    public int FindEmptySlot()
     {
-        m_selectSlot = select;
-        return true;
+        int i;
+        for(i = 1; i < 5; i++)
+        {
+            if(m_equippedSkills[i] == 0)
+            {
+                return i;
+            }
+        }
+        
+        return 0;
     }
 
-    public bool IsSelect(int select)
+    //지정된 패시브가 장착된 슬롯을 반환합니다.
+    public int FindEquipSlot(UserData.PassiveSkill passive)
     {
-        if(m_selectSlot != 0)
+        int i;
+        for (i = 1; i < 5; i++)
         {
-            return true;
+            if (m_equippedSkills[i] == passive.Id)
+            {
+                return i;
+            }
         }
-        else
-        {
-            return false;
-        }
+        return 0;
     }
 
+    public int FindEquipSlot(long id)
+    {
+        UserData.PassiveSkill passive = Find(id);
+
+        int i;
+        for (i = 1; i < 5; i++)
+        {
+            if (m_equippedSkills[i] == passive.Id)
+            {
+                return i;
+            }
+        }
+        return 0;
+    }
+//지정된 스킬 해제
+    public void UnEquipSkill(UserData.PassiveSkill passive)
+    {
+        int passiveSlot = FindEquipSlot(passive);
+        if (passiveSlot != 0)
+        {
+            m_equippedSkills[passiveSlot] = 0;
+        }
+    }
+    //지정된 스킬 아이디로 해제
+    public void UnEquipSkill(long id)
+    {
+        int passiveSlot = FindEquipSlot(id);
+        if (passiveSlot != 0)
+        {
+            m_equippedSkills[passiveSlot] = 0;
+        }
+    }
+    //지정된 스킬슬롯의 패시브 패제
     public void UnEquipSkill(int skillSlot)
     {
         if (m_equippedSkills.ContainsKey(skillSlot))
@@ -120,6 +169,13 @@ public class PassiveInventory
         }
     }
 
+    //지정 스킬 장착 여부 반환
+    public bool IsEquip(UserData.PassiveSkill passive)
+    {
+        return IsEquip(passive.Id);
+    }
+
+    //스킬 아이디로 장착 여부 반환
     public bool IsEquip(long id)
     {
         var enumerator = m_equippedSkills.GetEnumerator();
@@ -131,7 +187,7 @@ public class PassiveInventory
         return false;
     }
 
-    //지정 슬롯의 아이템 착용 여부
+    //지정 슬롯의 스킬 착용 여부
     public bool IsEquipWith(int skillSlot)
     {
         if (m_equippedSkills.ContainsKey(skillSlot))
@@ -140,6 +196,8 @@ public class PassiveInventory
         }
         return false;
     }
+
+
 
     #region ListAdapter
 
