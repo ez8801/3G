@@ -110,7 +110,7 @@ public class PassiveInventory
                 return i;
             }
         }
-        
+        //빈 슬롯이 없을경우 0 반환
         return 0;
     }
 
@@ -231,6 +231,54 @@ public class PassiveInventory
         }
         return null;
     }
+
+    public void Remove(long id)
+    {
+        for(int i = 0; i < m_passive.Count; i++)
+        {
+            UserData.PassiveSkill match = m_passive[i];
+            if(match.Id == id)
+            {
+                m_passive.RemoveAt(i);
+                return;
+            }
+        }
+    }
+
+    public List<UserData.PassiveSkill> GetPassiveList()
+    {
+        return m_passive;
+    }
+
+    public List<UserData.PassiveSkill> FindAll(int passiveType)
+    {
+        List<UserData.PassiveSkill> ret = new List<UserData.PassiveSkill>();
+        for(int i = 0; i < Count; i++)
+        {
+            UserData.PassiveSkill match = m_passive[i];
+            Data.PassiveSkill passiveData = PassiveSkillTable.Instance.Find(match.PassiveId);
+            if(passiveData.Type == passiveType)
+            {
+                ret.Add(match);
+            }
+        }
+        return ret;
+    }
+
+    public List<UserData.PassiveSkill> FindAll(System.Predicate<UserData.PassiveSkill> predicate)
+    {
+        List<UserData.PassiveSkill> ret = new List<UserData.PassiveSkill>();
+        for(int i = 0; i < Count; i++)
+        {
+            UserData.PassiveSkill match = m_passive[i];
+            if (predicate(match))
+            {
+                ret.Add(match);
+            }
+        }
+        return ret;
+    }
+
 
     #endregion ListAdapter
 }

@@ -73,7 +73,7 @@ public class UIInventory : UIBase
         this.Bind(ref m_view.LeftItemDetailView, "LeftView/ItemDetailView");
         this.Bind(ref m_view.RightItemDetailView, "RightView/ItemDetailView");
     }
-
+    
     public override void ReloadData()
     {
         base.ReloadData();

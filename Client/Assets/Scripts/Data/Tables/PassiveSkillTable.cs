@@ -48,4 +48,5 @@ public sealed class PassiveSkillTable : ArrayTable<PassiveSkill>
             return m_instance;
         }
     }
+
 }
