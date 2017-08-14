@@ -130,5 +130,33 @@
   {
     "Key": "UI.Passive.Equip.Message.1",
     "Value": "빈 슬롯이 없습니다."
+  },
+  {
+    "Key": "UI.Passiveinventory.Tab.Name.0",
+    "Value": "일반"
+  },
+  {
+    "Key": "UI.Passiveinventory.Tab.Name.1",
+    "Value": "지팡이"
+  },
+  {
+    "Key": "UI.Passiveinventory.Tab.Name.2",
+    "Value": "보주"
+  },
+  {
+    "Key": "UI.Passiveinventory.Tab.Name.3",
+    "Value": "방패"
+  },
+  {
+    "Key": "UI.Passiveinventory.Tab.Name.4",
+    "Value": "검"
+  },
+  {
+    "Key": "UI.Passiveinventory.Tab.Name.5",
+    "Value": "창"
+  },
+  {
+    "Key": "UI.Passiveinventory.Tab.Name.6",
+    "Value": "활"
   }
 ]

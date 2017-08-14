@@ -19,6 +19,7 @@ public class UIPassiveInventory : UIBase
         public Transform GridEquip;
         public UIEventListener BtnClose;
         public UIPassiveDetailView DetailView;
+        public Transform TabHost;
         public Transform ScrollView;
         public UIAdvancedGrid Grid;
     }
@@ -30,15 +31,13 @@ public class UIPassiveInventory : UIBase
 
     public override void Initialize()
     {
-        base.Initialize();
+        BindComponents();
 
         m_currentTabIndex = 0;
-        
-        //
-        //
 
-        //
-        //
+        m_view.Grid.DataSource = CellForRowAtIndex;
+        m_view.Grid.Delegate = NumberOfRowsInGrid;
+        m_view.BtnClose.onClick = OnClickClose;
 
     }
 
@@ -49,6 +48,7 @@ public class UIPassiveInventory : UIBase
         this.Bind(ref m_view.GridEquip, "GridEquip");
         this.Bind(ref m_view.BtnClose, "BtnClose");
         this.Bind(ref m_view.DetailView, "DetailView");
+        this.Bind(ref m_view.TabHost, "TabHost");
         this.Bind(ref m_view.ScrollView, "ScrollView");
         this.Bind(ref m_view.Grid, "ScrollView/Grid");
     }
@@ -57,14 +57,23 @@ public class UIPassiveInventory : UIBase
     {
         base.ReloadData();
 
-        //
-        //
-        ///
-        ///
-        ///
-        ///
-        //
-        ///
+        if (CollectionEx.IsNullOrEmpty(m_isDirtyFlags)) m_isDirtyFlags = new bool[m_view.TabHost.childCount];
+        List<UserData.PassiveSkill> totalPassives = MyInfo.PassiveInventory.GetPassiveList();
+        for(int i = 0; i < totalPassives.Count; i++)
+        {
+            UserData.PassiveSkill match = totalPassives[i];
+            if(MyInfo.PassiveInventory.GetDirty(match.Id))
+            {
+                Data.PassiveSkill passiveData = PassiveSkillTable.Instance.Find(match.PassiveId);
+                int tabId = GetTabId((PassiveType)passiveData.Type);
+                m_isDirtyFlags[tabId] = true;
+            }
+        }
+
+        SetEquipSlots();
+        SetTabHost();
+        m_view.Grid.ReloadData();
+        
     }
 
     public void SetEquipSlots()
@@ -89,11 +98,99 @@ public class UIPassiveInventory : UIBase
     }
 
 
+    public void SetTabHost()
+    {
+        int tabCount = GetTabCount();
+        for(int i = 0; i<m_view.TabHost.childCount; i++)
+        {
+            Transform child = m_view.TabHost.GetChild(i);
+            child.SetActiveSafely(i < tabCount);
+
+            Transform badge = Util.FindComponent<Transform>(child, "WidgetBadge");
+            badge.SetActiveSafely(m_isDirtyFlags[i]);
+
+            if (i < tabCount)
+            {
+                bool isSelected = (m_currentTabIndex == i);
+
+                UILabel lblTab = Util.FindComponent<UILabel>(child, "LblTab", true);
+                string tabName = GetTabName(i);
+                lblTab.SetTextSafely(tabName);
+
+                UISprite sprTab = Util.FindComponent<UISprite>(child, "SprTab", true);
+                sprTab.SetSpriteSafely(R.Drawable.GetTabSprite(isSelected), false);
+            }
 
 
+        }
+    }
 
+    public string GetTabName(int tabIndex)
+    {
+        string key = StringEx.Format("UI.Passiveinventory.Tab.Name.{0}", tabIndex);
+        return R.GetText(key);
+    }
 
+    public int GetTabCount()
+    {
+        return 7;
+    }
 
+    public int GetTabId(PassiveType passiveType)
+    {
+        switch (passiveType)
+        {
+            case PassiveType.Common:
+                return 0;
+            case PassiveType.Staff:
+                return 1;
+            case PassiveType.Gem:
+                return 2;
+            case PassiveType.Shield:
+                return 3;
+            case PassiveType.Sword:
+                return 4;
+            case PassiveType.Spear:
+                return 5;
+            case PassiveType.Bow:
+                return 6;
+        }
+        return 0;
+    }
+
+    public bool IsMatchPassive(UserData.PassiveSkill match)
+    {
+        Data.PassiveSkill passiveData = PassiveSkillTable.Instance.Find(match.PassiveId);
+        int tabId = GetTabId((PassiveType)passiveData.Type);
+        return (m_currentTabIndex == tabId);
+    }
+    #region DataSource & Delegate
+
+    public Transform CellForRowAtIndex(int index, GameObject contentView)
+    {
+        UIPassiveCell passiveCellUI = Util.RequireComponent<UIPassiveCell>(contentView);
+        passiveCellUI.Initialize();
+
+        if(index < m_selectedPassives.Count)
+        {
+            UserData.PassiveSkill passive = m_selectedPassives[index];
+            passiveCellUI.InitWithData(passive);
+            passiveCellUI.SetOnClickListener(OnClickPassive);
+        }
+        else
+        {
+            passiveCellUI.Disable();
+        }
+
+        return null;
+    }
+
+    private int NumberOfRowsInGrid()
+    {
+        return R.Integer.GetInteger("InventoryBasicSlotAmount");
+    }
+
+    #endregion DataSource & Delegate
     #region UIActions
 
     public void OnClickClose(GameObject sender)
@@ -114,6 +211,19 @@ public class UIPassiveInventory : UIBase
             UserData.PassiveSkill equippedPassive = MyInfo.PassiveInventory.GetEquipPassive(index + 1);
             m_view.DetailView.Initialize();
             m_view.DetailView.InitWithData(equippedPassive);
+        }
+    }
+    public void OnClickTab(GameObject sender)
+    {
+        int index = -1;
+        if (int.TryParse(sender.name, out index))
+        {
+            if (index != m_currentTabIndex)
+            {
+                m_currentTabIndex = index;
+                SetTabHost();
+                m_view.Grid.ReloadData();
+            }
         }
     }
 

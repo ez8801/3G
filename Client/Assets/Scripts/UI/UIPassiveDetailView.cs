@@ -103,8 +103,9 @@ public class UIPassiveDetailView : UIBase
         }
         else
         {
+            //빈 슬롯 확인 -> 0이라면 빈 슬롯 없음
             int i = MyInfo.PassiveInventory.FindEmptySlot();
-            if ( i == 0)
+            if (i == 0)
             {
                 // alertView생성
                 UIAlertView alertView = UIAlertView.Show(R.GetText("UI.Passive,Equip.Message.1"));
