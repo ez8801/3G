@@ -43,7 +43,7 @@ public class UIPassiveCell : MonoBehaviour
         TexPassiveIcon.mainTexture = Resources.Load<Texture2D>(passiveData.Texture);
 
         LblPassiveLevel.SetActiveSafely(true);
-        LblPassiveLevel.SetTextSafely(string.Concat("x", passiveLevel));
+        LblPassiveLevel.SetTextSafely(string.Concat("Lv.", passiveLevel));
 
         EquipLock.SetActiveSafely(MyInfo.PassiveInventory.IsEquip(id));
     }

@@ -18,7 +18,7 @@ public class UIPassiveInventory : UIBase
     {
         public Transform GridEquip;
         public UIEventListener BtnClose;
-        public UIPassiveDetailView DetailView;
+        public UIPassiveDetailView PassiveDetailView;
         public Transform TabHost;
         public Transform ScrollView;
         public UIAdvancedGrid Grid;
@@ -47,7 +47,7 @@ public class UIPassiveInventory : UIBase
         if (IsAssigned(m_view) == false) m_view = new View();
         this.Bind(ref m_view.GridEquip, "GridEquip");
         this.Bind(ref m_view.BtnClose, "BtnClose");
-        this.Bind(ref m_view.DetailView, "DetailView");
+        this.Bind(ref m_view.PassiveDetailView, "PassiveDetailView");
         this.Bind(ref m_view.TabHost, "TabHost");
         this.Bind(ref m_view.ScrollView, "ScrollView");
         this.Bind(ref m_view.Grid, "ScrollView/Grid");
@@ -209,8 +209,8 @@ public class UIPassiveInventory : UIBase
         if(int.TryParse(sender.transform.parent.name, out index))
         {
             UserData.PassiveSkill equippedPassive = MyInfo.PassiveInventory.GetEquipPassive(index + 1);
-            m_view.DetailView.Initialize();
-            m_view.DetailView.InitWithData(equippedPassive);
+            m_view.PassiveDetailView.Initialize();
+            m_view.PassiveDetailView.InitWithData(equippedPassive);
         }
     }
     public void OnClickTab(GameObject sender)
@@ -233,8 +233,8 @@ public class UIPassiveInventory : UIBase
         if(int.TryParse(sender.name, out index))
         {
             UserData.PassiveSkill clickedPassive = m_selectedPassives[index];
-            m_view.DetailView.Initialize();
-            m_view.DetailView.InitWithData(clickedPassive);
+            m_view.PassiveDetailView.Initialize();
+            m_view.PassiveDetailView.InitWithData(clickedPassive);
         }
     }
 

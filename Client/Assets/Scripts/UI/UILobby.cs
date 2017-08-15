@@ -67,6 +67,14 @@ public class UILobby : UIBase
         inventoryUI.ReloadData();
     }
 
+    public void OnClickPassiveInventory(GameObject sender)
+    {
+        Debug.Log(Macros.__PRETTY_FUNCTION__);
+        UIPassiveInventory passiveInventoryUI = UIManager.Instance.LoadUI<UIPassiveInventory>("Prefabs/UI/PassiveInventoryUI");
+        passiveInventoryUI.Initialize();
+        passiveInventoryUI.ReloadData();
+    }
+
     public void OnClickForge(GameObject sender)
     {
         Debug.Log(Macros.__PRETTY_FUNCTION__);

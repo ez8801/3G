@@ -42,7 +42,7 @@ public class UIPassiveDetailView : UIBase
         if (!IsAssigned(m_view)) m_view = new View();
         this.Bind(ref m_view.CellPassive, "CellPassive/CellPassive");
         this.Bind(ref m_view.BtnEquip, "BottomButtonGroup/BtnEquip");
-        this.Bind(ref m_view.LblBtnEquip, "BottomButtonGroup/LblBtnEquip");
+        this.Bind(ref m_view.LblBtnEquip, "BottomButtonGroup/BtnEquip/LblBtnEquip");
         this.Bind(ref m_view.AboutView, "AboutView");
         this.Bind(ref m_view.LblPassiveName, "AboutView/LblPassiveName");
         this.Bind(ref m_view.LblPassiveSummary, "AboutView/LblPassiveSummary");
