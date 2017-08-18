@@ -38,14 +38,15 @@ public class UIPassiveCell : MonoBehaviour
     {
 
         Data.PassiveSkill passiveData = PassiveSkillTable.Instance.Find(passiveId);
-
-        TexPassiveIcon.SetActiveSafely(true);
-        TexPassiveIcon.mainTexture = Resources.Load<Texture2D>(passiveData.Texture);
-
+        if (!string.IsNullOrEmpty(passiveData.Texture))
+        {
+            TexPassiveIcon.SetActiveSafely(true);
+            TexPassiveIcon.mainTexture = Resources.Load<Texture2D>(passiveData.Texture);
+        }
         LblPassiveLevel.SetActiveSafely(true);
         LblPassiveLevel.SetTextSafely(string.Concat("Lv.", passiveLevel));
-
-        EquipLock.SetActiveSafely(MyInfo.PassiveInventory.IsEquip(id));
+        
+        EquipLock.SetActiveSafely(false);
     }
 
     public void Disable()

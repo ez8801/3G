@@ -158,5 +158,21 @@
   {
     "Key": "UI.Passiveinventory.Tab.Name.6",
     "Value": "활"
+  },
+  {
+    "Key": "Passive.Name.1",
+    "Value": "무모함"
+  },
+  {
+    "Key": "Passive.Summary.1",
+    "Value": "용기가 과하면 무모함이 된다./n공격력을 5증가시키고 방어력을 5감소시킨다."
+  },
+  {
+    "Key": "Passive.Name.2",
+    "Value": "소심함"
+  },
+  {
+    "Key": "Passive.Summary.2",
+    "Value": "보통 방해만 되지만 가끔 큰 도움이 된다. 공격력을 2감소시키고 방어력을 3증가시킨다."
   }
 ]

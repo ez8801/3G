@@ -19,6 +19,8 @@ public class Program : MonoBehaviour
 
         StageManager.Instance.Initialize(StageType.TitleStage);
 
+        PassiveManager.Instance.Initialize();
+
         yield return null;
         
         Destroy(gameObject);

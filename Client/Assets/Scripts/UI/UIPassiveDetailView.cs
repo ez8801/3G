@@ -62,10 +62,10 @@ public class UIPassiveDetailView : UIBase
 
         m_view.LblPassiveName.SetTextSafely(R.GetText(passiveData.Name));
         m_view.LblPassiveSummary.SetTextSafely(R.GetText(passiveData.Summary));
-        m_view.LblPassiveLevel.SetTextSafely(R.GetText(passiveData.Level));
+        m_view.LblPassiveLevel.SetTextSafely(string.Concat("Lv.", passiveData.Level));
 
         type = passiveData.Type;
-        m_view.LblPassiveCategory.SetTextSafely(R.GetText(GetPassiveType(type)));
+        m_view.LblPassiveCategory.SetTextSafely(GetPassiveType(type));
 
 
         m_view.BtnEquip.SetActiveSafely(true);
@@ -120,11 +120,11 @@ public class UIPassiveDetailView : UIBase
                 MyInfo.PassiveInventory.EquipPassive(m_focusPassive.Id);
             }
 
-            UIPassiveInventory passiveInventoryUI = NGUITools.FindInParents<UIPassiveInventory>(gameObject);
-            if (passiveInventoryUI != null) passiveInventoryUI.ReloadData();
-
-            gameObject.SetActiveSafely(false);
         }
+        UIPassiveInventory passiveInventoryUI = NGUITools.FindInParents<UIPassiveInventory>(gameObject);
+        if (passiveInventoryUI != null) passiveInventoryUI.ReloadData();
+
+        gameObject.SetActiveSafely(false);
     }
 
 

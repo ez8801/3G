@@ -93,6 +93,10 @@ public class UIPassiveInventory : UIBase
                     passiveCellUI.InitWithData(equippedPassive);
                     passiveCellUI.SetOnClickListener(OnClickEquipPassive);
                 }
+                else
+                {
+                    passiveCellUI.Disable();
+                }
             }
         }
     }
@@ -119,10 +123,20 @@ public class UIPassiveInventory : UIBase
 
                 UISprite sprTab = Util.FindComponent<UISprite>(child, "SprTab", true);
                 sprTab.SetSpriteSafely(R.Drawable.GetTabSprite(isSelected), false);
+
+                if (isSelected)
+                    m_selectedPassives = MyInfo.PassiveInventory.FindAll(IsMatchPassive);
             }
 
 
         }
+    }
+
+    public bool IsMatchPassive(UserData.PassiveSkill match)
+    {
+        Data.PassiveSkill passiveData = PassiveSkillTable.Instance.Find(match.PassiveId);
+        int tabId = GetTabId((PassiveType)passiveData.Type);
+        return (m_currentTabIndex == tabId);
     }
 
     public string GetTabName(int tabIndex)
@@ -157,13 +171,7 @@ public class UIPassiveInventory : UIBase
         }
         return 0;
     }
-
-    public bool IsMatchPassive(UserData.PassiveSkill match)
-    {
-        Data.PassiveSkill passiveData = PassiveSkillTable.Instance.Find(match.PassiveId);
-        int tabId = GetTabId((PassiveType)passiveData.Type);
-        return (m_currentTabIndex == tabId);
-    }
+    
     #region DataSource & Delegate
 
     public Transform CellForRowAtIndex(int index, GameObject contentView)

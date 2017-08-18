@@ -32,7 +32,7 @@ public class UILobby : UIBase
         // m_view.BtnInventory.onClick = OnClickInventory;
         m_view.BtnForge.onClick = OnClickForge;
         m_view.BtnDungeon.onClick = OnClickDungeon;
-        m_view.BtnPvp.onClick = OnClickPvp;
+        m_view.BtnPvp.onClick = OnClickPassiveInventory;
     }
 
     [ContextMenu("Bind")]

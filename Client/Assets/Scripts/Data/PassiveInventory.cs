@@ -154,10 +154,14 @@ public class PassiveInventory
     //지정된 스킬 아이디로 해제
     public void UnEquipSkill(long id)
     {
-        int passiveSlot = FindEquipSlot(id);
-        if (passiveSlot != 0)
+        var enumerator = m_equippedSkills.GetEnumerator();
+        while (enumerator.MoveNext())
         {
-            m_equippedSkills[passiveSlot] = 0;
+            if (enumerator.Current.Value == id)
+            {
+                m_equippedSkills[enumerator.Current.Key] = 0;
+                break;
+            }
         }
     }
     //지정된 스킬슬롯의 패시브 패제
@@ -197,6 +201,16 @@ public class PassiveInventory
         return false;
     }
 
+    public void AddPassive(int passiveId, int passiveLv)
+    {
+        UserData.PassiveSkill newPassive = new UserData.PassiveSkill();
+        newPassive.Id = ++GUID;
+        newPassive.PassiveId = passiveId;
+        newPassive.Level = passiveLv;
+        m_passive.Add(newPassive);
+
+        SetDirty(newPassive.Id, true);
+    }
 
 
     #region ListAdapter
@@ -250,6 +264,20 @@ public class PassiveInventory
         return m_passive;
     }
 
+    public List<UserData.PassiveSkill> FindAll(System.Predicate<UserData.PassiveSkill> predicate)
+    {
+        List<UserData.PassiveSkill> ret = new List<UserData.PassiveSkill>();
+        for (int i = 0; i < Count; i++)
+        {
+            UserData.PassiveSkill match = m_passive[i];
+            if (predicate(match))
+            {
+                ret.Add(match);
+            }
+        }
+        return ret;
+    }
+
     public List<UserData.PassiveSkill> FindAll(int passiveType)
     {
         List<UserData.PassiveSkill> ret = new List<UserData.PassiveSkill>();
@@ -265,19 +293,6 @@ public class PassiveInventory
         return ret;
     }
 
-    public List<UserData.PassiveSkill> FindAll(System.Predicate<UserData.PassiveSkill> predicate)
-    {
-        List<UserData.PassiveSkill> ret = new List<UserData.PassiveSkill>();
-        for(int i = 0; i < Count; i++)
-        {
-            UserData.PassiveSkill match = m_passive[i];
-            if (predicate(match))
-            {
-                ret.Add(match);
-            }
-        }
-        return ret;
-    }
 
 
     #endregion ListAdapter
