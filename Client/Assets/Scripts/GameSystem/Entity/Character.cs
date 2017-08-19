@@ -10,7 +10,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class Character : Actor 
+public class Character : Actor
 {
     private Data.Character m_characterData;
     private Data.Stats m_statsData;
@@ -34,20 +34,28 @@ public class Character : Actor
         base.Awake();
 
         Camera mainCamera = Camera.main;
-        CharacterFollow follower 
-            =  Util.RequireComponent<CharacterFollow>(mainCamera.gameObject);
+        CharacterFollow follower
+            = Util.RequireComponent<CharacterFollow>(mainCamera.gameObject);
 
         follower.target = transform;
+
+
     }
-    
+
     public override void Initialize()
     {
         base.Initialize();
+        // PassiveManager it = GameObject.Find("PassiveManager").GetComponent<PassiveManager>();
         m_characterData = CharacterTable.Instance.Find(m_entityID.Id);
-        m_statsData = StatsTable.Instance.Find(m_characterData.StatsId);
+        //m_statsData = StatsTable.Instance.Find(m_characterData.StatsId);
+
+        StatManager m = GameObject.Find("StatManager").GetComponent<StatManager>();
+
+        m_statsData = m.m_characterStats;
 
         m_stats = new Stats();
         m_stats.Initialize(m_statsData);
+
 
         CurrentHp = m_stats.Hp;
     }
