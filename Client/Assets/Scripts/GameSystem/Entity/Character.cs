@@ -49,9 +49,9 @@ public class Character : Actor
         m_characterData = CharacterTable.Instance.Find(m_entityID.Id);
         //m_statsData = StatsTable.Instance.Find(m_characterData.StatsId);
 
-        StatManager m = GameObject.Find("StatManager").GetComponent<StatManager>();
+        StatManager statManager = GameObject.Find("StatManager").GetComponent<StatManager>();
 
-        m_statsData = m.m_characterStats;
+        m_statsData = statManager.CharacterStats;
 
         m_stats = new Stats();
         m_stats.Initialize(m_statsData);

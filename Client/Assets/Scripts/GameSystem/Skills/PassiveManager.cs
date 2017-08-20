@@ -20,8 +20,49 @@ public class PassiveManager : MonoSingleton<PassiveManager>
         MyInfo.Inventory.AddStackAbleItem(10001, 12);
     }
 	
-	void Update()
-	{
-		
-	}
+    public void ApplyPassive(Data.PassiveSkill apply)
+    {
+        switch (apply.Id)
+        {
+            case 1: ApplyOne();
+                break;
+            case 2: ApplyTwo();
+                break;
+        }
+    }
+
+    public void ReleasePassive(Data.PassiveSkill release)
+    {
+        switch (release.Id)
+        {
+            case 1:
+                ReleaseOne();
+                break;
+            case 2:
+                ReleaseTwo();
+                break;
+        }
+    }
+
+    private void ApplyOne()
+    {
+        StatManager.Instance.CommonPassiveAttackStat += 5;
+        StatManager.Instance.FinalArmorPassiveStat -= 5;
+    }
+    private void ReleaseOne()
+    {
+        StatManager.Instance.CommonPassiveAttackStat -= 5;
+        StatManager.Instance.FinalArmorPassiveStat += 5;
+    }
+
+    private void ApplyTwo()
+    {
+        StatManager.Instance.CommonPassiveAttackStat -= 2;
+        StatManager.Instance.FinalArmorPassiveStat += 3;
+    }
+    private void ReleaseTwo()
+    {
+        StatManager.Instance.CommonPassiveAttackStat += 2;
+        StatManager.Instance.FinalArmorPassiveStat -= 3;
+    }
 }

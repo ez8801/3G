@@ -15,7 +15,7 @@ public class StatManager : MonoSingleton<StatManager>
 {
     private Data.Character m_startCharacterData;
     private Data.Stats m_startStatsData;
-    public Data.Stats m_characterStats;
+    public Data.Stats CharacterStats;
 
     //EquipStats
     private int m_finalAttackEquipStat;
@@ -166,17 +166,63 @@ public class StatManager : MonoSingleton<StatManager>
             return m_finalAttackPassivePercent;
         }
     }
-    // 테스트 후 기타 스텟 추가
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //sdfsdf
+    private float m_finalArmorEquipPercent;
+    public float FinalArmorEquipPercent
+    {
+        get
+        {
+            return m_finalArmorEquipPercent;
+        }
+        set
+        {
+            m_finalArmorEquipPercent = value;
+            CalculateStats();
+        }
+    }
+    private float m_finalArmorPassivePercent;
+    public float FinalArmorPassivePercent
+    {
+        set
+        {
+            m_finalArmorPassivePercent = value;
+            CalculateStats();
+        }
+        get
+        {
+            return m_finalArmorPassivePercent;
+        }
+    }
+    private float m_finalHpEquipPercent;
+    public float FinalHpEquipPercent
+    {
+        get
+        {
+            return m_finalHpEquipPercent;
+        }
+        set
+        {
+            m_finalHpEquipPercent = value;
+            CalculateStats();
+        }
+    }
+    private float m_finalHpPassivePercent;
+    public float FinalHpPassivePercent
+    {
+        set
+        {
+            m_finalHpPassivePercent = value;
+            CalculateStats();
+        }
+        get
+        {
+            return m_finalHpPassivePercent;
+        }
+    }
+
+
+    /// <summary>
+    /// Equip 스텟
+    /// </summary>
     private int m_weaponAttackStat;
     public int WeaponAttackStat
     {
@@ -223,7 +269,7 @@ public class StatManager : MonoSingleton<StatManager>
         set
         {
             m_commonPassiveAttackStat = value;
-            CalculateFinalAttackEquipStat();
+            CalculateFinalAttackPassiveStat();
         }
     }
     /// <summary>
@@ -239,7 +285,7 @@ public class StatManager : MonoSingleton<StatManager>
         set
         {
             m_swordPassiveAttackStat = value;
-            CalculateFinalAttackEquipStat();
+            CalculateFinalAttackPassiveStat();
         }
     }
     //다른 종류 장비도 추가해야함
@@ -256,18 +302,18 @@ public class StatManager : MonoSingleton<StatManager>
 
     private void CalculateStats()
     {
-        m_characterStats.AttackDamage =
+        CharacterStats.AttackDamage =
             (int)(
             (m_startStatsData.AttackDamage + m_finalAttackPassiveStat + m_finalAttackEquipStat) *
             (((m_finalAttackPassivePercent + m_finalAttackEquipPercent) / 100) + 1)
             );
-        m_characterStats.Armor =
+        CharacterStats.Armor =
             (
             (m_startStatsData.Armor + m_finalArmorPassiveStat + m_finalArmorEquipStat)//수치 추가 요망
             );
-        m_characterStats.Hp =
+        CharacterStats.Hp =
             (
-            (m_startStatsData.Hp + m_finalAttackPassiveStat + m_finalAttackEquipStat)//수치 추가 요망
+            (m_startStatsData.Hp + m_finalHpPassiveStat + m_finalHpEquipStat)//수치 추가 요망
             );
 
     }
@@ -277,25 +323,7 @@ public class StatManager : MonoSingleton<StatManager>
     {
         m_startCharacterData = CharacterTable.Instance.Find(1);
         m_startStatsData = StatsTable.Instance.Find(m_startCharacterData.StatsId);
-        m_characterStats = m_startStatsData;
+        CharacterStats = m_startStatsData;
         CalculateStats();
-    }
-
-
-
-    public void ApplyPassiveStats(Data.PassiveSkill apply)
-    {
-        // apply.타입 : 확인
-        // apply.조건 : 퍼센트인지, 깡스텟인지, 쿨타임인지, 속도인지, 등등 확인
-        // type & what
-        //
-        // apply.수치 : 확인
-        //
-        // switch 문으로 맞는 변수 불러와서 set시킴.
-        //
-        // -> Data.passive 에 추가 해야할 것 : 조건, 수치
-        //
-        // ->> 만약 조건이 2개 이상이라면? 
-        //
     }
 }

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace UserData
 {
@@ -85,6 +87,10 @@ public class PassiveInventory
                 return false;
             }
             m_equippedSkills[m_selectSlot] = nowPassive.Id;
+
+            Data.PassiveSkill passive = PassiveSkillTable.Instance.Find(nowPassive.PassiveId);
+            GameObject.Find("PassiveManager").SendMessage("ApplyPassive", passive);
+
             m_selectSlot = 0;
             return true;
         }
@@ -160,6 +166,11 @@ public class PassiveInventory
             if (enumerator.Current.Value == id)
             {
                 m_equippedSkills[enumerator.Current.Key] = 0;
+
+                UserData.PassiveSkill passive = Find(id);
+                Data.PassiveSkill passiveData = PassiveSkillTable.Instance.Find(passive.PassiveId);
+                GameObject.Find("PassiveManager").SendMessage("ReleasePassive", passiveData);
+
                 break;
             }
         }
