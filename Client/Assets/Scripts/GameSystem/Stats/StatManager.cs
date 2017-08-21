@@ -221,7 +221,7 @@ public class StatManager : MonoSingleton<StatManager>
 
 
     /// <summary>
-    /// Equip 스텟
+    /// Equip 스텟 : weapon과 support장비
     /// </summary>
     private int m_weaponAttackStat;
     public int WeaponAttackStat
@@ -288,7 +288,7 @@ public class StatManager : MonoSingleton<StatManager>
             CalculateFinalAttackPassiveStat();
         }
     }
-    //다른 종류 장비도 추가해야함
+    // !!! 다른 종류 장비도 추가해야함 !!!
     //
     //
 
@@ -308,12 +308,14 @@ public class StatManager : MonoSingleton<StatManager>
             (((m_finalAttackPassivePercent + m_finalAttackEquipPercent) / 100) + 1)
             );
         CharacterStats.Armor =
-            (
-            (m_startStatsData.Armor + m_finalArmorPassiveStat + m_finalArmorEquipStat)//수치 추가 요망
+            (int)(
+            (m_startStatsData.Armor + m_finalArmorPassiveStat + m_finalArmorEquipStat) *
+            (((m_finalArmorPassivePercent + m_finalArmorEquipPercent) / 100) + 1)//수치 추가 요망
             );
         CharacterStats.Hp =
-            (
-            (m_startStatsData.Hp + m_finalHpPassiveStat + m_finalHpEquipStat)//수치 추가 요망
+            (int)(
+            (m_startStatsData.Hp + m_finalHpPassiveStat + m_finalHpEquipStat) *
+            (((m_finalHpPassivePercent + m_finalHpEquipPercent) / 100) + 1)//수치 추가 요망
             );
 
     }

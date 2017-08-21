@@ -16,7 +16,9 @@ public class PassiveManager : MonoSingleton<PassiveManager>
     public void Initialize()
     {
         MyInfo.PassiveInventory.AddPassive(1, 1);
-        MyInfo.PassiveInventory.AddPassive(2, 2);
+        MyInfo.PassiveInventory.AddPassive(101, 2);
+        MyInfo.PassiveInventory.AddPassive(2, 3);
+        MyInfo.PassiveInventory.AddPassive(3, 2);
         MyInfo.Inventory.AddStackAbleItem(10001, 12);
     }
 	
@@ -24,9 +26,13 @@ public class PassiveManager : MonoSingleton<PassiveManager>
     {
         switch (apply.Id)
         {
-            case 1: ApplyOne();
+            case 1: ApplyO();
                 break;
-            case 2: ApplyTwo();
+            case 101: ApplyOZO();
+                break;
+            case 2: ApplyT();
+                break;
+            case 3: ApplyTh();
                 break;
         }
     }
@@ -36,33 +42,58 @@ public class PassiveManager : MonoSingleton<PassiveManager>
         switch (release.Id)
         {
             case 1:
-                ReleaseOne();
+                ReleaseO();
+                break;
+            case 101:
+                ReleaseOZO();
                 break;
             case 2:
-                ReleaseTwo();
+                ReleaseT();
                 break;
+            case 3:
+                ReleaseTh();
+                break;
+
         }
     }
 
-    private void ApplyOne()
+    private void ApplyO()
     {
-        StatManager.Instance.CommonPassiveAttackStat += 5;
-        StatManager.Instance.FinalArmorPassiveStat -= 5;
+        StatManager.Instance.CommonPassiveAttackStat += 15;
+        StatManager.Instance.FinalArmorPassiveStat -= 10;
     }
-    private void ReleaseOne()
+    private void ReleaseO()
     {
-        StatManager.Instance.CommonPassiveAttackStat -= 5;
-        StatManager.Instance.FinalArmorPassiveStat += 5;
+        StatManager.Instance.CommonPassiveAttackStat -= 15;
+        StatManager.Instance.FinalArmorPassiveStat += 10;
     }
 
-    private void ApplyTwo()
+    private void ApplyOZO()
     {
-        StatManager.Instance.CommonPassiveAttackStat -= 2;
-        StatManager.Instance.FinalArmorPassiveStat += 3;
+        StatManager.Instance.CommonPassiveAttackStat -= 10;
+        StatManager.Instance.FinalArmorPassiveStat += 20;
     }
-    private void ReleaseTwo()
+    private void ReleaseOZO()
     {
-        StatManager.Instance.CommonPassiveAttackStat += 2;
-        StatManager.Instance.FinalArmorPassiveStat -= 3;
+        StatManager.Instance.CommonPassiveAttackStat += 10;
+        StatManager.Instance.FinalArmorPassiveStat -= 20;
+    }
+    private void ApplyT()
+    {
+        StatManager.Instance.FinalAttackPassivePercent += 30;
+        StatManager.Instance.FinalArmorPassivePercent -= 50;
+    }
+    private void ReleaseT()
+    {
+        StatManager.Instance.FinalAttackPassivePercent -= 30;
+        StatManager.Instance.FinalArmorPassivePercent += 50;
+    }
+    private void ApplyTh()
+    {
+        StatManager.Instance.FinalHpPassiveStat += 100;
+    }
+    private void ReleaseTh()
+    {
+        StatManager.Instance.FinalHpPassiveStat -= 100;
     }
 }

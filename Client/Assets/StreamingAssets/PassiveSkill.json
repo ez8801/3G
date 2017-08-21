@@ -9,11 +9,27 @@
   },
   {
     "Id": 2,
-    "Type": 10,
+    "Type": 1,
     "Name": "Passive.Name.2",
     "Texture": "Textures/Items/Leather",
-    "Level": 2,
+    "Level": 3,
     "Summary": "Passive.Summary.2"
+  },
+  {
+    "Id": 3,
+    "Type": 1,
+    "Name": "Passive.Name.3",
+    "Texture": "Textures/Items/Leather",
+    "Level": 2,
+    "Summary": "Passive.Summary.3"
+  },
+  {
+    "Id": 101,
+    "Type": 10,
+    "Name": "Passive.Name.101",
+    "Texture": "Textures/Items/Leather",
+    "Level": 2,
+    "Summary": "Passive.Summary.101"
   },
   {
     "Id": 201,
