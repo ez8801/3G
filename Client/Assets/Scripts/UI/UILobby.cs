@@ -32,7 +32,7 @@ public class UILobby : UIBase
         // m_view.BtnInventory.onClick = OnClickInventory;
         m_view.BtnForge.onClick = OnClickForge;
         m_view.BtnDungeon.onClick = OnClickDungeon;
-        m_view.BtnPvp.onClick = OnClickPvp;
+        m_view.BtnPvp.onClick = OnClickPassiveInventory;
     }
 
     [ContextMenu("Bind")]
@@ -65,6 +65,14 @@ public class UILobby : UIBase
         UIInventory inventoryUI = UIManager.Instance.LoadUI<UIInventory>("Prefabs/UI/InventoryUI");
         inventoryUI.Initialize();
         inventoryUI.ReloadData();
+    }
+
+    public void OnClickPassiveInventory(GameObject sender)
+    {
+        Debug.Log(Macros.__PRETTY_FUNCTION__);
+        UIPassiveInventory passiveInventoryUI = UIManager.Instance.LoadUI<UIPassiveInventory>("Prefabs/UI/PassiveInventoryUI");
+        passiveInventoryUI.Initialize();
+        passiveInventoryUI.ReloadData();
     }
 
     public void OnClickForge(GameObject sender)

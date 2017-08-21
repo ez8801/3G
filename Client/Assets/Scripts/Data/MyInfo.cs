@@ -72,4 +72,13 @@ public class MyInfo
             return Instance.m_inventory;
         }
     }
+
+    private PassiveInventory m_passiveInventory = new PassiveInventory();
+    public static PassiveInventory PassiveInventory
+    {
+        get
+        {
+            return Instance.m_passiveInventory;
+        }
+    }
 }

@@ -73,7 +73,7 @@ public class UIInventory : UIBase
         this.Bind(ref m_view.LeftItemDetailView, "LeftView/ItemDetailView");
         this.Bind(ref m_view.RightItemDetailView, "RightView/ItemDetailView");
     }
-
+    
     public override void ReloadData()
     {
         base.ReloadData();
@@ -168,7 +168,7 @@ public class UIInventory : UIBase
     public string GetTabName(int tabIndex)
     {
         string key = StringEx.Format("UI.Inventory.Tab.Name.{0}", tabIndex);
-        return R.String.GetText(key);
+        return R.GetText(key);
     }
 
     public int GetTabCount()

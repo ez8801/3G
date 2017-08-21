@@ -44,8 +44,8 @@ public class UIItemDetailView : UIBase
         
         SetCategory((ItemCategory)itemData.Category);
 
-        m_view.LblItemName.SetTextSafely(R.String.GetText(itemData.Name));
-        m_view.LblSummary.SetTextSafely(R.String.GetText(itemData.Desc));
+        m_view.LblItemName.SetTextSafely(R.GetText(itemData.Name));
+        m_view.LblSummary.SetTextSafely(R.GetText(itemData.Desc));
 
         bool isEquipable = ItemTable.Instance.IsEquipable(itemData);
         m_view.BtnEquip.SetActiveSafely(isEquipable);
@@ -53,7 +53,7 @@ public class UIItemDetailView : UIBase
         if (isEquipable)
         {
             bool isEquip = MyInfo.Inventory.IsEquip(item);
-            m_view.LblBtnEquip.SetTextSafely(isEquip ? R.String.GetText("UI.UnEquip") : R.String.GetText("UI.Equip"));
+            m_view.LblBtnEquip.SetTextSafely(isEquip ? R.GetText("UI.UnEquip") : R.GetText("UI.Equip"));
         }
 
         m_focusItem.Id = item.Id;
@@ -106,16 +106,16 @@ public class UIItemDetailView : UIBase
 
     public void OnClickSell()
     {
-        UIAlertView alertView = UIAlertView.Show(R.String.GetText("UI.Item.Sell.Message"));
+        UIAlertView alertView = UIAlertView.Show(R.GetText("UI.Item.Sell.Message"));
         alertView.SetStyle(UIAlertView.Style.OKCancel);
-        alertView.SetPositiveButton(R.String.GetText("UI.Item.Sell.Ok"), () =>
+        alertView.SetPositiveButton(R.GetText("UI.Item.Sell.Ok"), () =>
         {
             Data.Item itemData = ItemTable.Instance.Find(m_focusItem.ItemId);
             int gold = itemData.Price * m_focusItem.Count;
             MyInfo.Account.Gold += gold;
             MyInfo.Inventory.Remove(m_focusItem.Id);
 
-            UIAlertView.Show(StringEx.Format(R.String.GetText("UI.Get.Gold"), gold))
+            UIAlertView.Show(StringEx.Format(R.GetText("UI.Get.Gold"), gold))
                 .SetStyle(UIAlertView.Style.OK)
                 .SetPositiveButton(() =>
                 {
@@ -125,7 +125,7 @@ public class UIItemDetailView : UIBase
                         inventoryUI.ReloadData();
                 });
         });
-        alertView.SetNegativeButton(R.String.GetText("UI.Item.Sell.Cancel"), null);
+        alertView.SetNegativeButton(R.GetText("UI.Item.Sell.Cancel"), null);
     }
 
     public void OnClickEquip()
@@ -140,7 +140,7 @@ public class UIItemDetailView : UIBase
             MyInfo.Inventory.EquipItem(m_focusItem.Id);
         }
 
-        m_view.LblBtnEquip.SetTextSafely(!isEquip ? R.String.GetText("UI.UnEquip") : R.String.GetText("UI.Equip"));
+        m_view.LblBtnEquip.SetTextSafely(!isEquip ? R.GetText("UI.UnEquip") : R.GetText("UI.Equip"));
 
         UIInventory inventoryUI = NGUITools.FindInParents<UIInventory>(gameObject);
         if (inventoryUI != null)

@@ -240,7 +240,7 @@ namespace Data
 		public void Deserialize(JSONObject json)
 		{
 			Id = json["Id"].I4;
-			Message = json["Message"].STR;
+			Message = json["Message"].STR.GetHashCode();
 		}
 
 		public void Deserialize(Deserializer deserializer)
@@ -270,10 +270,11 @@ namespace Data
 			Name = json["Name"].STR;
 			Cooltime = json["Cooltime"].I4;
 			Effect = json["Effect"].I4;
-			Texture = json["Texture"].I4;
+			Texture = json["Texture"].STR;
 			Chargeable = json["Chargeable"].B;
 			Charging = json["Charging"].I4;
 			Level = json["Level"].I4;
+			Summary = json["Summary"].STR;
 		}
 
 		public void Deserialize(Deserializer deserializer)
@@ -287,6 +288,7 @@ namespace Data
 			deserializer.Deserialize(ref Chargeable);
 			deserializer.Deserialize(ref Charging);
 			deserializer.Deserialize(ref Level);
+			deserializer.Deserialize(ref Summary);
 		}
 
 		public void Serialize(BinaryWriter binaryWriter)
@@ -300,6 +302,7 @@ namespace Data
 			binaryWriter.Write(Chargeable);
 			binaryWriter.Write(Charging);
 			binaryWriter.Write(Level);
+			binaryWriter.Write(Summary);
 		}
 
 		public int GetIndex()
@@ -315,8 +318,9 @@ namespace Data
 			Id = json["Id"].I4;
 			Type = json["Type"].I4;
 			Name = json["Name"].STR;
-			Texture = json["Texture"].I4;
+			Texture = json["Texture"].STR;
 			Level = json["Level"].I4;
+			Summary = json["Summary"].STR;
 		}
 
 		public void Deserialize(Deserializer deserializer)
@@ -326,6 +330,7 @@ namespace Data
 			deserializer.Deserialize(ref Name);
 			deserializer.Deserialize(ref Texture);
 			deserializer.Deserialize(ref Level);
+			deserializer.Deserialize(ref Summary);
 		}
 
 		public void Serialize(BinaryWriter binaryWriter)
@@ -335,6 +340,7 @@ namespace Data
 			binaryWriter.Write(Name);
 			binaryWriter.Write(Texture);
 			binaryWriter.Write(Level);
+			binaryWriter.Write(Summary);
 		}
 
 		public int GetIndex()

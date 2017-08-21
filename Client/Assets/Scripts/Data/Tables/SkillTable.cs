@@ -12,10 +12,11 @@ namespace Data
         public string Name;
         public int Cooltime;
         public int Effect;
-        public int Texture;
+        public string Texture;
         public bool Chargeable;
         public int Charging;
         public int Level;
+        public string Summary;
     }
 }
 

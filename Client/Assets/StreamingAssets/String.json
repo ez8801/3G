@@ -106,5 +106,73 @@
   {
     "Key": "UI.UnEquip",
     "Value": "해제"
+  },
+  {
+    "Key": "Tip.1",
+    "Value": "아이템을 착용하면 강해집니다."
+  },
+  {
+    "Key": "Tip.2",
+    "Value": "몬스터를 사냥하면 아이템을 얻을 수 있습니다."
+  },
+  {
+    "Key": "Tip.3",
+    "Value": "클래스는 방어형, 공격형, 보조형이 있습니다."
+  },
+  {
+    "Key": "Tip.4",
+    "Value": "패시브 스킬과 장비 타입이 일치해야 적용됩니다."
+  },
+  {
+    "Key": "Tip.5",
+    "Value": "높은 등급의 장비를 착용하면 더 많은 스킬을 사용 가능합니다."
+  },
+  {
+    "Key": "UI.Passive.Equip.Message.1",
+    "Value": "빈 슬롯이 없습니다."
+  },
+  {
+    "Key": "UI.Passiveinventory.Tab.Name.0",
+    "Value": "일반"
+  },
+  {
+    "Key": "UI.Passiveinventory.Tab.Name.1",
+    "Value": "지팡이"
+  },
+  {
+    "Key": "UI.Passiveinventory.Tab.Name.2",
+    "Value": "보주"
+  },
+  {
+    "Key": "UI.Passiveinventory.Tab.Name.3",
+    "Value": "방패"
+  },
+  {
+    "Key": "UI.Passiveinventory.Tab.Name.4",
+    "Value": "검"
+  },
+  {
+    "Key": "UI.Passiveinventory.Tab.Name.5",
+    "Value": "창"
+  },
+  {
+    "Key": "UI.Passiveinventory.Tab.Name.6",
+    "Value": "활"
+  },
+  {
+    "Key": "Passive.Name.1",
+    "Value": "무모함"
+  },
+  {
+    "Key": "Passive.Summary.1",
+    "Value": "용기가 과하면 무모함이 된다. 공격력을 5증가시키고 방어력을 5감소시킨다."
+  },
+  {
+    "Key": "Passive.Name.2",
+    "Value": "소심함"
+  },
+  {
+    "Key": "Passive.Summary.2",
+    "Value": "보통 방해만 되지만 가끔 큰 도움이 된다. 공격력을 2감소시키고 방어력을 3증가시킨다."
   }
 ]
