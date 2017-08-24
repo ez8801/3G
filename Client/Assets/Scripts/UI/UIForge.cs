@@ -172,7 +172,7 @@ public class UIForge : UIBase
 
     private void AddItem(int resultItemId)
     {
-        MyInfo.Inventory.AddItem(recipe.ResultItemId);
+        MyInfo.Inventory.AddItem(resultItemId);
     }
 
     //-------------------------------------------------------------------------
