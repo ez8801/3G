@@ -47,6 +47,7 @@ public class UIAlertView : UIBase
     public static UIAlertView Show(Style style, string title, string text)
     {
         UIAlertView alertView = Build();
+        alertView.SetStyle(style);
         alertView.SetTitle(title);
         alertView.SetSummary(text);
         alertView.SetActiveSafely(true);

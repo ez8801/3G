@@ -122,7 +122,7 @@ public class UIInventory : UIBase
                 UserData.Item equippedItem = MyInfo.Inventory.GetEquipItem(itemSlot);
                 if (equippedItem != null)
                 {
-                    itemCellUI.InitWithData(equippedItem);
+                    itemCellUI.SetData(equippedItem);
                     itemCellUI.SetOnClickListener(OnClickEquipItem);
                 }
                 else
@@ -211,7 +211,7 @@ public class UIInventory : UIBase
         if (index < m_selectedItems.Count)
         {
             UserData.Item item = m_selectedItems[index];
-            itemCellUI.InitWithData(item);
+            itemCellUI.SetData(item);
             itemCellUI.SetOnClickListener(OnClickItem);
         }
         else

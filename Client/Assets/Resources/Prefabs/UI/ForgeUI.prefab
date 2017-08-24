@@ -3388,7 +3388,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3011
+  startingRenderQueue: 3010
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 3
@@ -4475,6 +4475,7 @@ MonoBehaviour:
   SprSelect: {fileID: 114632775083416816}
   SprNew: {fileID: 114650713919318376}
   LblCount: {fileID: 114545068090838164}
+  SprEquip: {fileID: 0}
 --- !u!114 &114466509820898766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5316,6 +5317,7 @@ MonoBehaviour:
   SprSelect: {fileID: 114548354341742106}
   SprNew: {fileID: 114267070379366330}
   LblCount: {fileID: 114729360445246446}
+  SprEquip: {fileID: 0}
 --- !u!114 &114599966188196230
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6039,13 +6041,13 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3000
+  startingRenderQueue: 3010
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 3
   mClipRange: {x: 0, y: -70.5, z: 414.95, w: 191.8}
   mClipSoftness: {x: 1, y: 3}
-  mDepth: 0
+  mDepth: 15
   mSortingOrder: 0
   mSortingLayerName: 
   mClipOffset: {x: 0, y: 0}
@@ -6150,6 +6152,7 @@ MonoBehaviour:
   SprSelect: {fileID: 114280896452438982}
   SprNew: {fileID: 114152915081880254}
   LblCount: {fileID: 114944024959637942}
+  SprEquip: {fileID: 0}
 --- !u!114 &114807919161858956
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6836,8 +6839,8 @@ MonoBehaviour:
   arrangement: 0
   maxPerLine: 1
   cellWidth: 0
-  cellHeight: 200
-  CellPrefab: {fileID: 0}
+  cellHeight: 60
+  CellPrefab: {fileID: 1023923527931550, guid: fb64bc6668680bc478400512a97b44ae, type: 2}
 --- !u!114 &114966933268904592
 MonoBehaviour:
   m_ObjectHideFlags: 1

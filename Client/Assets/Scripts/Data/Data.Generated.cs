@@ -393,6 +393,7 @@ namespace Data
 		{
 			Id = json["Id"].I4;
 			Group = json["Group"].I4;
+			Name = json["Name"].STR.GetHashCode();
 			ItemMaterialGroup = json["ItemMaterialGroup"].I4;
 			RequestCount = json["RequestCount"].I4;
 		}
@@ -401,6 +402,7 @@ namespace Data
 		{
 			deserializer.Deserialize(ref Id);
 			deserializer.Deserialize(ref Group);
+			deserializer.Deserialize(ref Name);
 			deserializer.Deserialize(ref ItemMaterialGroup);
 			deserializer.Deserialize(ref RequestCount);
 		}
@@ -409,6 +411,7 @@ namespace Data
 		{
 			binaryWriter.Write(Id);
 			binaryWriter.Write(Group);
+			binaryWriter.Write(Name);
 			binaryWriter.Write(ItemMaterialGroup);
 			binaryWriter.Write(RequestCount);
 		}

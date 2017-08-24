@@ -65,6 +65,11 @@ public class Inventory
         }
         return null;
     }
+
+    public void AddItem(int itemId)
+    {
+        AddItem(itemId, 1);
+    }
     
     public void AddItem(int itemId, int itemCount)
     {
@@ -216,6 +221,21 @@ public class Inventory
             return (m_equippedItems[itemSlot] != 0);
         }
         return false;
+    }
+
+    /// <summary>
+    /// 지정된 아이템 Id에 해당하는 아이템을 소모합니다.
+    /// </summary>
+    public void ConsumeItem(long id, int itemCount)
+    {
+        UserData.Item item = Find(id);
+
+        // @TODO: Validation
+        item.Count -= itemCount;
+        if (item.Count < 0)
+        {
+            Remove(id);
+        }        
     }
 
     private void OnGainedItem(long id, int itemId, int itemCount)

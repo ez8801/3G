@@ -190,5 +190,13 @@
   {
     "Key": "Passive.Summary.101",
     "Value": "보통 방해만 되지만 가끔 큰 도움이 된다. 공격력을 10감소시키고 방어력을 20증가시킨다."
+  },
+  {
+    "Key": "Material.Name.1",
+    "Value": "가죽"
+  },
+  {
+    "Key": "Material.Name.2",
+    "Value": "주괴"
   }
 ]

@@ -38,7 +38,7 @@ public class UIItemDetailView : UIBase
     public void InitWithData(UserData.Item item)
     {
         NGUITools.SetActive(gameObject, true);
-        m_view.CellItem.InitWithData(item);
+        m_view.CellItem.SetData(item);
 
         Data.Item itemData = ItemTable.Instance.Find(item.ItemId);
         

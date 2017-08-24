@@ -8,6 +8,7 @@
  */
 
 using System;
+using System.Collections.Generic;
 
 namespace Data
 {
@@ -27,6 +28,12 @@ namespace Data
         /// 재료 그룹번호
         /// </summary>
         public int Group;
+
+        /// <summary>
+        /// 재료명
+        /// </summary>
+        [DeclaringType("string", "int")]
+        public int Name;
         
         /// <summary>
         /// 아이템 재료 그룹
@@ -55,5 +62,22 @@ public sealed class MaterialTable : ArrayTable<Data.Material>
                 m_instance = new MaterialTable();
             return m_instance;
         }
+    }
+
+    /// <summary>
+    /// 지정된 그룹에 해당하는 재료 목록을 반환합니다.
+    /// </summary>
+    public List<Data.Material> GetMaterials(int group)
+    {
+        List<Data.Material> materials = new List<Data.Material>();
+        for (int i = 0; i < Length; i++)
+        {
+            Data.Material match = this[i];
+            if (match.Group == group)
+            {
+                materials.Add(match);
+            }
+        }
+        return materials;
     }
 }

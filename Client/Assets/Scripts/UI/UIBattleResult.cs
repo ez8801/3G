@@ -43,7 +43,7 @@ public class UIBattleResult : UIBase
             bool isAssigned = (i < gainedItems.Count);
             if (isAssigned)
             {
-                itemCellUI.InitWithData(gainedItems[i]);
+                itemCellUI.SetData(gainedItems[i]);
             }
             else
             {
