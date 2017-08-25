@@ -186,8 +186,10 @@ public class UIForge : UIBase
         Data.Recipe recipe = RecipeTable.Instance[index];
         UIRecipeCell recipeCellUi = Util.RequireComponent<UIRecipeCell>(contentView);
         recipeCellUi.Initialize();
+        recipeCellUi.SetSelection(recipe.Id == m_selectedRecipeIndex);
         recipeCellUi.SetData(recipe);
         recipeCellUi.SetOnClickListener(OnClickRecipe);
+
         return null;
     }
 
