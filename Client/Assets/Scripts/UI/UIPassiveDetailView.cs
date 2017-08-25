@@ -8,8 +8,6 @@
  */
 
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
 public class UIPassiveDetailView : UIBase 
 {
@@ -29,15 +27,15 @@ public class UIPassiveDetailView : UIBase
 
     private SimplePassive m_focusPassive = new SimplePassive();
 
-    public override void Initialize()
+    internal override void OnStart()
     {
-        base.Initialize();
+        base.OnStart();
         BindComponents();
         m_view.CellPassive.Initialize();
     }
 
     [ContextMenu("Bind")]
-    private void BindComponents()
+    public void BindComponents()
     {
         if (!IsAssigned(m_view)) m_view = new View();
         this.Bind(ref m_view.CellPassive, "CellPassive/CellPassive");
@@ -50,7 +48,7 @@ public class UIPassiveDetailView : UIBase
         this.Bind(ref m_view.LblPassiveCategory, "AboutView/PassiveCategory");
     }
 
-    public void InitWithData(UserData.PassiveSkill passive)
+    public void SetData(UserData.PassiveSkill passive)
     {
         NGUITools.SetActive(gameObject, true);
         m_view.CellPassive.InitWithData(passive);

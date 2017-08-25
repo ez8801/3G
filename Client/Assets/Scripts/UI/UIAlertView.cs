@@ -22,8 +22,7 @@ public class UIAlertView : UIBase
 
     public static UIAlertView Build()
     {
-        UIAlertView alertView = UIManager.Instance.LoadUI<UIAlertView>("Prefabs/UI/AlertView");
-        alertView.Initialize();
+        UIAlertView alertView = UIManager.Instance.Push<UIAlertView>(UIType.UIAlertView);
         return alertView;
     }
 
@@ -73,9 +72,9 @@ public class UIAlertView : UIBase
     private Action m_positiveAction;
     private Action m_negativeAction;
 
-    public override void Initialize()
-    {
-        base.Initialize();
+    internal override void OnCreate()
+    {        
+        base.OnCreate();
         BindComponents();
 
         m_view.LblPositive.SetTextSafely(R.GetText("UI.AlertView.Ok"));

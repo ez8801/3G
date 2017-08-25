@@ -39,16 +39,16 @@ public class UIBattle : UIBase
     }
     private float m_enemyTeamHpRatio;
 
-    public override void ViewDidLoad()
+    internal override void OnCreate()
     {
-        base.ViewDidLoad();
+        base.OnCreate();
         m_sprMyTeamHpWidth = SprMyTeamHp.width;
         m_sprEnemyTeamHpWidth = SprEnemyTeamHp.width;
     }
 
-    public override void ViewDidAppear()
+    internal override void OnResume()
     {
-        base.ViewDidAppear();
+        base.OnResume();
         NavigationBar.SetActiveSafely(false);
         enabled = true;
     }
@@ -82,9 +82,9 @@ public class UIBattle : UIBase
         m_enemyTeamHpRatio = EnemyTeam.HpRatio;
     }
 
-    public override void ViewDidDisAppear()
+    internal override void OnPause()
     {
-        base.ViewDidDisAppear();
+        base.OnPause();
         NavigationBar.SetActiveSafely(true);
 
         m_myTeam = null;

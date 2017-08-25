@@ -10,6 +10,10 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+/// <summary>
+/// 인벤토리 UI
+/// </summary>
+/// <seealso cref="UIType.UIInventory"/>
 public class UIInventory : UIBase
 {
 	[System.Serializable]
@@ -38,9 +42,10 @@ public class UIInventory : UIBase
     private int m_currentTabIndex;
     private bool[] m_isDirtyFlags = new bool[0];
     private List<UserData.Item> m_selectedItems = new List<UserData.Item>();
-
-	public override void Initialize()
-	{
+    
+    internal override void OnCreate()
+    {
+        base.OnCreate();
         BindComponents();
 
         m_currentTabIndex = 0;
@@ -51,7 +56,7 @@ public class UIInventory : UIBase
     }
 
     [ContextMenu("Bind")]
-    private void BindComponents()
+    public void BindComponents()
     {
         if (IsAssigned(m_view) == false)
             m_view = new View();
@@ -264,8 +269,8 @@ public class UIInventory : UIBase
         if (int.TryParse(sender.name, out index))
         {
             UserData.Item clickedItem = m_selectedItems[index];
-            m_view.RightItemDetailView.Initialize();
-            m_view.RightItemDetailView.InitWithData(clickedItem);
+            m_view.RightItemDetailView.Show();
+            m_view.RightItemDetailView.SetData(clickedItem);
         }
     }
 
@@ -275,8 +280,8 @@ public class UIInventory : UIBase
         if (int.TryParse(sender.transform.parent.name, out index))
         {
             UserData.Item equippedItem = MyInfo.Inventory.GetEquipItem(index + 1);
-            m_view.LeftItemDetailView.Initialize();
-            m_view.LeftItemDetailView.InitWithData(equippedItem);
+            m_view.LeftItemDetailView.Show();
+            m_view.LeftItemDetailView.SetData(equippedItem);
         }
     }
 

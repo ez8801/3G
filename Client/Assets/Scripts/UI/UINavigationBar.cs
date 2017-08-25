@@ -12,7 +12,7 @@ using UnityEngine;
 
 public class UINavigationBar : UIBase, IObserver, IObserver<GoodsInfo>
 {
-    [System.Serializable]
+    [Serializable]
     public struct View
     {
         public GameObject BtnBack;
@@ -22,8 +22,14 @@ public class UINavigationBar : UIBase, IObserver, IObserver<GoodsInfo>
     }
     public View m_view;
 
+    internal override void OnCreate()
+    {
+        base.OnCreate();
+        BindComponents();
+    }
+
     [ContextMenu("Bind")]
-    public override void Initialize()
+    public void BindComponents()
     {
         if (IsAssigned(m_view) == false)
             m_view = new View();
@@ -35,8 +41,9 @@ public class UINavigationBar : UIBase, IObserver, IObserver<GoodsInfo>
         UIEventListener.Get(m_view.BtnBack).onClick = OnClickBackOrHome;
     }
 
-    private void Awake()
+    public override void Awake()
     {
+        base.Awake();
         NotificationCenter.Instance.AddObserver(R.Id.OnStageChanged, this);
         NotificationCenter.GoodsMonitor.Subscribe(this);
     }
@@ -84,7 +91,7 @@ public class UINavigationBar : UIBase, IObserver, IObserver<GoodsInfo>
 
     #endregion UIActions
 
-    private void OnDestroy()
+    internal override void OnDestroy()
     {
         NotificationCenter.Instance.RemoveObserver(R.Id.OnStageChanged, this);    
     }

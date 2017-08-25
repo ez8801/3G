@@ -19,7 +19,7 @@ public class UIRecipeCell : UIBase
 
     private UIEventListener.VoidDelegate m_onClickListener;
     
-    public override void Initialize()
+    public void Initialize()
 	{
         BindComponents();
 

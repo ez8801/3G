@@ -4,6 +4,7 @@ using System.Collections.Generic;
 /// <summary>
 /// 대장간 UI
 /// </summary>
+/// <seealso cref="UIType.UIForge"/>
 /// <seealso cref="ForgeUI.prefab"/>
 public class UIForge : UIBase
 {
@@ -28,10 +29,10 @@ public class UIForge : UIBase
     private int m_selectedRecipeIndex;
     private List<Data.Material> m_materials;
     private List<SimpleItem> m_selecteItems;
-
-    public override void Initialize()
+    
+    internal override void OnCreate()
     {
-        base.Initialize();
+        base.OnCreate();
         BindComponents();
 
         m_selecteItems = new List<SimpleItem>();

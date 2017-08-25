@@ -41,8 +41,6 @@ namespace GameSystem
             UIManager.Instance.AttachUI(newOne);
 
             m_contentView = Util.RequireComponent<UIBase>(newOne);
-            m_contentView.Initialize();
-            m_contentView.ViewDidLoad();
             return m_contentView;
         }
 
@@ -64,8 +62,6 @@ namespace GameSystem
 
             T contentView = Util.RequireComponent<T>(newOne);
             m_contentView = contentView;
-            m_contentView.Initialize();
-            m_contentView.ViewDidLoad();
             return contentView;
         }
 
@@ -77,10 +73,7 @@ namespace GameSystem
         public virtual void OnStart()
         {
             if (m_contentView != null)
-            {
-                m_contentView.ViewDidAppear();
-            }
-            m_contentView.SetActiveSafely(true);
+                m_contentView.Show();
         }
 
         public virtual void OnUpdate()
@@ -116,10 +109,7 @@ namespace GameSystem
         public virtual void OnStop()
         {
             if (m_contentView != null)
-            {
-                m_contentView.ViewDidDisAppear();
-            }
-            m_contentView.SetActiveSafely(false);
+                m_contentView.Hide();            
         }
 
         public virtual void OnDestroy()

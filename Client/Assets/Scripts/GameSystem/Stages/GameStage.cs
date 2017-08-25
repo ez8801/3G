@@ -20,9 +20,6 @@ public class GameStage : GameSystem.Stage, IObserver
         m_gameController = new GameController();
         m_gameController.Initialize();
         yield return m_gameController.BuildGame();
-
-        m_gameController.Subscribe(NotificationCenter.ItemLedger);
-        m_gameController.SetCameraShaker(Util.RequireComponent<SimpleCameraShaker>(Camera.main));
         
         m_battleUI = SetContentView<UIBattle>("Prefabs/UI/BattelUI");
         
@@ -63,8 +60,8 @@ public class GameStage : GameSystem.Stage, IObserver
             yield return null;
         }
 
-        UIBattleResult battleResultUI = UIManager.Instance.LoadUI<UIBattleResult>("Prefabs/UI/BattleResultUI");
-        battleResultUI.Initialize();
+        UIBattleResult battleResultUI 
+            = UIManager.Instance.Show<UIBattleResult>(UIType.UIBattleResult);
         battleResultUI.SetResult(result, m_gameController.GetGainedItems());
     }
 

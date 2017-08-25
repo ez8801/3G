@@ -54,6 +54,9 @@ public class GameController : SubscriberBase<SimpleItem>
         SetTarget(m_enemyTeam);
 
         playerId = new EntityID(EntityType.Character, 1);
+
+        Subscribe(NotificationCenter.ItemLedger);
+        SetCameraShaker(Util.RequireComponent<SimpleCameraShaker>(Camera.main));
     }
     
     public void SetCameraShaker(SimpleCameraShaker cameraShaker)

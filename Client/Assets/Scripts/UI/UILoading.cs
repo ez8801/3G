@@ -60,7 +60,7 @@ public class UILoading : UIBase, IObserver
         }
     }
 
-    public void OnDestroy()
+    internal override void OnDestroy()
     {
         NotificationCenter.Instance.RemoveObserver(R.Id.OnProgress, this);
         NotificationCenter.Instance.RemoveObserver(R.Id.OnProgressDone, this);

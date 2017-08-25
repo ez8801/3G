@@ -13,6 +13,7 @@ using System.Collections.Generic;
 /// <summary>
 /// 전투 결과 UI
 /// </summary>
+/// <seealso cref="UIType.UIBattleResult"/>
 public class UIBattleResult : UIBase
 {
 	[System.Serializable]
@@ -25,9 +26,10 @@ public class UIBattleResult : UIBase
 		public UISprite SprGauge;
 	}
 	public View m_view;
-
-	public override void Initialize()
-	{		
+    
+    internal override void OnCreate()
+    {
+        base.OnCreate();
         BindComponents();
     }
 
