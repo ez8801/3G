@@ -354,7 +354,7 @@ public class UIForge : UIBase
     /// </summary>
     public void OnClickClose()
     {
-        NGUITools.SetActive(gameObject, false);
+        Hide();
     }
 
     #endregion UIActions

@@ -246,7 +246,7 @@ public class UIInventory : UIBase
             m_isDirtyFlags[i] = false;
         }
         MyInfo.Inventory.ClearDirtyFlag();
-        NGUITools.SetActive(gameObject, false);
+        Hide();
     }
 
     public void OnClickTab(GameObject sender)
@@ -280,8 +280,8 @@ public class UIInventory : UIBase
         if (int.TryParse(sender.transform.parent.name, out index))
         {
             UserData.Item equippedItem = MyInfo.Inventory.GetEquipItem(index + 1);
-            m_view.LeftItemDetailView.Show();
             m_view.LeftItemDetailView.SetData(equippedItem);
+            m_view.LeftItemDetailView.Show();
         }
     }
 
