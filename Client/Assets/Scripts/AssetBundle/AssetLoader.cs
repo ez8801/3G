@@ -49,6 +49,12 @@ public abstract class AssetLoader
         AddLoadingRequest(loader);
     }
 
+    public static void AddUILoadingRequest(UIType typeOfUI)
+    {
+        AssetLoader loader = new UILoader(typeOfUI);
+        AddLoadingRequest(loader);
+    }
+
     public static void AddLoadingRequest(AssetLoader loader)
     {
         TotalItemCount++;

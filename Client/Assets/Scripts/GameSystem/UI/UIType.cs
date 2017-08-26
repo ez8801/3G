@@ -12,10 +12,12 @@ public enum UIType
     None,
     UIAlertView,
     UITitle,
+    UINavigationBar,
     UILobby,
     UIInventory,
     UIForge,
     UIPassiveInventory,
+    UIBattle,
     UIBattleResult,
     UIWorld,
     Max	

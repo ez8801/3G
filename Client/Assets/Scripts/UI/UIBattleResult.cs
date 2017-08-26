@@ -72,6 +72,6 @@ public class UIBattleResult : UIBase
     public void OnClickOK()
     {
         NotificationCenter.Post(R.Id.ExitStage);
-        Destroy(gameObject);
+        Hide();
     }
 }

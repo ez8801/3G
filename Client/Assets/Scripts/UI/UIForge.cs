@@ -62,6 +62,12 @@ public class UIForge : UIBase
 		this.Bind(ref m_view.PanelCell, "LeftView/PanelCell");
 	}
 
+    internal override void OnStart()
+    {
+        base.OnStart();
+        ReloadData();
+    }
+
     public override void ReloadData()
     {
         base.ReloadData();

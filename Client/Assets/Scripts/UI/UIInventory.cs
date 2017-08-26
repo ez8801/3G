@@ -269,8 +269,8 @@ public class UIInventory : UIBase
         if (int.TryParse(sender.name, out index))
         {
             UserData.Item clickedItem = m_selectedItems[index];
-            m_view.RightItemDetailView.Show();
             m_view.RightItemDetailView.SetData(clickedItem);
+            m_view.RightItemDetailView.Show();
         }
     }
 

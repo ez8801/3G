@@ -229,7 +229,7 @@ public class Actor : EntityBase, IActor
 
             // DamageFontManager.Instance.AddDamageData(attacker, this, damageAmount);
 
-            float gapRatio = Mathf.Clamp(HpRatio - prevRatio, 1f, 10f);
+            float gapRatio = Mathf.Clamp(HpRatio - prevRatio, 1f, 10f) * 2f;
             Vector3 opposite = attacker.Forward;
             opposite.x *= -gapRatio;
             opposite.y = 10f * 0.5f;

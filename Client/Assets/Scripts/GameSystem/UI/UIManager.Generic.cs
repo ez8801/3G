@@ -56,6 +56,8 @@ public partial class UIManager
             CacheUI(typeOfUI, view);
         }
 
+        if (view != null && view.UIType == UIType.None)
+            view.SetUIType(typeOfUI);
         return view;
     }
 

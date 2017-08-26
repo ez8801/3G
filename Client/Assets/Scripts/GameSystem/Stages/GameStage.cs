@@ -6,8 +6,6 @@ public class GameStage : GameSystem.Stage, IObserver
 {
     public const string LevelName = "Game";
     
-    private UIBattle m_battleUI;
-
     private GameController m_gameController;
     
     public override IEnumerator OnCrate(Intent savedInstanceState)
@@ -15,20 +13,26 @@ public class GameStage : GameSystem.Stage, IObserver
         // Load Scenes
         AssetLoader.AddLevelLoadingRequest(LevelName, false);
         AssetLoader.AddLevelLoadingRequest("Woods", true);
+        AssetLoader.AddUILoadingRequest(UIType.UIBattle);
+        AssetLoader.AddUILoadingRequest(UIType.UIBattleResult);
         yield return AssetLoader.StartLoading();
-
+        
         m_gameController = new GameController();
         m_gameController.Initialize();
         yield return m_gameController.BuildGame();
-        
-        m_battleUI = SetContentView<UIBattle>("Prefabs/UI/BattelUI");
         
         // Add First Responder
         NotificationCenter.Instance.AddObserver(this);
         
         yield return null;
     }
-    
+
+    public override void OnStart()
+    {
+        base.OnStart();
+        UIManager.Instance.Show(UIType.UIBattle);
+    }
+
     public void HandleNotification(Notification notification)
     {
         switch (notification.id)
@@ -42,7 +46,6 @@ public class GameStage : GameSystem.Stage, IObserver
                 break;
 
             case R.Id.Win:
-                m_battleUI.enabled = false;
                 StartCoroutine(OnGameEnd(MatchResult.Win));
                 break;
 
@@ -60,6 +63,8 @@ public class GameStage : GameSystem.Stage, IObserver
             yield return null;
         }
 
+        UIManager.Instance.HideUI(UIType.UIBattle);
+        
         UIBattleResult battleResultUI 
             = UIManager.Instance.Show<UIBattleResult>(UIType.UIBattleResult);
         battleResultUI.SetResult(result, m_gameController.GetGainedItems());
@@ -68,6 +73,8 @@ public class GameStage : GameSystem.Stage, IObserver
     public override void OnStop()
     {
         base.OnStop();
+        UIManager.Instance.DestroyUI(UIType.UIBattle);
+        UIManager.Instance.DestroyUI(UIType.UIBattleResult);
         NotificationCenter.Instance.RemoveObserver(this);
     }
 }

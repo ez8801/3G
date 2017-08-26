@@ -33,7 +33,7 @@ public abstract class UIBase : MonoBehaviour
             gameObject.SetActiveSafely(value);
             if (m_IsActive != value)
             {
-                if (m_IsActive)
+                if (value)
                     OnStart();
                 else
                     OnStop();
@@ -71,8 +71,8 @@ public abstract class UIBase : MonoBehaviour
         {
             if (m_navigationBar == null)
             {
-                m_navigationBar 
-                    = UIManager.Instance.LoadUI<UINavigationBar>("Prefabs/UI/NavigationBar");
+                m_navigationBar
+                    = UIManager.Instance.Show<UINavigationBar>(UIType.UINavigationBar);
             }
             return m_navigationBar;
         }
@@ -140,12 +140,16 @@ public abstract class UIBase : MonoBehaviour
     public virtual void Awake()
     {
         Debug.Log(StringEx.Format("{0}.{1}", name, Macros.__PRETTY_FUNCTION__));
-        UIBase parent = GetComponentInParent<UIBase>();
-        if (parent != null)
+
+        if (transform.parent != null)
         {
-            if (parent.m_children == null)
-                parent.m_children = new List<UIBase>();
-            parent.m_children.Add(this);
+            UIBase parent = transform.parent.GetComponentInParent<UIBase>();
+            if (parent != null)
+            {
+                if (parent.m_children == null)
+                    parent.m_children = new List<UIBase>();
+                parent.m_children.Add(this);
+            }
         }
     }
 
@@ -163,6 +167,16 @@ public abstract class UIBase : MonoBehaviour
     {
         // Create And Prepare to display.
         Debug.Log(StringEx.Format("{0}.{1}", name, Macros.__PRETTY_FUNCTION__));
+
+        if (m_children != null)
+        {
+            for (int i = 0; i < m_children.Count; i++)
+            {
+                UIBase baseUI = m_children[i];
+                if (baseUI != null)
+                    baseUI.OnCreate();
+            }
+        }
     }
 
     /// <summary>
@@ -172,6 +186,16 @@ public abstract class UIBase : MonoBehaviour
     {
         // On Visible
         Debug.Log(StringEx.Format("{0}.{1}", name, Macros.__PRETTY_FUNCTION__));
+
+        if (m_children != null)
+        {
+            for (int i = 0; i < m_children.Count; i++)
+            {
+                UIBase baseUI = m_children[i];
+                if (baseUI != null)
+                    baseUI.OnCreate();
+            }
+        }
     }
 
     /// <summary>
@@ -181,6 +205,16 @@ public abstract class UIBase : MonoBehaviour
     {
         // On Prepare to display
         Debug.Log(StringEx.Format("{0}.{1}", name, Macros.__PRETTY_FUNCTION__));
+
+        if (m_children != null)
+        {
+            for (int i = 0; i < m_children.Count; i++)
+            {
+                UIBase baseUI = m_children[i];
+                if (baseUI != null)
+                    baseUI.OnRestart();
+            }
+        }
     }
 
     /// <summary>
@@ -190,6 +224,16 @@ public abstract class UIBase : MonoBehaviour
     {
         // On Begin Interaction
         Debug.Log(StringEx.Format("{0}.{1}", name, Macros.__PRETTY_FUNCTION__));
+
+        if (m_children != null)
+        {
+            for (int i = 0; i < m_children.Count; i++)
+            {
+                UIBase baseUI = m_children[i];
+                if (baseUI != null)
+                    baseUI.OnResume();
+            }
+        }
     }
 
     /// <summary>
@@ -199,6 +243,16 @@ public abstract class UIBase : MonoBehaviour
     {
         // On Pause Interaction
         Debug.Log(StringEx.Format("{0}.{1}", name, Macros.__PRETTY_FUNCTION__));
+
+        if (m_children != null)
+        {
+            for (int i = 0; i < m_children.Count; i++)
+            {
+                UIBase baseUI = m_children[i];
+                if (baseUI != null)
+                    baseUI.OnPause();
+            }
+        }
     }
 
     /// <summary>
@@ -208,6 +262,16 @@ public abstract class UIBase : MonoBehaviour
     {
         // On Invisible
         Debug.Log(StringEx.Format("{0}.{1}", name, Macros.__PRETTY_FUNCTION__));
+        
+        if (m_children != null)
+        {
+            for (int i = 0; i < m_children.Count; i++)
+            {
+                UIBase baseUI = m_children[i];
+                if (baseUI != null)
+                    baseUI.OnStop();
+            }
+        }
     }
 
     /// <summary>
@@ -216,7 +280,20 @@ public abstract class UIBase : MonoBehaviour
     internal virtual void OnDestroy()
     {
         // On Destroy
-        Debug.Log(StringEx.Format("{0}.{1}", name, Macros.__PRETTY_FUNCTION__));        
+        Debug.Log(StringEx.Format("{0}.{1}", name, Macros.__PRETTY_FUNCTION__));
+        
+        if (m_children != null)
+        {
+            for (int i = 0; i < m_children.Count; i++)
+            {
+                UIBase baseUI = m_children[i];
+                if (baseUI != null)
+                    baseUI.OnDestroy();
+            }
+            m_children.Clear();
+            m_children = null;
+        }
+
         UIManager.Instance.ReleaseUI(UIType);
     }
 

@@ -216,6 +216,8 @@ public partial class UIManager : MonoSingleton<UIManager>
                 return "Prefabs/UI/AlertView";
             case UIType.UITitle:
                 return "Prefabs/UI/TitleUI";
+            case UIType.UINavigationBar:
+                return "Prefabs/UI/NavigationBar";
             case UIType.UILobby:
                 return "Prefabs/UI/LobbyUI";
             case UIType.UIInventory:
@@ -224,6 +226,8 @@ public partial class UIManager : MonoSingleton<UIManager>
                 return "Prefabs/UI/ForgeUI";
             case UIType.UIPassiveInventory:
                 return "Prefabs/UI/PassiveInventoryUI";
+            case UIType.UIBattle:
+                return "Prefabs/UI/BattelUI";
             case UIType.UIBattleResult:
                 return "Prefabs/UI/BattleResultUI";
         }

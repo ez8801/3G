@@ -49,7 +49,6 @@ public class UIBattle : UIBase
     internal override void OnResume()
     {
         base.OnResume();
-        NavigationBar.SetActiveSafely(false);
         enabled = true;
     }
 
@@ -85,7 +84,6 @@ public class UIBattle : UIBase
     internal override void OnPause()
     {
         base.OnPause();
-        NavigationBar.SetActiveSafely(true);
 
         m_myTeam = null;
         m_enemyTeam = null;

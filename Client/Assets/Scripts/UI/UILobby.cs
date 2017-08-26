@@ -81,8 +81,7 @@ public class UILobby : UIBase
     public void OnClickForge(GameObject sender)
     {
         Debug.Log(Macros.__PRETTY_FUNCTION__);
-        UIForge forgeUI = UIManager.Instance.LoadUI<UIForge>("Prefabs/UI/ForgeUI");
-        forgeUI.ReloadData();
+        UIManager.Instance.Show(UIType.UIForge);        
     }
 
     public void OnClickDungeon(GameObject sender)
