@@ -29,5 +29,7 @@ public class LobbyStage : Stage
         base.OnStop();
         UIManager.Instance.DestroyUI(UIType.UINavigationBar);
         UIManager.Instance.DestroyUI(UIType.UILobby);
+        UIManager.Instance.DestroyUI(UIType.UIStageInfo);
+        UIManager.Instance.DestroyUI(UIType.UIWorld);
     }
 }

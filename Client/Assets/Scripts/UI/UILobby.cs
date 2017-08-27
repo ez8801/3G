@@ -67,27 +67,34 @@ public class UILobby : UIBase
     public void OnClickInventory(GameObject sender)
     {
         Debug.Log(Macros.__PRETTY_FUNCTION__);
-        UIInventory inventoryUI = UIManager.Instance.LoadUI<UIInventory>("Prefabs/UI/InventoryUI");
+        UIInventory inventoryUI = UIManager.Instance.Push<UIInventory>(UIType.UIInventory);
         inventoryUI.ReloadData();
     }
 
     public void OnClickPassiveInventory(GameObject sender)
     {
         Debug.Log(Macros.__PRETTY_FUNCTION__);
-        UIPassiveInventory passiveInventoryUI = UIManager.Instance.LoadUI<UIPassiveInventory>("Prefabs/UI/PassiveInventoryUI");
+        UIPassiveInventory passiveInventoryUI 
+            = UIManager.Instance.Push<UIPassiveInventory>(UIType.UIPassiveInventory);
         passiveInventoryUI.ReloadData();
     }
 
     public void OnClickForge(GameObject sender)
     {
         Debug.Log(Macros.__PRETTY_FUNCTION__);
-        UIManager.Instance.Show(UIType.UIForge);        
+        UIManager.Instance.Push(UIType.UIForge);
     }
 
     public void OnClickDungeon(GameObject sender)
     {
         Debug.Log(Macros.__PRETTY_FUNCTION__);
-        StageManager.Instance.ChangeStage(StageType.GameStage);   
+
+        UIWorld worldUI = UIManager.Instance.RequireUI<UIWorld>(UIType.UIWorld);
+
+        // @TODO: Load Data
+        worldUI.SetData(1);
+
+        UIManager.Instance.Push(UIType.UIWorld);
     }
 
     public void OnClickPvp(GameObject sender)

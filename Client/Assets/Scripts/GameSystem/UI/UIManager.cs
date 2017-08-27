@@ -37,6 +37,18 @@ public partial class UIManager : MonoSingleton<UIManager>
     }
 
     private int m_currUIDepth = 0;
+    public UIType CurrentUIType
+    {
+        private set
+        {
+            m_currUIType = value;
+            NotificationCenter.Post(R.Id.OnUIChanged);
+        }
+        get
+        {
+            return m_currUIType;
+        }
+    }
     private UIType m_currUIType = UIType.None;
 
     public void Initialize()
@@ -157,7 +169,15 @@ public partial class UIManager : MonoSingleton<UIManager>
 
     public void Pop()
     {
-
+        UIBase baseUI = GetCurrentUI();
+        if (baseUI != null)
+        {
+            baseUI.Hide();
+            if (baseUI.PreviousUIType != UIType.None)
+            {
+                Show(baseUI.PreviousUIType);
+            }
+        }
     }
 
     public void ReleaseUI(UIType typeOfUI)
@@ -230,6 +250,10 @@ public partial class UIManager : MonoSingleton<UIManager>
                 return "Prefabs/UI/BattelUI";
             case UIType.UIBattleResult:
                 return "Prefabs/UI/BattleResultUI";
+            case UIType.UIWorld:
+                return "Prefabs/UI/WorldUI";
+            case UIType.UIStageInfo:
+                return "Prefabs/UI/StageInfoUI";
         }
         return string.Empty;
     }

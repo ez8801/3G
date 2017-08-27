@@ -80,10 +80,13 @@ public partial class UIManager
         if (view != null)
         {
             if (view.IsActive)
+            {
+                CurrentUIType = typeOfUI;
                 return view;
+            }
 
             view.Show();
-            m_currUIType = typeOfUI;
+            CurrentUIType = typeOfUI;
         }
 
         return view;
@@ -96,6 +99,8 @@ public partial class UIManager
             currentUI.InterActionAble = false;
 
         T newUI = RequireUI<T>(typeOfUI);
+        newUI.SetPreviousUIType(currentUI.UIType);
+        CurrentUIType = typeOfUI;
         newUI.Show();
         if (hidePreviousUI)
             currentUI.Hide();

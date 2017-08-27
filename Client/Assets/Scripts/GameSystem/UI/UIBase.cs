@@ -17,6 +17,13 @@ public abstract class UIBase : MonoBehaviour
     }
     protected UIType m_type;
 
+    public UIType PreviousUIType
+    {
+        get
+        {
+            return m_previousUIType;
+        }
+    }
     protected UIType m_previousUIType = UIType.None;
 
     private int m_depth;
@@ -106,6 +113,11 @@ public abstract class UIBase : MonoBehaviour
         m_type = typeOfUI;
     }
 
+    internal void SetPreviousUIType(UIType typeOfUI)
+    {
+        m_previousUIType = typeOfUI;
+    }
+
     public void Show()
     {
         IsActive = true;
@@ -120,6 +132,8 @@ public abstract class UIBase : MonoBehaviour
 
     public void Destroy()
     {
+        Debug.Log(StringEx.Format("{0}.{1}", name, Macros.__PRETTY_FUNCTION__));
+
         Hide();
         OnDestroy();
 

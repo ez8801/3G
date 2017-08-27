@@ -10,6 +10,7 @@
 using UnityEngine;
 
 // For Base Class
+/// <seealso cref="UIManager.Generic.cs"/>
 public partial class UIManager
 {
     public UIBase GetUIWith(UIType typeOfUI)
@@ -84,10 +85,13 @@ public partial class UIManager
         if (view != null)
         {
             if (view.IsActive)
+            {
+                CurrentUIType = typeOfUI;
                 return view;
+            }
 
             view.Show();
-            m_currUIType = typeOfUI;
+            CurrentUIType = typeOfUI;
         }
         return view;
     }
@@ -99,6 +103,8 @@ public partial class UIManager
             currentUI.InterActionAble = false;
 
         UIBase newUI = RequireUI(typeOfUI);
+        newUI.SetPreviousUIType(currentUI.UIType);
+        CurrentUIType = typeOfUI;
         newUI.Show();
         if (hidePreviousUI)
             currentUI.Hide();

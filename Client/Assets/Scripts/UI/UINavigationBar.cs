@@ -16,8 +16,7 @@ public class UINavigationBar : UIBase, IObserver, IObserver<GoodsInfo>
     public struct View
     {
         public GameObject BtnBack;
-        public Transform SprBack;
-        public Transform SprHome;
+        public GameObject BtnHome;
         public UILabel LblGold;
     }
     public View m_view;
@@ -34,17 +33,18 @@ public class UINavigationBar : UIBase, IObserver, IObserver<GoodsInfo>
         if (IsAssigned(m_view) == false)
             m_view = new View();
         this.Bind(ref m_view.BtnBack, "BtnBack");
-        this.Bind(ref m_view.SprBack, "BtnBack/SprBack");
-        this.Bind(ref m_view.SprHome, "BtnBack/SprHome");
+        this.Bind(ref m_view.BtnHome, "BtnHome");
         this.Bind(ref m_view.LblGold, "Gold/LblGold");
 
-        UIEventListener.Get(m_view.BtnBack).onClick = OnClickBackOrHome;
+        UIEventListener.Get(m_view.BtnBack).onClick = OnClickBack;
+        UIEventListener.Get(m_view.BtnHome).onClick = OnClickHome;
     }
 
     public override void Awake()
     {
         base.Awake();
         NotificationCenter.Instance.AddObserver(R.Id.OnStageChanged, this);
+        NotificationCenter.Instance.AddObserver(R.Id.OnUIChanged, this);
         NotificationCenter.GoodsMonitor.Subscribe(this);
     }
 
@@ -53,6 +53,13 @@ public class UINavigationBar : UIBase, IObserver, IObserver<GoodsInfo>
         base.ReloadData();
 
         m_view.LblGold.SetTextSafely(MyInfo.Account.Gold.ToString());
+
+        UIBase baseUI = UIManager.Instance.GetCurrentUI();
+        if (baseUI != null)
+        {
+            m_view.BtnBack.SetActiveSafely(baseUI.PreviousUIType != UIType.None);
+            m_view.BtnHome.SetActiveSafely(baseUI.PreviousUIType != UIType.None);
+        }
     }
 
     public void HandleNotification(Notification notification)
@@ -60,6 +67,8 @@ public class UINavigationBar : UIBase, IObserver, IObserver<GoodsInfo>
         switch (notification.id)
         {
             case R.Id.OnStageChanged:
+            case R.Id.OnUIChanged:
+                ReloadData();
                 break;
         }
     }
@@ -84,9 +93,14 @@ public class UINavigationBar : UIBase, IObserver, IObserver<GoodsInfo>
     //-------------------------------------------------------------------------
     #region UIActions
 
-    private void OnClickBackOrHome(GameObject sender)
+    private void OnClickBack(GameObject sender)
     {
+        UIManager.Instance.Pop();
+    }
 
+    private void OnClickHome(GameObject sender)
+    {
+        // @TODO
     }
 
     #endregion UIActions
@@ -94,5 +108,6 @@ public class UINavigationBar : UIBase, IObserver, IObserver<GoodsInfo>
     internal override void OnDestroy()
     {
         NotificationCenter.Instance.RemoveObserver(R.Id.OnStageChanged, this);    
+        NotificationCenter.Instance.RemoveObserver(R.Id.OnUIChanged, this);    
     }
 }

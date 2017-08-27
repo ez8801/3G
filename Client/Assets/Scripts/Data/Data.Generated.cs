@@ -460,4 +460,62 @@ namespace Data
 		}
 	}
 
+	public partial struct Stage : IDeserializable, ISerializable, IIndexer
+	{
+		public void Deserialize(JSONObject json)
+		{
+			Id = json["Id"].I4;
+			Name = json["Name"].STR.GetHashCode();
+			WorldId = json["WorldId"].I4;
+			GoldReward = json["GoldReward"].I4;
+		}
+
+		public void Deserialize(Deserializer deserializer)
+		{
+			deserializer.Deserialize(ref Id);
+			deserializer.Deserialize(ref Name);
+			deserializer.Deserialize(ref WorldId);
+			deserializer.Deserialize(ref GoldReward);
+		}
+
+		public void Serialize(BinaryWriter binaryWriter)
+		{
+			binaryWriter.Write(Id);
+			binaryWriter.Write(Name);
+			binaryWriter.Write(WorldId);
+			binaryWriter.Write(GoldReward);
+		}
+
+		public int GetIndex()
+		{
+			return Id;
+		}
+	}
+
+	public partial struct World : IDeserializable, ISerializable, IIndexer
+	{
+		public void Deserialize(JSONObject json)
+		{
+			Id = json["Id"].I4;
+			Name = json["Name"].STR.GetHashCode();
+		}
+
+		public void Deserialize(Deserializer deserializer)
+		{
+			deserializer.Deserialize(ref Id);
+			deserializer.Deserialize(ref Name);
+		}
+
+		public void Serialize(BinaryWriter binaryWriter)
+		{
+			binaryWriter.Write(Id);
+			binaryWriter.Write(Name);
+		}
+
+		public int GetIndex()
+		{
+			return Id;
+		}
+	}
+
 }
