@@ -35,7 +35,7 @@ public class TitleStage : Stage
 
         bool isPressKey = false;
 #if UNITY_EDITOR
-        isPressKey = Input.GetMouseButton(0);
+        isPressKey = Input.GetMouseButtonUp(0);
 #else
         isPressKey = (Input.touchCount > 0);    
 #endif
