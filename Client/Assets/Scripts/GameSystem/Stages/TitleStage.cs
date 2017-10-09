@@ -18,15 +18,15 @@ public class TitleStage : Stage
 
     public override IEnumerator OnCrate(Intent savedInstanceState)
     {
+        AssetLoader.AddLevelLoadingRequest(LevelName, false);
+        AssetLoader.AddUILoadingRequest(UIType.UITitle);
         yield return AssetLoader.LoadAsset(AssetType.Scene, LevelName);
-        SetContentView<UITitle>("Prefabs/UI/TitleUI");
-        yield return null;
     }
 
     public override void OnStart()
     {
         base.OnStart();
-        m_contentView.ReloadData();
+        UIManager.Instance.Show<UITitle>(UIType.UITitle);
     }
 
     public override void OnUpdate()
@@ -35,12 +35,18 @@ public class TitleStage : Stage
 
         bool isPressKey = false;
 #if UNITY_EDITOR
-        isPressKey = Input.GetMouseButton(0);
+        isPressKey = Input.GetMouseButtonUp(0);
 #else
         isPressKey = (Input.touchCount > 0);    
 #endif
 
         if (isPressKey)
             StageManager.Instance.ChangeStage(StageType.LobbyStage);
+    }
+
+    public override void OnStop()
+    {
+        base.OnStop();
+        UIManager.Instance.DestroyUI(UIType.UITitle);
     }
 }

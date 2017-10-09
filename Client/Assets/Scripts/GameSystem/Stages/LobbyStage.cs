@@ -8,30 +8,28 @@ using System.Collections;
 public class LobbyStage : Stage
 {
     public const string LevelName = "Lobby";
-
-    private UILobby m_lobbyUI;
-
+    
     public override IEnumerator OnCrate(Intent savedInstanceState)
     {
-        UIBase.LoadingUI.ShowLoadingUI(true);
-        UIBase.LoadingUI.SetProgress(0.1f);
-        yield return YieldHelper.PointTwoSeconds;
-
-        yield return AssetLoader.LoadAsset(AssetType.Scene, LevelName);
-        UIBase.LoadingUI.SetProgress(0.5f);
-
-        yield return YieldHelper.PointTwoSeconds;
-        m_lobbyUI = SetContentView<UILobby>("Prefabs/UI/LobbyUI");
-        UIBase.NavigationBar.ReloadData();
-
-        UIBase.LoadingUI.SetProgress(1f);
-
-        yield return null;
+        AssetLoader.AddLevelLoadingRequest(LevelName, false);
+        AssetLoader.AddUILoadingRequest(UIType.UILobby);
+        AssetLoader.AddUILoadingRequest(UIType.UINavigationBar);
+        yield return AssetLoader.StartLoading();
     }
 
     public override void OnStart()
     {
         base.OnStart();
+        UIManager.Instance.Show(UIType.UINavigationBar);
+        UIManager.Instance.Show(UIType.UILobby);
+    }
 
+    public override void OnStop()
+    {
+        base.OnStop();
+        UIManager.Instance.DestroyUI(UIType.UINavigationBar);
+        UIManager.Instance.DestroyUI(UIType.UILobby);
+        UIManager.Instance.DestroyUI(UIType.UIStageInfo);
+        UIManager.Instance.DestroyUI(UIType.UIWorld);
     }
 }

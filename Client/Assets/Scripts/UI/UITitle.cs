@@ -9,6 +9,10 @@
 
 using UnityEngine;
 
+/// <summary>
+/// 타이틀 UI
+/// </summary>
+/// <seealso cref="UIType.UITitle"/>
 public class UITitle : UIBase 
 {
     [System.Serializable]
@@ -17,17 +21,21 @@ public class UITitle : UIBase
         public UILabel lblGameVersion;
     }
     public View m_view;
+    
+    internal override void OnCreate()
+    {
+        base.OnCreate();
+        BindComponents();
+    }
 
     [ContextMenu("Bind")]
-    public override void Initialize()
+    public void BindComponents()
     {
-        base.Initialize();
-
         if (IsAssigned(m_view) == false)
             m_view = new View();
         this.Bind(ref m_view.lblGameVersion, "LblGameVersion");
     }
-    
+
     public override void ReloadData()
     {
         base.ReloadData();

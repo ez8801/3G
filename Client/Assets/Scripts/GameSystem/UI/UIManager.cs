@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 /// <summary>
 /// UI 매니저
 /// </summary>
-public class UIManager : MonoSingleton<UIManager>
+public partial class UIManager : MonoSingleton<UIManager>
 {
+    public const int kUIDepth = 50;
+
     public GameObject Root
     {
         get
@@ -21,7 +24,33 @@ public class UIManager : MonoSingleton<UIManager>
     private Camera m_mainCamera;
     private Camera m_uiCamera;
     private UIPanel m_uiPanel;
-    
+
+    private Dictionary<UIType, UIBase> m_cachedUIs = new Dictionary<UIType, UIBase>();
+    private List<UIType> m_stack = new List<UIType>();
+
+    public int StackedUICount
+    {
+        get
+        {
+            return m_stack.Count;
+        }
+    }
+
+    private int m_currUIDepth = 0;
+    public UIType CurrentUIType
+    {
+        private set
+        {
+            m_currUIType = value;
+            NotificationCenter.Post(R.Id.OnUIChanged);
+        }
+        get
+        {
+            return m_currUIType;
+        }
+    }
+    private UIType m_currUIType = UIType.None;
+
     public void Initialize()
     {
         EnsureRoot();
@@ -41,8 +70,18 @@ public class UIManager : MonoSingleton<UIManager>
         GameObject root = Root;
         return Util.FindInChildren<T>(root);
     }
+    
+    private GameObject LoadResource(string resourceName)
+    {
+        GameObject prefab = Resources.Load(resourceName) as GameObject;
+        GameObject newOne = Instantiate(prefab) as GameObject;
+        if (newOne != null)
+            newOne.name = newOne.name.Replace("(Clone)", string.Empty);
+        AttachUI(newOne);
+        return newOne;
+    }
 
-    public T LoadUI<T>(string resourceName) where T : UIBase 
+    public T LoadUI<T>(string resourceName) where T : UIBase
     {
         T cachedUI = GetCachedUI<T>();
         if (cachedUI != null)
@@ -50,14 +89,10 @@ public class UIManager : MonoSingleton<UIManager>
             return cachedUI;
         }
 
-        GameObject prefab = Resources.Load(resourceName) as GameObject;
-        GameObject newOne = Instantiate(prefab) as GameObject;
-        if (newOne != null)
-            newOne.name = newOne.name.Replace("(Clone)", string.Empty);
-        AttachUI(newOne);
+        GameObject newOne = LoadResource(resourceName);
 
         T view = Util.RequireComponent<T>(newOne);
-        view.ViewDidLoad();
+        view.OnCreate();
         return view;
     }
 
@@ -74,6 +109,96 @@ public class UIManager : MonoSingleton<UIManager>
         }
     }
 
+    public UIBase GetCurrentUI()
+    {
+        return GetUIWith(m_currUIType);
+    }
+    
+    public void CacheUI(UIType typeOfUI, UIBase view)
+    {
+        if (m_cachedUIs.ContainsKey(typeOfUI))
+            m_cachedUIs[typeOfUI] = view;
+        else
+            m_cachedUIs.Add(typeOfUI, view);
+    }
+
+    public void DecreaseDepth()
+    {
+        m_currUIDepth = Mathf.Max(--m_currUIDepth, 0);
+    }
+    
+    public void HideUI()
+    {
+        if (StackedUICount > 0)
+        {
+            UIType typeOfUI = m_stack[m_stack.Count - 1];
+            HideUI(typeOfUI);
+            m_stack.RemoveAt(m_stack.Count - 1);
+
+            if (StackedUICount > 0)
+            {
+                typeOfUI = m_stack[m_stack.Count - 1];
+                Show(typeOfUI);
+            }
+        }
+    }
+
+    public void HideUI(UIType typeOfUI)
+    {
+        UIBase cachedUI = GetUIWith(typeOfUI);
+        if (cachedUI != null)
+        {
+            cachedUI.Hide();
+        }
+    }
+
+    public void HideAllUI()
+    {
+        var enumerator = m_cachedUIs.GetEnumerator();
+        while (enumerator.MoveNext())
+        {
+            var current = enumerator.Current;
+            if (current.Value != null)
+            {
+                current.Value.Hide();
+            }
+        }
+
+        m_currUIDepth = 0;
+    }
+
+    public void Pop()
+    {
+        UIBase baseUI = GetCurrentUI();
+        if (baseUI != null)
+        {
+            baseUI.Hide();
+            if (baseUI.PreviousUIType != UIType.None)
+            {
+                Show(baseUI.PreviousUIType);
+            }
+        }
+    }
+
+    public void ReleaseUI(UIType typeOfUI)
+    {
+        if (m_cachedUIs.ContainsKey(typeOfUI))
+        {
+            m_cachedUIs.Remove(typeOfUI);
+        }
+    }
+
+    public void DestroyUI(UIType typeofUI)
+    {
+        UIBase baseUI = GetUIWith(typeofUI);
+        if (baseUI != null)
+        {
+            HideUI(typeofUI);
+            Destroy(baseUI.gameObject);
+            baseUI = null;
+        }
+    }
+    
     public void ShowLoadingUI(bool isShow)
     {
         if (isShow)
@@ -101,5 +226,35 @@ public class UIManager : MonoSingleton<UIManager>
 
         Vector3 vRet = m_uiCamera.ScreenToWorldPoint(new Vector2(scrPos.x, scrPos.y));
         return vRet;
+    }
+
+    public string GetUIPrefabPath(UIType typeOfUI)
+    {
+        switch (typeOfUI)
+        {
+            case UIType.UIAlertView:
+                return "Prefabs/UI/AlertView";
+            case UIType.UITitle:
+                return "Prefabs/UI/TitleUI";
+            case UIType.UINavigationBar:
+                return "Prefabs/UI/NavigationBar";
+            case UIType.UILobby:
+                return "Prefabs/UI/LobbyUI";
+            case UIType.UIInventory:
+                return "Prefabs/UI/InventoryUI";
+            case UIType.UIForge:
+                return "Prefabs/UI/ForgeUI";
+            case UIType.UIPassiveInventory:
+                return "Prefabs/UI/PassiveInventoryUI";
+            case UIType.UIBattle:
+                return "Prefabs/UI/BattelUI";
+            case UIType.UIBattleResult:
+                return "Prefabs/UI/BattleResultUI";
+            case UIType.UIWorld:
+                return "Prefabs/UI/WorldUI";
+            case UIType.UIStageInfo:
+                return "Prefabs/UI/StageInfoUI";
+        }
+        return string.Empty;
     }
 }

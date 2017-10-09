@@ -10,6 +10,10 @@
 using UnityEngine;
 using GameSystem;
 
+/// <summary>
+/// 로비 UI
+/// </summary>
+/// <seealso cref="UIType.UILobby"/>
 public class UILobby : UIBase
 {
     [System.Serializable]
@@ -22,21 +26,16 @@ public class UILobby : UIBase
         public UIEventListener BtnPvp;
     }
     public View m_view;
-
-    public override void Initialize()
+    
+    internal override void OnCreate()
     {
+        base.OnCreate();
         Debug.Log(Macros.__PRETTY_FUNCTION__);
         BindComponents();
-
-        m_view.BtnChat.onClick = OnClickChat;
-        // m_view.BtnInventory.onClick = OnClickInventory;
-        m_view.BtnForge.onClick = OnClickForge;
-        m_view.BtnDungeon.onClick = OnClickDungeon;
-        m_view.BtnPvp.onClick = OnClickPassiveInventory;
     }
 
     [ContextMenu("Bind")]
-    private void BindComponents()
+    public void BindComponents()
     {
         Debug.Log(Macros.__PRETTY_FUNCTION__);
         if (IsAssigned(m_view) == false)
@@ -46,6 +45,12 @@ public class UILobby : UIBase
         this.Bind(ref m_view.BtnForge, "ToolBar/AnchorBottomRight/Grid/BtnForge");
         this.Bind(ref m_view.BtnDungeon, "ToolBar/AnchorBottomRight/Grid/BtnDungeon");
         this.Bind(ref m_view.BtnPvp, "ToolBar/AnchorBottomRight/Grid/BtnPvp");
+
+        m_view.BtnChat.onClick = OnClickChat;
+        // m_view.BtnInventory.onClick = OnClickInventory;
+        m_view.BtnForge.onClick = OnClickForge;
+        m_view.BtnDungeon.onClick = OnClickDungeon;
+        m_view.BtnPvp.onClick = OnClickPassiveInventory;
     }
 
     //-------------------------------------------------------------------------
@@ -62,31 +67,34 @@ public class UILobby : UIBase
     public void OnClickInventory(GameObject sender)
     {
         Debug.Log(Macros.__PRETTY_FUNCTION__);
-        UIInventory inventoryUI = UIManager.Instance.LoadUI<UIInventory>("Prefabs/UI/InventoryUI");
-        inventoryUI.Initialize();
+        UIInventory inventoryUI = UIManager.Instance.Push<UIInventory>(UIType.UIInventory);
         inventoryUI.ReloadData();
     }
 
     public void OnClickPassiveInventory(GameObject sender)
     {
         Debug.Log(Macros.__PRETTY_FUNCTION__);
-        UIPassiveInventory passiveInventoryUI = UIManager.Instance.LoadUI<UIPassiveInventory>("Prefabs/UI/PassiveInventoryUI");
-        passiveInventoryUI.Initialize();
+        UIPassiveInventory passiveInventoryUI 
+            = UIManager.Instance.Push<UIPassiveInventory>(UIType.UIPassiveInventory);
         passiveInventoryUI.ReloadData();
     }
 
     public void OnClickForge(GameObject sender)
     {
         Debug.Log(Macros.__PRETTY_FUNCTION__);
-        UIForge forgeUI = UIManager.Instance.LoadUI<UIForge>("Prefabs/UI/ForgeUI");
-        forgeUI.Initialize();
-        forgeUI.ReloadData();
+        UIManager.Instance.Push(UIType.UIForge);
     }
 
     public void OnClickDungeon(GameObject sender)
     {
         Debug.Log(Macros.__PRETTY_FUNCTION__);
-        StageManager.Instance.ChangeStage(StageType.GameStage);   
+
+        UIWorld worldUI = UIManager.Instance.RequireUI<UIWorld>(UIType.UIWorld);
+
+        // @TODO: Load Data
+        worldUI.SetData(1);
+
+        UIManager.Instance.Push(UIType.UIWorld);
     }
 
     public void OnClickPvp(GameObject sender)

@@ -8,9 +8,12 @@
  */
 
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+/// 페시브 인벤토리
+/// </summary>
+/// <seealso cref="UIType.UIPassiveInventory"/>
 public class UIPassiveInventory : UIBase
 {
     [System.Serializable]
@@ -28,9 +31,10 @@ public class UIPassiveInventory : UIBase
     private int m_currentTabIndex;
     private bool[] m_isDirtyFlags = new bool[0];
     private List<UserData.PassiveSkill> m_selectedPassives = new List<UserData.PassiveSkill>();
-
-    public override void Initialize()
+    
+    internal override void OnCreate()
     {
+        base.OnCreate();
         BindComponents();
 
         m_currentTabIndex = 0;
@@ -38,11 +42,10 @@ public class UIPassiveInventory : UIBase
         m_view.Grid.DataSource = CellForRowAtIndex;
         m_view.Grid.Delegate = NumberOfRowsInGrid;
         m_view.BtnClose.onClick = OnClickClose;
-
     }
 
     [ContextMenu("Bind")]
-    private void BindComponents()
+    public void BindComponents()
     {
         if (IsAssigned(m_view) == false) m_view = new View();
         this.Bind(ref m_view.GridEquip, "GridEquip");
@@ -199,6 +202,7 @@ public class UIPassiveInventory : UIBase
     }
 
     #endregion DataSource & Delegate
+
     #region UIActions
 
     public void OnClickClose(GameObject sender)
@@ -217,8 +221,8 @@ public class UIPassiveInventory : UIBase
         if(int.TryParse(sender.transform.parent.name, out index))
         {
             UserData.PassiveSkill equippedPassive = MyInfo.PassiveInventory.GetEquipPassive(index + 1);
-            m_view.PassiveDetailView.Initialize();
-            m_view.PassiveDetailView.InitWithData(equippedPassive);
+            m_view.PassiveDetailView.Show();
+            m_view.PassiveDetailView.SetData(equippedPassive);
         }
     }
     public void OnClickTab(GameObject sender)
@@ -241,8 +245,8 @@ public class UIPassiveInventory : UIBase
         if(int.TryParse(sender.name, out index))
         {
             UserData.PassiveSkill clickedPassive = m_selectedPassives[index];
-            m_view.PassiveDetailView.Initialize();
-            m_view.PassiveDetailView.InitWithData(clickedPassive);
+            m_view.PassiveDetailView.Show();
+            m_view.PassiveDetailView.SetData(clickedPassive);
         }
     }
 

@@ -1,0 +1,22 @@
+[
+  {
+    "Id": 30000001,
+    "Type": 1,
+    "Cooltime": 3,
+    "Effect": "",
+    "Texture": "Textures/Items/I_Cosmos_Sword",
+    "Chargeable": false,
+    "Charging": 0,
+    "Level": 0
+  },
+    {
+    "Id": 30000002,
+    "Type": 2,
+    "Cooltime": 10,
+    "Effect": "",
+    "Texture": "Textures/Items/I_Cosmos_Spear",
+    "Chargeable": false,
+    "Charging": 0,
+    "Level": 0
+  }
+]

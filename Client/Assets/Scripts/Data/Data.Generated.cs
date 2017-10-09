@@ -393,6 +393,7 @@ namespace Data
 		{
 			Id = json["Id"].I4;
 			Group = json["Group"].I4;
+			Name = json["Name"].STR.GetHashCode();
 			ItemMaterialGroup = json["ItemMaterialGroup"].I4;
 			RequestCount = json["RequestCount"].I4;
 		}
@@ -401,6 +402,7 @@ namespace Data
 		{
 			deserializer.Deserialize(ref Id);
 			deserializer.Deserialize(ref Group);
+			deserializer.Deserialize(ref Name);
 			deserializer.Deserialize(ref ItemMaterialGroup);
 			deserializer.Deserialize(ref RequestCount);
 		}
@@ -409,6 +411,7 @@ namespace Data
 		{
 			binaryWriter.Write(Id);
 			binaryWriter.Write(Group);
+			binaryWriter.Write(Name);
 			binaryWriter.Write(ItemMaterialGroup);
 			binaryWriter.Write(RequestCount);
 		}
@@ -457,4 +460,105 @@ namespace Data
 		}
 	}
 
+	public partial struct Stage : IDeserializable, ISerializable, IIndexer
+	{
+		public void Deserialize(JSONObject json)
+		{
+			Id = json["Id"].I4;
+			Name = json["Name"].STR.GetHashCode();
+			WorldId = json["WorldId"].I4;
+			GoldReward = json["GoldReward"].I4;
+		}
+
+		public void Deserialize(Deserializer deserializer)
+		{
+			deserializer.Deserialize(ref Id);
+			deserializer.Deserialize(ref Name);
+			deserializer.Deserialize(ref WorldId);
+			deserializer.Deserialize(ref GoldReward);
+		}
+
+		public void Serialize(BinaryWriter binaryWriter)
+		{
+			binaryWriter.Write(Id);
+			binaryWriter.Write(Name);
+			binaryWriter.Write(WorldId);
+			binaryWriter.Write(GoldReward);
+		}
+
+		public int GetIndex()
+		{
+			return Id;
+		}
+	}
+
+	public partial struct World : IDeserializable, ISerializable, IIndexer
+	{
+		public void Deserialize(JSONObject json)
+		{
+			Id = json["Id"].I4;
+			Name = json["Name"].STR.GetHashCode();
+		}
+
+		public void Deserialize(Deserializer deserializer)
+		{
+			deserializer.Deserialize(ref Id);
+			deserializer.Deserialize(ref Name);
+		}
+
+		public void Serialize(BinaryWriter binaryWriter)
+		{
+			binaryWriter.Write(Id);
+			binaryWriter.Write(Name);
+		}
+
+		public int GetIndex()
+		{
+			return Id;
+		}
+       
+    }
+    public partial struct Active : IDeserializable, ISerializable, IIndexer
+    {
+        public void Deserialize(JSONObject json)
+        {
+            Id = json["Id"].I4;
+            Type = json["Type"].I4;
+            Cooltime = json["Cooltime"].I4;
+            Effect = json["Effect"].I4;
+            Texture = json["Texture"].STR;
+            Chargeable = json["Chargeable"].B;
+            Charging = json["Charging"].I4;
+            Level = json["Level"].I4;
+        }
+
+        public void Deserialize(Deserializer deserializer)
+        {
+            deserializer.Deserialize(ref Id);
+            deserializer.Deserialize(ref Type);
+            deserializer.Deserialize(ref Cooltime);
+            deserializer.Deserialize(ref Effect);
+            deserializer.Deserialize(ref Texture);
+            deserializer.Deserialize(ref Chargeable);
+            deserializer.Deserialize(ref Charging);
+            deserializer.Deserialize(ref Level);
+        }
+
+        public void Serialize(BinaryWriter binaryWriter)
+        {
+            binaryWriter.Write(Id);
+            binaryWriter.Write(Type);
+            binaryWriter.Write(Cooltime);
+            binaryWriter.Write(Effect);
+            binaryWriter.Write(Texture);
+            binaryWriter.Write(Chargeable);
+            binaryWriter.Write(Charging);
+            binaryWriter.Write(Level);
+        }
+
+        public int GetIndex()
+        {
+            return Id;
+        }
+    }
 }

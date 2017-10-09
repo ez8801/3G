@@ -15,6 +15,7 @@ public enum ItemCategory
     Misc,
     Weapon = 10,
     Armor = 11,
+    Active = 12,
     Max
 }
 
@@ -29,6 +30,7 @@ public enum ItemType
     BluePrint = 100,
     Sword = 1000,
     Armor = 2000,
+    ActiveStone = 3000,
     Max
 }
 

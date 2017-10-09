@@ -13,6 +13,7 @@ public static partial class R
     {
         OnBackPressed,
         OnStageChanged,
+        OnUIChanged,
         ExitStage,
 
         OnProgress,

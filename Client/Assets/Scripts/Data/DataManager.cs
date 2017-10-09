@@ -33,6 +33,9 @@ public class DataManager : MonoSingleton<DataManager>
         LoadTable("Skill.json", SkillTable.Instance);
         LoadTable("Tip.json", TipTable.Instance);
         LoadTable("PassiveSkill.json", PassiveSkillTable.Instance);
+        LoadTable("World.json", WorldTable.Instance);
+        LoadTable("Stage.json", StageTable.Instance);
+        LoadTable("Active.json", ActiveTable.Instance);
     }
 
     public void GenerateBytes()
@@ -53,6 +56,9 @@ public class DataManager : MonoSingleton<DataManager>
         serializer.Serialize("Tip", TipTable.Instance);
         serializer.Serialize("Skill", SkillTable.Instance);
         serializer.Serialize("PassiveSkill", PassiveSkillTable.Instance);
+        serializer.Serialize("World", WorldTable.Instance);
+        serializer.Serialize("Stage", StageTable.Instance);
+        serializer.Serialize("Active", ActiveTable.Instance);
 
         Validate("Character", new CharacterTable());
         Validate("Config", new ConfigTable());
@@ -67,6 +73,9 @@ public class DataManager : MonoSingleton<DataManager>
         Validate("Tip", new TipTable());
         Validate("Skill", new SkillTable());
         Validate("PassiveSkill", new PassiveSkillTable());
+        Validate("World", new WorldTable());
+        Validate("Stage", new StageTable());
+        Validate("Active", new ActiveTable());
     }
 
     private bool Validate<T>(string tableName, Table<T> table) where T : IIndexer, IDeserializable, new()

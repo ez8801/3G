@@ -28,17 +28,17 @@ public class UIItemDetailView : UIBase
 
     private SimpleItem m_focusItem = new SimpleItem();
     
-    public override void Initialize()
+    internal override void OnStart()
     {
-        base.Initialize();
+        base.OnStart();
         BindComponents();
         m_view.CellItem.Initialize();
     }
 
-    public void InitWithData(UserData.Item item)
+    public void SetData(UserData.Item item)
     {
         NGUITools.SetActive(gameObject, true);
-        m_view.CellItem.InitWithData(item);
+        m_view.CellItem.SetData(item);
 
         Data.Item itemData = ItemTable.Instance.Find(item.ItemId);
         
@@ -62,7 +62,7 @@ public class UIItemDetailView : UIBase
     }
 
     [ContextMenu("Bind")]
-    private void BindComponents()
+    public void BindComponents()
     {
         if (!IsAssigned(m_view))
             m_view = new View();
@@ -120,7 +120,7 @@ public class UIItemDetailView : UIBase
                 .SetPositiveButton(() =>
                 {
                     NGUITools.SetActive(gameObject, false);
-                    UIInventory inventoryUI = UIManager.Instance.GetCachedUI<UIInventory>();
+                    UIInventory inventoryUI = UIManager.Instance.GetUI<UIInventory>(UIType.UIInventory);
                     if (inventoryUI != null)
                         inventoryUI.ReloadData();
                 });

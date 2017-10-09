@@ -21,9 +21,13 @@ public class UIItemCell : MonoBehaviour
 
     private UIEventListener.VoidDelegate m_onClickListener;
 
+    private bool m_isSelected;
+
     public void Initialize()
     {
         BindComponents();
+
+        m_isSelected = false;
     }
 
     [ContextMenu("Bind")]
@@ -38,23 +42,27 @@ public class UIItemCell : MonoBehaviour
         this.Bind(ref SprEquip, "SprEquip");
     }
 
-    public void InitWithData(UserData.Item item)
+    public void SetData(UserData.Item item)
     {
-        InitWith(item.Id, item.ItemId, item.Count);
+        SetData(item.Id, item.ItemId, item.Count);
     }
 
-    public void InitWithData(SimpleItem item)
+    public void SetData(SimpleItem item)
     {
-        InitWith(item.Id, item.ItemId, item.Count);
+        SetData(item.Id, item.ItemId, item.Count);
     }
 
-    public void InitWith(long id, int itemId, int itemCount)
+    public void SetData(long id, int itemId, int itemCount, int requestCount = 0)
     {
         Data.Item itemData = ItemTable.Instance.Find(itemId);
         if (ItemTable.Instance.IsStackable(itemData))
         {
             LblCount.SetActiveSafely(true);
-            LblCount.SetTextSafely(string.Concat("x", itemCount));
+
+            if (requestCount == 0)
+                LblCount.SetTextSafely(string.Concat("x", itemCount));
+            else
+                LblCount.SetTextSafely(string.Format("{0}/{1}", itemCount, requestCount));
         }
         else
         {
@@ -76,8 +84,13 @@ public class UIItemCell : MonoBehaviour
         SprEquip.SetActiveSafely(MyInfo.Inventory.IsEquip(id));
 
         LblLevel.SetActiveSafely(false);
-        SprSelect.SetActiveSafely(false);
+        SprSelect.SetActiveSafely(m_isSelected);
         Lock.SetActiveSafely(false);
+    }
+
+    public void SetSelection(bool isSelect)
+    {
+        m_isSelected = isSelect;
     }
     
     public void Disable()

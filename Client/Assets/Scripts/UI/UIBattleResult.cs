@@ -13,6 +13,7 @@ using System.Collections.Generic;
 /// <summary>
 /// 전투 결과 UI
 /// </summary>
+/// <seealso cref="UIType.UIBattleResult"/>
 public class UIBattleResult : UIBase
 {
 	[System.Serializable]
@@ -25,9 +26,10 @@ public class UIBattleResult : UIBase
 		public UISprite SprGauge;
 	}
 	public View m_view;
-
-	public override void Initialize()
-	{		
+    
+    internal override void OnCreate()
+    {
+        base.OnCreate();
         BindComponents();
     }
 
@@ -43,7 +45,7 @@ public class UIBattleResult : UIBase
             bool isAssigned = (i < gainedItems.Count);
             if (isAssigned)
             {
-                itemCellUI.InitWithData(gainedItems[i]);
+                itemCellUI.SetData(gainedItems[i]);
             }
             else
             {
@@ -70,6 +72,6 @@ public class UIBattleResult : UIBase
     public void OnClickOK()
     {
         NotificationCenter.Post(R.Id.ExitStage);
-        Destroy(gameObject);
+        Hide();
     }
 }

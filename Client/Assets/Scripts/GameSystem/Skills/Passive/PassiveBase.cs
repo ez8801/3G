@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PassiveBase
+public abstract class PassiveBase : MonoBehaviour
 {
     public virtual PassiveType Type
     {
@@ -11,6 +11,16 @@ public abstract class PassiveBase
             return PassiveType.None;
         }
     }
+
+    public virtual void ApplyPassive()
+    {
+
+    }
+    public virtual void ReleasePassive()
+    {
+
+    }
+
 
     private float m_exp;
     public float Exp

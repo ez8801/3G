@@ -142,4 +142,20 @@ public sealed class ItemTable : ArrayTable<Item>
         }
         return ItemSlot.None;
     }
+
+    /// <summary>
+    /// 지정된 재료 그룹에 해당하는 첫번째 아이템을 반환합니다.
+    /// </summary>
+    /// <param name="groupId"></param>
+    /// <returns></returns>
+    public Item GetMaterialItem(int groupId)
+    {
+        for (int i = 0; i < Length; i++)
+        {
+            Item match = this[i];
+            if (match.ItemMaterialGroup == groupId)
+                return match;
+        }
+        return default(Item);
+    }
 }
