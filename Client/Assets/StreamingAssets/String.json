@@ -246,5 +246,13 @@
   {
     "Key": "Stage.Name.10",
     "Value": "2-5. 스테이지"
+  },
+  {
+    "Key": "Item.Name.30000001",
+    "Value": "액티브테스트"
+  },
+  {
+    "Key": "Item.Name.30000002",
+    "Value": "액티브으테스트"
   }
 ]

@@ -95,5 +95,29 @@
     "ItemMaterialGroup": 0,
     "Texture": "Textures/Items/I_Mineshaft_Chest",
     "Price": 0
+  },
+  {
+    "Id": 30000001,
+    "Category": 12,
+    "Type": 3000,
+    "Rarity": 2,
+    "Name": "Item.Name.30000001",
+    "Desc": "",
+    "Value": 1,
+    "ItemMaterialGroup": 0,
+    "Texture": "Textures/Items/I_Cosmos_Sword",
+    "Price": 0
+  },
+  {
+    "Id": 30000002,
+    "Category": 12,
+    "Type": 3000,
+    "Rarity": 3,
+    "Name": "Item.Name.30000002",
+    "Desc": "",
+    "Value": 1,
+    "ItemMaterialGroup": 0,
+    "Texture": "Textures/Items/I_Cosmos_Spear",
+    "Price": 0
   }
 ]
