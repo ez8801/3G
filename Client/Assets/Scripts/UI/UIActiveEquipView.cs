@@ -27,7 +27,8 @@ public class UIActiveEquipView : UIBase
     public View m_view;
 
     private SimpleItem m_selectedItem;
-    private List<Data.Skill> m_actives;
+    private List<Data.Skill> m_equipActives;
+    private List<SimpleItem> m_selectActiveItems;
 
     internal override void OnCreate()
     {

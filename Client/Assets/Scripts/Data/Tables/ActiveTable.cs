@@ -18,18 +18,6 @@ namespace Data
     }
 }
 
-//공통스킬(common), 무기특화 스킬로 구분
-public enum ActiveType
-{
-    None,
-    Common = 1,
-    Staff = 10,
-    Gem = 11,
-    Shield = 12,
-    Sword = 13,
-    Spear = 14,
-    Bow = 15
-}
 
 public sealed class ActiveTable : ArrayTable<Active>
 {

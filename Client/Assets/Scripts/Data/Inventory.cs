@@ -17,7 +17,16 @@ namespace UserData
         public int ItemId;
         public int Count;
     }
+
+    public class Active
+    {
+        public long Id;
+        public int ActiveId;
+        public int Level;
+    }
 }
+
+
 
 public class Inventory
 {
