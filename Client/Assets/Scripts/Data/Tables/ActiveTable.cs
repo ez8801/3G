@@ -33,13 +33,13 @@ public enum ActiveType
 
 public sealed class ActiveTable : ArrayTable<Active>
 {
-    private static SkillTable m_instance = null;
-    public static SkillTable Instance
+    private static ActiveTable m_instance = null;
+    public static ActiveTable Instance
     {
         get
         {
             if (m_instance == null)
-                m_instance = new SkillTable();
+                m_instance = new ActiveTable();
             return m_instance;
         }
     }
