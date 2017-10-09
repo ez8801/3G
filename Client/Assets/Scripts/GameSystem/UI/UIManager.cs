@@ -248,6 +248,8 @@ public partial class UIManager : MonoSingleton<UIManager>
                 return "Prefabs/UI/PassiveInventoryUI";
             case UIType.UIBattle:
                 return "Prefabs/UI/BattelUI";
+            case UIType.UIBattleActive:
+                return "Prefabs/UI/BattleActiveUI";
             case UIType.UIBattleResult:
                 return "Prefabs/UI/BattleResultUI";
             case UIType.UIWorld:

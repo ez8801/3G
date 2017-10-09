@@ -21,5 +21,6 @@ public enum UIType
     UIBattleResult,
     UIWorld,
     UIStageInfo,
+    UIBattleActive,
     Max	
 }

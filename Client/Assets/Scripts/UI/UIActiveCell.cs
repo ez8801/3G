@@ -43,7 +43,7 @@ public class UIActiveCell : MonoBehaviour
     public void SetData(long id, int activeId, int ActiveLevel)
     {
         Data.Active activeData = ActiveTable.Instance.Find(activeId);
-        // @TODO: Set Item Info
+
         if (!string.IsNullOrEmpty(activeData.Texture))
         {
             TexActiveIcon.SetActiveSafely(true);
