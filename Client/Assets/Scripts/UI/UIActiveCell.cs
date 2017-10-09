@@ -30,20 +30,53 @@ public class UIActiveCell : MonoBehaviour
         this.Bind(ref LblActiveLevel, "LblActiveLevel");
     }
 
-    public void InitWithData()
+    public void SetData(UserData.Active active)
     {
-        InitWith();
+        SetData(active.Id, active.ActiveId, active.Level);
     }
 
-    public void InitWithData(int a)//나중에 int a 를 심플 액티브로 교체해야함. 위는 유저데이터 액티브
+    public void SetData(SimpleActive active)
     {
-        InitWith();
+        SetData(active.Id, active.ActiveId, active.Level);
     }
 
-    public void InitWith()
+    public void SetData(long id, int activeId, int ActiveLevel)
     {
+        Data.Active activeData = ActiveTable.Instance.Find(activeId);
+        // @TODO: Set Item Info
+        if (!string.IsNullOrEmpty(activeData.Texture))
+        {
+            TexActiveIcon.SetActiveSafely(true);
+            TexActiveIcon.mainTexture = Resources.Load<Texture2D>(activeData.Texture);
 
+            LblActiveLevel.SetActiveSafely(true);
+            LblActiveLevel.SetTextSafely(string.Concat("Lv.", ActiveLevel));
+        }
+        else
+        {
+            TexActiveIcon.SetActiveSafely(false);
+        }
     }
 
+    public void Disable()
+    {
+        TexActiveIcon.SetActiveSafely(false);
+        LblActiveLevel.SetActiveSafely(false);
+    }
+
+
+    #region UIActions
+    public void SetOnClickListener(UIEventListener.VoidDelegate l)
+    {
+        m_onClickListener = l;
+    }
+
+    private void OnClick()
+    {
+        if (m_onClickListener != null)
+            m_onClickListener(gameObject);
+    }
+
+    #endregion UIActions
 
 }

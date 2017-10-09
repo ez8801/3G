@@ -43,7 +43,7 @@ public class CharacterFollow : MonoBehaviour
         if (go != null)
             farRight = go.transform;
     }
-
+    //10-09카메라 위치 약간손봄(위로 1.0f올려서 추적, 게임 씬 내부 main camera 의 SIZE 2->3으로 변함)
     void Update()
     {
         if (target == null)
@@ -54,7 +54,7 @@ public class CharacterFollow : MonoBehaviour
             , (farRight != null) ? farRight.position.x : float.MaxValue);
 
         Vector3 vTarget = new Vector3(clampX
-            , (scale.y == 1) ? target.position.y : cachedTransform.position.y
+            , (scale.y == 1) ? target.position.y+1.0f : cachedTransform.position.y+1.0f
             , cachedTransform.position.z);
 
         // cachedTransform.SetPosX(clampX);        
