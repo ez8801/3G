@@ -7,7 +7,7 @@
     "Texture": "Textures/Items/I_Cosmos_Sword",
     "Chargeable": false,
     "Charging": 0,
-    "Level": 0
+    "Level": 1
   },
     {
     "Id": 30000002,
@@ -17,6 +17,6 @@
     "Texture": "Textures/Items/I_Cosmos_Spear",
     "Chargeable": false,
     "Charging": 0,
-    "Level": 0
+    "Level": 2
   }
 ]

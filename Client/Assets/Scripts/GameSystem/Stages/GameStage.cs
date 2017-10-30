@@ -14,6 +14,7 @@ public class GameStage : GameSystem.Stage, IObserver
         AssetLoader.AddLevelLoadingRequest(LevelName, false);
         AssetLoader.AddLevelLoadingRequest("Woods", true);
         AssetLoader.AddUILoadingRequest(UIType.UIBattle);
+        AssetLoader.AddUILoadingRequest(UIType.UIBattleActive);
         AssetLoader.AddUILoadingRequest(UIType.UIBattleResult);
         yield return AssetLoader.StartLoading();
         
@@ -31,6 +32,7 @@ public class GameStage : GameSystem.Stage, IObserver
     {
         base.OnStart();
         UIManager.Instance.Show(UIType.UIBattle);
+        UIManager.Instance.Show(UIType.UIBattleActive);
     }
 
     public void HandleNotification(Notification notification)
@@ -74,6 +76,7 @@ public class GameStage : GameSystem.Stage, IObserver
     {
         base.OnStop();
         UIManager.Instance.DestroyUI(UIType.UIBattle);
+        UIManager.Instance.DestroyUI(UIType.UIBattleActive);
         UIManager.Instance.DestroyUI(UIType.UIBattleResult);
         NotificationCenter.Instance.RemoveObserver(this);
     }

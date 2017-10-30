@@ -20,9 +20,9 @@ public class UIBattleActive : UIBase
     }
     public View m_view;
 
-    private List<Data.Active> m_actives;
+    private List<Data.Skill> m_actives;
 
-    public void ReloadActiveList(int numOfActive, List<Data.Active> activeList)
+    public void ReloadActiveList(int numOfActive, List<Data.Skill> activeList)
     {
         for (int i = 0; i < numOfActive; i++)
         {
@@ -35,7 +35,7 @@ public class UIBattleActive : UIBase
     {
         base.OnCreate();
         BindComponents();
-
+        
         int activeCount = (m_actives != null) ? m_actives.Count : 0;
         for(int i = 0; i < m_view.PanelCell.childCount; i++)
         {
@@ -44,9 +44,9 @@ public class UIBattleActive : UIBase
 
             UIActiveCell activeCellUI = Util.FindInChildren<UIActiveCell>(child);
             activeCellUI.Initialize();
-            if(i < activeCount)
+            if (i < activeCount)
             {
-                Data.Active active = m_actives[i];
+                Data.Skill active = m_actives[i];
                 activeCellUI.SetData(0, active.Id, active.Level);
             }
             else
