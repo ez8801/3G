@@ -15,7 +15,7 @@ public struct SimplePvpRoom
 {
     public long Id;
     public int RoomId;
-    public int Count;
+    public string RoomName;
 }
 
 public class UIPvp : UIBase 

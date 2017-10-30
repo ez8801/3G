@@ -13,5 +13,9 @@ using System.Collections.Generic;
 
 public class UIPvpMakeRoom : UIBase 
 {
-	// 방 제목 넣을 칸과 방만들기, 나가기 버튼
+	//나가기 버튼
+
+
+
+
 }

@@ -13,8 +13,56 @@ using System.Collections.Generic;
 
 public class UIPvpRoomFind : UIBase 
 {
-	
+
     // 그리드에 리스트, 서버로부터 데이타 가져오는 SetData, 등등
+    [System.Serializable]
+    public struct View
+    {
+        public GameObject BtnClose;
+        public GameObject BtnAttend;
+        public UIAdvancedGrid Grid;
+    }
+    public View m_view;
+
+
+    private int m_selectedRoomIndex;
+    private List<SimplePvpRoom> m_pvpRooms;
+
+    internal override void OnCreate()
+    {
+        base.OnCreate();
+        BindComponents();
+
+        m_view.Grid.DataSource = RoomCellForRowAtIndex;
+        m_view.Grid.Delegate = NumberOfRowInRecipeGrid;
+    }
+
+    [ContextMenu("Bind")]
+    public void BindComponents()
+    {
+        if (IsAssigned(m_view))
+            m_view = new View();
+        this.Bind(ref m_view.BtnClose, "BtnClose");
+        this.Bind(ref m_view.BtnAttend, "BtnAttend");
+        this.Bind(ref m_view.Grid, "ScrollView/Grid");
+
+    }
+
+    internal override void OnStart()
+    {
+        base.OnStart();
+        ReloadData();
+    }
+
+    public override void ReloadData()
+    {
+        base.ReloadData();
+
+        m_view.Grid.ReloadData();
+        // 방의 정보 읽어와서 m_isFull 이 사실이면 참가 버튼 비활성화.
+
+    }
+
 
 
 
@@ -27,4 +75,51 @@ public class UIPvpRoomFind : UIBase
     {
 
     }
+
+
+    #region DataSource & Delegate
+
+    private int NumberOfRowInRecipeGrid()
+    {
+        return m_pvpRooms.Count;
+    }
+
+    private Transform RoomCellForRowAtIndex(int index, GameObject contentView)
+    {
+        SimplePvpRoom room = m_pvpRooms[index];
+        UIPvpRoomCell pvpRoomCell = Util.RequireComponent<UIPvpRoomCell>(contentView);
+        pvpRoomCell.Initilize();
+        pvpRoomCell.SetSelection(room.Id == m_selectedRoomIndex);
+        pvpRoomCell.SetData(room);
+        pvpRoomCell.SetOnClickListener(OnClickRoom);
+
+
+        return null;
+    }
+
+
+    #endregion DataSource & Delegate
+
+    #region UIActions
+    private void OnClickRoom(GameObject sender)
+    {
+        int index = -1;
+        int.TryParse(sender.name, out index);
+
+        m_selectedRoomIndex = m_pvpRooms[index].RoomId;
+        ReloadData();
+    }
+
+    public void OnClickAttend()
+    {
+        //참가 후 서버에서 대전자 정보 불러와서 대기방 or 배틀씬으로
+
+    }
+
+
+    public void OnClickClose()
+    {
+        Hide();
+    }
+    #endregion UIActions
 }
