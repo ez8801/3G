@@ -268,7 +268,9 @@ public class Client : MonoBehaviour {
 
 
         // s2cStub RMI 함수 딜리게이트에 각 함수 셋팅.
+        m_c2cStub_temp.DamagedFromEnemy = OnDamagedFromEnemy;
         m_s2cStub_temp.sendInventoryData = OnSendInventoryData;
+        m_s2cStub_temp.sendRaidRoomInfo = OnSendRaidRoomInfo;
 		m_s2cStub.ShowChat = OnShowChat;
 		m_s2cStub.UserList_Add = UserList_Add;
 		m_s2cStub.UserList_Remove = UserList_Remove;
@@ -351,6 +353,10 @@ public class Client : MonoBehaviour {
     public void Login(Nettention.Proud.RmiContext rmiContext, string m_id, string m_password)
     {
         this.m_c2sProxy_temp.Login(Nettention.Proud.HostID.HostID_Server, rmiContext, m_id, m_password);
+    }
+    public void RequestGetRaidRoomInfo(Nettention.Proud.RmiContext rmiContext)
+    {
+        this.m_c2sProxy_temp.RequestGetRaidRoomInfo(Nettention.Proud.HostID.HostID_Server, rmiContext);
     }
 
 	public void C2SChat (Nettention.Proud.RmiContext rmiContext, string m_inputString)
@@ -441,9 +447,9 @@ public class Client : MonoBehaviour {
 		ChatRooms[groupHostID].HostIDs.Add(memberHostID);
 
 		// 누가 P2P그룹에 조인 되었는지 알려준다.
-		ChatRooms[groupHostID].ChatString.Add("--- Join p2p Group [" + ChatUserInfo[memberHostID] + "] ---");
-
-		P2PChat.ResetScrollPosition();
+		//ChatRooms[groupHostID].ChatString.Add("--- Join p2p Group [" + ChatUserInfo[memberHostID] + "] ---");
+        Debug.Log("ChatRooms[" + groupHostID + "] Join : ");
+        P2PChat.ResetScrollPosition();
 
 	}
 
@@ -491,16 +497,35 @@ public class Client : MonoBehaviour {
 	{
 		Debug.Log("Exception : " + e.ToString());
 	}
+    bool OnDamagedFromEnemy(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, int Damage, int restHp)
+    {
+        Debug.Log("OnDamagedFromEnemy" + Damage + "RestHp" + restHp);
+        return true;
+    }
 
     bool OnSendInventoryData(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, Nettention.Proud.FastArray<items> data)
     {
         string str = "";
         for (int i = 0; i < 10; i++)
         {
-            str = "[str]" + data.data.ToString();
-            ChatRooms[Nettention.Proud.HostID.HostID_Server].ChatString.Add(str);
+            str = "[itemIdx]" + data[i].itemIdx + "[itemInherentIdx]" + data[i].itemInherentIdx + "[itemType]" + data[i].itemType;
+            Debug.Log("OnSendInventoryData : " + str.ToString());
+           // ChatRooms[Nettention.Proud.HostID.HostID_Server].ChatString.Add(str);
         }
-       
+        
+        return true;
+    }
+    bool OnSendRaidRoomInfo(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, Nettention.Proud.FastArray<raidrooms> data)
+    {
+        string str = "";
+        for (int i = 0; i < data.Count; i++)
+        {
+            
+
+                str = "[hostId]" + data[i].hostId + "[groupId]" + data[i].groupId + "[curCrew]" + data[i].curCrew;
+                Debug.Log("OnSendRaidRoomInfo : " + str.ToString());
+            // ChatRooms[Nettention.Proud.HostID.HostID_Server].ChatString.Add(str);
+        }
         return true;
     }
     // 글로벌 채팅 내용을 리시브 받앗을때 처리하는 함수.

@@ -125,6 +125,32 @@ Test.Write(__msg, ivData);
 	return RmiSend(remotes,rmiContext,__msg,
 		RmiName_sendInventoryData, Common.sendInventoryData);
 }
+public bool sendRaidRoomInfo(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.FastArray<raidrooms> roomData)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+		__msg.SimplePacketMode = core.IsSimplePacketMode();
+		Nettention.Proud.RmiID __msgid= Common.sendRaidRoomInfo;
+		__msg.Write(__msgid);
+		Test.Write(__msg, roomData);
+		
+	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
+	__list[0] = remote;
+		
+	return RmiSend(__list,rmiContext,__msg,
+		RmiName_sendRaidRoomInfo, Common.sendRaidRoomInfo);
+}
+
+public bool sendRaidRoomInfo(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.FastArray<raidrooms> roomData)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+__msg.SimplePacketMode = core.IsSimplePacketMode();
+Nettention.Proud.RmiID __msgid= Common.sendRaidRoomInfo;
+__msg.Write(__msgid);
+Test.Write(__msg, roomData);
+		
+	return RmiSend(remotes,rmiContext,__msg,
+		RmiName_sendRaidRoomInfo, Common.sendRaidRoomInfo);
+}
 #if USE_RMI_NAME_STRING
 // RMI name declaration.
 // It is the unique pointer that indicates RMI name such as RMI profiler.
@@ -132,6 +158,7 @@ const string RmiName_ShowChat="ShowChat";
 const string RmiName_SystemChat="SystemChat";
 const string RmiName_sendUserInfo="sendUserInfo";
 const string RmiName_sendInventoryData="sendInventoryData";
+const string RmiName_sendRaidRoomInfo="sendRaidRoomInfo";
        
 const string RmiName_First = RmiName_ShowChat;
 #else
@@ -141,6 +168,7 @@ const string RmiName_ShowChat="";
 const string RmiName_SystemChat="";
 const string RmiName_sendUserInfo="";
 const string RmiName_sendInventoryData="";
+const string RmiName_sendRaidRoomInfo="";
        
 const string RmiName_First = "";
 #endif

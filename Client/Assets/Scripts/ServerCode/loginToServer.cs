@@ -83,8 +83,15 @@ public class loginToServer : MonoBehaviour {
                 i++;
             }
         }
+        if (GUI.Button(new Rect(m_client.ScreenWidth / 3 - 250, m_client.ScreenOneH * 7, m_client.ScreenOneW, m_client.ScreenOneH), "getRoom"))
+        {
+            
+            m_client.RequestGetRaidRoomInfo(Nettention.Proud.RmiContext.UnreliableSend);
 
-            if (GUI.Button(new Rect(m_client.ScreenWidth / 2 + m_client.ScreenOneW, m_client.ScreenOneH * 7, m_client.ScreenOneW, m_client.ScreenOneH), "QUIT"))
+            
+        }
+
+        if (GUI.Button(new Rect(m_client.ScreenWidth / 2 + m_client.ScreenOneW, m_client.ScreenOneH * 7, m_client.ScreenOneW, m_client.ScreenOneH), "QUIT"))
 		{
             SceneManager.LoadScene(1); // 어플리케이션 종료. -> 메인화면으로 씬 전환
 		}
@@ -97,45 +104,61 @@ public struct items
     public int itemIdx;
     public int itemType;
 };
-public struct gameResults
+public struct raidrooms
 {
-    public int GameScore;
-    public int TotalKillCount;
-    public int GetMoney;
+    public int hostId;
+    public int groupId;
+    public int curCrew;
 };
 
 
-    class Test : Nettention.Proud.Marshaler
+class Test : Nettention.Proud.Marshaler
+{
+    public static void Write(Nettention.Proud.Message msg, Nettention.Proud.FastArray<raidrooms> strMsg)
     {
-        public static void Write(Nettention.Proud.Message msg, Nettention.Proud.FastArray<gameResults> strMsg)
-        {
 
-        }
-
-        public static void Write(Nettention.Proud.Message msg, Nettention.Proud.FastArray<items> strMsg)
-        {
-            int a;
-            a = 0;
-        }
-        public static bool Read(Nettention.Proud.Message msg, out Nettention.Proud.FastArray<items> strMsg)
-        {
-            strMsg = new Nettention.Proud.FastArray<items>();
-            int count = 0;
-            msg.ReadScalar(ref count);
-
-            items contain_items = new items();
-            for (int i = 0; i < count; i++)
-            {
-                msg.ReadScalar(ref contain_items.itemInherentIdx);
-                msg.ReadScalar(ref contain_items.itemIdx);
-                msg.ReadScalar(ref contain_items.itemType);
-                strMsg.Add(contain_items);
-            }
-            
-            return true;
-      } 
-            
-            
-            
-        
     }
+
+    public static void Write(Nettention.Proud.Message msg, Nettention.Proud.FastArray<items> strMsg)
+    {
+        int a;
+        a = 0;
+    }
+    public static bool Read(Nettention.Proud.Message msg, out Nettention.Proud.FastArray<items> strMsg)
+    {
+        strMsg = new Nettention.Proud.FastArray<items>();
+        int count = 0;
+        msg.ReadScalar(ref count);
+
+        items contain_items = new items();
+        for (int i = 0; i < count; i++)
+        {
+            msg.ReadScalar(ref contain_items.itemInherentIdx);
+            msg.ReadScalar(ref contain_items.itemIdx);
+            msg.ReadScalar(ref contain_items.itemType);
+            strMsg.Add(contain_items);
+        }
+
+        return true;
+    }
+    public static bool Read(Nettention.Proud.Message msg, out Nettention.Proud.FastArray<raidrooms> strMsg)
+    {
+        strMsg = new Nettention.Proud.FastArray<raidrooms>();
+        int count = 0;
+        msg.ReadScalar(ref count);
+
+        raidrooms contain_items = new raidrooms();
+        for (int i = 0; i < count; i++)
+        {
+            msg.ReadScalar(ref contain_items.hostId);
+            msg.ReadScalar(ref contain_items.groupId);
+            msg.ReadScalar(ref contain_items.curCrew);
+            strMsg.Add(contain_items);
+        }
+
+        return true;
+    }
+}
+
+
+

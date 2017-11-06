@@ -21,6 +21,11 @@ public BeforeRmiInvocationDelegate BeforeRmiInvocation = delegate(Nettention.Pro
 		{ 
 			return false;
 		};
+		public delegate bool DamagedFromEnemyDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int Damage, int RestHP);  
+		public DamagedFromEnemyDelegate DamagedFromEnemy = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int Damage, int RestHP)
+		{ 
+			return false;
+		};
 	public override bool ProcessReceivedMessage(Nettention.Proud.ReceivedMessage pa, Object hostTag) 
 	{
 		Nettention.Proud.HostID remote=pa.RemoteHostID;
@@ -92,6 +97,59 @@ parameterString+=c.ToString()+",";
 		}
 	}
 	break;
+case Common.DamagedFromEnemy:
+	{
+		Nettention.Proud.RmiContext ctx=new Nettention.Proud.RmiContext();
+		ctx.sentFrom=pa.RemoteHostID;
+		ctx.relayed=pa.IsRelayed;
+		ctx.hostTag=hostTag;
+		ctx.encryptMode = pa.EncryptMode;
+		ctx.compressMode = pa.CompressMode;
+			
+		int Damage; Nettention.Proud.Marshaler.Read(__msg,out Damage);	
+int RestHP; Nettention.Proud.Marshaler.Read(__msg,out RestHP);	
+core.PostCheckReadMessage(__msg, RmiName_DamagedFromEnemy);
+		if(enableNotifyCallFromStub==true)
+		{
+			string parameterString="";
+			parameterString+=Damage.ToString()+",";
+parameterString+=RestHP.ToString()+",";
+			NotifyCallFromStub(Common.DamagedFromEnemy, RmiName_DamagedFromEnemy,parameterString);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.BeforeRmiSummary summary = new Nettention.Proud.BeforeRmiSummary();
+			summary.rmiID = Common.DamagedFromEnemy;
+			summary.rmiName = RmiName_DamagedFromEnemy;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			BeforeRmiInvocation(summary);
+		}
+			
+		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
+			
+		// Call this method.
+		bool __ret=DamagedFromEnemy (remote,ctx , Damage, RestHP );
+			
+		if(__ret==false)
+		{
+			// Error: RMI function that a user did not create has been called. 
+			core.ShowNotImplementedRmiWarning(RmiName_DamagedFromEnemy);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
+			summary.rmiID = Common.DamagedFromEnemy;
+			summary.rmiName = RmiName_DamagedFromEnemy;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
+			AfterRmiInvocation(summary);
+		}
+	}
+	break;
 		default:
 			 goto __fail;
 		}
@@ -106,12 +164,14 @@ __fail:
 // RMI name declaration.
 // It is the unique pointer that indicates RMI name such as RMI profiler.
 const string RmiName_P2PChat="P2PChat";
+const string RmiName_DamagedFromEnemy="DamagedFromEnemy";
        
 const string RmiName_First = RmiName_P2PChat;
 #else
 // RMI name declaration.
 // It is the unique pointer that indicates RMI name such as RMI profiler.
 const string RmiName_P2PChat="";
+const string RmiName_DamagedFromEnemy="";
        
 const string RmiName_First = "";
 #endif

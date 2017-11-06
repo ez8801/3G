@@ -43,16 +43,46 @@ Nettention.Proud.Marshaler.Write(__msg, c);
 	return RmiSend(remotes,rmiContext,__msg,
 		RmiName_P2PChat, Common.P2PChat);
 }
+public bool DamagedFromEnemy(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int Damage, int RestHP)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+		__msg.SimplePacketMode = core.IsSimplePacketMode();
+		Nettention.Proud.RmiID __msgid= Common.DamagedFromEnemy;
+		__msg.Write(__msgid);
+		Nettention.Proud.Marshaler.Write(__msg, Damage);
+		Nettention.Proud.Marshaler.Write(__msg, RestHP);
+		
+	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
+	__list[0] = remote;
+		
+	return RmiSend(__list,rmiContext,__msg,
+		RmiName_DamagedFromEnemy, Common.DamagedFromEnemy);
+}
+
+public bool DamagedFromEnemy(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, int Damage, int RestHP)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+__msg.SimplePacketMode = core.IsSimplePacketMode();
+Nettention.Proud.RmiID __msgid= Common.DamagedFromEnemy;
+__msg.Write(__msgid);
+Nettention.Proud.Marshaler.Write(__msg, Damage);
+Nettention.Proud.Marshaler.Write(__msg, RestHP);
+		
+	return RmiSend(remotes,rmiContext,__msg,
+		RmiName_DamagedFromEnemy, Common.DamagedFromEnemy);
+}
 #if USE_RMI_NAME_STRING
 // RMI name declaration.
 // It is the unique pointer that indicates RMI name such as RMI profiler.
 const string RmiName_P2PChat="P2PChat";
+const string RmiName_DamagedFromEnemy="DamagedFromEnemy";
        
 const string RmiName_First = RmiName_P2PChat;
 #else
 // RMI name declaration.
 // It is the unique pointer that indicates RMI name such as RMI profiler.
 const string RmiName_P2PChat="";
+const string RmiName_DamagedFromEnemy="";
        
 const string RmiName_First = "";
 #endif

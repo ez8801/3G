@@ -17,12 +17,14 @@ namespace S2C
 			public const Nettention.Proud.RmiID SystemChat = (Nettention.Proud.RmiID)4000+2;
 			public const Nettention.Proud.RmiID sendUserInfo = (Nettention.Proud.RmiID)4000+3;
 			public const Nettention.Proud.RmiID sendInventoryData = (Nettention.Proud.RmiID)4000+4;
+			public const Nettention.Proud.RmiID sendRaidRoomInfo = (Nettention.Proud.RmiID)4000+5;
 		// List that has RMI ID.
 		public static Nettention.Proud.RmiID[] RmiIDList = new Nettention.Proud.RmiID[] {
 			ShowChat,
 			SystemChat,
 			sendUserInfo,
 			sendInventoryData,
+			sendRaidRoomInfo,
 		};
 	}
 }

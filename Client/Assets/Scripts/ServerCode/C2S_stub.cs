@@ -31,6 +31,16 @@ public BeforeRmiInvocationDelegate BeforeRmiInvocation = delegate(Nettention.Pro
 		{ 
 			return false;
 		};
+		public delegate bool RequestGetRaidRoomInfoDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext);  
+		public RequestGetRaidRoomInfoDelegate RequestGetRaidRoomInfo = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext)
+		{ 
+			return false;
+		};
+		public delegate bool RequestJoinRaidRoomDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID HostId);  
+		public RequestJoinRaidRoomDelegate RequestJoinRaidRoom = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID HostId)
+		{ 
+			return false;
+		};
 	public override bool ProcessReceivedMessage(Nettention.Proud.ReceivedMessage pa, Object hostTag) 
 	{
 		Nettention.Proud.HostID remote=pa.RemoteHostID;
@@ -206,6 +216,106 @@ core.PostCheckReadMessage(__msg, RmiName_RequestMakeRaidRoom);
 		}
 	}
 	break;
+case Common.RequestGetRaidRoomInfo:
+	{
+		Nettention.Proud.RmiContext ctx=new Nettention.Proud.RmiContext();
+		ctx.sentFrom=pa.RemoteHostID;
+		ctx.relayed=pa.IsRelayed;
+		ctx.hostTag=hostTag;
+		ctx.encryptMode = pa.EncryptMode;
+		ctx.compressMode = pa.CompressMode;
+			
+		core.PostCheckReadMessage(__msg, RmiName_RequestGetRaidRoomInfo);
+		if(enableNotifyCallFromStub==true)
+		{
+			string parameterString="";
+						NotifyCallFromStub(Common.RequestGetRaidRoomInfo, RmiName_RequestGetRaidRoomInfo,parameterString);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.BeforeRmiSummary summary = new Nettention.Proud.BeforeRmiSummary();
+			summary.rmiID = Common.RequestGetRaidRoomInfo;
+			summary.rmiName = RmiName_RequestGetRaidRoomInfo;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			BeforeRmiInvocation(summary);
+		}
+			
+		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
+			
+		// Call this method.
+		bool __ret=RequestGetRaidRoomInfo (remote,ctx  );
+			
+		if(__ret==false)
+		{
+			// Error: RMI function that a user did not create has been called. 
+			core.ShowNotImplementedRmiWarning(RmiName_RequestGetRaidRoomInfo);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
+			summary.rmiID = Common.RequestGetRaidRoomInfo;
+			summary.rmiName = RmiName_RequestGetRaidRoomInfo;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
+			AfterRmiInvocation(summary);
+		}
+	}
+	break;
+case Common.RequestJoinRaidRoom:
+	{
+		Nettention.Proud.RmiContext ctx=new Nettention.Proud.RmiContext();
+		ctx.sentFrom=pa.RemoteHostID;
+		ctx.relayed=pa.IsRelayed;
+		ctx.hostTag=hostTag;
+		ctx.encryptMode = pa.EncryptMode;
+		ctx.compressMode = pa.CompressMode;
+			
+		Nettention.Proud.HostID HostId; Nettention.Proud.Marshaler.Read(__msg,out HostId);	
+core.PostCheckReadMessage(__msg, RmiName_RequestJoinRaidRoom);
+		if(enableNotifyCallFromStub==true)
+		{
+			string parameterString="";
+			parameterString+=HostId.ToString()+",";
+			NotifyCallFromStub(Common.RequestJoinRaidRoom, RmiName_RequestJoinRaidRoom,parameterString);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.BeforeRmiSummary summary = new Nettention.Proud.BeforeRmiSummary();
+			summary.rmiID = Common.RequestJoinRaidRoom;
+			summary.rmiName = RmiName_RequestJoinRaidRoom;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			BeforeRmiInvocation(summary);
+		}
+			
+		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
+			
+		// Call this method.
+		bool __ret=RequestJoinRaidRoom (remote,ctx , HostId );
+			
+		if(__ret==false)
+		{
+			// Error: RMI function that a user did not create has been called. 
+			core.ShowNotImplementedRmiWarning(RmiName_RequestJoinRaidRoom);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
+			summary.rmiID = Common.RequestJoinRaidRoom;
+			summary.rmiName = RmiName_RequestJoinRaidRoom;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
+			AfterRmiInvocation(summary);
+		}
+	}
+	break;
 		default:
 			 goto __fail;
 		}
@@ -222,6 +332,8 @@ __fail:
 const string RmiName_Chat="Chat";
 const string RmiName_Login="Login";
 const string RmiName_RequestMakeRaidRoom="RequestMakeRaidRoom";
+const string RmiName_RequestGetRaidRoomInfo="RequestGetRaidRoomInfo";
+const string RmiName_RequestJoinRaidRoom="RequestJoinRaidRoom";
        
 const string RmiName_First = RmiName_Chat;
 #else
@@ -230,6 +342,8 @@ const string RmiName_First = RmiName_Chat;
 const string RmiName_Chat="";
 const string RmiName_Login="";
 const string RmiName_RequestMakeRaidRoom="";
+const string RmiName_RequestGetRaidRoomInfo="";
+const string RmiName_RequestJoinRaidRoom="";
        
 const string RmiName_First = "";
 #endif

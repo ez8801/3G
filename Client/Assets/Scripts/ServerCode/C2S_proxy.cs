@@ -97,12 +97,64 @@ Nettention.Proud.Marshaler.Write(__msg, HostId);
 	return RmiSend(remotes,rmiContext,__msg,
 		RmiName_RequestMakeRaidRoom, Common.RequestMakeRaidRoom);
 }
+public bool RequestGetRaidRoomInfo(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+		__msg.SimplePacketMode = core.IsSimplePacketMode();
+		Nettention.Proud.RmiID __msgid= Common.RequestGetRaidRoomInfo;
+		__msg.Write(__msgid);
+		
+	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
+	__list[0] = remote;
+		
+	return RmiSend(__list,rmiContext,__msg,
+		RmiName_RequestGetRaidRoomInfo, Common.RequestGetRaidRoomInfo);
+}
+
+public bool RequestGetRaidRoomInfo(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+__msg.SimplePacketMode = core.IsSimplePacketMode();
+Nettention.Proud.RmiID __msgid= Common.RequestGetRaidRoomInfo;
+__msg.Write(__msgid);
+		
+	return RmiSend(remotes,rmiContext,__msg,
+		RmiName_RequestGetRaidRoomInfo, Common.RequestGetRaidRoomInfo);
+}
+public bool RequestJoinRaidRoom(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID HostId)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+		__msg.SimplePacketMode = core.IsSimplePacketMode();
+		Nettention.Proud.RmiID __msgid= Common.RequestJoinRaidRoom;
+		__msg.Write(__msgid);
+		Nettention.Proud.Marshaler.Write(__msg, HostId);
+		
+	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
+	__list[0] = remote;
+		
+	return RmiSend(__list,rmiContext,__msg,
+		RmiName_RequestJoinRaidRoom, Common.RequestJoinRaidRoom);
+}
+
+public bool RequestJoinRaidRoom(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID HostId)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+__msg.SimplePacketMode = core.IsSimplePacketMode();
+Nettention.Proud.RmiID __msgid= Common.RequestJoinRaidRoom;
+__msg.Write(__msgid);
+Nettention.Proud.Marshaler.Write(__msg, HostId);
+		
+	return RmiSend(remotes,rmiContext,__msg,
+		RmiName_RequestJoinRaidRoom, Common.RequestJoinRaidRoom);
+}
 #if USE_RMI_NAME_STRING
 // RMI name declaration.
 // It is the unique pointer that indicates RMI name such as RMI profiler.
 const string RmiName_Chat="Chat";
 const string RmiName_Login="Login";
 const string RmiName_RequestMakeRaidRoom="RequestMakeRaidRoom";
+const string RmiName_RequestGetRaidRoomInfo="RequestGetRaidRoomInfo";
+const string RmiName_RequestJoinRaidRoom="RequestJoinRaidRoom";
        
 const string RmiName_First = RmiName_Chat;
 #else
@@ -111,6 +163,8 @@ const string RmiName_First = RmiName_Chat;
 const string RmiName_Chat="";
 const string RmiName_Login="";
 const string RmiName_RequestMakeRaidRoom="";
+const string RmiName_RequestGetRaidRoomInfo="";
+const string RmiName_RequestJoinRaidRoom="";
        
 const string RmiName_First = "";
 #endif
