@@ -39,6 +39,11 @@ public class ProjectileBase : MonoBehaviour
         }
     }
 
+    public void Initilize()
+    {
+
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         Character me = gameObject.GetComponent<Character>();

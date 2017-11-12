@@ -37,7 +37,7 @@ public struct SimpleActive
 {
     public long Id;
     public int ActiveId;
-    public int Level;
+    public int Cooltime;
 }
 
 public sealed class SkillTable : ArrayTable<Skill>

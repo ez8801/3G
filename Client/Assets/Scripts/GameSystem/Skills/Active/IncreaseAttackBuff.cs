@@ -45,7 +45,7 @@ public class IncreaseAttackBuff : SkillBase
 
             if (teamId == myId)
             {
-                character.StartIncreaseAttackBuff(myAtt/5 - power);
+                character.StartIncreaseAttackBuff((int)(myAtt*3 - power));
             }
             i++;
         }

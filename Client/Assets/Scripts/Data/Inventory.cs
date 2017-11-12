@@ -22,7 +22,7 @@ namespace UserData
     {
         public long Id;
         public int ActiveId;
-        public int Level;
+        public int Cooltime;
     }
 }
 
