@@ -20,6 +20,7 @@ public class UIBattleActive : UIBase
     }
     public View m_view;
     
+
     public List<Data.Skill> m_actives;
     //public Data.Skill m_activeTestOne = SkillTable.Instance.Find(30000001);
     //public Data.Skill m_activeTestTwo = SkillTable.Instance.Find(30000002);
@@ -83,14 +84,38 @@ public class UIBattleActive : UIBase
         Debug.Log(m_actives[0].Cooltime);
     }
 
-    private void OnClickActive(GameObject sender)
+    
+
+
+    #region UIActions
+    public void OnClickActive(GameObject sender)
     {
         int index = -1;
         if(int.TryParse(sender.name, out index))
         {
             Data.Skill clickedActive = m_actives[index];
+            Data.Prefab prefabActive = PrefabTable.Instance.Find(clickedActive.PrefabId);
             //서버 : 여기서 서버로 signal 날림 (playerID, 1(Active스킬을 뜻함) ,ActiveID)
+            //지금 당장은 로컬에서 작업함. 로컬에서는 Effect라는 프리팹의 경로를 테이블에 저장해 뒀다가
+            //불러와서 그 경로의 프리팹 투사체를 불러옴.
+            switch (clickedActive.Type)
+            {
+                case 1:
+                    GameObject prefab = Resources.Load(prefabActive.PrefabName) as GameObject;
+                    GameObject PJ = Instantiate(prefab) as GameObject;
+                    break;
+                case 2:
+
+
+                    break;
+
+            }
 
         }
+
     }
+
+
+
+    #endregion UIActions
 }

@@ -269,7 +269,7 @@ namespace Data
 			Type = json["Type"].I4;
 			Name = json["Name"].STR;
 			Cooltime = json["Cooltime"].I4;
-			Effect = json["Effect"].I4;
+            PrefabId = json["PrefabId"].I4;
 			Texture = json["Texture"].STR;
 			Chargeable = json["Chargeable"].B;
 			Charging = json["Charging"].I4;
@@ -283,7 +283,7 @@ namespace Data
 			deserializer.Deserialize(ref Type);
 			deserializer.Deserialize(ref Name);
 			deserializer.Deserialize(ref Cooltime);
-			deserializer.Deserialize(ref Effect);
+			deserializer.Deserialize(ref PrefabId);
 			deserializer.Deserialize(ref Texture);
 			deserializer.Deserialize(ref Chargeable);
 			deserializer.Deserialize(ref Charging);
@@ -297,7 +297,7 @@ namespace Data
 			binaryWriter.Write(Type);
 			binaryWriter.Write(Name);
 			binaryWriter.Write(Cooltime);
-			binaryWriter.Write(Effect);
+			binaryWriter.Write(PrefabId);
 			binaryWriter.Write(Texture);
 			binaryWriter.Write(Chargeable);
 			binaryWriter.Write(Charging);

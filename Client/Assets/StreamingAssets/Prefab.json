@@ -10,5 +10,13 @@
   {
     "Id": 1002,
     "PrefabName": "Prefabs/Monster/Monster2"
+  },
+  {
+    "Id": 13,
+    "PrefabName": "Prefabs/Skill/ActiveSkill_BlueWave"
+  },
+  {
+    "Id": 3000002,
+    "PrefabName": "Prefabs/Skill/ActiveSkill_BlueWave"
   }
 ]
