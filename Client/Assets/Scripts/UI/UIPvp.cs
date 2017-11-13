@@ -18,6 +18,7 @@ public struct SimplePvpRoom
     public string RoomName;
 }
 
+
 public class UIPvp : UIBase 
 {
 	[System.Serializable]
@@ -31,7 +32,8 @@ public class UIPvp : UIBase
     }
     public View m_view;
 
-    private List<SimplePvpRoom> m_findRooms;
+    public List<SimplePvpRoom> m_findRooms;
+    public SimplePvpRoom roomone;
 
     internal override void OnCreate()
     {
@@ -54,6 +56,14 @@ public class UIPvp : UIBase
     public void GetNewRoomList()
     {
         //m_findRooms에 서버에서 리스트 받을필요 있음
+        //임의 리스트
+        roomone.Id = 0;
+        roomone.RoomId = 0001;
+        roomone.RoomName = "today";
+        Debug.Log("this time one");
+        Debug.Log(roomone.RoomName);
+        m_findRooms.Add(roomone);
+        Debug.Log("this time two");
     }
 
     #region UIActions

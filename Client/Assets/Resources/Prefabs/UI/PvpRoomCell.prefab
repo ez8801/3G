@@ -180,6 +180,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a51a6a09f0206045ba594a1da4e39b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LblRoomNum: {fileID: 114453488999555510}
+  LblRoomName: {fileID: 114553506531882394}
 --- !u!114 &114453488999555510
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -212,7 +214,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 100
   mHeight: 75
-  mDepth: 20
+  mDepth: 31
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
@@ -280,7 +282,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 380
   mHeight: 75
-  mDepth: 20
+  mDepth: 31
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0

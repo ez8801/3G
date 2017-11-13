@@ -79,6 +79,8 @@ public class UIBattleActive : UIBase
     {
 
         //testCode : 지정된 리스트를 넣어줌.. 이후 ActiveEquip창에서 리스트 갱신된걸 불러와야함.
+        //지금은 테스트로 13아이디의 스킬을 하나 리스트에 넣어줬음.
+        //서버에서 리스트 받아옴.
         Data.Skill skill = SkillTable.Instance.Find(13);
         m_actives.Add(skill);
         Debug.Log(m_actives[0].Cooltime);

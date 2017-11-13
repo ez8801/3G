@@ -73,7 +73,7 @@ public class UIPvpRoomFind : UIBase
 
     public void SetData(List<SimplePvpRoom> list)
     {
-
+        m_pvpRooms = list;
     }
 
 
