@@ -60,6 +60,17 @@ public class Character : Actor
         CurrentHp = m_stats.Hp;
     }
 
+    public void ReloadStat()
+    {
+        //서버 : 지금은 싱글톤의 스탯 매니저가 관리중이지만 서버에서 스킬쓸때, 패시브 쓸때마다 그 정보 가지게 되면 서버가 이 역할.
+        // 서버에 버프 걸렸다는 정보를 준다면 그 값을 받아와서 캐릭터 스탯에 적용.
+        //현 상황 : 버프가 걸리면 스탯 매니저의 스탯값을 조정해 준 후 현 함수인 ReloadStat()을 호출하여 캐릭터 스탯과 동기화 해줌.
+        //기대 : 버프가 걸리면 더해질 스탯값(종료 후 빼질 스탯값)을 서버에 전송 후 합산된 스탯을 전송받아 캐릭터 스탯과 동기화.
+        StatManager statManager = GameObject.Find("StatManager").GetComponent<StatManager>();
+        m_statsData = statManager.CharacterStats;
+
+    }
+
     protected override void Update()
     {
         base.Update();
@@ -77,7 +88,7 @@ public class Character : Actor
         return GroupId;
     }
 
-    public void StartIncreaseAttackBuff(float buffValue)
+    public void StartIncreaseAttackBuff(int buffValue)
     {
         attackCorutine = IncreaseAttackDamage(buffValue);
         if (AttackBuffOn == false)
@@ -88,20 +99,25 @@ public class Character : Actor
         else
         {
             StopCoroutine(attackCorutine);
-            this.Stats.AttackDamageValue(-buffValue);
             StartCoroutine(attackCorutine);
         }
     }
 
-    IEnumerator IncreaseAttackDamage(float increaseValue)
+    IEnumerator IncreaseAttackDamage(int increaseValue)
     {
-        this.Stats.AttackDamageValue(increaseValue);
-        yield return new WaitForSeconds(10.0f);
-        this.Stats.AttackDamageValue(-increaseValue);
+        //this.Stats.AttackDamageValue(increaseValue);
+        StatManager statManager = GameObject.Find("StatManager").GetComponent<StatManager>();
+        StatManager.Instance.WeaponAttackStat = StatManager.Instance.WeaponAttackStat + increaseValue;
+        ReloadStat();
+
+        yield return new WaitForSeconds(4.0f);
+        StatManager.Instance.WeaponAttackStat = StatManager.Instance.WeaponAttackStat - increaseValue;
+        ReloadStat();
+        //this.Stats.AttackDamageValue(-increaseValue);
         AttackBuffOn = false;
     }
 
-    public void StartIncreaseArmorBuff(float buffValue)
+    public void StartIncreaseArmorBuff(int buffValue)
     {
         armorCorutine = IncreaseArmor(buffValue);
         if (ArmorBuffOn == false)
@@ -117,11 +133,17 @@ public class Character : Actor
         }
     }
 
-    IEnumerator IncreaseArmor(float increaseValue)
+    IEnumerator IncreaseArmor(int increaseValue)
     {
         this.Stats.ArmorValue(increaseValue);
+        StatManager statManager = GameObject.Find("StatManager").GetComponent<StatManager>();
+        StatManager.Instance.WeaponAttackStat = StatManager.Instance.FinalArmorEquipStat + increaseValue;
+        ReloadStat();
         yield return new WaitForSeconds(5.0f);
+        StatManager.Instance.WeaponAttackStat = StatManager.Instance.FinalArmorEquipStat - increaseValue;
+        ReloadStat();
         this.Stats.ArmorValue(-increaseValue);
+
         ArmorBuffOn = false;
     }
 }

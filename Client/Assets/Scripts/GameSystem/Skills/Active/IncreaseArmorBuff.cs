@@ -45,7 +45,7 @@ public class increaseArmorBuff : ActiveSkill
 
             if (teamId == myId)
             {
-                character.StartIncreaseArmorBuff(myAtt * power);
+                character.StartIncreaseArmorBuff((int)(myAtt * power));
             }
             i++;
         }

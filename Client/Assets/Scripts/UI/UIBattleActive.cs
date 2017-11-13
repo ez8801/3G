@@ -19,8 +19,11 @@ public class UIBattleActive : UIBase
         public Transform PanelCell;
     }
     public View m_view;
+    
 
-    private List<Data.Skill> m_actives;
+    public List<Data.Skill> m_actives;
+    //public Data.Skill m_activeTestOne = SkillTable.Instance.Find(30000001);
+    //public Data.Skill m_activeTestTwo = SkillTable.Instance.Find(30000002);
 
     public void ReloadActiveList(int numOfActive, List<Data.Skill> activeList)
     {
@@ -35,6 +38,10 @@ public class UIBattleActive : UIBase
     {
         base.OnCreate();
         BindComponents();
+
+        GetActiveList();
+        //UserData.Active m_activeTest = SkillTable.Instance.Find();
+        //m_actives[0] = m_activeTest;
         
         int activeCount = (m_actives != null) ? m_actives.Count : 0;
         for(int i = 0; i < m_view.PanelCell.childCount; i++)
@@ -47,7 +54,7 @@ public class UIBattleActive : UIBase
             if (i < activeCount)
             {
                 Data.Skill active = m_actives[i];
-                activeCellUI.SetData(0, active.Id, active.Level);
+                activeCellUI.SetData(0, active.Id, active.Cooltime);
             }
             else
             {
@@ -68,4 +75,47 @@ public class UIBattleActive : UIBase
     }
 
 
+    private void GetActiveList()
+    {
+
+        //testCode : 지정된 리스트를 넣어줌.. 이후 ActiveEquip창에서 리스트 갱신된걸 불러와야함.
+        Data.Skill skill = SkillTable.Instance.Find(13);
+        m_actives.Add(skill);
+        Debug.Log(m_actives[0].Cooltime);
+    }
+
+    
+
+
+    #region UIActions
+    public void OnClickActive(GameObject sender)
+    {
+        int index = -1;
+        if(int.TryParse(sender.name, out index))
+        {
+            Data.Skill clickedActive = m_actives[index];
+            Data.Prefab prefabActive = PrefabTable.Instance.Find(clickedActive.PrefabId);
+            //서버 : 여기서 서버로 signal 날림 (playerID, 1(Active스킬을 뜻함) ,ActiveID)
+            //지금 당장은 로컬에서 작업함. 로컬에서는 Effect라는 프리팹의 경로를 테이블에 저장해 뒀다가
+            //불러와서 그 경로의 프리팹 투사체를 불러옴.
+            switch (clickedActive.Type)
+            {
+                case 1:
+                    GameObject prefab = Resources.Load(prefabActive.PrefabName) as GameObject;
+                    GameObject PJ = Instantiate(prefab) as GameObject;
+                    break;
+                case 2:
+
+
+                    break;
+
+            }
+
+        }
+
+    }
+
+
+
+    #endregion UIActions
 }

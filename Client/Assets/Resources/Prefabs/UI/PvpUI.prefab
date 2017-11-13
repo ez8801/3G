@@ -277,6 +277,7 @@ GameObject:
   - component: {fileID: 4756113724618204}
   - component: {fileID: 114688299015481182}
   - component: {fileID: 114638076109836896}
+  - component: {fileID: 65333221283773020}
   m_Layer: 5
   m_Name: BtnMakeRoom
   m_TagString: Untagged
@@ -294,6 +295,7 @@ GameObject:
   - component: {fileID: 4103116321608812}
   - component: {fileID: 114739926915658816}
   - component: {fileID: 114036419994141780}
+  - component: {fileID: 65382130277426292}
   m_Layer: 5
   m_Name: BtnFindRoom
   m_TagString: Untagged
@@ -311,6 +313,7 @@ GameObject:
   - component: {fileID: 4948380398530278}
   - component: {fileID: 114622612706838728}
   - component: {fileID: 114852878685727048}
+  - component: {fileID: 65715898090451370}
   m_Layer: 5
   m_Name: BtnAutoMatch
   m_TagString: Untagged
@@ -643,6 +646,30 @@ Transform:
   m_Father: {fileID: 4646437472007630}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &65333221283773020
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1857104626802030}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 848, y: 425, z: 1}
+  m_Center: {x: 0, y: -212, z: 0}
+--- !u!65 &65382130277426292
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1882359659882452}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 848, y: 425, z: 1}
+  m_Center: {x: 0, y: -212, z: 0}
 --- !u!65 &65452152724540532
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -655,6 +682,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 50, y: 50, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65715898090451370
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1924993471900258}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 848, y: 425, z: 1}
+  m_Center: {x: 0, y: -212, z: 0}
 --- !u!114 &114015969174099026
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1421,7 +1460,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3010
+  startingRenderQueue: 3000
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -1512,7 +1551,7 @@ MonoBehaviour:
   pixelSnap: 0
   onClick:
   - mTarget: {fileID: 114577459317107722}
-    mMethodName: ReloadData
+    mMethodName: OnClickClose
     mParameters: []
     oneShot: 0
 --- !u!114 &114739926915658816

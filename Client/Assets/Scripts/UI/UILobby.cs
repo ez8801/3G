@@ -20,6 +20,7 @@ public class UILobby : UIBase
     public struct View
     {
         public UIEventListener BtnChat;
+        public UIEventListener BtnPassiveSkill;
         public UIEventListener BtnInventory;
         public UIEventListener BtnForge;
         public UIEventListener BtnDungeon;
@@ -41,6 +42,7 @@ public class UILobby : UIBase
         if (IsAssigned(m_view) == false)
             m_view = new View();
         this.Bind(ref m_view.BtnChat, "AnchorTopRight/BtnChat");
+        this.Bind(ref m_view.BtnPassiveSkill, "ToolBar/AnchorBottomRight/Grid/BtnPassiveSkill");
         this.Bind(ref m_view.BtnInventory, "ToolBar/AnchorBottomRight/Grid/BtnInventory");
         this.Bind(ref m_view.BtnForge, "ToolBar/AnchorBottomRight/Grid/BtnForge");
         this.Bind(ref m_view.BtnDungeon, "ToolBar/AnchorBottomRight/Grid/BtnDungeon");
@@ -50,7 +52,8 @@ public class UILobby : UIBase
         // m_view.BtnInventory.onClick = OnClickInventory;
         m_view.BtnForge.onClick = OnClickForge;
         m_view.BtnDungeon.onClick = OnClickDungeon;
-        m_view.BtnPvp.onClick = OnClickPassiveInventory;
+        m_view.BtnPassiveSkill.onClick = OnClickPassiveInventory;
+        m_view.BtnPvp.onClick = OnClickPvp;
     }
 
     //-------------------------------------------------------------------------
@@ -62,6 +65,13 @@ public class UILobby : UIBase
     {
         Debug.Log(Macros.__PRETTY_FUNCTION__);
 
+    }
+
+    public void OnClickPvp(GameObject sender)
+    {
+        Debug.Log(Macros.__PRETTY_FUNCTION__);
+        UIPvp pvpUI = UIManager.Instance.Push<UIPvp>(UIType.UIPvp);
+        pvpUI.ReloadData();
     }
 
     public void OnClickInventory(GameObject sender)
@@ -96,12 +106,7 @@ public class UILobby : UIBase
 
         UIManager.Instance.Push(UIType.UIWorld);
     }
-
-    public void OnClickPvp(GameObject sender)
-    {
-        Debug.Log(Macros.__PRETTY_FUNCTION__);
-
-    }
+    
 
     #endregion UIActions
 }

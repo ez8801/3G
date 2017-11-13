@@ -11,7 +11,7 @@ namespace Data
         public int Type;
         public string Name;
         public int Cooltime;
-        public int Effect;
+        public int PrefabId;
         public string Texture;
         public bool Chargeable;
         public int Charging;
@@ -20,24 +20,23 @@ namespace Data
     }
 }
 
-//공통스킬(common), 무기특화 스킬로 구분
+//스킬의 구분
 public enum ActiveType
 {
     None,
-    Common = 1,
-    Staff = 10,
-    Gem = 11,
-    Shield = 12,
-    Sword = 13,
-    Spear = 14,
-    Bow = 15
+    Projectile = 1,
+    Buff = 2,
+    Summon = 3,
+    Targeting = 4,
+    Circle = 5,
+    Move = 6
 }
 
 public struct SimpleActive
 {
     public long Id;
     public int ActiveId;
-    public int Level;
+    public int Cooltime;
 }
 
 public sealed class SkillTable : ArrayTable<Skill>

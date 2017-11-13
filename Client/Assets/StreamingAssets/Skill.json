@@ -1,62 +1,26 @@
 [
   {
-    "Id": 30000001,
+    "Id": 13,
     "Type": 1,
     "Name": "Skill.Name.1",
     "Cooltime": 3,
-    "Effect": "",
-    "Texture": "Textures/Items/I_Cosmos_Sword",,
+    "PrefabId": "13",
+    "Texture": "Textures/Items/I_Cosmos_Sword",
     "Chargeable": false,
     "Charging": 0,
     "Level": 1,
     "Summary": "Skill.Summary.1"
   },
     {
-    "Id": 30000002,
+    "Id": 3000002,
     "Type": 1,
     "Name": "Skill.Name.2",
     "Cooltime": 10,
-    "Effect": "",
+    "PrefabId": "3000002",
     "Texture": "Textures/Items/I_Cosmos_Spear",
     "Chargeable": false,
     "Charging": 0,
     "Level": 2,
     "Summary": "Skill.Summary.2"
-  },
-    {
-    "Id": 101,
-    "Type": 10,
-    "Name": "Skill.Name.101",
-    "Cooltime": 5,
-    "Effect": "",
-    "Texture": "",
-    "Chargeable": false,
-    "Charging": 0,
-    "Level": 1,
-    "Summary": "Skill.Summary.101"
-  },
-    {
-    "Id": 201,
-    "Type": 11,
-    "Name": "Skill.Name.201",
-    "Cooltime": 3,
-    "Effect": "",
-    "Texture": "",
-    "Chargeable": false,
-    "Charging": 0,
-    "Level": 1,
-    "Summary": "Skill.Summary.201"
-  },
-    {
-    "Id": 301,
-    "Type": 12,
-    "Name": "Skill.Name.301",
-    "Cooltime": 25,
-    "Effect": "",
-    "Texture": "",
-    "Chargeable": true,
-    "Charging": 2,
-    "Level": 1,
-    "Summary": "Skill.Summary.301"
-  }  
+  }
 ]

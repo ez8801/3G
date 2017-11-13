@@ -32,17 +32,17 @@ public class UIActiveCell : MonoBehaviour
 
     public void SetData(UserData.Active active)
     {
-        SetData(active.Id, active.ActiveId, active.Level);
+        SetData(active.Id, active.ActiveId, active.Cooltime);
     }
 
     public void SetData(SimpleActive active)
     {
-        SetData(active.Id, active.ActiveId, active.Level);
+        SetData(active.Id, active.ActiveId, active.Cooltime);
     }
 
-    public void SetData(long id, int activeId, int ActiveLevel)
+    public void SetData(long id, int activeId, int ActiveCooltime)
     {
-        Data.Active activeData = ActiveTable.Instance.Find(activeId);
+        Data.Skill activeData = SkillTable.Instance.Find(activeId);
 
         if (!string.IsNullOrEmpty(activeData.Texture))
         {
@@ -50,7 +50,7 @@ public class UIActiveCell : MonoBehaviour
             TexActiveIcon.mainTexture = Resources.Load<Texture2D>(activeData.Texture);
 
             LblActiveLevel.SetActiveSafely(true);
-            LblActiveLevel.SetTextSafely(string.Concat("Lv.", ActiveLevel));
+            LblActiveLevel.SetTextSafely(string.Concat("Cool:", ActiveCooltime));
         }
         else
         {
