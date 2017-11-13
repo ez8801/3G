@@ -18,6 +18,21 @@ namespace C2S
 			public const Nettention.Proud.RmiID RequestMakeRaidRoom = (Nettention.Proud.RmiID)3000+3;
 			public const Nettention.Proud.RmiID RequestGetRaidRoomInfo = (Nettention.Proud.RmiID)3000+4;
 			public const Nettention.Proud.RmiID RequestJoinRaidRoom = (Nettention.Proud.RmiID)3000+5;
+			public const Nettention.Proud.RmiID RequestMakeAccount = (Nettention.Proud.RmiID)3000+6;
+			public const Nettention.Proud.RmiID RequestLoginAccount = (Nettention.Proud.RmiID)3000+7;
+			public const Nettention.Proud.RmiID RequestInventoryData = (Nettention.Proud.RmiID)3000+8;
+			public const Nettention.Proud.RmiID RequestSkillData = (Nettention.Proud.RmiID)3000+9;
+			public const Nettention.Proud.RmiID RequestEquipData = (Nettention.Proud.RmiID)3000+10;
+			public const Nettention.Proud.RmiID RequestChangeEquipWeapon = (Nettention.Proud.RmiID)3000+11;
+			public const Nettention.Proud.RmiID RequestBattleInfo = (Nettention.Proud.RmiID)3000+12;
+			public const Nettention.Proud.RmiID RequestBattleEnd = (Nettention.Proud.RmiID)3000+13;
+			public const Nettention.Proud.RmiID AddItemToInventory = (Nettention.Proud.RmiID)3000+14;
+			public const Nettention.Proud.RmiID AddGold = (Nettention.Proud.RmiID)3000+15;
+			public const Nettention.Proud.RmiID UseItemFromInventory = (Nettention.Proud.RmiID)3000+16;
+			public const Nettention.Proud.RmiID UseGold = (Nettention.Proud.RmiID)3000+17;
+			public const Nettention.Proud.RmiID SellAllItem = (Nettention.Proud.RmiID)3000+18;
+			public const Nettention.Proud.RmiID SendEquipInfo = (Nettention.Proud.RmiID)3000+19;
+			public const Nettention.Proud.RmiID SendPassiveEquipInfo = (Nettention.Proud.RmiID)3000+20;
 		// List that has RMI ID.
 		public static Nettention.Proud.RmiID[] RmiIDList = new Nettention.Proud.RmiID[] {
 			Chat,
@@ -25,6 +40,21 @@ namespace C2S
 			RequestMakeRaidRoom,
 			RequestGetRaidRoomInfo,
 			RequestJoinRaidRoom,
+			RequestMakeAccount,
+			RequestLoginAccount,
+			RequestInventoryData,
+			RequestSkillData,
+			RequestEquipData,
+			RequestChangeEquipWeapon,
+			RequestBattleInfo,
+			RequestBattleEnd,
+			AddItemToInventory,
+			AddGold,
+			UseItemFromInventory,
+			UseGold,
+			SellAllItem,
+			SendEquipInfo,
+			SendPassiveEquipInfo,
 		};
 	}
 }

@@ -100,9 +100,9 @@ public class loginToServer : MonoBehaviour {
 
 public struct items
 {
-    public int itemInherentIdx;
+    public int inId;
     public int itemIdx;
-    public int itemType;
+    public int count;
 };
 public struct raidrooms
 {
@@ -110,6 +110,29 @@ public struct raidrooms
     public int groupId;
     public int curCrew;
 };
+public struct equipinfo
+{
+    public int equipslot1;
+    public int equipslot2;
+    public int equipslot3;
+
+};
+public struct passiveskillinfo
+{
+    public int passiveSlot1;
+    public int passiveSlot2;
+    public int passiveSlot3;
+    public int passiveSlot4;
+
+};
+public struct battleinfo
+{
+    public int curA;
+    public int totalA;
+    public int curB;
+    public int totalB;
+};
+
 
 
 class Test : Nettention.Proud.Marshaler
@@ -121,9 +144,53 @@ class Test : Nettention.Proud.Marshaler
 
     public static void Write(Nettention.Proud.Message msg, Nettention.Proud.FastArray<items> strMsg)
     {
-        int a;
-        a = 0;
+        for (int i = 0; i < strMsg.Count; ++i)
+        {
+            msg.WriteScalar(strMsg[i].inId);
+            msg.WriteScalar(strMsg[i].itemIdx);
+            msg.WriteScalar(strMsg[i].count);
+        }
     }
+    public static void Write(Nettention.Proud.Message msg, Nettention.Proud.FastArray<battleinfo> strMsg)
+    {
+        for (int i = 0; i < strMsg.Count; ++i)
+        {
+            msg.WriteScalar(strMsg[i].curA);
+            msg.WriteScalar(strMsg[i].totalA);
+            msg.WriteScalar(strMsg[i].curB);
+            msg.WriteScalar(strMsg[i].totalB);
+        }
+    }
+    public static void Write(Nettention.Proud.Message msg, Nettention.Proud.FastArray<passiveskillinfo> strMsg)
+    {
+        for (int i = 0; i < strMsg.Count; ++i)
+        {
+            msg.WriteScalar(strMsg[i].passiveSlot1);
+            msg.WriteScalar(strMsg[i].passiveSlot2);
+            msg.WriteScalar(strMsg[i].passiveSlot3);
+            msg.WriteScalar(strMsg[i].passiveSlot4);
+        }
+    }
+
+    public static void Write(Nettention.Proud.Message msg, Nettention.Proud.FastArray<equipinfo> strMsg)
+    {
+        for (int i = 0; i < strMsg.Count; ++i)
+        {
+            msg.WriteScalar(strMsg[i].equipslot1);
+            msg.WriteScalar(strMsg[i].equipslot2);
+            msg.WriteScalar(strMsg[i].equipslot3);
+            //msg.WriteScalar(strMsg[i].ActiveSkill_1_idx);
+            //msg.WriteScalar(strMsg[i].ActiveSkill_2_idx);
+            //msg.WriteScalar(strMsg[i].ActiveSkill_3_idx);
+            //msg.WriteScalar(strMsg[i].ActiveSkill_4_idx);
+            //msg.WriteScalar(strMsg[i].PassiveSkill_1_idx);
+            //msg.WriteScalar(strMsg[i].PassiveSkill_2_idx);
+            //msg.WriteScalar(strMsg[i].PassiveSkill_3_idx);
+            //msg.WriteScalar(strMsg[i].PassiveSkill_4_idx);
+        }
+}
+
+
     public static bool Read(Nettention.Proud.Message msg, out Nettention.Proud.FastArray<items> strMsg)
     {
         strMsg = new Nettention.Proud.FastArray<items>();
@@ -133,9 +200,10 @@ class Test : Nettention.Proud.Marshaler
         items contain_items = new items();
         for (int i = 0; i < count; i++)
         {
-            msg.ReadScalar(ref contain_items.itemInherentIdx);
+            msg.ReadScalar(ref contain_items.inId);
             msg.ReadScalar(ref contain_items.itemIdx);
-            msg.ReadScalar(ref contain_items.itemType);
+            msg.ReadScalar(ref contain_items.count);
+            
             strMsg.Add(contain_items);
         }
 
@@ -153,6 +221,69 @@ class Test : Nettention.Proud.Marshaler
             msg.ReadScalar(ref contain_items.hostId);
             msg.ReadScalar(ref contain_items.groupId);
             msg.ReadScalar(ref contain_items.curCrew);
+            strMsg.Add(contain_items);
+        }
+
+        return true;
+    }
+    public static bool Read(Nettention.Proud.Message msg, out Nettention.Proud.FastArray<battleinfo> strMsg)
+    {
+        strMsg = new Nettention.Proud.FastArray<battleinfo>();
+        int count = 0;
+        msg.ReadScalar(ref count);
+
+        battleinfo contain_items = new battleinfo();
+        for (int i = 0; i < count; i++)
+        {
+            msg.ReadScalar(ref contain_items.curA);
+            msg.ReadScalar(ref contain_items.totalA);
+            msg.ReadScalar(ref contain_items.curB);
+            msg.ReadScalar(ref contain_items.totalB);
+            strMsg.Add(contain_items);
+        }
+
+        return true;
+    }
+
+    public static bool Read(Nettention.Proud.Message msg, out Nettention.Proud.FastArray<passiveskillinfo> strMsg)
+    {
+        strMsg = new Nettention.Proud.FastArray<passiveskillinfo>();
+        int count = 0;
+        msg.ReadScalar(ref count);
+
+        passiveskillinfo contain_items = new passiveskillinfo();
+        for (int i = 0; i < count; i++)
+        {
+            msg.ReadScalar(ref contain_items.passiveSlot1);
+            msg.ReadScalar(ref contain_items.passiveSlot2);
+            msg.ReadScalar(ref contain_items.passiveSlot3);
+            msg.ReadScalar(ref contain_items.passiveSlot4);
+            strMsg.Add(contain_items);
+        }
+
+        return true;
+    }
+
+    public static bool Read(Nettention.Proud.Message msg, out Nettention.Proud.FastArray<equipinfo> strMsg)
+    {
+        strMsg = new Nettention.Proud.FastArray<equipinfo>();
+        int count = 0;
+        msg.ReadScalar(ref count);
+
+        equipinfo contain_items = new equipinfo();
+        for (int i = 0; i < count; i++)
+        {
+            msg.ReadScalar(ref contain_items.equipslot1);
+            msg.ReadScalar(ref contain_items.equipslot2);
+            msg.ReadScalar(ref contain_items.equipslot3);
+            //msg.ReadScalar(ref contain_items.ActiveSkill_1_idx);
+            //msg.ReadScalar(ref contain_items.ActiveSkill_2_idx);
+            //msg.ReadScalar(ref contain_items.ActiveSkill_3_idx);
+            //msg.ReadScalar(ref contain_items.ActiveSkill_4_idx);
+            //msg.ReadScalar(ref contain_items.PassiveSkill_1_idx);
+            //msg.ReadScalar(ref contain_items.PassiveSkill_2_idx);
+            //msg.ReadScalar(ref contain_items.PassiveSkill_3_idx);
+            //msg.ReadScalar(ref contain_items.PassiveSkill_4_idx);
             strMsg.Add(contain_items);
         }
 

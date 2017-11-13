@@ -24,6 +24,7 @@ public struct SkillSlot
 
 public class PassiveInventory
 {
+    private Client m_client;
     private List<UserData.PassiveSkill> m_passive = new List<UserData.PassiveSkill>();
 
     private Dictionary<long, bool> m_dirtyFlags = new Dictionary<long, bool>();
@@ -37,7 +38,8 @@ public class PassiveInventory
 
     public PassiveInventory()
     {
-        for(int i = SkillSlot.None + 1; i < SkillSlot.Max;i++)
+        m_client = Client.Instance;
+        for (int i = SkillSlot.None + 1; i < SkillSlot.Max;i++)
         {
             m_equippedSkills.Add(i, 0);
         }
@@ -90,7 +92,10 @@ public class PassiveInventory
 
             Data.PassiveSkill passive = PassiveSkillTable.Instance.Find(nowPassive.PassiveId);
             GameObject.Find("PassiveManager").SendMessage("ApplyPassive", passive);
-
+            // 패시브 슬롯과 패시브 아이디를 서버로 보내서 DB에 저장
+            // DB에서 패시브 값 받아와서 m_equippedSkills에 저장하고
+            // 패시브에 따른 능력값 Apply해주는 루트 만들어주면 됨
+            // 내일
             m_selectSlot = 0;
             return true;
         }
@@ -101,10 +106,27 @@ public class PassiveInventory
     {
         UserData.PassiveSkill passive = Find(id);
         if (passive != null)
+        {
+            bool result;
+            result = EquipPassive(passive);
+            if(result == true)
+            {
+                m_client.SendPassiveEquipInfo(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.UnreliableSend, MyInfo.Account.NickName,
+                    (int)m_equippedSkills[1], (int)m_equippedSkills[2], (int)m_equippedSkills[3], (int)m_equippedSkills[4]);
+            }
+            return result;
+        }
+        return false;
+    }
+
+    public bool EquipPassiveFromDB(long id)
+    {
+        UserData.PassiveSkill passive = Find(id);
+        if (passive != null)
             return EquipPassive(passive);
         return false;
     }
-    
+
     //빈 슬롯을 반환합니다.
     public int FindEmptySlot()
     {
@@ -169,6 +191,8 @@ public class PassiveInventory
 
                 UserData.PassiveSkill passive = Find(id);
                 Data.PassiveSkill passiveData = PassiveSkillTable.Instance.Find(passive.PassiveId);
+                m_client.SendPassiveEquipInfo(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.UnreliableSend, MyInfo.Account.NickName,
+                    (int)m_equippedSkills[1], (int)m_equippedSkills[2], (int)m_equippedSkills[3], (int)m_equippedSkills[4]);
                 GameObject.Find("PassiveManager").SendMessage("ReleasePassive", passiveData);
 
                 break;

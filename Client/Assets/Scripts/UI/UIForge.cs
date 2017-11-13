@@ -24,7 +24,7 @@ public class UIForge : UIBase
 		public Transform PanelCell;
 	}
 	public View m_view;
-
+    private Client m_client;
     private int m_selectedIndex;
     private int m_selectedRecipeIndex;
     private List<Data.Material> m_materials;
@@ -32,6 +32,7 @@ public class UIForge : UIBase
     
     internal override void OnCreate()
     {
+        m_client = Client.Instance;
         base.OnCreate();
         BindComponents();
 
@@ -345,7 +346,7 @@ public class UIForge : UIBase
         UIAlertView.Show(UIAlertView.Style.OK, string.Empty, message);
 
         MyInfo.Account.Gold -= recipe.CostGold;
-
+        m_client.UseGold(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.UnreliableSend, MyInfo.Account.NickName, recipe.CostGold);
         ReloadData();
     }
 
