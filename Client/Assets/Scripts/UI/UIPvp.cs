@@ -33,7 +33,7 @@ public class UIPvp : UIBase
     public View m_view;
 
     public List<SimplePvpRoom> m_findRooms;
-    public SimplePvpRoom roomone;
+    
 
     internal override void OnCreate()
     {
@@ -57,6 +57,7 @@ public class UIPvp : UIBase
     {
         //m_findRooms에 서버에서 리스트 받을필요 있음
         //임의 리스트
+        SimplePvpRoom roomone = new SimplePvpRoom();
         roomone.Id = 0;
         roomone.RoomId = 0001;
         roomone.RoomName = "today";

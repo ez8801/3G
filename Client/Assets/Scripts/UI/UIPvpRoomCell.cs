@@ -44,7 +44,7 @@ public class UIPvpRoomCell : MonoBehaviour
         if (m_isFull == false)
             gameObject.SetActive(true);
         LblRoomNum.SetTextSafely(string.Format("{0}", room.RoomId));
-        LblRoomName.SetTextSafely(room.RoomName);
+        //LblRoomName.SetTextSafely(room.RoomName);
     }
 
     public bool IsFull()

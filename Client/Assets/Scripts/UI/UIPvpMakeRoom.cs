@@ -13,9 +13,12 @@ using System.Collections.Generic;
 
 public class UIPvpMakeRoom : UIBase 
 {
-	//나가기 버튼
+    //나가기 버튼
 
 
-
+    public void OnClickClose()
+    {
+        Hide();
+    }
 
 }
