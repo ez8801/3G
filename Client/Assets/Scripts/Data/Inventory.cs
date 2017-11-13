@@ -30,6 +30,7 @@ namespace UserData
 
 public class Inventory
 {
+    private Client m_client;
     private List<UserData.Item> m_items = new List<UserData.Item>();
     private Dictionary<long, bool> m_dirtyFlags = new Dictionary<long, bool>();
 
@@ -37,9 +38,14 @@ public class Inventory
 
     // @TODO: Temporary
     private static int GUID = 0;
+    public void decGUID()
+    {
+        GUID--;
+    }
 
     public Inventory()
     {
+        m_client = Client.Instance;
         for (int i = ItemSlot.None + 1; i < ItemSlot.Max; i++)
         {
             m_equippedItems.Add(i, 0);
@@ -74,6 +80,22 @@ public class Inventory
         }
         return null;
     }
+    public void SetItem(int inId, int itemId, int itemCount)
+    {
+        if (IsGoods(itemId))
+        {
+            AddGoodsItem(itemId, itemCount);
+            OnGainedItem(0, itemId, itemCount);
+        }
+        else if (IsStackAble(itemId))
+        {
+            InternalAddItemFromDB(inId, itemId, itemCount);
+        }
+        else
+        {
+            InternalAddItemFromDB(inId, itemId, itemCount);
+        }
+    }
 
     public void AddItem(int itemId)
     {
@@ -90,10 +112,14 @@ public class Inventory
         else if (IsStackAble(itemId))
         {
             AddStackAbleItem(itemId, itemCount);
+            
         }
         else
         {
-            InternalAddItem(itemId, itemCount);
+            int newitemId;
+            newitemId = InternalAddItem(itemId, itemCount);
+            //NoServer
+            m_client.AddItemToInventory(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.UnreliableSend, MyInfo.Account.NickName, newitemId, itemId, itemCount, 0);
         }
     }
 
@@ -103,6 +129,7 @@ public class Inventory
         switch ((ItemType) itemData.Type)
         {
             case ItemType.Gold:
+                m_client.AddGold(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.UnreliableSend, MyInfo.Account.NickName, itemCount);
                 MyInfo.Account.Gold += itemCount;
                 break;
 
@@ -112,8 +139,9 @@ public class Inventory
         }
     }
 
-    public void AddStackAbleItem(int itemId, int itemCount)
+    public bool AddStackAbleItem(int itemId, int itemCount)
     {
+     
         for (int i = 0; i < m_items.Count; i++)
         {
             UserData.Item match = m_items[i];
@@ -122,14 +150,17 @@ public class Inventory
                 match.Count += itemCount;
                 SetDirty(match.Id, true);
                 OnGainedItem(match.Id, itemId, itemCount);
-                return;
+                m_client.AddItemToInventory(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.UnreliableSend, MyInfo.Account.NickName, (int)match.Id, itemId, itemCount, 1);
+                return true;
             }
         }
-
-        InternalAddItem(itemId, itemCount);
+        int newitemId;
+        newitemId = InternalAddItem(itemId, itemCount);
+        m_client.AddItemToInventory(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.UnreliableSend, MyInfo.Account.NickName, newitemId , itemId, itemCount , 0);
+        return false;
     }
 
-    private void InternalAddItem(int itemId, int itemCount)
+    private int InternalAddItem(int itemId, int itemCount)
     {
         UserData.Item newItem = new UserData.Item();
         newItem.Id = ++GUID;
@@ -139,8 +170,39 @@ public class Inventory
 
         SetDirty(newItem.Id, true);
         OnGainedItem(newItem.Id, itemId, itemCount);
+        return (int)newItem.Id;
     }
-    
+
+    public bool AddStackAbleItemFromDB(int itemId, int itemCount)
+    {
+        for (int i = 0; i < m_items.Count; i++)
+        {
+            UserData.Item match = m_items[i];
+            if (match.ItemId == itemId)
+            {
+                match.Count += itemCount;
+                SetDirty(match.Id, true);
+                OnGainedItem(match.Id, itemId, itemCount);
+                return true;
+            }
+        }
+        
+        InternalAddItem(itemId, itemCount);
+        return false;
+    }
+    private void InternalAddItemFromDB(int inId, int itemId, int itemCount)
+    {
+        UserData.Item newItem = new UserData.Item();
+        newItem.Id = inId;
+        newItem.ItemId = itemId;
+        newItem.Count = itemCount;
+        m_items.Add(newItem);
+
+        SetDirty(newItem.Id, true);
+        OnGainedItem(newItem.Id, itemId, itemCount);
+        GUID = inId;
+    }
+
     /// <summary>
     /// 지정된 아이템을 장착합니다.
     /// </summary>
@@ -156,12 +218,20 @@ public class Inventory
             }
 
             m_equippedItems[itemSlot] = item.Id;
+            m_client.SendEquipInfo(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.UnreliableSend, MyInfo.Account.NickName, (int)m_equippedItems[1], (int)m_equippedItems[2], (int)m_equippedItems[3]);
             return true;
         }
         return false;
     }
 
     public bool EquipItem(long id)
+    {
+        UserData.Item item = Find(id);
+        if (item != null)
+            return EquipItem(item);
+        return false;
+    }
+    public bool EquipItemFromDB(long id)
     {
         UserData.Item item = Find(id);
         if (item != null)
@@ -179,6 +249,7 @@ public class Inventory
         {
             m_equippedItems[itemSlot] = 0;
         }
+        m_client.SendEquipInfo(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.UnreliableSend, MyInfo.Account.NickName, (int)m_equippedItems[1], (int)m_equippedItems[2], (int)m_equippedItems[3]);
     }
     
     /// <summary>
@@ -192,9 +263,11 @@ public class Inventory
             if (enumerator.Current.Value == id)
             {
                 m_equippedItems[enumerator.Current.Key] = 0;
+                m_client.SendEquipInfo(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.UnreliableSend, MyInfo.Account.NickName, (int)m_equippedItems[1], (int)m_equippedItems[2], (int)m_equippedItems[3]);
                 break;
             }
         }
+
     }
 
     /// <summary>
@@ -241,6 +314,7 @@ public class Inventory
 
         // @TODO: Validation
         item.Count -= itemCount;
+        m_client.UseItemFromInventory(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.UnreliableSend, MyInfo.Account.NickName, (int)id, item.ItemId,itemCount, 1);
         if (item.Count < 0)
         {
             Remove(id);

@@ -51,9 +51,9 @@ case Common.P2PChat:
 		ctx.encryptMode = pa.EncryptMode;
 		ctx.compressMode = pa.CompressMode;
 			
-		System.String a; Nettention.Proud.Marshaler.Read(__msg,out a);	
-int b; Nettention.Proud.Marshaler.Read(__msg,out b);	
-float c; Nettention.Proud.Marshaler.Read(__msg,out c);	
+		System.String a; Test.Read(__msg,out a);	
+int b; Test.Read(__msg,out b);	
+float c; Test.Read(__msg,out c);	
 core.PostCheckReadMessage(__msg, RmiName_P2PChat);
 		if(enableNotifyCallFromStub==true)
 		{
@@ -106,8 +106,8 @@ case Common.DamagedFromEnemy:
 		ctx.encryptMode = pa.EncryptMode;
 		ctx.compressMode = pa.CompressMode;
 			
-		int Damage; Nettention.Proud.Marshaler.Read(__msg,out Damage);	
-int RestHP; Nettention.Proud.Marshaler.Read(__msg,out RestHP);	
+		int Damage; Test.Read(__msg,out Damage);	
+int RestHP; Test.Read(__msg,out RestHP);	
 core.PostCheckReadMessage(__msg, RmiName_DamagedFromEnemy);
 		if(enableNotifyCallFromStub==true)
 		{

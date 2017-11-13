@@ -2,7 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
+using GameSystem;
 /*
  * c# 네이밍 규칙.
  * private 멤버변수는 m_를 붙인다.
@@ -24,29 +24,29 @@ public class Client : MonoBehaviour {
     /// <summary>
     /// 지워도됨
     /// </summary>
-	public class ChatRoomInfo
-	{
+    public class ChatRoomInfo
+    {
 
-		public System.Collections.Generic.List<Nettention.Proud.HostID> HostIDs;
-		public System.Collections.Generic.List<string> ChatString;
+        public System.Collections.Generic.List<Nettention.Proud.HostID> HostIDs;
+        public System.Collections.Generic.List<string> ChatString;
 
-		public ChatRoomInfo()
-		{
-			HostIDs = new System.Collections.Generic.List<Nettention.Proud.HostID>();
-			ChatString = new System.Collections.Generic.List<string>();
-		}
-	}
-	/// <summary>
+        public ChatRoomInfo()
+        {
+            HostIDs = new System.Collections.Generic.List<Nettention.Proud.HostID>();
+            ChatString = new System.Collections.Generic.List<string>();
+        }
+    }
+    /// <summary>
     /// 여기까지
     /// </summary>
 
-	
-	// 싱글톤 패턴 사용을 위해 Client 객체 선언.
-	private static Client m_instance;
-	
-	// 프라우드넷 엔진 을 사용하기 위해 선언한 변수들.
-	// 프라우드넷 클라이언트 객체.
-	private Nettention.Proud.NetClient m_netClient;
+
+    // 싱글톤 패턴 사용을 위해 Client 객체 선언.
+    private static Client m_instance;
+
+    // 프라우드넷 엔진 을 사용하기 위해 선언한 변수들.
+    // 프라우드넷 클라이언트 객체.
+    private Nettention.Proud.NetClient m_netClient;
 
     // 서버로 RMI 메시지 전송을 위해 C2S proxy 객체 선언.
     // 나중에 temp를 빼라
@@ -60,99 +60,99 @@ public class Client : MonoBehaviour {
 
     // 나중에 지울것
     private ChatC2S.Proxy m_c2sProxy;
-	private ChatC2C.Proxy m_c2cProxy;
-	private ChatS2C.Stub m_s2cStub;
-	private ChatC2C.Stub m_c2cStub;
-	
-	// 서버 접속 정보를 담기 위해.
-	private Nettention.Proud.NetConnectionParam m_param;
-	// 서버에 연결된 유저의 수를 저장힐 int형 변수.
-	private int m_userCount;
-	
-	// userName과 serverIP 주소 저장할 변수.
-	private string m_userName;
-    private string m_userPassword;
-	private string m_serverIP;
-	
-	// 서버 연결이 잘 되었는지 확인 하는 bool변수.
-	private bool m_isConnect;
-	// 서버 연결 요청후 기다리는 상태인지를 체크하는 bool 변수.
-	private bool m_isWait;
-	// 서버에 연결된 클라이언트가 변화 하였는지 체크하는 bool 변수.
-	private bool m_isUserUpdate;
-	
-	private int m_screenWidth; // 화면 가로의 길이
-	private int m_screenHeight; // 화면 세로의 길이
-	private int m_screenOneW; // 화면 가로의 길이를 일정 값으로 나눈 값.
-	private int m_screenOneH;// 화면 세로의 길이를 일정 값으로 나눈 값.
-	
-	private Nettention.Proud.HostID m_p2pChatGroupID; // P2PChat 에서 채팅창에 뿌려줄 그룹의 아이디
+    private ChatC2C.Proxy m_c2cProxy;
+    private ChatS2C.Stub m_s2cStub;
+    private ChatC2C.Stub m_c2cStub;
 
-	// 클라이언트 호스트 아이디(클라이언트),닉네임.
-	public Dictionary<Nettention.Proud.HostID,string> ChatUserInfo;
-	// 클라이언트 호스트 아이디(서버 or 그룹),채팅내용.
-	public Dictionary<Nettention.Proud.HostID,ChatRoomInfo> ChatRooms;
-	
-	// 싱글턴 패턴 사용을 위한 속성.
-	public static Client Instance
-	{
-		get
-		{
-			if (m_instance == null) // m_instance 가 널 이라면.
-			{	// Find any object of one class or script name using Object.FindObjectsOfType or find the first object of one type using Object.FindObjectOfType. 
-				m_instance = FindObjectOfType(typeof(Client)) as Client; // class 나 script의 이름으로 object를 찾거나 한 타입으로 첫번째 object를 찾아 CClient 객체 타입으로 캐스팅..
-				if (m_instance == null) // 생성된 오브젝트가 없다면.
-				{	// 새로운 GameObject 의 이름을 CClient, 포함할 component에 CClient 스크립트를 넣어 생성하고 GetComponent를 이용해 스크립트를 가져온다.
-					m_instance = new GameObject("Client",typeof(Client)).GetComponent<Client>(); // 새로 만들어 준다.
-				}
-			}
-			return m_instance; // 
-		}
-	}
-	// m_screenWidth에 대한 속성. 
-	public int ScreenWidth
-	{
-		get
-		{
-			return m_screenWidth; // m_screenWidth 를 리턴한다.
-		}
-	}
-	//m_screenHeight 에 대한 속성.
-	public int ScreenHeight
-	{
-		get
-		{
-			return m_screenHeight; // m_screenHeight 를 리턴한다.
-		}
-	}
-	// m_screenOneW 에 대한 속성.
-	public int ScreenOneW
-	{
-		get
-		{
-			return m_screenOneW; // m_screenOneW 를 리턴한다.
-		}
-	}
-	// m_screenOneH 에 대한 속성.
-	public int ScreenOneH
-	{
-		get
-		{
-			return m_screenOneH; // m_screenOneH 를 리턴한다.
-		}
-	}
-	// 닉네임에 대한 속성.
-	public string userName
-	{
-		get
-		{
-			return m_userName; // 닉네임을 리턴한다.
-		}
-		set
-		{
-			m_userName = value; // 닉네임에 입력된 값을 넣는다.
-		}
-	}
+    // 서버 접속 정보를 담기 위해.
+    private Nettention.Proud.NetConnectionParam m_param;
+    // 서버에 연결된 유저의 수를 저장힐 int형 변수.
+    private int m_userCount;
+
+    // userName과 serverIP 주소 저장할 변수.
+    private string m_userName;
+    private string m_userPassword;
+    private string m_serverIP;
+
+    // 서버 연결이 잘 되었는지 확인 하는 bool변수.
+    private bool m_isConnect;
+    // 서버 연결 요청후 기다리는 상태인지를 체크하는 bool 변수.
+    private bool m_isWait;
+    // 서버에 연결된 클라이언트가 변화 하였는지 체크하는 bool 변수.
+    private bool m_isUserUpdate;
+
+    private int m_screenWidth; // 화면 가로의 길이
+    private int m_screenHeight; // 화면 세로의 길이
+    private int m_screenOneW; // 화면 가로의 길이를 일정 값으로 나눈 값.
+    private int m_screenOneH;// 화면 세로의 길이를 일정 값으로 나눈 값.
+
+    private Nettention.Proud.HostID m_p2pChatGroupID; // P2PChat 에서 채팅창에 뿌려줄 그룹의 아이디
+
+    // 클라이언트 호스트 아이디(클라이언트),닉네임.
+    public Dictionary<Nettention.Proud.HostID, string> ChatUserInfo;
+    // 클라이언트 호스트 아이디(서버 or 그룹),채팅내용.
+    public Dictionary<Nettention.Proud.HostID, ChatRoomInfo> ChatRooms;
+
+    // 싱글턴 패턴 사용을 위한 속성.
+    public static Client Instance
+    {
+        get
+        {
+            if (m_instance == null) // m_instance 가 널 이라면.
+            {   // Find any object of one class or script name using Object.FindObjectsOfType or find the first object of one type using Object.FindObjectOfType. 
+                m_instance = FindObjectOfType(typeof(Client)) as Client; // class 나 script의 이름으로 object를 찾거나 한 타입으로 첫번째 object를 찾아 CClient 객체 타입으로 캐스팅..
+                if (m_instance == null) // 생성된 오브젝트가 없다면.
+                {   // 새로운 GameObject 의 이름을 CClient, 포함할 component에 CClient 스크립트를 넣어 생성하고 GetComponent를 이용해 스크립트를 가져온다.
+                    m_instance = new GameObject("Client", typeof(Client)).GetComponent<Client>(); // 새로 만들어 준다.
+                }
+            }
+            return m_instance; // 
+        }
+    }
+    // m_screenWidth에 대한 속성. 
+    public int ScreenWidth
+    {
+        get
+        {
+            return m_screenWidth; // m_screenWidth 를 리턴한다.
+        }
+    }
+    //m_screenHeight 에 대한 속성.
+    public int ScreenHeight
+    {
+        get
+        {
+            return m_screenHeight; // m_screenHeight 를 리턴한다.
+        }
+    }
+    // m_screenOneW 에 대한 속성.
+    public int ScreenOneW
+    {
+        get
+        {
+            return m_screenOneW; // m_screenOneW 를 리턴한다.
+        }
+    }
+    // m_screenOneH 에 대한 속성.
+    public int ScreenOneH
+    {
+        get
+        {
+            return m_screenOneH; // m_screenOneH 를 리턴한다.
+        }
+    }
+    // 닉네임에 대한 속성.
+    public string userName
+    {
+        get
+        {
+            return m_userName; // 닉네임을 리턴한다.
+        }
+        set
+        {
+            m_userName = value; // 닉네임에 입력된 값을 넣는다.
+        }
+    }
     // 닉네임에 대한 속성.
     public string userPassword
     {
@@ -167,82 +167,82 @@ public class Client : MonoBehaviour {
     }
     // 서버 아이피에 대한 속성.
     public string ServerIP
-	{
-		get
-		{
-			return m_serverIP; // 서버아이피를 리턴한다.
-		}
-		set
-		{
-			m_serverIP = value; // 서버아이피에 값을 넣는다.
-		}
-	}
-	// m_isConnect 에 대한 속성.
-	public bool IsConnect 
-	{
-		get // 리턴 
-		{
-			return m_isConnect; // m_isConnect 를 리턴한다.
-		}
-		set
-		{
-			m_isConnect = value; // m_isConnect 에 해당하는 값을 넣는다.
-		}
-	}
-	// m_UserCount 에 대한 속성.
-	public int UserCount
-	{
-		get
-		{
-			return m_userCount; // m_usercount 를 리턴한다.
-		}
-	}
-	// P2PChat 에서 뿌려줄 그룹의 아이디를 결정하는 m_p2pChatGroupID 에 대한 속성.
-	public Nettention.Proud.HostID P2PChatGroupID
-	{
-		get
-		{
-			return m_p2pChatGroupID; // m_p2pChatGroupID 를 리턴한다.
-		}
-		set
-		{
-			m_p2pChatGroupID = value; // m_p2pChatGroupID 에 값을 넣는다.
-		}
-	}
-	// 서버 연결 요청후 기다리는 상태 인지체크하는 m_isWait 에 대한 속성.
-	public bool IsWait
-	{
-		get
-		{
-			return m_isWait; // m_isWait을 리턴해준다.
-		}
-		set
-		{
-			m_isWait = value; // m_isWait에 값을 넣늗나.
-		}
-	}
-	// 서버에 연결된 클라이언트 에 대한 정보가 변동이 있는지 없는지 체크 한다.
-	public bool IsUserUpdate
-	{
-		get
-		{
-			return m_isUserUpdate;
-		}
-		set
-		{
-			m_isUserUpdate = value;
-		}
-	}
-	
-	
-	void Awake() {
-		DontDestroyOnLoad(this); // 씬이 변경되어도 파괴되지 않게 하기 위해서.
-	}
-	
-	// Use this for initialization
-	void Start () {
-		// 클래스 생성.
-		m_netClient = new Nettention.Proud.NetClient(); // NetClient 클래스 생성.
+    {
+        get
+        {
+            return m_serverIP; // 서버아이피를 리턴한다.
+        }
+        set
+        {
+            m_serverIP = value; // 서버아이피에 값을 넣는다.
+        }
+    }
+    // m_isConnect 에 대한 속성.
+    public bool IsConnect
+    {
+        get // 리턴 
+        {
+            return m_isConnect; // m_isConnect 를 리턴한다.
+        }
+        set
+        {
+            m_isConnect = value; // m_isConnect 에 해당하는 값을 넣는다.
+        }
+    }
+    // m_UserCount 에 대한 속성.
+    public int UserCount
+    {
+        get
+        {
+            return m_userCount; // m_usercount 를 리턴한다.
+        }
+    }
+    // P2PChat 에서 뿌려줄 그룹의 아이디를 결정하는 m_p2pChatGroupID 에 대한 속성.
+    public Nettention.Proud.HostID P2PChatGroupID
+    {
+        get
+        {
+            return m_p2pChatGroupID; // m_p2pChatGroupID 를 리턴한다.
+        }
+        set
+        {
+            m_p2pChatGroupID = value; // m_p2pChatGroupID 에 값을 넣는다.
+        }
+    }
+    // 서버 연결 요청후 기다리는 상태 인지체크하는 m_isWait 에 대한 속성.
+    public bool IsWait
+    {
+        get
+        {
+            return m_isWait; // m_isWait을 리턴해준다.
+        }
+        set
+        {
+            m_isWait = value; // m_isWait에 값을 넣늗나.
+        }
+    }
+    // 서버에 연결된 클라이언트 에 대한 정보가 변동이 있는지 없는지 체크 한다.
+    public bool IsUserUpdate
+    {
+        get
+        {
+            return m_isUserUpdate;
+        }
+        set
+        {
+            m_isUserUpdate = value;
+        }
+    }
+
+
+    void Awake() {
+        DontDestroyOnLoad(this); // 씬이 변경되어도 파괴되지 않게 하기 위해서.
+    }
+
+    // Use this for initialization
+    void Start() {
+        // 클래스 생성.
+        m_netClient = new Nettention.Proud.NetClient(); // NetClient 클래스 생성.
 
         //나중에temp제거해야함
         m_c2cProxy_temp = new C2C.Proxy();  // Proxy 클래스 생성(클라에서 서버로 메시지 전송).
@@ -251,36 +251,40 @@ public class Client : MonoBehaviour {
         m_s2cStub_temp = new S2C.Stub();    // Stub 클래스 생성(클라에서 클라로 메시지 수신).
 
         //나중에 지워야함
-        m_c2sProxy = new ChatC2S.Proxy(); 
-		m_c2cProxy = new ChatC2C.Proxy(); 
-		m_s2cStub = new ChatS2C.Stub(); 
-		m_c2cStub = new ChatC2C.Stub(); 
-		
-		// NetClient 이벤트 딜리게이트에 함수 셋팅.
-		m_netClient.JoinServerCompleteHandler = OnJoinServerComplete; // 서버로 연결요청을 한 결과가 도창하면 콜백 되는 함수를 넣어준다.
-		m_netClient.LeaveServerHandler = OnLeaveServer; // 서버와 연결이 해제되면 콜백 되는 함수를 넣어준다.
-		m_netClient.ErrorHandler = OnError; // 내부 에러 발생시 콜백 되는 함수를 넣어준다.
-		m_netClient.WarningHandler = OnWarning; // 내부 워닝 발생시 콜백 되는 함수를 넣어준다.
-		m_netClient.InformationHandler = OnInformation; // 내부 알림 발생시 콜백 되는 함수를 넣어준다.
-		m_netClient.ExceptionHandler = OnException; // 내부 익셉션 발생 시 콜백 되는 함수를 넣어 준다.
-		m_netClient.P2PMemberJoinHandler = OnP2PMemberJoin; // 해당 클라이언트와 p2p 그룹을 맺게 되면 콜백 되는 함수를 넣어준다.
-		m_netClient.P2PMemberLeaveHandler = OnP2PMemberLeave; // 해당 클라이언트와 p2p 그룹이 해지되면 콜백 되는 함수를 넣어 준다.
+        m_c2sProxy = new ChatC2S.Proxy();
+        m_c2cProxy = new ChatC2C.Proxy();
+        m_s2cStub = new ChatS2C.Stub();
+        m_c2cStub = new ChatC2C.Stub();
+
+        // NetClient 이벤트 딜리게이트에 함수 셋팅.
+        m_netClient.JoinServerCompleteHandler = OnJoinServerComplete; // 서버로 연결요청을 한 결과가 도창하면 콜백 되는 함수를 넣어준다.
+        m_netClient.LeaveServerHandler = OnLeaveServer; // 서버와 연결이 해제되면 콜백 되는 함수를 넣어준다.
+        m_netClient.ErrorHandler = OnError; // 내부 에러 발생시 콜백 되는 함수를 넣어준다.
+        m_netClient.WarningHandler = OnWarning; // 내부 워닝 발생시 콜백 되는 함수를 넣어준다.
+        m_netClient.InformationHandler = OnInformation; // 내부 알림 발생시 콜백 되는 함수를 넣어준다.
+        m_netClient.ExceptionHandler = OnException; // 내부 익셉션 발생 시 콜백 되는 함수를 넣어 준다.
+        m_netClient.P2PMemberJoinHandler = OnP2PMemberJoin; // 해당 클라이언트와 p2p 그룹을 맺게 되면 콜백 되는 함수를 넣어준다.
+        m_netClient.P2PMemberLeaveHandler = OnP2PMemberLeave; // 해당 클라이언트와 p2p 그룹이 해지되면 콜백 되는 함수를 넣어 준다.
 
 
         // s2cStub RMI 함수 딜리게이트에 각 함수 셋팅.
         m_c2cStub_temp.DamagedFromEnemy = OnDamagedFromEnemy;
         m_s2cStub_temp.sendInventoryData = OnSendInventoryData;
         m_s2cStub_temp.sendRaidRoomInfo = OnSendRaidRoomInfo;
-		m_s2cStub.ShowChat = OnShowChat;
-		m_s2cStub.UserList_Add = UserList_Add;
-		m_s2cStub.UserList_Remove = UserList_Remove;
-		m_c2cStub.P2P_Chat = OnC2CChat;
+        m_s2cStub_temp.sendLoginResult = OnSendLoginResult;
+        m_s2cStub_temp.sendEquipmentData = OnEquipmentData;
+        m_s2cStub_temp.sendSkillData = OnPassiveSkillData;
 
-		// 나중에 삭제해줘야함
-	//	m_netClient.AttachStub(m_s2cStub);
-		//m_netClient.AttachProxy(m_c2sProxy);
-	//	m_netClient.AttachProxy(m_c2cProxy);
-		//m_netClient.AttachStub(m_c2cStub);
+        m_s2cStub.ShowChat = OnShowChat;
+        m_s2cStub.UserList_Add = UserList_Add;
+        m_s2cStub.UserList_Remove = UserList_Remove;
+        m_c2cStub.P2P_Chat = OnC2CChat;
+
+        // 나중에 삭제해줘야함
+        //	m_netClient.AttachStub(m_s2cStub);
+        //m_netClient.AttachProxy(m_c2sProxy);
+        //	m_netClient.AttachProxy(m_c2cProxy);
+        //m_netClient.AttachStub(m_c2cStub);
 
         // 클라이언트에 Proxy 와 Stub 들을 붙인다.
         // 나중에 temp 제거
@@ -292,50 +296,50 @@ public class Client : MonoBehaviour {
         // 접속 하기 위한 서버의 정보를 셋팅하기 위해 NetConnectionParam 클래스 생성.
         m_param = new Nettention.Proud.NetConnectionParam();
 
-		// 프로토콜 버전 셋팅.
+        // 프로토콜 버전 셋팅.
         m_param.protocolVersion = new Nettention.Proud.Guid();
         m_param.protocolVersion.Set(ChatUnity.Vars.Version);
-		m_param.serverPort = (ushort)ChatUnity.Vars.ServerPort; // 포트번호 셋팅.
+        m_param.serverPort = (ushort)ChatUnity.Vars.ServerPort; // 포트번호 셋팅.
 
-		m_screenWidth = Screen.width; // 현재 화면의 가로 값 셋팅.
-		m_screenHeight = Screen.height; // 현재 화면의 세로 값 셋팅.
-		m_screenOneW = m_screenWidth/5; // 현재 화면의 가로를 5로 나눈값으로 셋팅.
-		m_screenOneH = m_screenHeight/10; // 현재 화면의 세로를 10으로 나눈 값으로 셋팅.
-		
-		ChatUserInfo = new Dictionary<Nettention.Proud.HostID, string>(); // HostID 를 키로 UserName 을 값으로 가지는 dictionary 메모리 할당.
-		ChatRooms = new Dictionary<Nettention.Proud.HostID,ChatRoomInfo>(); // P2P ChatRoom 에 대한 메모리 할당.
+        m_screenWidth = Screen.width; // 현재 화면의 가로 값 셋팅.
+        m_screenHeight = Screen.height; // 현재 화면의 세로 값 셋팅.
+        m_screenOneW = m_screenWidth / 5; // 현재 화면의 가로를 5로 나눈값으로 셋팅.
+        m_screenOneH = m_screenHeight / 10; // 현재 화면의 세로를 10으로 나눈 값으로 셋팅.
 
-		m_userName = ""; // m_userName 초기화.
-		m_serverIP = ""; // m_serverIP 초기화.
-		
-		m_isConnect = false; // m_isConnect false 로 초기화.
-		m_isWait = false; // m_isWait false 로 초기화.
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		// 서버 연결을 시도 하였거나 연결 되었을때 Framemove()를 호출한다.
-		if (m_isWait || m_isConnect)
-		{ 
-			// 서버로 부터 수신된 RMI 나 delegate의 콜백 이벤트 처리.
-			m_netClient.FrameMove();
-		}
-		
-		/* 
+        ChatUserInfo = new Dictionary<Nettention.Proud.HostID, string>(); // HostID 를 키로 UserName 을 값으로 가지는 dictionary 메모리 할당.
+        ChatRooms = new Dictionary<Nettention.Proud.HostID, ChatRoomInfo>(); // P2P ChatRoom 에 대한 메모리 할당.
+
+        m_userName = ""; // m_userName 초기화.
+        m_serverIP = ""; // m_serverIP 초기화.
+
+        m_isConnect = false; // m_isConnect false 로 초기화.
+        m_isWait = false; // m_isWait false 로 초기화.
+    }
+
+    // Update is called once per frame
+    void Update() {
+        // 서버 연결을 시도 하였거나 연결 되었을때 Framemove()를 호출한다.
+        if (m_isWait || m_isConnect)
+        {
+            // 서버로 부터 수신된 RMI 나 delegate의 콜백 이벤트 처리.
+            m_netClient.FrameMove();
+        }
+
+        /* 
 		 * 안드로이드 상에서 뒤로가기 버튼이 먹히지 않는다. 
 		 * 안드로이드의 뒤로가기 버튼 == KeyCode.Escape
 		 * 뒤로가기 버튼 클릭이 어플리케이션이 종료가 되도록.
 		 * */
-		if (Input.GetKeyDown(KeyCode.Escape)) // 키가 입력이 되었는데 입력된 키의 KeyCode 가 Escape 라면.(안드로이드 상에서 뒤로가기 버튼)
-		{
-			Application.Quit (); // 어플리케이션 종료.
-		}
-	}
-	
-	//public string eType;
+        if (Input.GetKeyDown(KeyCode.Escape)) // 키가 입력이 되었는데 입력된 키의 KeyCode 가 Escape 라면.(안드로이드 상에서 뒤로가기 버튼)
+        {
+            Application.Quit(); // 어플리케이션 종료.
+        }
+    }
 
-    void OnGUI () {
-		/*
+    //public string eType;
+
+    void OnGUI() {
+        /*
 		 * GUI label, textField, button, toggle 의 폰트 사이즈를 해상도에 맞춰서 설정 해준다.
 		 * */
 #if UNITY_ANDROID || UNITY_IPHONE
@@ -344,47 +348,100 @@ public class Client : MonoBehaviour {
 		GUI.skin.button.fontSize = 30;
 		GUI.skin.toggle.fontSize = 30;
 #endif
-	}
-	
-	// 프로그램 종료될때 서버와 연결 해제.
-	void OnDestroy() {
-		m_netClient.Disconnect(); // 서버와 연결을 해제 한다.
-	}
+    }
+
+    // 프로그램 종료될때 서버와 연결 해제.
+    void OnDestroy() {
+        m_netClient.Disconnect(); // 서버와 연결을 해제 한다.
+    }
+    public void RequestLoginAccount(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, string id, string password)
+    {
+        if(m_isConnect)
+            this.m_c2sProxy_temp.RequestLoginAccount(remote, rmiContext, id, password);
+    }
     public void Login(Nettention.Proud.RmiContext rmiContext, string m_id, string m_password)
     {
-        this.m_c2sProxy_temp.Login(Nettention.Proud.HostID.HostID_Server, rmiContext, m_id, m_password);
+        if (m_isConnect)
+            this.m_c2sProxy_temp.Login(Nettention.Proud.HostID.HostID_Server, rmiContext, m_id, m_password);
     }
     public void RequestGetRaidRoomInfo(Nettention.Proud.RmiContext rmiContext)
     {
-        this.m_c2sProxy_temp.RequestGetRaidRoomInfo(Nettention.Proud.HostID.HostID_Server, rmiContext);
+        if (m_isConnect)
+            this.m_c2sProxy_temp.RequestGetRaidRoomInfo(Nettention.Proud.HostID.HostID_Server, rmiContext);
     }
 
-	public void C2SChat (Nettention.Proud.RmiContext rmiContext, string m_inputString)
-	{
-		this.m_c2sProxy.Chat(Nettention.Proud.HostID.HostID_Server, rmiContext, m_inputString);
-	}
+    public void C2SChat(Nettention.Proud.RmiContext rmiContext, string m_inputString)
+    {
+        this.m_c2sProxy.Chat(Nettention.Proud.HostID.HostID_Server, rmiContext, m_inputString);
+    }
 
     public void RequestMakeRaidRoom(Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID HostId)
     {
-        this.m_c2sProxy_temp.RequestMakeRaidRoom(Nettention.Proud.HostID.HostID_Server, rmiContext, HostId);
+        if (m_isConnect)
+            this.m_c2sProxy_temp.RequestMakeRaidRoom(Nettention.Proud.HostID.HostID_Server, rmiContext, HostId);
+    }
+    public void AddItemToInventory(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, string cname, int inId, int itemId, int itemCount, int stackable)
+    {
+        if (m_isConnect)
+            this.m_c2sProxy_temp.AddItemToInventory(remote, rmiContext, cname, inId, itemId, itemCount, stackable);
+    }
+    public void UseItemFromInventory(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, string cname, int inId, int itemId, int itemCount, int stackable)
+    {
+        if (m_isConnect)
+            this.m_c2sProxy_temp.UseItemFromInventory(remote, rmiContext, cname, inId, itemId, itemCount, stackable);
+    }
+    public void AddGold(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, string cname, int itemCount)
+    {
+        if (m_isConnect)
+            this.m_c2sProxy_temp.AddGold(remote, rmiContext, cname, itemCount);
+    }
+    public void UseGold(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, string cname, int itemCount)
+    {
+        if (m_isConnect)
+            this.m_c2sProxy_temp.UseGold(remote, rmiContext, cname, itemCount);
+    }
+    public void SellAllItem(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, string cname, int inId, int itemId)
+    {
+        if (m_isConnect)
+            this.m_c2sProxy_temp.SellAllItem(remote, rmiContext, cname, inId, itemId);
+    }
+    public void SendEquipInfo(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, string cname, int equipslot1, int equipslot2, int equipslot3)
+    {
+        if (m_isConnect)
+            this.m_c2sProxy_temp.SendEquipInfo(remote, rmiContext, cname, equipslot1, equipslot2, equipslot3);
+    }
+    public void SendPassiveEquipInfo(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, string cname, int equipslot1, int equipslot2, int equipslot3, int equipslot4)
+    {
+        if (m_isConnect)
+            this.m_c2sProxy_temp.SendPassiveEquipInfo(remote, rmiContext, cname, equipslot1, equipslot2, equipslot3, equipslot4);
+    }
+    public void RequestPassiveSkill(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, string cname)
+    {
+        if (m_isConnect)
+            this.m_c2sProxy_temp.RequestEquipData(remote, rmiContext, cname);
     }
 
     public void RequestP2PGroup (Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostIDArray m_hostIDs)
 	{
-        this.m_c2sProxy.RequestP2PGroup(Nettention.Proud.HostID.HostID_Server, rmiContext, m_hostIDs);
+        if (m_isConnect)
+            this.m_c2sProxy.RequestP2PGroup(Nettention.Proud.HostID.HostID_Server, rmiContext, m_hostIDs);
 	}
 	
 	public void RequestLeaveP2PGroup (Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID p2PChatGroupID)
 	{
-        this.m_c2sProxy.RequestLeaveP2PGroup(Nettention.Proud.HostID.HostID_Server, rmiContext, p2PChatGroupID);
+        if (m_isConnect)
+            this.m_c2sProxy.RequestLeaveP2PGroup(Nettention.Proud.HostID.HostID_Server, rmiContext, p2PChatGroupID);
 	}
 	
 	public void C2CChat (Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID p2pGroupID, string text)
 	{
-		this.m_c2cProxy.P2P_Chat(remote, rmiContext, p2pGroupID, text);
+        if (m_isConnect)
+            this.m_c2cProxy.P2P_Chat(remote, rmiContext, p2pGroupID, text);
 	}
-	
-	public Nettention.Proud.HostID GetLocalHostID()
+    
+
+
+    public Nettention.Proud.HostID GetLocalHostID()
 	{
 		return m_netClient.LocalHostID;
 	}
@@ -405,14 +462,17 @@ public class Client : MonoBehaviour {
 		// 성공적으로 연결 되면.
 		if (Nettention.Proud.ErrorType.ErrorType_Ok == info.errorType)
 		{
-            m_c2sProxy_temp.Login(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.UnreliableSend, m_userName, m_userPassword);
+            //m_c2sProxy_temp.Login(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.UnreliableSend, m_userName, m_userPassword);
            // ChatRooms[Nettention.Proud.HostID.HostID_Server] = new ChatRoomInfo();
 
 			// 사용자의 닉네임을 서버로 전송.
            // m_c2sProxy.RequestLogon(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.ReliableSend, m_userName);
 
 			m_isConnect = true; // bool 변수 값 true 로 변경.
-		}
+            string id = "qwept";
+            string pw = "xxc";
+            m_c2sProxy_temp.RequestLoginAccount(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.UnreliableSend, id, pw);
+        }
 		else
 		{
 			// 에러처리.
@@ -506,13 +566,15 @@ public class Client : MonoBehaviour {
     bool OnSendInventoryData(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, Nettention.Proud.FastArray<items> data)
     {
         string str = "";
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < data.Count; i++)
         {
-            str = "[itemIdx]" + data[i].itemIdx + "[itemInherentIdx]" + data[i].itemInherentIdx + "[itemType]" + data[i].itemType;
+            str = "[itemIdx]" + data[i].itemIdx + "[itemType]" + data[i].count;
+            MyInfo.Inventory.SetItem(data[i].inId, data[i].itemIdx, data[i].count);
             Debug.Log("OnSendInventoryData : " + str.ToString());
            // ChatRooms[Nettention.Proud.HostID.HostID_Server].ChatString.Add(str);
         }
-        
+        //아래 코드 주석 처리 해야함 - NoServer
+        StageManager.Instance.ChangeStage(StageType.LobbyStage);
         return true;
     }
     bool OnSendRaidRoomInfo(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, Nettention.Proud.FastArray<raidrooms> data)
@@ -520,14 +582,50 @@ public class Client : MonoBehaviour {
         string str = "";
         for (int i = 0; i < data.Count; i++)
         {
-            
-
                 str = "[hostId]" + data[i].hostId + "[groupId]" + data[i].groupId + "[curCrew]" + data[i].curCrew;
                 Debug.Log("OnSendRaidRoomInfo : " + str.ToString());
             // ChatRooms[Nettention.Proud.HostID.HostID_Server].ChatString.Add(str);
         }
+
+        // 다음 화면으로 넘겨 준다.
+        
         return true;
     }
+    bool OnSendLoginResult(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, int Result, string CName , int gold)
+    {
+        if (Result == 1)
+        {
+            // 로그인이 성공했을 경우 닉네임을 저장
+            MyInfo.Account.NickName = CName;
+            MyInfo.Account.Gold = gold;
+            // 저장한 닉네임으로 캐릭터 정보 요청
+
+            // 저장한 닉네임으로 인벤토리 정보 요청
+            m_c2sProxy_temp.RequestInventoryData(remote, rmiContext, MyInfo.Account.NickName);
+            // 저장한 닉네임으로 스킬 정보 요청
+            m_c2sProxy_temp.RequestEquipData(remote, rmiContext, MyInfo.Account.NickName);
+            m_c2sProxy_temp.RequestSkillData(remote, rmiContext, MyInfo.Account.NickName);
+
+        }
+        return true;
+    }
+    bool OnEquipmentData(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, Nettention.Proud.FastArray<equipinfo> data)
+    {
+        MyInfo.Inventory.EquipItemFromDB(data[0].equipslot1);
+        MyInfo.Inventory.EquipItemFromDB(data[0].equipslot2);
+        MyInfo.Inventory.EquipItemFromDB(data[0].equipslot3);
+        return true;
+    }
+    bool OnPassiveSkillData(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, Nettention.Proud.FastArray<passiveskillinfo> data)
+    {
+        MyInfo.PassiveInventory.EquipPassiveFromDB(data[0].passiveSlot1);
+        MyInfo.PassiveInventory.EquipPassiveFromDB(data[0].passiveSlot2);
+        MyInfo.PassiveInventory.EquipPassiveFromDB(data[0].passiveSlot3);
+        MyInfo.PassiveInventory.EquipPassiveFromDB(data[0].passiveSlot4);
+        return true;
+    }
+
+
     // 글로벌 채팅 내용을 리시브 받앗을때 처리하는 함수.
     bool OnShowChat(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, string userName, string text)
 	{

@@ -20,8 +20,9 @@ public class PassiveManager : MonoSingleton<PassiveManager>
         MyInfo.PassiveInventory.AddPassive(2, 3);
         MyInfo.PassiveInventory.AddPassive(3, 2);
 
-        MyInfo.Inventory.AddStackAbleItem(10001, 12);
-        MyInfo.Inventory.AddStackAbleItem(30001, 12);
+        // 서버 안타게 하려면 주석 제거하면 됨 - NoServer
+        //MyInfo.Inventory.AddStackAbleItem(10001, 12);
+        //MyInfo.Inventory.AddStackAbleItem(30001, 12);
     }
 
     public void ApplyPassive(Data.PassiveSkill apply)

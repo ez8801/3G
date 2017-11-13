@@ -45,17 +45,21 @@ public class TitleStage : Stage
         if (isPressKey)
         {
             // 서버에 연결하는 코드
-            // 해당 코드 지우면 서버 연결 안탐
+            //서버 연결 안타고 다음 화면으로 넘어가려면 아래 코드 지우시오 - NoServer
             ///*
             m_client.ServerIP = "121.131.147.109"; // m_client 에 서버아이피를 설정.
             m_client.userName = ""; // m_client 에 닉네임을 설정.
             m_client.userPassword = "";
-            m_client.Connect(); // 서버에 접속 요청.
-            m_client.IsWait = true;
+            //m_client.Connect(); // 서버에 접속 요청.
+            //m_client.IsWait = true;
+
+            
+            
             //*/
             // 시작에 필요한 기본 데이터 여기서 요청
             
             // 데이터 로드가 끝나면 change scene
+            //서버 연결 안타고 다음 화면으로 넘어가려면 아래 주석 지우면됨 - NoServer
             StageManager.Instance.ChangeStage(StageType.LobbyStage);
         }
     }

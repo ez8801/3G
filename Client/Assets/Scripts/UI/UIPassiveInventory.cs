@@ -16,6 +16,7 @@ using System.Collections.Generic;
 /// <seealso cref="UIType.UIPassiveInventory"/>
 public class UIPassiveInventory : UIBase
 {
+    
     [System.Serializable]
     public struct View
     {

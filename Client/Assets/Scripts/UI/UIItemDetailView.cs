@@ -25,11 +25,12 @@ public class UIItemDetailView : UIBase
         public UILabel LblSummary;
     }
     public View m_view;
-
+    private Client m_client;
     private SimpleItem m_focusItem = new SimpleItem();
     
     internal override void OnStart()
     {
+        m_client = Client.Instance;
         base.OnStart();
         BindComponents();
         m_view.CellItem.Initialize();
@@ -113,8 +114,13 @@ public class UIItemDetailView : UIBase
             Data.Item itemData = ItemTable.Instance.Find(m_focusItem.ItemId);
             int gold = itemData.Price * m_focusItem.Count;
             MyInfo.Account.Gold += gold;
+            
             MyInfo.Inventory.Remove(m_focusItem.Id);
-
+            // 아이템 삭제하는 패킷을 보내준다.
+            // 혹은 아이템을 판매하는 패킷을 새로 만든다.
+            // 내일
+            m_client.AddGold(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.UnreliableSend, MyInfo.Account.NickName, gold);
+            m_client.SellAllItem(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.UnreliableSend, MyInfo.Account.NickName, (int)m_focusItem.Id, m_focusItem.ItemId);
             UIAlertView.Show(StringEx.Format(R.GetText("UI.Get.Gold"), gold))
                 .SetStyle(UIAlertView.Style.OK)
                 .SetPositiveButton(() =>
@@ -130,6 +136,9 @@ public class UIItemDetailView : UIBase
 
     public void OnClickEquip()
     {
+        // 인벤토리 데이터를 먼저 불러오고 나서
+        // Equip셋팅을 해준다.
+        // 내일
         bool isEquip = MyInfo.Inventory.IsEquip(m_focusItem.Id);
         if (isEquip)
         {

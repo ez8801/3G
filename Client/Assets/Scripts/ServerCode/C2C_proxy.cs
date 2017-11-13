@@ -19,9 +19,9 @@ public bool P2PChat(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext r
 		__msg.SimplePacketMode = core.IsSimplePacketMode();
 		Nettention.Proud.RmiID __msgid= Common.P2PChat;
 		__msg.Write(__msgid);
-		Nettention.Proud.Marshaler.Write(__msg, a);
-		Nettention.Proud.Marshaler.Write(__msg, b);
-		Nettention.Proud.Marshaler.Write(__msg, c);
+		Test.Write(__msg, a);
+		Test.Write(__msg, b);
+		Test.Write(__msg, c);
 		
 	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
 	__list[0] = remote;
@@ -36,9 +36,9 @@ public bool P2PChat(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContex
 __msg.SimplePacketMode = core.IsSimplePacketMode();
 Nettention.Proud.RmiID __msgid= Common.P2PChat;
 __msg.Write(__msgid);
-Nettention.Proud.Marshaler.Write(__msg, a);
-Nettention.Proud.Marshaler.Write(__msg, b);
-Nettention.Proud.Marshaler.Write(__msg, c);
+Test.Write(__msg, a);
+Test.Write(__msg, b);
+Test.Write(__msg, c);
 		
 	return RmiSend(remotes,rmiContext,__msg,
 		RmiName_P2PChat, Common.P2PChat);
@@ -49,8 +49,8 @@ public bool DamagedFromEnemy(Nettention.Proud.HostID remote,Nettention.Proud.Rmi
 		__msg.SimplePacketMode = core.IsSimplePacketMode();
 		Nettention.Proud.RmiID __msgid= Common.DamagedFromEnemy;
 		__msg.Write(__msgid);
-		Nettention.Proud.Marshaler.Write(__msg, Damage);
-		Nettention.Proud.Marshaler.Write(__msg, RestHP);
+		Test.Write(__msg, Damage);
+		Test.Write(__msg, RestHP);
 		
 	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
 	__list[0] = remote;
@@ -65,8 +65,8 @@ public bool DamagedFromEnemy(Nettention.Proud.HostID[] remotes,Nettention.Proud.
 __msg.SimplePacketMode = core.IsSimplePacketMode();
 Nettention.Proud.RmiID __msgid= Common.DamagedFromEnemy;
 __msg.Write(__msgid);
-Nettention.Proud.Marshaler.Write(__msg, Damage);
-Nettention.Proud.Marshaler.Write(__msg, RestHP);
+Test.Write(__msg, Damage);
+Test.Write(__msg, RestHP);
 		
 	return RmiSend(remotes,rmiContext,__msg,
 		RmiName_DamagedFromEnemy, Common.DamagedFromEnemy);
