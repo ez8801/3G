@@ -58,7 +58,7 @@ public class UIPvpRoomFind : UIBase
     {
         base.ReloadData();
 
-        m_view.Grid.ReloadData();
+        //m_view.Grid.ReloadData();
         // 방의 정보 읽어와서 m_isFull 이 사실이면 참가 버튼 비활성화.
 
     }

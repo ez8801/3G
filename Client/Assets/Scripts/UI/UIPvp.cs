@@ -63,7 +63,7 @@ public class UIPvp : UIBase
         roomone.RoomName = "today";
         Debug.Log("this time one");
         Debug.Log(roomone.RoomName);
-        m_findRooms.Add(roomone);
+        //m_findRooms.Add(roomone);
         Debug.Log("this time two");
     }
 
