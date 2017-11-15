@@ -15,12 +15,20 @@ public class UIActiveCell : MonoBehaviour
 {
     public UITexture TexActiveIcon;
     public UILabel LblActiveLevel;
-
+    public UITexture SkillFilter;
     private UIEventListener.VoidDelegate m_onClickListener;
+    private int m_skillId;
+
+    private float currentCoolTime;
+    public float coolTime;
+
+    private bool canUseSkill = true;
 
     public void Initialize()
     {
         BindComponents();
+        SkillFilter.fillAmount = 0;
+        
     }
 
     [ContextMenu("Bind")]
@@ -28,6 +36,7 @@ public class UIActiveCell : MonoBehaviour
     {
         this.Bind(ref TexActiveIcon, "TexActiveIcon");
         this.Bind(ref LblActiveLevel, "LblActiveLevel");
+        this.Bind(ref SkillFilter, "SkillFilter");
     }
 
     public void SetData(UserData.Active active)
@@ -43,7 +52,7 @@ public class UIActiveCell : MonoBehaviour
     public void SetData(long id, int activeId, int ActiveCooltime)
     {
         Data.Skill activeData = SkillTable.Instance.Find(activeId);
-
+        m_skillId = activeId;
         if (!string.IsNullOrEmpty(activeData.Texture))
         {
             TexActiveIcon.SetActiveSafely(true);
@@ -51,6 +60,8 @@ public class UIActiveCell : MonoBehaviour
 
             LblActiveLevel.SetActiveSafely(true);
             LblActiveLevel.SetTextSafely(string.Concat("Cool:", ActiveCooltime));
+
+            coolTime = ActiveCooltime;
         }
         else
         {
@@ -64,8 +75,7 @@ public class UIActiveCell : MonoBehaviour
         LblActiveLevel.SetActiveSafely(false);
     }
 
-
-    #region UIActions
+    
     public void SetOnClickListener(UIEventListener.VoidDelegate l)
     {
         m_onClickListener = l;
@@ -73,10 +83,36 @@ public class UIActiveCell : MonoBehaviour
 
     private void OnClick()
     {
-        if (m_onClickListener != null)
+        if (m_onClickListener != null && canUseSkill)
+        {
             m_onClickListener(gameObject);
+            UseSkill();
+        }
+            
+        Debug.Log("Use Skill");
     }
 
-    #endregion UIActions
+    public void UseSkill()
+    {
+        SkillFilter.fillAmount = 1;
+        StartCoroutine("CoolTime");
+        GameObject Player = GameObject.FindGameObjectWithTag("Player");
+        Player.gameObject.GetComponent<SkillManager>().GetSkill(m_skillId);
+        canUseSkill = false;
+    }
+    
+    IEnumerator CoolTime()
+    {
+        while(SkillFilter.fillAmount > 0)
+        {
+            SkillFilter.fillAmount -= 1 * Time.smoothDeltaTime / coolTime;
+
+            yield return null;
+        }
+
+        canUseSkill = true;
+
+        yield break;
+    }
 
 }

@@ -32,6 +32,10 @@ public class BlueExplose : MonoBehaviour
                 {
                     hitter.ApplyDamage(Damage);
 
+                    if(hitter.CurrentHp <= 0)
+                    {
+                        hitter.OnDead();
+                    }
                     
                     Vector3 opposite = hitter.Forward;
                     opposite.x *= -2f * Random.Range(0.5f, 1.0f);
