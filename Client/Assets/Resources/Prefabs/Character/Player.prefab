@@ -349,6 +349,7 @@ GameObject:
   - component: {fileID: 95124868397472096}
   - component: {fileID: 50385908090295048}
   - component: {fileID: 114350660556810692}
+  - component: {fileID: 114874014335468510}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1896,6 +1897,19 @@ MonoBehaviour:
   m_Bones: []
   m_BoneTransforms:
   - {fileID: 4979441261437806}
+--- !u!114 &114874014335468510
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1517920444612752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75f3f4337a3b86c4f96972ff861251be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BlueShotPrefab: {fileID: 1641098244898412, guid: d843189c4d8bef84384941670f3b9bd1,
+    type: 2}
 --- !u!114 &114891129449361682
 MonoBehaviour:
   m_ObjectHideFlags: 1
