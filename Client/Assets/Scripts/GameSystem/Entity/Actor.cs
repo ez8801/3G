@@ -223,7 +223,7 @@ public class Actor : EntityBase, IActor
             }
             else
             {
-                m_stateMachine.Transition(StateType.Damaged);
+                GetDamageAction();
                 NotificationCenter.Post(R.Id.OnEntityAttacked, EntityID);
             }
 
@@ -246,7 +246,10 @@ public class Actor : EntityBase, IActor
             SoundManager.Instance.PlaySound(1);
         }
     }
-
+    public void GetDamageAction()
+    {
+        m_stateMachine.Transition(StateType.Damaged);
+    }
     public virtual void OnDead()
     {
         GameObjectPool.Instance.Release(gameObject);

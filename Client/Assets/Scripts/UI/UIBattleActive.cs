@@ -82,7 +82,9 @@ public class UIBattleActive : UIBase
         //지금은 테스트로 13아이디의 스킬을 하나 리스트에 넣어줬음.
         //서버에서 리스트 받아옴.
         Data.Skill skill = SkillTable.Instance.Find(13);
+        Data.Skill skilltwo = SkillTable.Instance.Find(3000002);
         m_actives.Add(skill);
+        m_actives.Add(skilltwo);
         Debug.Log(m_actives[0].Cooltime);
     }
 
@@ -92,6 +94,7 @@ public class UIBattleActive : UIBase
     #region UIActions
     public void OnClickActive(GameObject sender)
     {
+        Debug.Log("dfsdfsdfsdfsdfsdf");
         int index = -1;
         if(int.TryParse(sender.name, out index))
         {
@@ -100,6 +103,8 @@ public class UIBattleActive : UIBase
             //서버 : 여기서 서버로 signal 날림 (playerID, 1(Active스킬을 뜻함) ,ActiveID)
             //지금 당장은 로컬에서 작업함. 로컬에서는 Effect라는 프리팹의 경로를 테이블에 저장해 뒀다가
             //불러와서 그 경로의 프리팹 투사체를 불러옴.
+
+            Debug.Log(prefabActive.PrefabName);
             switch (clickedActive.Type)
             {
                 case 1:

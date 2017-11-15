@@ -13,16 +13,12 @@ using System.Collections.Generic;
 
 public class ActiveSkillBlueWave : MonoBehaviour 
 {
-    public float X_projectile;
-	// Use this for initialization
-	void Start()
-	{
-		
-	}
-	
-	// Update is called once per frame	
-	void Update()
-	{
-		
-	}
+    private const float moveSpeed = 15f;
+
+    private void Update()
+    {
+        float moveX = moveSpeed * Time.deltaTime;
+
+        transform.Translate(moveX, 0, 0);
+    }
 }
