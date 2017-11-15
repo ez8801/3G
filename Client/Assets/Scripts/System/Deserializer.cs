@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System;
 using System.Text;
-
+using System.IO;
 #if UNITY_EDITOR
 using UnityEditor;
-using System.IO;
+
 using System.Reflection;
 #endif
 

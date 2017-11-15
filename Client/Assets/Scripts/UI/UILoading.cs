@@ -16,7 +16,7 @@ public class UILoading : UIBase, IObserver
 
     private int m_originWidth;
 
-    public void Awake()
+    public override void Awake()
     {
         NotificationCenter.Instance.AddObserver(R.Id.OnProgress, this);
         NotificationCenter.Instance.AddObserver(R.Id.OnProgressDone, this);

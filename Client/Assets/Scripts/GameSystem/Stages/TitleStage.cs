@@ -36,10 +36,12 @@ public class TitleStage : Stage
         base.OnUpdate();
 
         bool isPressKey = false;
+        
 #if UNITY_EDITOR
         isPressKey = Input.GetMouseButtonUp(0);
 #else
-        isPressKey = (Input.touchCount > 0);    
+        isPressKey = Input.GetMouseButtonUp(0);
+        //isPressKey = (Input.touchCount > 0);    
 #endif
 
         if (isPressKey)
@@ -50,8 +52,8 @@ public class TitleStage : Stage
             m_client.ServerIP = "121.131.147.109"; // m_client 에 서버아이피를 설정.
             m_client.userName = ""; // m_client 에 닉네임을 설정.
             m_client.userPassword = "";
-            //m_client.Connect(); // 서버에 접속 요청.
-            //m_client.IsWait = true;
+            m_client.Connect(); // 서버에 접속 요청.
+            m_client.IsWait = true;
 
             
             

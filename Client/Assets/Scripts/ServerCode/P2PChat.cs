@@ -43,13 +43,13 @@ public class P2PChat : MonoBehaviour {
 		// 툴바 클릭시 해당 씬으로 화면 전환.
 		if (m_toolbarState == ChatUnity.P2PChatToolBarState.Back) // Back 툴바 버튼 클릭시.
 		{
-			Application.LoadLevel("P2PChatRoom"); // P2PChatRoom 씬으로 씬전환.
+			//Application.LoadLevel("P2PChatRoom"); // P2PChatRoom 씬으로 씬전환.
 		}
 		else if (m_toolbarState == ChatUnity.P2PChatToolBarState.LeaveRoom) // Leave Room 툴바 버튼 클릭시.
 		{
 			// p2p그룹에서 나가겠다는 메시지를 서버로 보낸다.
 			m_client.RequestLeaveP2PGroup(Nettention.Proud.RmiContext.ReliableSend, m_client.P2PChatGroupID);
-			Application.LoadLevel("P2PChatRoom"); // P2PChatRoom 으로 씬 전환.
+			//Application.LoadLevel("P2PChatRoom"); // P2PChatRoom 으로 씬 전환.
 		}
 	}
 

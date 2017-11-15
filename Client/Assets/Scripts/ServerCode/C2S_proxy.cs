@@ -149,6 +149,120 @@ Test.Write(__msg, GroupId);
 	return RmiSend(remotes,rmiContext,__msg,
 		RmiName_RequestJoinRaidRoom, Common.RequestJoinRaidRoom);
 }
+public bool RequestMakePVPRoom(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID HostId, System.String CName, System.String RoomName)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+		__msg.SimplePacketMode = core.IsSimplePacketMode();
+		Nettention.Proud.RmiID __msgid= Common.RequestMakePVPRoom;
+		__msg.Write(__msgid);
+		Test.Write(__msg, HostId);
+		Test.Write(__msg, CName);
+		Test.Write(__msg, RoomName);
+		
+	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
+	__list[0] = remote;
+		
+	return RmiSend(__list,rmiContext,__msg,
+		RmiName_RequestMakePVPRoom, Common.RequestMakePVPRoom);
+}
+
+public bool RequestMakePVPRoom(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID HostId, System.String CName, System.String RoomName)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+__msg.SimplePacketMode = core.IsSimplePacketMode();
+Nettention.Proud.RmiID __msgid= Common.RequestMakePVPRoom;
+__msg.Write(__msgid);
+Test.Write(__msg, HostId);
+Test.Write(__msg, CName);
+Test.Write(__msg, RoomName);
+		
+	return RmiSend(remotes,rmiContext,__msg,
+		RmiName_RequestMakePVPRoom, Common.RequestMakePVPRoom);
+}
+public bool RequestGetPVPRoomInfo(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+		__msg.SimplePacketMode = core.IsSimplePacketMode();
+		Nettention.Proud.RmiID __msgid= Common.RequestGetPVPRoomInfo;
+		__msg.Write(__msgid);
+		
+	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
+	__list[0] = remote;
+		
+	return RmiSend(__list,rmiContext,__msg,
+		RmiName_RequestGetPVPRoomInfo, Common.RequestGetPVPRoomInfo);
+}
+
+public bool RequestGetPVPRoomInfo(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+__msg.SimplePacketMode = core.IsSimplePacketMode();
+Nettention.Proud.RmiID __msgid= Common.RequestGetPVPRoomInfo;
+__msg.Write(__msgid);
+		
+	return RmiSend(remotes,rmiContext,__msg,
+		RmiName_RequestGetPVPRoomInfo, Common.RequestGetPVPRoomInfo);
+}
+public bool RequestJoinPVPRoom(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID HostId, int RoomId, int GroupId)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+		__msg.SimplePacketMode = core.IsSimplePacketMode();
+		Nettention.Proud.RmiID __msgid= Common.RequestJoinPVPRoom;
+		__msg.Write(__msgid);
+		Test.Write(__msg, HostId);
+		Test.Write(__msg, RoomId);
+		Test.Write(__msg, GroupId);
+		
+	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
+	__list[0] = remote;
+		
+	return RmiSend(__list,rmiContext,__msg,
+		RmiName_RequestJoinPVPRoom, Common.RequestJoinPVPRoom);
+}
+
+public bool RequestJoinPVPRoom(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID HostId, int RoomId, int GroupId)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+__msg.SimplePacketMode = core.IsSimplePacketMode();
+Nettention.Proud.RmiID __msgid= Common.RequestJoinPVPRoom;
+__msg.Write(__msgid);
+Test.Write(__msg, HostId);
+Test.Write(__msg, RoomId);
+Test.Write(__msg, GroupId);
+		
+	return RmiSend(remotes,rmiContext,__msg,
+		RmiName_RequestJoinPVPRoom, Common.RequestJoinPVPRoom);
+}
+public bool RequestLeavePVPRoom(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID HostId, int RoomId, int GroupId)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+		__msg.SimplePacketMode = core.IsSimplePacketMode();
+		Nettention.Proud.RmiID __msgid= Common.RequestLeavePVPRoom;
+		__msg.Write(__msgid);
+		Test.Write(__msg, HostId);
+		Test.Write(__msg, RoomId);
+		Test.Write(__msg, GroupId);
+		
+	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
+	__list[0] = remote;
+		
+	return RmiSend(__list,rmiContext,__msg,
+		RmiName_RequestLeavePVPRoom, Common.RequestLeavePVPRoom);
+}
+
+public bool RequestLeavePVPRoom(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID HostId, int RoomId, int GroupId)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+__msg.SimplePacketMode = core.IsSimplePacketMode();
+Nettention.Proud.RmiID __msgid= Common.RequestLeavePVPRoom;
+__msg.Write(__msgid);
+Test.Write(__msg, HostId);
+Test.Write(__msg, RoomId);
+Test.Write(__msg, GroupId);
+		
+	return RmiSend(remotes,rmiContext,__msg,
+		RmiName_RequestLeavePVPRoom, Common.RequestLeavePVPRoom);
+}
 public bool RequestMakeAccount(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String id, System.String password, System.String CName)
 {
 	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
@@ -599,6 +713,10 @@ const string RmiName_Login="Login";
 const string RmiName_RequestMakeRaidRoom="RequestMakeRaidRoom";
 const string RmiName_RequestGetRaidRoomInfo="RequestGetRaidRoomInfo";
 const string RmiName_RequestJoinRaidRoom="RequestJoinRaidRoom";
+const string RmiName_RequestMakePVPRoom="RequestMakePVPRoom";
+const string RmiName_RequestGetPVPRoomInfo="RequestGetPVPRoomInfo";
+const string RmiName_RequestJoinPVPRoom="RequestJoinPVPRoom";
+const string RmiName_RequestLeavePVPRoom="RequestLeavePVPRoom";
 const string RmiName_RequestMakeAccount="RequestMakeAccount";
 const string RmiName_RequestLoginAccount="RequestLoginAccount";
 const string RmiName_RequestInventoryData="RequestInventoryData";
@@ -624,6 +742,10 @@ const string RmiName_Login="";
 const string RmiName_RequestMakeRaidRoom="";
 const string RmiName_RequestGetRaidRoomInfo="";
 const string RmiName_RequestJoinRaidRoom="";
+const string RmiName_RequestMakePVPRoom="";
+const string RmiName_RequestGetPVPRoomInfo="";
+const string RmiName_RequestJoinPVPRoom="";
+const string RmiName_RequestLeavePVPRoom="";
 const string RmiName_RequestMakeAccount="";
 const string RmiName_RequestLoginAccount="";
 const string RmiName_RequestInventoryData="";

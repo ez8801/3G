@@ -132,7 +132,14 @@ public struct battleinfo
     public int curB;
     public int totalB;
 };
-
+public struct pvprooms
+{
+    public int roomId;
+    public int hostId;
+    public string hostname;
+    public int groupId;
+    public string pvproomname;
+};
 
 
 class Test : Nettention.Proud.Marshaler
@@ -140,6 +147,17 @@ class Test : Nettention.Proud.Marshaler
     public static void Write(Nettention.Proud.Message msg, Nettention.Proud.FastArray<raidrooms> strMsg)
     {
 
+    }
+    public static void Write(Nettention.Proud.Message msg, Nettention.Proud.FastArray<pvprooms> strMsg)
+    {
+        for (int i = 0; i < strMsg.Count; ++i)
+        {
+            msg.WriteScalar(strMsg[i].roomId);
+            msg.WriteScalar(strMsg[i].hostId);
+            msg.Write(strMsg[i].hostname);
+            msg.WriteScalar(strMsg[i].groupId);
+            msg.Write(strMsg[i].pvproomname);
+        }
     }
 
     public static void Write(Nettention.Proud.Message msg, Nettention.Proud.FastArray<items> strMsg)
@@ -221,6 +239,25 @@ class Test : Nettention.Proud.Marshaler
             msg.ReadScalar(ref contain_items.hostId);
             msg.ReadScalar(ref contain_items.groupId);
             msg.ReadScalar(ref contain_items.curCrew);
+            strMsg.Add(contain_items);
+        }
+
+        return true;
+    }
+    public static bool Read(Nettention.Proud.Message msg, out Nettention.Proud.FastArray<pvprooms> strMsg)
+    {
+        strMsg = new Nettention.Proud.FastArray<pvprooms>();
+        int count = 0;
+        msg.ReadScalar(ref count);
+
+        pvprooms contain_items = new pvprooms();
+        for (int i = 0; i < count; i++)
+        {
+            msg.ReadScalar(ref contain_items.roomId);
+            msg.ReadScalar(ref contain_items.hostId);
+            msg.Read(out contain_items.hostname);
+            msg.ReadScalar(ref contain_items.groupId);
+            msg.Read(out contain_items.pvproomname);
             strMsg.Add(contain_items);
         }
 

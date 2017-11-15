@@ -493,7 +493,7 @@ public class Client : MonoBehaviour {
 		// 서버와의 연결이 종료되었으니 초기화면으로 나가거나. 다른처리를 해주어야.
 		m_isConnect = false;
 
-		Application.LoadLevel("LogOn");
+		//Application.LoadLevel("LogOn");
 	}
 	
 	// p2p 그룹을 맺게 되었을때 콜백 되는 함수.

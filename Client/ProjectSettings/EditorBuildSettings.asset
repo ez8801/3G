@@ -19,28 +19,28 @@ EditorBuildSettings:
     guid: f865873025b1b1145bf164c70b1f725d
   - enabled: 1
     path: Assets/Scenes/Woods.unity
-    guid: 00000000000000000000000000000000
-  - enabled: 1
+    guid: e6ff31207ee7ef84a8ec0819cadd37f1
+  - enabled: 0
     path: Assets/Scenes/Legacy/mainScene.unity
     guid: 0a495726f79fdc24da36c24e63f31cd4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Legacy/openScene.unity
     guid: 7d0ba88a74d402a41bcfea98ed38de88
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Legacy/gameScene.unity
     guid: 20e6def3892f03746aadfcba9160fc75
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Test/logOn.unity
     guid: 2f8c92e8e49421b458a4426cd2b6f200
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Test/globalChat.unity
     guid: ced3a686a7d6f0d44ae8c34a528afeee
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Test/userList.unity
     guid: eb79dc903e50f644e873faa4d06278d8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Test/p2pChat.unity
     guid: c2923587c2c50b94c89c57c6e8808d18
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Test/p2pChatRoom.unity
     guid: 61576ea9df6514f49a472e4f5a788ecb

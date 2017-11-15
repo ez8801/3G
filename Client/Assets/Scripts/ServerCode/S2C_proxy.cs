@@ -151,6 +151,86 @@ Test.Write(__msg, roomData);
 	return RmiSend(remotes,rmiContext,__msg,
 		RmiName_sendRaidRoomInfo, Common.sendRaidRoomInfo);
 }
+public bool sendMakePVPRoomResult(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int p2pGroupId, int Result)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+		__msg.SimplePacketMode = core.IsSimplePacketMode();
+		Nettention.Proud.RmiID __msgid= Common.sendMakePVPRoomResult;
+		__msg.Write(__msgid);
+		Test.Write(__msg, p2pGroupId);
+		Test.Write(__msg, Result);
+		
+	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
+	__list[0] = remote;
+		
+	return RmiSend(__list,rmiContext,__msg,
+		RmiName_sendMakePVPRoomResult, Common.sendMakePVPRoomResult);
+}
+
+public bool sendMakePVPRoomResult(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, int p2pGroupId, int Result)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+__msg.SimplePacketMode = core.IsSimplePacketMode();
+Nettention.Proud.RmiID __msgid= Common.sendMakePVPRoomResult;
+__msg.Write(__msgid);
+Test.Write(__msg, p2pGroupId);
+Test.Write(__msg, Result);
+		
+	return RmiSend(remotes,rmiContext,__msg,
+		RmiName_sendMakePVPRoomResult, Common.sendMakePVPRoomResult);
+}
+public bool sendPVPRoomInfo(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.FastArray<pvprooms> roomData)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+		__msg.SimplePacketMode = core.IsSimplePacketMode();
+		Nettention.Proud.RmiID __msgid= Common.sendPVPRoomInfo;
+		__msg.Write(__msgid);
+		Test.Write(__msg, roomData);
+		
+	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
+	__list[0] = remote;
+		
+	return RmiSend(__list,rmiContext,__msg,
+		RmiName_sendPVPRoomInfo, Common.sendPVPRoomInfo);
+}
+
+public bool sendPVPRoomInfo(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.FastArray<pvprooms> roomData)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+__msg.SimplePacketMode = core.IsSimplePacketMode();
+Nettention.Proud.RmiID __msgid= Common.sendPVPRoomInfo;
+__msg.Write(__msgid);
+Test.Write(__msg, roomData);
+		
+	return RmiSend(remotes,rmiContext,__msg,
+		RmiName_sendPVPRoomInfo, Common.sendPVPRoomInfo);
+}
+public bool sendRoomHostId(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int HostId)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+		__msg.SimplePacketMode = core.IsSimplePacketMode();
+		Nettention.Proud.RmiID __msgid= Common.sendRoomHostId;
+		__msg.Write(__msgid);
+		Test.Write(__msg, HostId);
+		
+	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
+	__list[0] = remote;
+		
+	return RmiSend(__list,rmiContext,__msg,
+		RmiName_sendRoomHostId, Common.sendRoomHostId);
+}
+
+public bool sendRoomHostId(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, int HostId)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+__msg.SimplePacketMode = core.IsSimplePacketMode();
+Nettention.Proud.RmiID __msgid= Common.sendRoomHostId;
+__msg.Write(__msgid);
+Test.Write(__msg, HostId);
+		
+	return RmiSend(remotes,rmiContext,__msg,
+		RmiName_sendRoomHostId, Common.sendRoomHostId);
+}
 public bool sendMakeAccountResult(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int Result)
 {
 	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
@@ -323,6 +403,9 @@ const string RmiName_SystemChat="SystemChat";
 const string RmiName_sendUserInfo="sendUserInfo";
 const string RmiName_sendInventoryData="sendInventoryData";
 const string RmiName_sendRaidRoomInfo="sendRaidRoomInfo";
+const string RmiName_sendMakePVPRoomResult="sendMakePVPRoomResult";
+const string RmiName_sendPVPRoomInfo="sendPVPRoomInfo";
+const string RmiName_sendRoomHostId="sendRoomHostId";
 const string RmiName_sendMakeAccountResult="sendMakeAccountResult";
 const string RmiName_sendLoginResult="sendLoginResult";
 const string RmiName_sendSkillData="sendSkillData";
@@ -339,6 +422,9 @@ const string RmiName_SystemChat="";
 const string RmiName_sendUserInfo="";
 const string RmiName_sendInventoryData="";
 const string RmiName_sendRaidRoomInfo="";
+const string RmiName_sendMakePVPRoomResult="";
+const string RmiName_sendPVPRoomInfo="";
+const string RmiName_sendRoomHostId="";
 const string RmiName_sendMakeAccountResult="";
 const string RmiName_sendLoginResult="";
 const string RmiName_sendSkillData="";
