@@ -54,8 +54,8 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 4d599889dbce20a4dbcd2a5d5c99a7a2, type: 2}
   mSprites:
   - name: 0_Rounded
-    x: 182
-    y: 596
+    x: 473
+    y: 192
     width: 10
     height: 10
     borderLeft: 4
@@ -67,8 +67,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: 0_Square
-    x: 265
-    y: 850
+    x: 1018
+    y: 485
     width: 4
     height: 4
     borderLeft: 1
@@ -80,8 +80,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: AddArrow
-    x: 474
-    y: 661
+    x: 278
+    y: 1
     width: 12
     height: 10
     borderLeft: 0
@@ -93,8 +93,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: ApIcon
-    x: 204
-    y: 505
+    x: 641
+    y: 121
     width: 28
     height: 24
     borderLeft: 0
@@ -106,8 +106,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Back_Icon
-    x: 492
-    y: 913
+    x: 537
+    y: 195
     width: 18
     height: 30
     borderLeft: 0
@@ -119,8 +119,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: BallSkillDirection
-    x: 331
-    y: 653
+    x: 977
+    y: 345
     width: 18
     height: 16
     borderLeft: 0
@@ -132,8 +132,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: BallSkillIcon
-    x: 490
-    y: 947
+    x: 462
+    y: 242
     width: 22
     height: 38
     borderLeft: 0
@@ -145,8 +145,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: BaseEmpty_0
-    x: 161
-    y: 545
+    x: 598
+    y: 337
     width: 42
     height: 24
     borderLeft: 0
@@ -158,8 +158,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: BaseEmpty_1
-    x: 312
-    y: 653
+    x: 670
+    y: 292
     width: 14
     height: 14
     borderLeft: 0
@@ -171,8 +171,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: BaseFull_0
-    x: 161
-    y: 570
+    x: 444
+    y: 122
     width: 42
     height: 24
     borderLeft: 0
@@ -184,8 +184,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: BaseFull_1
-    x: 367
-    y: 655
+    x: 670
+    y: 307
     width: 14
     height: 14
     borderLeft: 0
@@ -197,8 +197,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: BSO_CircleEmpty_0
-    x: 401
-    y: 653
+    x: 670
+    y: 322
     width: 14
     height: 14
     borderLeft: 0
@@ -210,8 +210,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: BSO_CircleEmpty_1
-    x: 332
-    y: 726
+    x: 627
+    y: 208
     width: 12
     height: 12
     borderLeft: 0
@@ -223,8 +223,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: BSO_CircleFull_0
-    x: 386
-    y: 653
+    x: 582
+    y: 3
     width: 14
     height: 14
     borderLeft: 0
@@ -236,8 +236,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: BSO_CircleFull_1
-    x: 319
-    y: 726
+    x: 627
+    y: 224
     width: 12
     height: 12
     borderLeft: 0
@@ -249,8 +249,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Btn_0
-    x: 209
-    y: 660
+    x: 179
+    y: 0
     width: 64
     height: 64
     borderLeft: 32
@@ -262,8 +262,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Btn_0_Active
-    x: 88
-    y: 605
+    x: 490
+    y: 179
     width: 46
     height: 46
     borderLeft: 23
@@ -275,8 +275,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Btn_1
-    x: 233
-    y: 564
+    x: 559
+    y: 47
     width: 30
     height: 30
     borderLeft: 14
@@ -288,8 +288,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Btn_2
-    x: 306
-    y: 726
+    x: 627
+    y: 237
     width: 12
     height: 12
     borderLeft: 5
@@ -301,8 +301,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Btn_3
-    x: 324
-    y: 566
+    x: 598
+    y: 134
     width: 28
     height: 28
     borderLeft: 12
@@ -314,8 +314,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Btn_Select
-    x: 293
-    y: 726
+    x: 546
+    y: 45
     width: 12
     height: 12
     borderLeft: 5
@@ -327,8 +327,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Btn4
-    x: 97
-    y: 560
+    x: 559
+    y: 175
     width: 34
     height: 34
     borderLeft: 15
@@ -339,9 +339,22 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
+  - name: BtnSprite
+    x: 0
+    y: 362
+    width: 910
+    height: 150
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
   - name: CheckSmall
-    x: 274
-    y: 653
+    x: 537
+    y: 180
     width: 20
     height: 14
     borderLeft: 0
@@ -353,8 +366,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: CircleBtn_0
-    x: 135
-    y: 605
+    x: 490
+    y: 132
     width: 46
     height: 46
     borderLeft: 0
@@ -366,8 +379,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: CloseBtn
-    x: 227
-    y: 607
+    x: 490
+    y: 87
     width: 44
     height: 44
     borderLeft: 0
@@ -379,8 +392,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Condition0
-    x: 324
-    y: 537
+    x: 598
+    y: 105
     width: 28
     height: 28
     borderLeft: 0
@@ -392,8 +405,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Condition1
-    x: 324
-    y: 508
+    x: 598
+    y: 76
     width: 28
     height: 28
     borderLeft: 0
@@ -405,8 +418,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Condition10
-    x: 204
-    y: 530
+    x: 559
+    y: 18
     width: 28
     height: 28
     borderLeft: 0
@@ -418,8 +431,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Condition11
-    x: 233
-    y: 504
+    x: 598
+    y: 308
     width: 28
     height: 28
     borderLeft: 0
@@ -431,8 +444,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Condition12
-    x: 264
-    y: 535
+    x: 598
+    y: 279
     width: 28
     height: 28
     borderLeft: 0
@@ -444,8 +457,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Condition13
-    x: 264
-    y: 506
+    x: 598
+    y: 192
     width: 28
     height: 28
     borderLeft: 0
@@ -457,8 +470,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Condition2
-    x: 295
-    y: 566
+    x: 598
+    y: 250
     width: 28
     height: 28
     borderLeft: 0
@@ -470,8 +483,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Condition3
-    x: 295
-    y: 537
+    x: 598
+    y: 221
     width: 28
     height: 28
     borderLeft: 0
@@ -483,8 +496,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: CreditIcon
-    x: 411
-    y: 570
+    x: 670
+    y: 337
     width: 30
     height: 24
     borderLeft: 0
@@ -496,8 +509,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: CustomIcon
-    x: 204
-    y: 559
+    x: 461
+    y: 46
     width: 28
     height: 35
     borderLeft: 0
@@ -509,8 +522,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: DashLine_0
-    x: 414
-    y: 860
+    x: 1018
+    y: 476
     width: 2
     height: 8
     borderLeft: 0
@@ -522,8 +535,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: DirectionArrow
-    x: 437
-    y: 653
+    x: 627
+    y: 289
     width: 12
     height: 18
     borderLeft: 0
@@ -535,8 +548,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: EditIcon
-    x: 492
-    y: 869
+    x: 920
+    y: 343
     width: 18
     height: 18
     borderLeft: 0
@@ -548,8 +561,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: FacilityInfo1
-    x: 345
-    y: 846
+    x: 747
+    y: 339
     width: 22
     height: 22
     borderLeft: 0
@@ -561,8 +574,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: FacilityInfo2
-    x: 443
-    y: 846
+    x: 724
+    y: 339
     width: 22
     height: 22
     borderLeft: 0
@@ -574,8 +587,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: FacilityLevel
-    x: 450
-    y: 655
+    x: 627
+    y: 262
     width: 12
     height: 16
     borderLeft: 0
@@ -587,8 +600,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: FacilityMenu
-    x: 182
-    y: 607
+    x: 444
+    y: 147
     width: 44
     height: 44
     borderLeft: 21
@@ -600,8 +613,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: FacilityMenuEnter
-    x: 496
-    y: 570
+    x: 278
+    y: 112
     width: 16
     height: 24
     borderLeft: 0
@@ -613,8 +626,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: FacilityMenuInfoBack
-    x: 0
-    y: 504
+    x: 436
+    y: 28
     width: 24
     height: 90
     borderLeft: 22
@@ -626,8 +639,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: FacilityMenuSelect
-    x: 384
-    y: 510
+    x: 641
+    y: 146
     width: 26
     height: 26
     borderLeft: 11
@@ -639,8 +652,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: FFW_Icon
-    x: 466
-    y: 850
+    x: 641
+    y: 0
     width: 26
     height: 18
     borderLeft: 0
@@ -652,8 +665,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Gem
-    x: 492
-    y: 888
+    x: 537
+    y: 154
     width: 20
     height: 24
     borderLeft: 0
@@ -665,8 +678,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Gold
-    x: 345
-    y: 726
+    x: 880
+    y: 341
     width: 20
     height: 20
     borderLeft: 0
@@ -678,8 +691,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: GoodFeeling_S
-    x: 179
-    y: 848
+    x: 387
+    y: 199
     width: 68
     height: 6
     borderLeft: 4
@@ -691,8 +704,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: GoodFeelingBack_S
-    x: 416
-    y: 657
+    x: 263
+    y: 1
     width: 14
     height: 10
     borderLeft: 6
@@ -704,8 +717,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: HpIcon
-    x: 0
-    y: 479
+    x: 641
+    y: 67
     width: 26
     height: 24
     borderLeft: 0
@@ -717,8 +730,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: InfoIcon
-    x: 442
-    y: 514
+    x: 641
+    y: 200
     width: 26
     height: 26
     borderLeft: 0
@@ -730,8 +743,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: InfoIconBack
-    x: 442
-    y: 541
+    x: 641
+    y: 254
     width: 26
     height: 26
     borderLeft: 12
@@ -743,8 +756,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: InfoSwapArrow
-    x: 429
-    y: 728
+    x: 996
+    y: 343
     width: 14
     height: 18
     borderLeft: 0
@@ -756,8 +769,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: InfoSwapBtn
-    x: 444
-    y: 726
+    x: 296
+    y: 3
     width: 44
     height: 38
     borderLeft: 0
@@ -769,8 +782,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: InnArrow_0
-    x: 474
-    y: 652
+    x: 138
+    y: 62
     width: 14
     height: 8
     borderLeft: 0
@@ -782,8 +795,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: InventoryIcon
-    x: 0
-    y: 595
+    x: 104
+    y: 5
     width: 44
     height: 56
     borderLeft: 0
@@ -795,8 +808,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: LeagueEndInfoIcon1
-    x: 391
-    y: 846
+    x: 793
+    y: 339
     width: 22
     height: 22
     borderLeft: 0
@@ -808,8 +821,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: LeagueEndInfoIcon2
-    x: 368
-    y: 846
+    x: 770
+    y: 339
     width: 22
     height: 22
     borderLeft: 0
@@ -821,8 +834,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: ListTrainerIcon
-    x: 0
-    y: 404
+    x: 839
+    y: 337
     width: 20
     height: 24
     borderLeft: 0
@@ -834,8 +847,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: LvUpIcon
-    x: 264
-    y: 564
+    x: 559
+    y: 78
     width: 30
     height: 30
     borderLeft: 0
@@ -847,8 +860,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: LvUpMark
-    x: 233
-    y: 533
+    x: 559
+    y: 109
     width: 30
     height: 30
     borderLeft: 0
@@ -860,8 +873,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: MenuArrow
-    x: 261
-    y: 727
+    x: 244
+    y: 0
     width: 18
     height: 11
     borderLeft: 0
@@ -874,7 +887,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: Minimap
     x: 0
-    y: 846
+    y: 183
     width: 178
     height: 178
     borderLeft: 0
@@ -886,8 +899,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: MinimapQuest
-    x: 350
-    y: 653
+    x: 278
+    y: 72
     width: 16
     height: 16
     borderLeft: 0
@@ -899,8 +912,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Ml_Conditon_01
-    x: 411
-    y: 516
+    x: 641
+    y: 281
     width: 26
     height: 26
     borderLeft: 0
@@ -912,8 +925,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Ml_Conditon_02
-    x: 411
-    y: 543
+    x: 641
+    y: 308
     width: 26
     height: 26
     borderLeft: 0
@@ -925,8 +938,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Ml_Conditon_03
-    x: 442
-    y: 568
+    x: 641
+    y: 173
     width: 26
     height: 26
     borderLeft: 0
@@ -938,8 +951,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Ml_Conditon_04
-    x: 469
-    y: 568
+    x: 641
+    y: 227
     width: 26
     height: 26
     borderLeft: 0
@@ -951,8 +964,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: MlTurnOverBack
-    x: 270
-    y: 869
+    x: 296
+    y: 117
     width: 74
     height: 74
     borderLeft: 7
@@ -964,8 +977,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: MlTurnOverBox
-    x: 345
-    y: 869
+    x: 387
+    y: 206
     width: 74
     height: 74
     borderLeft: 7
@@ -977,8 +990,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: MyInfoIcon
-    x: 45
-    y: 599
+    x: 244
+    y: 12
     width: 42
     height: 52
     borderLeft: 0
@@ -990,8 +1003,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: New
-    x: 493
-    y: 850
+    x: 939
+    y: 343
     width: 18
     height: 18
     borderLeft: 0
@@ -1003,8 +1016,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: NextTurnBtn
-    x: 142
-    y: 658
+    x: 490
+    y: 226
     width: 66
     height: 66
     borderLeft: 0
@@ -1016,8 +1029,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: NormalSkillIcon
-    x: 490
-    y: 986
+    x: 535
+    y: 93
     width: 22
     height: 38
     borderLeft: 0
@@ -1029,8 +1042,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Pattern
-    x: 401
-    y: 611
+    x: 490
+    y: 3
     width: 40
     height: 40
     borderLeft: 0
@@ -1042,8 +1055,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Pause_Icon
-    x: 494
-    y: 541
+    x: 278
+    y: 137
     width: 17
     height: 26
     borderLeft: 0
@@ -1055,8 +1068,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: PitcherMound
-    x: 25
-    y: 517
+    x: 559
+    y: 210
     width: 34
     height: 34
     borderLeft: 0
@@ -1068,8 +1081,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: PitchingDirection
-    x: 238
-    y: 728
+    x: 149
+    y: 2
     width: 22
     height: 10
     borderLeft: 0
@@ -1081,8 +1094,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: PitchingDirectionGauge
-    x: 248
-    y: 846
+    x: 121
+    y: 62
     width: 16
     height: 8
     borderLeft: 0
@@ -1094,8 +1107,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: PitchingGaugeArrow
-    x: 295
-    y: 653
+    x: 531
+    y: 0
     width: 16
     height: 14
     borderLeft: 0
@@ -1107,8 +1120,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: PitchingGaugeLight
-    x: 490
-    y: 661
+    x: 701
+    y: 337
     width: 22
     height: 24
     borderLeft: 10
@@ -1120,8 +1133,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: PitchingPoint_0
-    x: 60
-    y: 523
+    x: 559
+    y: 140
     width: 34
     height: 34
     borderLeft: 0
@@ -1133,8 +1146,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: PitchingPoint_1
-    x: 193
-    y: 596
+    x: 462
+    y: 192
     width: 10
     height: 10
     borderLeft: 0
@@ -1147,7 +1160,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: QuestBack
     x: 179
-    y: 944
+    y: 281
     width: 310
     height: 80
     borderLeft: 0
@@ -1159,8 +1172,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: QuestBack_On
-    x: 444
-    y: 765
+    x: 371
+    y: 38
     width: 64
     height: 80
     borderLeft: 31
@@ -1172,8 +1185,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: QuestIcon_0
-    x: 190
-    y: 522
+    x: 1018
+    y: 490
     width: 6
     height: 22
     borderLeft: 0
@@ -1185,8 +1198,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: QuestIcon_1
-    x: 494
-    y: 516
+    x: 278
+    y: 89
     width: 14
     height: 22
     borderLeft: 0
@@ -1198,8 +1211,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: QuestIcon_2
-    x: 463
-    y: 657
+    x: 548
+    y: 0
     width: 10
     height: 14
     borderLeft: 0
@@ -1211,8 +1224,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: QuestIcon_On
-    x: 60
-    y: 558
+    x: 371
+    y: 1
     width: 36
     height: 36
     borderLeft: 0
@@ -1224,8 +1237,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: QuestIconBack_L
-    x: 97
-    y: 525
+    x: 559
+    y: 245
     width: 34
     height: 34
     borderLeft: 0
@@ -1237,8 +1250,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: QuestRewardBox
-    x: 161
-    y: 508
+    x: 461
+    y: 82
     width: 28
     height: 36
     borderLeft: 12
@@ -1250,8 +1263,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: QuestTextureBack
-    x: 73
-    y: 656
+    x: 490
+    y: 293
     width: 68
     height: 68
     borderLeft: 0
@@ -1263,8 +1276,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: QuestTitleBack
-    x: 270
-    y: 846
+    x: 641
+    y: 19
     width: 26
     height: 22
     borderLeft: 1
@@ -1276,8 +1289,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: RoundedShadow
-    x: 442
-    y: 613
+    x: 559
+    y: 323
     width: 38
     height: 38
     borderLeft: 16
@@ -1289,8 +1302,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Runner1
-    x: 469
-    y: 539
+    x: 533
+    y: 58
     width: 24
     height: 28
     borderLeft: 0
@@ -1302,8 +1315,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Runner2
-    x: 469
-    y: 510
+    x: 641
+    y: 92
     width: 24
     height: 28
     borderLeft: 0
@@ -1315,8 +1328,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: ScrollArrow
-    x: 132
-    y: 511
+    x: 997
+    y: 363
     width: 25
     height: 42
     borderLeft: 0
@@ -1328,8 +1341,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: SkillBtn
-    x: 121
-    y: 729
+    x: 179
+    y: 164
     width: 116
     height: 116
     borderLeft: 0
@@ -1341,8 +1354,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: SkillBtnBack
-    x: 238
-    y: 739
+    x: 911
+    y: 406
     width: 106
     height: 106
     borderLeft: 0
@@ -1354,8 +1367,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: SkillBtnLock
-    x: 25
-    y: 552
+    x: 559
+    y: 280
     width: 34
     height: 42
     borderLeft: 0
@@ -1367,8 +1380,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: SkillDisable
-    x: 345
-    y: 747
+    x: 179
+    y: 65
     width: 98
     height: 98
     borderLeft: 0
@@ -1380,8 +1393,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: SkillIcon
-    x: 490
-    y: 686
+    x: 462
+    y: 203
     width: 22
     height: 38
     borderLeft: 0
@@ -1393,8 +1406,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: SkillIconSmall
-    x: 97
-    y: 504
+    x: 627
+    y: 316
     width: 12
     height: 20
     borderLeft: 0
@@ -1406,8 +1419,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: SkillLockIcon
-    x: 326
-    y: 846
+    x: 901
+    y: 339
     width: 18
     height: 22
     borderLeft: 0
@@ -1419,8 +1432,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: SkillNumBack
-    x: 420
-    y: 846
+    x: 816
+    y: 339
     width: 22
     height: 22
     borderLeft: 10
@@ -1432,8 +1445,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: SkillPoint
-    x: 0
-    y: 429
+    x: 436
+    y: 3
     width: 24
     height: 24
     borderLeft: 0
@@ -1445,8 +1458,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: SkillPreviewBtn
-    x: 331
-    y: 670
+    x: 121
+    y: 71
     width: 54
     height: 54
     borderLeft: 0
@@ -1458,8 +1471,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: SkillSelect
-    x: 315
-    y: 609
+    x: 490
+    y: 44
     width: 42
     height: 42
     borderLeft: 20
@@ -1471,8 +1484,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: SpecialSkillIcon
-    x: 489
-    y: 726
+    x: 461
+    y: 7
     width: 22
     height: 38
     borderLeft: 0
@@ -1484,8 +1497,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: SquareShadow
-    x: 274
-    y: 668
+    x: 121
+    y: 126
     width: 56
     height: 56
     borderLeft: 24
@@ -1497,8 +1510,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Star0
-    x: 384
-    y: 537
+    x: 531
+    y: 15
     width: 26
     height: 28
     borderLeft: 0
@@ -1510,8 +1523,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Star1
-    x: 384
-    y: 566
+    x: 408
+    y: 9
     width: 26
     height: 28
     borderLeft: 0
@@ -1523,8 +1536,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: StatBox
-    x: 0
-    y: 454
+    x: 641
+    y: 42
     width: 24
     height: 24
     borderLeft: 11
@@ -1536,8 +1549,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: StatBoxSelect
-    x: 295
-    y: 508
+    x: 598
+    y: 163
     width: 28
     height: 28
     borderLeft: 13
@@ -1550,7 +1563,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: StatCircle
     x: 0
-    y: 725
+    y: 62
     width: 120
     height: 120
     borderLeft: 0
@@ -1562,8 +1575,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: StepCircle_01
-    x: 272
-    y: 609
+    x: 911
+    y: 363
     width: 42
     height: 42
     borderLeft: 21
@@ -1575,8 +1588,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: StepCircle_02
-    x: 358
-    y: 609
+    x: 954
+    y: 363
     width: 42
     height: 42
     borderLeft: 21
@@ -1588,8 +1601,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: StepCricle_Check
-    x: 387
-    y: 730
+    x: 559
+    y: 1
     width: 22
     height: 16
     borderLeft: 0
@@ -1601,8 +1614,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Tab_01
-    x: 280
-    y: 726
+    x: 533
+    y: 45
     width: 12
     height: 12
     borderLeft: 0
@@ -1614,8 +1627,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: TalkAnswerBox
-    x: 0
-    y: 652
+    x: 371
+    y: 119
     width: 72
     height: 72
     borderLeft: 32
@@ -1627,8 +1640,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: TalkAnswerBubble
-    x: 437
-    y: 672
+    x: 51
+    y: 9
     width: 52
     height: 52
     borderLeft: 24
@@ -1640,8 +1653,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: TalkBubble
-    x: 386
-    y: 668
+    x: 0
+    y: 5
     width: 50
     height: 56
     borderLeft: 30
@@ -1653,8 +1666,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: TalkName
-    x: 132
-    y: 554
+    x: 341
+    y: 1
     width: 28
     height: 40
     borderLeft: 2
@@ -1666,8 +1679,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Ticket
-    x: 0
-    y: 379
+    x: 860
+    y: 337
     width: 19
     height: 24
     borderLeft: 0
@@ -1679,8 +1692,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Top_Add
-    x: 366
-    y: 726
+    x: 537
+    y: 133
     width: 20
     height: 20
     borderLeft: 0
@@ -1692,8 +1705,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Top_Home
-    x: 353
-    y: 541
+    x: 598
+    y: 49
     width: 30
     height: 26
     borderLeft: 0
@@ -1705,8 +1718,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Top_Mail
-    x: 297
-    y: 850
+    x: 598
+    y: 3
     width: 28
     height: 18
     borderLeft: 0
@@ -1718,8 +1731,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Top_Prev
-    x: 353
-    y: 568
+    x: 598
+    y: 22
     width: 30
     height: 26
     borderLeft: 0
@@ -1731,8 +1744,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Top_Setting
-    x: 353
-    y: 514
+    x: 641
+    y: 335
     width: 28
     height: 26
     borderLeft: 0
@@ -1744,8 +1757,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Top_Title
-    x: 481
-    y: 603
+    x: 149
+    y: 13
     width: 26
     height: 48
     borderLeft: 2
@@ -1757,8 +1770,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: TriangleLight
-    x: 420
-    y: 869
+    x: 296
+    y: 42
     width: 71
     height: 74
     borderLeft: 0
@@ -1770,8 +1783,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: TurnBack
-    x: 179
-    y: 855
+    x: 296
+    y: 192
     width: 90
     height: 88
     borderLeft: 0
@@ -1783,8 +1796,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: WindDirection
-    x: 410
-    y: 729
+    x: 958
+    y: 344
     width: 18
     height: 17
     borderLeft: 0

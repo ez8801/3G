@@ -18,7 +18,7 @@ public class BlueExplose : MonoBehaviour
     public int Damage;
     void Start()
 	{
-        Destroy(this.gameObject, 0.6f);
+        Destroy(this.gameObject, 0.5f);
         GetInfo();
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius);
         foreach (Collider2D col in colliders)
