@@ -14,11 +14,55 @@ using System.Collections.Generic;
 public class UIPvpMakeRoom : UIBase 
 {
     //나가기 버튼
+    [System.Serializable]
+    public struct View
+    {
+        public GameObject BtnMake;
+        public GameObject BtnOut;
+        public UILabel LblGetText;
+        public UIPvpRoom PvpRoom;
+    }
+    public View m_view;
 
+    private SimplePvpRoom m_newRoom;
+
+    internal override void OnStart()
+    {
+        base.OnStart();
+        BindComponents();
+        //텍스트 부분 초기화 추가 필요. + 따로 함수로 텍스트필드 만드는 방법.
+    }
+    
+
+    [ContextMenu("Bind")]
+    public void BindComponents()
+    {
+        this.Bind(ref m_view.BtnMake, "BtnMakeRoom");
+        this.Bind(ref m_view.BtnOut, "BtnOut");
+        this.Bind(ref m_view.PvpRoom, "PvpRoom");
+    }
+
+
+    public void SendText()
+    {
+        //서버로 전송.
+        //리턴값은 만든 텍스트(이름)과 아이디(몇번째인지 방 번호) 등등이 포함된 심플 룸 정보.
+    }
 
     public void OnClickClose()
     {
         Hide();
     }
 
+    public void OnClickMakeRoom()
+    {
+        //m_newRoom = 
+        SendText();
+
+        //무엇인가 심플룸을 센드 텍스트로 리턴 받아서..
+        //방만드는 함수에 정보를 집어넣어서 열면댐.
+
+
+
+    }
 }

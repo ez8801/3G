@@ -1210,6 +1210,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 796034c62d7477b49a8ff23ce05bd375, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_view:
+    BtnMake: {fileID: 0}
+    BtnOut: {fileID: 0}
+    LblGetText: {fileID: 0}
+    PvpRoom: {fileID: 0}
 --- !u!114 &114036419994141780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2153,8 +2158,10 @@ MonoBehaviour:
     BtnAutoMatch: {fileID: 1924993471900258}
     BtnMakeRoom: {fileID: 1857104626802030}
     BtnFindRoom: {fileID: 1882359659882452}
-    PvpMakeRoom: {fileID: 0}
-    PvpRoomFind: {fileID: 0}
+    PvpMakeRoom: {fileID: 114343580860440096, guid: 8161b3c86f411784989e42cc59c9bc16,
+      type: 2}
+    PvpRoomFind: {fileID: 114525791696621120, guid: 9873997d4550ade4d925cb1c5bc0ce9d,
+      type: 2}
 --- !u!114 &114582297435264358
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -41,7 +41,7 @@ public class TitleStage : Stage
         isPressKey = Input.GetMouseButtonUp(0);
 #else
         isPressKey = Input.GetMouseButtonUp(0);
-        //isPressKey = (Input.touchCount > 0);    
+        //isPressKey = (Input.touchCount > 0);
 #endif
 
         if (isPressKey)
@@ -62,7 +62,7 @@ public class TitleStage : Stage
             
             // 데이터 로드가 끝나면 change scene
             //서버 연결 안타고 다음 화면으로 넘어가려면 아래 주석 지우면됨 - NoServer
-            StageManager.Instance.ChangeStage(StageType.LobbyStage);
+            //StageManager.Instance.ChangeStage(StageType.LobbyStage);
         }
     }
 

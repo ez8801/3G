@@ -58,9 +58,10 @@ public class UIPvp : UIBase
     {
         //m_findRooms에 서버에서 리스트 받을필요 있음
         //임의 리스트
+        m_findRooms = new List<SimplePvpRoom>();
         SimplePvpRoom roomone = new SimplePvpRoom();
         roomone.Id = 0;
-        roomone.RoomId = 0001;
+        roomone.RoomId = 1;
         roomone.RoomName = "today";
         Debug.Log("this time one");
         Debug.Log(roomone.RoomName);

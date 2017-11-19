@@ -26,12 +26,15 @@ public class UIPvpRoomFind : UIBase
 
 
     private int m_selectedRoomIndex;
-    private List<SimplePvpRoom> m_pvpRooms;
+
+    public List<SimplePvpRoom> m_pvpRooms;
 
     internal override void OnCreate()
     {
         base.OnCreate();
         BindComponents();
+
+        m_pvpRooms = new List<SimplePvpRoom>();
 
         m_view.Grid.DataSource = RoomCellForRowAtIndex;
         m_view.Grid.Delegate = NumberOfRowInRecipeGrid;
@@ -52,13 +55,15 @@ public class UIPvpRoomFind : UIBase
     {
         base.OnStart();
         ReloadData();
+        
     }
 
     public override void ReloadData()
     {
         base.ReloadData();
-
-        //m_view.Grid.ReloadData();
+        m_view.Grid.DataSource = RoomCellForRowAtIndex;
+        m_view.Grid.Delegate = NumberOfRowInRecipeGrid;
+        m_view.Grid.ReloadData();
         // 방의 정보 읽어와서 m_isFull 이 사실이면 참가 버튼 비활성화.
 
     }
@@ -74,6 +79,7 @@ public class UIPvpRoomFind : UIBase
     public void SetData(List<SimplePvpRoom> list)
     {
         m_pvpRooms = list;
+        Debug.Log("list 1 :" + list[0].RoomName);
     }
 
 
@@ -89,6 +95,7 @@ public class UIPvpRoomFind : UIBase
         SimplePvpRoom room = m_pvpRooms[index];
         UIPvpRoomCell pvpRoomCell = Util.RequireComponent<UIPvpRoomCell>(contentView);
         pvpRoomCell.Initilize();
+        Debug.Log("Room Cell For Row At Index");
         pvpRoomCell.SetSelection(room.Id == m_selectedRoomIndex);
         pvpRoomCell.SetData(room);
         pvpRoomCell.SetOnClickListener(OnClickRoom);
@@ -107,6 +114,9 @@ public class UIPvpRoomFind : UIBase
         int.TryParse(sender.name, out index);
 
         m_selectedRoomIndex = m_pvpRooms[index].RoomId;
+
+        UIPvpRoom pvpRoom = Util.RequireComponent<UIPvpRoom>(m_view)
+
         ReloadData();
     }
 

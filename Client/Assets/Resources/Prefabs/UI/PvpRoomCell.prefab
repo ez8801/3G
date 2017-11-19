@@ -69,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1084310044864366}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -169.09789, y: -20, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4985924452719074}
@@ -113,7 +113,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 480, y: 65, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114027263963594568
 MonoBehaviour:
@@ -149,7 +149,7 @@ MonoBehaviour:
   mHeight: 65
   mDepth: 30
   mMat: {fileID: 0}
-  autoResizeBoxCollider: 0
+  autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 7.3846154
@@ -180,8 +180,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a51a6a09f0206045ba594a1da4e39b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LblRoomNum: {fileID: 114453488999555510}
-  LblRoomName: {fileID: 114553506531882394}
+  m_view:
+    LblRoomNum: {fileID: 114453488999555510}
+    LblRoomName: {fileID: 114553506531882394}
 --- !u!114 &114453488999555510
 MonoBehaviour:
   m_ObjectHideFlags: 1
