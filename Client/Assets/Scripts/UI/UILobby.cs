@@ -107,6 +107,12 @@ public class UILobby : UIBase
         UIManager.Instance.Push(UIType.UIWorld);
     }
     
+    public void CallPvpRoom(int RoomNum, string RoomName)
+    {
+        Debug.Log("PvpRoomOpen!");
+        UIManager.Instance.Push(UIType.UIPvpRoom);
+    }
+
 
     #endregion UIActions
 }

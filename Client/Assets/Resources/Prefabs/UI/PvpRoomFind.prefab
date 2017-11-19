@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 4597999239032252}
   - component: {fileID: 114255182935558858}
   - component: {fileID: 65897126529827118}
+  - component: {fileID: 65760026003498288}
   m_Layer: 5
   m_Name: SprBG
   m_TagString: Untagged
@@ -206,6 +207,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 50, y: 50, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65760026003498288
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1692157034642830}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2000, y: 600, z: 1}
+  m_Center: {x: 300, y: 250, z: 0}
 --- !u!65 &65897126529827118
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -256,13 +269,13 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3002
+  startingRenderQueue: 3006
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 3
   mClipRange: {x: 0, y: 0, z: 480, w: 520}
   mClipSoftness: {x: 4, y: 4}
-  mDepth: 7
+  mDepth: 13
   mSortingOrder: 0
   mSortingLayerName: 
   mClipOffset: {x: 0, y: 0}
@@ -424,7 +437,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1608945044256724}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e41fa5b5acb05414dbe427ee30453ade, type: 3}
   m_Name: 
@@ -433,7 +446,7 @@ MonoBehaviour:
   maxPerLine: 1
   cellWidth: 480
   cellHeight: 75
-  CellPrefab: {fileID: 0}
+  CellPrefab: {fileID: 1084310044864366, guid: b93de74c4f08806419f6b61dc767c18c, type: 2}
 --- !u!114 &114525791696621120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -448,7 +461,7 @@ MonoBehaviour:
   m_view:
     BtnClose: {fileID: 1493501353909314}
     BtnAttend: {fileID: 0}
-    Grid: {fileID: 0}
+    Grid: {fileID: 114424242761944092}
 --- !u!114 &114685824732282082
 MonoBehaviour:
   m_ObjectHideFlags: 1

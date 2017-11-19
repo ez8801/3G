@@ -258,6 +258,9 @@ public partial class UIManager : MonoSingleton<UIManager>
                 return "Prefabs/UI/StageInfoUI";
             case UIType.UIPvp:
                 return "Prefabs/UI/PvpUI";
+            case UIType.UIPvpRoom:
+                return "Prefabs/UI/PvpRoomUI";
+
         }
         return string.Empty;
     }

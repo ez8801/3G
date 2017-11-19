@@ -11,11 +11,17 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class UIPvpRoomCell : MonoBehaviour 
+public class UIPvpRoomCell : UIBase 
 {
     // 셀은 텍스트 두개로 이루어짐. 방 번호와 방 이름
-    public UILabel LblRoomNum;
-    public UILabel LblRoomName;
+    [System.Serializable]
+    public struct View
+    {
+        public UILabel LblRoomNum;
+        public UILabel LblRoomName;
+    }
+    public View m_view;
+
 
     private UIEventListener.VoidDelegate m_onClickListener;
 
@@ -35,16 +41,18 @@ public class UIPvpRoomCell : MonoBehaviour
     [ContextMenu("Bind")]
     public void BindComponents()
     {
-        this.Bind(ref LblRoomNum, "LblRoomNum");
-        this.Bind(ref LblRoomName, "LblRoomName");
+        if (!IsAssigned(m_view))
+            m_view = new View();
+        this.Bind(ref m_view.LblRoomNum, "LblRoomNum");
+        this.Bind(ref m_view.LblRoomName, "LblRoomName");
     }
 
     public void SetData(SimplePvpRoom room)
     {
-        if (m_isFull == false)
-            gameObject.SetActive(true);
-        LblRoomNum.SetTextSafely(string.Format("{0}", room.RoomId));
-        //LblRoomName.SetTextSafely(room.RoomName);
+        
+        m_view.LblRoomNum.SetTextSafely(string.Format("{0}", room.RoomId));
+        m_view.LblRoomName.SetTextSafely(room.RoomName);
+        Debug.Log("Room Cell");
     }
 
     public bool IsFull()
@@ -57,11 +65,7 @@ public class UIPvpRoomCell : MonoBehaviour
         m_isSelected = isSelect;
     }
 
-    public void Disable()
-    {
-        LblRoomName.SetActiveSafely(false);
-        LblRoomNum.SetActiveSafely(false);
-    }
+   
 
     public void SetOnClickListener(UIEventListener.VoidDelegate I)
     {
