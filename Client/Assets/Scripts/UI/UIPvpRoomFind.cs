@@ -23,10 +23,10 @@ public class UIPvpRoomFind : UIBase
         public UIAdvancedGrid Grid;
     }
     public View m_view;
-
+    
 
     private int m_selectedRoomIndex;
-
+    private string m_selectRoomName;
     public List<SimplePvpRoom> m_pvpRooms;
 
     internal override void OnCreate()
@@ -110,13 +110,19 @@ public class UIPvpRoomFind : UIBase
     #region UIActions
     private void OnClickRoom(GameObject sender)
     {
+        Hide();
+
         int index = -1;
         int.TryParse(sender.name, out index);
-
+        Debug.Log("RoomSelect");
+        Debug.Log(index);
         m_selectedRoomIndex = m_pvpRooms[index].RoomId;
-        
+        m_selectRoomName = m_pvpRooms[index].RoomName;
+        Debug.Log("RoomName : " + m_pvpRooms[index].RoomName);
+        GameObject.Find("PvpUI").GetComponent<UIPvp>().Hide();
+        index = -1;
+        GameObject.Find("LobbyUI").GetComponent<UILobby>().CallPvpRoom(m_selectedRoomIndex, m_selectRoomName);
 
-        ReloadData();
     }
 
     public void OnClickAttend()

@@ -110,7 +110,8 @@ public class UILobby : UIBase
     public void CallPvpRoom(int RoomNum, string RoomName)
     {
         Debug.Log("PvpRoomOpen!");
-        UIManager.Instance.Push(UIType.UIPvpRoom);
+        UIPvpRoom pvpRoomUI = UIManager.Instance.Push<UIPvpRoom>(UIType.UIPvpRoom);
+        pvpRoomUI.SetMakeData(RoomNum, RoomName);
     }
 
 
