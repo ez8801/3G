@@ -84,8 +84,10 @@ public class UIBattleActive : UIBase
         //서버에서 리스트 받아옴.
         Data.Skill skill = SkillTable.Instance.Find(13);
         Data.Skill skilltwo = SkillTable.Instance.Find(3000002);
+        Data.Skill skillthree = SkillTable.Instance.Find(3000003);
         m_actives.Add(skill);
         m_actives.Add(skilltwo);
+        m_actives.Add(skillthree);
         Debug.Log(m_actives[0].Cooltime);
     }
 

@@ -14,7 +14,7 @@ using System.Collections.Generic;
 public class SkillManager : MonoBehaviour
 {
     public GameObject BlueShotPrefab;
-
+    public GameObject MeteorPrefab;
     public void GetSkill(int skillId)
     {
         Debug.Log("This is Manager");
@@ -25,6 +25,9 @@ public class SkillManager : MonoBehaviour
                 break;
             case 3000002:
                 StartCoroutine("SkillBlueShot");
+                break;
+            case 3000003:
+                StartCoroutine("SkillMeteor");
                 break;
         }
     }
@@ -38,6 +41,15 @@ public class SkillManager : MonoBehaviour
     {
         Debug.Log("Use BlueShot from SkillManager");
         Instantiate(BlueShotPrefab, transform.position, Quaternion.identity);
+        yield break;
+    }
+    IEnumerator SkillMeteor()
+    {
+        Debug.Log("Use Meteor from SkillManager");
+        Vector3 summonPoint = transform.position;
+        summonPoint.y = transform.position.y + 12;
+        summonPoint.x = transform.position.x + -6;
+        Instantiate(MeteorPrefab, summonPoint, Quaternion.identity);
         yield break;
     }
 

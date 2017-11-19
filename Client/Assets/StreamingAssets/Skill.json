@@ -22,5 +22,17 @@
     "Charging": 0,
     "Level": 2,
     "Summary": "Skill.Summary.2"
+  },
+    {
+    "Id": 3000003,
+    "Type": 1,
+    "Name": "Skill.Name.3",
+    "Cooltime": 3,
+    "PrefabId": "3000002",
+    "Texture": "Textures/Skills/S_Meteor",
+    "Chargeable": false,
+    "Charging": 0,
+    "Level": 2,
+    "Summary": "Skill.Summary.3"
   }
 ]

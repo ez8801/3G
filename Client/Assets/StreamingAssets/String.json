@@ -208,6 +208,14 @@
     "Value": "스킬투다"
   },
   {
+    "Key": "Skill.Name.3",
+    "Value": "메테오"
+  },
+  {
+    "Key": "Skill.Summary.3",
+    "Value": "하늘에서 유성을 소환하여 대미지를 준다. 바닥에 닿으면 거대한 폭발을 일으켜 대미지와 넉백을 준다."
+  },
+  {
     "Key": "Material.Name.1",
     "Value": "가죽"
   },
