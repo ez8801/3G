@@ -1910,6 +1910,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BlueShotPrefab: {fileID: 1641098244898412, guid: d843189c4d8bef84384941670f3b9bd1,
     type: 2}
+  MeteorPrefab: {fileID: 1789767154509832, guid: 62dbc6ea54939a748b2b744220790bb3,
+    type: 2}
 --- !u!114 &114891129449361682
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4507470701834460}
   - component: {fileID: 212351863908426890}
   - component: {fileID: 95559987192328622}
+  - component: {fileID: 114263253727729880}
   m_Layer: 0
   m_Name: NuClearBoom
   m_TagString: Untagged
@@ -35,8 +36,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1146121193294926}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.96, y: -4.09, z: -10}
-  m_LocalScale: {x: 6, y: 6, z: 1}
+  m_LocalPosition: {x: 3.96, y: -4.09, z: 0}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -58,6 +59,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114263253727729880
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1146121193294926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 466f18e13c94c5b4da540546f234bd2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ThisGroupID: 0
+  Damage: 0
 --- !u!212 &212351863908426890
 SpriteRenderer:
   m_ObjectHideFlags: 1
