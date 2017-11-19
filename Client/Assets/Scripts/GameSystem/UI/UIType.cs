@@ -23,5 +23,6 @@ public enum UIType
     UIStageInfo,
     UIBattleActive,
     UIPvp,
+    UIPvpRoom,
     Max	
 }

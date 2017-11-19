@@ -114,8 +114,7 @@ public class UIPvpRoomFind : UIBase
         int.TryParse(sender.name, out index);
 
         m_selectedRoomIndex = m_pvpRooms[index].RoomId;
-
-        UIPvpRoom pvpRoom = Util.RequireComponent<UIPvpRoom>(m_view)
+        
 
         ReloadData();
     }

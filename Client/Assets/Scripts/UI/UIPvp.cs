@@ -81,6 +81,7 @@ public class UIPvp : UIBase
         //자동 매칭 터치시 이벤트 작성
         //서버에 매칭 정보 받아옴
         //이후 등급전 pvp 씬으로 이동
+
     }
 
     public void OnClickMakeRoom()

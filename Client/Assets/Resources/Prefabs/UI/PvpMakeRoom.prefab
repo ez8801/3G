@@ -577,8 +577,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_view:
-    BtnMake: {fileID: 0}
-    BtnOut: {fileID: 0}
+    BtnMake: {fileID: 1005797902928736}
+    BtnOut: {fileID: 1512261741048514}
     LblGetText: {fileID: 0}
     PvpRoom: {fileID: 0}
 --- !u!114 &114424869353300288
