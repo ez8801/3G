@@ -5,7 +5,7 @@
 
 #if UNITY_2 || UNITY_3 || UNITY_4 || UNITY_5
 using UnityEngine;
-using Debug = UnityEngine.Debug;
+using DebugE = UnityEngine.Debug;
 #endif
 using System.Diagnostics;
 using System.Collections;
@@ -275,9 +275,9 @@ public partial class JSONObject : IEnumerable {
 				if(str[0] != '[' && str[0] != '{') {
 					type = Type.NULL;
 #if UNITY_2 || UNITY_3 || UNITY_4 || UNITY_5
-					Debug.LogWarning
+					DebugE.LogWarning
 #else
-					Debug.WriteLine
+					DebugE.WriteLine
 #endif
 						("Improper (strict) JSON formatting.  First character must be [ or {");
 					return;
@@ -364,9 +364,9 @@ public partial class JSONObject : IEnumerable {
 							} catch(System.FormatException) {
 								type = Type.NULL;
 #if UNITY_2 || UNITY_3 || UNITY_4 || UNITY_5
-								Debug.LogWarning
+								DebugE.LogWarning
 #else
-								Debug.WriteLine
+								DebugE.WriteLine
 #endif
 								("improper JSON formatting:" + str);
 							}
@@ -695,9 +695,9 @@ public partial class JSONObject : IEnumerable {
 		} else if(left.type == Type.ARRAY && right.type == Type.ARRAY) {
 			if(right.Count > left.Count) {
 #if UNITY_2 || UNITY_3 || UNITY_4 || UNITY_5
-				Debug.LogError
+				DebugE.LogError
 #else
-				Debug.WriteLine
+				DebugE.WriteLine
 #endif
 				("Cannot merge arrays when right object has more elements");
 				return;
@@ -754,9 +754,9 @@ public partial class JSONObject : IEnumerable {
 		//Profiler.BeginSample("JSONprint");
 		if(depth++ > MAX_DEPTH) {
 #if UNITY_2 || UNITY_3 || UNITY_4 || UNITY_5
-			Debug.Log
+			DebugE.Log
 #else
-			Debug.WriteLine
+			DebugE.WriteLine
 #endif
 			("reached max depth!");
 			yield break;
@@ -900,7 +900,7 @@ public partial class JSONObject : IEnumerable {
 		//Profiler.BeginSample("JSONprint");
 		if(depth++ > MAX_DEPTH) {
 #if UNITY_2 || UNITY_3 || UNITY_4 || UNITY_5
-			Debug.Log
+			DebugE.Log
 #else
 			Debug.WriteLine
 #endif
@@ -1079,9 +1079,9 @@ public partial class JSONObject : IEnumerable {
 					case Type.BOOL: result.Add(keys[i], val.b + ""); break;
 					default:
 #if UNITY_2 || UNITY_3 || UNITY_4 || UNITY_5
-						Debug.LogWarning
+						DebugE.LogWarning
 #else
-						Debug.WriteLine
+						DebugE.WriteLine
 #endif
 						("Omitting object: " + keys[i] + " in dictionary conversion");
 						break;
@@ -1090,9 +1090,9 @@ public partial class JSONObject : IEnumerable {
 			return result;
 		}
 #if UNITY_2 || UNITY_3 || UNITY_4 || UNITY_5
-		Debug.Log
+		DebugE.Log
 #else
-		Debug.WriteLine
+		DebugE.WriteLine
 #endif
 		("Tried to turn non-Object JSONObject into a dictionary");
 		return null;
@@ -1142,7 +1142,7 @@ public class JSONObjectEnumer : IEnumerator
 
     public JSONObjectEnumer(JSONObject jsonObject)
     {
-        Debug.Assert(jsonObject.isContainer); //must be an array or object to itterate
+        DebugE.Assert(jsonObject.isContainer); //must be an array or object to itterate
         _jobj = jsonObject;
     }
 

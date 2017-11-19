@@ -41,6 +41,21 @@ public BeforeRmiInvocationDelegate BeforeRmiInvocation = delegate(Nettention.Pro
 		{ 
 			return false;
 		};
+		public delegate bool sendMakePVPRoomResultDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int p2pGroupId, int Result);  
+		public sendMakePVPRoomResultDelegate sendMakePVPRoomResult = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int p2pGroupId, int Result)
+		{ 
+			return false;
+		};
+		public delegate bool sendPVPRoomInfoDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.FastArray<pvprooms> roomData);  
+		public sendPVPRoomInfoDelegate sendPVPRoomInfo = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.FastArray<pvprooms> roomData)
+		{ 
+			return false;
+		};
+		public delegate bool sendRoomHostIdDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int HostId);  
+		public sendRoomHostIdDelegate sendRoomHostId = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int HostId)
+		{ 
+			return false;
+		};
 		public delegate bool sendMakeAccountResultDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int Result);  
 		public sendMakeAccountResultDelegate sendMakeAccountResult = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int Result)
 		{ 
@@ -343,6 +358,161 @@ core.PostCheckReadMessage(__msg, RmiName_sendRaidRoomInfo);
 			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
 			summary.rmiID = Common.sendRaidRoomInfo;
 			summary.rmiName = RmiName_sendRaidRoomInfo;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
+			AfterRmiInvocation(summary);
+		}
+	}
+	break;
+case Common.sendMakePVPRoomResult:
+	{
+		Nettention.Proud.RmiContext ctx=new Nettention.Proud.RmiContext();
+		ctx.sentFrom=pa.RemoteHostID;
+		ctx.relayed=pa.IsRelayed;
+		ctx.hostTag=hostTag;
+		ctx.encryptMode = pa.EncryptMode;
+		ctx.compressMode = pa.CompressMode;
+			
+		int p2pGroupId; Test.Read(__msg,out p2pGroupId);	
+int Result; Test.Read(__msg,out Result);	
+core.PostCheckReadMessage(__msg, RmiName_sendMakePVPRoomResult);
+		if(enableNotifyCallFromStub==true)
+		{
+			string parameterString="";
+			parameterString+=p2pGroupId.ToString()+",";
+parameterString+=Result.ToString()+",";
+			NotifyCallFromStub(Common.sendMakePVPRoomResult, RmiName_sendMakePVPRoomResult,parameterString);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.BeforeRmiSummary summary = new Nettention.Proud.BeforeRmiSummary();
+			summary.rmiID = Common.sendMakePVPRoomResult;
+			summary.rmiName = RmiName_sendMakePVPRoomResult;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			BeforeRmiInvocation(summary);
+		}
+			
+		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
+			
+		// Call this method.
+		bool __ret=sendMakePVPRoomResult (remote,ctx , p2pGroupId, Result );
+			
+		if(__ret==false)
+		{
+			// Error: RMI function that a user did not create has been called. 
+			core.ShowNotImplementedRmiWarning(RmiName_sendMakePVPRoomResult);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
+			summary.rmiID = Common.sendMakePVPRoomResult;
+			summary.rmiName = RmiName_sendMakePVPRoomResult;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
+			AfterRmiInvocation(summary);
+		}
+	}
+	break;
+case Common.sendPVPRoomInfo:
+	{
+		Nettention.Proud.RmiContext ctx=new Nettention.Proud.RmiContext();
+		ctx.sentFrom=pa.RemoteHostID;
+		ctx.relayed=pa.IsRelayed;
+		ctx.hostTag=hostTag;
+		ctx.encryptMode = pa.EncryptMode;
+		ctx.compressMode = pa.CompressMode;
+			
+		Nettention.Proud.FastArray<pvprooms> roomData; Test.Read(__msg,out roomData);	
+core.PostCheckReadMessage(__msg, RmiName_sendPVPRoomInfo);
+		if(enableNotifyCallFromStub==true)
+		{
+			string parameterString="";
+			parameterString+=roomData.ToString()+",";
+			NotifyCallFromStub(Common.sendPVPRoomInfo, RmiName_sendPVPRoomInfo,parameterString);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.BeforeRmiSummary summary = new Nettention.Proud.BeforeRmiSummary();
+			summary.rmiID = Common.sendPVPRoomInfo;
+			summary.rmiName = RmiName_sendPVPRoomInfo;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			BeforeRmiInvocation(summary);
+		}
+			
+		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
+			
+		// Call this method.
+		bool __ret=sendPVPRoomInfo (remote,ctx , roomData );
+			
+		if(__ret==false)
+		{
+			// Error: RMI function that a user did not create has been called. 
+			core.ShowNotImplementedRmiWarning(RmiName_sendPVPRoomInfo);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
+			summary.rmiID = Common.sendPVPRoomInfo;
+			summary.rmiName = RmiName_sendPVPRoomInfo;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
+			AfterRmiInvocation(summary);
+		}
+	}
+	break;
+case Common.sendRoomHostId:
+	{
+		Nettention.Proud.RmiContext ctx=new Nettention.Proud.RmiContext();
+		ctx.sentFrom=pa.RemoteHostID;
+		ctx.relayed=pa.IsRelayed;
+		ctx.hostTag=hostTag;
+		ctx.encryptMode = pa.EncryptMode;
+		ctx.compressMode = pa.CompressMode;
+			
+		int HostId; Test.Read(__msg,out HostId);	
+core.PostCheckReadMessage(__msg, RmiName_sendRoomHostId);
+		if(enableNotifyCallFromStub==true)
+		{
+			string parameterString="";
+			parameterString+=HostId.ToString()+",";
+			NotifyCallFromStub(Common.sendRoomHostId, RmiName_sendRoomHostId,parameterString);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.BeforeRmiSummary summary = new Nettention.Proud.BeforeRmiSummary();
+			summary.rmiID = Common.sendRoomHostId;
+			summary.rmiName = RmiName_sendRoomHostId;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			BeforeRmiInvocation(summary);
+		}
+			
+		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
+			
+		// Call this method.
+		bool __ret=sendRoomHostId (remote,ctx , HostId );
+			
+		if(__ret==false)
+		{
+			// Error: RMI function that a user did not create has been called. 
+			core.ShowNotImplementedRmiWarning(RmiName_sendRoomHostId);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
+			summary.rmiID = Common.sendRoomHostId;
+			summary.rmiName = RmiName_sendRoomHostId;
 			summary.hostID = remote;
 			summary.hostTag = hostTag;
 			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
@@ -682,6 +852,9 @@ const string RmiName_SystemChat="SystemChat";
 const string RmiName_sendUserInfo="sendUserInfo";
 const string RmiName_sendInventoryData="sendInventoryData";
 const string RmiName_sendRaidRoomInfo="sendRaidRoomInfo";
+const string RmiName_sendMakePVPRoomResult="sendMakePVPRoomResult";
+const string RmiName_sendPVPRoomInfo="sendPVPRoomInfo";
+const string RmiName_sendRoomHostId="sendRoomHostId";
 const string RmiName_sendMakeAccountResult="sendMakeAccountResult";
 const string RmiName_sendLoginResult="sendLoginResult";
 const string RmiName_sendSkillData="sendSkillData";
@@ -698,6 +871,9 @@ const string RmiName_SystemChat="";
 const string RmiName_sendUserInfo="";
 const string RmiName_sendInventoryData="";
 const string RmiName_sendRaidRoomInfo="";
+const string RmiName_sendMakePVPRoomResult="";
+const string RmiName_sendPVPRoomInfo="";
+const string RmiName_sendRoomHostId="";
 const string RmiName_sendMakeAccountResult="";
 const string RmiName_sendLoginResult="";
 const string RmiName_sendSkillData="";

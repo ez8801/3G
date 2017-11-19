@@ -31,11 +31,11 @@ public class P2PChatRoom : MonoBehaviour {
 		// G_Chat 툴바 클릭시 씬전환.
 		if (m_toolbarState == ChatUnity.ToolBarState.GlobalChat) // G_Chat 클릭시.
 		{
-			Application.LoadLevel("globalChat"); // globalChat 씬으로 씬전환.
+			//Application.LoadLevel("globalChat"); // globalChat 씬으로 씬전환.
 		}
 		else if (m_toolbarState == ChatUnity.ToolBarState.UserList) // UserList 툴바 클릭시.
 		{
-			Application.LoadLevel("userList"); // userList 씬으로 씬전환.
+			//Application.LoadLevel("userList"); // userList 씬으로 씬전환.
 			
 		}
 	}
@@ -59,7 +59,7 @@ public class P2PChatRoom : MonoBehaviour {
 				{// 버튼 클릭시.
 					// P2PChat 에서 채팅창에 뿌려줄 그룹 의 아이디를 셋팅.
 					m_client.P2PChatGroupID = pair.Key;
-					Application.LoadLevel("P2PChat"); // 씬 p2pChat으로 전환.
+					//Application.LoadLevel("P2PChat"); // 씬 p2pChat으로 전환.
 				}
 			}
 			i++;
