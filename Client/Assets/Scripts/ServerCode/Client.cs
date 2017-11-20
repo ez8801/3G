@@ -297,7 +297,7 @@ public class Client : MonoBehaviour {
         m_netClient.AttachProxy(m_c2sProxy_temp);
         m_netClient.AttachProxy(m_c2cProxy_temp);
         m_netClient.AttachStub(m_c2cStub_temp);
-
+        
         // 접속 하기 위한 서버의 정보를 셋팅하기 위해 NetConnectionParam 클래스 생성.
         m_param = new Nettention.Proud.NetConnectionParam();
 
@@ -452,7 +452,7 @@ public class Client : MonoBehaviour {
     public void ReadyPacket(Nettention.Proud.RmiContext rmiContext, int ready)
     {
         if (m_isConnect)
-            this.m_c2cStub_temp.ReadyPacket(m_netClient.LocalHostID, rmiContext, ready);
+            this.m_c2cProxy_temp.ReadyPacket(m_netClient.LocalHostID, rmiContext, ready);
     }
 
 
@@ -504,8 +504,8 @@ public class Client : MonoBehaviour {
            // m_c2sProxy.RequestLogon(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.ReliableSend, m_userName);
 
 			m_isConnect = true; // bool 변수 값 true 로 변경.
-            string id = "qwept";
-            string pw = "xxc";
+            string id = "qqpe";
+            string pw = "1234";
             m_c2sProxy_temp.RequestLoginAccount(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.UnreliableSend, id, pw);
             MyInfo.Account.LocalHost = m_netClient.GetLocalHostID();
         }
