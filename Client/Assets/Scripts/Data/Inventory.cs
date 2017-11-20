@@ -230,7 +230,7 @@ public class Inventory
             {
                 //레드 엑티브.
             }
-            m_client.SendEquipInfo(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.UnreliableSend, MyInfo.Account.NickName, (int)m_equippedItems[1], (int)m_equippedItems[2], (int)m_equippedItems[3]);
+            m_client.SendEquipInfo(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.UnreliableSend, MyInfo.Account.NickName, (int)m_equippedItems[1], (int)m_equippedItems[2], (int)m_equippedItems[3], (int)m_equippedItems[4], (int)m_equippedItems[5], (int)m_equippedItems[6]);
             return true;
         }
         return false;
@@ -261,7 +261,7 @@ public class Inventory
         {
             m_equippedItems[itemSlot] = 0;
         }
-        m_client.SendEquipInfo(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.UnreliableSend, MyInfo.Account.NickName, (int)m_equippedItems[1], (int)m_equippedItems[2], (int)m_equippedItems[3]);
+        m_client.SendEquipInfo(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.UnreliableSend, MyInfo.Account.NickName, (int)m_equippedItems[1], (int)m_equippedItems[2], (int)m_equippedItems[3], (int)m_equippedItems[4], (int)m_equippedItems[5], (int)m_equippedItems[6]);
     }
     
     /// <summary>
@@ -275,7 +275,7 @@ public class Inventory
             if (enumerator.Current.Value == id)
             {
                 m_equippedItems[enumerator.Current.Key] = 0;
-                m_client.SendEquipInfo(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.UnreliableSend, MyInfo.Account.NickName, (int)m_equippedItems[1], (int)m_equippedItems[2], (int)m_equippedItems[3]);
+                m_client.SendEquipInfo(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.UnreliableSend, MyInfo.Account.NickName, (int)m_equippedItems[1], (int)m_equippedItems[2], (int)m_equippedItems[3], (int)m_equippedItems[4], (int)m_equippedItems[5], (int)m_equippedItems[6]);
                 break;
             }
         }

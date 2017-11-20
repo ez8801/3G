@@ -151,13 +151,15 @@ Test.Write(__msg, roomData);
 	return RmiSend(remotes,rmiContext,__msg,
 		RmiName_sendRaidRoomInfo, Common.sendRaidRoomInfo);
 }
-public bool sendMakePVPRoomResult(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int p2pGroupId, int Result)
+public bool sendMakePVPRoomResult(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int p2pGroupId, System.String RoomName, int RoomIdx, int Result)
 {
 	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
 		__msg.SimplePacketMode = core.IsSimplePacketMode();
 		Nettention.Proud.RmiID __msgid= Common.sendMakePVPRoomResult;
 		__msg.Write(__msgid);
 		Test.Write(__msg, p2pGroupId);
+		Test.Write(__msg, RoomName);
+		Test.Write(__msg, RoomIdx);
 		Test.Write(__msg, Result);
 		
 	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
@@ -167,13 +169,15 @@ public bool sendMakePVPRoomResult(Nettention.Proud.HostID remote,Nettention.Prou
 		RmiName_sendMakePVPRoomResult, Common.sendMakePVPRoomResult);
 }
 
-public bool sendMakePVPRoomResult(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, int p2pGroupId, int Result)
+public bool sendMakePVPRoomResult(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, int p2pGroupId, System.String RoomName, int RoomIdx, int Result)
 {
 	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
 __msg.SimplePacketMode = core.IsSimplePacketMode();
 Nettention.Proud.RmiID __msgid= Common.sendMakePVPRoomResult;
 __msg.Write(__msgid);
 Test.Write(__msg, p2pGroupId);
+Test.Write(__msg, RoomName);
+Test.Write(__msg, RoomIdx);
 Test.Write(__msg, Result);
 		
 	return RmiSend(remotes,rmiContext,__msg,
@@ -230,6 +234,40 @@ Test.Write(__msg, HostId);
 		
 	return RmiSend(remotes,rmiContext,__msg,
 		RmiName_sendRoomHostId, Common.sendRoomHostId);
+}
+public bool sendPVPRoomJoinResult(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int p2pGroupId, System.String RoomName, int RoomIdx, int HostId, int Result)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+		__msg.SimplePacketMode = core.IsSimplePacketMode();
+		Nettention.Proud.RmiID __msgid= Common.sendPVPRoomJoinResult;
+		__msg.Write(__msgid);
+		Test.Write(__msg, p2pGroupId);
+		Test.Write(__msg, RoomName);
+		Test.Write(__msg, RoomIdx);
+		Test.Write(__msg, HostId);
+		Test.Write(__msg, Result);
+		
+	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
+	__list[0] = remote;
+		
+	return RmiSend(__list,rmiContext,__msg,
+		RmiName_sendPVPRoomJoinResult, Common.sendPVPRoomJoinResult);
+}
+
+public bool sendPVPRoomJoinResult(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, int p2pGroupId, System.String RoomName, int RoomIdx, int HostId, int Result)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+__msg.SimplePacketMode = core.IsSimplePacketMode();
+Nettention.Proud.RmiID __msgid= Common.sendPVPRoomJoinResult;
+__msg.Write(__msgid);
+Test.Write(__msg, p2pGroupId);
+Test.Write(__msg, RoomName);
+Test.Write(__msg, RoomIdx);
+Test.Write(__msg, HostId);
+Test.Write(__msg, Result);
+		
+	return RmiSend(remotes,rmiContext,__msg,
+		RmiName_sendPVPRoomJoinResult, Common.sendPVPRoomJoinResult);
 }
 public bool sendMakeAccountResult(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int Result)
 {
@@ -406,6 +444,7 @@ const string RmiName_sendRaidRoomInfo="sendRaidRoomInfo";
 const string RmiName_sendMakePVPRoomResult="sendMakePVPRoomResult";
 const string RmiName_sendPVPRoomInfo="sendPVPRoomInfo";
 const string RmiName_sendRoomHostId="sendRoomHostId";
+const string RmiName_sendPVPRoomJoinResult="sendPVPRoomJoinResult";
 const string RmiName_sendMakeAccountResult="sendMakeAccountResult";
 const string RmiName_sendLoginResult="sendLoginResult";
 const string RmiName_sendSkillData="sendSkillData";
@@ -425,6 +464,7 @@ const string RmiName_sendRaidRoomInfo="";
 const string RmiName_sendMakePVPRoomResult="";
 const string RmiName_sendPVPRoomInfo="";
 const string RmiName_sendRoomHostId="";
+const string RmiName_sendPVPRoomJoinResult="";
 const string RmiName_sendMakeAccountResult="";
 const string RmiName_sendLoginResult="";
 const string RmiName_sendSkillData="";

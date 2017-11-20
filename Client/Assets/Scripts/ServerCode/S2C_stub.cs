@@ -41,8 +41,8 @@ public BeforeRmiInvocationDelegate BeforeRmiInvocation = delegate(Nettention.Pro
 		{ 
 			return false;
 		};
-		public delegate bool sendMakePVPRoomResultDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int p2pGroupId, int Result);  
-		public sendMakePVPRoomResultDelegate sendMakePVPRoomResult = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int p2pGroupId, int Result)
+		public delegate bool sendMakePVPRoomResultDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int p2pGroupId, System.String RoomName, int RoomIdx, int Result);  
+		public sendMakePVPRoomResultDelegate sendMakePVPRoomResult = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int p2pGroupId, System.String RoomName, int RoomIdx, int Result)
 		{ 
 			return false;
 		};
@@ -53,6 +53,11 @@ public BeforeRmiInvocationDelegate BeforeRmiInvocation = delegate(Nettention.Pro
 		};
 		public delegate bool sendRoomHostIdDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int HostId);  
 		public sendRoomHostIdDelegate sendRoomHostId = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int HostId)
+		{ 
+			return false;
+		};
+		public delegate bool sendPVPRoomJoinResultDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int p2pGroupId, System.String RoomName, int RoomIdx, int HostId, int Result);  
+		public sendPVPRoomJoinResultDelegate sendPVPRoomJoinResult = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int p2pGroupId, System.String RoomName, int RoomIdx, int HostId, int Result)
 		{ 
 			return false;
 		};
@@ -375,12 +380,16 @@ case Common.sendMakePVPRoomResult:
 		ctx.compressMode = pa.CompressMode;
 			
 		int p2pGroupId; Test.Read(__msg,out p2pGroupId);	
+System.String RoomName; Test.Read(__msg,out RoomName);	
+int RoomIdx; Test.Read(__msg,out RoomIdx);	
 int Result; Test.Read(__msg,out Result);	
 core.PostCheckReadMessage(__msg, RmiName_sendMakePVPRoomResult);
 		if(enableNotifyCallFromStub==true)
 		{
 			string parameterString="";
 			parameterString+=p2pGroupId.ToString()+",";
+parameterString+=RoomName.ToString()+",";
+parameterString+=RoomIdx.ToString()+",";
 parameterString+=Result.ToString()+",";
 			NotifyCallFromStub(Common.sendMakePVPRoomResult, RmiName_sendMakePVPRoomResult,parameterString);
 		}
@@ -398,7 +407,7 @@ parameterString+=Result.ToString()+",";
 		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
 			
 		// Call this method.
-		bool __ret=sendMakePVPRoomResult (remote,ctx , p2pGroupId, Result );
+		bool __ret=sendMakePVPRoomResult (remote,ctx , p2pGroupId, RoomName, RoomIdx, Result );
 			
 		if(__ret==false)
 		{
@@ -513,6 +522,65 @@ core.PostCheckReadMessage(__msg, RmiName_sendRoomHostId);
 			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
 			summary.rmiID = Common.sendRoomHostId;
 			summary.rmiName = RmiName_sendRoomHostId;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
+			AfterRmiInvocation(summary);
+		}
+	}
+	break;
+case Common.sendPVPRoomJoinResult:
+	{
+		Nettention.Proud.RmiContext ctx=new Nettention.Proud.RmiContext();
+		ctx.sentFrom=pa.RemoteHostID;
+		ctx.relayed=pa.IsRelayed;
+		ctx.hostTag=hostTag;
+		ctx.encryptMode = pa.EncryptMode;
+		ctx.compressMode = pa.CompressMode;
+			
+		int p2pGroupId; Test.Read(__msg,out p2pGroupId);	
+System.String RoomName; Test.Read(__msg,out RoomName);	
+int RoomIdx; Test.Read(__msg,out RoomIdx);	
+int HostId; Test.Read(__msg,out HostId);	
+int Result; Test.Read(__msg,out Result);	
+core.PostCheckReadMessage(__msg, RmiName_sendPVPRoomJoinResult);
+		if(enableNotifyCallFromStub==true)
+		{
+			string parameterString="";
+			parameterString+=p2pGroupId.ToString()+",";
+parameterString+=RoomName.ToString()+",";
+parameterString+=RoomIdx.ToString()+",";
+parameterString+=HostId.ToString()+",";
+parameterString+=Result.ToString()+",";
+			NotifyCallFromStub(Common.sendPVPRoomJoinResult, RmiName_sendPVPRoomJoinResult,parameterString);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.BeforeRmiSummary summary = new Nettention.Proud.BeforeRmiSummary();
+			summary.rmiID = Common.sendPVPRoomJoinResult;
+			summary.rmiName = RmiName_sendPVPRoomJoinResult;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			BeforeRmiInvocation(summary);
+		}
+			
+		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
+			
+		// Call this method.
+		bool __ret=sendPVPRoomJoinResult (remote,ctx , p2pGroupId, RoomName, RoomIdx, HostId, Result );
+			
+		if(__ret==false)
+		{
+			// Error: RMI function that a user did not create has been called. 
+			core.ShowNotImplementedRmiWarning(RmiName_sendPVPRoomJoinResult);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
+			summary.rmiID = Common.sendPVPRoomJoinResult;
+			summary.rmiName = RmiName_sendPVPRoomJoinResult;
 			summary.hostID = remote;
 			summary.hostTag = hostTag;
 			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
@@ -855,6 +923,7 @@ const string RmiName_sendRaidRoomInfo="sendRaidRoomInfo";
 const string RmiName_sendMakePVPRoomResult="sendMakePVPRoomResult";
 const string RmiName_sendPVPRoomInfo="sendPVPRoomInfo";
 const string RmiName_sendRoomHostId="sendRoomHostId";
+const string RmiName_sendPVPRoomJoinResult="sendPVPRoomJoinResult";
 const string RmiName_sendMakeAccountResult="sendMakeAccountResult";
 const string RmiName_sendLoginResult="sendLoginResult";
 const string RmiName_sendSkillData="sendSkillData";
@@ -874,6 +943,7 @@ const string RmiName_sendRaidRoomInfo="";
 const string RmiName_sendMakePVPRoomResult="";
 const string RmiName_sendPVPRoomInfo="";
 const string RmiName_sendRoomHostId="";
+const string RmiName_sendPVPRoomJoinResult="";
 const string RmiName_sendMakeAccountResult="";
 const string RmiName_sendLoginResult="";
 const string RmiName_sendSkillData="";

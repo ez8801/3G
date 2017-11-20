@@ -115,6 +115,9 @@ public struct equipinfo
     public int equipslot1;
     public int equipslot2;
     public int equipslot3;
+    public int equipslot4;
+    public int equipslot5;
+    public int equipslot6;
 
 };
 public struct passiveskillinfo
@@ -197,6 +200,9 @@ class Test : Nettention.Proud.Marshaler
             msg.WriteScalar(strMsg[i].equipslot1);
             msg.WriteScalar(strMsg[i].equipslot2);
             msg.WriteScalar(strMsg[i].equipslot3);
+            msg.WriteScalar(strMsg[i].equipslot4);
+            msg.WriteScalar(strMsg[i].equipslot5);
+            msg.WriteScalar(strMsg[i].equipslot6);
             //msg.WriteScalar(strMsg[i].ActiveSkill_1_idx);
             //msg.WriteScalar(strMsg[i].ActiveSkill_2_idx);
             //msg.WriteScalar(strMsg[i].ActiveSkill_3_idx);
@@ -313,6 +319,9 @@ class Test : Nettention.Proud.Marshaler
             msg.ReadScalar(ref contain_items.equipslot1);
             msg.ReadScalar(ref contain_items.equipslot2);
             msg.ReadScalar(ref contain_items.equipslot3);
+            msg.ReadScalar(ref contain_items.equipslot4);
+            msg.ReadScalar(ref contain_items.equipslot5);
+            msg.ReadScalar(ref contain_items.equipslot6);
             //msg.ReadScalar(ref contain_items.ActiveSkill_1_idx);
             //msg.ReadScalar(ref contain_items.ActiveSkill_2_idx);
             //msg.ReadScalar(ref contain_items.ActiveSkill_3_idx);

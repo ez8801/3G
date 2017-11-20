@@ -13,6 +13,7 @@ using System.Collections.Generic;
 
 public class UIPvpMakeRoom : UIBase 
 {
+    private Client m_client;
     //나가기 버튼
     [System.Serializable]
     public struct View
@@ -28,6 +29,7 @@ public class UIPvpMakeRoom : UIBase
 
     internal override void OnStart()
     {
+        m_client = Client.Instance;
         base.OnStart();
         BindComponents();
         //텍스트 부분 초기화 추가 필요. + 따로 함수로 텍스트필드 만드는 방법.
@@ -64,8 +66,9 @@ public class UIPvpMakeRoom : UIBase
         Debug.Log("RoomMake");
         string m_MakeRoomName = "아무이름";
         Debug.Log("RoomName : " + m_MakeRoomName);
-        GameObject.Find("PvpUI").GetComponent<UIPvp>().Hide();
-        GameObject.Find("LobbyUI").GetComponent<UILobby>().CallPvpRoom(2, m_MakeRoomName);
+        m_client.RequestMakePVPRoom(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.UnreliableSend, MyInfo.Account.LocalHost, MyInfo.Account.NickName, m_MakeRoomName);
+        //GameObject.Find("PvpUI").GetComponent<UIPvp>().Hide();
+        //GameObject.Find("LobbyUI").GetComponent<UILobby>().CallPvpRoom(2, m_MakeRoomName);
 
 
         //무엇인가 심플룸을 센드 텍스트로 리턴 받아서..

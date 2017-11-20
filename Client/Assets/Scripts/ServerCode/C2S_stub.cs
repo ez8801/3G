@@ -56,8 +56,8 @@ public BeforeRmiInvocationDelegate BeforeRmiInvocation = delegate(Nettention.Pro
 		{ 
 			return false;
 		};
-		public delegate bool RequestLeavePVPRoomDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID HostId, int RoomId, int GroupId);  
-		public RequestLeavePVPRoomDelegate RequestLeavePVPRoom = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID HostId, int RoomId, int GroupId)
+		public delegate bool RequestLeavePVPRoomDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID HostId, Nettention.Proud.HostID GroupId);  
+		public RequestLeavePVPRoomDelegate RequestLeavePVPRoom = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID HostId, Nettention.Proud.HostID GroupId)
 		{ 
 			return false;
 		};
@@ -126,8 +126,8 @@ public BeforeRmiInvocationDelegate BeforeRmiInvocation = delegate(Nettention.Pro
 		{ 
 			return false;
 		};
-		public delegate bool SendEquipInfoDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName, int equipslot1, int equipslot2, int equipslot3);  
-		public SendEquipInfoDelegate SendEquipInfo = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName, int equipslot1, int equipslot2, int equipslot3)
+		public delegate bool SendEquipInfoDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName, int equipslot1, int equipslot2, int equipslot3, int equipslot4, int equipslot5, int equipslot6);  
+		public SendEquipInfoDelegate SendEquipInfo = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName, int equipslot1, int equipslot2, int equipslot3, int equipslot4, int equipslot5, int equipslot6)
 		{ 
 			return false;
 		};
@@ -582,14 +582,12 @@ case Common.RequestLeavePVPRoom:
 		ctx.compressMode = pa.CompressMode;
 			
 		Nettention.Proud.HostID HostId; Test.Read(__msg,out HostId);	
-int RoomId; Test.Read(__msg,out RoomId);	
-int GroupId; Test.Read(__msg,out GroupId);	
+Nettention.Proud.HostID GroupId; Test.Read(__msg,out GroupId);	
 core.PostCheckReadMessage(__msg, RmiName_RequestLeavePVPRoom);
 		if(enableNotifyCallFromStub==true)
 		{
 			string parameterString="";
 			parameterString+=HostId.ToString()+",";
-parameterString+=RoomId.ToString()+",";
 parameterString+=GroupId.ToString()+",";
 			NotifyCallFromStub(Common.RequestLeavePVPRoom, RmiName_RequestLeavePVPRoom,parameterString);
 		}
@@ -607,7 +605,7 @@ parameterString+=GroupId.ToString()+",";
 		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
 			
 		// Call this method.
-		bool __ret=RequestLeavePVPRoom (remote,ctx , HostId, RoomId, GroupId );
+		bool __ret=RequestLeavePVPRoom (remote,ctx , HostId, GroupId );
 			
 		if(__ret==false)
 		{
@@ -1341,6 +1339,9 @@ case Common.SendEquipInfo:
 int equipslot1; Test.Read(__msg,out equipslot1);	
 int equipslot2; Test.Read(__msg,out equipslot2);	
 int equipslot3; Test.Read(__msg,out equipslot3);	
+int equipslot4; Test.Read(__msg,out equipslot4);	
+int equipslot5; Test.Read(__msg,out equipslot5);	
+int equipslot6; Test.Read(__msg,out equipslot6);	
 core.PostCheckReadMessage(__msg, RmiName_SendEquipInfo);
 		if(enableNotifyCallFromStub==true)
 		{
@@ -1349,6 +1350,9 @@ core.PostCheckReadMessage(__msg, RmiName_SendEquipInfo);
 parameterString+=equipslot1.ToString()+",";
 parameterString+=equipslot2.ToString()+",";
 parameterString+=equipslot3.ToString()+",";
+parameterString+=equipslot4.ToString()+",";
+parameterString+=equipslot5.ToString()+",";
+parameterString+=equipslot6.ToString()+",";
 			NotifyCallFromStub(Common.SendEquipInfo, RmiName_SendEquipInfo,parameterString);
 		}
 			
@@ -1365,7 +1369,7 @@ parameterString+=equipslot3.ToString()+",";
 		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
 			
 		// Call this method.
-		bool __ret=SendEquipInfo (remote,ctx , CName, equipslot1, equipslot2, equipslot3 );
+		bool __ret=SendEquipInfo (remote,ctx , CName, equipslot1, equipslot2, equipslot3, equipslot4, equipslot5, equipslot6 );
 			
 		if(__ret==false)
 		{
