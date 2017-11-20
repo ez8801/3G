@@ -195,7 +195,7 @@ public class UIPvpRoom : UIBase
     }
     public void SecondUserReady(int ready)
     {
-        if (ready == 0)
+        if (ready == 1)
         {
             m_view.LblSecondUserReady.SetActiveSafely(true);//눌렀을때 레디 불 들어오는지 테스트임
                                                            //지워야하는거.
@@ -204,7 +204,7 @@ public class UIPvpRoom : UIBase
 
             //여기는 현 클라이언트 사용자가 레디 하는것
         }
-        else if (ready == 1)
+        else if (ready == 0)
         {
             m_view.LblSecondUserReady.SetActiveSafely(false);
             //m_view.LblReady.SetTextSafely("READY");

@@ -452,7 +452,7 @@ public class Client : MonoBehaviour {
     public void ReadyPacket(Nettention.Proud.RmiContext rmiContext, int ready)
     {
         if (m_isConnect)
-            this.m_c2cProxy_temp.ReadyPacket(m_netClient.LocalHostID, rmiContext, ready);
+            this.m_c2cProxy_temp.ReadyPacket(m_EnermyID, rmiContext, ready);
     }
 
 
