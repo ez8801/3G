@@ -16,12 +16,16 @@ public struct SimplePvpRoom
     public long Id;
     public int RoomId;
     public string RoomName;
+    public int RoomGroupId;
+    public string RoomHostName;
 }
 
 
 public class UIPvp : UIBase 
 {
-	[System.Serializable]
+    private Client m_client;
+    [System.Serializable]
+    
     public struct View
     {
         public GameObject BtnAutoMatch;
@@ -37,6 +41,7 @@ public class UIPvp : UIBase
 
     internal override void OnCreate()
     {
+        m_client = Client.Instance;
         m_findRooms = new List<SimplePvpRoom>();
         base.OnCreate();
         BindComponents();
@@ -58,14 +63,12 @@ public class UIPvp : UIBase
     {
         //m_findRooms에 서버에서 리스트 받을필요 있음
         //임의 리스트
-        m_findRooms = new List<SimplePvpRoom>();
-        SimplePvpRoom roomone = new SimplePvpRoom();
-        roomone.Id = 0;
-        roomone.RoomId = 1;
-        roomone.RoomName = "today";
-        Debug.Log("this time one");
-        Debug.Log(roomone.RoomName);
-        m_findRooms.Add(roomone);
+        
+        
+        //roomone.Id = 1;
+        //roomone.RoomId = 2;
+        //roomone.RoomName = "tommo";
+        //m_findRooms.Add(roomone);
         Debug.Log("this time two");
     }
 
@@ -92,10 +95,26 @@ public class UIPvp : UIBase
 
     public void OnClickRoomFind()
     {
-        GetNewRoomList(); // 서버에서 리스트 겟
+        m_client.RequestPVPRoomList(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.UnreliableSend);
+        //GetNewRoomList(); // 서버에서 리스트 겟
+        
+    }//10-30 11:45 --> 프리팹에 리스트랑 이름입력창 만들고 코딩, 로그인창 제작
+
+    public void SettingRoom(int id,int roomId, string roomName, int roomGroupId, string roomHostName)
+    {
+        SimplePvpRoom roomone = new SimplePvpRoom();
+        roomone.Id = id;
+        roomone.RoomId = roomId;
+        roomone.RoomName = roomName;
+        roomone.RoomGroupId = roomGroupId;
+        roomone.RoomHostName = roomHostName;
+        m_findRooms.Add(roomone);
+    }
+    public void ShowUI()
+    {
         m_view.PvpRoomFind.SetData(m_findRooms);
         m_view.PvpRoomFind.Show();
-    }//10-30 11:45 --> 프리팹에 리스트랑 이름입력창 만들고 코딩, 로그인창 제작
+    }
 
     # endregion UIActions
 

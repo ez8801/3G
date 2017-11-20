@@ -13,7 +13,7 @@ using System.Collections.Generic;
 
 public class UIPvpRoomFind : UIBase 
 {
-
+    private Client m_client;
     // 그리드에 리스트, 서버로부터 데이타 가져오는 SetData, 등등
     [System.Serializable]
     public struct View
@@ -31,6 +31,7 @@ public class UIPvpRoomFind : UIBase
 
     internal override void OnCreate()
     {
+        
         base.OnCreate();
         BindComponents();
 
@@ -110,18 +111,21 @@ public class UIPvpRoomFind : UIBase
     #region UIActions
     private void OnClickRoom(GameObject sender)
     {
+        
         Hide();
-
+        m_client = Client.Instance;
         int index = -1;
         int.TryParse(sender.name, out index);
-        Debug.Log("RoomSelect");
-        Debug.Log(index);
-        m_selectedRoomIndex = m_pvpRooms[index].RoomId;
-        m_selectRoomName = m_pvpRooms[index].RoomName;
-        Debug.Log("RoomName : " + m_pvpRooms[index].RoomName);
-        GameObject.Find("PvpUI").GetComponent<UIPvp>().Hide();
-        index = -1;
-        GameObject.Find("LobbyUI").GetComponent<UILobby>().CallPvpRoom(m_selectedRoomIndex, m_selectRoomName);
+
+        m_client.RequestPVPRoomJoin(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.UnreliableSend, m_pvpRooms[index].RoomId, m_pvpRooms[index].RoomGroupId);
+        //Debug.Log("RoomSelect");
+       // Debug.Log(index);
+        //m_selectedRoomIndex = m_pvpRooms[index].RoomId;
+       //// m_selectRoomName = m_pvpRooms[index].RoomName;
+        //Debug.Log("RoomName : " + m_pvpRooms[index].RoomName);
+       // index = -1;
+       // GameObject.Find("PvpUI").GetComponent<UIPvp>().Hide();
+       // GameObject.Find("LobbyUI").GetComponent<UILobby>().CallPvpRoom(m_selectedRoomIndex, m_selectRoomName);
 
     }
 

@@ -86,8 +86,8 @@ public class Client : MonoBehaviour {
     private int m_screenOneW; // 화면 가로의 길이를 일정 값으로 나눈 값.
     private int m_screenOneH;// 화면 세로의 길이를 일정 값으로 나눈 값.
 
-    private Nettention.Proud.HostID m_p2pChatGroupID; // P2PChat 에서 채팅창에 뿌려줄 그룹의 아이디
-
+    private Nettention.Proud.HostID m_p2pGroupID; // P2PChat 에서 채팅창에 뿌려줄 그룹의 아이디
+    public Nettention.Proud.HostID m_EnermyID;
     // 클라이언트 호스트 아이디(클라이언트),닉네임.
     public Dictionary<Nettention.Proud.HostID, string> ChatUserInfo;
     // 클라이언트 호스트 아이디(서버 or 그룹),채팅내용.
@@ -202,11 +202,11 @@ public class Client : MonoBehaviour {
     {
         get
         {
-            return m_p2pChatGroupID; // m_p2pChatGroupID 를 리턴한다.
+            return m_p2pGroupID; // m_p2pChatGroupID 를 리턴한다.
         }
         set
         {
-            m_p2pChatGroupID = value; // m_p2pChatGroupID 에 값을 넣는다.
+            m_p2pGroupID = value; // m_p2pChatGroupID 에 값을 넣는다.
         }
     }
     // 서버 연결 요청후 기다리는 상태 인지체크하는 m_isWait 에 대한 속성.
@@ -274,6 +274,11 @@ public class Client : MonoBehaviour {
         m_s2cStub_temp.sendLoginResult = OnSendLoginResult;
         m_s2cStub_temp.sendEquipmentData = OnEquipmentData;
         m_s2cStub_temp.sendSkillData = OnPassiveSkillData;
+        m_s2cStub_temp.sendMakePVPRoomResult = OnMakePVPRoomResult;
+        m_s2cStub_temp.sendPVPRoomInfo = OnPVPRoomInfo;
+        m_s2cStub_temp.sendPVPRoomJoinResult = OnPVPRoomJoinResult;
+
+        m_c2cStub_temp.ReadyPacket = OnC2CReadyPacket;
 
         m_s2cStub.ShowChat = OnShowChat;
         m_s2cStub.UserList_Add = UserList_Add;
@@ -405,10 +410,10 @@ public class Client : MonoBehaviour {
         if (m_isConnect)
             this.m_c2sProxy_temp.SellAllItem(remote, rmiContext, cname, inId, itemId);
     }
-    public void SendEquipInfo(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, string cname, int equipslot1, int equipslot2, int equipslot3)
+    public void SendEquipInfo(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, string cname, int equipslot1, int equipslot2, int equipslot3, int equipslot4, int equipslot5, int equipslot6)
     {
         if (m_isConnect)
-            this.m_c2sProxy_temp.SendEquipInfo(remote, rmiContext, cname, equipslot1, equipslot2, equipslot3);
+            this.m_c2sProxy_temp.SendEquipInfo(remote, rmiContext, cname, equipslot1, equipslot2, equipslot3, equipslot4, equipslot5, equipslot6);
     }
     public void SendPassiveEquipInfo(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, string cname, int equipslot1, int equipslot2, int equipslot3, int equipslot4)
     {
@@ -420,6 +425,36 @@ public class Client : MonoBehaviour {
         if (m_isConnect)
             this.m_c2sProxy_temp.RequestEquipData(remote, rmiContext, cname);
     }
+
+    public void RequestMakePVPRoom(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID hostId, string hostName, string roomName)
+    {
+        if (m_isConnect)
+            this.m_c2sProxy_temp.RequestMakePVPRoom(remote, rmiContext, hostId, hostName, roomName);
+    }
+    public void RequestLeavePVPRoom(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID hostId)
+    {
+        if (m_isConnect)
+            this.m_c2sProxy_temp.RequestLeavePVPRoom(remote, rmiContext, MyInfo.Account.LocalHost, m_p2pGroupID);
+    }
+    public void RequestPVPRoomList(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext)
+    {
+        if (m_isConnect)
+            this.m_c2sProxy_temp.RequestGetPVPRoomInfo(remote, rmiContext);
+    }
+
+    public void RequestPVPRoomJoin(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, int roomId, int groupId)
+    {
+
+        if (m_isConnect)
+            this.m_c2sProxy_temp.RequestJoinPVPRoom(remote, rmiContext, MyInfo.Account.LocalHost, roomId, groupId);
+    }
+
+    public void ReadyPacket(Nettention.Proud.RmiContext rmiContext, int ready)
+    {
+        if (m_isConnect)
+            this.m_c2cStub_temp.ReadyPacket(m_netClient.LocalHostID, rmiContext, ready);
+    }
+
 
     public void RequestP2PGroup (Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostIDArray m_hostIDs)
 	{
@@ -472,6 +507,7 @@ public class Client : MonoBehaviour {
             string id = "qwept";
             string pw = "xxc";
             m_c2sProxy_temp.RequestLoginAccount(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.UnreliableSend, id, pw);
+            MyInfo.Account.LocalHost = m_netClient.GetLocalHostID();
         }
 		else
 		{
@@ -505,9 +541,10 @@ public class Client : MonoBehaviour {
 		}
 
 		ChatRooms[groupHostID].HostIDs.Add(memberHostID);
-
-		// 누가 P2P그룹에 조인 되었는지 알려준다.
-		//ChatRooms[groupHostID].ChatString.Add("--- Join p2p Group [" + ChatUserInfo[memberHostID] + "] ---");
+        m_p2pGroupID = groupHostID;
+        m_EnermyID = memberHostID;
+        // 누가 P2P그룹에 조인 되었는지 알려준다.
+        //ChatRooms[groupHostID].ChatString.Add("--- Join p2p Group [" + ChatUserInfo[memberHostID] + "] ---");
         Debug.Log("ChatRooms[" + groupHostID + "] Join : ");
         P2PChat.ResetScrollPosition();
 
@@ -575,6 +612,7 @@ public class Client : MonoBehaviour {
         }
         //아래 코드 주석 처리 해야함 - NoServer
         StageManager.Instance.ChangeStage(StageType.LobbyStage);
+        
         return true;
     }
     bool OnSendRaidRoomInfo(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, Nettention.Proud.FastArray<raidrooms> data)
@@ -614,6 +652,9 @@ public class Client : MonoBehaviour {
         MyInfo.Inventory.EquipItemFromDB(data[0].equipslot1);
         MyInfo.Inventory.EquipItemFromDB(data[0].equipslot2);
         MyInfo.Inventory.EquipItemFromDB(data[0].equipslot3);
+        MyInfo.Inventory.EquipItemFromDB(data[0].equipslot4);
+        MyInfo.Inventory.EquipItemFromDB(data[0].equipslot5);
+        MyInfo.Inventory.EquipItemFromDB(data[0].equipslot6);
         return true;
     }
     bool OnPassiveSkillData(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, Nettention.Proud.FastArray<passiveskillinfo> data)
@@ -624,8 +665,49 @@ public class Client : MonoBehaviour {
         MyInfo.PassiveInventory.EquipPassiveFromDB(data[0].passiveSlot4);
         return true;
     }
+    
+    bool OnMakePVPRoomResult(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, int p2pGroupId, string RoomName, int RoomIdx, int Result)
+    {
+        if(Result == 1)
+        {
+            MyInfo.Account.amIHost = true;
+            GameObject.Find("PvpUI").GetComponent<UIPvp>().Hide();
+            GameObject.Find("LobbyUI").GetComponent<UILobby>().CallPvpRoom(RoomIdx, RoomName);
+        }
+        return true;
+    }
+    bool OnPVPRoomInfo(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, Nettention.Proud.FastArray<pvprooms> data)
+    {
+        UIPvp pvpUI = UIManager.Instance.Push<UIPvp>(UIType.UIPvp); ;
+        for(int i = 0; i < data.Count; i++)
+        {
+            pvpUI.SettingRoom(i + 1, data[i].roomId, data[i].pvproomname, data[i].groupId, data[i].hostname);
+        }
+        pvpUI.ShowUI();
+        return true;
+    }
+    bool OnPVPRoomJoinResult(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, int p2pGroupId, string RoomName, int RoomIdx, int HostId,int Result)
+    {
+        if(Result == 1)
+        {
+            GameObject.Find("PvpUI").GetComponent<UIPvp>().Hide();
+            GameObject.Find("LobbyUI").GetComponent<UILobby>().CallPvpRoom(RoomIdx, RoomName);
+            m_EnermyID = (Nettention.Proud.HostID)HostId;
+        }
+        return true;
+    }
 
+    bool OnC2CReadyPacket(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, int ready)
+    {
+        if(m_netClient.LocalHostID == remote)
+        {
 
+        }
+        else
+            GameObject.Find("UIPvpRoom").GetComponent<UIPvpRoom>().SecondUserReady(ready);
+        //m_c2cStub_temp.ReadyPacket(remote, rmiContext, ready);
+        return true;
+    }
     // 글로벌 채팅 내용을 리시브 받앗을때 처리하는 함수.
     bool OnShowChat(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, string userName, string text)
 	{

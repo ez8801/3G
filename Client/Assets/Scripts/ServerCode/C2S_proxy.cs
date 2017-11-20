@@ -233,14 +233,13 @@ Test.Write(__msg, GroupId);
 	return RmiSend(remotes,rmiContext,__msg,
 		RmiName_RequestJoinPVPRoom, Common.RequestJoinPVPRoom);
 }
-public bool RequestLeavePVPRoom(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID HostId, int RoomId, int GroupId)
+public bool RequestLeavePVPRoom(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID HostId, Nettention.Proud.HostID GroupId)
 {
 	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
 		__msg.SimplePacketMode = core.IsSimplePacketMode();
 		Nettention.Proud.RmiID __msgid= Common.RequestLeavePVPRoom;
 		__msg.Write(__msgid);
 		Test.Write(__msg, HostId);
-		Test.Write(__msg, RoomId);
 		Test.Write(__msg, GroupId);
 		
 	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
@@ -250,14 +249,13 @@ public bool RequestLeavePVPRoom(Nettention.Proud.HostID remote,Nettention.Proud.
 		RmiName_RequestLeavePVPRoom, Common.RequestLeavePVPRoom);
 }
 
-public bool RequestLeavePVPRoom(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID HostId, int RoomId, int GroupId)
+public bool RequestLeavePVPRoom(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID HostId, Nettention.Proud.HostID GroupId)
 {
 	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
 __msg.SimplePacketMode = core.IsSimplePacketMode();
 Nettention.Proud.RmiID __msgid= Common.RequestLeavePVPRoom;
 __msg.Write(__msgid);
 Test.Write(__msg, HostId);
-Test.Write(__msg, RoomId);
 Test.Write(__msg, GroupId);
 		
 	return RmiSend(remotes,rmiContext,__msg,
@@ -639,7 +637,7 @@ Test.Write(__msg, itemId);
 	return RmiSend(remotes,rmiContext,__msg,
 		RmiName_SellAllItem, Common.SellAllItem);
 }
-public bool SendEquipInfo(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName, int equipslot1, int equipslot2, int equipslot3)
+public bool SendEquipInfo(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName, int equipslot1, int equipslot2, int equipslot3, int equipslot4, int equipslot5, int equipslot6)
 {
 	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
 		__msg.SimplePacketMode = core.IsSimplePacketMode();
@@ -649,6 +647,9 @@ public bool SendEquipInfo(Nettention.Proud.HostID remote,Nettention.Proud.RmiCon
 		Test.Write(__msg, equipslot1);
 		Test.Write(__msg, equipslot2);
 		Test.Write(__msg, equipslot3);
+		Test.Write(__msg, equipslot4);
+		Test.Write(__msg, equipslot5);
+		Test.Write(__msg, equipslot6);
 		
 	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
 	__list[0] = remote;
@@ -657,7 +658,7 @@ public bool SendEquipInfo(Nettention.Proud.HostID remote,Nettention.Proud.RmiCon
 		RmiName_SendEquipInfo, Common.SendEquipInfo);
 }
 
-public bool SendEquipInfo(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, System.String CName, int equipslot1, int equipslot2, int equipslot3)
+public bool SendEquipInfo(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, System.String CName, int equipslot1, int equipslot2, int equipslot3, int equipslot4, int equipslot5, int equipslot6)
 {
 	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
 __msg.SimplePacketMode = core.IsSimplePacketMode();
@@ -667,6 +668,9 @@ Test.Write(__msg, CName);
 Test.Write(__msg, equipslot1);
 Test.Write(__msg, equipslot2);
 Test.Write(__msg, equipslot3);
+Test.Write(__msg, equipslot4);
+Test.Write(__msg, equipslot5);
+Test.Write(__msg, equipslot6);
 		
 	return RmiSend(remotes,rmiContext,__msg,
 		RmiName_SendEquipInfo, Common.SendEquipInfo);

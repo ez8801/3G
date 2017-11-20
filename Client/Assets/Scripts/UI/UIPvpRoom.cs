@@ -20,7 +20,8 @@ public struct SimplePlayer
 
 public class UIPvpRoom : UIBase 
 {
-	[System.Serializable]
+    private Client m_client;
+    [System.Serializable]
     public struct View
     {
         public UILabel LblRoomName;
@@ -46,7 +47,8 @@ public class UIPvpRoom : UIBase
     public int PlayerValue;
     public int ReadyValue;
 
-    public bool m_iReady;
+    public bool m_iFReady;
+    public bool m_iSReady;
 
     internal override void OnCreate()
     {
@@ -76,9 +78,11 @@ public class UIPvpRoom : UIBase
 
     internal override void OnStart()
     {
+        m_client = Client.Instance;
         base.OnStart();
         //서버에서 룸 인포 가져옴
-        m_iReady = false;
+        m_iFReady = false;
+        m_iSReady = false;
         GetRoomInfo();
         Debug.Log("here Start");
 
@@ -143,20 +147,23 @@ public class UIPvpRoom : UIBase
 #region UIActions
     public void OnClickReady()
     {
-        if (m_iReady == false)
+        
+        if (m_iFReady == false)
         {
             m_view.LblFirstUserReady.SetActiveSafely(true);//눌렀을때 레디 불 들어오는지 테스트임
                                                            //지워야하는거.
             m_view.LblReady.SetTextSafely("RELEASE");
-            m_iReady = true;
+            m_client.ReadyPacket(Nettention.Proud.RmiContext.ReliableSend, 1);
+            m_iFReady = true;
 
             //여기는 현 클라이언트 사용자가 레디 하는것
         }
-        else if (m_iReady == true)
+        else if (m_iFReady == true)
         {
             m_view.LblFirstUserReady.SetActiveSafely(false);
             m_view.LblReady.SetTextSafely("READY");
-            m_iReady = false;
+            m_client.ReadyPacket(Nettention.Proud.RmiContext.ReliableSend, 0);
+            m_iFReady = false;
             //현 클라이언트 사용자가 레디 푸는것. 따로 서버 전송해야함.
             //여기 함수에서 하는 작업을 GetWhoReady로 올리고 여기선 서버 전송 작업으로 바꾸야함.
 
@@ -165,8 +172,48 @@ public class UIPvpRoom : UIBase
         //여기서 서버로 유저 아이디와 레디 되었다는걸 보냄
     }
 
+    public void FirstUserReady()
+    {
+        if (m_iFReady == false)
+        {
+            m_view.LblFirstUserReady.SetActiveSafely(true);//눌렀을때 레디 불 들어오는지 테스트임
+                                                           //지워야하는거.
+            m_view.LblReady.SetTextSafely("RELEASE");
+            m_iFReady = true;
 
+            //여기는 현 클라이언트 사용자가 레디 하는것
+        }
+        else if (m_iFReady == true)
+        {
+            m_view.LblFirstUserReady.SetActiveSafely(false);
+            m_view.LblReady.SetTextSafely("READY");
+            m_iFReady = false;
+            //현 클라이언트 사용자가 레디 푸는것. 따로 서버 전송해야함.
+            //여기 함수에서 하는 작업을 GetWhoReady로 올리고 여기선 서버 전송 작업으로 바꾸야함.
 
+        }
+    }
+    public void SecondUserReady(int ready)
+    {
+        if (ready == 0)
+        {
+            m_view.LblSecondUserReady.SetActiveSafely(true);//눌렀을때 레디 불 들어오는지 테스트임
+                                                           //지워야하는거.
+            //m_view.LblReady.SetTextSafely("RELEASE");
+            //m_iSReady = true;
+
+            //여기는 현 클라이언트 사용자가 레디 하는것
+        }
+        else if (ready == 1)
+        {
+            m_view.LblSecondUserReady.SetActiveSafely(false);
+            //m_view.LblReady.SetTextSafely("READY");
+            //m_iSReady = false;
+            //현 클라이언트 사용자가 레디 푸는것. 따로 서버 전송해야함.
+            //여기 함수에서 하는 작업을 GetWhoReady로 올리고 여기선 서버 전송 작업으로 바꾸야함.
+
+        }
+    }
 
 
 
@@ -174,6 +221,11 @@ public class UIPvpRoom : UIBase
     {
         //서버에 나간 유저 ID보냄.
         //상대가 나갔으면 나갔다는걸 상대 한테 전송하고 리스트 갱신.
+        if (MyInfo.Account.amIHost == true)
+        {
+            m_client.RequestLeavePVPRoom(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.UnreliableSend, MyInfo.Account.LocalHost);
+            MyInfo.Account.amIHost = false;
+        }
         Hide();
     }
 #endregion UIActions

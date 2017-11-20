@@ -14,11 +14,23 @@ namespace C2C
 	{
 		// Message ID that replies to each RMI method. 
 			public const Nettention.Proud.RmiID P2PChat = (Nettention.Proud.RmiID)2000+1;
-			public const Nettention.Proud.RmiID DamagedFromEnemy = (Nettention.Proud.RmiID)2000+2;
+			public const Nettention.Proud.RmiID ReadyPacket = (Nettention.Proud.RmiID)2000+2;
+			public const Nettention.Proud.RmiID SettingEnemyInfo = (Nettention.Proud.RmiID)2000+3;
+			public const Nettention.Proud.RmiID StartPacket = (Nettention.Proud.RmiID)2000+4;
+			public const Nettention.Proud.RmiID LeaveRoom = (Nettention.Proud.RmiID)2000+5;
+			public const Nettention.Proud.RmiID SyncPacket = (Nettention.Proud.RmiID)2000+6;
+			public const Nettention.Proud.RmiID DamagedFromEnemy = (Nettention.Proud.RmiID)2000+7;
+			public const Nettention.Proud.RmiID UseSkill = (Nettention.Proud.RmiID)2000+8;
 		// List that has RMI ID.
 		public static Nettention.Proud.RmiID[] RmiIDList = new Nettention.Proud.RmiID[] {
 			P2PChat,
+			ReadyPacket,
+			SettingEnemyInfo,
+			StartPacket,
+			LeaveRoom,
+			SyncPacket,
 			DamagedFromEnemy,
+			UseSkill,
 		};
 	}
 }
