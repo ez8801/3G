@@ -73,5 +73,20 @@
     "Id": 15,
     "Key": "Item.Slot.2000",
     "Value": 3
+  },
+  {
+    "Id": 16,
+    "Key": "Item.Slot.3000",
+    "Value": 4
+  },
+  {
+    "Id": 17,
+    "Key": "Item.Slot.4000",
+    "Value": 5
+  },
+  {
+    "Id": 18,
+    "Key": "Item.Slot.5000",
+    "Value": 6
   }
 ]

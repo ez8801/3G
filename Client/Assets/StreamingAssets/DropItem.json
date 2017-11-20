@@ -110,5 +110,29 @@
     "MinCount": 1,
     "MaxCount": 1,
     "Prob": 15000
+  },
+  {
+    "Id": 15,
+    "Group": 1,
+    "ItemId": 3000001,
+    "MinCount": 1,
+    "MaxCount": 1,
+    "Prob": 15000
+  },
+  {
+    "Id": 16,
+    "Group": 1,
+    "ItemId": 3000002,
+    "MinCount": 1,
+    "MaxCount": 1,
+    "Prob": 15000
+  },
+  {
+    "Id": 17,
+    "Group": 1,
+    "ItemId": 3000003,
+    "MinCount": 1,
+    "MaxCount": 1,
+    "Prob": 15000
   }
 ]

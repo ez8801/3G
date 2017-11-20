@@ -218,6 +218,18 @@ public class Inventory
             }
 
             m_equippedItems[itemSlot] = item.Id;
+            if(itemSlot == 4)
+            {
+                //블루 엑티브.
+            }
+            if (itemSlot == 5)
+            {
+                //그린 엑티브.
+            }
+            if (itemSlot == 6)
+            {
+                //레드 엑티브.
+            }
             m_client.SendEquipInfo(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.UnreliableSend, MyInfo.Account.NickName, (int)m_equippedItems[1], (int)m_equippedItems[2], (int)m_equippedItems[3]);
             return true;
         }

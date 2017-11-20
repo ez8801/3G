@@ -100,6 +100,18 @@
     "Value": "낡은 갑옷"
   },
   {
+    "Key": "Item.Name.3000001",
+    "Value": "마나탄"
+  },
+  {
+    "Key": "Item.Name.3000002",
+    "Value": "공간 절단"
+  },
+  {
+    "Key": "Item.Name.3000003",
+    "Value": "메테오 스트라이크"
+  },
+  {
     "Key": "UI.Equip",
     "Value": "장착"
   },
@@ -201,15 +213,15 @@
   },
   {
     "Key": "Skill.Name.2",
-    "Value": "스킬투"
+    "Value": "마력탄"
   },
   {
     "Key": "Skill.Summary.2",
-    "Value": "스킬투다"
+    "Value": "공간 절단"
   },
   {
     "Key": "Skill.Name.3",
-    "Value": "메테오"
+    "Value": "메테오 스트라이크"
   },
   {
     "Key": "Skill.Summary.3",

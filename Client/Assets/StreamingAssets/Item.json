@@ -97,27 +97,39 @@
     "Price": 0
   },
   {
-    "Id": 30000001,
+    "Id": 3000001,
     "Category": 12,
     "Type": 3000,
     "Rarity": 2,
-    "Name": "Item.Name.30000001",
-    "Desc": "",
+    "Name": "Item.Name.3000001",
+    "Desc": "Skill.Summary.1",
     "Value": 1,
     "ItemMaterialGroup": 0,
-    "Texture": "Textures/Items/I_Cosmos_Sword",
+    "Texture": "Textures/Items/I_SkillStoneBlue",
     "Price": 0
   },
   {
-    "Id": 30000002,
-    "Category": 12,
-    "Type": 3000,
+    "Id": 3000002,
+    "Category": 13,
+    "Type": 4000,
     "Rarity": 3,
-    "Name": "Item.Name.30000002",
-    "Desc": "",
+    "Name": "Item.Name.3000002",
+    "Desc": "Skill.Summary.2",
     "Value": 1,
     "ItemMaterialGroup": 0,
-    "Texture": "Textures/Items/I_Cosmos_Spear",
+    "Texture": "Textures/Items/I_SkillStoneGreen",
+    "Price": 0
+  },
+  {
+    "Id": 3000003,
+    "Category": 14,
+    "Type": 5000,
+    "Rarity": 3,
+    "Name": "Item.Name.3000003",
+    "Desc": "Skill.Summary.3",
+    "Value": 1,
+    "ItemMaterialGroup": 0,
+    "Texture": "Textures/Items/I_SkillStoneRed",
     "Price": 0
   }
 ]

@@ -1,11 +1,11 @@
 [
   {
-    "Id": 13,
+    "Id": 3000001,
     "Type": 1,
     "Name": "Skill.Name.1",
     "Cooltime": 5,
     "PrefabId": "13",
-    "Texture": "Textures/Items/I_Cosmos_Sword",
+    "Texture": "Textures/Skills/S_BlueShot",
     "Chargeable": false,
     "Charging": 0,
     "Level": 1,
