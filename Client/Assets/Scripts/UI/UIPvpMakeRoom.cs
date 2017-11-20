@@ -59,6 +59,15 @@ public class UIPvpMakeRoom : UIBase
         //m_newRoom = 
         SendText();
 
+        Hide();
+        
+        Debug.Log("RoomMake");
+        string m_MakeRoomName = "아무이름";
+        Debug.Log("RoomName : " + m_MakeRoomName);
+        GameObject.Find("PvpUI").GetComponent<UIPvp>().Hide();
+        GameObject.Find("LobbyUI").GetComponent<UILobby>().CallPvpRoom(2, m_MakeRoomName);
+
+
         //무엇인가 심플룸을 센드 텍스트로 리턴 받아서..
         //방만드는 함수에 정보를 집어넣어서 열면댐.
 

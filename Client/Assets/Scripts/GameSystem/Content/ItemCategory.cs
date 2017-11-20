@@ -15,7 +15,9 @@ public enum ItemCategory
     Misc,
     Weapon = 10,
     Armor = 11,
-    Active = 12,
+    ActiveBlue = 12,
+    Activegreen = 13,
+    ActiveRed = 14,
     Max
 }
 
@@ -30,7 +32,9 @@ public enum ItemType
     BluePrint = 100,
     Sword = 1000,
     Armor = 2000,
-    ActiveStone = 3000,
+    ActiveStoneBlue = 3000,
+    ActiveStoneGreen = 4000,
+    ActiveStoneRed = 5000,
     Max
 }
 
@@ -50,5 +54,8 @@ public struct ItemSlot
     public const int MainEquipment = 1;
     public const int SubEquipment = 2;
     public const int Armor = 3;
-    public const int Max = 4;
+    public const int BlueSkill = 4;
+    public const int GreenSkill = 5;
+    public const int RedSkill = 6;
+    public const int Max = 7;
 }

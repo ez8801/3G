@@ -20,11 +20,11 @@ public class SkillManager : MonoBehaviour
         Debug.Log("This is Manager");
         switch (skillId)
         {
-            case 13:
-                StartCoroutine("SkillBlueWave");
+            case 3000001:
+                StartCoroutine("SkillBlueShot");
                 break;
             case 3000002:
-                StartCoroutine("SkillBlueShot");
+                StartCoroutine("SkillBlueWave");
                 break;
             case 3000003:
                 StartCoroutine("SkillMeteor");

@@ -97,10 +97,15 @@ public class UIPvpRoom : UIBase
         CheckReady();
     }
 
+    public void SetMakeData(int roomNum, string roomName)
+    {
+        m_view.LblRoomNum.SetTextSafely(StringEx.Format("{0}", roomNum));
+        m_view.LblRoomName.SetTextSafely(roomName);
+    }
     public void GetRoomInfo()
     {
         //가져온 심플룸 정보를 thisRoom에 저장한다.
-        m_view.LblRoomNum.SetTextSafely(StringEx.Format("{1}", thisRoom.RoomId));
+        m_view.LblRoomNum.SetTextSafely(StringEx.Format("{0}", thisRoom.RoomId));
         m_view.LblRoomName.SetTextSafely(thisRoom.RoomName);
 
         //m_players와 m_readyPlayers 의 정보를 받아옴.
