@@ -16,6 +16,9 @@ namespace GameSystem
                 case StageType.GameStage:
                     instance = new GameStage();
                     break;
+                case StageType.BattleStage:
+                    instance = new BattleStage();
+                    break;
             }
             return (instance != null);
         }

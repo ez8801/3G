@@ -4,6 +4,10 @@
     "PrefabName": "Prefabs/Character/Player"
   },
   {
+    "Id": 2,
+    "PrefabName": "Prefabs/Character/Player"
+  },
+  {
     "Id": 1001,
     "PrefabName": "Prefabs/Monster/Monster1"
   },

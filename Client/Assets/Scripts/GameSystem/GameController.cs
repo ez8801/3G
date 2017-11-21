@@ -67,7 +67,7 @@ public class GameController : SubscriberBase<SimpleItem>
     private void SetTeam()
     {
         m_myTeam = Team.AddTeam(Team.kRedTeamId, "Player.Team");
-        m_enemyTeam = Team.AddTeam(Team.kBlueTeamId, "Monster.Team");
+        m_enemyTeam = Team.AddTeam(Team.kBlueTeamId, "Enemy.Team");
     }
 
     private IEnumerator SpawnCharacters()

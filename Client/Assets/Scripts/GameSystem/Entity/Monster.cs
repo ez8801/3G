@@ -15,6 +15,7 @@ public class Monster : Actor
     private Data.Monster m_monsterData;
     private Data.Stats m_statsData;
     
+
     private Stats m_stats;
     public override Stats Stats
     {
@@ -34,6 +35,7 @@ public class Monster : Actor
         m_stats.Initialize(m_statsData);
 
         CurrentHp = m_stats.Hp;
+        
     }
 
     public void DropItem()

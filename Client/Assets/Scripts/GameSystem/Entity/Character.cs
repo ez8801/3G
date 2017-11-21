@@ -19,6 +19,7 @@ public class Character : Actor
 
     private bool AttackBuffOn = false;
     private bool ArmorBuffOn = false;
+    
 
     private Stats m_stats;
     public override Stats Stats
@@ -38,7 +39,6 @@ public class Character : Actor
             = Util.RequireComponent<CharacterFollow>(mainCamera.gameObject);
 
         follower.target = transform;
-
 
     }
 

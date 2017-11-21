@@ -6,6 +6,12 @@
     "Armor": 30
   },
   {
+    "Id": 2,
+    "Hp": 100,
+    "AttackDamage": 20,
+    "Armor": 30
+  },
+  {
     "Id": 1001,
     "Hp": 50,
     "AttackDamage": 5,

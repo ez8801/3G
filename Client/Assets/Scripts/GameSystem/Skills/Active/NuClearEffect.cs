@@ -29,8 +29,10 @@ public class NuClearEffect : MonoBehaviour
             Debug.Log(col.name);
             if (hitter != null)
             {
+                Debug.Log("널은 아님");
                 if (hitter.GroupId != ThisGroupID)
                 {
+                    Debug.Log("그룹아이디 달라");
                     hitter.ApplyDamage(Damage);
 
                     if (hitter.CurrentHp <= 0)

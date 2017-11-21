@@ -82,7 +82,7 @@ public abstract class EntityBase : MonoBehaviour
         }
         return null;
     }
-
+    
     public static EntityBase Find(EntityType entityType, int id)
     {
         EntityID entityId = new EntityID(entityType, id);

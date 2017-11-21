@@ -4,4 +4,5 @@ public enum StageType
 	GameStage,
 	LobbyStage,
 	TitleStage,
+    BattleStage,
 }
