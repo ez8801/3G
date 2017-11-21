@@ -488,7 +488,8 @@ public class Client : MonoBehaviour {
 		Security.PrefetchSocketPolicy(m_serverIP, (int)m_param.serverPort);
 #endif
 		m_param.serverIP = m_serverIP; // 접속할 서버의 IP 주소 셋팅.
-		m_netClient.Connect(m_param); // 접속할 서버의 정보를 가지고 있는 m_param 변수를 메개변수로 Connect 함수를 호출해 서버로 접속 요청.
+        Debug.Log("IP : " + m_serverIP);
+        m_netClient.Connect(m_param); // 접속할 서버의 정보를 가지고 있는 m_param 변수를 메개변수로 Connect 함수를 호출해 서버로 접속 요청.
 	}
 	
 	// 서버 연결을 시도한 결과를 콜백 받아 수행.
