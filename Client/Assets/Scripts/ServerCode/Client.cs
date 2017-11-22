@@ -739,7 +739,7 @@ public class Client : MonoBehaviour {
         temp.Hp = Hp;
         temp.AttackDamage = Att;
         temp.Armor = Def;
-        //GameObject.FindWithTag("enemy").GetComponent<Character>().ImEnemy(temp,);
+        GameObject.FindWithTag("enemy").GetComponent<Character>().ImEnemy(temp);
         return true;
     }
     bool OnEnermyUseSkill(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, int SkillId)
