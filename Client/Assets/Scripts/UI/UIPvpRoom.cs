@@ -242,7 +242,7 @@ public class UIPvpRoom : UIBase
                 m_view.LblSecondUserReady.SetActiveSafely(true);//눌렀을때 레디 불 들어오는지 테스트임
                                                                 //지워야하는거.
                                                                 //m_view.LblReady.SetTextSafely("RELEASE");
-                m_iFReady = true;
+                m_iSReady = true;
 
                 //여기는 현 클라이언트 사용자가 레디 하는것
             }
@@ -250,7 +250,7 @@ public class UIPvpRoom : UIBase
             {
                 m_view.LblSecondUserReady.SetActiveSafely(false);
                 //m_view.LblReady.SetTextSafely("READY");
-                m_iFReady = false;
+                m_iSReady = false;
                 //현 클라이언트 사용자가 레디 푸는것. 따로 서버 전송해야함.
                 //여기 함수에서 하는 작업을 GetWhoReady로 올리고 여기선 서버 전송 작업으로 바꾸야함.
 
@@ -263,7 +263,7 @@ public class UIPvpRoom : UIBase
                 m_view.LblFirstUserReady.SetActiveSafely(true);//눌렀을때 레디 불 들어오는지 테스트임
                                                                 //지워야하는거.
                                                                 //m_view.LblReady.SetTextSafely("RELEASE");
-                m_iSReady = true;
+                m_iFReady = true;
 
                 //여기는 현 클라이언트 사용자가 레디 하는것
             }
@@ -271,7 +271,7 @@ public class UIPvpRoom : UIBase
             {
                 m_view.LblFirstUserReady.SetActiveSafely(false);
                 //m_view.LblReady.SetTextSafely("READY");
-                m_iSReady = false;
+                m_iFReady = false;
                 //현 클라이언트 사용자가 레디 푸는것. 따로 서버 전송해야함.
                 //여기 함수에서 하는 작업을 GetWhoReady로 올리고 여기선 서버 전송 작업으로 바꾸야함.
 
