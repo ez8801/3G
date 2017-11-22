@@ -209,14 +209,13 @@ Test.Write(__msg, RestHP);
 	return RmiSend(remotes,rmiContext,__msg,
 		RmiName_DamagedFromEnemy, Common.DamagedFromEnemy);
 }
-public bool UseSkill(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int SkillId, int UseLocationX)
+public bool UseSkill(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int SkillId)
 {
 	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
 		__msg.SimplePacketMode = core.IsSimplePacketMode();
 		Nettention.Proud.RmiID __msgid= Common.UseSkill;
 		__msg.Write(__msgid);
 		Test.Write(__msg, SkillId);
-		Test.Write(__msg, UseLocationX);
 		
 	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
 	__list[0] = remote;
@@ -225,14 +224,13 @@ public bool UseSkill(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext 
 		RmiName_UseSkill, Common.UseSkill);
 }
 
-public bool UseSkill(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, int SkillId, int UseLocationX)
+public bool UseSkill(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, int SkillId)
 {
 	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
 __msg.SimplePacketMode = core.IsSimplePacketMode();
 Nettention.Proud.RmiID __msgid= Common.UseSkill;
 __msg.Write(__msgid);
 Test.Write(__msg, SkillId);
-Test.Write(__msg, UseLocationX);
 		
 	return RmiSend(remotes,rmiContext,__msg,
 		RmiName_UseSkill, Common.UseSkill);

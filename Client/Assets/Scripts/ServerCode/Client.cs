@@ -281,6 +281,7 @@ public class Client : MonoBehaviour {
         m_c2cStub_temp.ReadyPacket = OnC2CReadyPacket;
         m_c2cStub_temp.DamagedFromEnemy = OnDamagedFromEnemy;
         m_c2cStub_temp.SettingEnemyInfo = OnSettingEnermyInfo;
+        m_c2cStub_temp.UseSkill = OnEnermyUseSkill;
 
         m_s2cStub.ShowChat = OnShowChat;
         m_s2cStub.UserList_Add = UserList_Add;
@@ -465,6 +466,11 @@ public class Client : MonoBehaviour {
     {
         if (m_isConnect)
             this.m_c2cProxy_temp.SettingEnemyInfo(m_EnermyID, rmiContext, Id, Hp, Att, Def);
+    }
+    public void SendUseSkill(Nettention.Proud.RmiContext rmiContext, int SkillId)
+    {
+        if (m_isConnect)
+            this.m_c2cProxy_temp.UseSkill(m_EnermyID, rmiContext, SkillId);
     }
 
 
@@ -734,6 +740,11 @@ public class Client : MonoBehaviour {
         temp.AttackDamage = Att;
         temp.Armor = Def;
         //GameObject.FindWithTag("enemy").GetComponent<Character>().ImEnemy(temp,);
+        return true;
+    }
+    bool OnEnermyUseSkill(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, int SkillId)
+    {
+        GameObject.FindWithTag("enemy").GetComponent<SkillManager>().GetSkill(SkillId);
         return true;
     }
     // 글로벌 채팅 내용을 리시브 받앗을때 처리하는 함수.

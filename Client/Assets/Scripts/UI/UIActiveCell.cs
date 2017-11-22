@@ -100,6 +100,7 @@ public class UIActiveCell : MonoBehaviour
         StartCoroutine("CoolTime");
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
         Player.gameObject.GetComponent<SkillManager>().GetSkill(m_skillId);
+        m_client.SendUseSkill(Nettention.Proud.RmiContext.ReliableSend, m_skillId);
         //PVP일 경우를 체크해서
         //PVP일 경우 여기서 스킬 사용 패킷을 보내준다
         canUseSkill = false;

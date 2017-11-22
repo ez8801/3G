@@ -51,8 +51,8 @@ public BeforeRmiInvocationDelegate BeforeRmiInvocation = delegate(Nettention.Pro
 		{ 
 			return false;
 		};
-		public delegate bool UseSkillDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int SkillId, int UseLocationX);  
-		public UseSkillDelegate UseSkill = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int SkillId, int UseLocationX)
+		public delegate bool UseSkillDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int SkillId);  
+		public UseSkillDelegate UseSkill = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int SkillId)
 		{ 
 			return false;
 		};
@@ -453,13 +453,11 @@ case Common.UseSkill:
 		ctx.compressMode = pa.CompressMode;
 			
 		int SkillId; Test.Read(__msg,out SkillId);	
-int UseLocationX; Test.Read(__msg,out UseLocationX);	
 core.PostCheckReadMessage(__msg, RmiName_UseSkill);
 		if(enableNotifyCallFromStub==true)
 		{
 			string parameterString="";
 			parameterString+=SkillId.ToString()+",";
-parameterString+=UseLocationX.ToString()+",";
 			NotifyCallFromStub(Common.UseSkill, RmiName_UseSkill,parameterString);
 		}
 			
@@ -476,7 +474,7 @@ parameterString+=UseLocationX.ToString()+",";
 		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
 			
 		// Call this method.
-		bool __ret=UseSkill (remote,ctx , SkillId, UseLocationX );
+		bool __ret=UseSkill (remote,ctx , SkillId );
 			
 		if(__ret==false)
 		{
