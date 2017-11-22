@@ -75,10 +75,21 @@ public class GameController : SubscriberBase<SimpleItem>
         GameObject respawn = GameObject.FindGameObjectWithTag("Respawn");
         m_respawnPoints = respawn.GetComponentsInChildren<RespawnPoint>();
 
+        if (!MyInfo.Account.amIHost)
+        {
+            int temp = m_respawnPoints[0].Id;
+            m_respawnPoints[0].Id = m_respawnPoints[1].Id;
+            m_respawnPoints[0].Group = m_respawnPoints[1].Group;
+            m_respawnPoints[1].Id = temp;
+            m_respawnPoints[1].Group = temp;
+        }
+
         GameObject prefab = Resources.Load("Prefabs/UI/HpBar") as GameObject;
         for (int i = 0; i < m_respawnPoints.Length; i++)
         {
             RespawnPoint each = m_respawnPoints[i];
+            
+
             yield return each.AsyncSpwan();
 
             Actor spwanedEntity = (Actor)each.GetLastSpawnedEntity();
