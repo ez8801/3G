@@ -11,7 +11,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class ActiveSkillMeteorStrike : MonoBehaviour 
+public class EnemyMeteorStrike : MonoBehaviour
 {
     private const float moveSpeed = 3f;
     public GameObject ParticleNuclear;
@@ -25,7 +25,7 @@ public class ActiveSkillMeteorStrike : MonoBehaviour
         GetInfo();
         host = MyInfo.Account.amIHost;
         startPosition = (int)transform.position.x;
-        if (!host)
+        if (host)
         {
             gameObject.GetComponent<SpriteRenderer>().flipX = true;
         }
@@ -37,21 +37,22 @@ public class ActiveSkillMeteorStrike : MonoBehaviour
         float moveX;
         if (host)
         {
-            moveX = moveSpeed * Time.deltaTime * 2.2f;
+            moveX = moveSpeed * Time.deltaTime * -2.2f;
 
 
             transform.Translate(moveX, moveY, 0);
         }
         else
         {
-            moveX = moveSpeed * Time.deltaTime * -2.2f;
+            moveX = moveSpeed * Time.deltaTime * 2.2f;
 
 
             transform.Translate(moveX, moveY, 0);
+            
         }
-        
 
-        if(transform.position.y <= -1)
+
+        if (transform.position.y <= -1)
         {
             Destroy(this.gameObject);
 
@@ -81,7 +82,7 @@ public class ActiveSkillMeteorStrike : MonoBehaviour
         if (hitter != null) Debug.Log(hitter.name + "is hit meteor");
 
         AttackObject attackObject = null;
-        if(hitter == null)
+        if (hitter == null)
         {
             attackObject = other.gameObject.GetComponent<AttackObject>();
             if (attackObject == null) return;
@@ -90,12 +91,12 @@ public class ActiveSkillMeteorStrike : MonoBehaviour
             attackObject.OnHit(gameObject);
         }
 
-        if(hitter != null && hitter.GroupId != m_groupID)
+        if (hitter != null && hitter.GroupId == m_groupID)
         {
             int realDamage = (int)((m_damage - hitter.Stats.Armor) * Random.Range(0.9f, 1.1f));
             if (realDamage <= 1) realDamage = 1;
 
-            if(realDamage > 0)
+            if (realDamage > 0)
             {
                 Debug.Log(Macros.__PRETTY_FUNCTION__ + " : " + realDamage);
                 hitter.ApplyDamage(realDamage);

@@ -1937,10 +1937,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GroupID: 0
-  BlueShotPrefab: {fileID: 1641098244898412, guid: d843189c4d8bef84384941670f3b9bd1,
+  BlueShotPrefab: {fileID: 1750383886398024, guid: 6b64b8e126962b94faac72bd878a55e7,
     type: 2}
-  MeteorPrefab: {fileID: 1789767154509832, guid: 62dbc6ea54939a748b2b744220790bb3,
+  MeteorPrefab: {fileID: 1406741936021704, guid: 908bac27dbd18704991033ecd07e0cb1,
     type: 2}
+  side: {x: 0, y: 0, z: 0}
 --- !u!114 &114861377792261870
 MonoBehaviour:
   m_ObjectHideFlags: 1

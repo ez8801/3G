@@ -18,22 +18,39 @@ public class ActiveSkillBlueShot : MonoBehaviour
     private long m_groupID;
     private int m_damage;
     public int startPosition;
+    bool host;
     
 
     private void Start()
     {
         GetInfo();
+        host = MyInfo.Account.amIHost;
         startPosition = (int)transform.position.x;
+        if (!host)
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = true;
+        }
         
     }
 
     private void Update()
     {
-        float moveX = moveSpeed * Time.deltaTime;
+        if (host)
+        {
+            float moveX = moveSpeed * Time.deltaTime;
 
-        transform.Translate(moveX, 0, 0);
+            transform.Translate(moveX, 0, 0);
 
-        if((transform.position.x - startPosition) >= 30f) Destroy(this.gameObject);
+            if ((transform.position.x - startPosition) >= 30f) Destroy(this.gameObject);
+        }
+        else
+        {
+            float moveX = moveSpeed * -Time.deltaTime;
+
+            transform.Translate(moveX, 0, 0);
+
+            if ((startPosition - transform.position.x) >= 30f) Destroy(this.gameObject);
+        }
     }
 
     public void GetInfo()
