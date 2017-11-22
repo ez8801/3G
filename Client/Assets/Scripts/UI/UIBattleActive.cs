@@ -72,7 +72,7 @@ public class UIBattleActive : UIBase
         if (!IsAssigned(m_view))
             m_view = new View();
 
-        this.Bind(ref m_view.PanelCell, "PanelCell");
+        this.Bind(ref m_view.PanelCell, "BottomRightAnchor/PanelCell");
     }
 
 

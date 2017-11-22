@@ -25,7 +25,6 @@ public class UILobby : UIBase
         public UIEventListener BtnForge;
         public UIEventListener BtnDungeon;
         public UIEventListener BtnPvp;
-        public UIEventListener BtnTestPvpScene;
     }
     public View m_view;
     
@@ -48,7 +47,6 @@ public class UILobby : UIBase
         this.Bind(ref m_view.BtnForge, "ToolBar/AnchorBottomRight/Grid/BtnForge");
         this.Bind(ref m_view.BtnDungeon, "ToolBar/AnchorBottomRight/Grid/BtnDungeon");
         this.Bind(ref m_view.BtnPvp, "ToolBar/AnchorBottomRight/Grid/BtnPvp");
-        this.Bind(ref m_view.BtnTestPvpScene, "ToolBar/AnchorBottomRight/Grid/BtnTestPvpScene");
 
         m_view.BtnChat.onClick = OnClickChat;
         // m_view.BtnInventory.onClick = OnClickInventory;
@@ -56,20 +54,12 @@ public class UILobby : UIBase
         m_view.BtnDungeon.onClick = OnClickDungeon;
         m_view.BtnPassiveSkill.onClick = OnClickPassiveInventory;
         m_view.BtnPvp.onClick = OnClickPvp;
-        m_view.BtnTestPvpScene.onClick = OnClickTest;
     }
 
     //-------------------------------------------------------------------------
     //  UIActions
     //-------------------------------------------------------------------------
     #region UIActions
-
-
-
-    public void OnClickTest(GameObject sender)
-    {
-        StageManager.Instance.ChangeStage(StageType.BattleStage);
-    }
     public void OnClickChat(GameObject sender)
     {
         Debug.Log(Macros.__PRETTY_FUNCTION__);

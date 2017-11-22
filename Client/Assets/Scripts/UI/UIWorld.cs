@@ -13,6 +13,7 @@ public class UIWorld : UIBase
 		public UILabel LblWorld;
 		public Transform Stages;
 		public Transform TexBG;
+        public GameObject BtnClose;
 	}
 	public View m_view;
 
@@ -29,6 +30,7 @@ public class UIWorld : UIBase
         this.Bind(ref m_view.LblWorld, "LblWorld");
         this.Bind(ref m_view.Stages, "Stages");
         this.Bind(ref m_view.TexBG, "TexBG");
+        this.Bind(ref m_view.BtnClose, "BtnClose");
     }
 
     internal override void OnCreate()
@@ -94,5 +96,9 @@ public class UIWorld : UIBase
         UIManager.Instance.Push(UIType.UIStageInfo);
     }
 
+    public void OnClickClose()
+    {
+        Hide();
+    }
     #endregion UIActions
 }
