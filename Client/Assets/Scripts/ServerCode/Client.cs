@@ -280,6 +280,7 @@ public class Client : MonoBehaviour {
 
         m_c2cStub_temp.ReadyPacket = OnC2CReadyPacket;
         m_c2cStub_temp.DamagedFromEnemy = OnDamagedFromEnemy;
+        m_c2cStub_temp.SettingEnemyInfo = OnSettingEnermyInfo;
 
         m_s2cStub.ShowChat = OnShowChat;
         m_s2cStub.UserList_Add = UserList_Add;
@@ -727,7 +728,12 @@ public class Client : MonoBehaviour {
     {
         // 상대방이 보낸 정보를
         // 여기서 적 스탯으로 셋팅해준다.
-
+        Data.Stats temp;
+        temp.Id = Id;
+        temp.Hp = Hp;
+        temp.AttackDamage = Att;
+        temp.Armor = Def;
+        //GameObject.FindWithTag("enemy").GetComponent<Character>().ImEnemy(temp,);
         return true;
     }
     // 글로벌 채팅 내용을 리시브 받앗을때 처리하는 함수.
