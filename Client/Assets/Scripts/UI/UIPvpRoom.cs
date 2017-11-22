@@ -290,6 +290,7 @@ public class UIPvpRoom : UIBase
             m_client.RequestLeavePVPRoom(Nettention.Proud.HostID.HostID_Server, Nettention.Proud.RmiContext.UnreliableSend, MyInfo.Account.LocalHost);
             MyInfo.Account.amIHost = false;
         }
+        
         Hide();
     }
 #endregion UIActions

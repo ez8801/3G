@@ -235,6 +235,30 @@ Test.Write(__msg, SkillId);
 	return RmiSend(remotes,rmiContext,__msg,
 		RmiName_UseSkill, Common.UseSkill);
 }
+public bool MatchEnd(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+		__msg.SimplePacketMode = core.IsSimplePacketMode();
+		Nettention.Proud.RmiID __msgid= Common.MatchEnd;
+		__msg.Write(__msgid);
+		
+	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
+	__list[0] = remote;
+		
+	return RmiSend(__list,rmiContext,__msg,
+		RmiName_MatchEnd, Common.MatchEnd);
+}
+
+public bool MatchEnd(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+__msg.SimplePacketMode = core.IsSimplePacketMode();
+Nettention.Proud.RmiID __msgid= Common.MatchEnd;
+__msg.Write(__msgid);
+		
+	return RmiSend(remotes,rmiContext,__msg,
+		RmiName_MatchEnd, Common.MatchEnd);
+}
 #if USE_RMI_NAME_STRING
 // RMI name declaration.
 // It is the unique pointer that indicates RMI name such as RMI profiler.
@@ -246,6 +270,7 @@ const string RmiName_LeaveRoom="LeaveRoom";
 const string RmiName_SyncPacket="SyncPacket";
 const string RmiName_DamagedFromEnemy="DamagedFromEnemy";
 const string RmiName_UseSkill="UseSkill";
+const string RmiName_MatchEnd="MatchEnd";
        
 const string RmiName_First = RmiName_P2PChat;
 #else
@@ -259,6 +284,7 @@ const string RmiName_LeaveRoom="";
 const string RmiName_SyncPacket="";
 const string RmiName_DamagedFromEnemy="";
 const string RmiName_UseSkill="";
+const string RmiName_MatchEnd="";
        
 const string RmiName_First = "";
 #endif

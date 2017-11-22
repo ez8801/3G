@@ -26,7 +26,7 @@ public class AccountInfo
     }
     public string NickName;
     public Nettention.Proud.HostID LocalHost;
-    public bool amIHost = false;
+    public bool amIHost = true;
     private int m_gold;
     public int Gold
     {

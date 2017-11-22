@@ -56,6 +56,11 @@ public BeforeRmiInvocationDelegate BeforeRmiInvocation = delegate(Nettention.Pro
 		{ 
 			return false;
 		};
+		public delegate bool MatchEndDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext);  
+		public MatchEndDelegate MatchEnd = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext)
+		{ 
+			return false;
+		};
 	public override bool ProcessReceivedMessage(Nettention.Proud.ReceivedMessage pa, Object hostTag) 
 	{
 		Nettention.Proud.HostID remote=pa.RemoteHostID;
@@ -494,6 +499,55 @@ core.PostCheckReadMessage(__msg, RmiName_UseSkill);
 		}
 	}
 	break;
+case Common.MatchEnd:
+	{
+		Nettention.Proud.RmiContext ctx=new Nettention.Proud.RmiContext();
+		ctx.sentFrom=pa.RemoteHostID;
+		ctx.relayed=pa.IsRelayed;
+		ctx.hostTag=hostTag;
+		ctx.encryptMode = pa.EncryptMode;
+		ctx.compressMode = pa.CompressMode;
+			
+		core.PostCheckReadMessage(__msg, RmiName_MatchEnd);
+		if(enableNotifyCallFromStub==true)
+		{
+			string parameterString="";
+						NotifyCallFromStub(Common.MatchEnd, RmiName_MatchEnd,parameterString);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.BeforeRmiSummary summary = new Nettention.Proud.BeforeRmiSummary();
+			summary.rmiID = Common.MatchEnd;
+			summary.rmiName = RmiName_MatchEnd;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			BeforeRmiInvocation(summary);
+		}
+			
+		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
+			
+		// Call this method.
+		bool __ret=MatchEnd (remote,ctx  );
+			
+		if(__ret==false)
+		{
+			// Error: RMI function that a user did not create has been called. 
+			core.ShowNotImplementedRmiWarning(RmiName_MatchEnd);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
+			summary.rmiID = Common.MatchEnd;
+			summary.rmiName = RmiName_MatchEnd;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
+			AfterRmiInvocation(summary);
+		}
+	}
+	break;
 		default:
 			 goto __fail;
 		}
@@ -515,6 +569,7 @@ const string RmiName_LeaveRoom="LeaveRoom";
 const string RmiName_SyncPacket="SyncPacket";
 const string RmiName_DamagedFromEnemy="DamagedFromEnemy";
 const string RmiName_UseSkill="UseSkill";
+const string RmiName_MatchEnd="MatchEnd";
        
 const string RmiName_First = RmiName_P2PChat;
 #else
@@ -528,6 +583,7 @@ const string RmiName_LeaveRoom="";
 const string RmiName_SyncPacket="";
 const string RmiName_DamagedFromEnemy="";
 const string RmiName_UseSkill="";
+const string RmiName_MatchEnd="";
        
 const string RmiName_First = "";
 #endif

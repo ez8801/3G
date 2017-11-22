@@ -282,6 +282,7 @@ public class Client : MonoBehaviour {
         m_c2cStub_temp.DamagedFromEnemy = OnDamagedFromEnemy;
         m_c2cStub_temp.SettingEnemyInfo = OnSettingEnermyInfo;
         m_c2cStub_temp.UseSkill = OnEnermyUseSkill;
+        m_c2cStub_temp.MatchEnd = OnMatchEnd;
 
         m_s2cStub.ShowChat = OnShowChat;
         m_s2cStub.UserList_Add = UserList_Add;
@@ -471,6 +472,11 @@ public class Client : MonoBehaviour {
     {
         if (m_isConnect)
             this.m_c2cProxy_temp.UseSkill(m_EnermyID, rmiContext, SkillId);
+    }
+    public void SendMatchEnd(Nettention.Proud.RmiContext rmiContext)
+    {
+        if (m_isConnect)
+            this.m_c2cProxy_temp.MatchEnd(m_EnermyID, rmiContext);
     }
 
 
@@ -746,6 +752,11 @@ public class Client : MonoBehaviour {
     bool OnEnermyUseSkill(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, int SkillId)
     {
         GameObject.FindWithTag("enemy").GetComponent<SkillManager>().GetSkill(SkillId);
+        return true;
+    }
+    bool OnMatchEnd(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext)
+    {
+        ///경기 종료 화면 띄우면됨
         return true;
     }
     // 글로벌 채팅 내용을 리시브 받앗을때 처리하는 함수.

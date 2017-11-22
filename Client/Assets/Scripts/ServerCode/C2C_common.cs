@@ -21,6 +21,7 @@ namespace C2C
 			public const Nettention.Proud.RmiID SyncPacket = (Nettention.Proud.RmiID)2000+6;
 			public const Nettention.Proud.RmiID DamagedFromEnemy = (Nettention.Proud.RmiID)2000+7;
 			public const Nettention.Proud.RmiID UseSkill = (Nettention.Proud.RmiID)2000+8;
+			public const Nettention.Proud.RmiID MatchEnd = (Nettention.Proud.RmiID)2000+9;
 		// List that has RMI ID.
 		public static Nettention.Proud.RmiID[] RmiIDList = new Nettention.Proud.RmiID[] {
 			P2PChat,
@@ -31,6 +32,7 @@ namespace C2C
 			SyncPacket,
 			DamagedFromEnemy,
 			UseSkill,
+			MatchEnd,
 		};
 	}
 }
