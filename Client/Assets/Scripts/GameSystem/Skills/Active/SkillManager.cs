@@ -16,6 +16,7 @@ public class SkillManager : MonoBehaviour
     public long GroupID;
     public GameObject BlueShotPrefab;
     public GameObject MeteorPrefab;
+    public Vector3 side;
 
     public void SetGroupID(long id)
     {
@@ -29,6 +30,7 @@ public class SkillManager : MonoBehaviour
 
     public void GetSkill(int skillId)
     {
+        side = gameObject.GetComponent<Character>().Forward;
         Debug.Log("This is Manager");
         switch (skillId)
         {
@@ -52,7 +54,9 @@ public class SkillManager : MonoBehaviour
     IEnumerator SkillBlueShot()
     {
         Debug.Log("Use BlueShot from SkillManager");
-        Instantiate(BlueShotPrefab, transform.position, Quaternion.identity);
+        Vector3 summonPoint = transform.position;
+        summonPoint.x += side.x;
+        Instantiate(BlueShotPrefab, summonPoint, Quaternion.identity);
         yield break;
     }
     IEnumerator SkillMeteor()
@@ -60,7 +64,7 @@ public class SkillManager : MonoBehaviour
         Debug.Log("Use Meteor from SkillManager");
         Vector3 summonPoint = transform.position;
         summonPoint.y = transform.position.y + 12;
-        summonPoint.x = transform.position.x + -6;
+        summonPoint.x = transform.position.x + -(6 * side.x);
         Instantiate(MeteorPrefab, summonPoint, Quaternion.identity);
         yield break;
     }
