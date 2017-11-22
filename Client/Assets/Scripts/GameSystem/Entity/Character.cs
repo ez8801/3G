@@ -42,8 +42,11 @@ public class Character : Actor
             = Util.RequireComponent<CharacterFollow>(mainCamera.gameObject);
 
 
-
-        follower.target = Player.transform;
+        if(Player != null)
+        {
+            follower.target = Player.transform;
+        }
+        
 
     }
 
