@@ -700,7 +700,8 @@ public class Client : MonoBehaviour {
     bool OnPVPRoomInfo(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, Nettention.Proud.FastArray<pvprooms> data)
     {
         UIPvp pvpUI = UIManager.Instance.Push<UIPvp>(UIType.UIPvp); ;
-        for(int i = 0; i < data.Count; i++)
+        pvpUI.InitRoom();
+        for (int i = 0; i < data.Count; i++)
         {
             pvpUI.SettingRoom(i + 1, data[i].roomId, data[i].pvproomname, data[i].groupId, data[i].hostname);
         }

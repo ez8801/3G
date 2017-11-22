@@ -99,7 +99,10 @@ public class UIPvp : UIBase
         //GetNewRoomList(); // 서버에서 리스트 겟
         
     }//10-30 11:45 --> 프리팹에 리스트랑 이름입력창 만들고 코딩, 로그인창 제작
-
+    public void InitRoom()
+    {
+        m_findRooms.Clear();
+    }
     public void SettingRoom(int id,int roomId, string roomName, int roomGroupId, string roomHostName)
     {
         SimplePvpRoom roomone = new SimplePvpRoom();
