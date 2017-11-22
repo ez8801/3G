@@ -8,6 +8,7 @@
  */
 
 using UnityEngine;
+using GameSystem;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -89,6 +90,14 @@ public class UIPvpRoom : UIBase
 
         ReloadData();
 
+    }
+
+    private void Update()
+    {
+        if(m_iFReady == true && m_iSReady == true)
+        {
+            StageManager.Instance.ChangeStage(StageType.BattleStage);
+        }
     }
 
     public override void ReloadData()
