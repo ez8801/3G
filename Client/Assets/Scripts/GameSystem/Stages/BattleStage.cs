@@ -64,8 +64,8 @@ public class BattleStage : GameSystem.Stage, IObserver
                 break;
 
             case R.Id.Win:
-                //StartCoroutine(OnGameEnd(MatchResult.Win));
                 m_client.SendMatchEnd(Nettention.Proud.RmiContext.ReliableSend);
+                StartCoroutine(OnGameEnd(MatchResult.Win));
                 break;
 
             case R.Id.ExitStage:
