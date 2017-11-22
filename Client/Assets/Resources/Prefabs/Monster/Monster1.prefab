@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcf9ba560f098d947bfdf7576718e665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idod: 0
   Target: {fileID: 0}
   Head: {fileID: 4816843437792224}
   Pelvis: {fileID: 0}
@@ -167,7 +168,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300002, guid: bca4fa0a944911c478d97f6f5e5226c3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.85, y: 0.8}

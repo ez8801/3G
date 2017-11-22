@@ -5,7 +5,7 @@
   },
   {
     "Id": 2,
-    "PrefabName": "Prefabs/Character/Player"
+    "PrefabName": "Prefabs/Character/Enemy"
   },
   {
     "Id": 1001,

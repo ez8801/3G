@@ -13,8 +13,20 @@ using System.Collections.Generic;
 
 public class SkillManager : MonoBehaviour
 {
+    public long GroupID;
     public GameObject BlueShotPrefab;
     public GameObject MeteorPrefab;
+
+    public void SetGroupID(long id)
+    {
+        GroupID = id;
+    }
+
+    public long GetGroupID()
+    {
+        return GroupID;
+    }
+
     public void GetSkill(int skillId)
     {
         Debug.Log("This is Manager");

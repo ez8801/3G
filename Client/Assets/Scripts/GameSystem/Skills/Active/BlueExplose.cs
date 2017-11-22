@@ -18,6 +18,7 @@ public class BlueExplose : MonoBehaviour
     public int Damage;
     void Start()
 	{
+        
         Destroy(this.gameObject, 0.5f);
         GetInfo();
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius);
@@ -52,9 +53,7 @@ public class BlueExplose : MonoBehaviour
 
     public void GetInfo()
     {
-        //서버에서 발사한 놈의 그룹 아이디를 가져옴.
-        //지금은 임의 그룹아이디 제공.
-        ThisGroupID = 1;
+        ThisGroupID = GameObject.Find("StatManager").GetComponent<StatManager>().GroupId;
 
         //서버에서 발사한 놈의(이하 공격자) 현 공격력을 가져옴.
         //지금은 스탯매니저에서 가져옴.

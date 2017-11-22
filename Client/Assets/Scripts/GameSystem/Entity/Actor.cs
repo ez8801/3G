@@ -28,6 +28,8 @@ public class Actor : EntityBase, IActor
         }
     }
 
+
+    public long idod;
     protected float m_currentHp;
     public float CurrentHp
     {
@@ -94,7 +96,9 @@ public class Actor : EntityBase, IActor
         m_stateMachine.Transition(StateType.Idle);
 
         CachedRigidbody2D = GetComponent<Rigidbody2D>();
+
     }
+    
 
     public bool IsGrounded()
     {
@@ -120,6 +124,9 @@ public class Actor : EntityBase, IActor
         else if (CachedTransform.position.x > target.CachedTransform.position.x)
         {
             Forward = new Vector3(-1f, 0f, 0f);
+            Vector3 scale = transform.localScale;
+            scale.x = -Mathf.Abs(scale.x);
+            transform.localScale = scale;
         }
         else
         {
@@ -165,6 +172,7 @@ public class Actor : EntityBase, IActor
         base.Update();
         if (m_stateMachine != null)
             m_stateMachine.PerformUpdate();
+        idod = this.GroupId;
     }
 
     /// <summary>
@@ -231,13 +239,13 @@ public class Actor : EntityBase, IActor
 
             float gapRatio = Mathf.Clamp(HpRatio - prevRatio, 1f, 10f) * 2f;
             Vector3 opposite = attacker.Forward;
-            opposite.x *= -gapRatio;
-            opposite.y = 10f * 0.5f;
+            opposite.x *= -3.0f;
+            opposite.y = 4.0f * 0.5f;
 
             if (!IsGrounded())
             {
-                opposite.x *= 0.5f;
-                opposite.y *= 0.5f;
+                opposite.x *= 1.0f;
+                opposite.y *= 1.0f;
             }
 
             if (attackObject == null)

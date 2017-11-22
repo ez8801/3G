@@ -24,6 +24,7 @@ public class ActiveSkillBlueShot : MonoBehaviour
     {
         GetInfo();
         startPosition = (int)transform.position.x;
+        
     }
 
     private void Update()
@@ -39,7 +40,7 @@ public class ActiveSkillBlueShot : MonoBehaviour
     {
         //서버에서 발사한 놈의 그룹 아이디를 가져옴.
         //지금은 임의 그룹아이디 제공.
-        m_groupID = 1;
+        m_groupID = GameObject.Find("StatManager").GetComponent<StatManager>().GroupId;
 
         //서버에서 발사한 놈의(이하 공격자) 현 공격력을 가져옴.
         //지금은 스탯매니저에서 가져옴.

@@ -34,11 +34,16 @@ public class Character : Actor
     {
         base.Awake();
 
+        //서버에서 이 유저의 캐릭터를 찾아서 카메라를 따라다니게 해줘야함.
+        GameObject Player = GameObject.FindGameObjectWithTag("Player");
+
         Camera mainCamera = Camera.main;
         CharacterFollow follower
             = Util.RequireComponent<CharacterFollow>(mainCamera.gameObject);
 
-        follower.target = transform;
+
+
+        follower.target = Player.transform;
 
     }
 
@@ -58,6 +63,14 @@ public class Character : Actor
 
 
         CurrentHp = m_stats.Hp;
+        
+    }
+
+    public void ImEnemy(Data.Stats statData, int groupId)
+    {
+        //이 캐릭터가 상대 캐릭터일 경우 이 함수를 호출하며 스탯 데이터를 적용 시킴. StatManager의 FinalStatsToS함수를 통해 얻은 스탯 최종값을 교환하여 적용.
+        m_stats.Initialize(statData);
+        this.SetGroupId(groupId);
     }
 
     public void ReloadStat()

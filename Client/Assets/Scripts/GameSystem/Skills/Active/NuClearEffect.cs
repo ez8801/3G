@@ -21,12 +21,12 @@ public class NuClearEffect : MonoBehaviour
     {
         Destroy(this.gameObject, 0.8f);
         GetInfo();
+        //private void OnCollisionEnter2D(Collision2D other)
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius);
         foreach (Collider2D col in colliders)
         {
             Debug.Log(col.name);
             Actor hitter = col.gameObject.GetComponent<Actor>();
-            Debug.Log(col.name);
             if (hitter != null)
             {
                 Debug.Log("널은 아님");
@@ -41,9 +41,9 @@ public class NuClearEffect : MonoBehaviour
                     }
 
                     Vector3 opposite = hitter.Forward;
-                    opposite.x *= -2f * Random.Range(0.5f, 1.0f);
+                    opposite.x *= -4.0f * Random.Range(0.5f, 1.0f);
                     opposite.y += 1f;
-                    opposite.y *= 3f * Random.Range(0.5f, 1.5f);
+                    opposite.y *= 4f * Random.Range(0.5f, 1.5f);
                     hitter.GetComponent<Rigidbody2D>().AddForce(opposite, ForceMode2D.Impulse);
                     hitter.GetDamageAction();
                 }
@@ -53,12 +53,14 @@ public class NuClearEffect : MonoBehaviour
 
     }
 
+    public void SetGroupId(long id)
+    {
+        ThisGroupID = id;
+    }
+
     public void GetInfo()
     {
-        //서버에서 발사한 놈의 그룹 아이디를 가져옴.
-        //지금은 임의 그룹아이디 제공.
-        ThisGroupID = 1;
-
+        ThisGroupID = GameObject.Find("StatManager").GetComponent<StatManager>().GroupId;
         //서버에서 발사한 놈의(이하 공격자) 현 공격력을 가져옴.
         //지금은 스탯매니저에서 가져옴.
         StatManager statManager = GameObject.Find("StatManager").GetComponent<StatManager>();

@@ -23,6 +23,7 @@ public class ActiveSkillMeteorStrike : MonoBehaviour
     {
         GetInfo();
         startPosition = (int)transform.position.x;
+        
     }
 
     private void Update()
@@ -42,10 +43,14 @@ public class ActiveSkillMeteorStrike : MonoBehaviour
         }
     }
 
+    public void SetGroupId(long id)
+    {
+        m_groupID = id;
+    }
 
     public void GetInfo()
     {
-        m_groupID = 1;
+        m_groupID = GameObject.Find("StatManager").GetComponent<StatManager>().GroupId;
 
         StatManager statManager = GameObject.Find("StatManager").GetComponent<StatManager>();
         m_damage = statManager.CharacterStats.AttackDamage;

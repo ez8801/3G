@@ -17,7 +17,25 @@ public class StatManager : MonoSingleton<StatManager>
     private Data.Stats m_startStatsData;
     public Data.Stats CharacterStats;
 
+    //임시로 지정해둠. 서버에서 GiveGroupID받을것.
+    public long GroupId = 4294967299;
+
+
+    public void TakeGroupID(long id)
+    {
+        //서버에서 각각 그룹아이디를 내려주는걸 스탯 매니저에 적용.(스킬 쓸때 여기서 그룹 아이디 가져감.
+        GroupId = id;
+    }
+
+    public long GiveGroupID()
+    {
+        return GroupId;
+    }
+
     //EquipStats
+
+
+
     private int m_finalAttackEquipStat;
     public int FinalAttackEquipStat
     {
@@ -320,7 +338,15 @@ public class StatManager : MonoSingleton<StatManager>
 
     }
 
-
+    public Data.Stats FinalStatsToS()
+    {
+        //서버로 최신의 최종 스탯 전송
+        return CharacterStats;
+    }
+    public long GroupIdToS()
+    {
+        return GroupId;
+    }
     public void Initialize()
     {
         m_startCharacterData = CharacterTable.Instance.Find(1);

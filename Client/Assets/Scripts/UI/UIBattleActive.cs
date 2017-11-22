@@ -110,7 +110,6 @@ public class UIBattleActive : UIBase
     #region UIActions
     public void OnClickActive(GameObject sender)
     {
-        Debug.Log("dfsdfsdfsdfsdfsdf");
         int index = -1;
         if(int.TryParse(sender.name, out index))
         {
