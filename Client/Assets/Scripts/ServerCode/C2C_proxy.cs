@@ -69,12 +69,13 @@ Test.Write(__msg, Ready);
 	return RmiSend(remotes,rmiContext,__msg,
 		RmiName_ReadyPacket, Common.ReadyPacket);
 }
-public bool SettingEnemyInfo(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int Hp, int Att, int def)
+public bool SettingEnemyInfo(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int Id, int Hp, int Att, int def)
 {
 	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
 		__msg.SimplePacketMode = core.IsSimplePacketMode();
 		Nettention.Proud.RmiID __msgid= Common.SettingEnemyInfo;
 		__msg.Write(__msgid);
+		Test.Write(__msg, Id);
 		Test.Write(__msg, Hp);
 		Test.Write(__msg, Att);
 		Test.Write(__msg, def);
@@ -86,12 +87,13 @@ public bool SettingEnemyInfo(Nettention.Proud.HostID remote,Nettention.Proud.Rmi
 		RmiName_SettingEnemyInfo, Common.SettingEnemyInfo);
 }
 
-public bool SettingEnemyInfo(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, int Hp, int Att, int def)
+public bool SettingEnemyInfo(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, int Id, int Hp, int Att, int def)
 {
 	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
 __msg.SimplePacketMode = core.IsSimplePacketMode();
 Nettention.Proud.RmiID __msgid= Common.SettingEnemyInfo;
 __msg.Write(__msgid);
+Test.Write(__msg, Id);
 Test.Write(__msg, Hp);
 Test.Write(__msg, Att);
 Test.Write(__msg, def);

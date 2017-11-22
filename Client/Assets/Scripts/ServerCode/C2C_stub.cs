@@ -26,8 +26,8 @@ public BeforeRmiInvocationDelegate BeforeRmiInvocation = delegate(Nettention.Pro
 		{ 
 			return false;
 		};
-		public delegate bool SettingEnemyInfoDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int Hp, int Att, int def);  
-		public SettingEnemyInfoDelegate SettingEnemyInfo = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int Hp, int Att, int def)
+		public delegate bool SettingEnemyInfoDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int Id, int Hp, int Att, int def);  
+		public SettingEnemyInfoDelegate SettingEnemyInfo = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int Id, int Hp, int Att, int def)
 		{ 
 			return false;
 		};
@@ -187,14 +187,16 @@ case Common.SettingEnemyInfo:
 		ctx.encryptMode = pa.EncryptMode;
 		ctx.compressMode = pa.CompressMode;
 			
-		int Hp; Test.Read(__msg,out Hp);	
+		int Id; Test.Read(__msg,out Id);	
+int Hp; Test.Read(__msg,out Hp);	
 int Att; Test.Read(__msg,out Att);	
 int def; Test.Read(__msg,out def);	
 core.PostCheckReadMessage(__msg, RmiName_SettingEnemyInfo);
 		if(enableNotifyCallFromStub==true)
 		{
 			string parameterString="";
-			parameterString+=Hp.ToString()+",";
+			parameterString+=Id.ToString()+",";
+parameterString+=Hp.ToString()+",";
 parameterString+=Att.ToString()+",";
 parameterString+=def.ToString()+",";
 			NotifyCallFromStub(Common.SettingEnemyInfo, RmiName_SettingEnemyInfo,parameterString);
@@ -213,7 +215,7 @@ parameterString+=def.ToString()+",";
 		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
 			
 		// Call this method.
-		bool __ret=SettingEnemyInfo (remote,ctx , Hp, Att, def );
+		bool __ret=SettingEnemyInfo (remote,ctx , Id, Hp, Att, def );
 			
 		if(__ret==false)
 		{

@@ -460,6 +460,11 @@ public class Client : MonoBehaviour {
         if (m_isConnect)
             this.m_c2cProxy_temp.DamagedFromEnemy(m_EnermyID, rmiContext, Damage, EnermyHp);
     }
+    public void SendMyInfoToEnermy(Nettention.Proud.RmiContext rmiContext, int Id, int Hp, int Att, int Def)
+    {
+        if (m_isConnect)
+            this.m_c2cProxy_temp.SettingEnemyInfo(m_EnermyID, rmiContext, Id, Hp, Att, Def);
+    }
 
 
     public void RequestP2PGroup (Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostIDArray m_hostIDs)
@@ -716,6 +721,13 @@ public class Client : MonoBehaviour {
         else
             GameObject.Find("PvpRoomUI").GetComponent<UIPvpRoom>().SecondUserReady(ready);
         //m_c2cStub_temp.ReadyPacket(remote, rmiContext, ready);
+        return true;
+    }
+    bool OnSettingEnermyInfo(Nettention.Proud.HostID remote, Nettention.Proud.RmiContext rmiContext, int Id, int Hp, int Att, int Def)
+    {
+        // 상대방이 보낸 정보를
+        // 여기서 적 스탯으로 셋팅해준다.
+
         return true;
     }
     // 글로벌 채팅 내용을 리시브 받앗을때 처리하는 함수.

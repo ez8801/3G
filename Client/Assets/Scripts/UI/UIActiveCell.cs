@@ -13,6 +13,7 @@ using System.Collections.Generic;
 
 public class UIActiveCell : MonoBehaviour 
 {
+    private Client m_client;
     public UITexture TexActiveIcon;
     public UILabel LblActiveLevel;
     public UITexture SkillFilter;
@@ -26,6 +27,7 @@ public class UIActiveCell : MonoBehaviour
 
     public void Initialize()
     {
+        m_client = Client.Instance;
         BindComponents();
         SkillFilter.fillAmount = 0;
         
@@ -98,6 +100,8 @@ public class UIActiveCell : MonoBehaviour
         StartCoroutine("CoolTime");
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
         Player.gameObject.GetComponent<SkillManager>().GetSkill(m_skillId);
+        //PVP일 경우를 체크해서
+        //PVP일 경우 여기서 스킬 사용 패킷을 보내준다
         canUseSkill = false;
     }
     

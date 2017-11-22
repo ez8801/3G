@@ -35,6 +35,10 @@ public class BattleStage : GameSystem.Stage, IObserver
 
         // Add First Responder
         NotificationCenter.Instance.AddObserver(this);
+        // 여기서 내 스탯을 상대방에게 보내준다.
+        StatManager statManager = GameObject.Find("StatManager").GetComponent<StatManager>();
+        Data.Stats stat = statManager.CharacterStats;
+        m_client.SendMyInfoToEnermy(Nettention.Proud.RmiContext.ReliableSend, stat.Id, stat.Hp, stat.AttackDamage, stat.Armor);
 
         yield return null;
     }
