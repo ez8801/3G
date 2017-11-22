@@ -15,11 +15,12 @@ public class BattleStage : GameSystem.Stage, IObserver
 {
 
     public const string LevelName = "Battle";
-
+    private Client m_client;
     private GameController m_gameController;
 
     public override IEnumerator OnCrate(Intent savedInstanceState)
     {
+        m_client = Client.Instance;
         // Load Scenes
         AssetLoader.AddLevelLoadingRequest(LevelName, false);
         AssetLoader.AddLevelLoadingRequest("Stones", true);
@@ -55,6 +56,7 @@ public class BattleStage : GameSystem.Stage, IObserver
 
             case R.Id.OnEntityAttacked:
                 m_gameController.OnEntityAttacked(notification.longExtra);
+                m_client.DamagedPacket(Nettention.Proud.RmiContext.ReliableSend, 10, 100);
                 break;
 
             case R.Id.Win:

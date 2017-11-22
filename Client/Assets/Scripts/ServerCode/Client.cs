@@ -279,6 +279,7 @@ public class Client : MonoBehaviour {
         m_s2cStub_temp.sendPVPRoomJoinResult = OnPVPRoomJoinResult;
 
         m_c2cStub_temp.ReadyPacket = OnC2CReadyPacket;
+        m_c2cStub_temp.DamagedFromEnemy = OnDamagedFromEnemy;
 
         m_s2cStub.ShowChat = OnShowChat;
         m_s2cStub.UserList_Add = UserList_Add;
@@ -453,6 +454,11 @@ public class Client : MonoBehaviour {
     {
         if (m_isConnect)
             this.m_c2cProxy_temp.ReadyPacket(m_EnermyID, rmiContext, ready);
+    }
+    public void DamagedPacket(Nettention.Proud.RmiContext rmiContext, int Damage, int EnermyHp)
+    {
+        if (m_isConnect)
+            this.m_c2cProxy_temp.DamagedFromEnemy(m_EnermyID, rmiContext, Damage, EnermyHp);
     }
 
 
@@ -693,6 +699,7 @@ public class Client : MonoBehaviour {
     {
         if(Result == 1)
         {
+            MyInfo.Account.amIHost = false;
             GameObject.Find("PvpUI").GetComponent<UIPvp>().Hide();
             GameObject.Find("LobbyUI").GetComponent<UILobby>().CallPvpRoom(RoomIdx, RoomName);
             m_EnermyID = (Nettention.Proud.HostID)HostId;
