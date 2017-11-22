@@ -20,22 +20,39 @@ public class DataManager : MonoSingleton<DataManager>
 
     public void LoadAllData()
     {
-        LoadTable("Character.json", CharacterTable.Instance);
-        LoadTable("Config.json", ConfigTable.Instance);
-        LoadTable("DropItem.json", DropItemTable.Instance);    
-        LoadTable("Item.json", ItemTable.Instance);
-        LoadTable("Material.json", MaterialTable.Instance);
-        LoadTable("Monster.json", MonsterTable.Instance);
-        LoadTable("Prefab.json", PrefabTable.Instance);
-        LoadTable("Recipe.json", RecipeTable.Instance);
-        LoadTable("Stats.json", StatsTable.Instance);
-        LoadTable("String.json", StringTable.Instance);
-        LoadTable("Skill.json", SkillTable.Instance);
-        LoadTable("Tip.json", TipTable.Instance);
-        LoadTable("PassiveSkill.json", PassiveSkillTable.Instance);
-        LoadTable("World.json", WorldTable.Instance);
-        LoadTable("Stage.json", StageTable.Instance);
-        LoadTable("Active.json", ActiveTable.Instance);
+        //LoadTable("Character.json", CharacterTable.Instance);
+        //LoadTable("Config.json", ConfigTable.Instance);
+        //LoadTable("DropItem.json", DropItemTable.Instance);    
+        //LoadTable("Item.json", ItemTable.Instance);
+        //LoadTable("Material.json", MaterialTable.Instance);
+        //LoadTable("Monster.json", MonsterTable.Instance);
+        //LoadTable("Prefab.json", PrefabTable.Instance);
+        //LoadTable("Recipe.json", RecipeTable.Instance);
+        //LoadTable("Stats.json", StatsTable.Instance);
+        //LoadTable("String.json", StringTable.Instance);
+        //LoadTable("Skill.json", SkillTable.Instance);
+        //LoadTable("Tip.json", TipTable.Instance);
+        //LoadTable("PassiveSkill.json", PassiveSkillTable.Instance);
+        //LoadTable("World.json", WorldTable.Instance);
+        //LoadTable("Stage.json", StageTable.Instance);
+        //LoadTable("Active.json", ActiveTable.Instance);
+
+        LoadTable("Character", CharacterTable.Instance);
+        LoadTable("Config", ConfigTable.Instance);
+        LoadTable("DropItem", DropItemTable.Instance);
+        LoadTable("Item", ItemTable.Instance);
+        LoadTable("Material", MaterialTable.Instance);
+        LoadTable("Monster", MonsterTable.Instance);
+        LoadTable("Prefab", PrefabTable.Instance);
+        LoadTable("Recipe", RecipeTable.Instance);
+        LoadTable("Stats", StatsTable.Instance);
+        LoadTable("String", StringTable.Instance);
+        LoadTable("Skill", SkillTable.Instance);
+        LoadTable("Tip", TipTable.Instance);
+        LoadTable("PassiveSkill", PassiveSkillTable.Instance);
+        LoadTable("World", WorldTable.Instance);
+        LoadTable("Stage", StageTable.Instance);
+        LoadTable("Active", ActiveTable.Instance);
     }
 
     public void GenerateBytes()
@@ -103,9 +120,10 @@ public class DataManager : MonoSingleton<DataManager>
 
     private JSONObject ResourceLoad(string fileName)
     {
-        string filePath = string.Concat(Application.streamingAssetsPath, "/", fileName);
-        string text = File.ReadAllText(filePath);
-        return new JSONObject(text);
+        //string filePath = string.Concat(Application.streamingAssetsPath, "/", fileName);
+        TextAsset textAsset = Resources.Load<TextAsset>(string.Concat("JSon/", fileName));
+        //string text = File.ReadAllText(filePath);
+        return new JSONObject(textAsset.text);
     }
 
     private void LoadTable<T>(string name, Table<T> table) where T : IIndexer, IDeserializable, new()

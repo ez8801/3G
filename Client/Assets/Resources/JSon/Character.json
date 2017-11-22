@@ -1,0 +1,14 @@
+﻿[
+  {
+    "Id": 1,
+    "Name": "Character.Name.1",
+    "StatsId": 1,
+    "PrefabId": 1
+  },
+  {
+    "Id": 2,
+    "Name": "Character.Name.1",
+    "StatsId": 2,
+    "PrefabId": 2
+  }
+]

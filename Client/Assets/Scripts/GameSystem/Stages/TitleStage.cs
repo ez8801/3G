@@ -55,8 +55,8 @@ public class TitleStage : Stage
             m_client.userName = ""; // m_client 에 닉네임을 설정.
             m_client.userPassword = "";
             Debug.Log("ServerConnect Request");
-            //m_client.Connect(); // 서버에 접속 요청.
-            //m_client.IsWait = true;
+            m_client.Connect(); // 서버에 접속 요청.
+            m_client.IsWait = true;
 
             
             
@@ -65,7 +65,7 @@ public class TitleStage : Stage
             
             // 데이터 로드가 끝나면 change scene
             //서버 연결 안타고 다음 화면으로 넘어가려면 아래 주석 지우면됨 - NoServer
-            StageManager.Instance.ChangeStage(StageType.LobbyStage);
+            //StageManager.Instance.ChangeStage(StageType.LobbyStage);
         }
     }
 

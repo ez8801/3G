@@ -1,0 +1,58 @@
+[
+  {
+    "Id": 1,
+    "Type": 1,
+    "Name": "Passive.Name.1",
+    "Texture": "Textures/Items/Leather",
+    "Level": 1,
+    "Summary": "Passive.Summary.1"
+  },
+  {
+    "Id": 2,
+    "Type": 1,
+    "Name": "Passive.Name.2",
+    "Texture": "Textures/Items/Leather",
+    "Level": 3,
+    "Summary": "Passive.Summary.2"
+  },
+  {
+    "Id": 3,
+    "Type": 1,
+    "Name": "Passive.Name.3",
+    "Texture": "Textures/Items/Leather",
+    "Level": 2,
+    "Summary": "Passive.Summary.3"
+  },
+  {
+    "Id": 101,
+    "Type": 10,
+    "Name": "Passive.Name.101",
+    "Texture": "Textures/Items/Leather",
+    "Level": 2,
+    "Summary": "Passive.Summary.101"
+  },
+  {
+    "Id": 201,
+    "Type": 11,
+    "Name": "Passive.Name.201",
+    "Texture": "",
+    "Level": 0,
+    "Summary": "Passive.Summary.201"
+  },
+  {
+    "Id": 301,
+    "Type": 12,
+    "Name": "Passive.Name.301",
+    "Texture": "",
+    "Level": 0,
+    "Summary": "Passive.Summary.301"
+  },
+  {
+    "Id": 401,
+    "Type": 13,
+    "Name": "Passive.Name.401",
+    "Texture": "",
+    "Level": 0,
+    "Summary": "Passive.Summary.401"
+  }
+]

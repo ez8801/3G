@@ -1,0 +1,135 @@
+﻿[
+  {
+    "Id": 1001,
+    "Category":  1,
+    "Type": 1,
+    "Rarity": 1,
+    "Name": "Item.Name.1001",
+    "Desc": "",
+    "Value": 0,
+    "ItemMaterialGroup": 0,
+    "Texture": "",
+    "Price": 0
+  },
+  {
+    "Id": 2001,
+    "Category":  1,
+		"Type": 2,
+		"Rarity": 1,
+		"Name": "Item.Name.2001",
+    "Desc": "",
+		"Value": 0,
+    "ItemMaterialGroup": 0,
+    "Texture": "Textures/Items/ic_gold",
+    "Price": 0
+	},
+  {
+    "Id": 10001,
+    "Category":  2,
+    "Type": 10,
+    "Rarity": 4,
+    "Name": "Item.Name.10001",
+    "Desc": "Item.Desc.10001",
+    "Value": 2,
+    "ItemMaterialGroup": 2,
+    "Texture": "Textures/Items/Copper_Ingot",
+    "Price": 700
+  },
+  {
+    "Id": 20001,
+    "Category":  2,
+    "Type": 11,
+    "Rarity": 2,
+    "Name": "Item.Name.20001",
+    "Desc": "Item.Desc.20001",
+    "Value": 24,
+    "ItemMaterialGroup": 2,
+    "Texture": "Textures/Items/Mithril_Ingot",
+    "Price": 1400
+  },
+  {
+    "Id": 30001,
+    "Category":  2,
+    "Type": 12,
+    "Rarity": 0,
+    "Name": "Item.Name.30001",
+    "Desc": "Item.Desc.30001",
+    "Value": 31,
+    "ItemMaterialGroup": 1,
+    "Texture": "Textures/Items/Leather",
+    "Price": 2800
+  },
+  {
+    "Id": 100001,
+    "Category": 3,
+    "Type": 100,
+    "Rarity": 1,
+    "Name": "Item.Name.100001",
+    "Desc": "",
+    "Value": 1,
+    "ItemMaterialGroup": 0,
+    "Texture": "",
+    "Price": 0
+  },
+  {
+    "Id": 1000001,
+    "Category": 10,
+    "Type": 1000,
+    "Rarity": 1,
+    "Name": "Item.Name.1000001",
+    "Desc": "",
+    "Value": 2,
+    "ItemMaterialGroup": 0,
+    "Texture": "Textures/Items/I_Mineshaft_Sword",
+    "Price": 0
+  }
+  ,
+  {
+    "Id": 2000001,
+    "Category": 11,
+    "Type": 2000,
+    "Rarity": 1,
+    "Name": "Item.Name.2000001",
+    "Desc": "",
+    "Value": 1,
+    "ItemMaterialGroup": 0,
+    "Texture": "Textures/Items/I_Mineshaft_Chest",
+    "Price": 0
+  },
+  {
+    "Id": 3000001,
+    "Category": 12,
+    "Type": 3000,
+    "Rarity": 2,
+    "Name": "Item.Name.3000001",
+    "Desc": "Skill.Summary.1",
+    "Value": 1,
+    "ItemMaterialGroup": 0,
+    "Texture": "Textures/Items/I_SkillStoneBlue",
+    "Price": 0
+  },
+  {
+    "Id": 3000002,
+    "Category": 13,
+    "Type": 4000,
+    "Rarity": 3,
+    "Name": "Item.Name.3000002",
+    "Desc": "Skill.Summary.2",
+    "Value": 1,
+    "ItemMaterialGroup": 0,
+    "Texture": "Textures/Items/I_SkillStoneGreen",
+    "Price": 0
+  },
+  {
+    "Id": 3000003,
+    "Category": 14,
+    "Type": 5000,
+    "Rarity": 3,
+    "Name": "Item.Name.3000003",
+    "Desc": "Skill.Summary.3",
+    "Value": 1,
+    "ItemMaterialGroup": 0,
+    "Texture": "Textures/Items/I_SkillStoneRed",
+    "Price": 0
+  }
+]

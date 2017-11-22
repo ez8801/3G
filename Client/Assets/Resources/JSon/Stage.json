@@ -1,0 +1,62 @@
+﻿[
+  {
+    "Id": 1,
+    "Name": "Stage.Name.1",
+    "WorldId": 1,
+    "GoldReward": 100
+  },
+  {
+    "Id": 2,
+    "Name": "Stage.Name.2",
+    "WorldId": 1,
+    "GoldReward": 110
+  },
+  {
+    "Id": 3,
+    "Name": "Stage.Name.3",
+    "WorldId": 1,
+    "GoldReward": 120
+  },
+  {
+    "Id": 4,
+    "Name": "Stage.Name.4",
+    "WorldId": 1,
+    "GoldReward": 130
+  },
+  {
+    "Id": 5,
+    "Name": "Stage.Name.5",
+    "WorldId": 1,
+    "GoldReward": 200
+  },
+  {
+    "Id": 6,
+    "Name": "Stage.Name.6",
+    "WorldId": 2,
+    "GoldReward": 200
+  },
+  {
+    "Id": 7,
+    "Name": "Stage.Name.7",
+    "WorldId": 2,
+    "GoldReward": 210
+  },
+  {
+    "Id": 8,
+    "Name": "Stage.Name.8",
+    "WorldId": 2,
+    "GoldReward": 220
+  },
+  {
+    "Id": 9,
+    "Name": "Stage.Name.9",
+    "WorldId": 2,
+    "GoldReward": 230
+  },
+  {
+    "Id": 10,
+    "Name": "Stage.Name.10",
+    "WorldId": 2,
+    "GoldReward": 300
+  }
+]

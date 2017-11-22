@@ -1,0 +1,294 @@
+﻿[
+  {
+    "Key": "Item.Name.1001",
+    "Value": "경험치"
+  },
+  {
+    "Key": "Item.Name.2001",
+    "Value": "골드"
+  },
+  {
+    "Key": "Item.Name.10001",
+    "Value": "구리 주괴"
+  },
+  {
+    "Key": "Item.Desc.10001",
+    "Value": "장비 아이템을 제작하는데 사용되는 재료 아이템"
+  },
+  {
+    "Key": "Item.Name.20001",
+    "Value": "미스릴 주괴"
+  },
+  {
+    "Key": "Item.Desc.20001",
+    "Value": "장비 아이템을 제작하는데 사용되는 재료 아이템"
+  },
+  {
+    "Key": "Item.Name.30001",
+    "Value": "낡은 가죽"
+  },
+  {
+    "Key": "Item.Desc.30001",
+    "Value": "장비 아이템을 제작하는데 사용되는 재료 아이템"
+  },
+  {
+    "Key": "Item.Name.100001",
+    "Value": "낡은 갑옷 레시피"
+  },
+  {
+    "Key": "Monster.Name.1",
+    "Value": "등불지기"
+  },
+  {
+    "Key": "Monster.Name.2",
+    "Value": "슬라임"
+  },
+  {
+    "Key": "Character.Name.1",
+    "Value": "플레이어"
+  },
+  {
+    "Key": "UI.Inventory.Tab.Name.0",
+    "Value": "무기구"
+  },
+  {
+    "Key": "UI.Inventory.Tab.Name.1",
+    "Value": "방어구"
+  },
+  {
+    "Key": "UI.Inventory.Tab.Name.2",
+    "Value": "소모품"
+  },
+  {
+    "Key": "UI.AlertView.Ok",
+    "Value": "확인"
+  },
+  {
+    "Key": "UI.AlertView.Cancel",
+    "Value": "취소"
+  },
+  {
+    "Key": "UI.Item.Sell.Message",
+    "Value": "장비를 판매하면 복구 할 수 없습니다.\n[F44336]정말[-] 장비를 판매 하시겠습니까?"
+  },
+  {
+    "Key": "UI.Item.Sell.Ok",
+    "Value": "판매하기"
+  },
+  {
+    "Key": "UI.Item.Sell.Cancel",
+    "Value": "아니요"
+  },
+  {
+    "Key": "UI.Get.Gold",
+    "Value": "{0} 골드를 획득하였습니다."
+  },
+  {
+    "Key": "Item.Name.1000001",
+    "Value": "낡은 검"
+  },
+  {
+    "Key": "Item.Name.2000001",
+    "Value": "낡은 갑옷"
+  },
+  {
+    "Key": "Recipe.Name.1",
+    "Value": "낡은 검"
+  },
+  {
+    "Key": "Recipe.Name.2",
+    "Value": "낡은 갑옷"
+  },
+  {
+    "Key": "Item.Name.3000001",
+    "Value": "마나탄"
+  },
+  {
+    "Key": "Item.Name.3000002",
+    "Value": "공간 절단"
+  },
+  {
+    "Key": "Item.Name.3000003",
+    "Value": "메테오 스트라이크"
+  },
+  {
+    "Key": "UI.Equip",
+    "Value": "장착"
+  },
+  {
+    "Key": "UI.UnEquip",
+    "Value": "해제"
+  },
+  {
+    "Key": "Tip.1",
+    "Value": "아이템을 착용하면 강해집니다."
+  },
+  {
+    "Key": "Tip.2",
+    "Value": "몬스터를 사냥하면 아이템을 얻을 수 있습니다."
+  },
+  {
+    "Key": "Tip.3",
+    "Value": "클래스는 방어형, 공격형, 보조형이 있습니다."
+  },
+  {
+    "Key": "Tip.4",
+    "Value": "패시브 스킬과 장비 타입이 일치해야 적용됩니다."
+  },
+  {
+    "Key": "Tip.5",
+    "Value": "높은 등급의 장비를 착용하면 더 많은 스킬을 사용 가능합니다."
+  },
+  {
+    "Key": "UI.Passive.Equip.Message.1",
+    "Value": "빈 슬롯이 없습니다."
+  },
+  {
+    "Key": "UI.Passiveinventory.Tab.Name.0",
+    "Value": "일반"
+  },
+  {
+    "Key": "UI.Passiveinventory.Tab.Name.1",
+    "Value": "지팡이"
+  },
+  {
+    "Key": "UI.Passiveinventory.Tab.Name.2",
+    "Value": "보주"
+  },
+  {
+    "Key": "UI.Passiveinventory.Tab.Name.3",
+    "Value": "방패"
+  },
+  {
+    "Key": "UI.Passiveinventory.Tab.Name.4",
+    "Value": "검"
+  },
+  {
+    "Key": "UI.Passiveinventory.Tab.Name.5",
+    "Value": "창"
+  },
+  {
+    "Key": "UI.Passiveinventory.Tab.Name.6",
+    "Value": "활"
+  },
+  {
+    "Key": "Passive.Name.1",
+    "Value": "무모함"
+  },
+  {
+    "Key": "Passive.Summary.1",
+    "Value": "용기가 과하면 무모함이 된다. 공격력을 15증가시키고 방어력을 10감소시킨다."
+  },
+  {
+    "Key": "Passive.Name.2",
+    "Value": "이교의 술법"
+  },
+  {
+    "Key": "Passive.Summary.2",
+    "Value": "이교의 괴이한 술법을 통해 강력한 힘을 얻는다. 공격력을 30퍼센트 증가시키고 방어력을 50퍼센트 감소시킨다."
+  },
+  {
+    "Key": "Passive.Name.3",
+    "Value": "포만감"
+  },
+  {
+    "Key": "Passive.Summary.3",
+    "Value": "승리는 든든한 HP에서 나오는법. 최대 HP를 100증가시킨다."
+  },
+  {
+    "Key": "Passive.Name.101",
+    "Value": "소심함"
+  },
+  {
+    "Key": "Passive.Summary.101",
+    "Value": "보통 방해만 되지만 가끔 큰 도움이 된다. 공격력을 10감소시키고 방어력을 20증가시킨다."
+  },
+  {
+    "Key": "Skill.Name.1",
+    "Value": "SkillBlueWave"
+  },
+  {
+    "Key": "Skill.Summary.1",
+    "Value": "SkillBlueShot"
+  },
+  {
+    "Key": "Skill.Name.2",
+    "Value": "마력탄"
+  },
+  {
+    "Key": "Skill.Summary.2",
+    "Value": "공간 절단"
+  },
+  {
+    "Key": "Skill.Name.3",
+    "Value": "메테오 스트라이크"
+  },
+  {
+    "Key": "Skill.Summary.3",
+    "Value": "하늘에서 유성을 소환하여 대미지를 준다. 바닥에 닿으면 거대한 폭발을 일으켜 대미지와 넉백을 준다."
+  },
+  {
+    "Key": "Material.Name.1",
+    "Value": "가죽"
+  },
+  {
+    "Key": "Material.Name.2",
+    "Value": "주괴"
+  },
+  {
+    "Key": "World.Name.1",
+    "Value": "머드 리프트"
+  },
+  {
+    "Key": "World.Name.2",
+    "Value": "니네베"
+  },
+  {
+    "Key": "Stage.Name.1",
+    "Value": "1-1. 스테이지"
+  },
+  {
+    "Key": "Stage.Name.2",
+    "Value": "1-2. 스테이지"
+  },
+  {
+    "Key": "Stage.Name.3",
+    "Value": "1-3. 스테이지"
+  },
+  {
+    "Key": "Stage.Name.4",
+    "Value": "1-4. 스테이지"
+  },
+  {
+    "Key": "Stage.Name.5",
+    "Value": "1-5. 스테이지"
+  },
+  {
+    "Key": "Stage.Name.6",
+    "Value": "2-1. 스테이지"
+  },
+  {
+    "Key": "Stage.Name.7",
+    "Value": "2-2. 스테이지"
+  },
+  {
+    "Key": "Stage.Name.8",
+    "Value": "2-3. 스테이지"
+  },  
+  {
+    "Key": "Stage.Name.9",
+    "Value": "2-4. 스테이지"
+  },
+  {
+    "Key": "Stage.Name.10",
+    "Value": "2-5. 스테이지"
+  },
+  {
+    "Key": "Item.Name.30000001",
+    "Value": "액티브테스트"
+  },
+  {
+    "Key": "Item.Name.30000002",
+    "Value": "액티브으테스트"
+  }
+]

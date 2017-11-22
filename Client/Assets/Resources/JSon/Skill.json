@@ -1,0 +1,38 @@
+[
+  {
+    "Id": 3000001,
+    "Type": 1,
+    "Name": "Skill.Name.1",
+    "Cooltime": 5,
+    "PrefabId": "13",
+    "Texture": "Textures/Skills/S_BlueShot",
+    "Chargeable": false,
+    "Charging": 0,
+    "Level": 1,
+    "Summary": "Skill.Summary.1"
+  },
+    {
+    "Id": 3000002,
+    "Type": 1,
+    "Name": "Skill.Name.2",
+    "Cooltime": 1,
+    "PrefabId": "3000002",
+    "Texture": "Textures/Items/I_Cosmos_Spear",
+    "Chargeable": false,
+    "Charging": 0,
+    "Level": 2,
+    "Summary": "Skill.Summary.2"
+  },
+    {
+    "Id": 3000003,
+    "Type": 1,
+    "Name": "Skill.Name.3",
+    "Cooltime": 3,
+    "PrefabId": "3000002",
+    "Texture": "Textures/Skills/S_Meteor",
+    "Chargeable": false,
+    "Charging": 0,
+    "Level": 2,
+    "Summary": "Skill.Summary.3"
+  }
+]
