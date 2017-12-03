@@ -17,12 +17,34 @@ namespace S2C
 			public const Nettention.Proud.RmiID SystemChat = (Nettention.Proud.RmiID)4000+2;
 			public const Nettention.Proud.RmiID sendUserInfo = (Nettention.Proud.RmiID)4000+3;
 			public const Nettention.Proud.RmiID sendInventoryData = (Nettention.Proud.RmiID)4000+4;
+			public const Nettention.Proud.RmiID sendRaidRoomInfo = (Nettention.Proud.RmiID)4000+5;
+			public const Nettention.Proud.RmiID sendMakePVPRoomResult = (Nettention.Proud.RmiID)4000+6;
+			public const Nettention.Proud.RmiID sendPVPRoomInfo = (Nettention.Proud.RmiID)4000+7;
+			public const Nettention.Proud.RmiID sendRoomHostId = (Nettention.Proud.RmiID)4000+8;
+			public const Nettention.Proud.RmiID sendPVPRoomJoinResult = (Nettention.Proud.RmiID)4000+9;
+			public const Nettention.Proud.RmiID sendMakeAccountResult = (Nettention.Proud.RmiID)4000+10;
+			public const Nettention.Proud.RmiID sendLoginResult = (Nettention.Proud.RmiID)4000+11;
+			public const Nettention.Proud.RmiID sendSkillData = (Nettention.Proud.RmiID)4000+12;
+			public const Nettention.Proud.RmiID sendEquipmentData = (Nettention.Proud.RmiID)4000+13;
+			public const Nettention.Proud.RmiID sendChangeEquipWeaponResult = (Nettention.Proud.RmiID)4000+14;
+			public const Nettention.Proud.RmiID sendBattleInfoResult = (Nettention.Proud.RmiID)4000+15;
 		// List that has RMI ID.
 		public static Nettention.Proud.RmiID[] RmiIDList = new Nettention.Proud.RmiID[] {
 			ShowChat,
 			SystemChat,
 			sendUserInfo,
 			sendInventoryData,
+			sendRaidRoomInfo,
+			sendMakePVPRoomResult,
+			sendPVPRoomInfo,
+			sendRoomHostId,
+			sendPVPRoomJoinResult,
+			sendMakeAccountResult,
+			sendLoginResult,
+			sendSkillData,
+			sendEquipmentData,
+			sendChangeEquipWeaponResult,
+			sendBattleInfoResult,
 		};
 	}
 }

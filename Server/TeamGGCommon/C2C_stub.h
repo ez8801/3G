@@ -30,9 +30,97 @@ namespace C2C {
 #define DEFRMI_C2C_P2PChat(DerivedClass) bool DerivedClass::P2PChat ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & a,  const int & b,  const float & c)
 #define CALL_C2C_P2PChat P2PChat ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & a,  const int & b,  const float & c)
 #define PARAM_C2C_P2PChat ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & a,  const int & b,  const float & c)
+               
+		virtual bool ReadyPacket ( ::Proud::HostID, ::Proud::RmiContext& ,  const int & )		{ 
+			return false;
+		} 
+
+#define DECRMI_C2C_ReadyPacket bool ReadyPacket ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & Ready) PN_OVERRIDE
+
+#define DEFRMI_C2C_ReadyPacket(DerivedClass) bool DerivedClass::ReadyPacket ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & Ready)
+#define CALL_C2C_ReadyPacket ReadyPacket ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & Ready)
+#define PARAM_C2C_ReadyPacket ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & Ready)
+               
+		virtual bool SettingEnemyInfo ( ::Proud::HostID, ::Proud::RmiContext& ,  const int & ,  const int & ,  const int & ,  const int & )		{ 
+			return false;
+		} 
+
+#define DECRMI_C2C_SettingEnemyInfo bool SettingEnemyInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & Id,  const int & Hp,  const int & Att,  const int & def) PN_OVERRIDE
+
+#define DEFRMI_C2C_SettingEnemyInfo(DerivedClass) bool DerivedClass::SettingEnemyInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & Id,  const int & Hp,  const int & Att,  const int & def)
+#define CALL_C2C_SettingEnemyInfo SettingEnemyInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & Id,  const int & Hp,  const int & Att,  const int & def)
+#define PARAM_C2C_SettingEnemyInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & Id,  const int & Hp,  const int & Att,  const int & def)
+               
+		virtual bool StartPacket ( ::Proud::HostID, ::Proud::RmiContext& ,  const int & )		{ 
+			return false;
+		} 
+
+#define DECRMI_C2C_StartPacket bool StartPacket ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & Start) PN_OVERRIDE
+
+#define DEFRMI_C2C_StartPacket(DerivedClass) bool DerivedClass::StartPacket ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & Start)
+#define CALL_C2C_StartPacket StartPacket ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & Start)
+#define PARAM_C2C_StartPacket ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & Start)
+               
+		virtual bool LeaveRoom ( ::Proud::HostID, ::Proud::RmiContext& )		{ 
+			return false;
+		} 
+
+#define DECRMI_C2C_LeaveRoom bool LeaveRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ) PN_OVERRIDE
+
+#define DEFRMI_C2C_LeaveRoom(DerivedClass) bool DerivedClass::LeaveRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext )
+#define CALL_C2C_LeaveRoom LeaveRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext )
+#define PARAM_C2C_LeaveRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext )
+               
+		virtual bool SyncPacket ( ::Proud::HostID, ::Proud::RmiContext& ,  const int & ,  const int & ,  const int & )		{ 
+			return false;
+		} 
+
+#define DECRMI_C2C_SyncPacket bool SyncPacket ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & LocationX,  const int & LocationY,  const int & Hp) PN_OVERRIDE
+
+#define DEFRMI_C2C_SyncPacket(DerivedClass) bool DerivedClass::SyncPacket ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & LocationX,  const int & LocationY,  const int & Hp)
+#define CALL_C2C_SyncPacket SyncPacket ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & LocationX,  const int & LocationY,  const int & Hp)
+#define PARAM_C2C_SyncPacket ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & LocationX,  const int & LocationY,  const int & Hp)
+               
+		virtual bool DamagedFromEnemy ( ::Proud::HostID, ::Proud::RmiContext& ,  const int & ,  const int & )		{ 
+			return false;
+		} 
+
+#define DECRMI_C2C_DamagedFromEnemy bool DamagedFromEnemy ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & Damage,  const int & RestHP) PN_OVERRIDE
+
+#define DEFRMI_C2C_DamagedFromEnemy(DerivedClass) bool DerivedClass::DamagedFromEnemy ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & Damage,  const int & RestHP)
+#define CALL_C2C_DamagedFromEnemy DamagedFromEnemy ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & Damage,  const int & RestHP)
+#define PARAM_C2C_DamagedFromEnemy ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & Damage,  const int & RestHP)
+               
+		virtual bool UseSkill ( ::Proud::HostID, ::Proud::RmiContext& ,  const int & )		{ 
+			return false;
+		} 
+
+#define DECRMI_C2C_UseSkill bool UseSkill ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & SkillId) PN_OVERRIDE
+
+#define DEFRMI_C2C_UseSkill(DerivedClass) bool DerivedClass::UseSkill ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & SkillId)
+#define CALL_C2C_UseSkill UseSkill ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & SkillId)
+#define PARAM_C2C_UseSkill ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & SkillId)
+               
+		virtual bool MatchEnd ( ::Proud::HostID, ::Proud::RmiContext& )		{ 
+			return false;
+		} 
+
+#define DECRMI_C2C_MatchEnd bool MatchEnd ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ) PN_OVERRIDE
+
+#define DEFRMI_C2C_MatchEnd(DerivedClass) bool DerivedClass::MatchEnd ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext )
+#define CALL_C2C_MatchEnd MatchEnd ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext )
+#define PARAM_C2C_MatchEnd ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext )
  
 		virtual bool ProcessReceivedMessage(::Proud::CReceivedMessage &pa, void* hostTag) PN_OVERRIDE;
 		static const PNTCHAR* RmiName_P2PChat;
+		static const PNTCHAR* RmiName_ReadyPacket;
+		static const PNTCHAR* RmiName_SettingEnemyInfo;
+		static const PNTCHAR* RmiName_StartPacket;
+		static const PNTCHAR* RmiName_LeaveRoom;
+		static const PNTCHAR* RmiName_SyncPacket;
+		static const PNTCHAR* RmiName_DamagedFromEnemy;
+		static const PNTCHAR* RmiName_UseSkill;
+		static const PNTCHAR* RmiName_MatchEnd;
 		static const PNTCHAR* RmiName_First;
 		virtual ::Proud::RmiID* GetRmiIDList() PN_OVERRIDE { return g_RmiIDList; }
 		virtual int GetRmiIDListCount() PN_OVERRIDE { return g_RmiIDListCount; }
@@ -50,6 +138,78 @@ namespace C2C {
 			if (P2PChat_Function==nullptr) 
 				return true; 
 			return P2PChat_Function(remote,rmiContext, a, b, c); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const int & ) > ReadyPacket_Function;
+		virtual bool ReadyPacket ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & Ready) 
+		{ 
+			if (ReadyPacket_Function==nullptr) 
+				return true; 
+			return ReadyPacket_Function(remote,rmiContext, Ready); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const int & ,  const int & ,  const int & ,  const int & ) > SettingEnemyInfo_Function;
+		virtual bool SettingEnemyInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & Id,  const int & Hp,  const int & Att,  const int & def) 
+		{ 
+			if (SettingEnemyInfo_Function==nullptr) 
+				return true; 
+			return SettingEnemyInfo_Function(remote,rmiContext, Id, Hp, Att, def); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const int & ) > StartPacket_Function;
+		virtual bool StartPacket ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & Start) 
+		{ 
+			if (StartPacket_Function==nullptr) 
+				return true; 
+			return StartPacket_Function(remote,rmiContext, Start); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ) > LeaveRoom_Function;
+		virtual bool LeaveRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ) 
+		{ 
+			if (LeaveRoom_Function==nullptr) 
+				return true; 
+			return LeaveRoom_Function(remote,rmiContext); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const int & ,  const int & ,  const int & ) > SyncPacket_Function;
+		virtual bool SyncPacket ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & LocationX,  const int & LocationY,  const int & Hp) 
+		{ 
+			if (SyncPacket_Function==nullptr) 
+				return true; 
+			return SyncPacket_Function(remote,rmiContext, LocationX, LocationY, Hp); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const int & ,  const int & ) > DamagedFromEnemy_Function;
+		virtual bool DamagedFromEnemy ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & Damage,  const int & RestHP) 
+		{ 
+			if (DamagedFromEnemy_Function==nullptr) 
+				return true; 
+			return DamagedFromEnemy_Function(remote,rmiContext, Damage, RestHP); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const int & ) > UseSkill_Function;
+		virtual bool UseSkill ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & SkillId) 
+		{ 
+			if (UseSkill_Function==nullptr) 
+				return true; 
+			return UseSkill_Function(remote,rmiContext, SkillId); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ) > MatchEnd_Function;
+		virtual bool MatchEnd ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ) 
+		{ 
+			if (MatchEnd_Function==nullptr) 
+				return true; 
+			return MatchEnd_Function(remote,rmiContext); 
 		}
 
 	};

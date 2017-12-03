@@ -18,6 +18,27 @@ public:
 	DECRMI_C2S_Chat;
 	DECRMI_C2S_Login;
 	DECRMI_C2S_RequestMakeRaidRoom;
+	DECRMI_C2S_RequestJoinRaidRoom;
+	DECRMI_C2S_RequestGetRaidRoomInfo;
+	DECRMI_C2S_RequestMakePVPRoom;
+	DECRMI_C2S_RequestGetPVPRoomInfo;
+	DECRMI_C2S_RequestJoinPVPRoom;
+	DECRMI_C2S_RequestLeavePVPRoom;
+	DECRMI_C2S_RequestMakeAccount;
+	DECRMI_C2S_RequestLoginAccount;
+	DECRMI_C2S_RequestInventoryData;
+	DECRMI_C2S_RequestSkillData;
+	DECRMI_C2S_RequestEquipData;
+	DECRMI_C2S_RequestChangeEquipWeapon;
+	DECRMI_C2S_RequestBattleInfo;
+	DECRMI_C2S_RequestBattleEnd;
+	DECRMI_C2S_AddItemToInventory;
+	DECRMI_C2S_UseItemFromInventory;
+	DECRMI_C2S_AddGold;
+	DECRMI_C2S_UseGold;
+	DECRMI_C2S_SellAllItem;
+	DECRMI_C2S_SendEquipInfo;
+	DECRMI_C2S_SendPassiveEquipInfo;
 };
 
 

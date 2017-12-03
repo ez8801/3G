@@ -60,12 +60,133 @@ namespace S2C {
 #define DEFRMI_S2C_sendInventoryData(DerivedClass) bool DerivedClass::sendInventoryData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::CFastArray<items> & ivData)
 #define CALL_S2C_sendInventoryData sendInventoryData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::CFastArray<items> & ivData)
 #define PARAM_S2C_sendInventoryData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::CFastArray<items> & ivData)
+               
+		virtual bool sendRaidRoomInfo ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::CFastArray<raidrooms> & )		{ 
+			return false;
+		} 
+
+#define DECRMI_S2C_sendRaidRoomInfo bool sendRaidRoomInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::CFastArray<raidrooms> & roomData) PN_OVERRIDE
+
+#define DEFRMI_S2C_sendRaidRoomInfo(DerivedClass) bool DerivedClass::sendRaidRoomInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::CFastArray<raidrooms> & roomData)
+#define CALL_S2C_sendRaidRoomInfo sendRaidRoomInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::CFastArray<raidrooms> & roomData)
+#define PARAM_S2C_sendRaidRoomInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::CFastArray<raidrooms> & roomData)
+               
+		virtual bool sendMakePVPRoomResult ( ::Proud::HostID, ::Proud::RmiContext& ,  const int & ,  const Proud::String & ,  const int & ,  const int & )		{ 
+			return false;
+		} 
+
+#define DECRMI_S2C_sendMakePVPRoomResult bool sendMakePVPRoomResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & p2pGroupId,  const Proud::String & RoomName,  const int & RoomIdx,  const int & Result) PN_OVERRIDE
+
+#define DEFRMI_S2C_sendMakePVPRoomResult(DerivedClass) bool DerivedClass::sendMakePVPRoomResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & p2pGroupId,  const Proud::String & RoomName,  const int & RoomIdx,  const int & Result)
+#define CALL_S2C_sendMakePVPRoomResult sendMakePVPRoomResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & p2pGroupId,  const Proud::String & RoomName,  const int & RoomIdx,  const int & Result)
+#define PARAM_S2C_sendMakePVPRoomResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & p2pGroupId,  const Proud::String & RoomName,  const int & RoomIdx,  const int & Result)
+               
+		virtual bool sendPVPRoomInfo ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::CFastArray<pvprooms> & )		{ 
+			return false;
+		} 
+
+#define DECRMI_S2C_sendPVPRoomInfo bool sendPVPRoomInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::CFastArray<pvprooms> & roomData) PN_OVERRIDE
+
+#define DEFRMI_S2C_sendPVPRoomInfo(DerivedClass) bool DerivedClass::sendPVPRoomInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::CFastArray<pvprooms> & roomData)
+#define CALL_S2C_sendPVPRoomInfo sendPVPRoomInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::CFastArray<pvprooms> & roomData)
+#define PARAM_S2C_sendPVPRoomInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::CFastArray<pvprooms> & roomData)
+               
+		virtual bool sendRoomHostId ( ::Proud::HostID, ::Proud::RmiContext& ,  const int & )		{ 
+			return false;
+		} 
+
+#define DECRMI_S2C_sendRoomHostId bool sendRoomHostId ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & HostId) PN_OVERRIDE
+
+#define DEFRMI_S2C_sendRoomHostId(DerivedClass) bool DerivedClass::sendRoomHostId ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & HostId)
+#define CALL_S2C_sendRoomHostId sendRoomHostId ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & HostId)
+#define PARAM_S2C_sendRoomHostId ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & HostId)
+               
+		virtual bool sendPVPRoomJoinResult ( ::Proud::HostID, ::Proud::RmiContext& ,  const int & ,  const Proud::String & ,  const int & ,  const int & ,  const int & )		{ 
+			return false;
+		} 
+
+#define DECRMI_S2C_sendPVPRoomJoinResult bool sendPVPRoomJoinResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & p2pGroupId,  const Proud::String & RoomName,  const int & RoomIdx,  const int & HostId,  const int & Result) PN_OVERRIDE
+
+#define DEFRMI_S2C_sendPVPRoomJoinResult(DerivedClass) bool DerivedClass::sendPVPRoomJoinResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & p2pGroupId,  const Proud::String & RoomName,  const int & RoomIdx,  const int & HostId,  const int & Result)
+#define CALL_S2C_sendPVPRoomJoinResult sendPVPRoomJoinResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & p2pGroupId,  const Proud::String & RoomName,  const int & RoomIdx,  const int & HostId,  const int & Result)
+#define PARAM_S2C_sendPVPRoomJoinResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & p2pGroupId,  const Proud::String & RoomName,  const int & RoomIdx,  const int & HostId,  const int & Result)
+               
+		virtual bool sendMakeAccountResult ( ::Proud::HostID, ::Proud::RmiContext& ,  const int & )		{ 
+			return false;
+		} 
+
+#define DECRMI_S2C_sendMakeAccountResult bool sendMakeAccountResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & Result) PN_OVERRIDE
+
+#define DEFRMI_S2C_sendMakeAccountResult(DerivedClass) bool DerivedClass::sendMakeAccountResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & Result)
+#define CALL_S2C_sendMakeAccountResult sendMakeAccountResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & Result)
+#define PARAM_S2C_sendMakeAccountResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & Result)
+               
+		virtual bool sendLoginResult ( ::Proud::HostID, ::Proud::RmiContext& ,  const int & ,  const Proud::String & ,  const int & )		{ 
+			return false;
+		} 
+
+#define DECRMI_S2C_sendLoginResult bool sendLoginResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & Result,  const Proud::String & CName,  const int & gold) PN_OVERRIDE
+
+#define DEFRMI_S2C_sendLoginResult(DerivedClass) bool DerivedClass::sendLoginResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & Result,  const Proud::String & CName,  const int & gold)
+#define CALL_S2C_sendLoginResult sendLoginResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & Result,  const Proud::String & CName,  const int & gold)
+#define PARAM_S2C_sendLoginResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & Result,  const Proud::String & CName,  const int & gold)
+               
+		virtual bool sendSkillData ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::CFastArray<passiveskillinfo> & )		{ 
+			return false;
+		} 
+
+#define DECRMI_S2C_sendSkillData bool sendSkillData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::CFastArray<passiveskillinfo> & skData) PN_OVERRIDE
+
+#define DEFRMI_S2C_sendSkillData(DerivedClass) bool DerivedClass::sendSkillData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::CFastArray<passiveskillinfo> & skData)
+#define CALL_S2C_sendSkillData sendSkillData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::CFastArray<passiveskillinfo> & skData)
+#define PARAM_S2C_sendSkillData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::CFastArray<passiveskillinfo> & skData)
+               
+		virtual bool sendEquipmentData ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::CFastArray<equipinfo> & )		{ 
+			return false;
+		} 
+
+#define DECRMI_S2C_sendEquipmentData bool sendEquipmentData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::CFastArray<equipinfo> & eqData) PN_OVERRIDE
+
+#define DEFRMI_S2C_sendEquipmentData(DerivedClass) bool DerivedClass::sendEquipmentData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::CFastArray<equipinfo> & eqData)
+#define CALL_S2C_sendEquipmentData sendEquipmentData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::CFastArray<equipinfo> & eqData)
+#define PARAM_S2C_sendEquipmentData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::CFastArray<equipinfo> & eqData)
+               
+		virtual bool sendChangeEquipWeaponResult ( ::Proud::HostID, ::Proud::RmiContext& ,  const int & ,  const Proud::CFastArray<equipinfo> & )		{ 
+			return false;
+		} 
+
+#define DECRMI_S2C_sendChangeEquipWeaponResult bool sendChangeEquipWeaponResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & ResultCode,  const Proud::CFastArray<equipinfo> & eqData) PN_OVERRIDE
+
+#define DEFRMI_S2C_sendChangeEquipWeaponResult(DerivedClass) bool DerivedClass::sendChangeEquipWeaponResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & ResultCode,  const Proud::CFastArray<equipinfo> & eqData)
+#define CALL_S2C_sendChangeEquipWeaponResult sendChangeEquipWeaponResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & ResultCode,  const Proud::CFastArray<equipinfo> & eqData)
+#define PARAM_S2C_sendChangeEquipWeaponResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & ResultCode,  const Proud::CFastArray<equipinfo> & eqData)
+               
+		virtual bool sendBattleInfoResult ( ::Proud::HostID, ::Proud::RmiContext& ,  const int & ,  const Proud::CFastArray<battleinfo> & )		{ 
+			return false;
+		} 
+
+#define DECRMI_S2C_sendBattleInfoResult bool sendBattleInfoResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & ResultCode,  const Proud::CFastArray<battleinfo> & biData) PN_OVERRIDE
+
+#define DEFRMI_S2C_sendBattleInfoResult(DerivedClass) bool DerivedClass::sendBattleInfoResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & ResultCode,  const Proud::CFastArray<battleinfo> & biData)
+#define CALL_S2C_sendBattleInfoResult sendBattleInfoResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & ResultCode,  const Proud::CFastArray<battleinfo> & biData)
+#define PARAM_S2C_sendBattleInfoResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & ResultCode,  const Proud::CFastArray<battleinfo> & biData)
  
 		virtual bool ProcessReceivedMessage(::Proud::CReceivedMessage &pa, void* hostTag) PN_OVERRIDE;
 		static const PNTCHAR* RmiName_ShowChat;
 		static const PNTCHAR* RmiName_SystemChat;
 		static const PNTCHAR* RmiName_sendUserInfo;
 		static const PNTCHAR* RmiName_sendInventoryData;
+		static const PNTCHAR* RmiName_sendRaidRoomInfo;
+		static const PNTCHAR* RmiName_sendMakePVPRoomResult;
+		static const PNTCHAR* RmiName_sendPVPRoomInfo;
+		static const PNTCHAR* RmiName_sendRoomHostId;
+		static const PNTCHAR* RmiName_sendPVPRoomJoinResult;
+		static const PNTCHAR* RmiName_sendMakeAccountResult;
+		static const PNTCHAR* RmiName_sendLoginResult;
+		static const PNTCHAR* RmiName_sendSkillData;
+		static const PNTCHAR* RmiName_sendEquipmentData;
+		static const PNTCHAR* RmiName_sendChangeEquipWeaponResult;
+		static const PNTCHAR* RmiName_sendBattleInfoResult;
 		static const PNTCHAR* RmiName_First;
 		virtual ::Proud::RmiID* GetRmiIDList() PN_OVERRIDE { return g_RmiIDList; }
 		virtual int GetRmiIDListCount() PN_OVERRIDE { return g_RmiIDListCount; }
@@ -110,6 +231,105 @@ namespace S2C {
 			if (sendInventoryData_Function==nullptr) 
 				return true; 
 			return sendInventoryData_Function(remote,rmiContext, ivData); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::CFastArray<raidrooms> & ) > sendRaidRoomInfo_Function;
+		virtual bool sendRaidRoomInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::CFastArray<raidrooms> & roomData) 
+		{ 
+			if (sendRaidRoomInfo_Function==nullptr) 
+				return true; 
+			return sendRaidRoomInfo_Function(remote,rmiContext, roomData); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const int & ,  const Proud::String & ,  const int & ,  const int & ) > sendMakePVPRoomResult_Function;
+		virtual bool sendMakePVPRoomResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & p2pGroupId,  const Proud::String & RoomName,  const int & RoomIdx,  const int & Result) 
+		{ 
+			if (sendMakePVPRoomResult_Function==nullptr) 
+				return true; 
+			return sendMakePVPRoomResult_Function(remote,rmiContext, p2pGroupId, RoomName, RoomIdx, Result); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::CFastArray<pvprooms> & ) > sendPVPRoomInfo_Function;
+		virtual bool sendPVPRoomInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::CFastArray<pvprooms> & roomData) 
+		{ 
+			if (sendPVPRoomInfo_Function==nullptr) 
+				return true; 
+			return sendPVPRoomInfo_Function(remote,rmiContext, roomData); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const int & ) > sendRoomHostId_Function;
+		virtual bool sendRoomHostId ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & HostId) 
+		{ 
+			if (sendRoomHostId_Function==nullptr) 
+				return true; 
+			return sendRoomHostId_Function(remote,rmiContext, HostId); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const int & ,  const Proud::String & ,  const int & ,  const int & ,  const int & ) > sendPVPRoomJoinResult_Function;
+		virtual bool sendPVPRoomJoinResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & p2pGroupId,  const Proud::String & RoomName,  const int & RoomIdx,  const int & HostId,  const int & Result) 
+		{ 
+			if (sendPVPRoomJoinResult_Function==nullptr) 
+				return true; 
+			return sendPVPRoomJoinResult_Function(remote,rmiContext, p2pGroupId, RoomName, RoomIdx, HostId, Result); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const int & ) > sendMakeAccountResult_Function;
+		virtual bool sendMakeAccountResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & Result) 
+		{ 
+			if (sendMakeAccountResult_Function==nullptr) 
+				return true; 
+			return sendMakeAccountResult_Function(remote,rmiContext, Result); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const int & ,  const Proud::String & ,  const int & ) > sendLoginResult_Function;
+		virtual bool sendLoginResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & Result,  const Proud::String & CName,  const int & gold) 
+		{ 
+			if (sendLoginResult_Function==nullptr) 
+				return true; 
+			return sendLoginResult_Function(remote,rmiContext, Result, CName, gold); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::CFastArray<passiveskillinfo> & ) > sendSkillData_Function;
+		virtual bool sendSkillData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::CFastArray<passiveskillinfo> & skData) 
+		{ 
+			if (sendSkillData_Function==nullptr) 
+				return true; 
+			return sendSkillData_Function(remote,rmiContext, skData); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::CFastArray<equipinfo> & ) > sendEquipmentData_Function;
+		virtual bool sendEquipmentData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::CFastArray<equipinfo> & eqData) 
+		{ 
+			if (sendEquipmentData_Function==nullptr) 
+				return true; 
+			return sendEquipmentData_Function(remote,rmiContext, eqData); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const int & ,  const Proud::CFastArray<equipinfo> & ) > sendChangeEquipWeaponResult_Function;
+		virtual bool sendChangeEquipWeaponResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & ResultCode,  const Proud::CFastArray<equipinfo> & eqData) 
+		{ 
+			if (sendChangeEquipWeaponResult_Function==nullptr) 
+				return true; 
+			return sendChangeEquipWeaponResult_Function(remote,rmiContext, ResultCode, eqData); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const int & ,  const Proud::CFastArray<battleinfo> & ) > sendBattleInfoResult_Function;
+		virtual bool sendBattleInfoResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const int & ResultCode,  const Proud::CFastArray<battleinfo> & biData) 
+		{ 
+			if (sendBattleInfoResult_Function==nullptr) 
+				return true; 
+			return sendBattleInfoResult_Function(remote,rmiContext, ResultCode, biData); 
 		}
 
 	};

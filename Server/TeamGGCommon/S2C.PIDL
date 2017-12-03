@@ -1,5 +1,10 @@
 rename cs(Proud::String, System.String);
 rename cs(Proud::CFastArray<items>, Nettention.Proud.FastArray<items>);
+rename cs(Proud::CFastArray<raidrooms>, Nettention.Proud.FastArray<raidrooms>);
+rename cs(Proud::CFastArray<pvprooms>, Nettention.Proud.FastArray<pvprooms>);
+rename cs(Proud::CFastArray<passiveskillinfo>, Nettention.Proud.FastArray<passiveskillinfo>);
+rename cs(Proud::CFastArray<equipinfo>, Nettention.Proud.FastArray<equipinfo>);
+rename cs(Proud::CFastArray<battleinfo>, Nettention.Proud.FastArray<battleinfo>);
 rename cs(Proud::HostID, Nettention.Proud.HostID);
 [marshaler(cs)=Test]global S2C 4000 // server-to-client RMI, 최초 메시지 ID = 4000
 {
@@ -8,4 +13,17 @@ rename cs(Proud::HostID, Nettention.Proud.HostID);
 
 	sendUserInfo([in] Proud::String userName, [in] int att, [in] int def);
 	sendInventoryData([in] Proud::CFastArray<items> ivData);
+	sendRaidRoomInfo([in] Proud::CFastArray<raidrooms> roomData);
+	sendMakePVPRoomResult([in] int p2pGroupId, [in] Proud::String RoomName, [in] int RoomIdx, [in] int Result);
+	sendPVPRoomInfo([in] Proud::CFastArray<pvprooms> roomData);
+	sendRoomHostId([in] int HostId);
+	sendPVPRoomJoinResult([in] int p2pGroupId, [in] Proud::String RoomName, [in] int RoomIdx, [in] int HostId , [in] int Result);
+
+	sendMakeAccountResult([in] int Result);
+	sendLoginResult([in] int Result , [in] Proud::String CName, [in] int gold);
+	sendSkillData([in] Proud::CFastArray<passiveskillinfo> skData);
+	sendEquipmentData([in] Proud::CFastArray<equipinfo> eqData);
+	
+	sendChangeEquipWeaponResult([in] int ResultCode, [in] Proud::CFastArray<equipinfo> eqData);
+	sendBattleInfoResult([in] int ResultCode, [in] Proud::CFastArray<battleinfo> biData);
 }

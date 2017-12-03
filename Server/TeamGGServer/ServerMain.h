@@ -11,10 +11,13 @@ public:
 	ServerMain();
 
 	void Team3GServerMain();
+
+	void main_scene();
 private:
 	ServerManager * m_InMain;
 	S2C::Proxy m_S2CProxy;
 	
+	int cur_scene;
 };
 
 

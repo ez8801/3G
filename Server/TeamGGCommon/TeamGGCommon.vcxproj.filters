@@ -50,4 +50,9 @@
       <Filter>PIDL</Filter>
     </CustomBuild>
   </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\..\..\..\..\Program Files (x86)\Nettention\ProudNet\Sample\Simple\Common\Simple.PIDL">
+      <Filter>PIDL</Filter>
+    </CustomBuild>
+  </ItemGroup>
 </Project>

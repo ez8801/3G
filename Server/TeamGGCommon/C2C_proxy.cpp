@@ -44,10 +44,282 @@ __msg << c;
 		return RmiSend(remotes,remoteCount,rmiContext,__msg,
 			RmiName_P2PChat, (::Proud::RmiID)Rmi_P2PChat);
 	}
+        
+	bool Proxy::ReadyPacket ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext , const int & Ready)	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_ReadyPacket;
+__msg.Write(__msgid); 
+	
+__msg << Ready;
+		
+		return RmiSend(&remote,1,rmiContext,__msg,
+			RmiName_ReadyPacket, (::Proud::RmiID)Rmi_ReadyPacket);
+	}
+
+	bool Proxy::ReadyPacket ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const int & Ready)  	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_ReadyPacket;
+__msg.Write(__msgid); 
+	
+__msg << Ready;
+		
+		return RmiSend(remotes,remoteCount,rmiContext,__msg,
+			RmiName_ReadyPacket, (::Proud::RmiID)Rmi_ReadyPacket);
+	}
+        
+	bool Proxy::SettingEnemyInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext , const int & Id, const int & Hp, const int & Att, const int & def)	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_SettingEnemyInfo;
+__msg.Write(__msgid); 
+	
+__msg << Id;
+__msg << Hp;
+__msg << Att;
+__msg << def;
+		
+		return RmiSend(&remote,1,rmiContext,__msg,
+			RmiName_SettingEnemyInfo, (::Proud::RmiID)Rmi_SettingEnemyInfo);
+	}
+
+	bool Proxy::SettingEnemyInfo ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const int & Id, const int & Hp, const int & Att, const int & def)  	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_SettingEnemyInfo;
+__msg.Write(__msgid); 
+	
+__msg << Id;
+__msg << Hp;
+__msg << Att;
+__msg << def;
+		
+		return RmiSend(remotes,remoteCount,rmiContext,__msg,
+			RmiName_SettingEnemyInfo, (::Proud::RmiID)Rmi_SettingEnemyInfo);
+	}
+        
+	bool Proxy::StartPacket ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext , const int & Start)	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_StartPacket;
+__msg.Write(__msgid); 
+	
+__msg << Start;
+		
+		return RmiSend(&remote,1,rmiContext,__msg,
+			RmiName_StartPacket, (::Proud::RmiID)Rmi_StartPacket);
+	}
+
+	bool Proxy::StartPacket ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const int & Start)  	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_StartPacket;
+__msg.Write(__msgid); 
+	
+__msg << Start;
+		
+		return RmiSend(remotes,remoteCount,rmiContext,__msg,
+			RmiName_StartPacket, (::Proud::RmiID)Rmi_StartPacket);
+	}
+        
+	bool Proxy::LeaveRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext )	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_LeaveRoom;
+__msg.Write(__msgid); 
+	
+		
+		return RmiSend(&remote,1,rmiContext,__msg,
+			RmiName_LeaveRoom, (::Proud::RmiID)Rmi_LeaveRoom);
+	}
+
+	bool Proxy::LeaveRoom ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext)  	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_LeaveRoom;
+__msg.Write(__msgid); 
+	
+		
+		return RmiSend(remotes,remoteCount,rmiContext,__msg,
+			RmiName_LeaveRoom, (::Proud::RmiID)Rmi_LeaveRoom);
+	}
+        
+	bool Proxy::SyncPacket ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext , const int & LocationX, const int & LocationY, const int & Hp)	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_SyncPacket;
+__msg.Write(__msgid); 
+	
+__msg << LocationX;
+__msg << LocationY;
+__msg << Hp;
+		
+		return RmiSend(&remote,1,rmiContext,__msg,
+			RmiName_SyncPacket, (::Proud::RmiID)Rmi_SyncPacket);
+	}
+
+	bool Proxy::SyncPacket ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const int & LocationX, const int & LocationY, const int & Hp)  	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_SyncPacket;
+__msg.Write(__msgid); 
+	
+__msg << LocationX;
+__msg << LocationY;
+__msg << Hp;
+		
+		return RmiSend(remotes,remoteCount,rmiContext,__msg,
+			RmiName_SyncPacket, (::Proud::RmiID)Rmi_SyncPacket);
+	}
+        
+	bool Proxy::DamagedFromEnemy ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext , const int & Damage, const int & RestHP)	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_DamagedFromEnemy;
+__msg.Write(__msgid); 
+	
+__msg << Damage;
+__msg << RestHP;
+		
+		return RmiSend(&remote,1,rmiContext,__msg,
+			RmiName_DamagedFromEnemy, (::Proud::RmiID)Rmi_DamagedFromEnemy);
+	}
+
+	bool Proxy::DamagedFromEnemy ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const int & Damage, const int & RestHP)  	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_DamagedFromEnemy;
+__msg.Write(__msgid); 
+	
+__msg << Damage;
+__msg << RestHP;
+		
+		return RmiSend(remotes,remoteCount,rmiContext,__msg,
+			RmiName_DamagedFromEnemy, (::Proud::RmiID)Rmi_DamagedFromEnemy);
+	}
+        
+	bool Proxy::UseSkill ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext , const int & SkillId)	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_UseSkill;
+__msg.Write(__msgid); 
+	
+__msg << SkillId;
+		
+		return RmiSend(&remote,1,rmiContext,__msg,
+			RmiName_UseSkill, (::Proud::RmiID)Rmi_UseSkill);
+	}
+
+	bool Proxy::UseSkill ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const int & SkillId)  	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_UseSkill;
+__msg.Write(__msgid); 
+	
+__msg << SkillId;
+		
+		return RmiSend(remotes,remoteCount,rmiContext,__msg,
+			RmiName_UseSkill, (::Proud::RmiID)Rmi_UseSkill);
+	}
+        
+	bool Proxy::MatchEnd ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext )	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_MatchEnd;
+__msg.Write(__msgid); 
+	
+		
+		return RmiSend(&remote,1,rmiContext,__msg,
+			RmiName_MatchEnd, (::Proud::RmiID)Rmi_MatchEnd);
+	}
+
+	bool Proxy::MatchEnd ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext)  	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_MatchEnd;
+__msg.Write(__msgid); 
+	
+		
+		return RmiSend(remotes,remoteCount,rmiContext,__msg,
+			RmiName_MatchEnd, (::Proud::RmiID)Rmi_MatchEnd);
+	}
 #ifdef USE_RMI_NAME_STRING
 const PNTCHAR* Proxy::RmiName_P2PChat =_PNT("P2PChat");
 #else
 const PNTCHAR* Proxy::RmiName_P2PChat =_PNT("");
+#endif
+#ifdef USE_RMI_NAME_STRING
+const PNTCHAR* Proxy::RmiName_ReadyPacket =_PNT("ReadyPacket");
+#else
+const PNTCHAR* Proxy::RmiName_ReadyPacket =_PNT("");
+#endif
+#ifdef USE_RMI_NAME_STRING
+const PNTCHAR* Proxy::RmiName_SettingEnemyInfo =_PNT("SettingEnemyInfo");
+#else
+const PNTCHAR* Proxy::RmiName_SettingEnemyInfo =_PNT("");
+#endif
+#ifdef USE_RMI_NAME_STRING
+const PNTCHAR* Proxy::RmiName_StartPacket =_PNT("StartPacket");
+#else
+const PNTCHAR* Proxy::RmiName_StartPacket =_PNT("");
+#endif
+#ifdef USE_RMI_NAME_STRING
+const PNTCHAR* Proxy::RmiName_LeaveRoom =_PNT("LeaveRoom");
+#else
+const PNTCHAR* Proxy::RmiName_LeaveRoom =_PNT("");
+#endif
+#ifdef USE_RMI_NAME_STRING
+const PNTCHAR* Proxy::RmiName_SyncPacket =_PNT("SyncPacket");
+#else
+const PNTCHAR* Proxy::RmiName_SyncPacket =_PNT("");
+#endif
+#ifdef USE_RMI_NAME_STRING
+const PNTCHAR* Proxy::RmiName_DamagedFromEnemy =_PNT("DamagedFromEnemy");
+#else
+const PNTCHAR* Proxy::RmiName_DamagedFromEnemy =_PNT("");
+#endif
+#ifdef USE_RMI_NAME_STRING
+const PNTCHAR* Proxy::RmiName_UseSkill =_PNT("UseSkill");
+#else
+const PNTCHAR* Proxy::RmiName_UseSkill =_PNT("");
+#endif
+#ifdef USE_RMI_NAME_STRING
+const PNTCHAR* Proxy::RmiName_MatchEnd =_PNT("MatchEnd");
+#else
+const PNTCHAR* Proxy::RmiName_MatchEnd =_PNT("");
 #endif
 const PNTCHAR* Proxy::RmiName_First = RmiName_P2PChat;
 

@@ -10,9 +10,25 @@ namespace C2C {
 	::Proud::RmiID g_RmiIDList[] = {
                
 		Rmi_P2PChat,
+               
+		Rmi_ReadyPacket,
+               
+		Rmi_SettingEnemyInfo,
+               
+		Rmi_StartPacket,
+               
+		Rmi_LeaveRoom,
+               
+		Rmi_SyncPacket,
+               
+		Rmi_DamagedFromEnemy,
+               
+		Rmi_UseSkill,
+               
+		Rmi_MatchEnd,
 	};
 
-	int g_RmiIDListCount = 1;
+	int g_RmiIDListCount = 9;
 
 }
 

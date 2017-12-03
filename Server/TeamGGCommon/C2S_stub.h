@@ -50,11 +50,242 @@ namespace C2S {
 #define DEFRMI_C2S_RequestMakeRaidRoom(DerivedClass) bool DerivedClass::RequestMakeRaidRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::HostID & HostId)
 #define CALL_C2S_RequestMakeRaidRoom RequestMakeRaidRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::HostID & HostId)
 #define PARAM_C2S_RequestMakeRaidRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::HostID & HostId)
+               
+		virtual bool RequestGetRaidRoomInfo ( ::Proud::HostID, ::Proud::RmiContext& )		{ 
+			return false;
+		} 
+
+#define DECRMI_C2S_RequestGetRaidRoomInfo bool RequestGetRaidRoomInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ) PN_OVERRIDE
+
+#define DEFRMI_C2S_RequestGetRaidRoomInfo(DerivedClass) bool DerivedClass::RequestGetRaidRoomInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext )
+#define CALL_C2S_RequestGetRaidRoomInfo RequestGetRaidRoomInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext )
+#define PARAM_C2S_RequestGetRaidRoomInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext )
+               
+		virtual bool RequestJoinRaidRoom ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::HostID & ,  const int & )		{ 
+			return false;
+		} 
+
+#define DECRMI_C2S_RequestJoinRaidRoom bool RequestJoinRaidRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::HostID & HostId,  const int & GroupId) PN_OVERRIDE
+
+#define DEFRMI_C2S_RequestJoinRaidRoom(DerivedClass) bool DerivedClass::RequestJoinRaidRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::HostID & HostId,  const int & GroupId)
+#define CALL_C2S_RequestJoinRaidRoom RequestJoinRaidRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::HostID & HostId,  const int & GroupId)
+#define PARAM_C2S_RequestJoinRaidRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::HostID & HostId,  const int & GroupId)
+               
+		virtual bool RequestMakePVPRoom ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::HostID & ,  const Proud::String & ,  const Proud::String & )		{ 
+			return false;
+		} 
+
+#define DECRMI_C2S_RequestMakePVPRoom bool RequestMakePVPRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::HostID & HostId,  const Proud::String & CName,  const Proud::String & RoomName) PN_OVERRIDE
+
+#define DEFRMI_C2S_RequestMakePVPRoom(DerivedClass) bool DerivedClass::RequestMakePVPRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::HostID & HostId,  const Proud::String & CName,  const Proud::String & RoomName)
+#define CALL_C2S_RequestMakePVPRoom RequestMakePVPRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::HostID & HostId,  const Proud::String & CName,  const Proud::String & RoomName)
+#define PARAM_C2S_RequestMakePVPRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::HostID & HostId,  const Proud::String & CName,  const Proud::String & RoomName)
+               
+		virtual bool RequestGetPVPRoomInfo ( ::Proud::HostID, ::Proud::RmiContext& )		{ 
+			return false;
+		} 
+
+#define DECRMI_C2S_RequestGetPVPRoomInfo bool RequestGetPVPRoomInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ) PN_OVERRIDE
+
+#define DEFRMI_C2S_RequestGetPVPRoomInfo(DerivedClass) bool DerivedClass::RequestGetPVPRoomInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext )
+#define CALL_C2S_RequestGetPVPRoomInfo RequestGetPVPRoomInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext )
+#define PARAM_C2S_RequestGetPVPRoomInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext )
+               
+		virtual bool RequestJoinPVPRoom ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::HostID & ,  const int & ,  const int & )		{ 
+			return false;
+		} 
+
+#define DECRMI_C2S_RequestJoinPVPRoom bool RequestJoinPVPRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::HostID & HostId,  const int & RoomId,  const int & GroupId) PN_OVERRIDE
+
+#define DEFRMI_C2S_RequestJoinPVPRoom(DerivedClass) bool DerivedClass::RequestJoinPVPRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::HostID & HostId,  const int & RoomId,  const int & GroupId)
+#define CALL_C2S_RequestJoinPVPRoom RequestJoinPVPRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::HostID & HostId,  const int & RoomId,  const int & GroupId)
+#define PARAM_C2S_RequestJoinPVPRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::HostID & HostId,  const int & RoomId,  const int & GroupId)
+               
+		virtual bool RequestLeavePVPRoom ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::HostID & ,  const Proud::HostID & )		{ 
+			return false;
+		} 
+
+#define DECRMI_C2S_RequestLeavePVPRoom bool RequestLeavePVPRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::HostID & HostId,  const Proud::HostID & GroupId) PN_OVERRIDE
+
+#define DEFRMI_C2S_RequestLeavePVPRoom(DerivedClass) bool DerivedClass::RequestLeavePVPRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::HostID & HostId,  const Proud::HostID & GroupId)
+#define CALL_C2S_RequestLeavePVPRoom RequestLeavePVPRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::HostID & HostId,  const Proud::HostID & GroupId)
+#define PARAM_C2S_RequestLeavePVPRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::HostID & HostId,  const Proud::HostID & GroupId)
+               
+		virtual bool RequestMakeAccount ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & ,  const Proud::String & ,  const Proud::String & )		{ 
+			return false;
+		} 
+
+#define DECRMI_C2S_RequestMakeAccount bool RequestMakeAccount ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & id,  const Proud::String & password,  const Proud::String & CName) PN_OVERRIDE
+
+#define DEFRMI_C2S_RequestMakeAccount(DerivedClass) bool DerivedClass::RequestMakeAccount ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & id,  const Proud::String & password,  const Proud::String & CName)
+#define CALL_C2S_RequestMakeAccount RequestMakeAccount ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & id,  const Proud::String & password,  const Proud::String & CName)
+#define PARAM_C2S_RequestMakeAccount ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & id,  const Proud::String & password,  const Proud::String & CName)
+               
+		virtual bool RequestLoginAccount ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & ,  const Proud::String & )		{ 
+			return false;
+		} 
+
+#define DECRMI_C2S_RequestLoginAccount bool RequestLoginAccount ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & id,  const Proud::String & password) PN_OVERRIDE
+
+#define DEFRMI_C2S_RequestLoginAccount(DerivedClass) bool DerivedClass::RequestLoginAccount ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & id,  const Proud::String & password)
+#define CALL_C2S_RequestLoginAccount RequestLoginAccount ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & id,  const Proud::String & password)
+#define PARAM_C2S_RequestLoginAccount ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & id,  const Proud::String & password)
+               
+		virtual bool RequestInventoryData ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & )		{ 
+			return false;
+		} 
+
+#define DECRMI_C2S_RequestInventoryData bool RequestInventoryData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName) PN_OVERRIDE
+
+#define DEFRMI_C2S_RequestInventoryData(DerivedClass) bool DerivedClass::RequestInventoryData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName)
+#define CALL_C2S_RequestInventoryData RequestInventoryData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName)
+#define PARAM_C2S_RequestInventoryData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName)
+               
+		virtual bool RequestSkillData ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & )		{ 
+			return false;
+		} 
+
+#define DECRMI_C2S_RequestSkillData bool RequestSkillData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName) PN_OVERRIDE
+
+#define DEFRMI_C2S_RequestSkillData(DerivedClass) bool DerivedClass::RequestSkillData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName)
+#define CALL_C2S_RequestSkillData RequestSkillData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName)
+#define PARAM_C2S_RequestSkillData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName)
+               
+		virtual bool RequestEquipData ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & )		{ 
+			return false;
+		} 
+
+#define DECRMI_C2S_RequestEquipData bool RequestEquipData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName) PN_OVERRIDE
+
+#define DEFRMI_C2S_RequestEquipData(DerivedClass) bool DerivedClass::RequestEquipData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName)
+#define CALL_C2S_RequestEquipData RequestEquipData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName)
+#define PARAM_C2S_RequestEquipData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName)
+               
+		virtual bool RequestChangeEquipWeapon ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & ,  const int & )		{ 
+			return false;
+		} 
+
+#define DECRMI_C2S_RequestChangeEquipWeapon bool RequestChangeEquipWeapon ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & weaponIdx) PN_OVERRIDE
+
+#define DEFRMI_C2S_RequestChangeEquipWeapon(DerivedClass) bool DerivedClass::RequestChangeEquipWeapon ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & weaponIdx)
+#define CALL_C2S_RequestChangeEquipWeapon RequestChangeEquipWeapon ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & weaponIdx)
+#define PARAM_C2S_RequestChangeEquipWeapon ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & weaponIdx)
+               
+		virtual bool RequestBattleInfo ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & )		{ 
+			return false;
+		} 
+
+#define DECRMI_C2S_RequestBattleInfo bool RequestBattleInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName) PN_OVERRIDE
+
+#define DEFRMI_C2S_RequestBattleInfo(DerivedClass) bool DerivedClass::RequestBattleInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName)
+#define CALL_C2S_RequestBattleInfo RequestBattleInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName)
+#define PARAM_C2S_RequestBattleInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName)
+               
+		virtual bool RequestBattleEnd ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & ,  const Proud::CFastArray<items> & ,  const int & ,  const Proud::CFastArray<battleinfo> & )		{ 
+			return false;
+		} 
+
+#define DECRMI_C2S_RequestBattleEnd bool RequestBattleEnd ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const Proud::CFastArray<items> & itData,  const int & battleType,  const Proud::CFastArray<battleinfo> & biData) PN_OVERRIDE
+
+#define DEFRMI_C2S_RequestBattleEnd(DerivedClass) bool DerivedClass::RequestBattleEnd ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const Proud::CFastArray<items> & itData,  const int & battleType,  const Proud::CFastArray<battleinfo> & biData)
+#define CALL_C2S_RequestBattleEnd RequestBattleEnd ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const Proud::CFastArray<items> & itData,  const int & battleType,  const Proud::CFastArray<battleinfo> & biData)
+#define PARAM_C2S_RequestBattleEnd ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const Proud::CFastArray<items> & itData,  const int & battleType,  const Proud::CFastArray<battleinfo> & biData)
+               
+		virtual bool AddItemToInventory ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & ,  const int & ,  const int & ,  const int & ,  const int & )		{ 
+			return false;
+		} 
+
+#define DECRMI_C2S_AddItemToInventory bool AddItemToInventory ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & inId,  const int & itemId,  const int & itemCount,  const int & stackAble) PN_OVERRIDE
+
+#define DEFRMI_C2S_AddItemToInventory(DerivedClass) bool DerivedClass::AddItemToInventory ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & inId,  const int & itemId,  const int & itemCount,  const int & stackAble)
+#define CALL_C2S_AddItemToInventory AddItemToInventory ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & inId,  const int & itemId,  const int & itemCount,  const int & stackAble)
+#define PARAM_C2S_AddItemToInventory ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & inId,  const int & itemId,  const int & itemCount,  const int & stackAble)
+               
+		virtual bool AddGold ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & ,  const int & )		{ 
+			return false;
+		} 
+
+#define DECRMI_C2S_AddGold bool AddGold ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & gold) PN_OVERRIDE
+
+#define DEFRMI_C2S_AddGold(DerivedClass) bool DerivedClass::AddGold ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & gold)
+#define CALL_C2S_AddGold AddGold ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & gold)
+#define PARAM_C2S_AddGold ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & gold)
+               
+		virtual bool UseItemFromInventory ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & ,  const int & ,  const int & ,  const int & ,  const int & )		{ 
+			return false;
+		} 
+
+#define DECRMI_C2S_UseItemFromInventory bool UseItemFromInventory ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & inId,  const int & itemId,  const int & itemCount,  const int & stackAble) PN_OVERRIDE
+
+#define DEFRMI_C2S_UseItemFromInventory(DerivedClass) bool DerivedClass::UseItemFromInventory ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & inId,  const int & itemId,  const int & itemCount,  const int & stackAble)
+#define CALL_C2S_UseItemFromInventory UseItemFromInventory ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & inId,  const int & itemId,  const int & itemCount,  const int & stackAble)
+#define PARAM_C2S_UseItemFromInventory ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & inId,  const int & itemId,  const int & itemCount,  const int & stackAble)
+               
+		virtual bool UseGold ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & ,  const int & )		{ 
+			return false;
+		} 
+
+#define DECRMI_C2S_UseGold bool UseGold ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & gold) PN_OVERRIDE
+
+#define DEFRMI_C2S_UseGold(DerivedClass) bool DerivedClass::UseGold ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & gold)
+#define CALL_C2S_UseGold UseGold ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & gold)
+#define PARAM_C2S_UseGold ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & gold)
+               
+		virtual bool SellAllItem ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & ,  const int & ,  const int & )		{ 
+			return false;
+		} 
+
+#define DECRMI_C2S_SellAllItem bool SellAllItem ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & inId,  const int & itemId) PN_OVERRIDE
+
+#define DEFRMI_C2S_SellAllItem(DerivedClass) bool DerivedClass::SellAllItem ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & inId,  const int & itemId)
+#define CALL_C2S_SellAllItem SellAllItem ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & inId,  const int & itemId)
+#define PARAM_C2S_SellAllItem ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & inId,  const int & itemId)
+               
+		virtual bool SendEquipInfo ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & ,  const int & ,  const int & ,  const int & ,  const int & ,  const int & ,  const int & )		{ 
+			return false;
+		} 
+
+#define DECRMI_C2S_SendEquipInfo bool SendEquipInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & equipslot1,  const int & equipslot2,  const int & equipslot3,  const int & equipslot4,  const int & equipslot5,  const int & equipslot6) PN_OVERRIDE
+
+#define DEFRMI_C2S_SendEquipInfo(DerivedClass) bool DerivedClass::SendEquipInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & equipslot1,  const int & equipslot2,  const int & equipslot3,  const int & equipslot4,  const int & equipslot5,  const int & equipslot6)
+#define CALL_C2S_SendEquipInfo SendEquipInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & equipslot1,  const int & equipslot2,  const int & equipslot3,  const int & equipslot4,  const int & equipslot5,  const int & equipslot6)
+#define PARAM_C2S_SendEquipInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & equipslot1,  const int & equipslot2,  const int & equipslot3,  const int & equipslot4,  const int & equipslot5,  const int & equipslot6)
+               
+		virtual bool SendPassiveEquipInfo ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & ,  const int & ,  const int & ,  const int & ,  const int & )		{ 
+			return false;
+		} 
+
+#define DECRMI_C2S_SendPassiveEquipInfo bool SendPassiveEquipInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & equipslot1,  const int & equipslot2,  const int & equipslot3,  const int & equipslot4) PN_OVERRIDE
+
+#define DEFRMI_C2S_SendPassiveEquipInfo(DerivedClass) bool DerivedClass::SendPassiveEquipInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & equipslot1,  const int & equipslot2,  const int & equipslot3,  const int & equipslot4)
+#define CALL_C2S_SendPassiveEquipInfo SendPassiveEquipInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & equipslot1,  const int & equipslot2,  const int & equipslot3,  const int & equipslot4)
+#define PARAM_C2S_SendPassiveEquipInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & equipslot1,  const int & equipslot2,  const int & equipslot3,  const int & equipslot4)
  
 		virtual bool ProcessReceivedMessage(::Proud::CReceivedMessage &pa, void* hostTag) PN_OVERRIDE;
 		static const PNTCHAR* RmiName_Chat;
 		static const PNTCHAR* RmiName_Login;
 		static const PNTCHAR* RmiName_RequestMakeRaidRoom;
+		static const PNTCHAR* RmiName_RequestGetRaidRoomInfo;
+		static const PNTCHAR* RmiName_RequestJoinRaidRoom;
+		static const PNTCHAR* RmiName_RequestMakePVPRoom;
+		static const PNTCHAR* RmiName_RequestGetPVPRoomInfo;
+		static const PNTCHAR* RmiName_RequestJoinPVPRoom;
+		static const PNTCHAR* RmiName_RequestLeavePVPRoom;
+		static const PNTCHAR* RmiName_RequestMakeAccount;
+		static const PNTCHAR* RmiName_RequestLoginAccount;
+		static const PNTCHAR* RmiName_RequestInventoryData;
+		static const PNTCHAR* RmiName_RequestSkillData;
+		static const PNTCHAR* RmiName_RequestEquipData;
+		static const PNTCHAR* RmiName_RequestChangeEquipWeapon;
+		static const PNTCHAR* RmiName_RequestBattleInfo;
+		static const PNTCHAR* RmiName_RequestBattleEnd;
+		static const PNTCHAR* RmiName_AddItemToInventory;
+		static const PNTCHAR* RmiName_AddGold;
+		static const PNTCHAR* RmiName_UseItemFromInventory;
+		static const PNTCHAR* RmiName_UseGold;
+		static const PNTCHAR* RmiName_SellAllItem;
+		static const PNTCHAR* RmiName_SendEquipInfo;
+		static const PNTCHAR* RmiName_SendPassiveEquipInfo;
 		static const PNTCHAR* RmiName_First;
 		virtual ::Proud::RmiID* GetRmiIDList() PN_OVERRIDE { return g_RmiIDList; }
 		virtual int GetRmiIDListCount() PN_OVERRIDE { return g_RmiIDListCount; }
@@ -90,6 +321,195 @@ namespace C2S {
 			if (RequestMakeRaidRoom_Function==nullptr) 
 				return true; 
 			return RequestMakeRaidRoom_Function(remote,rmiContext, HostId); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ) > RequestGetRaidRoomInfo_Function;
+		virtual bool RequestGetRaidRoomInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ) 
+		{ 
+			if (RequestGetRaidRoomInfo_Function==nullptr) 
+				return true; 
+			return RequestGetRaidRoomInfo_Function(remote,rmiContext); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::HostID & ,  const int & ) > RequestJoinRaidRoom_Function;
+		virtual bool RequestJoinRaidRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::HostID & HostId,  const int & GroupId) 
+		{ 
+			if (RequestJoinRaidRoom_Function==nullptr) 
+				return true; 
+			return RequestJoinRaidRoom_Function(remote,rmiContext, HostId, GroupId); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::HostID & ,  const Proud::String & ,  const Proud::String & ) > RequestMakePVPRoom_Function;
+		virtual bool RequestMakePVPRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::HostID & HostId,  const Proud::String & CName,  const Proud::String & RoomName) 
+		{ 
+			if (RequestMakePVPRoom_Function==nullptr) 
+				return true; 
+			return RequestMakePVPRoom_Function(remote,rmiContext, HostId, CName, RoomName); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ) > RequestGetPVPRoomInfo_Function;
+		virtual bool RequestGetPVPRoomInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ) 
+		{ 
+			if (RequestGetPVPRoomInfo_Function==nullptr) 
+				return true; 
+			return RequestGetPVPRoomInfo_Function(remote,rmiContext); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::HostID & ,  const int & ,  const int & ) > RequestJoinPVPRoom_Function;
+		virtual bool RequestJoinPVPRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::HostID & HostId,  const int & RoomId,  const int & GroupId) 
+		{ 
+			if (RequestJoinPVPRoom_Function==nullptr) 
+				return true; 
+			return RequestJoinPVPRoom_Function(remote,rmiContext, HostId, RoomId, GroupId); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::HostID & ,  const Proud::HostID & ) > RequestLeavePVPRoom_Function;
+		virtual bool RequestLeavePVPRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::HostID & HostId,  const Proud::HostID & GroupId) 
+		{ 
+			if (RequestLeavePVPRoom_Function==nullptr) 
+				return true; 
+			return RequestLeavePVPRoom_Function(remote,rmiContext, HostId, GroupId); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & ,  const Proud::String & ,  const Proud::String & ) > RequestMakeAccount_Function;
+		virtual bool RequestMakeAccount ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & id,  const Proud::String & password,  const Proud::String & CName) 
+		{ 
+			if (RequestMakeAccount_Function==nullptr) 
+				return true; 
+			return RequestMakeAccount_Function(remote,rmiContext, id, password, CName); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & ,  const Proud::String & ) > RequestLoginAccount_Function;
+		virtual bool RequestLoginAccount ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & id,  const Proud::String & password) 
+		{ 
+			if (RequestLoginAccount_Function==nullptr) 
+				return true; 
+			return RequestLoginAccount_Function(remote,rmiContext, id, password); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & ) > RequestInventoryData_Function;
+		virtual bool RequestInventoryData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName) 
+		{ 
+			if (RequestInventoryData_Function==nullptr) 
+				return true; 
+			return RequestInventoryData_Function(remote,rmiContext, CName); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & ) > RequestSkillData_Function;
+		virtual bool RequestSkillData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName) 
+		{ 
+			if (RequestSkillData_Function==nullptr) 
+				return true; 
+			return RequestSkillData_Function(remote,rmiContext, CName); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & ) > RequestEquipData_Function;
+		virtual bool RequestEquipData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName) 
+		{ 
+			if (RequestEquipData_Function==nullptr) 
+				return true; 
+			return RequestEquipData_Function(remote,rmiContext, CName); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & ,  const int & ) > RequestChangeEquipWeapon_Function;
+		virtual bool RequestChangeEquipWeapon ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & weaponIdx) 
+		{ 
+			if (RequestChangeEquipWeapon_Function==nullptr) 
+				return true; 
+			return RequestChangeEquipWeapon_Function(remote,rmiContext, CName, weaponIdx); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & ) > RequestBattleInfo_Function;
+		virtual bool RequestBattleInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName) 
+		{ 
+			if (RequestBattleInfo_Function==nullptr) 
+				return true; 
+			return RequestBattleInfo_Function(remote,rmiContext, CName); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & ,  const Proud::CFastArray<items> & ,  const int & ,  const Proud::CFastArray<battleinfo> & ) > RequestBattleEnd_Function;
+		virtual bool RequestBattleEnd ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const Proud::CFastArray<items> & itData,  const int & battleType,  const Proud::CFastArray<battleinfo> & biData) 
+		{ 
+			if (RequestBattleEnd_Function==nullptr) 
+				return true; 
+			return RequestBattleEnd_Function(remote,rmiContext, CName, itData, battleType, biData); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & ,  const int & ,  const int & ,  const int & ,  const int & ) > AddItemToInventory_Function;
+		virtual bool AddItemToInventory ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & inId,  const int & itemId,  const int & itemCount,  const int & stackAble) 
+		{ 
+			if (AddItemToInventory_Function==nullptr) 
+				return true; 
+			return AddItemToInventory_Function(remote,rmiContext, CName, inId, itemId, itemCount, stackAble); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & ,  const int & ) > AddGold_Function;
+		virtual bool AddGold ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & gold) 
+		{ 
+			if (AddGold_Function==nullptr) 
+				return true; 
+			return AddGold_Function(remote,rmiContext, CName, gold); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & ,  const int & ,  const int & ,  const int & ,  const int & ) > UseItemFromInventory_Function;
+		virtual bool UseItemFromInventory ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & inId,  const int & itemId,  const int & itemCount,  const int & stackAble) 
+		{ 
+			if (UseItemFromInventory_Function==nullptr) 
+				return true; 
+			return UseItemFromInventory_Function(remote,rmiContext, CName, inId, itemId, itemCount, stackAble); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & ,  const int & ) > UseGold_Function;
+		virtual bool UseGold ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & gold) 
+		{ 
+			if (UseGold_Function==nullptr) 
+				return true; 
+			return UseGold_Function(remote,rmiContext, CName, gold); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & ,  const int & ,  const int & ) > SellAllItem_Function;
+		virtual bool SellAllItem ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & inId,  const int & itemId) 
+		{ 
+			if (SellAllItem_Function==nullptr) 
+				return true; 
+			return SellAllItem_Function(remote,rmiContext, CName, inId, itemId); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & ,  const int & ,  const int & ,  const int & ,  const int & ,  const int & ,  const int & ) > SendEquipInfo_Function;
+		virtual bool SendEquipInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & equipslot1,  const int & equipslot2,  const int & equipslot3,  const int & equipslot4,  const int & equipslot5,  const int & equipslot6) 
+		{ 
+			if (SendEquipInfo_Function==nullptr) 
+				return true; 
+			return SendEquipInfo_Function(remote,rmiContext, CName, equipslot1, equipslot2, equipslot3, equipslot4, equipslot5, equipslot6); 
+		}
+
+               
+		std::function< bool ( ::Proud::HostID, ::Proud::RmiContext& ,  const Proud::String & ,  const int & ,  const int & ,  const int & ,  const int & ) > SendPassiveEquipInfo_Function;
+		virtual bool SendPassiveEquipInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ,  const Proud::String & CName,  const int & equipslot1,  const int & equipslot2,  const int & equipslot3,  const int & equipslot4) 
+		{ 
+			if (SendPassiveEquipInfo_Function==nullptr) 
+				return true; 
+			return SendPassiveEquipInfo_Function(remote,rmiContext, CName, equipslot1, equipslot2, equipslot3, equipslot4); 
 		}
 
 	};

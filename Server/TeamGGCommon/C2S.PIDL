@@ -1,6 +1,9 @@
 rename cs(Proud::HostID, Nettention.Proud.HostID);
 rename cs(Proud::String, System.String);
-global C2S 3000 // client-to-server RMI, First message ID = 3000
+rename cs(Proud::CFastArray<battleinfo>, Nettention.Proud.FastArray<battleinfo>);
+rename cs(Proud::CFastArray<items>, Nettention.Proud.FastArray<items>);
+rename cs(Proud::CFastArray<equipinfo>, Nettention.Proud.FastArray<equipinfo>);
+[marshaler(cs)=Test]global C2S 3000 // client-to-server RMI, First message ID = 3000
 {
     
     Chat([in] Proud::String a, 
@@ -8,5 +11,30 @@ global C2S 3000 // client-to-server RMI, First message ID = 3000
         [in] float c);
 	Login([in] Proud::String id,[in] Proud::String password);
 	RequestMakeRaidRoom([in] Proud::HostID HostId);
+	RequestGetRaidRoomInfo();
+	RequestJoinRaidRoom([in] Proud::HostID HostId, [in] int GroupId);
 
+	RequestMakePVPRoom([in] Proud::HostID HostId, [in] Proud::String CName, [in] Proud::String RoomName );
+	RequestGetPVPRoomInfo();
+	RequestJoinPVPRoom([in] Proud::HostID HostId ,[in] int RoomId, [in] int GroupId);
+	RequestLeavePVPRoom([in] Proud::HostID HostId , [in] Proud::HostID GroupId);
+	RequestMakeAccount([in] Proud::String id, [in] Proud::String password, [in]Proud::String CName);
+	RequestLoginAccount([in]Proud::String id, [in] Proud::String password);
+
+	RequestInventoryData([in]Proud::String CName);
+	RequestSkillData([in]Proud::String CName);
+	RequestEquipData([in]Proud::String CName);
+
+	RequestChangeEquipWeapon([in]Proud::String CName, [in] int weaponIdx);
+	RequestBattleInfo([in]Proud::String CName);
+	RequestBattleEnd([in]Proud::String CName , [in] Proud::CFastArray<items> itData,[in] int battleType, [in] Proud::CFastArray<battleinfo> biData);
+
+	AddItemToInventory([in] Proud::String CName, [in] int inId, [in] int itemId, [in] int itemCount, [in] int stackAble);
+	AddGold([in] Proud::String CName, [in] int gold);
+	UseItemFromInventory([in] Proud::String CName, [in] int inId, [in] int itemId,[in] int itemCount, [in] int stackAble);
+	UseGold([in] Proud::String CName, [in] int gold);
+
+	SellAllItem([in] Proud::String CName, [in] int inId, [in] int itemId);
+	SendEquipInfo([in] Proud::String CName, [in] int equipslot1 ,[in] int equipslot2 ,[in] int equipslot3 ,[in] int equipslot4, [in] int equipslot5, [in] int equipslot6);
+	SendPassiveEquipInfo([in] Proud::String CName, [in] int equipslot1 ,[in] int equipslot2 ,[in] int equipslot3, [in] int equipslot4 );
 }

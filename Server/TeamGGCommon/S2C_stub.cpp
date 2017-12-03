@@ -355,6 +355,864 @@ namespace S2C {
 					}
 				}
 				break;
+			case Rmi_sendRaidRoomInfo:
+				{
+					::Proud::RmiContext ctx;
+					ctx.m_sentFrom=pa.GetRemoteHostID();
+					ctx.m_relayed=pa.IsRelayed();
+					ctx.m_hostTag = hostTag;
+					ctx.m_encryptMode = pa.GetEncryptMode();
+					ctx.m_compressMode = pa.GetCompressMode();
+					
+					
+					Proud::CFastArray<raidrooms> roomData; __msg >> roomData;
+					m_core->PostCheckReadMessage(__msg,RmiName_sendRaidRoomInfo);
+					
+			
+					if(m_enableNotifyCallFromStub && !m_internalUse)
+					{
+						::Proud::String parameterString;
+						
+						::Proud::AppendTextOut(parameterString,roomData);	
+						
+						NotifyCallFromStub(remote, (::Proud::RmiID)Rmi_sendRaidRoomInfo, 
+							RmiName_sendRaidRoomInfo,parameterString);
+			
+			#ifdef VIZAGENT
+						m_core->Viz_NotifyRecvToStub(remote, (::Proud::RmiID)Rmi_sendRaidRoomInfo, 
+							RmiName_sendRaidRoomInfo, parameterString);
+			#endif
+					}
+					else if(!m_internalUse)
+					{
+			#ifdef VIZAGENT
+						m_core->Viz_NotifyRecvToStub(remote, (::Proud::RmiID)Rmi_sendRaidRoomInfo, 
+							RmiName_sendRaidRoomInfo, _PNT(""));
+			#endif
+					}
+						
+					int64_t __t0 = 0;
+					if(!m_internalUse && m_enableStubProfiling)
+					{
+						::Proud::BeforeRmiSummary summary;
+						summary.m_rmiID = (::Proud::RmiID)Rmi_sendRaidRoomInfo;
+						summary.m_rmiName = RmiName_sendRaidRoomInfo;
+						summary.m_hostID = remote;
+						summary.m_hostTag = hostTag;
+						BeforeRmiInvocation(summary);
+			
+						__t0 = ::Proud::GetPreciseCurrentTimeMs();
+					}
+						
+					// Call this method.
+					bool __ret = sendRaidRoomInfo (remote,ctx , roomData );
+						
+					if(__ret==false)
+					{
+						// Error: RMI function that a user did not create has been called. 
+						m_core->ShowNotImplementedRmiWarning(RmiName_sendRaidRoomInfo);
+					}
+						
+					if(!m_internalUse && m_enableStubProfiling)
+					{
+						::Proud::AfterRmiSummary summary;
+						summary.m_rmiID = (::Proud::RmiID)Rmi_sendRaidRoomInfo;
+						summary.m_rmiName = RmiName_sendRaidRoomInfo;
+						summary.m_hostID = remote;
+						summary.m_hostTag = hostTag;
+						int64_t __t1;
+			
+						__t1 = ::Proud::GetPreciseCurrentTimeMs();
+			
+						summary.m_elapsedTime = (uint32_t)(__t1 - __t0);
+						AfterRmiInvocation(summary);
+					}
+				}
+				break;
+			case Rmi_sendMakePVPRoomResult:
+				{
+					::Proud::RmiContext ctx;
+					ctx.m_sentFrom=pa.GetRemoteHostID();
+					ctx.m_relayed=pa.IsRelayed();
+					ctx.m_hostTag = hostTag;
+					ctx.m_encryptMode = pa.GetEncryptMode();
+					ctx.m_compressMode = pa.GetCompressMode();
+					
+					
+					int p2pGroupId; __msg >> p2pGroupId;
+					Proud::String RoomName; __msg >> RoomName;
+					int RoomIdx; __msg >> RoomIdx;
+					int Result; __msg >> Result;
+					m_core->PostCheckReadMessage(__msg,RmiName_sendMakePVPRoomResult);
+					
+			
+					if(m_enableNotifyCallFromStub && !m_internalUse)
+					{
+						::Proud::String parameterString;
+						
+						::Proud::AppendTextOut(parameterString,p2pGroupId);	
+										
+						parameterString += _PNT(", ");
+						::Proud::AppendTextOut(parameterString,RoomName);	
+										
+						parameterString += _PNT(", ");
+						::Proud::AppendTextOut(parameterString,RoomIdx);	
+										
+						parameterString += _PNT(", ");
+						::Proud::AppendTextOut(parameterString,Result);	
+						
+						NotifyCallFromStub(remote, (::Proud::RmiID)Rmi_sendMakePVPRoomResult, 
+							RmiName_sendMakePVPRoomResult,parameterString);
+			
+			#ifdef VIZAGENT
+						m_core->Viz_NotifyRecvToStub(remote, (::Proud::RmiID)Rmi_sendMakePVPRoomResult, 
+							RmiName_sendMakePVPRoomResult, parameterString);
+			#endif
+					}
+					else if(!m_internalUse)
+					{
+			#ifdef VIZAGENT
+						m_core->Viz_NotifyRecvToStub(remote, (::Proud::RmiID)Rmi_sendMakePVPRoomResult, 
+							RmiName_sendMakePVPRoomResult, _PNT(""));
+			#endif
+					}
+						
+					int64_t __t0 = 0;
+					if(!m_internalUse && m_enableStubProfiling)
+					{
+						::Proud::BeforeRmiSummary summary;
+						summary.m_rmiID = (::Proud::RmiID)Rmi_sendMakePVPRoomResult;
+						summary.m_rmiName = RmiName_sendMakePVPRoomResult;
+						summary.m_hostID = remote;
+						summary.m_hostTag = hostTag;
+						BeforeRmiInvocation(summary);
+			
+						__t0 = ::Proud::GetPreciseCurrentTimeMs();
+					}
+						
+					// Call this method.
+					bool __ret = sendMakePVPRoomResult (remote,ctx , p2pGroupId, RoomName, RoomIdx, Result );
+						
+					if(__ret==false)
+					{
+						// Error: RMI function that a user did not create has been called. 
+						m_core->ShowNotImplementedRmiWarning(RmiName_sendMakePVPRoomResult);
+					}
+						
+					if(!m_internalUse && m_enableStubProfiling)
+					{
+						::Proud::AfterRmiSummary summary;
+						summary.m_rmiID = (::Proud::RmiID)Rmi_sendMakePVPRoomResult;
+						summary.m_rmiName = RmiName_sendMakePVPRoomResult;
+						summary.m_hostID = remote;
+						summary.m_hostTag = hostTag;
+						int64_t __t1;
+			
+						__t1 = ::Proud::GetPreciseCurrentTimeMs();
+			
+						summary.m_elapsedTime = (uint32_t)(__t1 - __t0);
+						AfterRmiInvocation(summary);
+					}
+				}
+				break;
+			case Rmi_sendPVPRoomInfo:
+				{
+					::Proud::RmiContext ctx;
+					ctx.m_sentFrom=pa.GetRemoteHostID();
+					ctx.m_relayed=pa.IsRelayed();
+					ctx.m_hostTag = hostTag;
+					ctx.m_encryptMode = pa.GetEncryptMode();
+					ctx.m_compressMode = pa.GetCompressMode();
+					
+					
+					Proud::CFastArray<pvprooms> roomData; __msg >> roomData;
+					m_core->PostCheckReadMessage(__msg,RmiName_sendPVPRoomInfo);
+					
+			
+					if(m_enableNotifyCallFromStub && !m_internalUse)
+					{
+						::Proud::String parameterString;
+						
+						::Proud::AppendTextOut(parameterString,roomData);	
+						
+						NotifyCallFromStub(remote, (::Proud::RmiID)Rmi_sendPVPRoomInfo, 
+							RmiName_sendPVPRoomInfo,parameterString);
+			
+			#ifdef VIZAGENT
+						m_core->Viz_NotifyRecvToStub(remote, (::Proud::RmiID)Rmi_sendPVPRoomInfo, 
+							RmiName_sendPVPRoomInfo, parameterString);
+			#endif
+					}
+					else if(!m_internalUse)
+					{
+			#ifdef VIZAGENT
+						m_core->Viz_NotifyRecvToStub(remote, (::Proud::RmiID)Rmi_sendPVPRoomInfo, 
+							RmiName_sendPVPRoomInfo, _PNT(""));
+			#endif
+					}
+						
+					int64_t __t0 = 0;
+					if(!m_internalUse && m_enableStubProfiling)
+					{
+						::Proud::BeforeRmiSummary summary;
+						summary.m_rmiID = (::Proud::RmiID)Rmi_sendPVPRoomInfo;
+						summary.m_rmiName = RmiName_sendPVPRoomInfo;
+						summary.m_hostID = remote;
+						summary.m_hostTag = hostTag;
+						BeforeRmiInvocation(summary);
+			
+						__t0 = ::Proud::GetPreciseCurrentTimeMs();
+					}
+						
+					// Call this method.
+					bool __ret = sendPVPRoomInfo (remote,ctx , roomData );
+						
+					if(__ret==false)
+					{
+						// Error: RMI function that a user did not create has been called. 
+						m_core->ShowNotImplementedRmiWarning(RmiName_sendPVPRoomInfo);
+					}
+						
+					if(!m_internalUse && m_enableStubProfiling)
+					{
+						::Proud::AfterRmiSummary summary;
+						summary.m_rmiID = (::Proud::RmiID)Rmi_sendPVPRoomInfo;
+						summary.m_rmiName = RmiName_sendPVPRoomInfo;
+						summary.m_hostID = remote;
+						summary.m_hostTag = hostTag;
+						int64_t __t1;
+			
+						__t1 = ::Proud::GetPreciseCurrentTimeMs();
+			
+						summary.m_elapsedTime = (uint32_t)(__t1 - __t0);
+						AfterRmiInvocation(summary);
+					}
+				}
+				break;
+			case Rmi_sendRoomHostId:
+				{
+					::Proud::RmiContext ctx;
+					ctx.m_sentFrom=pa.GetRemoteHostID();
+					ctx.m_relayed=pa.IsRelayed();
+					ctx.m_hostTag = hostTag;
+					ctx.m_encryptMode = pa.GetEncryptMode();
+					ctx.m_compressMode = pa.GetCompressMode();
+					
+					
+					int HostId; __msg >> HostId;
+					m_core->PostCheckReadMessage(__msg,RmiName_sendRoomHostId);
+					
+			
+					if(m_enableNotifyCallFromStub && !m_internalUse)
+					{
+						::Proud::String parameterString;
+						
+						::Proud::AppendTextOut(parameterString,HostId);	
+						
+						NotifyCallFromStub(remote, (::Proud::RmiID)Rmi_sendRoomHostId, 
+							RmiName_sendRoomHostId,parameterString);
+			
+			#ifdef VIZAGENT
+						m_core->Viz_NotifyRecvToStub(remote, (::Proud::RmiID)Rmi_sendRoomHostId, 
+							RmiName_sendRoomHostId, parameterString);
+			#endif
+					}
+					else if(!m_internalUse)
+					{
+			#ifdef VIZAGENT
+						m_core->Viz_NotifyRecvToStub(remote, (::Proud::RmiID)Rmi_sendRoomHostId, 
+							RmiName_sendRoomHostId, _PNT(""));
+			#endif
+					}
+						
+					int64_t __t0 = 0;
+					if(!m_internalUse && m_enableStubProfiling)
+					{
+						::Proud::BeforeRmiSummary summary;
+						summary.m_rmiID = (::Proud::RmiID)Rmi_sendRoomHostId;
+						summary.m_rmiName = RmiName_sendRoomHostId;
+						summary.m_hostID = remote;
+						summary.m_hostTag = hostTag;
+						BeforeRmiInvocation(summary);
+			
+						__t0 = ::Proud::GetPreciseCurrentTimeMs();
+					}
+						
+					// Call this method.
+					bool __ret = sendRoomHostId (remote,ctx , HostId );
+						
+					if(__ret==false)
+					{
+						// Error: RMI function that a user did not create has been called. 
+						m_core->ShowNotImplementedRmiWarning(RmiName_sendRoomHostId);
+					}
+						
+					if(!m_internalUse && m_enableStubProfiling)
+					{
+						::Proud::AfterRmiSummary summary;
+						summary.m_rmiID = (::Proud::RmiID)Rmi_sendRoomHostId;
+						summary.m_rmiName = RmiName_sendRoomHostId;
+						summary.m_hostID = remote;
+						summary.m_hostTag = hostTag;
+						int64_t __t1;
+			
+						__t1 = ::Proud::GetPreciseCurrentTimeMs();
+			
+						summary.m_elapsedTime = (uint32_t)(__t1 - __t0);
+						AfterRmiInvocation(summary);
+					}
+				}
+				break;
+			case Rmi_sendPVPRoomJoinResult:
+				{
+					::Proud::RmiContext ctx;
+					ctx.m_sentFrom=pa.GetRemoteHostID();
+					ctx.m_relayed=pa.IsRelayed();
+					ctx.m_hostTag = hostTag;
+					ctx.m_encryptMode = pa.GetEncryptMode();
+					ctx.m_compressMode = pa.GetCompressMode();
+					
+					
+					int p2pGroupId; __msg >> p2pGroupId;
+					Proud::String RoomName; __msg >> RoomName;
+					int RoomIdx; __msg >> RoomIdx;
+					int HostId; __msg >> HostId;
+					int Result; __msg >> Result;
+					m_core->PostCheckReadMessage(__msg,RmiName_sendPVPRoomJoinResult);
+					
+			
+					if(m_enableNotifyCallFromStub && !m_internalUse)
+					{
+						::Proud::String parameterString;
+						
+						::Proud::AppendTextOut(parameterString,p2pGroupId);	
+										
+						parameterString += _PNT(", ");
+						::Proud::AppendTextOut(parameterString,RoomName);	
+										
+						parameterString += _PNT(", ");
+						::Proud::AppendTextOut(parameterString,RoomIdx);	
+										
+						parameterString += _PNT(", ");
+						::Proud::AppendTextOut(parameterString,HostId);	
+										
+						parameterString += _PNT(", ");
+						::Proud::AppendTextOut(parameterString,Result);	
+						
+						NotifyCallFromStub(remote, (::Proud::RmiID)Rmi_sendPVPRoomJoinResult, 
+							RmiName_sendPVPRoomJoinResult,parameterString);
+			
+			#ifdef VIZAGENT
+						m_core->Viz_NotifyRecvToStub(remote, (::Proud::RmiID)Rmi_sendPVPRoomJoinResult, 
+							RmiName_sendPVPRoomJoinResult, parameterString);
+			#endif
+					}
+					else if(!m_internalUse)
+					{
+			#ifdef VIZAGENT
+						m_core->Viz_NotifyRecvToStub(remote, (::Proud::RmiID)Rmi_sendPVPRoomJoinResult, 
+							RmiName_sendPVPRoomJoinResult, _PNT(""));
+			#endif
+					}
+						
+					int64_t __t0 = 0;
+					if(!m_internalUse && m_enableStubProfiling)
+					{
+						::Proud::BeforeRmiSummary summary;
+						summary.m_rmiID = (::Proud::RmiID)Rmi_sendPVPRoomJoinResult;
+						summary.m_rmiName = RmiName_sendPVPRoomJoinResult;
+						summary.m_hostID = remote;
+						summary.m_hostTag = hostTag;
+						BeforeRmiInvocation(summary);
+			
+						__t0 = ::Proud::GetPreciseCurrentTimeMs();
+					}
+						
+					// Call this method.
+					bool __ret = sendPVPRoomJoinResult (remote,ctx , p2pGroupId, RoomName, RoomIdx, HostId, Result );
+						
+					if(__ret==false)
+					{
+						// Error: RMI function that a user did not create has been called. 
+						m_core->ShowNotImplementedRmiWarning(RmiName_sendPVPRoomJoinResult);
+					}
+						
+					if(!m_internalUse && m_enableStubProfiling)
+					{
+						::Proud::AfterRmiSummary summary;
+						summary.m_rmiID = (::Proud::RmiID)Rmi_sendPVPRoomJoinResult;
+						summary.m_rmiName = RmiName_sendPVPRoomJoinResult;
+						summary.m_hostID = remote;
+						summary.m_hostTag = hostTag;
+						int64_t __t1;
+			
+						__t1 = ::Proud::GetPreciseCurrentTimeMs();
+			
+						summary.m_elapsedTime = (uint32_t)(__t1 - __t0);
+						AfterRmiInvocation(summary);
+					}
+				}
+				break;
+			case Rmi_sendMakeAccountResult:
+				{
+					::Proud::RmiContext ctx;
+					ctx.m_sentFrom=pa.GetRemoteHostID();
+					ctx.m_relayed=pa.IsRelayed();
+					ctx.m_hostTag = hostTag;
+					ctx.m_encryptMode = pa.GetEncryptMode();
+					ctx.m_compressMode = pa.GetCompressMode();
+					
+					
+					int Result; __msg >> Result;
+					m_core->PostCheckReadMessage(__msg,RmiName_sendMakeAccountResult);
+					
+			
+					if(m_enableNotifyCallFromStub && !m_internalUse)
+					{
+						::Proud::String parameterString;
+						
+						::Proud::AppendTextOut(parameterString,Result);	
+						
+						NotifyCallFromStub(remote, (::Proud::RmiID)Rmi_sendMakeAccountResult, 
+							RmiName_sendMakeAccountResult,parameterString);
+			
+			#ifdef VIZAGENT
+						m_core->Viz_NotifyRecvToStub(remote, (::Proud::RmiID)Rmi_sendMakeAccountResult, 
+							RmiName_sendMakeAccountResult, parameterString);
+			#endif
+					}
+					else if(!m_internalUse)
+					{
+			#ifdef VIZAGENT
+						m_core->Viz_NotifyRecvToStub(remote, (::Proud::RmiID)Rmi_sendMakeAccountResult, 
+							RmiName_sendMakeAccountResult, _PNT(""));
+			#endif
+					}
+						
+					int64_t __t0 = 0;
+					if(!m_internalUse && m_enableStubProfiling)
+					{
+						::Proud::BeforeRmiSummary summary;
+						summary.m_rmiID = (::Proud::RmiID)Rmi_sendMakeAccountResult;
+						summary.m_rmiName = RmiName_sendMakeAccountResult;
+						summary.m_hostID = remote;
+						summary.m_hostTag = hostTag;
+						BeforeRmiInvocation(summary);
+			
+						__t0 = ::Proud::GetPreciseCurrentTimeMs();
+					}
+						
+					// Call this method.
+					bool __ret = sendMakeAccountResult (remote,ctx , Result );
+						
+					if(__ret==false)
+					{
+						// Error: RMI function that a user did not create has been called. 
+						m_core->ShowNotImplementedRmiWarning(RmiName_sendMakeAccountResult);
+					}
+						
+					if(!m_internalUse && m_enableStubProfiling)
+					{
+						::Proud::AfterRmiSummary summary;
+						summary.m_rmiID = (::Proud::RmiID)Rmi_sendMakeAccountResult;
+						summary.m_rmiName = RmiName_sendMakeAccountResult;
+						summary.m_hostID = remote;
+						summary.m_hostTag = hostTag;
+						int64_t __t1;
+			
+						__t1 = ::Proud::GetPreciseCurrentTimeMs();
+			
+						summary.m_elapsedTime = (uint32_t)(__t1 - __t0);
+						AfterRmiInvocation(summary);
+					}
+				}
+				break;
+			case Rmi_sendLoginResult:
+				{
+					::Proud::RmiContext ctx;
+					ctx.m_sentFrom=pa.GetRemoteHostID();
+					ctx.m_relayed=pa.IsRelayed();
+					ctx.m_hostTag = hostTag;
+					ctx.m_encryptMode = pa.GetEncryptMode();
+					ctx.m_compressMode = pa.GetCompressMode();
+					
+					
+					int Result; __msg >> Result;
+					Proud::String CName; __msg >> CName;
+					int gold; __msg >> gold;
+					m_core->PostCheckReadMessage(__msg,RmiName_sendLoginResult);
+					
+			
+					if(m_enableNotifyCallFromStub && !m_internalUse)
+					{
+						::Proud::String parameterString;
+						
+						::Proud::AppendTextOut(parameterString,Result);	
+										
+						parameterString += _PNT(", ");
+						::Proud::AppendTextOut(parameterString,CName);	
+										
+						parameterString += _PNT(", ");
+						::Proud::AppendTextOut(parameterString,gold);	
+						
+						NotifyCallFromStub(remote, (::Proud::RmiID)Rmi_sendLoginResult, 
+							RmiName_sendLoginResult,parameterString);
+			
+			#ifdef VIZAGENT
+						m_core->Viz_NotifyRecvToStub(remote, (::Proud::RmiID)Rmi_sendLoginResult, 
+							RmiName_sendLoginResult, parameterString);
+			#endif
+					}
+					else if(!m_internalUse)
+					{
+			#ifdef VIZAGENT
+						m_core->Viz_NotifyRecvToStub(remote, (::Proud::RmiID)Rmi_sendLoginResult, 
+							RmiName_sendLoginResult, _PNT(""));
+			#endif
+					}
+						
+					int64_t __t0 = 0;
+					if(!m_internalUse && m_enableStubProfiling)
+					{
+						::Proud::BeforeRmiSummary summary;
+						summary.m_rmiID = (::Proud::RmiID)Rmi_sendLoginResult;
+						summary.m_rmiName = RmiName_sendLoginResult;
+						summary.m_hostID = remote;
+						summary.m_hostTag = hostTag;
+						BeforeRmiInvocation(summary);
+			
+						__t0 = ::Proud::GetPreciseCurrentTimeMs();
+					}
+						
+					// Call this method.
+					bool __ret = sendLoginResult (remote,ctx , Result, CName, gold );
+						
+					if(__ret==false)
+					{
+						// Error: RMI function that a user did not create has been called. 
+						m_core->ShowNotImplementedRmiWarning(RmiName_sendLoginResult);
+					}
+						
+					if(!m_internalUse && m_enableStubProfiling)
+					{
+						::Proud::AfterRmiSummary summary;
+						summary.m_rmiID = (::Proud::RmiID)Rmi_sendLoginResult;
+						summary.m_rmiName = RmiName_sendLoginResult;
+						summary.m_hostID = remote;
+						summary.m_hostTag = hostTag;
+						int64_t __t1;
+			
+						__t1 = ::Proud::GetPreciseCurrentTimeMs();
+			
+						summary.m_elapsedTime = (uint32_t)(__t1 - __t0);
+						AfterRmiInvocation(summary);
+					}
+				}
+				break;
+			case Rmi_sendSkillData:
+				{
+					::Proud::RmiContext ctx;
+					ctx.m_sentFrom=pa.GetRemoteHostID();
+					ctx.m_relayed=pa.IsRelayed();
+					ctx.m_hostTag = hostTag;
+					ctx.m_encryptMode = pa.GetEncryptMode();
+					ctx.m_compressMode = pa.GetCompressMode();
+					
+					
+					Proud::CFastArray<passiveskillinfo> skData; __msg >> skData;
+					m_core->PostCheckReadMessage(__msg,RmiName_sendSkillData);
+					
+			
+					if(m_enableNotifyCallFromStub && !m_internalUse)
+					{
+						::Proud::String parameterString;
+						
+						::Proud::AppendTextOut(parameterString,skData);	
+						
+						NotifyCallFromStub(remote, (::Proud::RmiID)Rmi_sendSkillData, 
+							RmiName_sendSkillData,parameterString);
+			
+			#ifdef VIZAGENT
+						m_core->Viz_NotifyRecvToStub(remote, (::Proud::RmiID)Rmi_sendSkillData, 
+							RmiName_sendSkillData, parameterString);
+			#endif
+					}
+					else if(!m_internalUse)
+					{
+			#ifdef VIZAGENT
+						m_core->Viz_NotifyRecvToStub(remote, (::Proud::RmiID)Rmi_sendSkillData, 
+							RmiName_sendSkillData, _PNT(""));
+			#endif
+					}
+						
+					int64_t __t0 = 0;
+					if(!m_internalUse && m_enableStubProfiling)
+					{
+						::Proud::BeforeRmiSummary summary;
+						summary.m_rmiID = (::Proud::RmiID)Rmi_sendSkillData;
+						summary.m_rmiName = RmiName_sendSkillData;
+						summary.m_hostID = remote;
+						summary.m_hostTag = hostTag;
+						BeforeRmiInvocation(summary);
+			
+						__t0 = ::Proud::GetPreciseCurrentTimeMs();
+					}
+						
+					// Call this method.
+					bool __ret = sendSkillData (remote,ctx , skData );
+						
+					if(__ret==false)
+					{
+						// Error: RMI function that a user did not create has been called. 
+						m_core->ShowNotImplementedRmiWarning(RmiName_sendSkillData);
+					}
+						
+					if(!m_internalUse && m_enableStubProfiling)
+					{
+						::Proud::AfterRmiSummary summary;
+						summary.m_rmiID = (::Proud::RmiID)Rmi_sendSkillData;
+						summary.m_rmiName = RmiName_sendSkillData;
+						summary.m_hostID = remote;
+						summary.m_hostTag = hostTag;
+						int64_t __t1;
+			
+						__t1 = ::Proud::GetPreciseCurrentTimeMs();
+			
+						summary.m_elapsedTime = (uint32_t)(__t1 - __t0);
+						AfterRmiInvocation(summary);
+					}
+				}
+				break;
+			case Rmi_sendEquipmentData:
+				{
+					::Proud::RmiContext ctx;
+					ctx.m_sentFrom=pa.GetRemoteHostID();
+					ctx.m_relayed=pa.IsRelayed();
+					ctx.m_hostTag = hostTag;
+					ctx.m_encryptMode = pa.GetEncryptMode();
+					ctx.m_compressMode = pa.GetCompressMode();
+					
+					
+					Proud::CFastArray<equipinfo> eqData; __msg >> eqData;
+					m_core->PostCheckReadMessage(__msg,RmiName_sendEquipmentData);
+					
+			
+					if(m_enableNotifyCallFromStub && !m_internalUse)
+					{
+						::Proud::String parameterString;
+						
+						::Proud::AppendTextOut(parameterString,eqData);	
+						
+						NotifyCallFromStub(remote, (::Proud::RmiID)Rmi_sendEquipmentData, 
+							RmiName_sendEquipmentData,parameterString);
+			
+			#ifdef VIZAGENT
+						m_core->Viz_NotifyRecvToStub(remote, (::Proud::RmiID)Rmi_sendEquipmentData, 
+							RmiName_sendEquipmentData, parameterString);
+			#endif
+					}
+					else if(!m_internalUse)
+					{
+			#ifdef VIZAGENT
+						m_core->Viz_NotifyRecvToStub(remote, (::Proud::RmiID)Rmi_sendEquipmentData, 
+							RmiName_sendEquipmentData, _PNT(""));
+			#endif
+					}
+						
+					int64_t __t0 = 0;
+					if(!m_internalUse && m_enableStubProfiling)
+					{
+						::Proud::BeforeRmiSummary summary;
+						summary.m_rmiID = (::Proud::RmiID)Rmi_sendEquipmentData;
+						summary.m_rmiName = RmiName_sendEquipmentData;
+						summary.m_hostID = remote;
+						summary.m_hostTag = hostTag;
+						BeforeRmiInvocation(summary);
+			
+						__t0 = ::Proud::GetPreciseCurrentTimeMs();
+					}
+						
+					// Call this method.
+					bool __ret = sendEquipmentData (remote,ctx , eqData );
+						
+					if(__ret==false)
+					{
+						// Error: RMI function that a user did not create has been called. 
+						m_core->ShowNotImplementedRmiWarning(RmiName_sendEquipmentData);
+					}
+						
+					if(!m_internalUse && m_enableStubProfiling)
+					{
+						::Proud::AfterRmiSummary summary;
+						summary.m_rmiID = (::Proud::RmiID)Rmi_sendEquipmentData;
+						summary.m_rmiName = RmiName_sendEquipmentData;
+						summary.m_hostID = remote;
+						summary.m_hostTag = hostTag;
+						int64_t __t1;
+			
+						__t1 = ::Proud::GetPreciseCurrentTimeMs();
+			
+						summary.m_elapsedTime = (uint32_t)(__t1 - __t0);
+						AfterRmiInvocation(summary);
+					}
+				}
+				break;
+			case Rmi_sendChangeEquipWeaponResult:
+				{
+					::Proud::RmiContext ctx;
+					ctx.m_sentFrom=pa.GetRemoteHostID();
+					ctx.m_relayed=pa.IsRelayed();
+					ctx.m_hostTag = hostTag;
+					ctx.m_encryptMode = pa.GetEncryptMode();
+					ctx.m_compressMode = pa.GetCompressMode();
+					
+					
+					int ResultCode; __msg >> ResultCode;
+					Proud::CFastArray<equipinfo> eqData; __msg >> eqData;
+					m_core->PostCheckReadMessage(__msg,RmiName_sendChangeEquipWeaponResult);
+					
+			
+					if(m_enableNotifyCallFromStub && !m_internalUse)
+					{
+						::Proud::String parameterString;
+						
+						::Proud::AppendTextOut(parameterString,ResultCode);	
+										
+						parameterString += _PNT(", ");
+						::Proud::AppendTextOut(parameterString,eqData);	
+						
+						NotifyCallFromStub(remote, (::Proud::RmiID)Rmi_sendChangeEquipWeaponResult, 
+							RmiName_sendChangeEquipWeaponResult,parameterString);
+			
+			#ifdef VIZAGENT
+						m_core->Viz_NotifyRecvToStub(remote, (::Proud::RmiID)Rmi_sendChangeEquipWeaponResult, 
+							RmiName_sendChangeEquipWeaponResult, parameterString);
+			#endif
+					}
+					else if(!m_internalUse)
+					{
+			#ifdef VIZAGENT
+						m_core->Viz_NotifyRecvToStub(remote, (::Proud::RmiID)Rmi_sendChangeEquipWeaponResult, 
+							RmiName_sendChangeEquipWeaponResult, _PNT(""));
+			#endif
+					}
+						
+					int64_t __t0 = 0;
+					if(!m_internalUse && m_enableStubProfiling)
+					{
+						::Proud::BeforeRmiSummary summary;
+						summary.m_rmiID = (::Proud::RmiID)Rmi_sendChangeEquipWeaponResult;
+						summary.m_rmiName = RmiName_sendChangeEquipWeaponResult;
+						summary.m_hostID = remote;
+						summary.m_hostTag = hostTag;
+						BeforeRmiInvocation(summary);
+			
+						__t0 = ::Proud::GetPreciseCurrentTimeMs();
+					}
+						
+					// Call this method.
+					bool __ret = sendChangeEquipWeaponResult (remote,ctx , ResultCode, eqData );
+						
+					if(__ret==false)
+					{
+						// Error: RMI function that a user did not create has been called. 
+						m_core->ShowNotImplementedRmiWarning(RmiName_sendChangeEquipWeaponResult);
+					}
+						
+					if(!m_internalUse && m_enableStubProfiling)
+					{
+						::Proud::AfterRmiSummary summary;
+						summary.m_rmiID = (::Proud::RmiID)Rmi_sendChangeEquipWeaponResult;
+						summary.m_rmiName = RmiName_sendChangeEquipWeaponResult;
+						summary.m_hostID = remote;
+						summary.m_hostTag = hostTag;
+						int64_t __t1;
+			
+						__t1 = ::Proud::GetPreciseCurrentTimeMs();
+			
+						summary.m_elapsedTime = (uint32_t)(__t1 - __t0);
+						AfterRmiInvocation(summary);
+					}
+				}
+				break;
+			case Rmi_sendBattleInfoResult:
+				{
+					::Proud::RmiContext ctx;
+					ctx.m_sentFrom=pa.GetRemoteHostID();
+					ctx.m_relayed=pa.IsRelayed();
+					ctx.m_hostTag = hostTag;
+					ctx.m_encryptMode = pa.GetEncryptMode();
+					ctx.m_compressMode = pa.GetCompressMode();
+					
+					
+					int ResultCode; __msg >> ResultCode;
+					Proud::CFastArray<battleinfo> biData; __msg >> biData;
+					m_core->PostCheckReadMessage(__msg,RmiName_sendBattleInfoResult);
+					
+			
+					if(m_enableNotifyCallFromStub && !m_internalUse)
+					{
+						::Proud::String parameterString;
+						
+						::Proud::AppendTextOut(parameterString,ResultCode);	
+										
+						parameterString += _PNT(", ");
+						::Proud::AppendTextOut(parameterString,biData);	
+						
+						NotifyCallFromStub(remote, (::Proud::RmiID)Rmi_sendBattleInfoResult, 
+							RmiName_sendBattleInfoResult,parameterString);
+			
+			#ifdef VIZAGENT
+						m_core->Viz_NotifyRecvToStub(remote, (::Proud::RmiID)Rmi_sendBattleInfoResult, 
+							RmiName_sendBattleInfoResult, parameterString);
+			#endif
+					}
+					else if(!m_internalUse)
+					{
+			#ifdef VIZAGENT
+						m_core->Viz_NotifyRecvToStub(remote, (::Proud::RmiID)Rmi_sendBattleInfoResult, 
+							RmiName_sendBattleInfoResult, _PNT(""));
+			#endif
+					}
+						
+					int64_t __t0 = 0;
+					if(!m_internalUse && m_enableStubProfiling)
+					{
+						::Proud::BeforeRmiSummary summary;
+						summary.m_rmiID = (::Proud::RmiID)Rmi_sendBattleInfoResult;
+						summary.m_rmiName = RmiName_sendBattleInfoResult;
+						summary.m_hostID = remote;
+						summary.m_hostTag = hostTag;
+						BeforeRmiInvocation(summary);
+			
+						__t0 = ::Proud::GetPreciseCurrentTimeMs();
+					}
+						
+					// Call this method.
+					bool __ret = sendBattleInfoResult (remote,ctx , ResultCode, biData );
+						
+					if(__ret==false)
+					{
+						// Error: RMI function that a user did not create has been called. 
+						m_core->ShowNotImplementedRmiWarning(RmiName_sendBattleInfoResult);
+					}
+						
+					if(!m_internalUse && m_enableStubProfiling)
+					{
+						::Proud::AfterRmiSummary summary;
+						summary.m_rmiID = (::Proud::RmiID)Rmi_sendBattleInfoResult;
+						summary.m_rmiName = RmiName_sendBattleInfoResult;
+						summary.m_hostID = remote;
+						summary.m_hostTag = hostTag;
+						int64_t __t1;
+			
+						__t1 = ::Proud::GetPreciseCurrentTimeMs();
+			
+						summary.m_elapsedTime = (uint32_t)(__t1 - __t0);
+						AfterRmiInvocation(summary);
+					}
+				}
+				break;
 		default:
 			goto __fail;
 		}		
@@ -384,6 +1242,61 @@ __fail:
 	const PNTCHAR* Stub::RmiName_sendInventoryData =_PNT("sendInventoryData");
 	#else
 	const PNTCHAR* Stub::RmiName_sendInventoryData =_PNT("");
+	#endif
+	#ifdef USE_RMI_NAME_STRING
+	const PNTCHAR* Stub::RmiName_sendRaidRoomInfo =_PNT("sendRaidRoomInfo");
+	#else
+	const PNTCHAR* Stub::RmiName_sendRaidRoomInfo =_PNT("");
+	#endif
+	#ifdef USE_RMI_NAME_STRING
+	const PNTCHAR* Stub::RmiName_sendMakePVPRoomResult =_PNT("sendMakePVPRoomResult");
+	#else
+	const PNTCHAR* Stub::RmiName_sendMakePVPRoomResult =_PNT("");
+	#endif
+	#ifdef USE_RMI_NAME_STRING
+	const PNTCHAR* Stub::RmiName_sendPVPRoomInfo =_PNT("sendPVPRoomInfo");
+	#else
+	const PNTCHAR* Stub::RmiName_sendPVPRoomInfo =_PNT("");
+	#endif
+	#ifdef USE_RMI_NAME_STRING
+	const PNTCHAR* Stub::RmiName_sendRoomHostId =_PNT("sendRoomHostId");
+	#else
+	const PNTCHAR* Stub::RmiName_sendRoomHostId =_PNT("");
+	#endif
+	#ifdef USE_RMI_NAME_STRING
+	const PNTCHAR* Stub::RmiName_sendPVPRoomJoinResult =_PNT("sendPVPRoomJoinResult");
+	#else
+	const PNTCHAR* Stub::RmiName_sendPVPRoomJoinResult =_PNT("");
+	#endif
+	#ifdef USE_RMI_NAME_STRING
+	const PNTCHAR* Stub::RmiName_sendMakeAccountResult =_PNT("sendMakeAccountResult");
+	#else
+	const PNTCHAR* Stub::RmiName_sendMakeAccountResult =_PNT("");
+	#endif
+	#ifdef USE_RMI_NAME_STRING
+	const PNTCHAR* Stub::RmiName_sendLoginResult =_PNT("sendLoginResult");
+	#else
+	const PNTCHAR* Stub::RmiName_sendLoginResult =_PNT("");
+	#endif
+	#ifdef USE_RMI_NAME_STRING
+	const PNTCHAR* Stub::RmiName_sendSkillData =_PNT("sendSkillData");
+	#else
+	const PNTCHAR* Stub::RmiName_sendSkillData =_PNT("");
+	#endif
+	#ifdef USE_RMI_NAME_STRING
+	const PNTCHAR* Stub::RmiName_sendEquipmentData =_PNT("sendEquipmentData");
+	#else
+	const PNTCHAR* Stub::RmiName_sendEquipmentData =_PNT("");
+	#endif
+	#ifdef USE_RMI_NAME_STRING
+	const PNTCHAR* Stub::RmiName_sendChangeEquipWeaponResult =_PNT("sendChangeEquipWeaponResult");
+	#else
+	const PNTCHAR* Stub::RmiName_sendChangeEquipWeaponResult =_PNT("");
+	#endif
+	#ifdef USE_RMI_NAME_STRING
+	const PNTCHAR* Stub::RmiName_sendBattleInfoResult =_PNT("sendBattleInfoResult");
+	#else
+	const PNTCHAR* Stub::RmiName_sendBattleInfoResult =_PNT("");
 	#endif
 	const PNTCHAR* Stub::RmiName_First = RmiName_ShowChat;
 

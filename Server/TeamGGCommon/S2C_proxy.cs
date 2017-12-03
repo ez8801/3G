@@ -125,6 +125,314 @@ Test.Write(__msg, ivData);
 	return RmiSend(remotes,rmiContext,__msg,
 		RmiName_sendInventoryData, Common.sendInventoryData);
 }
+public bool sendRaidRoomInfo(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.FastArray<raidrooms> roomData)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+		__msg.SimplePacketMode = core.IsSimplePacketMode();
+		Nettention.Proud.RmiID __msgid= Common.sendRaidRoomInfo;
+		__msg.Write(__msgid);
+		Test.Write(__msg, roomData);
+		
+	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
+	__list[0] = remote;
+		
+	return RmiSend(__list,rmiContext,__msg,
+		RmiName_sendRaidRoomInfo, Common.sendRaidRoomInfo);
+}
+
+public bool sendRaidRoomInfo(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.FastArray<raidrooms> roomData)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+__msg.SimplePacketMode = core.IsSimplePacketMode();
+Nettention.Proud.RmiID __msgid= Common.sendRaidRoomInfo;
+__msg.Write(__msgid);
+Test.Write(__msg, roomData);
+		
+	return RmiSend(remotes,rmiContext,__msg,
+		RmiName_sendRaidRoomInfo, Common.sendRaidRoomInfo);
+}
+public bool sendMakePVPRoomResult(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int p2pGroupId, System.String RoomName, int RoomIdx, int Result)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+		__msg.SimplePacketMode = core.IsSimplePacketMode();
+		Nettention.Proud.RmiID __msgid= Common.sendMakePVPRoomResult;
+		__msg.Write(__msgid);
+		Test.Write(__msg, p2pGroupId);
+		Test.Write(__msg, RoomName);
+		Test.Write(__msg, RoomIdx);
+		Test.Write(__msg, Result);
+		
+	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
+	__list[0] = remote;
+		
+	return RmiSend(__list,rmiContext,__msg,
+		RmiName_sendMakePVPRoomResult, Common.sendMakePVPRoomResult);
+}
+
+public bool sendMakePVPRoomResult(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, int p2pGroupId, System.String RoomName, int RoomIdx, int Result)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+__msg.SimplePacketMode = core.IsSimplePacketMode();
+Nettention.Proud.RmiID __msgid= Common.sendMakePVPRoomResult;
+__msg.Write(__msgid);
+Test.Write(__msg, p2pGroupId);
+Test.Write(__msg, RoomName);
+Test.Write(__msg, RoomIdx);
+Test.Write(__msg, Result);
+		
+	return RmiSend(remotes,rmiContext,__msg,
+		RmiName_sendMakePVPRoomResult, Common.sendMakePVPRoomResult);
+}
+public bool sendPVPRoomInfo(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.FastArray<pvprooms> roomData)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+		__msg.SimplePacketMode = core.IsSimplePacketMode();
+		Nettention.Proud.RmiID __msgid= Common.sendPVPRoomInfo;
+		__msg.Write(__msgid);
+		Test.Write(__msg, roomData);
+		
+	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
+	__list[0] = remote;
+		
+	return RmiSend(__list,rmiContext,__msg,
+		RmiName_sendPVPRoomInfo, Common.sendPVPRoomInfo);
+}
+
+public bool sendPVPRoomInfo(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.FastArray<pvprooms> roomData)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+__msg.SimplePacketMode = core.IsSimplePacketMode();
+Nettention.Proud.RmiID __msgid= Common.sendPVPRoomInfo;
+__msg.Write(__msgid);
+Test.Write(__msg, roomData);
+		
+	return RmiSend(remotes,rmiContext,__msg,
+		RmiName_sendPVPRoomInfo, Common.sendPVPRoomInfo);
+}
+public bool sendRoomHostId(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int HostId)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+		__msg.SimplePacketMode = core.IsSimplePacketMode();
+		Nettention.Proud.RmiID __msgid= Common.sendRoomHostId;
+		__msg.Write(__msgid);
+		Test.Write(__msg, HostId);
+		
+	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
+	__list[0] = remote;
+		
+	return RmiSend(__list,rmiContext,__msg,
+		RmiName_sendRoomHostId, Common.sendRoomHostId);
+}
+
+public bool sendRoomHostId(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, int HostId)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+__msg.SimplePacketMode = core.IsSimplePacketMode();
+Nettention.Proud.RmiID __msgid= Common.sendRoomHostId;
+__msg.Write(__msgid);
+Test.Write(__msg, HostId);
+		
+	return RmiSend(remotes,rmiContext,__msg,
+		RmiName_sendRoomHostId, Common.sendRoomHostId);
+}
+public bool sendPVPRoomJoinResult(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int p2pGroupId, System.String RoomName, int RoomIdx, int HostId, int Result)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+		__msg.SimplePacketMode = core.IsSimplePacketMode();
+		Nettention.Proud.RmiID __msgid= Common.sendPVPRoomJoinResult;
+		__msg.Write(__msgid);
+		Test.Write(__msg, p2pGroupId);
+		Test.Write(__msg, RoomName);
+		Test.Write(__msg, RoomIdx);
+		Test.Write(__msg, HostId);
+		Test.Write(__msg, Result);
+		
+	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
+	__list[0] = remote;
+		
+	return RmiSend(__list,rmiContext,__msg,
+		RmiName_sendPVPRoomJoinResult, Common.sendPVPRoomJoinResult);
+}
+
+public bool sendPVPRoomJoinResult(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, int p2pGroupId, System.String RoomName, int RoomIdx, int HostId, int Result)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+__msg.SimplePacketMode = core.IsSimplePacketMode();
+Nettention.Proud.RmiID __msgid= Common.sendPVPRoomJoinResult;
+__msg.Write(__msgid);
+Test.Write(__msg, p2pGroupId);
+Test.Write(__msg, RoomName);
+Test.Write(__msg, RoomIdx);
+Test.Write(__msg, HostId);
+Test.Write(__msg, Result);
+		
+	return RmiSend(remotes,rmiContext,__msg,
+		RmiName_sendPVPRoomJoinResult, Common.sendPVPRoomJoinResult);
+}
+public bool sendMakeAccountResult(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int Result)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+		__msg.SimplePacketMode = core.IsSimplePacketMode();
+		Nettention.Proud.RmiID __msgid= Common.sendMakeAccountResult;
+		__msg.Write(__msgid);
+		Test.Write(__msg, Result);
+		
+	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
+	__list[0] = remote;
+		
+	return RmiSend(__list,rmiContext,__msg,
+		RmiName_sendMakeAccountResult, Common.sendMakeAccountResult);
+}
+
+public bool sendMakeAccountResult(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, int Result)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+__msg.SimplePacketMode = core.IsSimplePacketMode();
+Nettention.Proud.RmiID __msgid= Common.sendMakeAccountResult;
+__msg.Write(__msgid);
+Test.Write(__msg, Result);
+		
+	return RmiSend(remotes,rmiContext,__msg,
+		RmiName_sendMakeAccountResult, Common.sendMakeAccountResult);
+}
+public bool sendLoginResult(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int Result, System.String CName, int gold)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+		__msg.SimplePacketMode = core.IsSimplePacketMode();
+		Nettention.Proud.RmiID __msgid= Common.sendLoginResult;
+		__msg.Write(__msgid);
+		Test.Write(__msg, Result);
+		Test.Write(__msg, CName);
+		Test.Write(__msg, gold);
+		
+	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
+	__list[0] = remote;
+		
+	return RmiSend(__list,rmiContext,__msg,
+		RmiName_sendLoginResult, Common.sendLoginResult);
+}
+
+public bool sendLoginResult(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, int Result, System.String CName, int gold)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+__msg.SimplePacketMode = core.IsSimplePacketMode();
+Nettention.Proud.RmiID __msgid= Common.sendLoginResult;
+__msg.Write(__msgid);
+Test.Write(__msg, Result);
+Test.Write(__msg, CName);
+Test.Write(__msg, gold);
+		
+	return RmiSend(remotes,rmiContext,__msg,
+		RmiName_sendLoginResult, Common.sendLoginResult);
+}
+public bool sendSkillData(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.FastArray<passiveskillinfo> skData)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+		__msg.SimplePacketMode = core.IsSimplePacketMode();
+		Nettention.Proud.RmiID __msgid= Common.sendSkillData;
+		__msg.Write(__msgid);
+		Test.Write(__msg, skData);
+		
+	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
+	__list[0] = remote;
+		
+	return RmiSend(__list,rmiContext,__msg,
+		RmiName_sendSkillData, Common.sendSkillData);
+}
+
+public bool sendSkillData(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.FastArray<passiveskillinfo> skData)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+__msg.SimplePacketMode = core.IsSimplePacketMode();
+Nettention.Proud.RmiID __msgid= Common.sendSkillData;
+__msg.Write(__msgid);
+Test.Write(__msg, skData);
+		
+	return RmiSend(remotes,rmiContext,__msg,
+		RmiName_sendSkillData, Common.sendSkillData);
+}
+public bool sendEquipmentData(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.FastArray<equipinfo> eqData)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+		__msg.SimplePacketMode = core.IsSimplePacketMode();
+		Nettention.Proud.RmiID __msgid= Common.sendEquipmentData;
+		__msg.Write(__msgid);
+		Test.Write(__msg, eqData);
+		
+	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
+	__list[0] = remote;
+		
+	return RmiSend(__list,rmiContext,__msg,
+		RmiName_sendEquipmentData, Common.sendEquipmentData);
+}
+
+public bool sendEquipmentData(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.FastArray<equipinfo> eqData)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+__msg.SimplePacketMode = core.IsSimplePacketMode();
+Nettention.Proud.RmiID __msgid= Common.sendEquipmentData;
+__msg.Write(__msgid);
+Test.Write(__msg, eqData);
+		
+	return RmiSend(remotes,rmiContext,__msg,
+		RmiName_sendEquipmentData, Common.sendEquipmentData);
+}
+public bool sendChangeEquipWeaponResult(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int ResultCode, Nettention.Proud.FastArray<equipinfo> eqData)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+		__msg.SimplePacketMode = core.IsSimplePacketMode();
+		Nettention.Proud.RmiID __msgid= Common.sendChangeEquipWeaponResult;
+		__msg.Write(__msgid);
+		Test.Write(__msg, ResultCode);
+		Test.Write(__msg, eqData);
+		
+	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
+	__list[0] = remote;
+		
+	return RmiSend(__list,rmiContext,__msg,
+		RmiName_sendChangeEquipWeaponResult, Common.sendChangeEquipWeaponResult);
+}
+
+public bool sendChangeEquipWeaponResult(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, int ResultCode, Nettention.Proud.FastArray<equipinfo> eqData)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+__msg.SimplePacketMode = core.IsSimplePacketMode();
+Nettention.Proud.RmiID __msgid= Common.sendChangeEquipWeaponResult;
+__msg.Write(__msgid);
+Test.Write(__msg, ResultCode);
+Test.Write(__msg, eqData);
+		
+	return RmiSend(remotes,rmiContext,__msg,
+		RmiName_sendChangeEquipWeaponResult, Common.sendChangeEquipWeaponResult);
+}
+public bool sendBattleInfoResult(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, int ResultCode, Nettention.Proud.FastArray<battleinfo> biData)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+		__msg.SimplePacketMode = core.IsSimplePacketMode();
+		Nettention.Proud.RmiID __msgid= Common.sendBattleInfoResult;
+		__msg.Write(__msgid);
+		Test.Write(__msg, ResultCode);
+		Test.Write(__msg, biData);
+		
+	Nettention.Proud.HostID[] __list = new Nettention.Proud.HostID[1];
+	__list[0] = remote;
+		
+	return RmiSend(__list,rmiContext,__msg,
+		RmiName_sendBattleInfoResult, Common.sendBattleInfoResult);
+}
+
+public bool sendBattleInfoResult(Nettention.Proud.HostID[] remotes,Nettention.Proud.RmiContext rmiContext, int ResultCode, Nettention.Proud.FastArray<battleinfo> biData)
+{
+	Nettention.Proud.Message __msg=new Nettention.Proud.Message();
+__msg.SimplePacketMode = core.IsSimplePacketMode();
+Nettention.Proud.RmiID __msgid= Common.sendBattleInfoResult;
+__msg.Write(__msgid);
+Test.Write(__msg, ResultCode);
+Test.Write(__msg, biData);
+		
+	return RmiSend(remotes,rmiContext,__msg,
+		RmiName_sendBattleInfoResult, Common.sendBattleInfoResult);
+}
 #if USE_RMI_NAME_STRING
 // RMI name declaration.
 // It is the unique pointer that indicates RMI name such as RMI profiler.
@@ -132,6 +440,17 @@ const string RmiName_ShowChat="ShowChat";
 const string RmiName_SystemChat="SystemChat";
 const string RmiName_sendUserInfo="sendUserInfo";
 const string RmiName_sendInventoryData="sendInventoryData";
+const string RmiName_sendRaidRoomInfo="sendRaidRoomInfo";
+const string RmiName_sendMakePVPRoomResult="sendMakePVPRoomResult";
+const string RmiName_sendPVPRoomInfo="sendPVPRoomInfo";
+const string RmiName_sendRoomHostId="sendRoomHostId";
+const string RmiName_sendPVPRoomJoinResult="sendPVPRoomJoinResult";
+const string RmiName_sendMakeAccountResult="sendMakeAccountResult";
+const string RmiName_sendLoginResult="sendLoginResult";
+const string RmiName_sendSkillData="sendSkillData";
+const string RmiName_sendEquipmentData="sendEquipmentData";
+const string RmiName_sendChangeEquipWeaponResult="sendChangeEquipWeaponResult";
+const string RmiName_sendBattleInfoResult="sendBattleInfoResult";
        
 const string RmiName_First = RmiName_ShowChat;
 #else
@@ -141,6 +460,17 @@ const string RmiName_ShowChat="";
 const string RmiName_SystemChat="";
 const string RmiName_sendUserInfo="";
 const string RmiName_sendInventoryData="";
+const string RmiName_sendRaidRoomInfo="";
+const string RmiName_sendMakePVPRoomResult="";
+const string RmiName_sendPVPRoomInfo="";
+const string RmiName_sendRoomHostId="";
+const string RmiName_sendPVPRoomJoinResult="";
+const string RmiName_sendMakeAccountResult="";
+const string RmiName_sendLoginResult="";
+const string RmiName_sendSkillData="";
+const string RmiName_sendEquipmentData="";
+const string RmiName_sendChangeEquipWeaponResult="";
+const string RmiName_sendBattleInfoResult="";
        
 const string RmiName_First = "";
 #endif

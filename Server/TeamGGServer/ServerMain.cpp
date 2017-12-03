@@ -2,9 +2,14 @@
 //changetest
 //글로벌로 선언된 g_S2CProxy
 extern S2C::Proxy g_S2CProxy;
+enum
+{
+	ENUM_MAIN_SCENE = 1
+};
 ServerMain::ServerMain()
 {
 	m_InMain = ServerManager::getInstance();
+	cur_scene = ENUM_MAIN_SCENE;
 }
 void ServerMain::Team3GServerMain()
 {
@@ -69,10 +74,7 @@ void ServerMain::Team3GServerMain()
 
 
 	// 실제 서버 내용 시작
-	puts("Team GG's Base Server \n");
-	puts("Ver 0.001\n");
-
-	puts("q: Quit.\n");
+	main_scene();
 
 	string userInput;
 	HostID whileGroupHostID;
@@ -81,6 +83,7 @@ void ServerMain::Team3GServerMain()
 	{
 		cin >> userInput;
 		//서버에서 인풋받아서 내용 처리하기
+		////////////ENUM_MAIN_SCENE///////////////
 
 		if (userInput == "1")
 		{
@@ -124,3 +127,10 @@ void ServerMain::Team3GServerMain()
 	return ;
 }
 
+void ServerMain::main_scene()
+{
+	puts("Team GG's Base Server \n");
+	puts("Ver 0.001\n");
+
+	puts("q: Quit.\n");
+}

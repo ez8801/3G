@@ -19,7 +19,31 @@ namespace C2C {
 	public:
 	virtual bool P2PChat ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext , const Proud::String & a, const int & b, const float & c) PN_SEALED; 
 	virtual bool P2PChat ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const Proud::String & a, const int & b, const float & c)   PN_SEALED;  
+	virtual bool ReadyPacket ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext , const int & Ready) PN_SEALED; 
+	virtual bool ReadyPacket ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const int & Ready)   PN_SEALED;  
+	virtual bool SettingEnemyInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext , const int & Id, const int & Hp, const int & Att, const int & def) PN_SEALED; 
+	virtual bool SettingEnemyInfo ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const int & Id, const int & Hp, const int & Att, const int & def)   PN_SEALED;  
+	virtual bool StartPacket ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext , const int & Start) PN_SEALED; 
+	virtual bool StartPacket ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const int & Start)   PN_SEALED;  
+	virtual bool LeaveRoom ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ) PN_SEALED; 
+	virtual bool LeaveRoom ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext)   PN_SEALED;  
+	virtual bool SyncPacket ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext , const int & LocationX, const int & LocationY, const int & Hp) PN_SEALED; 
+	virtual bool SyncPacket ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const int & LocationX, const int & LocationY, const int & Hp)   PN_SEALED;  
+	virtual bool DamagedFromEnemy ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext , const int & Damage, const int & RestHP) PN_SEALED; 
+	virtual bool DamagedFromEnemy ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const int & Damage, const int & RestHP)   PN_SEALED;  
+	virtual bool UseSkill ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext , const int & SkillId) PN_SEALED; 
+	virtual bool UseSkill ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const int & SkillId)   PN_SEALED;  
+	virtual bool MatchEnd ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext ) PN_SEALED; 
+	virtual bool MatchEnd ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext)   PN_SEALED;  
 static const PNTCHAR* RmiName_P2PChat;
+static const PNTCHAR* RmiName_ReadyPacket;
+static const PNTCHAR* RmiName_SettingEnemyInfo;
+static const PNTCHAR* RmiName_StartPacket;
+static const PNTCHAR* RmiName_LeaveRoom;
+static const PNTCHAR* RmiName_SyncPacket;
+static const PNTCHAR* RmiName_DamagedFromEnemy;
+static const PNTCHAR* RmiName_UseSkill;
+static const PNTCHAR* RmiName_MatchEnd;
 static const PNTCHAR* RmiName_First;
 		Proxy()
 		{

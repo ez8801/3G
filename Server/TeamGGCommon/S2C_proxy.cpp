@@ -132,6 +132,336 @@ __msg << ivData;
 		return RmiSend(remotes,remoteCount,rmiContext,__msg,
 			RmiName_sendInventoryData, (::Proud::RmiID)Rmi_sendInventoryData);
 	}
+        
+	bool Proxy::sendRaidRoomInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext , const Proud::CFastArray<raidrooms> & roomData)	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_sendRaidRoomInfo;
+__msg.Write(__msgid); 
+	
+__msg << roomData;
+		
+		return RmiSend(&remote,1,rmiContext,__msg,
+			RmiName_sendRaidRoomInfo, (::Proud::RmiID)Rmi_sendRaidRoomInfo);
+	}
+
+	bool Proxy::sendRaidRoomInfo ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const Proud::CFastArray<raidrooms> & roomData)  	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_sendRaidRoomInfo;
+__msg.Write(__msgid); 
+	
+__msg << roomData;
+		
+		return RmiSend(remotes,remoteCount,rmiContext,__msg,
+			RmiName_sendRaidRoomInfo, (::Proud::RmiID)Rmi_sendRaidRoomInfo);
+	}
+        
+	bool Proxy::sendMakePVPRoomResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext , const int & p2pGroupId, const Proud::String & RoomName, const int & RoomIdx, const int & Result)	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_sendMakePVPRoomResult;
+__msg.Write(__msgid); 
+	
+__msg << p2pGroupId;
+__msg << RoomName;
+__msg << RoomIdx;
+__msg << Result;
+		
+		return RmiSend(&remote,1,rmiContext,__msg,
+			RmiName_sendMakePVPRoomResult, (::Proud::RmiID)Rmi_sendMakePVPRoomResult);
+	}
+
+	bool Proxy::sendMakePVPRoomResult ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const int & p2pGroupId, const Proud::String & RoomName, const int & RoomIdx, const int & Result)  	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_sendMakePVPRoomResult;
+__msg.Write(__msgid); 
+	
+__msg << p2pGroupId;
+__msg << RoomName;
+__msg << RoomIdx;
+__msg << Result;
+		
+		return RmiSend(remotes,remoteCount,rmiContext,__msg,
+			RmiName_sendMakePVPRoomResult, (::Proud::RmiID)Rmi_sendMakePVPRoomResult);
+	}
+        
+	bool Proxy::sendPVPRoomInfo ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext , const Proud::CFastArray<pvprooms> & roomData)	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_sendPVPRoomInfo;
+__msg.Write(__msgid); 
+	
+__msg << roomData;
+		
+		return RmiSend(&remote,1,rmiContext,__msg,
+			RmiName_sendPVPRoomInfo, (::Proud::RmiID)Rmi_sendPVPRoomInfo);
+	}
+
+	bool Proxy::sendPVPRoomInfo ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const Proud::CFastArray<pvprooms> & roomData)  	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_sendPVPRoomInfo;
+__msg.Write(__msgid); 
+	
+__msg << roomData;
+		
+		return RmiSend(remotes,remoteCount,rmiContext,__msg,
+			RmiName_sendPVPRoomInfo, (::Proud::RmiID)Rmi_sendPVPRoomInfo);
+	}
+        
+	bool Proxy::sendRoomHostId ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext , const int & HostId)	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_sendRoomHostId;
+__msg.Write(__msgid); 
+	
+__msg << HostId;
+		
+		return RmiSend(&remote,1,rmiContext,__msg,
+			RmiName_sendRoomHostId, (::Proud::RmiID)Rmi_sendRoomHostId);
+	}
+
+	bool Proxy::sendRoomHostId ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const int & HostId)  	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_sendRoomHostId;
+__msg.Write(__msgid); 
+	
+__msg << HostId;
+		
+		return RmiSend(remotes,remoteCount,rmiContext,__msg,
+			RmiName_sendRoomHostId, (::Proud::RmiID)Rmi_sendRoomHostId);
+	}
+        
+	bool Proxy::sendPVPRoomJoinResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext , const int & p2pGroupId, const Proud::String & RoomName, const int & RoomIdx, const int & HostId, const int & Result)	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_sendPVPRoomJoinResult;
+__msg.Write(__msgid); 
+	
+__msg << p2pGroupId;
+__msg << RoomName;
+__msg << RoomIdx;
+__msg << HostId;
+__msg << Result;
+		
+		return RmiSend(&remote,1,rmiContext,__msg,
+			RmiName_sendPVPRoomJoinResult, (::Proud::RmiID)Rmi_sendPVPRoomJoinResult);
+	}
+
+	bool Proxy::sendPVPRoomJoinResult ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const int & p2pGroupId, const Proud::String & RoomName, const int & RoomIdx, const int & HostId, const int & Result)  	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_sendPVPRoomJoinResult;
+__msg.Write(__msgid); 
+	
+__msg << p2pGroupId;
+__msg << RoomName;
+__msg << RoomIdx;
+__msg << HostId;
+__msg << Result;
+		
+		return RmiSend(remotes,remoteCount,rmiContext,__msg,
+			RmiName_sendPVPRoomJoinResult, (::Proud::RmiID)Rmi_sendPVPRoomJoinResult);
+	}
+        
+	bool Proxy::sendMakeAccountResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext , const int & Result)	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_sendMakeAccountResult;
+__msg.Write(__msgid); 
+	
+__msg << Result;
+		
+		return RmiSend(&remote,1,rmiContext,__msg,
+			RmiName_sendMakeAccountResult, (::Proud::RmiID)Rmi_sendMakeAccountResult);
+	}
+
+	bool Proxy::sendMakeAccountResult ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const int & Result)  	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_sendMakeAccountResult;
+__msg.Write(__msgid); 
+	
+__msg << Result;
+		
+		return RmiSend(remotes,remoteCount,rmiContext,__msg,
+			RmiName_sendMakeAccountResult, (::Proud::RmiID)Rmi_sendMakeAccountResult);
+	}
+        
+	bool Proxy::sendLoginResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext , const int & Result, const Proud::String & CName, const int & gold)	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_sendLoginResult;
+__msg.Write(__msgid); 
+	
+__msg << Result;
+__msg << CName;
+__msg << gold;
+		
+		return RmiSend(&remote,1,rmiContext,__msg,
+			RmiName_sendLoginResult, (::Proud::RmiID)Rmi_sendLoginResult);
+	}
+
+	bool Proxy::sendLoginResult ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const int & Result, const Proud::String & CName, const int & gold)  	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_sendLoginResult;
+__msg.Write(__msgid); 
+	
+__msg << Result;
+__msg << CName;
+__msg << gold;
+		
+		return RmiSend(remotes,remoteCount,rmiContext,__msg,
+			RmiName_sendLoginResult, (::Proud::RmiID)Rmi_sendLoginResult);
+	}
+        
+	bool Proxy::sendSkillData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext , const Proud::CFastArray<passiveskillinfo> & skData)	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_sendSkillData;
+__msg.Write(__msgid); 
+	
+__msg << skData;
+		
+		return RmiSend(&remote,1,rmiContext,__msg,
+			RmiName_sendSkillData, (::Proud::RmiID)Rmi_sendSkillData);
+	}
+
+	bool Proxy::sendSkillData ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const Proud::CFastArray<passiveskillinfo> & skData)  	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_sendSkillData;
+__msg.Write(__msgid); 
+	
+__msg << skData;
+		
+		return RmiSend(remotes,remoteCount,rmiContext,__msg,
+			RmiName_sendSkillData, (::Proud::RmiID)Rmi_sendSkillData);
+	}
+        
+	bool Proxy::sendEquipmentData ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext , const Proud::CFastArray<equipinfo> & eqData)	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_sendEquipmentData;
+__msg.Write(__msgid); 
+	
+__msg << eqData;
+		
+		return RmiSend(&remote,1,rmiContext,__msg,
+			RmiName_sendEquipmentData, (::Proud::RmiID)Rmi_sendEquipmentData);
+	}
+
+	bool Proxy::sendEquipmentData ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const Proud::CFastArray<equipinfo> & eqData)  	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_sendEquipmentData;
+__msg.Write(__msgid); 
+	
+__msg << eqData;
+		
+		return RmiSend(remotes,remoteCount,rmiContext,__msg,
+			RmiName_sendEquipmentData, (::Proud::RmiID)Rmi_sendEquipmentData);
+	}
+        
+	bool Proxy::sendChangeEquipWeaponResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext , const int & ResultCode, const Proud::CFastArray<equipinfo> & eqData)	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_sendChangeEquipWeaponResult;
+__msg.Write(__msgid); 
+	
+__msg << ResultCode;
+__msg << eqData;
+		
+		return RmiSend(&remote,1,rmiContext,__msg,
+			RmiName_sendChangeEquipWeaponResult, (::Proud::RmiID)Rmi_sendChangeEquipWeaponResult);
+	}
+
+	bool Proxy::sendChangeEquipWeaponResult ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const int & ResultCode, const Proud::CFastArray<equipinfo> & eqData)  	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_sendChangeEquipWeaponResult;
+__msg.Write(__msgid); 
+	
+__msg << ResultCode;
+__msg << eqData;
+		
+		return RmiSend(remotes,remoteCount,rmiContext,__msg,
+			RmiName_sendChangeEquipWeaponResult, (::Proud::RmiID)Rmi_sendChangeEquipWeaponResult);
+	}
+        
+	bool Proxy::sendBattleInfoResult ( ::Proud::HostID remote, ::Proud::RmiContext& rmiContext , const int & ResultCode, const Proud::CFastArray<battleinfo> & biData)	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_sendBattleInfoResult;
+__msg.Write(__msgid); 
+	
+__msg << ResultCode;
+__msg << biData;
+		
+		return RmiSend(&remote,1,rmiContext,__msg,
+			RmiName_sendBattleInfoResult, (::Proud::RmiID)Rmi_sendBattleInfoResult);
+	}
+
+	bool Proxy::sendBattleInfoResult ( ::Proud::HostID *remotes, int remoteCount, ::Proud::RmiContext &rmiContext, const int & ResultCode, const Proud::CFastArray<battleinfo> & biData)  	{
+		::Proud::CMessage __msg;
+__msg.UseInternalBuffer();
+__msg.SetSimplePacketMode(m_core->IsSimplePacketMode());
+
+::Proud::RmiID __msgid=(::Proud::RmiID)Rmi_sendBattleInfoResult;
+__msg.Write(__msgid); 
+	
+__msg << ResultCode;
+__msg << biData;
+		
+		return RmiSend(remotes,remoteCount,rmiContext,__msg,
+			RmiName_sendBattleInfoResult, (::Proud::RmiID)Rmi_sendBattleInfoResult);
+	}
 #ifdef USE_RMI_NAME_STRING
 const PNTCHAR* Proxy::RmiName_ShowChat =_PNT("ShowChat");
 #else
@@ -151,6 +481,61 @@ const PNTCHAR* Proxy::RmiName_sendUserInfo =_PNT("");
 const PNTCHAR* Proxy::RmiName_sendInventoryData =_PNT("sendInventoryData");
 #else
 const PNTCHAR* Proxy::RmiName_sendInventoryData =_PNT("");
+#endif
+#ifdef USE_RMI_NAME_STRING
+const PNTCHAR* Proxy::RmiName_sendRaidRoomInfo =_PNT("sendRaidRoomInfo");
+#else
+const PNTCHAR* Proxy::RmiName_sendRaidRoomInfo =_PNT("");
+#endif
+#ifdef USE_RMI_NAME_STRING
+const PNTCHAR* Proxy::RmiName_sendMakePVPRoomResult =_PNT("sendMakePVPRoomResult");
+#else
+const PNTCHAR* Proxy::RmiName_sendMakePVPRoomResult =_PNT("");
+#endif
+#ifdef USE_RMI_NAME_STRING
+const PNTCHAR* Proxy::RmiName_sendPVPRoomInfo =_PNT("sendPVPRoomInfo");
+#else
+const PNTCHAR* Proxy::RmiName_sendPVPRoomInfo =_PNT("");
+#endif
+#ifdef USE_RMI_NAME_STRING
+const PNTCHAR* Proxy::RmiName_sendRoomHostId =_PNT("sendRoomHostId");
+#else
+const PNTCHAR* Proxy::RmiName_sendRoomHostId =_PNT("");
+#endif
+#ifdef USE_RMI_NAME_STRING
+const PNTCHAR* Proxy::RmiName_sendPVPRoomJoinResult =_PNT("sendPVPRoomJoinResult");
+#else
+const PNTCHAR* Proxy::RmiName_sendPVPRoomJoinResult =_PNT("");
+#endif
+#ifdef USE_RMI_NAME_STRING
+const PNTCHAR* Proxy::RmiName_sendMakeAccountResult =_PNT("sendMakeAccountResult");
+#else
+const PNTCHAR* Proxy::RmiName_sendMakeAccountResult =_PNT("");
+#endif
+#ifdef USE_RMI_NAME_STRING
+const PNTCHAR* Proxy::RmiName_sendLoginResult =_PNT("sendLoginResult");
+#else
+const PNTCHAR* Proxy::RmiName_sendLoginResult =_PNT("");
+#endif
+#ifdef USE_RMI_NAME_STRING
+const PNTCHAR* Proxy::RmiName_sendSkillData =_PNT("sendSkillData");
+#else
+const PNTCHAR* Proxy::RmiName_sendSkillData =_PNT("");
+#endif
+#ifdef USE_RMI_NAME_STRING
+const PNTCHAR* Proxy::RmiName_sendEquipmentData =_PNT("sendEquipmentData");
+#else
+const PNTCHAR* Proxy::RmiName_sendEquipmentData =_PNT("");
+#endif
+#ifdef USE_RMI_NAME_STRING
+const PNTCHAR* Proxy::RmiName_sendChangeEquipWeaponResult =_PNT("sendChangeEquipWeaponResult");
+#else
+const PNTCHAR* Proxy::RmiName_sendChangeEquipWeaponResult =_PNT("");
+#endif
+#ifdef USE_RMI_NAME_STRING
+const PNTCHAR* Proxy::RmiName_sendBattleInfoResult =_PNT("sendBattleInfoResult");
+#else
+const PNTCHAR* Proxy::RmiName_sendBattleInfoResult =_PNT("");
 #endif
 const PNTCHAR* Proxy::RmiName_First = RmiName_ShowChat;
 

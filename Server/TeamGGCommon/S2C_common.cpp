@@ -16,9 +16,31 @@ namespace S2C {
 		Rmi_sendUserInfo,
                
 		Rmi_sendInventoryData,
+               
+		Rmi_sendRaidRoomInfo,
+               
+		Rmi_sendMakePVPRoomResult,
+               
+		Rmi_sendPVPRoomInfo,
+               
+		Rmi_sendRoomHostId,
+               
+		Rmi_sendPVPRoomJoinResult,
+               
+		Rmi_sendMakeAccountResult,
+               
+		Rmi_sendLoginResult,
+               
+		Rmi_sendSkillData,
+               
+		Rmi_sendEquipmentData,
+               
+		Rmi_sendChangeEquipWeaponResult,
+               
+		Rmi_sendBattleInfoResult,
 	};
 
-	int g_RmiIDListCount = 4;
+	int g_RmiIDListCount = 15;
 
 }
 

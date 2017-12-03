@@ -31,6 +31,111 @@ public BeforeRmiInvocationDelegate BeforeRmiInvocation = delegate(Nettention.Pro
 		{ 
 			return false;
 		};
+		public delegate bool RequestGetRaidRoomInfoDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext);  
+		public RequestGetRaidRoomInfoDelegate RequestGetRaidRoomInfo = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext)
+		{ 
+			return false;
+		};
+		public delegate bool RequestJoinRaidRoomDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID HostId, int GroupId);  
+		public RequestJoinRaidRoomDelegate RequestJoinRaidRoom = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID HostId, int GroupId)
+		{ 
+			return false;
+		};
+		public delegate bool RequestMakePVPRoomDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID HostId, System.String CName, System.String RoomName);  
+		public RequestMakePVPRoomDelegate RequestMakePVPRoom = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID HostId, System.String CName, System.String RoomName)
+		{ 
+			return false;
+		};
+		public delegate bool RequestGetPVPRoomInfoDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext);  
+		public RequestGetPVPRoomInfoDelegate RequestGetPVPRoomInfo = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext)
+		{ 
+			return false;
+		};
+		public delegate bool RequestJoinPVPRoomDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID HostId, int RoomId, int GroupId);  
+		public RequestJoinPVPRoomDelegate RequestJoinPVPRoom = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID HostId, int RoomId, int GroupId)
+		{ 
+			return false;
+		};
+		public delegate bool RequestLeavePVPRoomDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID HostId, Nettention.Proud.HostID GroupId);  
+		public RequestLeavePVPRoomDelegate RequestLeavePVPRoom = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, Nettention.Proud.HostID HostId, Nettention.Proud.HostID GroupId)
+		{ 
+			return false;
+		};
+		public delegate bool RequestMakeAccountDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String id, System.String password, System.String CName);  
+		public RequestMakeAccountDelegate RequestMakeAccount = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String id, System.String password, System.String CName)
+		{ 
+			return false;
+		};
+		public delegate bool RequestLoginAccountDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String id, System.String password);  
+		public RequestLoginAccountDelegate RequestLoginAccount = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String id, System.String password)
+		{ 
+			return false;
+		};
+		public delegate bool RequestInventoryDataDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName);  
+		public RequestInventoryDataDelegate RequestInventoryData = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName)
+		{ 
+			return false;
+		};
+		public delegate bool RequestSkillDataDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName);  
+		public RequestSkillDataDelegate RequestSkillData = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName)
+		{ 
+			return false;
+		};
+		public delegate bool RequestEquipDataDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName);  
+		public RequestEquipDataDelegate RequestEquipData = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName)
+		{ 
+			return false;
+		};
+		public delegate bool RequestChangeEquipWeaponDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName, int weaponIdx);  
+		public RequestChangeEquipWeaponDelegate RequestChangeEquipWeapon = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName, int weaponIdx)
+		{ 
+			return false;
+		};
+		public delegate bool RequestBattleInfoDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName);  
+		public RequestBattleInfoDelegate RequestBattleInfo = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName)
+		{ 
+			return false;
+		};
+		public delegate bool RequestBattleEndDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName, Nettention.Proud.FastArray<items> itData, int battleType, Nettention.Proud.FastArray<battleinfo> biData);  
+		public RequestBattleEndDelegate RequestBattleEnd = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName, Nettention.Proud.FastArray<items> itData, int battleType, Nettention.Proud.FastArray<battleinfo> biData)
+		{ 
+			return false;
+		};
+		public delegate bool AddItemToInventoryDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName, int inId, int itemId, int itemCount, int stackAble);  
+		public AddItemToInventoryDelegate AddItemToInventory = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName, int inId, int itemId, int itemCount, int stackAble)
+		{ 
+			return false;
+		};
+		public delegate bool AddGoldDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName, int gold);  
+		public AddGoldDelegate AddGold = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName, int gold)
+		{ 
+			return false;
+		};
+		public delegate bool UseItemFromInventoryDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName, int inId, int itemId, int itemCount, int stackAble);  
+		public UseItemFromInventoryDelegate UseItemFromInventory = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName, int inId, int itemId, int itemCount, int stackAble)
+		{ 
+			return false;
+		};
+		public delegate bool UseGoldDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName, int gold);  
+		public UseGoldDelegate UseGold = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName, int gold)
+		{ 
+			return false;
+		};
+		public delegate bool SellAllItemDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName, int inId, int itemId);  
+		public SellAllItemDelegate SellAllItem = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName, int inId, int itemId)
+		{ 
+			return false;
+		};
+		public delegate bool SendEquipInfoDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName, int equipslot1, int equipslot2, int equipslot3, int equipslot4, int equipslot5, int equipslot6);  
+		public SendEquipInfoDelegate SendEquipInfo = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName, int equipslot1, int equipslot2, int equipslot3, int equipslot4, int equipslot5, int equipslot6)
+		{ 
+			return false;
+		};
+		public delegate bool SendPassiveEquipInfoDelegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName, int equipslot1, int equipslot2, int equipslot3, int equipslot4);  
+		public SendPassiveEquipInfoDelegate SendPassiveEquipInfo = delegate(Nettention.Proud.HostID remote,Nettention.Proud.RmiContext rmiContext, System.String CName, int equipslot1, int equipslot2, int equipslot3, int equipslot4)
+		{ 
+			return false;
+		};
 	public override bool ProcessReceivedMessage(Nettention.Proud.ReceivedMessage pa, Object hostTag) 
 	{
 		Nettention.Proud.HostID remote=pa.RemoteHostID;
@@ -56,9 +161,9 @@ case Common.Chat:
 		ctx.encryptMode = pa.EncryptMode;
 		ctx.compressMode = pa.CompressMode;
 			
-		System.String a; Nettention.Proud.Marshaler.Read(__msg,out a);	
-int b; Nettention.Proud.Marshaler.Read(__msg,out b);	
-float c; Nettention.Proud.Marshaler.Read(__msg,out c);	
+		System.String a; Test.Read(__msg,out a);	
+int b; Test.Read(__msg,out b);	
+float c; Test.Read(__msg,out c);	
 core.PostCheckReadMessage(__msg, RmiName_Chat);
 		if(enableNotifyCallFromStub==true)
 		{
@@ -111,8 +216,8 @@ case Common.Login:
 		ctx.encryptMode = pa.EncryptMode;
 		ctx.compressMode = pa.CompressMode;
 			
-		System.String id; Nettention.Proud.Marshaler.Read(__msg,out id);	
-System.String password; Nettention.Proud.Marshaler.Read(__msg,out password);	
+		System.String id; Test.Read(__msg,out id);	
+System.String password; Test.Read(__msg,out password);	
 core.PostCheckReadMessage(__msg, RmiName_Login);
 		if(enableNotifyCallFromStub==true)
 		{
@@ -164,7 +269,7 @@ case Common.RequestMakeRaidRoom:
 		ctx.encryptMode = pa.EncryptMode;
 		ctx.compressMode = pa.CompressMode;
 			
-		Nettention.Proud.HostID HostId; Nettention.Proud.Marshaler.Read(__msg,out HostId);	
+		Nettention.Proud.HostID HostId; Test.Read(__msg,out HostId);	
 core.PostCheckReadMessage(__msg, RmiName_RequestMakeRaidRoom);
 		if(enableNotifyCallFromStub==true)
 		{
@@ -206,6 +311,1143 @@ core.PostCheckReadMessage(__msg, RmiName_RequestMakeRaidRoom);
 		}
 	}
 	break;
+case Common.RequestGetRaidRoomInfo:
+	{
+		Nettention.Proud.RmiContext ctx=new Nettention.Proud.RmiContext();
+		ctx.sentFrom=pa.RemoteHostID;
+		ctx.relayed=pa.IsRelayed;
+		ctx.hostTag=hostTag;
+		ctx.encryptMode = pa.EncryptMode;
+		ctx.compressMode = pa.CompressMode;
+			
+		core.PostCheckReadMessage(__msg, RmiName_RequestGetRaidRoomInfo);
+		if(enableNotifyCallFromStub==true)
+		{
+			string parameterString="";
+						NotifyCallFromStub(Common.RequestGetRaidRoomInfo, RmiName_RequestGetRaidRoomInfo,parameterString);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.BeforeRmiSummary summary = new Nettention.Proud.BeforeRmiSummary();
+			summary.rmiID = Common.RequestGetRaidRoomInfo;
+			summary.rmiName = RmiName_RequestGetRaidRoomInfo;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			BeforeRmiInvocation(summary);
+		}
+			
+		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
+			
+		// Call this method.
+		bool __ret=RequestGetRaidRoomInfo (remote,ctx  );
+			
+		if(__ret==false)
+		{
+			// Error: RMI function that a user did not create has been called. 
+			core.ShowNotImplementedRmiWarning(RmiName_RequestGetRaidRoomInfo);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
+			summary.rmiID = Common.RequestGetRaidRoomInfo;
+			summary.rmiName = RmiName_RequestGetRaidRoomInfo;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
+			AfterRmiInvocation(summary);
+		}
+	}
+	break;
+case Common.RequestJoinRaidRoom:
+	{
+		Nettention.Proud.RmiContext ctx=new Nettention.Proud.RmiContext();
+		ctx.sentFrom=pa.RemoteHostID;
+		ctx.relayed=pa.IsRelayed;
+		ctx.hostTag=hostTag;
+		ctx.encryptMode = pa.EncryptMode;
+		ctx.compressMode = pa.CompressMode;
+			
+		Nettention.Proud.HostID HostId; Test.Read(__msg,out HostId);	
+int GroupId; Test.Read(__msg,out GroupId);	
+core.PostCheckReadMessage(__msg, RmiName_RequestJoinRaidRoom);
+		if(enableNotifyCallFromStub==true)
+		{
+			string parameterString="";
+			parameterString+=HostId.ToString()+",";
+parameterString+=GroupId.ToString()+",";
+			NotifyCallFromStub(Common.RequestJoinRaidRoom, RmiName_RequestJoinRaidRoom,parameterString);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.BeforeRmiSummary summary = new Nettention.Proud.BeforeRmiSummary();
+			summary.rmiID = Common.RequestJoinRaidRoom;
+			summary.rmiName = RmiName_RequestJoinRaidRoom;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			BeforeRmiInvocation(summary);
+		}
+			
+		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
+			
+		// Call this method.
+		bool __ret=RequestJoinRaidRoom (remote,ctx , HostId, GroupId );
+			
+		if(__ret==false)
+		{
+			// Error: RMI function that a user did not create has been called. 
+			core.ShowNotImplementedRmiWarning(RmiName_RequestJoinRaidRoom);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
+			summary.rmiID = Common.RequestJoinRaidRoom;
+			summary.rmiName = RmiName_RequestJoinRaidRoom;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
+			AfterRmiInvocation(summary);
+		}
+	}
+	break;
+case Common.RequestMakePVPRoom:
+	{
+		Nettention.Proud.RmiContext ctx=new Nettention.Proud.RmiContext();
+		ctx.sentFrom=pa.RemoteHostID;
+		ctx.relayed=pa.IsRelayed;
+		ctx.hostTag=hostTag;
+		ctx.encryptMode = pa.EncryptMode;
+		ctx.compressMode = pa.CompressMode;
+			
+		Nettention.Proud.HostID HostId; Test.Read(__msg,out HostId);	
+System.String CName; Test.Read(__msg,out CName);	
+System.String RoomName; Test.Read(__msg,out RoomName);	
+core.PostCheckReadMessage(__msg, RmiName_RequestMakePVPRoom);
+		if(enableNotifyCallFromStub==true)
+		{
+			string parameterString="";
+			parameterString+=HostId.ToString()+",";
+parameterString+=CName.ToString()+",";
+parameterString+=RoomName.ToString()+",";
+			NotifyCallFromStub(Common.RequestMakePVPRoom, RmiName_RequestMakePVPRoom,parameterString);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.BeforeRmiSummary summary = new Nettention.Proud.BeforeRmiSummary();
+			summary.rmiID = Common.RequestMakePVPRoom;
+			summary.rmiName = RmiName_RequestMakePVPRoom;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			BeforeRmiInvocation(summary);
+		}
+			
+		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
+			
+		// Call this method.
+		bool __ret=RequestMakePVPRoom (remote,ctx , HostId, CName, RoomName );
+			
+		if(__ret==false)
+		{
+			// Error: RMI function that a user did not create has been called. 
+			core.ShowNotImplementedRmiWarning(RmiName_RequestMakePVPRoom);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
+			summary.rmiID = Common.RequestMakePVPRoom;
+			summary.rmiName = RmiName_RequestMakePVPRoom;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
+			AfterRmiInvocation(summary);
+		}
+	}
+	break;
+case Common.RequestGetPVPRoomInfo:
+	{
+		Nettention.Proud.RmiContext ctx=new Nettention.Proud.RmiContext();
+		ctx.sentFrom=pa.RemoteHostID;
+		ctx.relayed=pa.IsRelayed;
+		ctx.hostTag=hostTag;
+		ctx.encryptMode = pa.EncryptMode;
+		ctx.compressMode = pa.CompressMode;
+			
+		core.PostCheckReadMessage(__msg, RmiName_RequestGetPVPRoomInfo);
+		if(enableNotifyCallFromStub==true)
+		{
+			string parameterString="";
+						NotifyCallFromStub(Common.RequestGetPVPRoomInfo, RmiName_RequestGetPVPRoomInfo,parameterString);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.BeforeRmiSummary summary = new Nettention.Proud.BeforeRmiSummary();
+			summary.rmiID = Common.RequestGetPVPRoomInfo;
+			summary.rmiName = RmiName_RequestGetPVPRoomInfo;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			BeforeRmiInvocation(summary);
+		}
+			
+		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
+			
+		// Call this method.
+		bool __ret=RequestGetPVPRoomInfo (remote,ctx  );
+			
+		if(__ret==false)
+		{
+			// Error: RMI function that a user did not create has been called. 
+			core.ShowNotImplementedRmiWarning(RmiName_RequestGetPVPRoomInfo);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
+			summary.rmiID = Common.RequestGetPVPRoomInfo;
+			summary.rmiName = RmiName_RequestGetPVPRoomInfo;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
+			AfterRmiInvocation(summary);
+		}
+	}
+	break;
+case Common.RequestJoinPVPRoom:
+	{
+		Nettention.Proud.RmiContext ctx=new Nettention.Proud.RmiContext();
+		ctx.sentFrom=pa.RemoteHostID;
+		ctx.relayed=pa.IsRelayed;
+		ctx.hostTag=hostTag;
+		ctx.encryptMode = pa.EncryptMode;
+		ctx.compressMode = pa.CompressMode;
+			
+		Nettention.Proud.HostID HostId; Test.Read(__msg,out HostId);	
+int RoomId; Test.Read(__msg,out RoomId);	
+int GroupId; Test.Read(__msg,out GroupId);	
+core.PostCheckReadMessage(__msg, RmiName_RequestJoinPVPRoom);
+		if(enableNotifyCallFromStub==true)
+		{
+			string parameterString="";
+			parameterString+=HostId.ToString()+",";
+parameterString+=RoomId.ToString()+",";
+parameterString+=GroupId.ToString()+",";
+			NotifyCallFromStub(Common.RequestJoinPVPRoom, RmiName_RequestJoinPVPRoom,parameterString);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.BeforeRmiSummary summary = new Nettention.Proud.BeforeRmiSummary();
+			summary.rmiID = Common.RequestJoinPVPRoom;
+			summary.rmiName = RmiName_RequestJoinPVPRoom;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			BeforeRmiInvocation(summary);
+		}
+			
+		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
+			
+		// Call this method.
+		bool __ret=RequestJoinPVPRoom (remote,ctx , HostId, RoomId, GroupId );
+			
+		if(__ret==false)
+		{
+			// Error: RMI function that a user did not create has been called. 
+			core.ShowNotImplementedRmiWarning(RmiName_RequestJoinPVPRoom);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
+			summary.rmiID = Common.RequestJoinPVPRoom;
+			summary.rmiName = RmiName_RequestJoinPVPRoom;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
+			AfterRmiInvocation(summary);
+		}
+	}
+	break;
+case Common.RequestLeavePVPRoom:
+	{
+		Nettention.Proud.RmiContext ctx=new Nettention.Proud.RmiContext();
+		ctx.sentFrom=pa.RemoteHostID;
+		ctx.relayed=pa.IsRelayed;
+		ctx.hostTag=hostTag;
+		ctx.encryptMode = pa.EncryptMode;
+		ctx.compressMode = pa.CompressMode;
+			
+		Nettention.Proud.HostID HostId; Test.Read(__msg,out HostId);	
+Nettention.Proud.HostID GroupId; Test.Read(__msg,out GroupId);	
+core.PostCheckReadMessage(__msg, RmiName_RequestLeavePVPRoom);
+		if(enableNotifyCallFromStub==true)
+		{
+			string parameterString="";
+			parameterString+=HostId.ToString()+",";
+parameterString+=GroupId.ToString()+",";
+			NotifyCallFromStub(Common.RequestLeavePVPRoom, RmiName_RequestLeavePVPRoom,parameterString);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.BeforeRmiSummary summary = new Nettention.Proud.BeforeRmiSummary();
+			summary.rmiID = Common.RequestLeavePVPRoom;
+			summary.rmiName = RmiName_RequestLeavePVPRoom;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			BeforeRmiInvocation(summary);
+		}
+			
+		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
+			
+		// Call this method.
+		bool __ret=RequestLeavePVPRoom (remote,ctx , HostId, GroupId );
+			
+		if(__ret==false)
+		{
+			// Error: RMI function that a user did not create has been called. 
+			core.ShowNotImplementedRmiWarning(RmiName_RequestLeavePVPRoom);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
+			summary.rmiID = Common.RequestLeavePVPRoom;
+			summary.rmiName = RmiName_RequestLeavePVPRoom;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
+			AfterRmiInvocation(summary);
+		}
+	}
+	break;
+case Common.RequestMakeAccount:
+	{
+		Nettention.Proud.RmiContext ctx=new Nettention.Proud.RmiContext();
+		ctx.sentFrom=pa.RemoteHostID;
+		ctx.relayed=pa.IsRelayed;
+		ctx.hostTag=hostTag;
+		ctx.encryptMode = pa.EncryptMode;
+		ctx.compressMode = pa.CompressMode;
+			
+		System.String id; Test.Read(__msg,out id);	
+System.String password; Test.Read(__msg,out password);	
+System.String CName; Test.Read(__msg,out CName);	
+core.PostCheckReadMessage(__msg, RmiName_RequestMakeAccount);
+		if(enableNotifyCallFromStub==true)
+		{
+			string parameterString="";
+			parameterString+=id.ToString()+",";
+parameterString+=password.ToString()+",";
+parameterString+=CName.ToString()+",";
+			NotifyCallFromStub(Common.RequestMakeAccount, RmiName_RequestMakeAccount,parameterString);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.BeforeRmiSummary summary = new Nettention.Proud.BeforeRmiSummary();
+			summary.rmiID = Common.RequestMakeAccount;
+			summary.rmiName = RmiName_RequestMakeAccount;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			BeforeRmiInvocation(summary);
+		}
+			
+		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
+			
+		// Call this method.
+		bool __ret=RequestMakeAccount (remote,ctx , id, password, CName );
+			
+		if(__ret==false)
+		{
+			// Error: RMI function that a user did not create has been called. 
+			core.ShowNotImplementedRmiWarning(RmiName_RequestMakeAccount);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
+			summary.rmiID = Common.RequestMakeAccount;
+			summary.rmiName = RmiName_RequestMakeAccount;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
+			AfterRmiInvocation(summary);
+		}
+	}
+	break;
+case Common.RequestLoginAccount:
+	{
+		Nettention.Proud.RmiContext ctx=new Nettention.Proud.RmiContext();
+		ctx.sentFrom=pa.RemoteHostID;
+		ctx.relayed=pa.IsRelayed;
+		ctx.hostTag=hostTag;
+		ctx.encryptMode = pa.EncryptMode;
+		ctx.compressMode = pa.CompressMode;
+			
+		System.String id; Test.Read(__msg,out id);	
+System.String password; Test.Read(__msg,out password);	
+core.PostCheckReadMessage(__msg, RmiName_RequestLoginAccount);
+		if(enableNotifyCallFromStub==true)
+		{
+			string parameterString="";
+			parameterString+=id.ToString()+",";
+parameterString+=password.ToString()+",";
+			NotifyCallFromStub(Common.RequestLoginAccount, RmiName_RequestLoginAccount,parameterString);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.BeforeRmiSummary summary = new Nettention.Proud.BeforeRmiSummary();
+			summary.rmiID = Common.RequestLoginAccount;
+			summary.rmiName = RmiName_RequestLoginAccount;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			BeforeRmiInvocation(summary);
+		}
+			
+		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
+			
+		// Call this method.
+		bool __ret=RequestLoginAccount (remote,ctx , id, password );
+			
+		if(__ret==false)
+		{
+			// Error: RMI function that a user did not create has been called. 
+			core.ShowNotImplementedRmiWarning(RmiName_RequestLoginAccount);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
+			summary.rmiID = Common.RequestLoginAccount;
+			summary.rmiName = RmiName_RequestLoginAccount;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
+			AfterRmiInvocation(summary);
+		}
+	}
+	break;
+case Common.RequestInventoryData:
+	{
+		Nettention.Proud.RmiContext ctx=new Nettention.Proud.RmiContext();
+		ctx.sentFrom=pa.RemoteHostID;
+		ctx.relayed=pa.IsRelayed;
+		ctx.hostTag=hostTag;
+		ctx.encryptMode = pa.EncryptMode;
+		ctx.compressMode = pa.CompressMode;
+			
+		System.String CName; Test.Read(__msg,out CName);	
+core.PostCheckReadMessage(__msg, RmiName_RequestInventoryData);
+		if(enableNotifyCallFromStub==true)
+		{
+			string parameterString="";
+			parameterString+=CName.ToString()+",";
+			NotifyCallFromStub(Common.RequestInventoryData, RmiName_RequestInventoryData,parameterString);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.BeforeRmiSummary summary = new Nettention.Proud.BeforeRmiSummary();
+			summary.rmiID = Common.RequestInventoryData;
+			summary.rmiName = RmiName_RequestInventoryData;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			BeforeRmiInvocation(summary);
+		}
+			
+		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
+			
+		// Call this method.
+		bool __ret=RequestInventoryData (remote,ctx , CName );
+			
+		if(__ret==false)
+		{
+			// Error: RMI function that a user did not create has been called. 
+			core.ShowNotImplementedRmiWarning(RmiName_RequestInventoryData);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
+			summary.rmiID = Common.RequestInventoryData;
+			summary.rmiName = RmiName_RequestInventoryData;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
+			AfterRmiInvocation(summary);
+		}
+	}
+	break;
+case Common.RequestSkillData:
+	{
+		Nettention.Proud.RmiContext ctx=new Nettention.Proud.RmiContext();
+		ctx.sentFrom=pa.RemoteHostID;
+		ctx.relayed=pa.IsRelayed;
+		ctx.hostTag=hostTag;
+		ctx.encryptMode = pa.EncryptMode;
+		ctx.compressMode = pa.CompressMode;
+			
+		System.String CName; Test.Read(__msg,out CName);	
+core.PostCheckReadMessage(__msg, RmiName_RequestSkillData);
+		if(enableNotifyCallFromStub==true)
+		{
+			string parameterString="";
+			parameterString+=CName.ToString()+",";
+			NotifyCallFromStub(Common.RequestSkillData, RmiName_RequestSkillData,parameterString);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.BeforeRmiSummary summary = new Nettention.Proud.BeforeRmiSummary();
+			summary.rmiID = Common.RequestSkillData;
+			summary.rmiName = RmiName_RequestSkillData;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			BeforeRmiInvocation(summary);
+		}
+			
+		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
+			
+		// Call this method.
+		bool __ret=RequestSkillData (remote,ctx , CName );
+			
+		if(__ret==false)
+		{
+			// Error: RMI function that a user did not create has been called. 
+			core.ShowNotImplementedRmiWarning(RmiName_RequestSkillData);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
+			summary.rmiID = Common.RequestSkillData;
+			summary.rmiName = RmiName_RequestSkillData;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
+			AfterRmiInvocation(summary);
+		}
+	}
+	break;
+case Common.RequestEquipData:
+	{
+		Nettention.Proud.RmiContext ctx=new Nettention.Proud.RmiContext();
+		ctx.sentFrom=pa.RemoteHostID;
+		ctx.relayed=pa.IsRelayed;
+		ctx.hostTag=hostTag;
+		ctx.encryptMode = pa.EncryptMode;
+		ctx.compressMode = pa.CompressMode;
+			
+		System.String CName; Test.Read(__msg,out CName);	
+core.PostCheckReadMessage(__msg, RmiName_RequestEquipData);
+		if(enableNotifyCallFromStub==true)
+		{
+			string parameterString="";
+			parameterString+=CName.ToString()+",";
+			NotifyCallFromStub(Common.RequestEquipData, RmiName_RequestEquipData,parameterString);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.BeforeRmiSummary summary = new Nettention.Proud.BeforeRmiSummary();
+			summary.rmiID = Common.RequestEquipData;
+			summary.rmiName = RmiName_RequestEquipData;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			BeforeRmiInvocation(summary);
+		}
+			
+		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
+			
+		// Call this method.
+		bool __ret=RequestEquipData (remote,ctx , CName );
+			
+		if(__ret==false)
+		{
+			// Error: RMI function that a user did not create has been called. 
+			core.ShowNotImplementedRmiWarning(RmiName_RequestEquipData);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
+			summary.rmiID = Common.RequestEquipData;
+			summary.rmiName = RmiName_RequestEquipData;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
+			AfterRmiInvocation(summary);
+		}
+	}
+	break;
+case Common.RequestChangeEquipWeapon:
+	{
+		Nettention.Proud.RmiContext ctx=new Nettention.Proud.RmiContext();
+		ctx.sentFrom=pa.RemoteHostID;
+		ctx.relayed=pa.IsRelayed;
+		ctx.hostTag=hostTag;
+		ctx.encryptMode = pa.EncryptMode;
+		ctx.compressMode = pa.CompressMode;
+			
+		System.String CName; Test.Read(__msg,out CName);	
+int weaponIdx; Test.Read(__msg,out weaponIdx);	
+core.PostCheckReadMessage(__msg, RmiName_RequestChangeEquipWeapon);
+		if(enableNotifyCallFromStub==true)
+		{
+			string parameterString="";
+			parameterString+=CName.ToString()+",";
+parameterString+=weaponIdx.ToString()+",";
+			NotifyCallFromStub(Common.RequestChangeEquipWeapon, RmiName_RequestChangeEquipWeapon,parameterString);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.BeforeRmiSummary summary = new Nettention.Proud.BeforeRmiSummary();
+			summary.rmiID = Common.RequestChangeEquipWeapon;
+			summary.rmiName = RmiName_RequestChangeEquipWeapon;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			BeforeRmiInvocation(summary);
+		}
+			
+		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
+			
+		// Call this method.
+		bool __ret=RequestChangeEquipWeapon (remote,ctx , CName, weaponIdx );
+			
+		if(__ret==false)
+		{
+			// Error: RMI function that a user did not create has been called. 
+			core.ShowNotImplementedRmiWarning(RmiName_RequestChangeEquipWeapon);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
+			summary.rmiID = Common.RequestChangeEquipWeapon;
+			summary.rmiName = RmiName_RequestChangeEquipWeapon;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
+			AfterRmiInvocation(summary);
+		}
+	}
+	break;
+case Common.RequestBattleInfo:
+	{
+		Nettention.Proud.RmiContext ctx=new Nettention.Proud.RmiContext();
+		ctx.sentFrom=pa.RemoteHostID;
+		ctx.relayed=pa.IsRelayed;
+		ctx.hostTag=hostTag;
+		ctx.encryptMode = pa.EncryptMode;
+		ctx.compressMode = pa.CompressMode;
+			
+		System.String CName; Test.Read(__msg,out CName);	
+core.PostCheckReadMessage(__msg, RmiName_RequestBattleInfo);
+		if(enableNotifyCallFromStub==true)
+		{
+			string parameterString="";
+			parameterString+=CName.ToString()+",";
+			NotifyCallFromStub(Common.RequestBattleInfo, RmiName_RequestBattleInfo,parameterString);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.BeforeRmiSummary summary = new Nettention.Proud.BeforeRmiSummary();
+			summary.rmiID = Common.RequestBattleInfo;
+			summary.rmiName = RmiName_RequestBattleInfo;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			BeforeRmiInvocation(summary);
+		}
+			
+		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
+			
+		// Call this method.
+		bool __ret=RequestBattleInfo (remote,ctx , CName );
+			
+		if(__ret==false)
+		{
+			// Error: RMI function that a user did not create has been called. 
+			core.ShowNotImplementedRmiWarning(RmiName_RequestBattleInfo);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
+			summary.rmiID = Common.RequestBattleInfo;
+			summary.rmiName = RmiName_RequestBattleInfo;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
+			AfterRmiInvocation(summary);
+		}
+	}
+	break;
+case Common.RequestBattleEnd:
+	{
+		Nettention.Proud.RmiContext ctx=new Nettention.Proud.RmiContext();
+		ctx.sentFrom=pa.RemoteHostID;
+		ctx.relayed=pa.IsRelayed;
+		ctx.hostTag=hostTag;
+		ctx.encryptMode = pa.EncryptMode;
+		ctx.compressMode = pa.CompressMode;
+			
+		System.String CName; Test.Read(__msg,out CName);	
+Nettention.Proud.FastArray<items> itData; Test.Read(__msg,out itData);	
+int battleType; Test.Read(__msg,out battleType);	
+Nettention.Proud.FastArray<battleinfo> biData; Test.Read(__msg,out biData);	
+core.PostCheckReadMessage(__msg, RmiName_RequestBattleEnd);
+		if(enableNotifyCallFromStub==true)
+		{
+			string parameterString="";
+			parameterString+=CName.ToString()+",";
+parameterString+=itData.ToString()+",";
+parameterString+=battleType.ToString()+",";
+parameterString+=biData.ToString()+",";
+			NotifyCallFromStub(Common.RequestBattleEnd, RmiName_RequestBattleEnd,parameterString);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.BeforeRmiSummary summary = new Nettention.Proud.BeforeRmiSummary();
+			summary.rmiID = Common.RequestBattleEnd;
+			summary.rmiName = RmiName_RequestBattleEnd;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			BeforeRmiInvocation(summary);
+		}
+			
+		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
+			
+		// Call this method.
+		bool __ret=RequestBattleEnd (remote,ctx , CName, itData, battleType, biData );
+			
+		if(__ret==false)
+		{
+			// Error: RMI function that a user did not create has been called. 
+			core.ShowNotImplementedRmiWarning(RmiName_RequestBattleEnd);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
+			summary.rmiID = Common.RequestBattleEnd;
+			summary.rmiName = RmiName_RequestBattleEnd;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
+			AfterRmiInvocation(summary);
+		}
+	}
+	break;
+case Common.AddItemToInventory:
+	{
+		Nettention.Proud.RmiContext ctx=new Nettention.Proud.RmiContext();
+		ctx.sentFrom=pa.RemoteHostID;
+		ctx.relayed=pa.IsRelayed;
+		ctx.hostTag=hostTag;
+		ctx.encryptMode = pa.EncryptMode;
+		ctx.compressMode = pa.CompressMode;
+			
+		System.String CName; Test.Read(__msg,out CName);	
+int inId; Test.Read(__msg,out inId);	
+int itemId; Test.Read(__msg,out itemId);	
+int itemCount; Test.Read(__msg,out itemCount);	
+int stackAble; Test.Read(__msg,out stackAble);	
+core.PostCheckReadMessage(__msg, RmiName_AddItemToInventory);
+		if(enableNotifyCallFromStub==true)
+		{
+			string parameterString="";
+			parameterString+=CName.ToString()+",";
+parameterString+=inId.ToString()+",";
+parameterString+=itemId.ToString()+",";
+parameterString+=itemCount.ToString()+",";
+parameterString+=stackAble.ToString()+",";
+			NotifyCallFromStub(Common.AddItemToInventory, RmiName_AddItemToInventory,parameterString);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.BeforeRmiSummary summary = new Nettention.Proud.BeforeRmiSummary();
+			summary.rmiID = Common.AddItemToInventory;
+			summary.rmiName = RmiName_AddItemToInventory;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			BeforeRmiInvocation(summary);
+		}
+			
+		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
+			
+		// Call this method.
+		bool __ret=AddItemToInventory (remote,ctx , CName, inId, itemId, itemCount, stackAble );
+			
+		if(__ret==false)
+		{
+			// Error: RMI function that a user did not create has been called. 
+			core.ShowNotImplementedRmiWarning(RmiName_AddItemToInventory);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
+			summary.rmiID = Common.AddItemToInventory;
+			summary.rmiName = RmiName_AddItemToInventory;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
+			AfterRmiInvocation(summary);
+		}
+	}
+	break;
+case Common.AddGold:
+	{
+		Nettention.Proud.RmiContext ctx=new Nettention.Proud.RmiContext();
+		ctx.sentFrom=pa.RemoteHostID;
+		ctx.relayed=pa.IsRelayed;
+		ctx.hostTag=hostTag;
+		ctx.encryptMode = pa.EncryptMode;
+		ctx.compressMode = pa.CompressMode;
+			
+		System.String CName; Test.Read(__msg,out CName);	
+int gold; Test.Read(__msg,out gold);	
+core.PostCheckReadMessage(__msg, RmiName_AddGold);
+		if(enableNotifyCallFromStub==true)
+		{
+			string parameterString="";
+			parameterString+=CName.ToString()+",";
+parameterString+=gold.ToString()+",";
+			NotifyCallFromStub(Common.AddGold, RmiName_AddGold,parameterString);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.BeforeRmiSummary summary = new Nettention.Proud.BeforeRmiSummary();
+			summary.rmiID = Common.AddGold;
+			summary.rmiName = RmiName_AddGold;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			BeforeRmiInvocation(summary);
+		}
+			
+		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
+			
+		// Call this method.
+		bool __ret=AddGold (remote,ctx , CName, gold );
+			
+		if(__ret==false)
+		{
+			// Error: RMI function that a user did not create has been called. 
+			core.ShowNotImplementedRmiWarning(RmiName_AddGold);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
+			summary.rmiID = Common.AddGold;
+			summary.rmiName = RmiName_AddGold;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
+			AfterRmiInvocation(summary);
+		}
+	}
+	break;
+case Common.UseItemFromInventory:
+	{
+		Nettention.Proud.RmiContext ctx=new Nettention.Proud.RmiContext();
+		ctx.sentFrom=pa.RemoteHostID;
+		ctx.relayed=pa.IsRelayed;
+		ctx.hostTag=hostTag;
+		ctx.encryptMode = pa.EncryptMode;
+		ctx.compressMode = pa.CompressMode;
+			
+		System.String CName; Test.Read(__msg,out CName);	
+int inId; Test.Read(__msg,out inId);	
+int itemId; Test.Read(__msg,out itemId);	
+int itemCount; Test.Read(__msg,out itemCount);	
+int stackAble; Test.Read(__msg,out stackAble);	
+core.PostCheckReadMessage(__msg, RmiName_UseItemFromInventory);
+		if(enableNotifyCallFromStub==true)
+		{
+			string parameterString="";
+			parameterString+=CName.ToString()+",";
+parameterString+=inId.ToString()+",";
+parameterString+=itemId.ToString()+",";
+parameterString+=itemCount.ToString()+",";
+parameterString+=stackAble.ToString()+",";
+			NotifyCallFromStub(Common.UseItemFromInventory, RmiName_UseItemFromInventory,parameterString);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.BeforeRmiSummary summary = new Nettention.Proud.BeforeRmiSummary();
+			summary.rmiID = Common.UseItemFromInventory;
+			summary.rmiName = RmiName_UseItemFromInventory;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			BeforeRmiInvocation(summary);
+		}
+			
+		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
+			
+		// Call this method.
+		bool __ret=UseItemFromInventory (remote,ctx , CName, inId, itemId, itemCount, stackAble );
+			
+		if(__ret==false)
+		{
+			// Error: RMI function that a user did not create has been called. 
+			core.ShowNotImplementedRmiWarning(RmiName_UseItemFromInventory);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
+			summary.rmiID = Common.UseItemFromInventory;
+			summary.rmiName = RmiName_UseItemFromInventory;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
+			AfterRmiInvocation(summary);
+		}
+	}
+	break;
+case Common.UseGold:
+	{
+		Nettention.Proud.RmiContext ctx=new Nettention.Proud.RmiContext();
+		ctx.sentFrom=pa.RemoteHostID;
+		ctx.relayed=pa.IsRelayed;
+		ctx.hostTag=hostTag;
+		ctx.encryptMode = pa.EncryptMode;
+		ctx.compressMode = pa.CompressMode;
+			
+		System.String CName; Test.Read(__msg,out CName);	
+int gold; Test.Read(__msg,out gold);	
+core.PostCheckReadMessage(__msg, RmiName_UseGold);
+		if(enableNotifyCallFromStub==true)
+		{
+			string parameterString="";
+			parameterString+=CName.ToString()+",";
+parameterString+=gold.ToString()+",";
+			NotifyCallFromStub(Common.UseGold, RmiName_UseGold,parameterString);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.BeforeRmiSummary summary = new Nettention.Proud.BeforeRmiSummary();
+			summary.rmiID = Common.UseGold;
+			summary.rmiName = RmiName_UseGold;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			BeforeRmiInvocation(summary);
+		}
+			
+		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
+			
+		// Call this method.
+		bool __ret=UseGold (remote,ctx , CName, gold );
+			
+		if(__ret==false)
+		{
+			// Error: RMI function that a user did not create has been called. 
+			core.ShowNotImplementedRmiWarning(RmiName_UseGold);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
+			summary.rmiID = Common.UseGold;
+			summary.rmiName = RmiName_UseGold;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
+			AfterRmiInvocation(summary);
+		}
+	}
+	break;
+case Common.SellAllItem:
+	{
+		Nettention.Proud.RmiContext ctx=new Nettention.Proud.RmiContext();
+		ctx.sentFrom=pa.RemoteHostID;
+		ctx.relayed=pa.IsRelayed;
+		ctx.hostTag=hostTag;
+		ctx.encryptMode = pa.EncryptMode;
+		ctx.compressMode = pa.CompressMode;
+			
+		System.String CName; Test.Read(__msg,out CName);	
+int inId; Test.Read(__msg,out inId);	
+int itemId; Test.Read(__msg,out itemId);	
+core.PostCheckReadMessage(__msg, RmiName_SellAllItem);
+		if(enableNotifyCallFromStub==true)
+		{
+			string parameterString="";
+			parameterString+=CName.ToString()+",";
+parameterString+=inId.ToString()+",";
+parameterString+=itemId.ToString()+",";
+			NotifyCallFromStub(Common.SellAllItem, RmiName_SellAllItem,parameterString);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.BeforeRmiSummary summary = new Nettention.Proud.BeforeRmiSummary();
+			summary.rmiID = Common.SellAllItem;
+			summary.rmiName = RmiName_SellAllItem;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			BeforeRmiInvocation(summary);
+		}
+			
+		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
+			
+		// Call this method.
+		bool __ret=SellAllItem (remote,ctx , CName, inId, itemId );
+			
+		if(__ret==false)
+		{
+			// Error: RMI function that a user did not create has been called. 
+			core.ShowNotImplementedRmiWarning(RmiName_SellAllItem);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
+			summary.rmiID = Common.SellAllItem;
+			summary.rmiName = RmiName_SellAllItem;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
+			AfterRmiInvocation(summary);
+		}
+	}
+	break;
+case Common.SendEquipInfo:
+	{
+		Nettention.Proud.RmiContext ctx=new Nettention.Proud.RmiContext();
+		ctx.sentFrom=pa.RemoteHostID;
+		ctx.relayed=pa.IsRelayed;
+		ctx.hostTag=hostTag;
+		ctx.encryptMode = pa.EncryptMode;
+		ctx.compressMode = pa.CompressMode;
+			
+		System.String CName; Test.Read(__msg,out CName);	
+int equipslot1; Test.Read(__msg,out equipslot1);	
+int equipslot2; Test.Read(__msg,out equipslot2);	
+int equipslot3; Test.Read(__msg,out equipslot3);	
+int equipslot4; Test.Read(__msg,out equipslot4);	
+int equipslot5; Test.Read(__msg,out equipslot5);	
+int equipslot6; Test.Read(__msg,out equipslot6);	
+core.PostCheckReadMessage(__msg, RmiName_SendEquipInfo);
+		if(enableNotifyCallFromStub==true)
+		{
+			string parameterString="";
+			parameterString+=CName.ToString()+",";
+parameterString+=equipslot1.ToString()+",";
+parameterString+=equipslot2.ToString()+",";
+parameterString+=equipslot3.ToString()+",";
+parameterString+=equipslot4.ToString()+",";
+parameterString+=equipslot5.ToString()+",";
+parameterString+=equipslot6.ToString()+",";
+			NotifyCallFromStub(Common.SendEquipInfo, RmiName_SendEquipInfo,parameterString);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.BeforeRmiSummary summary = new Nettention.Proud.BeforeRmiSummary();
+			summary.rmiID = Common.SendEquipInfo;
+			summary.rmiName = RmiName_SendEquipInfo;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			BeforeRmiInvocation(summary);
+		}
+			
+		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
+			
+		// Call this method.
+		bool __ret=SendEquipInfo (remote,ctx , CName, equipslot1, equipslot2, equipslot3, equipslot4, equipslot5, equipslot6 );
+			
+		if(__ret==false)
+		{
+			// Error: RMI function that a user did not create has been called. 
+			core.ShowNotImplementedRmiWarning(RmiName_SendEquipInfo);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
+			summary.rmiID = Common.SendEquipInfo;
+			summary.rmiName = RmiName_SendEquipInfo;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
+			AfterRmiInvocation(summary);
+		}
+	}
+	break;
+case Common.SendPassiveEquipInfo:
+	{
+		Nettention.Proud.RmiContext ctx=new Nettention.Proud.RmiContext();
+		ctx.sentFrom=pa.RemoteHostID;
+		ctx.relayed=pa.IsRelayed;
+		ctx.hostTag=hostTag;
+		ctx.encryptMode = pa.EncryptMode;
+		ctx.compressMode = pa.CompressMode;
+			
+		System.String CName; Test.Read(__msg,out CName);	
+int equipslot1; Test.Read(__msg,out equipslot1);	
+int equipslot2; Test.Read(__msg,out equipslot2);	
+int equipslot3; Test.Read(__msg,out equipslot3);	
+int equipslot4; Test.Read(__msg,out equipslot4);	
+core.PostCheckReadMessage(__msg, RmiName_SendPassiveEquipInfo);
+		if(enableNotifyCallFromStub==true)
+		{
+			string parameterString="";
+			parameterString+=CName.ToString()+",";
+parameterString+=equipslot1.ToString()+",";
+parameterString+=equipslot2.ToString()+",";
+parameterString+=equipslot3.ToString()+",";
+parameterString+=equipslot4.ToString()+",";
+			NotifyCallFromStub(Common.SendPassiveEquipInfo, RmiName_SendPassiveEquipInfo,parameterString);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.BeforeRmiSummary summary = new Nettention.Proud.BeforeRmiSummary();
+			summary.rmiID = Common.SendPassiveEquipInfo;
+			summary.rmiName = RmiName_SendPassiveEquipInfo;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			BeforeRmiInvocation(summary);
+		}
+			
+		long t0 = Nettention.Proud.PreciseCurrentTime.GetTimeMs();
+			
+		// Call this method.
+		bool __ret=SendPassiveEquipInfo (remote,ctx , CName, equipslot1, equipslot2, equipslot3, equipslot4 );
+			
+		if(__ret==false)
+		{
+			// Error: RMI function that a user did not create has been called. 
+			core.ShowNotImplementedRmiWarning(RmiName_SendPassiveEquipInfo);
+		}
+			
+		if(enableStubProfiling)
+		{
+			Nettention.Proud.AfterRmiSummary summary = new Nettention.Proud.AfterRmiSummary();
+			summary.rmiID = Common.SendPassiveEquipInfo;
+			summary.rmiName = RmiName_SendPassiveEquipInfo;
+			summary.hostID = remote;
+			summary.hostTag = hostTag;
+			summary.elapsedTime = Nettention.Proud.PreciseCurrentTime.GetTimeMs()-t0;
+			AfterRmiInvocation(summary);
+		}
+	}
+	break;
 		default:
 			 goto __fail;
 		}
@@ -222,6 +1464,27 @@ __fail:
 const string RmiName_Chat="Chat";
 const string RmiName_Login="Login";
 const string RmiName_RequestMakeRaidRoom="RequestMakeRaidRoom";
+const string RmiName_RequestGetRaidRoomInfo="RequestGetRaidRoomInfo";
+const string RmiName_RequestJoinRaidRoom="RequestJoinRaidRoom";
+const string RmiName_RequestMakePVPRoom="RequestMakePVPRoom";
+const string RmiName_RequestGetPVPRoomInfo="RequestGetPVPRoomInfo";
+const string RmiName_RequestJoinPVPRoom="RequestJoinPVPRoom";
+const string RmiName_RequestLeavePVPRoom="RequestLeavePVPRoom";
+const string RmiName_RequestMakeAccount="RequestMakeAccount";
+const string RmiName_RequestLoginAccount="RequestLoginAccount";
+const string RmiName_RequestInventoryData="RequestInventoryData";
+const string RmiName_RequestSkillData="RequestSkillData";
+const string RmiName_RequestEquipData="RequestEquipData";
+const string RmiName_RequestChangeEquipWeapon="RequestChangeEquipWeapon";
+const string RmiName_RequestBattleInfo="RequestBattleInfo";
+const string RmiName_RequestBattleEnd="RequestBattleEnd";
+const string RmiName_AddItemToInventory="AddItemToInventory";
+const string RmiName_AddGold="AddGold";
+const string RmiName_UseItemFromInventory="UseItemFromInventory";
+const string RmiName_UseGold="UseGold";
+const string RmiName_SellAllItem="SellAllItem";
+const string RmiName_SendEquipInfo="SendEquipInfo";
+const string RmiName_SendPassiveEquipInfo="SendPassiveEquipInfo";
        
 const string RmiName_First = RmiName_Chat;
 #else
@@ -230,6 +1493,27 @@ const string RmiName_First = RmiName_Chat;
 const string RmiName_Chat="";
 const string RmiName_Login="";
 const string RmiName_RequestMakeRaidRoom="";
+const string RmiName_RequestGetRaidRoomInfo="";
+const string RmiName_RequestJoinRaidRoom="";
+const string RmiName_RequestMakePVPRoom="";
+const string RmiName_RequestGetPVPRoomInfo="";
+const string RmiName_RequestJoinPVPRoom="";
+const string RmiName_RequestLeavePVPRoom="";
+const string RmiName_RequestMakeAccount="";
+const string RmiName_RequestLoginAccount="";
+const string RmiName_RequestInventoryData="";
+const string RmiName_RequestSkillData="";
+const string RmiName_RequestEquipData="";
+const string RmiName_RequestChangeEquipWeapon="";
+const string RmiName_RequestBattleInfo="";
+const string RmiName_RequestBattleEnd="";
+const string RmiName_AddItemToInventory="";
+const string RmiName_AddGold="";
+const string RmiName_UseItemFromInventory="";
+const string RmiName_UseGold="";
+const string RmiName_SellAllItem="";
+const string RmiName_SendEquipInfo="";
+const string RmiName_SendPassiveEquipInfo="";
        
 const string RmiName_First = "";
 #endif
